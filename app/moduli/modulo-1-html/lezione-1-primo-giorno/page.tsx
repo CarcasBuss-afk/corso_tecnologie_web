@@ -5,14 +5,11 @@ import Exercise from '@/components/didattica/Exercise';
 import Challenge from '@/components/didattica/Challenge';
 import Checklist from '@/components/didattica/Checklist';
 import LessonPreview from '@/components/didattica/LessonPreview';
-
-const lezioni = [
-  { id: '1', titolo: 'Il Primo Giorno', slug: 'lezione-1-primo-giorno' },
-  { id: '2', titolo: 'Titoli e Gerarchia', slug: 'lezione-2-titoli-gerarchia' },
-  { id: '3', titolo: 'Paragrafi e Testo', slug: 'lezione-3-paragrafi-testo' },
-];
+import { getLezioniByModuloSlug } from '@/lib/moduli';
 
 export default function Lezione1() {
+  const lezioni = getLezioniByModuloSlug('modulo-1-html');
+
   return (
     <LessonLayout
       moduloSlug="modulo-1-html"

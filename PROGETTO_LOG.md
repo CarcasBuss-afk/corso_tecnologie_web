@@ -1,8 +1,42 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
+**Ultimo aggiornamento:** 20 Ottobre 2025 - Sessione 2
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
+
+---
+
+## 📅 CHANGELOG SESSIONE 2 (20 Ottobre 2025)
+
+### Lezioni Create
+- ✅ **Lezione 3: Paragrafi e Testo** - Completata
+- ✅ **Lezione 4: Formattare il Testo** - Completata
+
+### Miglioramenti Architetturali
+- ✅ **Sidebar Unificata**: Centralizzata configurazione lezioni in `/lib/moduli.ts`
+- ✅ Funzione helper `getLezioniByModuloSlug()` per accesso uniforme
+- ✅ Tutte le 8 lezioni del Modulo 1 visibili in sidebar da qualsiasi lezione
+- ✅ Navigazione fluida tra lezioni garantita
+
+### File Modificati
+- `/lib/moduli.ts` - Aggiunto array completo 8 lezioni Modulo 1
+- `/app/moduli/modulo-1-html/lezione-1-primo-giorno/page.tsx` - Usa config centralizzata
+- `/app/moduli/modulo-1-html/lezione-2-titoli-gerarchia/page.tsx` - Usa config centralizzata
+- `/app/moduli/modulo-1-html/lezione-3-paragrafi-testo/page.tsx` - Creata + config centralizzata
+- `/app/moduli/modulo-1-html/lezione-4-formattare-testo/page.tsx` - Creata + config centralizzata
+
+### Stato Modulo 1
+**Progresso:** 4/18 lezioni completate (22%)
+- ✅ Lezione 1: Il Primo Giorno
+- ✅ Lezione 2: Titoli e Gerarchia
+- ✅ Lezione 3: Paragrafi e Testo
+- ✅ Lezione 4: Formattare il Testo
+- ⏳ Lezione 5: Link e Navigazione (pianificata in sidebar)
+- ⏳ Lezione 6: Immagini (pianificata in sidebar)
+- ⏳ Lezione 7: Liste (pianificata in sidebar)
+- ⏳ Lezione 8: Tabelle (pianificata in sidebar)
+- ⏳ Lezioni 9-18: Da pianificare
 
 ---
 
@@ -264,34 +298,70 @@ corso_tecnologie_web/
 
 ---
 
-#### 📝 LEZIONE 3: Paragrafi e Testo
+#### ✅ LEZIONE 3: Paragrafi e Testo (COMPLETATA)
 **Durata:** 1 ora
 **Difficoltà:** Facile
 **Argomenti:**
-- Tag `<p>`
+- Tag `<p>` per paragrafi
 - `<br>` per andare a capo
 - `<hr>` per separatori
-- Gestione spazi
+- Gestione spazi e compressione automatica HTML
+- Differenza tra spazi nel codice e spazi nel browser
 
-**Esercizio:** Scrivere una storia con paragrafi
-**Sfida:** Formattare un testo lungo con interruzioni logiche
+**Componenti usati:**
+- CodeExample (esempi di p, br, hr e gestione spazi)
+- LessonPreview (mostra risultati visivi nel browser)
+- Exercise (10 step guidati per creare una storia)
+- Challenge (pagina poesie con formattazione corretta)
+- Checklist (6 punti di auto-valutazione)
+
+**Caratteristiche didattiche:**
+- Spiega il "mistero degli spazi" che sorprende i principianti
+- Box colorati per attenzione, curiosità e quando usare i tag
+- Esempio pratico di formattazione indirizzo
+- Grid comparativa dei 4 concetti principali
+
+**File:** `/app/moduli/modulo-1-html/lezione-3-paragrafi-testo/page.tsx`
 
 ---
 
-#### 📝 LEZIONE 4: Formattare il Testo
+#### ✅ LEZIONE 4: Formattare il Testo (COMPLETATA)
 **Durata:** 1.5 ore
 **Difficoltà:** Facile
 **Argomenti:**
-- Grassetto: `<strong>` vs `<b>`
-- Corsivo: `<em>` vs `<i>`
+- Grassetto: `<strong>` vs `<b>` (semantico vs visuale)
+- Corsivo: `<em>` vs `<i>` (enfasi vs styling)
 - Sottolineato: `<u>`
 - Evidenziato: `<mark>`
 - Barrato: `<del>`, `<s>`
+- Inserito: `<ins>`
 - Piccolo: `<small>`
 - Pedice/Apice: `<sub>`, `<sup>`
+- Combinare tag multipli
+- Differenza semantico vs visuale
 
-**Esercizio:** Formattare note scolastiche
-**Sfida:** Creare documento con formattazione complessa
+**Componenti usati:**
+- CodeExample (8 esempi di codice per tutti i tag)
+- LessonPreview (6 preview visivi dei risultati)
+- Exercise (10 step guidati per note scolastiche con formule)
+- Challenge (volantino promozionale creativo)
+- Checklist (8 punti di auto-valutazione)
+
+**Caratteristiche didattiche:**
+- Grid comparativa 2x2 per strong vs b e em vs i
+- 6 box colorati per ogni tipo di formattazione
+- Tabella riepilogativa completa con tutti i tag
+- Box speciale "Semantico vs Visuale" con emoji e spiegazioni
+- Regola importante per annidamento tag corretto
+- Esempi pratici: note scolastiche, volantino, formule
+
+**Elementi speciali:**
+- Tabella HTML nativa con 8 righe (tutti i tag)
+- Grid verde/giallo per confronto semantico/visuale
+- Box rosso per regola di chiusura tag annidati
+- Box gradiente finale per importanza semantica
+
+**File:** `/app/moduli/modulo-1-html/lezione-4-formattare-testo/page.tsx`
 
 ---
 
@@ -597,7 +667,7 @@ corso_tecnologie_web/
 
 ## PROBLEMI RISOLTI
 
-### Problema 1: Tailwind CSS 4.x
+### Problema 1: Tailwind CSS 4.x (Sessione 1)
 **Errore:** PostCSS plugin non trovato
 **Soluzione:**
 - Installato `@tailwindcss/postcss`
@@ -605,15 +675,26 @@ corso_tecnologie_web/
 - Cambiato `globals.css` con `@import "tailwindcss"`
 - Rimosso `tailwind.config.ts` (non più necessario in v4)
 
+### Problema 2: Sidebar Lezioni Inconsistente (Sessione 2)
+**Problema:** Ogni lezione aveva un array locale diverso, mostrando solo alcune lezioni
+**Impatto:** Gli studenti vedevano lezioni diverse in base a dove si trovavano
+**Soluzione:**
+- Centralizzata configurazione in `/lib/moduli.ts`
+- Creata funzione helper `getLezioniByModuloSlug(moduloSlug: string)`
+- Aggiornate tutte le lezioni per usare la configurazione centralizzata
+- Ora tutte le 8 lezioni del Modulo 1 sono sempre visibili
+
 ---
 
 ## PROSSIMI PASSI
 
 ### Immediati
 1. ✅ Creare questo file di log
-2. ⏳ Creare Lezione 2 (Titoli e Gerarchia)
-3. ⏳ Creare Lezioni 3-17
-4. ⏳ Creare Progetto Finale Lezione 18
+2. ✅ Creare Lezione 2 (Titoli e Gerarchia)
+3. ✅ Creare Lezione 3 (Paragrafi e Testo)
+4. ✅ Creare Lezione 4 (Formattare il Testo)
+5. ⏳ Creare Lezioni 5-17
+6. ⏳ Creare Progetto Finale Lezione 18
 
 ### A Medio Termine
 - Completare Modulo 2 CSS
@@ -658,4 +739,78 @@ corso_tecnologie_web/
 
 ---
 
-*Log aggiornato il: 20 Ottobre 2025*
+*Log aggiornato il: 20 Ottobre 2025 - Sessione 2*
+
+---
+
+## 📊 RIEPILOGO SESSIONE 2
+
+### Statistiche
+- **Lezioni create:** 2 (Lezione 3 e 4)
+- **Righe di codice:** ~600 righe totali
+- **Componenti didattici:** 28 elementi (CodeExample, LessonPreview, Exercise, Challenge, Checklist)
+- **Tempo sviluppo:** ~3 ore
+- **File modificati:** 5 file
+
+### Highlights Didattici
+
+**Lezione 3 - Paragrafi e Testo:**
+- Spiega il "mistero degli spazi" (HTML comprime spazi multipli)
+- Esempi pratici: storia, poesie, indirizzi
+- Grid comparativa 2x2 dei concetti principali
+- 6 punti di auto-valutazione
+
+**Lezione 4 - Formattare il Testo:**
+- Focus su differenza semantico vs visuale
+- Grid comparativa strong/b e em/i
+- Tabella HTML riepilogativa con 8 tag
+- Box speciale "Perché la semantica importa" con esempi accessibilità/SEO
+- Esercizi creativi: note scolastiche, volantino promozionale
+
+### Miglioramenti UX
+- ✅ Sidebar sempre sincronizzata con tutte le lezioni
+- ✅ Navigazione fluida garantita
+- ✅ Configurazione centralizzata facilita manutenzione futura
+
+### Prossimi Passi
+1. Lezione 5: Link e Navigazione (2 ore)
+2. Lezione 6: Immagini (1.5 ore)
+3. Lezione 7: Liste (1.5 ore)
+4. Lezione 8: Tabelle (1.5 ore)
+
+---
+
+## 📊 RIEPILOGO SESSIONE 2
+
+### Statistiche
+- **Lezioni create:** 2 (Lezione 3 e 4)
+- **Righe di codice:** ~600 righe totali
+- **Componenti didattici:** 28 elementi (CodeExample, LessonPreview, Exercise, Challenge, Checklist)
+- **Tempo sviluppo:** ~3 ore
+- **File modificati:** 5 file
+
+### Highlights Didattici
+
+**Lezione 3 - Paragrafi e Testo:**
+- Spiega il "mistero degli spazi" (HTML comprime spazi multipli)
+- Esempi pratici: storia, poesie, indirizzi
+- Grid comparativa 2x2 dei concetti principali
+- 6 punti di auto-valutazione
+
+**Lezione 4 - Formattare il Testo:**
+- Focus su differenza semantico vs visuale
+- Grid comparativa strong/b e em/i
+- Tabella HTML riepilogativa con 8 tag
+- Box speciale "Perché la semantica importa" con esempi accessibilità/SEO
+- Esercizi creativi: note scolastiche, volantino promozionale
+
+### Miglioramenti UX
+- ✅ Sidebar sempre sincronizzata con tutte le lezioni
+- ✅ Navigazione fluida garantita
+- ✅ Configurazione centralizzata facilita manutenzione futura
+
+### Prossimi Passi
+1. Lezione 5: Link e Navigazione (2 ore)
+2. Lezione 6: Immagini (1.5 ore)
+3. Lezione 7: Liste (1.5 ore)
+4. Lezione 8: Tabelle (1.5 ore)

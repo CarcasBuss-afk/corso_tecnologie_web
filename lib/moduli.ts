@@ -17,6 +17,12 @@ export interface Modulo {
   lezioni: Lezione[];
 }
 
+// Helper per ottenere le lezioni di un modulo
+export function getLezioniByModuloSlug(moduloSlug: string): Lezione[] {
+  const modulo = moduli.find((m) => m.slug === moduloSlug);
+  return modulo?.lezioni || [];
+}
+
 export const moduli: Modulo[] = [
   {
     id: 1,
@@ -27,7 +33,62 @@ export const moduli: Modulo[] = [
     icona: "📄",
     colore: "bg-blue-500",
     lezioni: [
-      // Le lezioni verranno aggiunte dopo il briefing
+      {
+        id: "1",
+        titolo: "Il Primo Giorno",
+        slug: "lezione-1-primo-giorno",
+        durata: "2 ore",
+        difficolta: "facile",
+      },
+      {
+        id: "2",
+        titolo: "Titoli e Gerarchia",
+        slug: "lezione-2-titoli-gerarchia",
+        durata: "1.5 ore",
+        difficolta: "facile",
+      },
+      {
+        id: "3",
+        titolo: "Paragrafi e Testo",
+        slug: "lezione-3-paragrafi-testo",
+        durata: "1 ora",
+        difficolta: "facile",
+      },
+      {
+        id: "4",
+        titolo: "Formattare il Testo",
+        slug: "lezione-4-formattare-testo",
+        durata: "1.5 ore",
+        difficolta: "facile",
+      },
+      {
+        id: "5",
+        titolo: "Link e Navigazione",
+        slug: "lezione-5-link-navigazione",
+        durata: "2 ore",
+        difficolta: "media",
+      },
+      {
+        id: "6",
+        titolo: "Immagini",
+        slug: "lezione-6-immagini",
+        durata: "1.5 ore",
+        difficolta: "facile",
+      },
+      {
+        id: "7",
+        titolo: "Liste",
+        slug: "lezione-7-liste",
+        durata: "1.5 ore",
+        difficolta: "facile",
+      },
+      {
+        id: "8",
+        titolo: "Tabelle",
+        slug: "lezione-8-tabelle",
+        durata: "1.5 ore",
+        difficolta: "media",
+      },
     ],
   },
   {
