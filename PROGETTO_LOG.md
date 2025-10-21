@@ -814,3 +814,81 @@ corso_tecnologie_web/
 2. Lezione 6: Immagini (1.5 ore)
 3. Lezione 7: Liste (1.5 ore)
 4. Lezione 8: Tabelle (1.5 ore)
+
+#### ✅ LEZIONE 5: Link e Navigazione (COMPLETATA)
+**Durata:** 2 ore
+**Difficoltà:** Media
+**Argomenti:**
+- Tag `<a>` e attributo `href`
+- Link esterni vs link interni
+- Percorsi relativi e assoluti
+- Anchor link (navigazione stessa pagina con `#id`)
+- Link speciali: `mailto:`, `tel:`, `sms:`
+- Attributi: `target`, `title`, `rel`, `download`
+- Link con immagini
+- Best practice UX per i link
+
+**Componenti usati:**
+- CodeExample (8 esempi di codice progressivi)
+- LessonPreview (3 preview visivi con link funzionanti)
+- Exercise (11 step guidati per menu navigazione)
+- Challenge (portfolio multi-pagina con navigazione completa)
+- Checklist (9 punti di auto-valutazione)
+
+**Caratteristiche didattiche:**
+- Grid comparativa 2x2 link esterni vs interni
+- 4 box colorati per attributi principali del tag <a>
+- Fun fact storico sul primo link del web (Tim Berners-Lee 1991)
+- Box percorsi relativi con esempi pratici
+- Box "Link e UX" con 4 principi di usabilità (emoji grandi)
+- Box best practice con lista di consigli
+
+**Elementi speciali:**
+- Spiegazione anchor link con esempio indice navigabile
+- Link email con parametri (subject, body)
+- Link telefono/SMS per mobile
+- Esempi sicurezza (rel="noopener noreferrer")
+- 4 casi d'uso UX con icone emoji
+
+**File:** `/app/moduli/modulo-1-html/lezione-5-link-navigazione/page.tsx`
+
+---
+
+#### ✅ LEZIONE 6: Immagini (COMPLETATA)
+**Durata:** 1.5 ore
+**Difficoltà:** Facile
+**Argomenti:**
+- Tag `<img>` auto-chiudente
+- Attributi `src` (percorso) e `alt` (accessibilità)
+- Dimensioni: `width` e `height`
+- Percorsi relativi vs assoluti
+- Immagini cliccabili (dentro tag `<a>`)
+- Formati immagine: JPG, PNG, GIF, SVG, WebP, AVIF
+- Attributi avanzati: `title`, `loading="lazy"`
+- Ottimizzazione e best practice
+
+**Componenti usati:**
+- CodeExample (7 esempi progressivi)
+- Exercise (11 step guidati per gallery)
+- Challenge (portfolio fotografico con 9 requisiti)
+- Checklist (9 punti di auto-valutazione)
+
+**Caratteristiche didattiche:**
+- Grid 2x2 src vs alt (attributi fondamentali)
+- Grid 2x2 percorsi relativi vs assoluti
+- Grid 2x3 formati immagine con emoji e pro/contro
+- Fun fact: primo banner pubblicitario web (1994)
+- Box importanza alt (4 motivi: accessibilità, SEO, fallback, legge)
+- Box best practice dimensioni (3 opzioni)
+- Box ottimizzazione immagini (4 principi con emoji)
+
+**Elementi speciali:**
+- Spiegazione dettagliata percorsi con esempi struttura cartelle
+- Confronto tutti i formati immagine (JPG, PNG, GIF, SVG, WebP, AVIF)
+- Attributo loading="lazy" per performance
+- Immagini cliccabili con esempi social
+- 4 principi ottimizzazione (performance, responsive, SEO, accessibilità)
+
+**File:** `/app/moduli/modulo-1-html/lezione-6-immagini/page.tsx`
+
+---

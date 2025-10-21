@@ -74,6 +74,21 @@ export default function LessonPreview({ title, html, description }: LessonPrevie
               border-top: 1px solid #ccc;
               margin: 1em 0;
             }
+            .preview-html-content a {
+              color: #0000EE;
+              text-decoration: underline;
+              cursor: pointer;
+            }
+            .preview-html-content a:visited {
+              color: #551A8B;
+            }
+            .preview-html-content a:hover {
+              color: #0000FF;
+              text-decoration: underline;
+            }
+            .preview-html-content a:active {
+              color: #FF0000;
+            }
           `
         }} />
         <div className="preview-html-content" dangerouslySetInnerHTML={{ __html: html }} />

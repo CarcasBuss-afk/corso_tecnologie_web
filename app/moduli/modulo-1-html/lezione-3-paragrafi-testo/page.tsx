@@ -285,6 +285,7 @@ nel codice ma appare tutta di seguito!</p>`}
               <p className="text-sm font-semibold text-gray-700 mb-2">Risultato:</p>
               <div className="bg-white p-4 rounded border-2 border-blue-200">
                 <LessonPreview
+                  title="🔍 Indirizzo formattato:"
                   html={`<p>
   <strong>Contatti</strong><br>
   Mario Rossi<br>
