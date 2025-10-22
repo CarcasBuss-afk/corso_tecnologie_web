@@ -680,14 +680,7 @@ export default function Lezione8Page() {
             'BONUS: Aggiungi eventi in celle specifiche (es: "15 - Verifica Matematica")',
             'BONUS: Usa rowspan o colspan per unire giorni di eventi speciali multi-giorno'
           ]}
-          hints={[
-            'Inizia disegnando su carta: 7 colonne (giorni) × 5-6 righe (settimane)',
-            'I mesi non iniziano sempre di lunedì! Lascia celle vuote all\'inizio',
-            'Conta bene i giorni del mese (28, 30 o 31)',
-            'Usa <strong> o <b> per evidenziare weekend',
-            'Per il BONUS colore: <td style="background-color: yellow;">15</td>',
-            'Testa con uno screen reader (VoiceOver su Mac, NVDA su Windows)'
-          ]}
+          hint="Inizia disegnando su carta: 7 colonne (giorni) × 5-6 righe (settimane) • I mesi non iniziano sempre di lunedì! Lascia celle vuote all'inizio • Conta bene i giorni del mese (28, 30 o 31) • Usa <strong> o <b> per evidenziare weekend • Per il BONUS colore: <td style='background-color: yellow;'>15</td> • Testa con uno screen reader (VoiceOver su Mac, NVDA su Windows)"
         />
 
         {/* Checklist */}

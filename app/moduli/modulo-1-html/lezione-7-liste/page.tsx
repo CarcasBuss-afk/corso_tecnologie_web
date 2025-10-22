@@ -572,14 +572,7 @@ export default function Lezione7Page() {
             'BONUS: Aggiungi una lista con attributo reversed per un conto alla rovescia',
             'BONUS: Inserisci link e immagini nelle liste'
           ]}
-          hints={[
-            'Pianifica la struttura prima di scrivere il codice',
-            'Le liste annidate vanno DENTRO il <li>, non dopo',
-            'Usa liste ordinate quando l\'ordine conta (itinerari, classifiche)',
-            'Usa liste non ordinate per raggruppare elementi senza priorità',
-            'Le liste di descrizione sono perfette per glossari e FAQ',
-            'Puoi mescolare <ul> dentro <ol> e viceversa!'
-          ]}
+          hint="Pianifica la struttura prima di scrivere il codice • Le liste annidate vanno DENTRO il <li>, non dopo • Usa liste ordinate quando l'ordine conta (itinerari, classifiche) • Usa liste non ordinate per raggruppare elementi senza priorità • Le liste di descrizione sono perfette per glossari e FAQ • Puoi mescolare <ul> dentro <ol> e viceversa!"
         />
 
         {/* Checklist */}
