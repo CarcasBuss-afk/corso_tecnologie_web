@@ -21,7 +21,6 @@ export default function Lezione7Page() {
         titolo="Liste"
         durata="1.5 ore"
         difficolta="facile"
-        prerequisiti={['Lezione 3: Paragrafi e Testo', 'Lezione 4: Formattare il Testo']}
         obiettivi={[
           'Creare liste non ordinate con <ul>',
           'Creare liste ordinate con <ol>',

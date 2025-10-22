@@ -21,7 +21,6 @@ export default function Lezione8Page() {
         titolo="Tabelle"
         durata="1.5 ore"
         difficolta="media"
-        prerequisiti={['Lezione 7: Liste']}
         obiettivi={[
           'Creare tabelle con <table>, <tr>, <td>',
           'Aggiungere intestazioni con <th>',
