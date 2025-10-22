@@ -557,7 +557,6 @@ export default function Lezione7Page() {
         {/* Challenge */}
         <Challenge
           title="🚀 Challenge: Guida Turistica della Tua Città"
-          difficulty="media"
           description="Crea una pagina web completa che presenti una guida turistica della tua città (o città preferita)."
           requirements={[
             'Titolo H1 con nome della città',

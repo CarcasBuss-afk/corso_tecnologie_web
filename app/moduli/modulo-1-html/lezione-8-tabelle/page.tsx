@@ -665,7 +665,6 @@ export default function Lezione8Page() {
         {/* Challenge */}
         <Challenge
           title="🚀 Challenge: Calendario Mensile Completo"
-          difficulty="difficile"
           description="Crea un calendario HTML del mese corrente con una tabella professionale e accessibile."
           requirements={[
             'Caption con mese e anno (es: "Ottobre 2025")',
