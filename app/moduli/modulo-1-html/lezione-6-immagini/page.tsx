@@ -4,6 +4,7 @@ import CodeExample from '@/components/didattica/CodeExample';
 import Exercise from '@/components/didattica/Exercise';
 import Challenge from '@/components/didattica/Challenge';
 import Checklist from '@/components/didattica/Checklist';
+import ClickableImageDemo from '@/components/didattica/ClickableImageDemo';
 import Link from 'next/link';
 import { getLezioniByModuloSlug } from '@/lib/moduli';
 
@@ -119,6 +120,30 @@ export default function Lezione6() {
 <img src="logo-azienda.png" alt="Logo Azienda XYZ - scritta blu con stella">`}
         />
 
+        <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-6 rounded-lg border-2 border-indigo-300 my-6">
+          <h3 className="font-bold text-indigo-900 mb-4 text-lg">🎨 Vediamo il tag &lt;img&gt; in azione!</h3>
+          <p className="text-gray-700 mb-4 text-sm">
+            Ecco un'immagine vera inserita con il tag <code>&lt;img&gt;</code>:
+          </p>
+
+          <div className="bg-white p-4 rounded-lg border-2 border-blue-300 mb-3">
+            <p className="text-xs text-gray-600 mb-2 font-mono">
+              &lt;img src="https://picsum.photos/400/250" alt="Paesaggio naturale"&gt;
+            </p>
+            <img
+              src="https://picsum.photos/seed/paesaggio1/400/250"
+              alt="Paesaggio naturale"
+              className="mx-auto rounded"
+            />
+          </div>
+
+          <p className="text-sm text-gray-600">
+            ✅ L'attributo <strong>src</strong> indica dove si trova l'immagine<br />
+            ✅ L'attributo <strong>alt</strong> descrive cosa c'è nell'immagine<br />
+            ✅ Questa è una vera fotografia scaricata da internet!
+          </p>
+        </div>
+
         <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-400 my-6">
           <p className="text-gray-700 font-semibold">🚨 Perché l'alt è così importante?</p>
           <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1 text-sm">
@@ -159,6 +184,54 @@ export default function Lezione6() {
             <strong>Opzione 2:</strong> Imposta solo width OPPURE solo height (mantiene proporzioni)<br />
             <strong>⚠️ Evita:</strong> Impostare entrambi se non corrispondono alle proporzioni originali
             (l'immagine si deforma!)
+          </p>
+        </div>
+
+        <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-lg border-2 border-green-300 my-6">
+          <h3 className="font-bold text-green-900 mb-4 text-lg">📏 Dimensioni in azione: width e height</h3>
+          <p className="text-gray-700 mb-4 text-sm">
+            Vediamo come cambiano le dimensioni dell'immagine con width e height:
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-white p-4 rounded-lg border-2 border-green-300">
+              <p className="text-xs text-gray-600 mb-2 font-mono">width="100"</p>
+              <img
+                src="https://picsum.photos/seed/natura1/300/200"
+                alt="Foto di natura - piccola"
+                width="100"
+                className="mx-auto rounded"
+              />
+              <p className="text-xs text-gray-500 mt-2 text-center">Piccola</p>
+            </div>
+
+            <div className="bg-white p-4 rounded-lg border-2 border-green-300">
+              <p className="text-xs text-gray-600 mb-2 font-mono">width="200"</p>
+              <img
+                src="https://picsum.photos/seed/natura1/300/200"
+                alt="Foto di natura - media"
+                width="200"
+                className="mx-auto rounded"
+              />
+              <p className="text-xs text-gray-500 mt-2 text-center">Media</p>
+            </div>
+
+            <div className="bg-white p-4 rounded-lg border-2 border-green-300">
+              <p className="text-xs text-gray-600 mb-2 font-mono">width="280"</p>
+              <img
+                src="https://picsum.photos/seed/natura1/300/200"
+                alt="Foto di natura - grande"
+                width="280"
+                className="mx-auto rounded"
+              />
+              <p className="text-xs text-gray-500 mt-2 text-center">Grande</p>
+            </div>
+          </div>
+
+          <p className="text-sm text-gray-600 mt-4">
+            ✅ Stessa fotografia, dimensioni diverse!<br />
+            ✅ L'altezza si adatta automaticamente per mantenere le proporzioni<br />
+            ✅ Cambiando solo <strong>width</strong>, l'immagine non si deforma
           </p>
         </div>
 
@@ -241,6 +314,8 @@ export default function Lezione6() {
             che aprono l'immagine grande. Le icone social sono quasi sempre immagini cliccabili!
           </p>
         </div>
+
+        <ClickableImageDemo />
 
         <h2 className="text-2xl font-bold text-gray-800 mb-4 mt-8">Formati Immagine</h2>
 

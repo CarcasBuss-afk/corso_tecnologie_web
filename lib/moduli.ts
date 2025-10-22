@@ -89,6 +89,20 @@ export const moduli: Modulo[] = [
         durata: "1.5 ore",
         difficolta: "media",
       },
+      {
+        id: "9",
+        titolo: "Form - Input Base",
+        slug: "lezione-9-form-input-base",
+        durata: "1.5 ore",
+        difficolta: "media",
+      },
+      {
+        id: "10",
+        titolo: "Form - Input Avanzati",
+        slug: "lezione-10-form-input-avanzati",
+        durata: "2 ore",
+        difficolta: "media",
+      },
     ],
   },
   {

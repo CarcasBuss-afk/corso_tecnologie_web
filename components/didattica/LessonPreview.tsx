@@ -89,6 +89,42 @@ export default function LessonPreview({ title, html, description }: LessonPrevie
             .preview-html-content a:active {
               color: #FF0000;
             }
+            .preview-html-content ul {
+              list-style-type: disc;
+              margin: 1em 0;
+              padding-left: 40px;
+            }
+            .preview-html-content ol {
+              list-style-type: decimal;
+              margin: 1em 0;
+              padding-left: 40px;
+            }
+            .preview-html-content li {
+              margin: 0.5em 0;
+            }
+            .preview-html-content ul ul {
+              list-style-type: circle;
+            }
+            .preview-html-content ul ul ul {
+              list-style-type: square;
+            }
+            .preview-html-content ol ol {
+              list-style-type: lower-alpha;
+            }
+            .preview-html-content ol ol ol {
+              list-style-type: lower-roman;
+            }
+            .preview-html-content dl {
+              margin: 1em 0;
+            }
+            .preview-html-content dt {
+              font-weight: bold;
+              margin-top: 1em;
+            }
+            .preview-html-content dd {
+              margin-left: 40px;
+              margin-bottom: 0.5em;
+            }
           `
         }} />
         <div className="preview-html-content" dangerouslySetInnerHTML={{ __html: html }} />

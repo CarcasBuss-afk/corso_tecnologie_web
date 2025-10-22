@@ -1,7 +1,7 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 20 Ottobre 2025 - Sessione 2
+**Ultimo aggiornamento:** 22 Ottobre 2025 - Sessione 5
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
 
@@ -890,5 +890,119 @@ corso_tecnologie_web/
 - 4 principi ottimizzazione (performance, responsive, SEO, accessibilità)
 
 **File:** `/app/moduli/modulo-1-html/lezione-6-immagini/page.tsx`
+
+**Aggiornamenti Sessione 4:**
+- Aggiunti 3 box visivi interattivi con immagini fotografiche reali (picsum.photos)
+- Box 1: Dimostrazione tag `<img>` con foto paesaggio
+- Box 2: Grid con 3 dimensioni diverse della stessa foto (width: 100, 200, 280px)
+- Box 3: Immagini cliccabili interattive con effetti hover (ClickableImageDemo component)
+- Creato Client Component separato per interattività (`ClickableImageDemo.tsx`)
+- Immagini con angoli arrotondati e effetti zoom al passaggio del mouse
+
+---
+
+#### ✅ LEZIONE 7: Liste (COMPLETATA)
+**Durata:** 1.5 ore
+**Difficoltà:** Facile
+**Argomenti:**
+- Liste non ordinate: `<ul>` e `<li>` (bullet points)
+- Liste ordinate: `<ol>` e `<li>` (numerate)
+- Confronto UL vs OL - quando usare quale
+- Liste annidate (liste dentro liste, matrioske)
+- Attributi liste ordinate: `type`, `start`, `reversed`
+- Liste di descrizione: `<dl>`, `<dt>`, `<dd>` (glossari/FAQ)
+- Tabella riassuntiva di tutti i tag delle liste
+
+**Componenti usati:**
+- CodeExample (7 esempi progressivi)
+- LessonPreview (5 preview HTML - NOTA: richiede fix CSS per visualizzare liste)
+- Exercise (10 step guidati per menu ristorante con liste annidate)
+- Challenge (guida turistica con tutti i tipi di liste)
+- Checklist (10 punti di auto-valutazione)
+
+**Caratteristiche didattiche:**
+- Grid comparativa 2 colonne: UL vs OL con icone emoji
+- 3 box colorati per attributi liste ordinate (type, start, reversed)
+- Metafora matrioske russe per spiegare liste annidate
+- Esempi progressivi: spesa → ricetta → vacanza → menu
+- Tabella HTML con tutti i 6 tag delle liste spiegati
+- Fun fact: liste usate per menu di navigazione
+
+**File:** `/app/moduli/modulo-1-html/lezione-7-liste/page.tsx`
+
+---
+
+#### ✅ LEZIONE 8: Tabelle (COMPLETATA)
+**Durata:** 1.5 ore
+**Difficoltà:** Media
+**Argomenti:**
+- Struttura base tabella: `<table>`, `<tr>`, `<td>`, `<th>`
+- Sezioni semantiche: `<thead>`, `<tbody>`, `<tfoot>`
+- Celle che si estendono: `colspan` e `rowspan`
+- Didascalia tabella: `<caption>`
+- Quando usare le tabelle (dati tabulari, NON layout)
+- Accessibilità tabelle (scope, headers)
+- Best practice e tabelle responsive
+
+**Componenti usati:**
+- CodeExample (9 esempi progressivi)
+- LessonPreview (6 preview HTML con tabelle pure senza stili CSS)
+- Exercise (12 step guidati per tabella voti scolastici)
+- Challenge (dashboard statistiche complessa)
+- Checklist (11 punti di auto-valutazione)
+
+**Caratteristiche didattiche:**
+- Grid comparativa 2x2: TD vs TH
+- 3 box colorati per sezioni tabella (thead, tbody, tfoot)
+- 2 box arancioni per colspan e rowspan con esempi visivi
+- Box rosso importante: "Tabelle solo per dati, NON per layout"
+- Fun fact storico: tabelle nei primi siti web anni '90
+- Grid 2x2 best practice (semantica, accessibilità, responsive, performance)
+- Sezione congratulazioni completamento Modulo 1 HTML
+
+**File:** `/app/moduli/modulo-1-html/lezione-8-tabelle/page.tsx`
+
+**Nota pedagogica:**
+- Tabelle visualizzate senza bordi CSS (comportamento HTML puro)
+- Solo stili default browser: `<th>` grassetto e centrato
+- Bordi e stili verranno insegnati nel Modulo 2 CSS
+
+---
+
+## 📅 CHANGELOG SESSIONE 5 (22 Ottobre 2025)
+
+### Fix e Miglioramenti
+
+**1. LessonPreview Component - Stili CSS Liste**
+- ✅ **Problema risolto:** Liste non visualizzavano pallini/numeri/indentazione
+- ✅ **Aggiunto CSS per:**
+  - `<ul>` con pallini (list-style-type: disc)
+  - `<ol>` con numeri (list-style-type: decimal)
+  - `<li>` con margine e spacing
+  - Liste annidate con stili progressivi (circle, square, lower-alpha, lower-roman)
+  - Liste di definizione: `<dl>`, `<dt>`, `<dd>`
+- ✅ **File modificato:** `/components/didattica/LessonPreview.tsx` (righe 92-127)
+
+**2. Decisione Pedagogica - Tabelle HTML Pure**
+- ✅ **Discussione:** Tabelle con o senza bordi CSS?
+- ✅ **Scelta:** Opzione 1 - Nessuno stile CSS per tabelle
+- ✅ **Motivazione:** Modulo 1 insegna HTML puro, CSS nel Modulo 2
+- ✅ **Comportamento:** Tabelle senza bordi, solo default browser
+- ✅ **Risultato:** `<th>` grassetto/centrato, `<td>` testo normale
+
+**3. Stato Modulo 1**
+- ✅ **Progresso:** 8/18 lezioni completate (44%)
+- ✅ Lezioni 1-8: Completate e funzionanti
+- ⏳ Lezioni 9-18: Da creare
+
+### File Modificati Sessione 5
+1. `/components/didattica/LessonPreview.tsx` - Aggiunto CSS liste
+2. `/PROGETTO_LOG.md` - Aggiornato con Sessione 5
+
+### Decisioni Tecniche
+- **Stili HTML nativi:** LessonPreview mostra comportamento browser default
+- **Pedagogia progressiva:** HTML puro → CSS styling (Modulo 2)
+- **Liste:** Completamente funzionanti con formattazione corretta
+- **Tabelle:** Visualizzazione HTML pura senza CSS aggiuntivo
 
 ---
