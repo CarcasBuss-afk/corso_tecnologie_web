@@ -633,7 +633,6 @@ export default function Lezione10Page() {
         {/* Challenge */}
         <Challenge
           title="Challenge: Form Prenotazione Viaggio"
-          difficulty="difficile"
           description="Crea un form completo per prenotare un viaggio usando TUTTI gli input avanzati che hai imparato!"
           requirements={[
             'Titolo del form: "Prenota il Tuo Viaggio"',
