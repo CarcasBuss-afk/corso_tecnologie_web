@@ -1,9 +1,44 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 22 Ottobre 2025 - Sessione 5
+**Ultimo aggiornamento:** 23 Ottobre 2025 - Sessione 6
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
+
+---
+
+## 📅 CHANGELOG SESSIONE 6 (23 Ottobre 2025)
+
+### Lezioni Create
+- ✅ **Lezione 11: Form - Validazione** - Completata
+- ✅ **Lezione 12: Audio e Video** - Completata
+
+### Fix TypeScript per Vercel
+- ✅ **Fix Challenge/LessonHeader Props**: Risolti errori di validazione TypeScript
+  - Rimossa prop `difficulty` da Challenge (non supportata)
+  - Rimossa prop `prerequisiti` da LessonHeader (non supportata)
+  - Convertiti array `hints` in stringa singola `hint` nelle Challenge
+  - Tutti i fix committati e pushati su GitHub
+
+### Nuove Funzionalità
+- ✅ **LessonPreview Interattivi**: Aggiunti 5 esempi interattivi nella Lezione 11
+  - Form con validazione required
+  - Form con minlength/maxlength
+  - Form con min/max/step per numeri
+  - Form con pattern (regex) per formati personalizzati
+  - Form con disabled vs readonly
+
+### File Creati/Modificati
+1. `/app/moduli/modulo-1-html/lezione-11-form-validazione/page.tsx` - Creata (800+ righe)
+2. `/app/moduli/modulo-1-html/lezione-12-audio-video/page.tsx` - Creata (700+ righe)
+3. `/lib/moduli.ts` - Aggiunte Lezioni 11 e 12
+4. `/app/moduli/modulo-1-html/lezione-7-liste/page.tsx` - Fix hints → hint
+5. `/app/moduli/modulo-1-html/lezione-8-tabelle/page.tsx` - Fix hints → hint
+
+### Stato Modulo 1
+**Progresso:** 12/18 lezioni completate (67%)
+- ✅ Lezioni 1-12: Completate e funzionanti
+- ⏳ Lezioni 13-18: Da creare
 
 ---
 
@@ -458,23 +493,73 @@ corso_tecnologie_web/
 
 ---
 
-#### 📝 LEZIONE 11: Form - Validazione
+#### ✅ LEZIONE 11: Form - Validazione (COMPLETATA)
 **Durata:** 1 ora
 **Difficoltà:** Media
 **Argomenti:**
-- required
-- minlength, maxlength
-- min, max, step
-- pattern (regex base)
-- disabled, readonly
-- Messaggi errore browser
+- Attributo `required` per campi obbligatori
+- `minlength` e `maxlength` per lunghezza testo
+- `min`, `max` e `step` per controllo numeri
+- `pattern` con regex base per formati personalizzati
+- `disabled` vs `readonly` - differenze e casi d'uso
+- Messaggi di errore nativi del browser
+- Best practice validazione HTML
 
-**Esercizio:** Form iscrizione con validazione
-**Sfida:** Form complesso con tutte le validazioni
+**Componenti usati:**
+- CodeExample (6 esempi di validazione)
+- LessonPreview (5 form interattivi)
+- Exercise (Form iscrizione evento)
+- Challenge (Form registrazione completo con tutte le validazioni)
+- Checklist (10 punti)
+
+**Caratteristiche didattiche:**
+- Grid cards per attributi (required, minlength/maxlength, min/max/step)
+- Spiegazione regex base senza spaventare gli studenti
+- Tabella riepilogativa completa con tutti gli attributi
+- 5 LessonPreview interattivi per testare validazioni in tempo reale
+- Box colorati per casi d'uso (pattern italiano: CAP, targa, telefono)
+- Confronto disabled vs readonly con esempi pratici
+
+**File:** `/app/moduli/modulo-1-html/lezione-11-form-validazione/page.tsx` (800+ righe)
 
 ---
 
-#### 📝 LEZIONE 12: Audio e Video
+#### ✅ LEZIONE 12: Audio e Video (COMPLETATA)
+**Durata:** 1 ora
+**Difficoltà:** Facile
+**Argomenti:**
+- Tag `<audio>` per file audio, musica, podcast
+- Tag `<video>` per filmati e clip
+- Tag `<source>` per formati multipli (fallback)
+- Incorporare video YouTube/Vimeo con `<iframe>`
+- Tag `<track>` per sottotitoli WebVTT
+- Attributi: controls, autoplay, loop, muted, poster, preload
+- Formati audio: MP3, OGG, WAV
+- Formati video: MP4, WebM, OGG
+- Best practice: evitare autoplay, usare muted per sfondi
+- Accessibilità: sottotitoli e descrizioni audio
+
+**Componenti usati:**
+- CodeExample (7 esempi audio/video)
+- LessonPreview (3 preview: audio player, video player, iframe YouTube)
+- Exercise (Portfolio multimediale)
+- Challenge (Piattaforma video educativa completa)
+- Checklist (10 punti)
+
+**Caratteristiche didattiche:**
+- Grid cards per attributi (controls, loop, autoplay)
+- Grid formati audio/video con pro/contro
+- Esempio iframe YouTube funzionante e cliccabile
+- Spiegazione formato WebVTT con esempio pratico
+- Tabella completa attributi audio/video
+- Warning su autoplay e UX
+- Box "Trucco: Autoplay con Muted" per video background
+
+**File:** `/app/moduli/modulo-1-html/lezione-12-audio-video/page.tsx` (700+ righe)
+
+---
+
+#### 📝 LEZIONE 13: Contenitori e Divisioni
 **Durata:** 1 ora
 **Difficoltà:** Facile
 **Argomenti:**

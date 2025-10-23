@@ -103,6 +103,20 @@ export const moduli: Modulo[] = [
         durata: "2 ore",
         difficolta: "media",
       },
+      {
+        id: "11",
+        titolo: "Form - Validazione",
+        slug: "lezione-11-form-validazione",
+        durata: "1 ora",
+        difficolta: "media",
+      },
+      {
+        id: "12",
+        titolo: "Audio e Video",
+        slug: "lezione-12-audio-video",
+        durata: "1 ora",
+        difficolta: "facile",
+      },
     ],
   },
   {
