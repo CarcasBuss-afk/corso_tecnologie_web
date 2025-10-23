@@ -396,7 +396,7 @@ export default function Lezione11Page() {
             <li><code className="bg-white px-2 py-1 rounded">[A-Z]</code> = una lettera maiuscola</li>
             <li><code className="bg-white px-2 py-1 rounded">[a-z]</code> = una lettera minuscola</li>
             <li><code className="bg-white px-2 py-1 rounded">{"{"}{3}{"}"}</code> = ripeti esattamente 3 volte</li>
-            <li><code className="bg-white px-2 py-1 rounded">{"{"}{2,5}{"}"}</code> = ripeti da 2 a 5 volte</li>
+            <li><code className="bg-white px-2 py-1 rounded">{"{2,5}"}</code> = ripeti da 2 a 5 volte</li>
             <li><code className="bg-white px-2 py-1 rounded">+</code> = uno o più caratteri</li>
           </ul>
         </div>
