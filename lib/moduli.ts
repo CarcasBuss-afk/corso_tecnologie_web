@@ -131,6 +131,13 @@ export const moduli: Modulo[] = [
         durata: "2 ore",
         difficolta: "media",
       },
+      {
+        id: "15",
+        titolo: "Consolidamento e Pratica",
+        slug: "lezione-15-consolidamento",
+        durata: "2 ore",
+        difficolta: "media",
+      },
     ],
   },
   {
