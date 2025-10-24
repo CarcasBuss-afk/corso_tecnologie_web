@@ -117,6 +117,13 @@ export const moduli: Modulo[] = [
         durata: "1 ora",
         difficolta: "facile",
       },
+      {
+        id: "13",
+        titolo: "Contenitori e Divisioni",
+        slug: "lezione-13-contenitori-divisioni",
+        durata: "1.5 ore",
+        difficolta: "facile",
+      },
     ],
   },
   {
