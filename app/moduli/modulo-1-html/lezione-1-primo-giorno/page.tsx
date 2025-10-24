@@ -5,6 +5,7 @@ import Exercise from '@/components/didattica/Exercise';
 import Challenge from '@/components/didattica/Challenge';
 import Checklist from '@/components/didattica/Checklist';
 import LessonPreview from '@/components/didattica/LessonPreview';
+import DownloadPDFButton from '@/components/DownloadPDFButton';
 import { getLezioniByModuloSlug } from '@/lib/moduli';
 
 export default function Lezione1() {
@@ -28,6 +29,14 @@ export default function Lezione1() {
           'Visualizzare la tua pagina nel browser',
         ]}
       />
+
+      <div className="mb-6">
+        <DownloadPDFButton
+          moduloSlug="modulo-1-html"
+          lezioneSlug="lezione-1-primo-giorno"
+          lezioneTitolo="Il Primo Giorno - Ciao Web!"
+        />
+      </div>
 
       <section className="prose max-w-none">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">Cos'è l'HTML?</h2>

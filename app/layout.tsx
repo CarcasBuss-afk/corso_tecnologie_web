@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./print.css";
 
 export const metadata: Metadata = {
   title: "Corso Web - Manuale per Ragazzi",

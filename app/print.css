@@ -1,0 +1,192 @@
+/* CSS ottimizzato per la stampa/salvataggio PDF */
+@media print {
+  /* Forza la stampa di sfondi e colori */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Mantieni i colori di sfondo per tutti gli elementi */
+  body,
+  div,
+  section,
+  article,
+  aside,
+  header,
+  footer,
+  nav,
+  pre,
+  code,
+  .bg-blue-500,
+  .bg-purple-500,
+  .bg-green-500,
+  .bg-yellow-500,
+  .bg-red-500,
+  .bg-gray-500,
+  .bg-slate-900,
+  .bg-white,
+  .bg-blue-50,
+  .bg-green-50,
+  .bg-yellow-50,
+  .bg-red-50,
+  .bg-gray-50 {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Nascondi elementi non necessari nella stampa */
+  .print\\:hidden,
+  nav,
+  button:not(.print\\:block),
+  .no-print {
+    display: none !important;
+  }
+
+  /* Ottimizza la sidebar per la stampa */
+  aside {
+    display: none !important;
+  }
+
+  /* Espandi il contenuto principale */
+  main {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 1rem !important;
+  }
+
+  /* Mantieni i bordi arrotondati */
+  * {
+    border-radius: inherit !important;
+  }
+
+  /* Evita interruzioni di pagina indesiderate */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  pre,
+  code,
+  .code-block {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Mantieni l'aspetto dei blocchi di codice */
+  pre {
+    background-color: #1e293b !important;
+    color: #e2e8f0 !important;
+    padding: 1rem !important;
+    border-radius: 0.5rem !important;
+    overflow: visible !important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+  }
+
+  code {
+    background-color: #f1f5f9 !important;
+    color: #334155 !important;
+    padding: 0.125rem 0.25rem !important;
+    border-radius: 0.25rem !important;
+    font-family: "Courier New", Courier, monospace !important;
+  }
+
+  pre code {
+    background-color: transparent !important;
+    color: #e2e8f0 !important;
+    padding: 0 !important;
+  }
+
+  /* Mantieni gli sfondi dei box informativi */
+  .bg-blue-50 {
+    background-color: #eff6ff !important;
+  }
+
+  .bg-green-50 {
+    background-color: #f0fdf4 !important;
+  }
+
+  .bg-yellow-50 {
+    background-color: #fefce8 !important;
+  }
+
+  .bg-red-50 {
+    background-color: #fef2f2 !important;
+  }
+
+  /* Mantieni i colori dei bordi */
+  .border-blue-200 {
+    border-color: #bfdbfe !important;
+  }
+
+  .border-green-200 {
+    border-color: #bbf7d0 !important;
+  }
+
+  .border-yellow-200 {
+    border-color: #fef08a !important;
+  }
+
+  .border-red-200 {
+    border-color: #fecaca !important;
+  }
+
+  /* Assicurati che i testi colorati siano visibili */
+  .text-blue-600,
+  .text-blue-700 {
+    color: #2563eb !important;
+  }
+
+  .text-green-600,
+  .text-green-700 {
+    color: #16a34a !important;
+  }
+
+  .text-yellow-600,
+  .text-yellow-700 {
+    color: #ca8a04 !important;
+  }
+
+  .text-red-600,
+  .text-red-700 {
+    color: #dc2626 !important;
+  }
+
+  .text-gray-700,
+  .text-gray-800 {
+    color: #374151 !important;
+  }
+
+  /* Ottimizza le immagini per la stampa */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Mantieni i margini per leggibilità */
+  @page {
+    margin: 1.5cm;
+  }
+
+  /* Evita che i link siano sottolineati */
+  a {
+    text-decoration: none !important;
+  }
+
+  /* Mostra gli URL importanti dopo i link (opzionale) */
+  /*
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+  */
+}
