@@ -15,6 +15,8 @@ export default function Lezione10Page() {
       moduloSlug="modulo-1-html"
       moduloTitolo="Modulo 1: HTML - Le Fondamenta del Web"
       lezioni={lezioni}
+      lezioneSlug="lezione-10-form-input-avanzati"
+      lezioneTitolo="Form - Input Avanzati"
     >
       <div className="max-w-4xl mx-auto">
         <LessonHeader

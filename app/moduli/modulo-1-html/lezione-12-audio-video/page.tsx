@@ -15,6 +15,8 @@ export default function Lezione12Page() {
       moduloSlug="modulo-1-html"
       moduloTitolo="Modulo 1: HTML - Le Fondamenta del Web"
       lezioni={lezioni}
+      lezioneSlug="lezione-12-audio-video"
+      lezioneTitolo="Audio e Video"
     >
       <LessonHeader
         numero={12}

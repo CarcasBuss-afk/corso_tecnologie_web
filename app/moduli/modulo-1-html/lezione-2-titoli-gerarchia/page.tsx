@@ -16,6 +16,8 @@ export default function Lezione2() {
       moduloSlug="modulo-1-html"
       moduloTitolo="Modulo 1: HTML"
       lezioni={lezioni}
+      lezioneSlug="lezione-2-titoli-gerarchia"
+      lezioneTitolo="Titoli e Gerarchia"
     >
       <LessonHeader
         numero={2}

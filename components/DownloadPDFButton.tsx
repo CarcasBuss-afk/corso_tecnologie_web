@@ -1,6 +1,7 @@
 "use client";
 
 import { Printer } from "lucide-react";
+import { useState } from "react";
 
 interface DownloadPDFButtonProps {
   moduloSlug: string;
@@ -13,6 +14,8 @@ export default function DownloadPDFButton({
   lezioneSlug,
   lezioneTitolo,
 }: DownloadPDFButtonProps) {
+  const [showTooltip, setShowTooltip] = useState(false);
+
   const handlePrint = () => {
     // Imposta il titolo della pagina per il nome del file PDF
     const originalTitle = document.title;
@@ -26,22 +29,31 @@ export default function DownloadPDFButton({
   };
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="relative">
       <button
         onClick={handlePrint}
-        className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium
+        onMouseEnter={() => setShowTooltip(true)}
+        onMouseLeave={() => setShowTooltip(false)}
+        className="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-sm
           bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg
-          transition-all duration-200 print:hidden"
+          transition-all duration-200 print:hidden whitespace-nowrap"
         aria-label={`Stampa o salva ${lezioneTitolo} come PDF`}
       >
-        <Printer className="w-5 h-5" />
-        <span>Stampa / Salva PDF</span>
+        <Printer className="w-4 h-4" />
+        <span>Salva PDF</span>
       </button>
 
-      <p className="text-sm text-gray-600 print:hidden">
-        💡 Suggerimento: Nella finestra di stampa, seleziona "Salva come PDF" come destinazione
-        e assicurati che l'opzione "Grafica di sfondo" sia attivata per mantenere tutti i colori.
-      </p>
+      {/* Tooltip con suggerimento */}
+      {showTooltip && (
+        <div className="absolute top-full right-0 mt-2 w-64 p-3 bg-gray-900 text-white text-xs rounded-lg shadow-xl z-20 print:hidden">
+          <p className="mb-1 font-medium">💡 Suggerimento:</p>
+          <p>
+            Nella finestra di stampa, seleziona "Salva come PDF" e attiva
+            "Grafica di sfondo" per mantenere tutti i colori.
+          </p>
+          <div className="absolute -top-1 right-4 w-2 h-2 bg-gray-900 transform rotate-45"></div>
+        </div>
+      )}
     </div>
   );
 }
