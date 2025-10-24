@@ -124,6 +124,13 @@ export const moduli: Modulo[] = [
         durata: "1.5 ore",
         difficolta: "facile",
       },
+      {
+        id: "14",
+        titolo: "HTML Semantico",
+        slug: "lezione-14-html-semantico",
+        durata: "2 ore",
+        difficolta: "media",
+      },
     ],
   },
   {
