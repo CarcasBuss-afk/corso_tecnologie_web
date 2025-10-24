@@ -72,11 +72,40 @@
     break-after: avoid !important;
   }
 
+  /* Evita che i riquadri si dividano tra pagine */
   pre,
   code,
-  .code-block {
+  .code-block,
+  div[class*="bg-"],
+  div[class*="border-"],
+  section,
+  article,
+  blockquote,
+  table,
+  figure,
+  .prose > div,
+  .rounded,
+  .rounded-lg,
+  .rounded-md,
+  .shadow,
+  .shadow-md,
+  .shadow-lg,
+  .p-4,
+  .p-6,
+  .p-8,
+  .mb-4,
+  .mb-6,
+  .mb-8 {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
+  }
+
+  /* Evita che titoli siano separati dal contenuto che segue */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
   }
 
   /* Mantieni l'aspetto dei blocchi di codice */
