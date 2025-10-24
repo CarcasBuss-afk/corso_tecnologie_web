@@ -1,9 +1,69 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 23 Ottobre 2025 - Sessione 6
+**Ultimo aggiornamento:** 24 Ottobre 2025 - Sessione 7
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
+
+---
+
+## 📅 CHANGELOG SESSIONE 7 (24 Ottobre 2025)
+
+### Funzionalità PDF Implementata
+- ✅ **Pulsante "Salva PDF" Automatico**: Disponibile in TUTTE le lezioni
+  - Posizionato in alto a destra in ogni lezione
+  - Tooltip hover con istruzioni per attivare "Grafica di sfondo"
+  - Funziona con stampa browser nativa (`window.print()`)
+  - Zero dipendenze aggiuntive (no Puppeteer)
+
+### File Creati
+1. **`/components/DownloadPDFButton.tsx`** - Componente pulsante PDF
+   - Design compatto per posizione top-right
+   - Tooltip informativo con istruzioni
+   - Imposta titolo documento per nome file PDF
+
+2. **`/app/print.css`** - CSS ottimizzato per stampa PDF
+   - Forza stampa di tutti i colori e sfondi (`print-color-adjust: exact`)
+   - Nasconde sidebar, navigazione, pulsanti durante stampa
+   - Mantiene formattazione blocchi di codice con sfondi scuri
+   - Evita divisione riquadri tra pagine (`page-break-inside: avoid`)
+   - Layout ottimizzato per PDF A4
+
+### File Modificati
+3. **`/components/layout/LessonLayout.tsx`** - Integrato pulsante PDF
+   - Aggiunti parametri opzionali `lezioneSlug` e `lezioneTitolo`
+   - Pulsante automatico in `position: absolute` top-right
+   - Visibile solo quando parametri forniti
+
+4. **Tutte le 12 lezioni** (Lezione 1-12) - Aggiunti parametri PDF
+   - `lezioneSlug` per identificare la lezione
+   - `lezioneTitolo` per nome file PDF
+   - Pulsante ora disponibile automaticamente
+
+### Caratteristiche PDF
+- ✅ **Colori e formattazioni identici** alla pagina web
+- ✅ **Blocchi di codice** con sfondi scuri mantenuti
+- ✅ **Riquadri colorati** (bg-blue-50, bg-green-50, ecc.) stampati correttamente
+- ✅ **Nessuna divisione riquadri** tra pagine (quando possibile)
+- ✅ **Orphans e widows** controllati per migliore leggibilità
+
+### Note Importanti per Lezioni Future
+**IMPORTANTE**: Quando si crea una nuova lezione, aggiungere SEMPRE questi parametri al `LessonLayout`:
+```tsx
+<LessonLayout
+  moduloSlug="modulo-X-..."
+  moduloTitolo="Modulo X: ..."
+  lezioni={lezioni}
+  lezioneSlug="lezione-Y-slug-lezione"      // ← OBBLIGATORIO per PDF
+  lezioneTitolo="Titolo della Lezione"      // ← OBBLIGATORIO per PDF
+>
+```
+
+### Commit Effettuati
+- `5f1e9a9` - Feature: Aggiunto pulsante Stampa/Salva PDF alle lezioni
+- `33b3c40` - Fix: Aggiunta dipendenza lucide-react per icone
+- `6dd3199` - Feature: Pulsante PDF automatico in tutte le lezioni
+- `5af3b35` - Fix: Evita divisione riquadri tra pagine PDF
 
 ---
 
