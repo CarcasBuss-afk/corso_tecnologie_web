@@ -177,6 +177,13 @@ export const moduli: Modulo[] = [
         durata: "1.5 ore",
         difficolta: "facile",
       },
+      {
+        id: "2",
+        titolo: "Selettori Base",
+        slug: "lezione-2-selettori-base",
+        durata: "1.5 ore",
+        difficolta: "facile",
+      },
     ],
   },
   {
