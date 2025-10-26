@@ -12,6 +12,7 @@ export default function Home() {
       icona: '📄',
       colore: 'from-blue-500 to-blue-600',
       disponibile: true,
+      primaLezione: 'lezione-1-primo-giorno',
     },
     {
       id: 2,
@@ -21,7 +22,8 @@ export default function Home() {
       ore: 22,
       icona: '🎨',
       colore: 'from-purple-500 to-purple-600',
-      disponibile: false,
+      disponibile: true,
+      primaLezione: 'lezione-1-primo-stile',
     },
     {
       id: 3,
@@ -158,7 +160,7 @@ export default function Home() {
                     <p className="text-gray-600 mb-4">{modulo.descrizione}</p>
                     {modulo.disponibile ? (
                       <Link
-                        href={`/moduli/${modulo.slug}/lezione-1-primo-giorno`}
+                        href={`/moduli/${modulo.slug}/${modulo.primaLezione}`}
                         className={`block text-center px-4 py-2 bg-gradient-to-r ${modulo.colore} text-white font-semibold rounded-lg hover:opacity-90 transition`}
                       >
                         Inizia il Modulo →
