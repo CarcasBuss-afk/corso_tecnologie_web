@@ -169,7 +169,15 @@ export const moduli: Modulo[] = [
     ore: 22,
     icona: "🎨",
     colore: "bg-purple-500",
-    lezioni: [],
+    lezioni: [
+      {
+        id: "1",
+        titolo: "Il Primo Stile",
+        slug: "lezione-1-primo-stile",
+        durata: "1.5 ore",
+        difficolta: "facile",
+      },
+    ],
   },
   {
     id: 3,
