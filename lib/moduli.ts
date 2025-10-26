@@ -152,6 +152,13 @@ export const moduli: Modulo[] = [
         durata: "2 ore",
         difficolta: "media",
       },
+      {
+        id: "18",
+        titolo: "Mini-Progetto Parte 3",
+        slug: "lezione-18-mini-progetto-parte-3",
+        durata: "2 ore",
+        difficolta: "media",
+      },
     ],
   },
   {
