@@ -90,6 +90,21 @@ nav a {
 <p>Questo p NON sarà blu (non è dentro div)</p>`}
         />
 
+        <div className="mt-6">
+          <h3 className="font-bold mb-2 text-gray-700">📺 Risultato Visivo</h3>
+          <LessonPreview
+            title="Selettore Discendente in Azione"
+            html={`<div style="border: 2px solid green; padding: 10px; margin-bottom: 10px;">
+  <p style="color: blue; font-weight: bold;">Questo p sarà blu ✓</p>
+  <section style="border: 1px dashed gray; padding: 5px;">
+    <p style="color: blue; font-weight: bold;">Anche questo p sarà blu (è dentro div) ✓</p>
+  </section>
+</div>
+
+<p style="color: black;">Questo p NON sarà blu (non è dentro div) ✗</p>`}
+          />
+        </div>
+
         <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mt-6">
           <h3 className="font-bold text-blue-700 mb-2">💡 Quando usarlo</h3>
           <p>Perfetto per stilizzare tutti gli elementi di un tipo dentro una sezione specifica.</p>
@@ -135,6 +150,20 @@ div > p {
   <p>ROSSO - figlio diretto</p>
 </div>`}
         />
+
+        <div className="mt-6">
+          <h3 className="font-bold mb-2 text-gray-700">📺 Risultato Visivo</h3>
+          <LessonPreview
+            title="Figlio Diretto vs Discendente"
+            html={`<div style="border: 2px solid purple; padding: 10px;">
+  <p style="color: red; font-weight: bold;">ROSSO - figlio diretto ✓</p>
+  <section style="border: 1px dashed gray; padding: 5px; margin: 10px 0;">
+    <p style="color: black;">NON rosso - non è figlio diretto di div ✗</p>
+  </section>
+  <p style="color: red; font-weight: bold;">ROSSO - figlio diretto ✓</p>
+</div>`}
+          />
+        </div>
       </section>
 
       {/* Selettori Multipli */}
@@ -232,6 +261,31 @@ button:hover {
 }`}
         />
 
+        <div className="mt-4">
+          <h3 className="font-bold mb-2 text-gray-700">📺 Risultato Visivo</h3>
+          <LessonPreview
+            title="Prova l'Hover Effect!"
+            html={`<style>
+.hover-btn {
+  background-color: #3b82f6;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+.hover-btn:hover {
+  background-color: #1e40af;
+  transform: scale(1.05);
+}
+</style>
+<button class="hover-btn">Passa il mouse qui!</button>
+<p style="margin-top: 10px; font-size: 14px; color: #666;">👆 Passa il mouse sopra il pulsante per vedere l'effetto</p>`}
+          />
+        </div>
+
         <h3 className="text-xl font-bold mb-3 mt-6">:focus - Per accessibilità</h3>
         <CodeExample
           language="css"
@@ -281,20 +335,20 @@ div:nth-child(3n) {
         <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-2">🎨 Pseudo-elementi Comuni</h3>
           <div className="grid md:grid-cols-2 gap-3 mt-3">
-            <div>
-              <code className="bg-white bg-opacity-20 px-2 py-1 rounded">::before</code>
+            <div className="bg-white bg-opacity-10 p-3 rounded">
+              <code className="text-yellow-200 font-bold">::before</code>
               <p className="text-sm mt-1">Inserisce contenuto PRIMA dell&apos;elemento</p>
             </div>
-            <div>
-              <code className="bg-white bg-opacity-20 px-2 py-1 rounded">::after</code>
+            <div className="bg-white bg-opacity-10 p-3 rounded">
+              <code className="text-yellow-200 font-bold">::after</code>
               <p className="text-sm mt-1">Inserisce contenuto DOPO l&apos;elemento</p>
             </div>
-            <div>
-              <code className="bg-white bg-opacity-20 px-2 py-1 rounded">::first-letter</code>
+            <div className="bg-white bg-opacity-10 p-3 rounded">
+              <code className="text-yellow-200 font-bold">::first-letter</code>
               <p className="text-sm mt-1">Stilizza la prima lettera</p>
             </div>
-            <div>
-              <code className="bg-white bg-opacity-20 px-2 py-1 rounded">::first-line</code>
+            <div className="bg-white bg-opacity-10 p-3 rounded">
+              <code className="text-yellow-200 font-bold">::first-line</code>
               <p className="text-sm mt-1">Stilizza la prima riga</p>
             </div>
           </div>
@@ -330,6 +384,43 @@ blockquote::after {
 }`}
         />
 
+        <div className="mt-4">
+          <h3 className="font-bold mb-2 text-gray-700">📺 Risultato Visivo</h3>
+          <LessonPreview
+            title="::before e ::after in Azione"
+            html={`<style>
+.demo-link::before {
+  content: "🔗 ";
+}
+.demo-link::after {
+  content: " →";
+  color: #3b82f6;
+  font-weight: bold;
+}
+.demo-quote {
+  position: relative;
+  padding: 20px;
+  background: #f3f4f6;
+  border-left: 4px solid #9333ea;
+  font-style: italic;
+}
+.demo-quote::before {
+  content: """;
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  font-size: 3em;
+  color: #9333ea;
+  opacity: 0.3;
+}
+</style>
+<a href="#" class="demo-link" style="color: #3b82f6; text-decoration: none; display: block; margin-bottom: 15px;">Visita il sito</a>
+<div class="demo-quote">
+  Questo è un esempio di citazione con pseudo-elementi decorativi!
+</div>`}
+          />
+        </div>
+
         <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 mt-6">
           <h3 className="font-bold text-yellow-700 mb-2">⚠️ IMPORTANTE</h3>
           <p>La proprietà <code className="bg-gray-200 px-2 py-1 rounded">content</code> è <strong>OBBLIGATORIA</strong> per ::before e ::after!</p>
@@ -349,6 +440,32 @@ p::first-letter {
   margin-right: 5px;
 }`}
         />
+
+        <div className="mt-4">
+          <h3 className="font-bold mb-2 text-gray-700">📺 Risultato Visivo</h3>
+          <LessonPreview
+            title="Capolettera Decorativo"
+            html={`<style>
+.demo-paragraph::first-letter {
+  font-size: 3em;
+  font-weight: bold;
+  color: #991b1b;
+  float: left;
+  line-height: 0.8;
+  margin-right: 8px;
+  margin-top: 5px;
+}
+.demo-paragraph {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: justify;
+}
+</style>
+<p class="demo-paragraph">
+Nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura, ché la diritta via era smarrita. Questa è una dimostrazione di come ::first-letter può creare effetti tipografici eleganti simili ai manoscritti antichi.
+</p>`}
+          />
+        </div>
       </section>
 
       {/* Combinatori */}
@@ -406,21 +523,21 @@ h2 ~ p {
         <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3">🧮 Formula Specificità</h3>
           <div className="grid md:grid-cols-4 gap-3 text-sm">
-            <div className="bg-white bg-opacity-20 p-3 rounded">
-              <p className="font-bold">Inline</p>
-              <p className="text-2xl">1000</p>
+            <div className="bg-white bg-opacity-10 p-3 rounded border-2 border-white border-opacity-30">
+              <p className="font-bold text-yellow-200">Inline</p>
+              <p className="text-3xl font-bold">1000</p>
             </div>
-            <div className="bg-white bg-opacity-20 p-3 rounded">
-              <p className="font-bold">ID</p>
-              <p className="text-2xl">100</p>
+            <div className="bg-white bg-opacity-10 p-3 rounded border-2 border-white border-opacity-30">
+              <p className="font-bold text-yellow-200">ID</p>
+              <p className="text-3xl font-bold">100</p>
             </div>
-            <div className="bg-white bg-opacity-20 p-3 rounded">
-              <p className="font-bold">Classe/Pseudo</p>
-              <p className="text-2xl">10</p>
+            <div className="bg-white bg-opacity-10 p-3 rounded border-2 border-white border-opacity-30">
+              <p className="font-bold text-yellow-200">Classe/Pseudo</p>
+              <p className="text-3xl font-bold">10</p>
             </div>
-            <div className="bg-white bg-opacity-20 p-3 rounded">
-              <p className="font-bold">Elemento</p>
-              <p className="text-2xl">1</p>
+            <div className="bg-white bg-opacity-10 p-3 rounded border-2 border-white border-opacity-30">
+              <p className="font-bold text-yellow-200">Elemento</p>
+              <p className="text-3xl font-bold">1</p>
             </div>
           </div>
         </div>
