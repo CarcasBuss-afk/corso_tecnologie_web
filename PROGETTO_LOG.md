@@ -750,18 +750,388 @@ corso_tecnologie_web/
 
 ## MODULI 2-6: PIANIFICAZIONE
 
-### MODULO 2: CSS (22 ore)
-**Stato:** Da creare
+### MODULO 2: CSS - Stile e Design (22 ore)
+**Stato:** Pianificato - 17 lezioni strutturate
 **Icona:** 🎨
-**Colore:** Viola
+**Colore:** Viola (bg-purple-500)
+**Target:** Trasformare pagine HTML grezze in siti visivamente accattivanti
 
-**Argomenti previsti:**
-- Selettori CSS
-- Box model
-- Colori e tipografia
-- Layout (Flexbox, Grid)
-- Responsive design
-- Animazioni e transizioni
+---
+
+## STRUTTURA COMPLETA MODULO 2 CSS
+
+### BLOCCO 1: Fondamenti CSS (4.5 ore)
+
+#### 📝 LEZIONE 1: Il Primo Stile
+**Durata:** 1.5 ore
+**Difficoltà:** Facile
+**Argomenti:**
+- Cos'è il CSS e perché serve
+- 3 modi per aggiungere CSS: inline, internal (`<style>`), external (file .css)
+- Sintassi base: `selettore { proprietà: valore; }`
+- Primo esempio pratico: cambiare colori e font
+- Creare e collegare file `style.css` con `<link>`
+- Browser DevTools per ispezionare CSS
+
+**Esercizio:** Stilizzare pagina HTML esistente con colori e font
+**Sfida:** Creare tema colorato completo per una pagina
+
+---
+
+#### 📝 LEZIONE 2: Selettori Base
+**Durata:** 1.5 ore
+**Difficoltà:** Facile
+**Argomenti:**
+- Selettore elemento (`p`, `h1`, `div`)
+- Selettore classe (`.classe`)
+- Selettore ID (`#id`)
+- Selettore universale (`*`)
+- Differenza classe vs ID (riutilizzabilità vs unicità)
+- Quando usare cosa
+- Specificità base (ID > classe > elemento)
+
+**Esercizio:** Applicare stili diversi usando tutti i selettori
+**Sfida:** Card componente con classi riutilizzabili
+
+---
+
+#### 📝 LEZIONE 3: Selettori Avanzati
+**Durata:** 1.5 ore
+**Difficoltà:** Media
+**Argomenti:**
+- Selettori discendenti (`div p`)
+- Selettori figli diretti (`div > p`)
+- Selettori multipli (`h1, h2, h3`)
+- Pseudo-classi: `:hover`, `:active`, `:focus`, `:visited`, `:nth-child()`
+- Pseudo-elementi: `::before`, `::after`, `::first-letter`, `::first-line`
+- Combinatori (`+` adiacente, `~` fratelli)
+- Calcolo specificità avanzata
+
+**Esercizio:** Menu navigazione con effetti hover
+**Sfida:** Styling complesso con pseudo-elementi decorativi
+
+---
+
+### BLOCCO 2: Colori e Testo (4 ore)
+
+#### 📝 LEZIONE 4: Colori
+**Durata:** 1.5 ore
+**Difficoltà:** Facile
+**Argomenti:**
+- Nomi colori (`red`, `blue`, `hotpink`, etc.)
+- Hex (`#FF0000`, `#F00`)
+- RGB `rgb(255, 0, 0)`
+- RGBA con trasparenza `rgba(255, 0, 0, 0.5)`
+- HSL `hsl(0, 100%, 50%)`
+- HSLA con trasparenza
+- `currentColor` e `inherit`
+- Gradienti: `linear-gradient()`, `radial-gradient()`
+- Palette colori e teoria dell'armonia cromatica
+
+**Esercizio:** Creare palette a 5 colori e applicarla
+**Sfida:** Design con gradienti complessi
+
+---
+
+#### 📝 LEZIONE 5: Tipografia
+**Durata:** 1.5 ore
+**Difficoltà:** Media
+**Argomenti:**
+- `font-family` e web safe fonts
+- Google Fonts (import e utilizzo)
+- `font-size` (px, em, rem, %)
+- `font-weight` (bold, 100-900)
+- `font-style` (italic, normal, oblique)
+- `text-align`, `text-decoration`, `text-transform`
+- `line-height` e leggibilità
+- `letter-spacing`, `word-spacing`
+- `text-shadow`
+- Accessibilità e contrasto testi
+
+**Esercizio:** Tipografia articolo blog leggibile
+**Sfida:** Heading system completo con gerarchia visiva
+
+---
+
+#### 📝 LEZIONE 6: Unità di Misura
+**Durata:** 1 ora
+**Difficoltà:** Media
+**Argomenti:**
+- `px` (assoluta - pixel)
+- `%` (relativa al genitore)
+- `em` (relativa al font-size del genitore)
+- `rem` (relativa al root - html)
+- `vw`, `vh` (viewport width/height)
+- `vmin`, `vmax`
+- `ch` (larghezza carattere), `ex` (altezza x)
+- Quando usare quale unità (best practice)
+- Responsive sizing con unità fluide
+
+**Esercizio:** Confronto pratico di tutte le unità
+**Sfida:** Layout responsive con mix di unità
+
+---
+
+### BLOCCO 3: Box Model e Layout Base (5 ore)
+
+#### 📝 LEZIONE 7: Box Model
+**Durata:** 2 ore
+**Difficoltà:** Media
+**Argomenti:**
+- Concetto fondamentale del box model
+- Content, padding, border, margin (dall'interno all'esterno)
+- Visualizzare box model nei DevTools
+- `box-sizing: border-box` vs `content-box`
+- `margin: auto` per centrare orizzontalmente
+- Margin collapsing (cosa succede tra margini verticali)
+- Padding vs margin - quando usare quale
+- `width`, `height`, `max-width`, `min-height`, `max-height`
+
+**Esercizio:** Card con spacing perfetto
+**Sfida:** Layout a 3 colonne con box model
+
+---
+
+#### 📝 LEZIONE 8: Bordi e Sfondi
+**Durata:** 1.5 ore
+**Difficoltà:** Facile
+**Argomenti:**
+- `border`: width, style (solid, dashed, dotted), color
+- `border-radius` per angoli arrotondati
+- Bordi individuali (`border-top`, `border-right`, etc.)
+- `background-color`
+- `background-image` e `url()`
+- `background-size` (cover, contain, custom)
+- `background-position` (center, top left, etc.)
+- `background-repeat` (no-repeat, repeat-x, etc.)
+- `background-attachment` (fixed, scroll)
+- Sfondi multipli
+
+**Esercizio:** Hero section con background image
+**Sfida:** Pattern decorativo con gradienti e immagini
+
+---
+
+#### 📝 LEZIONE 9: Display e Posizionamento Base
+**Durata:** 1.5 ore
+**Difficoltà:** Media
+**Argomenti:**
+- `display: block` (occupa tutta la larghezza)
+- `display: inline` (in linea con il testo)
+- `display: inline-block` (meglio di entrambi)
+- `display: none` (nasconde completamente)
+- `visibility: hidden` vs `display: none`
+- `position: static` (default)
+- `position: relative` (relativo a sé stesso)
+- `position: absolute` (relativo al primo genitore posizionato)
+- `position: fixed` (relativo al viewport)
+- `position: sticky` (mix relative/fixed)
+- `z-index` e stacking context
+- `top`, `right`, `bottom`, `left`
+
+**Esercizio:** Menu sticky e modal popup
+**Sfida:** Layout complesso con elementi sovrapposti
+
+---
+
+### BLOCCO 4: Layout Moderni (5 ore)
+
+#### 📝 LEZIONE 10: Flexbox Parte 1
+**Durata:** 2 ore
+**Difficoltà:** Media
+**Argomenti:**
+- Cos'è Flexbox e quando usarlo (layout 1D - riga o colonna)
+- `display: flex` (attiva Flexbox sul container)
+- `flex-direction` (row, column, row-reverse, column-reverse)
+- `justify-content` (main axis): flex-start, center, space-between, space-around
+- `align-items` (cross axis): flex-start, center, stretch
+- `flex-wrap` (wrap, nowrap)
+- `gap` (spazio tra elementi)
+- Esempi pratici: navbar orizzontale, card layout
+
+**Esercizio:** Navbar responsive con Flexbox
+**Sfida:** Card grid con spacing perfetto
+
+---
+
+#### 📝 LEZIONE 11: Flexbox Parte 2
+**Durata:** 1.5 ore
+**Difficoltà:** Media
+**Argomenti:**
+- `align-content` (per righe multiple)
+- `align-self` (override align-items per singolo elemento)
+- `flex-grow` (espansione elemento)
+- `flex-shrink` (contrazione elemento)
+- `flex-basis` (dimensione base)
+- Shorthand `flex` (grow shrink basis)
+- `order` (riordinare elementi)
+- Casi d'uso avanzati
+- Centrare perfettamente con Flexbox
+- Layout patterns comuni (holy grail, sidebar)
+
+**Esercizio:** Dashboard layout con sidebar flessibile
+**Sfida:** Footer sticky con Flexbox
+
+---
+
+#### 📝 LEZIONE 12: CSS Grid Parte 1
+**Durata:** 1.5 ore
+**Difficoltà:** Difficile
+**Argomenti:**
+- Cos'è Grid e quando usarlo (layout 2D - righe E colonne)
+- `display: grid`
+- `grid-template-columns` (definire colonne)
+- `grid-template-rows` (definire righe)
+- Unità `fr` (fraction)
+- `repeat()` per pattern ripetuti
+- `minmax()` per flessibilità
+- `gap` (`row-gap`, `column-gap`)
+- Grid vs Flexbox - quando usare cosa
+- Esempi pratici: gallery immagini
+
+**Esercizio:** Gallery fotografica 3 colonne
+**Sfida:** Layout responsive con auto-fit
+
+---
+
+### BLOCCO 5: Responsive e Animazioni (3.5 ore)
+
+#### 📝 LEZIONE 13: Responsive Design
+**Durata:** 2 ore
+**Difficoltà:** Media
+**Argomenti:**
+- Cos'è il responsive design
+- Mobile-first approach
+- Media queries `@media`
+- Breakpoints comuni (320px mobile, 768px tablet, 1024px desktop)
+- `max-width` vs `min-width` nelle media queries
+- Immagini responsive (`max-width: 100%`)
+- Viewport units per fluid sizing
+- `clamp()` per sizing fluido
+- Testare responsive (DevTools device toolbar)
+- Best practice mobile-first
+
+**Esercizio:** Convertire layout fisso in responsive
+**Sfida:** Sito completo mobile-first con 3 breakpoint
+
+---
+
+#### 📝 LEZIONE 14: Transizioni e Animazioni
+**Durata:** 1.5 ore
+**Difficoltà:** Media
+**Argomenti:**
+- `transition` (property, duration, timing-function, delay)
+- Timing functions (ease, linear, ease-in-out)
+- Effetti hover con transition
+- `transform`: translate, rotate, scale, skew
+- Combinare trasformazioni multiple
+- Keyframes `@keyframes`
+- `animation` (name, duration, timing-function, iteration-count, direction)
+- Animazioni all'ingresso (fade-in, slide-in)
+- Performance (transform e opacity vs altre proprietà)
+- `will-change` per ottimizzazione
+
+**Esercizio:** Button con effetti hover animati
+**Sfida:** Loading spinner e animazioni complesse
+
+---
+
+### BLOCCO 6: CSS Avanzato (4 ore)
+
+#### 📝 LEZIONE 15: CSS Avanzato
+**Durata:** 1.5 ore
+**Difficoltà:** Difficile
+**Argomenti:**
+- CSS Variables (custom properties): `--colore-primario`
+- `var()` per usare variabili
+- Scope delle variabili (`:root` vs locale)
+- `calc()` per calcoli (`calc(100% - 20px)`)
+- Filtri CSS: blur, brightness, contrast, grayscale, hue-rotate
+- Ombre: `box-shadow`, `text-shadow` (multiple)
+- `opacity` e differenza con `rgba()`
+- `overflow` (hidden, scroll, auto, clip)
+- `object-fit` per immagini (cover, contain)
+- `cursor` personalizzati
+- `clip-path` per forme custom
+
+**Esercizio:** Theme switcher con CSS variables
+**Sfida:** Card con effetti filtro e ombre complesse
+
+---
+
+#### 📝 LEZIONE 16: CSS Grid Parte 2
+**Durata:** 1 ora
+**Difficoltà:** Difficile
+**Argomenti:**
+- `grid-template-areas` (layout nominali)
+- Grid line naming
+- `grid-column`, `grid-row` (posizionamento esplicito)
+- Spanning cells (`grid-column: span 2`)
+- `grid-auto-flow` (auto-placement)
+- `grid-auto-rows`, `grid-auto-columns`
+- Layout complessi (magazine, dashboard)
+- Nested grids
+
+**Esercizio:** Dashboard con grid areas
+**Sfida:** Magazine layout complesso
+
+---
+
+#### 📝 LEZIONE 17: Best Practice e Ottimizzazione
+**Durata:** 1.5 ore
+**Difficoltà:** Media
+**Argomenti:**
+- Organizzazione CSS (file structure)
+- Naming conventions (BEM basics: Block Element Modifier)
+- Commenti CSS utili
+- CSS reset vs normalize.css
+- Performance CSS (evitare selettori complessi)
+- `will-change` per animazioni
+- Critical CSS
+- Debugging errori CSS comuni
+- Validazione CSS (W3C Validator)
+- Browser compatibility e prefixes (-webkit, -moz)
+- DevTools per debugging avanzato
+
+**Esercizio:** Refactoring CSS con BEM
+**Sfida:** Audit performance e ottimizzazione
+
+---
+
+## RIEPILOGO MODULO 2
+
+**Totale:** 17 lezioni - 22 ore
+
+### Distribuzione Difficoltà:
+- **Facile:** 4 lezioni (1, 2, 4, 8)
+- **Media:** 10 lezioni (3, 5, 6, 7, 9, 10, 11, 13, 14, 17)
+- **Difficile:** 3 lezioni (12, 15, 16)
+
+### Distribuzione per Blocco:
+1. **Fondamenti CSS:** 4.5 ore (3 lezioni)
+2. **Colori e Testo:** 4 ore (3 lezioni)
+3. **Box Model e Layout Base:** 5 ore (3 lezioni)
+4. **Layout Moderni:** 5 ore (3 lezioni)
+5. **Responsive e Animazioni:** 3.5 ore (2 lezioni)
+6. **CSS Avanzato:** 4 ore (3 lezioni)
+
+### Progressione Pedagogica:
+1. Sintassi base → Capire come funziona CSS
+2. Selettori → Scegliere cosa stilizzare
+3. Stile visuale → Colori, font, bellezza
+4. Spazio e struttura → Box model, layout
+5. Layout moderni → Flexbox e Grid
+6. Adattabilità → Responsive e animazioni
+7. Maestria → Tecniche avanzate e best practice
+
+### Elementi Didattici per Ogni Lezione:
+- **LessonPreview interattivi** con CSS applicato in tempo reale
+- **CodeExample** con HTML + CSS side-by-side
+- **Exercise** guidato step-by-step
+- **Challenge** creativa (es: card prodotto, navbar responsive)
+- **Checklist** auto-valutazione
+- **Box "Trucco CSS"** con tips pratici
+- **Comparazioni visive** (prima/dopo applicazione CSS)
 
 ---
 
