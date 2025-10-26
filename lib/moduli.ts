@@ -184,6 +184,13 @@ export const moduli: Modulo[] = [
         durata: "1.5 ore",
         difficolta: "facile",
       },
+      {
+        id: "3",
+        titolo: "Selettori Avanzati",
+        slug: "lezione-3-selettori-avanzati",
+        durata: "1.5 ore",
+        difficolta: "media",
+      },
     ],
   },
   {
