@@ -1,3 +1,4 @@
+import { getLezioniByModuloSlug } from '@/lib/moduli';
 import LessonLayout from '@/components/layout/LessonLayout';
 import LessonHeader from '@/components/layout/LessonHeader';
 import CodeExample from '@/components/didattica/CodeExample';
@@ -7,28 +8,29 @@ import Checklist from '@/components/didattica/Checklist';
 import LessonPreview from '@/components/didattica/LessonPreview';
 
 export default function Lezione3ClassiDimensioniTesto() {
+  const lezioni = getLezioniByModuloSlug('modulo-2-css');
+
   return (
     <LessonLayout
       moduloSlug="modulo-2-css"
+      moduloTitolo="Modulo 2: CSS"
+      lezioni={lezioni}
       lezioneSlug="lezione-3-classi-dimensioni-testo"
+      lezioneTitolo="Classi CSS + Dimensioni Testo"
     >
-      {/* Hero */}
-      <section className="mb-12">
-        <h1 className="text-4xl font-bold mb-4">Lezione 3: Classi CSS + Dimensioni Testo</h1>
-        <p className="text-xl text-gray-600 mb-6">
-          Scopri il vero potere del CSS: dare stili diversi a elementi dello stesso tipo!
-        </p>
-
-        <div className="bg-gradient-to-r from-green-500 to-teal-500 text-white p-6 rounded-lg">
-          <h2 className="text-2xl font-bold mb-3">🎯 Cosa imparerai</h2>
-          <ul className="space-y-2">
-            <li>✅ <strong>Classi CSS</strong> - Il selettore più importante del CSS</li>
-            <li>✅ <strong>font-size</strong> - Controllare la grandezza del testo</li>
-            <li>✅ <strong>font-weight</strong> - Grassetto e spessore del carattere</li>
-            <li>✅ <strong>text-align</strong> - Allineare il testo (sinistra, centro, destra)</li>
-          </ul>
-        </div>
-      </section>
+      <LessonHeader
+        numero={3}
+        titolo="Classi CSS + Dimensioni Testo"
+        durata="1.5 ore"
+        difficolta="facile"
+        obiettivi={[
+          'Capire cosa sono le classi CSS e perché sono fondamentali',
+          'Usare il selettore .classe per dare stili diversi agli elementi',
+          'Controllare le dimensioni del testo con font-size',
+          'Modificare lo spessore del testo con font-weight',
+          'Allineare il testo con text-align'
+        ]}
+      />
 
       {/* Il Problema */}
       <section className="mb-12">
