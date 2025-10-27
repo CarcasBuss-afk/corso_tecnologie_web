@@ -1,9 +1,10 @@
-import LessonLayout from "@/components/LessonLayout";
-import CodeExample from "@/components/CodeExample";
-import Exercise from "@/components/Exercise";
-import Challenge from "@/components/Challenge";
-import Checklist from "@/components/Checklist";
-import LessonPreview from "@/components/LessonPreview";
+import LessonLayout from '@/components/layout/LessonLayout';
+import LessonHeader from '@/components/layout/LessonHeader';
+import CodeExample from '@/components/didattica/CodeExample';
+import Exercise from '@/components/didattica/Exercise';
+import Challenge from '@/components/didattica/Challenge';
+import Checklist from '@/components/didattica/Checklist';
+import LessonPreview from '@/components/didattica/LessonPreview';
 
 export default function Lezione3ClassiDimensioniTesto() {
   return (
