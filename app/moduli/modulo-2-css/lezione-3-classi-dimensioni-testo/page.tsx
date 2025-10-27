@@ -169,7 +169,42 @@ export default function Lezione3ClassiDimensioniTesto() {
           </ul>
         </div>
 
-        <h3 className="text-xl font-bold mb-3">Esempi Visivi</h3>
+        <h3 className="text-xl font-bold mb-3">Esempio Pratico: Come Scriverlo</h3>
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <h4 className="font-bold mb-2">HTML</h4>
+            <CodeExample
+              language="html"
+              code={`<p class="piccolo">Testo piccolo</p>
+<p class="normale">Testo normale</p>
+<p class="grande">Testo grande</p>
+<p class="enorme">Testo enorme</p>`}
+            />
+          </div>
+          <div>
+            <h4 className="font-bold mb-2">CSS</h4>
+            <CodeExample
+              language="css"
+              code={`.piccolo {
+  font-size: 12px;
+}
+
+.normale {
+  font-size: 16px;
+}
+
+.grande {
+  font-size: 24px;
+}
+
+.enorme {
+  font-size: 36px;
+}`}
+            />
+          </div>
+        </div>
+
+        <h3 className="text-xl font-bold mb-3">Risultato nel Browser</h3>
         <LessonPreview
           title="font-size con Diverse Dimensioni"
           html={`<style>
@@ -184,24 +219,6 @@ export default function Lezione3ClassiDimensioniTesto() {
 <p class="grande">Testo grande (24px)</p>
 <p class="enorme">Testo enorme (36px)</p>`}
         />
-
-        <div className="mt-6">
-          <CodeExample
-            title="Esempio CSS"
-            language="css"
-            code={`.titolo-grande {
-  font-size: 32px;
-}
-
-.testo-introduzione {
-  font-size: 20px;
-}
-
-.nota-piccola {
-  font-size: 14px;
-}`}
-          />
-        </div>
       </section>
 
       {/* Proprietà 2: font-weight */}
@@ -229,7 +246,46 @@ export default function Lezione3ClassiDimensioniTesto() {
           </div>
         </div>
 
-        <h3 className="text-xl font-bold mb-3">Esempi Visivi</h3>
+        <h3 className="text-xl font-bold mb-3">Esempio Pratico: Come Scriverlo</h3>
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <h4 className="font-bold mb-2">HTML</h4>
+            <CodeExample
+              language="html"
+              code={`<p class="leggero">Testo leggero</p>
+<p class="normale">Testo normale</p>
+<p class="grassetto">Testo grassetto</p>
+<p class="molto-grassetto">Molto grassetto</p>`}
+            />
+          </div>
+          <div>
+            <h4 className="font-bold mb-2">CSS</h4>
+            <CodeExample
+              language="css"
+              code={`.leggero {
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.normale {
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.grassetto {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.molto-grassetto {
+  font-weight: 900;
+  font-size: 18px;
+}`}
+            />
+          </div>
+        </div>
+
+        <h3 className="text-xl font-bold mb-3">Risultato nel Browser</h3>
         <LessonPreview
           title="font-weight con Diversi Spessori"
           html={`<style>
@@ -244,24 +300,6 @@ export default function Lezione3ClassiDimensioniTesto() {
 <p class="grassetto">Testo grassetto (bold)</p>
 <p class="molto-grassetto">Testo molto grassetto (900)</p>`}
         />
-
-        <div className="mt-6">
-          <CodeExample
-            title="Esempio CSS"
-            language="css"
-            code={`.importante {
-  font-weight: bold;
-}
-
-.super-importante {
-  font-weight: 900;
-}
-
-.delicato {
-  font-weight: 300;
-}`}
-          />
-        </div>
 
         <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 mt-6">
           <h3 className="font-bold text-yellow-700 mb-2">⚠️ Nota sui Font</h3>
@@ -294,7 +332,43 @@ export default function Lezione3ClassiDimensioniTesto() {
           </div>
         </div>
 
-        <h3 className="text-xl font-bold mb-3">Esempi Visivi</h3>
+        <h3 className="text-xl font-bold mb-3">Esempio Pratico: Come Scriverlo</h3>
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <h4 className="font-bold mb-2">HTML</h4>
+            <CodeExample
+              language="html"
+              code={`<p class="allinea-sinistra">
+  Testo a sinistra
+</p>
+<p class="allinea-centro">
+  Testo centrato
+</p>
+<p class="allinea-destra">
+  Testo a destra
+</p>`}
+            />
+          </div>
+          <div>
+            <h4 className="font-bold mb-2">CSS</h4>
+            <CodeExample
+              language="css"
+              code={`.allinea-sinistra {
+  text-align: left;
+}
+
+.allinea-centro {
+  text-align: center;
+}
+
+.allinea-destra {
+  text-align: right;
+}`}
+            />
+          </div>
+        </div>
+
+        <h3 className="text-xl font-bold mb-3">Risultato nel Browser</h3>
         <LessonPreview
           title="text-align con Diversi Allineamenti"
           html={`<style>
@@ -321,25 +395,6 @@ export default function Lezione3ClassiDimensioniTesto() {
 <p class="allinea-centro">↔ Questo testo è CENTRATO</p>
 <p class="allinea-destra">Questo testo è allineato a DESTRA →</p>`}
         />
-
-        <div className="mt-6">
-          <CodeExample
-            title="Esempio CSS"
-            language="css"
-            code={`.titolo-principale {
-  text-align: center;
-}
-
-.citazione {
-  text-align: center;
-  font-style: italic;
-}
-
-.firma {
-  text-align: right;
-}`}
-          />
-        </div>
 
         <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mt-6">
           <h3 className="font-bold text-blue-700 mb-2">💡 Quando Usare Ogni Allineamento</h3>
