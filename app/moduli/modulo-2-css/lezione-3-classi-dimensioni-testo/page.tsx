@@ -460,7 +460,6 @@ export default function Lezione3ClassiDimensioniTesto() {
       {/* Sfida */}
       <Challenge
         title="Pagina Articolo Completa"
-        difficulty="media"
         description="Crea una pagina articolo completa con un sistema di classi professionale. Usa SOLO classi, nessun selettore elemento!"
         requirements={[
           'Crea un articolo con: titolo principale, autore, data, introduzione, 3 sezioni con sottotitoli, conclusione',
