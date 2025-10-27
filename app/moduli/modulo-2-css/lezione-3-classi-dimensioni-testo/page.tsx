@@ -175,10 +175,10 @@ export default function Lezione3ClassiDimensioniTesto() {
             <h4 className="font-bold mb-2">HTML</h4>
             <CodeExample
               language="html"
-              code={`<p class="piccolo">Testo piccolo</p>
-<p class="normale">Testo normale</p>
-<p class="grande">Testo grande</p>
-<p class="enorme">Testo enorme</p>`}
+              code={`<p class="piccolo">Testo piccolo (12px)</p>
+<p class="normale">Testo normale (16px)</p>
+<p class="grande">Testo grande (24px)</p>
+<p class="enorme">Testo enorme (36px)</p>`}
             />
           </div>
           <div>
@@ -252,10 +252,10 @@ export default function Lezione3ClassiDimensioniTesto() {
             <h4 className="font-bold mb-2">HTML</h4>
             <CodeExample
               language="html"
-              code={`<p class="leggero">Testo leggero</p>
-<p class="normale">Testo normale</p>
-<p class="grassetto">Testo grassetto</p>
-<p class="molto-grassetto">Molto grassetto</p>`}
+              code={`<p class="leggero">Testo leggero (300)</p>
+<p class="normale">Testo normale (normal)</p>
+<p class="grassetto">Testo grassetto (bold)</p>
+<p class="molto-grassetto">Testo molto grassetto (900)</p>`}
             />
           </div>
           <div>
@@ -333,19 +333,22 @@ export default function Lezione3ClassiDimensioniTesto() {
         </div>
 
         <h3 className="text-xl font-bold mb-3">Esempio Pratico: Come Scriverlo</h3>
+        <p className="text-sm text-gray-600 mb-4">
+          💡 <em>Nota: Abbiamo aggiunto sfondi colorati per vedere meglio l&apos;allineamento, ma la proprietà importante è solo <code className="bg-gray-200 px-1 rounded">text-align</code>!</em>
+        </p>
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <div>
             <h4 className="font-bold mb-2">HTML</h4>
             <CodeExample
               language="html"
               code={`<p class="allinea-sinistra">
-  Testo a sinistra
+  ← Testo allineato a SINISTRA
 </p>
 <p class="allinea-centro">
-  Testo centrato
+  ↔ Testo CENTRATO
 </p>
 <p class="allinea-destra">
-  Testo a destra
+  Testo allineato a DESTRA →
 </p>`}
             />
           </div>
@@ -355,14 +358,20 @@ export default function Lezione3ClassiDimensioniTesto() {
               language="css"
               code={`.allinea-sinistra {
   text-align: left;
+  background-color: #E8F4F8;
+  padding: 10px;
 }
 
 .allinea-centro {
   text-align: center;
+  background-color: #FFF4E6;
+  padding: 10px;
 }
 
 .allinea-destra {
   text-align: right;
+  background-color: #F3E5F5;
+  padding: 10px;
 }`}
             />
           </div>
@@ -391,9 +400,9 @@ export default function Lezione3ClassiDimensioniTesto() {
   }
 </style>
 
-<p class="allinea-sinistra">← Questo testo è allineato a SINISTRA</p>
-<p class="allinea-centro">↔ Questo testo è CENTRATO</p>
-<p class="allinea-destra">Questo testo è allineato a DESTRA →</p>`}
+<p class="allinea-sinistra">← Testo allineato a SINISTRA</p>
+<p class="allinea-centro">↔ Testo CENTRATO</p>
+<p class="allinea-destra">Testo allineato a DESTRA →</p>`}
         />
 
         <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mt-6">
