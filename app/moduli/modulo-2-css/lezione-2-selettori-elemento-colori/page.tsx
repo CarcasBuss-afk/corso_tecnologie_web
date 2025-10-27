@@ -45,12 +45,12 @@ export default function Lezione2CSS() {
           <p className="mb-3">
             Il selettore elemento seleziona <strong>TUTTI</strong> gli elementi di quel tipo nella pagina.
           </p>
-          <div className="bg-white bg-opacity-10 p-4 rounded">
-            <p className="font-mono text-lg">nome-tag {'{ proprietà: valore; }'}</p>
+          <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+            <p className="font-mono text-lg text-yellow-200">nome-tag {'{ proprietà: valore; }'}</p>
           </div>
           <p className="mt-3 text-sm">
-            Esempio: <code className="bg-white bg-opacity-20 px-2 py-1 rounded">p</code> seleziona tutti i paragrafi,
-            <code className="bg-white bg-opacity-20 px-2 py-1 rounded mx-2">h1</code> seleziona tutti gli h1.
+            Esempio: <code className="bg-black bg-opacity-30 text-yellow-200 px-2 py-1 rounded">p</code> seleziona tutti i paragrafi,
+            <code className="bg-black bg-opacity-30 text-yellow-200 px-2 py-1 rounded mx-2">h1</code> seleziona tutti gli h1.
           </p>
         </div>
       </section>
@@ -208,11 +208,11 @@ body {
 
         <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3">🎨 Come Funziona un Codice HEX</h3>
-          <div className="bg-white bg-opacity-10 p-4 rounded font-mono text-lg mb-3">
-            <span className="text-yellow-200">#</span>
-            <span className="text-red-300">RR</span>
-            <span className="text-green-300">GG</span>
-            <span className="text-blue-300">BB</span>
+          <div className="bg-black bg-opacity-30 p-4 rounded font-mono text-lg mb-3 border-2 border-white border-opacity-30">
+            <span className="text-yellow-200 font-bold">#</span>
+            <span className="text-red-300 font-bold">RR</span>
+            <span className="text-green-300 font-bold">GG</span>
+            <span className="text-blue-300 font-bold">BB</span>
           </div>
           <ul className="space-y-2 text-sm">
             <li><span className="text-yellow-200 font-bold">#</span> = Simbolo che indica un colore hex</li>
@@ -464,10 +464,10 @@ div {
           Ora sai usare i selettori elemento e hai accesso a <strong>milioni di colori</strong> con i codici HEX!
         </p>
         <p className="text-lg mb-4">
-          Hai anche imparato a creare bordi con <code className="bg-white bg-opacity-20 px-2 py-1 rounded">border</code>.
+          Hai anche imparato a creare bordi con <code className="bg-black bg-opacity-30 text-yellow-200 px-2 py-1 rounded">border</code>.
         </p>
-        <div className="bg-white bg-opacity-10 p-4 rounded">
-          <p className="font-bold mb-2">📊 Proprietà Totali Imparate: 3</p>
+        <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+          <p className="font-bold mb-2 text-yellow-200">📊 Proprietà Totali Imparate: 3</p>
           <ul className="list-disc list-inside space-y-1">
             <li>color (Lezione 1 + 2)</li>
             <li>background-color (Lezione 1 + 2)</li>

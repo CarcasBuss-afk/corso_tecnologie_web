@@ -582,7 +582,7 @@ nav.menu a:hover { }`}
         <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 rounded-lg">
           <h3 className="text-xl font-bold mb-3">💡 Trucco CSS del Giorno</h3>
           <p className="text-lg mb-2"><strong>Transizioni Smooth con :hover</strong></p>
-          <p className="mb-3">Aggiungi <code className="bg-white bg-opacity-20 px-2 py-1 rounded">transition</code> allo stato normale, non a :hover!</p>
+          <p className="mb-3">Aggiungi <code className="bg-black bg-opacity-30 text-yellow-200 px-2 py-1 rounded">transition</code> allo stato normale, non a :hover!</p>
           <CodeExample
             language="css"
             code={`/* ✅ GIUSTO - transition nello stato normale */
