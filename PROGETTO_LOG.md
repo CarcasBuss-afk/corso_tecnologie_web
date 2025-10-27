@@ -751,68 +751,89 @@ corso_tecnologie_web/
 ## MODULI 2-6: PIANIFICAZIONE
 
 ### MODULO 2: CSS - Stile e Design (22 ore)
-**Stato:** Pianificato - 17 lezioni strutturate
+**Stato:** In sviluppo - Approccio pratico e graduale
 **Icona:** 🎨
 **Colore:** Viola (bg-purple-500)
 **Target:** Trasformare pagine HTML grezze in siti visivamente accattivanti
+**Filosofia:** Imparare facendo - ogni lezione introduce poche proprietà, massima pratica
 
 ---
 
-## STRUTTURA COMPLETA MODULO 2 CSS
+## STRUTTURA COMPLETA MODULO 2 CSS - APPROCCIO PRATICO
 
-### BLOCCO 1: Fondamenti CSS (4.5 ore)
+**IMPORTANTE:** Gli studenti usano VS Code. Ogni lezione deve avere esercizi pratici con file HTML e CSS reali.
+
+### BLOCCO 1: FONDAMENTI - Iniziare a Colorare! (6 ore - 4 lezioni)
 
 #### 📝 LEZIONE 1: Il Primo Stile
 **Durata:** 1.5 ore
 **Difficoltà:** Facile
 **Argomenti:**
-- Cos'è il CSS e perché serve
-- 3 modi per aggiungere CSS: inline, internal (`<style>`), external (file .css)
+- Cos'è il CSS e perché serve (prima/dopo visivo)
+- I 3 metodi: inline, internal (`<style>`), external (`.css` file)
 - Sintassi base: `selettore { proprietà: valore; }`
-- Primo esempio pratico: cambiare colori e font
-- Creare e collegare file `style.css` con `<link>`
-- Browser DevTools per ispezionare CSS
+- Come collegare file CSS: `<link rel="stylesheet" href="style.css">`
+- Browser DevTools (F12) - vedere e modificare CSS live
+- **Prima proprietà pratica: `color` e `background-color`**
+- Esempi con vs senza CSS
 
-**Esercizio:** Stilizzare pagina HTML esistente con colori e font
-**Sfida:** Creare tema colorato completo per una pagina
+**Proprietà insegnate:** `color`, `background-color`
+**Esercizio VS Code:** Creare `index.html` e `style.css`, collegare, colorare h1 e paragrafi
+**Sfida:** Pagina colorata completa con header, contenuto, footer
 
 ---
 
-#### 📝 LEZIONE 2: Selettori Base
+#### 📝 LEZIONE 2: Selettore Elemento + Primi Colori
 **Durata:** 1.5 ore
 **Difficoltà:** Facile
 **Argomenti:**
-- Selettore elemento (`p`, `h1`, `div`)
-- Selettore classe (`.classe`)
-- Selettore ID (`#id`)
-- Selettore universale (`*`)
-- Differenza classe vs ID (riutilizzabilità vs unicità)
-- Quando usare cosa
-- Specificità base (ID > classe > elemento)
+- **Solo selettore elemento** (`h1`, `p`, `div`, `body`, `a`)
+- Applicare stili a tutti gli elementi di un tipo
+- Proprietà colore: nomi (`red`, `blue`, `green`)
+- Proprietà colore: hex (`#FF0000`, `#00FF00`, `#0000FF`)
+- `border` base (width, style, color)
 
-**Esercizio:** Applicare stili diversi usando tutti i selettori
-**Sfida:** Card componente con classi riutilizzabili
+**Proprietà insegnate:** selettore elemento, `color`, `background-color`, `border`
+**Esercizio VS Code:** Pagina con 3 sezioni, ognuna con colori diversi usando solo selettori elemento
+**Sfida:** Mini-sito colorato (home, about) senza usare classi
 
 ---
 
-#### 📝 LEZIONE 3: Selettori Avanzati
+#### 📝 LEZIONE 3: Classi + Dimensioni Testo
 **Durata:** 1.5 ore
-**Difficoltà:** Media
+**Difficoltà:** Facile
 **Argomenti:**
-- Selettori discendenti (`div p`)
-- Selettori figli diretti (`div > p`)
-- Selettori multipli (`h1, h2, h3`)
-- Pseudo-classi: `:hover`, `:active`, `:focus`, `:visited`, `:nth-child()`
-- Pseudo-elementi: `::before`, `::after`, `::first-letter`, `::first-line`
-- Combinatori (`+` adiacente, `~` fratelli)
-- Calcolo specificità avanzata
+- Il selettore `.classe` - cos'è e perché serve
+- Riutilizzabilità: stessa classe su più elementi
+- Quando usare classe vs elemento
+- `font-size` (px per ora)
+- `font-weight` (`normal`, `bold`, numeri 100-900)
+- `text-align` (`left`, `center`, `right`)
 
-**Esercizio:** Menu navigazione con effetti hover
-**Sfida:** Styling complesso con pseudo-elementi decorativi
+**Proprietà insegnate:** `.classe`, `font-size`, `font-weight`, `text-align`
+**Esercizio VS Code:** Creare classi `.importante`, `.evidenziato`, `.grande` e usarle su vari elementi
+**Sfida:** Pagina articolo con classi per titoli, testo normale, citazioni, note
 
 ---
 
-### BLOCCO 2: Colori e Testo (4 ore)
+#### 📝 LEZIONE 4: ID + Spaziatura Base
+**Durata:** 1.5 ore
+**Difficoltà:** Facile
+**Argomenti:**
+- Il selettore `#id` - elementi unici
+- Differenza classe vs ID (riutilizzabile vs unico)
+- Quando usare ID (header, footer, nav, main-content)
+- `padding` (valori semplici per ora - un valore)
+- `margin` (valori semplici - un valore)
+- `margin: auto` per centrare
+
+**Proprietà insegnate:** `#id`, `padding`, `margin`
+**Esercizio VS Code:** Layout con #header, #nav, #content, #footer con padding e margin
+**Sfida:** Pagina portfolio con sezioni uniche identificate da ID
+
+---
+
+### BLOCCO 2: STILE DEL TESTO (4.5 ore - 3 lezioni)
 
 #### 📝 LEZIONE 4: Colori
 **Durata:** 1.5 ore
