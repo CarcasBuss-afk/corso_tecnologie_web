@@ -362,6 +362,7 @@ div {
           <div>
             <h4 className="font-bold mb-2">Bordo Solid (continuo)</h4>
             <LessonPreview
+              title="Bordo Solid"
               html={`<div style="border: 3px solid #2C3E50; padding: 15px;">
   Elemento con bordo solid
 </div>`}
@@ -370,6 +371,7 @@ div {
           <div>
             <h4 className="font-bold mb-2">Bordo Dashed (tratteggiato)</h4>
             <LessonPreview
+              title="Bordo Dashed"
               html={`<div style="border: 3px dashed #E74C3C; padding: 15px;">
   Elemento con bordo dashed
 </div>`}
@@ -378,6 +380,7 @@ div {
           <div>
             <h4 className="font-bold mb-2">Bordo Dotted (puntinato)</h4>
             <LessonPreview
+              title="Bordo Dotted"
               html={`<div style="border: 3px dotted #3498DB; padding: 15px;">
   Elemento con bordo dotted
 </div>`}
