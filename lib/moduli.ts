@@ -179,8 +179,8 @@ export const moduli: Modulo[] = [
       },
       {
         id: "2",
-        titolo: "Selettori Base",
-        slug: "lezione-2-selettori-base",
+        titolo: "Selettore Elemento + Colori",
+        slug: "lezione-2-selettori-elemento-colori",
         durata: "1.5 ore",
         difficolta: "facile",
       },
