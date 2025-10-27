@@ -186,10 +186,10 @@ export const moduli: Modulo[] = [
       },
       {
         id: "3",
-        titolo: "Selettori Avanzati",
-        slug: "lezione-3-selettori-avanzati",
+        titolo: "Classi + Dimensioni Testo",
+        slug: "lezione-3-classi-dimensioni-testo",
         durata: "1.5 ore",
-        difficolta: "media",
+        difficolta: "facile",
       },
     ],
   },

@@ -835,26 +835,25 @@ corso_tecnologie_web/
 
 ### BLOCCO 2: STILE DEL TESTO (4.5 ore - 3 lezioni)
 
-#### 📝 LEZIONE 4: Colori
+#### 📝 LEZIONE 5: Font e Decorazioni Testo
 **Durata:** 1.5 ore
 **Difficoltà:** Facile
 **Argomenti:**
-- Nomi colori (`red`, `blue`, `hotpink`, etc.)
-- Hex (`#FF0000`, `#F00`)
-- RGB `rgb(255, 0, 0)`
-- RGBA con trasparenza `rgba(255, 0, 0, 0.5)`
-- HSL `hsl(0, 100%, 50%)`
-- HSLA con trasparenza
-- `currentColor` e `inherit`
-- Gradienti: `linear-gradient()`, `radial-gradient()`
-- Palette colori e teoria dell'armonia cromatica
+- `font-family` (Arial, Helvetica, sans-serif)
+- Web safe fonts
+- `font-style` (italic, normal)
+- `text-decoration` (underline, none, line-through)
+- `text-transform` (uppercase, lowercase, capitalize)
+- `letter-spacing` e `word-spacing`
+- Link stilizzati con text-decoration
 
-**Esercizio:** Creare palette a 5 colori e applicarla
-**Sfida:** Design con gradienti complessi
+**Proprietà insegnate:** `font-family`, `font-style`, `text-decoration`, `text-transform`, `letter-spacing`
+**Esercizio VS Code:** Creare pagina articolo con titoli, testo normale, citazioni stilizzate
+**Sfida:** Blog post completo con tipografia elegante
 
 ---
 
-#### 📝 LEZIONE 5: Tipografia
+#### 📝 LEZIONE 6: Link Interattivi e :hover
 **Durata:** 1.5 ore
 **Difficoltà:** Media
 **Argomenti:**
