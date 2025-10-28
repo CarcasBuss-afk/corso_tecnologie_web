@@ -614,17 +614,51 @@ export default function Lezione4IDSpaziatura() {
         ]}
       />
 
-      {/* Congratulazioni */}
-      <section className="mt-12 bg-gradient-to-r from-green-500 to-teal-500 text-white p-8 rounded-lg">
+      {/* Conclusione */}
+      <section className="mt-12 bg-gradient-to-r from-indigo-500 to-purple-500 text-white p-8 rounded-lg">
         <h2 className="text-3xl font-bold mb-4">🎉 Congratulazioni!</h2>
         <p className="text-xl mb-4">
-          Hai appena imparato le basi del <strong>spacing</strong> in CSS!
+          Hai appena imparato le basi del <strong>spacing</strong> in CSS e il selettore <strong>#id</strong>!
         </p>
-        <p className="text-lg">
+        <p className="text-lg mb-6">
           Padding e margin sono FONDAMENTALI per creare layout professionali.
           Ora sai come dare &quot;aria&quot; ai tuoi elementi e creare spazio tra di loro.
-          Nella prossima lezione imparerai proprietà più avanzate per il testo!
         </p>
+
+        <div className="bg-black bg-opacity-20 p-6 rounded border-2 border-white border-opacity-30 mb-6">
+          <p className="font-bold mb-3 text-yellow-200 text-xl">📊 Selettori e Proprietà Totali Imparate</p>
+
+          <div className="mb-4">
+            <p className="font-bold text-yellow-200 mb-2">🎯 Selettori CSS (3):</p>
+            <ul className="list-disc list-inside space-y-1 ml-4">
+              <li>elemento (Lezione 2) - <span className="text-sm">seleziona tutti gli elementi di un tipo</span></li>
+              <li>.classe (Lezione 3) - <span className="text-sm">riutilizzabile su più elementi</span></li>
+              <li>#id (Lezione 4) ✨ NUOVO - <span className="text-sm">unico, solo una volta per pagina</span></li>
+            </ul>
+          </div>
+
+          <div>
+            <p className="font-bold text-yellow-200 mb-2">🎨 Proprietà CSS (9):</p>
+            <ul className="list-disc list-inside space-y-1 ml-4">
+              <li>color (Lezione 1-2) - <span className="text-sm">colore del testo</span></li>
+              <li>background-color (Lezione 1-2) - <span className="text-sm">colore di sfondo</span></li>
+              <li>border (Lezione 2) - <span className="text-sm">bordo degli elementi</span></li>
+              <li>font-size (Lezione 3) - <span className="text-sm">dimensione del testo</span></li>
+              <li>font-weight (Lezione 3) - <span className="text-sm">spessore del carattere</span></li>
+              <li>text-align (Lezione 3) - <span className="text-sm">allineamento del testo</span></li>
+              <li>padding (Lezione 4) ✨ NUOVO - <span className="text-sm">spazio INTERNO</span></li>
+              <li>margin (Lezione 4) ✨ NUOVO - <span className="text-sm">spazio ESTERNO</span></li>
+              <li>width (Lezione 4) ✨ NUOVO - <span className="text-sm">larghezza elemento</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="bg-green-400 bg-opacity-30 p-4 rounded border-2 border-green-300">
+          <p className="font-bold mb-2">🚀 Prossima Lezione</p>
+          <p className="text-lg">
+            Imparerai proprietà avanzate per lo stile del testo: <strong>font-family</strong>, <strong>text-decoration</strong>, <strong>letter-spacing</strong> e altro!
+          </p>
+        </div>
       </section>
     </LessonLayout>
   );
