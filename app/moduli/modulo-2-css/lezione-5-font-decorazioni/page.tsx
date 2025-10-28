@@ -628,6 +628,201 @@ export default function Lezione5FontDecorazioni() {
         </div>
       </section>
 
+      {/* HTML vs CSS - Semantica vs Stile */}
+      <section className="mb-12 bg-gradient-to-r from-amber-50 to-orange-50 p-8 rounded-lg border-2 border-orange-200">
+        <h2 className="text-3xl font-bold mb-4 text-orange-800">🤔 HTML vs CSS: Quando Usare Cosa?</h2>
+        <p className="text-lg mb-4 text-gray-700">
+          Hai ragione se ti stai chiedendo: <strong>&quot;Perché esistono sia tag HTML che proprietà CSS per grassetto, corsivo e sottolineato?&quot;</strong>
+        </p>
+        <p className="text-lg mb-6 text-gray-700">
+          Ottima domanda! La risposta è: <strong>HTML dà SIGNIFICATO</strong>, <strong>CSS dà STILE</strong>.
+        </p>
+
+        {/* Grid HTML vs CSS */}
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+          <div className="bg-white p-6 rounded-lg border-2 border-blue-300">
+            <h3 className="font-bold text-blue-700 mb-3 text-xl flex items-center gap-2">
+              📝 HTML - Significato (Semantica)
+            </h3>
+            <p className="mb-4 text-gray-700">I tag HTML dicono <strong>cosa significa</strong> il testo:</p>
+            <ul className="space-y-3">
+              <li className="bg-blue-50 p-3 rounded">
+                <code className="text-blue-700 font-bold">&lt;strong&gt;</code>
+                <p className="text-sm mt-1">= Testo <strong>importante</strong> (enfasi forte)</p>
+                <p className="text-xs text-gray-600">Screen reader lo legge con voce più forte</p>
+              </li>
+              <li className="bg-blue-50 p-3 rounded">
+                <code className="text-blue-700 font-bold">&lt;em&gt;</code>
+                <p className="text-sm mt-1">= Testo <em>enfatizzato</em> (enfasi leggera)</p>
+                <p className="text-xs text-gray-600">Screen reader lo legge con intonazione diversa</p>
+              </li>
+              <li className="bg-blue-50 p-3 rounded">
+                <code className="text-blue-700 font-bold">&lt;del&gt;</code>
+                <p className="text-sm mt-1">= Testo <del>cancellato/rimosso</del></p>
+                <p className="text-xs text-gray-600">Indica informazione rimossa (es. prezzo vecchio)</p>
+              </li>
+            </ul>
+            <div className="mt-4 bg-blue-100 p-3 rounded">
+              <p className="font-bold text-blue-800 text-sm">✅ Pro:</p>
+              <ul className="text-xs space-y-1 text-blue-700 ml-4">
+                <li>• Accessibile (screen reader capiscono il significato)</li>
+                <li>• SEO (Google capisce cosa è importante)</li>
+                <li>• Semantica chiara nel codice</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg border-2 border-purple-300">
+            <h3 className="font-bold text-purple-700 mb-3 text-xl flex items-center gap-2">
+              🎨 CSS - Aspetto (Stile)
+            </h3>
+            <p className="mb-4 text-gray-700">Le proprietà CSS dicono <strong>come appare</strong> il testo:</p>
+            <ul className="space-y-3">
+              <li className="bg-purple-50 p-3 rounded">
+                <code className="text-purple-700 font-bold">font-weight: bold;</code>
+                <p className="text-sm mt-1">= Rendi il testo grassetto (solo visivo)</p>
+                <p className="text-xs text-gray-600">Screen reader NON cambia voce</p>
+              </li>
+              <li className="bg-purple-50 p-3 rounded">
+                <code className="text-purple-700 font-bold">font-style: italic;</code>
+                <p className="text-sm mt-1">= Rendi il testo corsivo (solo visivo)</p>
+                <p className="text-xs text-gray-600">Screen reader NON cambia intonazione</p>
+              </li>
+              <li className="bg-purple-50 p-3 rounded">
+                <code className="text-purple-700 font-bold">text-decoration: line-through;</code>
+                <p className="text-sm mt-1">= Disegna una linea sopra il testo</p>
+                <p className="text-xs text-gray-600">Solo decorazione visiva</p>
+              </li>
+            </ul>
+            <div className="mt-4 bg-purple-100 p-3 rounded">
+              <p className="font-bold text-purple-800 text-sm">✅ Pro:</p>
+              <ul className="text-xs space-y-1 text-purple-700 ml-4">
+                <li>• Controllo totale sull&apos;aspetto</li>
+                <li>• Può cambiare in base al contesto (classi)</li>
+                <li>• Separazione tra contenuto e presentazione</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Quando usare cosa */}
+        <div className="bg-gradient-to-r from-green-500 to-teal-500 text-white p-6 rounded-lg mb-6">
+          <h3 className="text-xl font-bold mb-4">📚 Quando Usare Cosa?</h3>
+
+          <div className="space-y-4">
+            <div className="bg-white bg-opacity-20 p-4 rounded">
+              <p className="font-bold mb-2">1️⃣ Usa HTML quando il testo ha SIGNIFICATO speciale</p>
+              <div className="grid md:grid-cols-2 gap-3 text-sm">
+                <div>
+                  <p className="font-bold text-yellow-200">✅ Esempi:</p>
+                  <ul className="ml-4 space-y-1">
+                    <li>&lt;strong&gt; per avvisi importanti</li>
+                    <li>&lt;em&gt; per enfasi concettuale</li>
+                    <li>&lt;del&gt; per prezzi vecchi, info rimosse</li>
+                  </ul>
+                </div>
+                <div>
+                  <CodeExample
+                    language="html"
+                    code={`<p>
+  <strong>Attenzione!</strong>
+  Questo è importante.
+</p>`}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white bg-opacity-20 p-4 rounded">
+              <p className="font-bold mb-2">2️⃣ Usa CSS quando vuoi SOLO cambiare l&apos;aspetto</p>
+              <div className="grid md:grid-cols-2 gap-3 text-sm">
+                <div>
+                  <p className="font-bold text-yellow-200">✅ Esempi:</p>
+                  <ul className="ml-4 space-y-1">
+                    <li>Titoli decorativi in grassetto</li>
+                    <li>Citazioni in corsivo per stile</li>
+                    <li>Link senza sottolineatura</li>
+                  </ul>
+                </div>
+                <div>
+                  <CodeExample
+                    language="css"
+                    code={`.titolo-decorativo {
+  font-weight: bold;
+  font-style: italic;
+}`}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white bg-opacity-20 p-4 rounded">
+              <p className="font-bold mb-2">3️⃣ Usa ENTRAMBI per il massimo controllo!</p>
+              <div className="grid md:grid-cols-2 gap-3 text-sm">
+                <div>
+                  <p className="font-bold text-yellow-200">✅ Best Practice:</p>
+                  <ul className="ml-4 space-y-1">
+                    <li>HTML per la semantica</li>
+                    <li>CSS per personalizzare lo stile</li>
+                    <li>Accessibilità + Design perfetto</li>
+                  </ul>
+                </div>
+                <div>
+                  <CodeExample
+                    language="html"
+                    code={`<!-- HTML semantico -->
+<strong class="avviso">
+  Pericolo!
+</strong>
+
+/* CSS per stile */
+.avviso {
+  color: red;
+  font-size: 20px;
+}`}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Esempio Comparativo */}
+        <h3 className="text-xl font-bold mb-3 text-orange-800">👀 Esempio Comparativo</h3>
+        <LessonPreview
+          title="HTML Semantico vs CSS Visuale - Confronto"
+          html={`<style>
+  .solo-css-bold { font-weight: bold; }
+  .solo-css-italic { font-style: italic; }
+  .avviso-semantico { color: #E74C3C; font-size: 18px; background-color: #FADBD8; padding: 10px; }
+</style>
+
+<h3>1. Solo HTML (semantico):</h3>
+<p><strong>Testo importante con &lt;strong&gt;</strong></p>
+<p><em>Testo enfatizzato con &lt;em&gt;</em></p>
+
+<h3>2. Solo CSS (visuale):</h3>
+<p class="solo-css-bold">Testo grassetto con CSS font-weight</p>
+<p class="solo-css-italic">Testo corsivo con CSS font-style</p>
+
+<h3>3. HTML + CSS (MEGLIO!):</h3>
+<p><strong class="avviso-semantico">IMPORTANTE: Questo combina semantica HTML + stile CSS!</strong></p>`}
+        />
+
+        {/* Regola Pratica */}
+        <div className="mt-6 bg-amber-100 border-l-4 border-amber-500 p-6">
+          <h3 className="font-bold text-amber-800 mb-3">🎯 Regola Pratica Semplice</h3>
+          <div className="space-y-2 text-gray-800">
+            <p>📝 <strong>Chiediti:</strong> &quot;Questo testo è importante per il SIGNIFICATO o solo per l&apos;ASPETTO?&quot;</p>
+            <ul className="ml-6 space-y-2 mt-3">
+              <li>💡 <strong>Se è IMPORTANTE per il significato</strong> → Usa <code className="bg-amber-200 px-2 py-1 rounded">&lt;strong&gt;</code>, <code className="bg-amber-200 px-2 py-1 rounded">&lt;em&gt;</code>, <code className="bg-amber-200 px-2 py-1 rounded">&lt;del&gt;</code></li>
+              <li>🎨 <strong>Se è solo per l&apos;aspetto visivo</strong> → Usa CSS (<code className="bg-amber-200 px-2 py-1 rounded">font-weight</code>, <code className="bg-amber-200 px-2 py-1 rounded">font-style</code>)</li>
+              <li>✨ <strong>Vuoi entrambi?</strong> → Combina HTML semantico + classe CSS per lo stile!</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       {/* Esercizio */}
       <Exercise
         title="Crea uno Stile Tipografico per un Articolo"
