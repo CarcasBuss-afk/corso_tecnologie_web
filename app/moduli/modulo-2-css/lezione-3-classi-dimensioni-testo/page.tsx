@@ -334,7 +334,7 @@ export default function Lezione3ClassiDimensioniTesto() {
 
         <h3 className="text-xl font-bold mb-3">Esempio Pratico: Come Scriverlo</h3>
         <p className="text-sm text-gray-600 mb-4">
-          💡 <em>Nota: Abbiamo aggiunto sfondi colorati per vedere meglio l&apos;allineamento, ma la proprietà importante è solo <code className="bg-gray-200 px-1 rounded">text-align</code>!</em>
+          💡 <em>Nota: Abbiamo aggiunto sfondi colorati (già imparati nella Lezione 2) per vedere meglio dove si allinea il testo!</em>
         </p>
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <div>
@@ -359,19 +359,16 @@ export default function Lezione3ClassiDimensioniTesto() {
               code={`.allinea-sinistra {
   text-align: left;
   background-color: #E8F4F8;
-  padding: 10px;
 }
 
 .allinea-centro {
   text-align: center;
   background-color: #FFF4E6;
-  padding: 10px;
 }
 
 .allinea-destra {
   text-align: right;
   background-color: #F3E5F5;
-  padding: 10px;
 }`}
             />
           </div>
@@ -384,19 +381,14 @@ export default function Lezione3ClassiDimensioniTesto() {
   .allinea-sinistra {
     text-align: left;
     background-color: #E8F4F8;
-    padding: 10px;
-    margin-bottom: 10px;
   }
   .allinea-centro {
     text-align: center;
     background-color: #FFF4E6;
-    padding: 10px;
-    margin-bottom: 10px;
   }
   .allinea-destra {
     text-align: right;
     background-color: #F3E5F5;
-    padding: 10px;
   }
 </style>
 
