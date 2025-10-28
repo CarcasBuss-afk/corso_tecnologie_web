@@ -1,9 +1,96 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 24 Ottobre 2025 - Sessione 7
+**Ultimo aggiornamento:** 28 Ottobre 2025 - Sessione 8
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
+
+---
+
+## 📅 CHANGELOG SESSIONE 8 (28 Ottobre 2025)
+
+### Fix Deployment Vercel - Lezione 3 CSS
+**Problema:** Build Vercel falliva con errori TypeScript e import mancanti
+
+**Errori risolti:**
+1. ✅ **Import Path Errati** (Commit `d02027c`)
+   - Problema: Import da `@/components/` invece di `@/components/didattica/`
+   - Fix: Corretti tutti gli import per allinearli con le altre lezioni CSS
+   - Aggiunto import `getLezioniByModuloSlug` mancante
+
+2. ✅ **Props Mancanti LessonLayout** (Commit `bb21c85`)
+   - Problema: TypeScript richiedeva `moduloTitolo`, `lezioni`, `lezioneTitolo`
+   - Fix: Aggiunte tutte le props richieste + componente `LessonHeader`
+   - Struttura ora allineata con Lezioni 1 e 2 CSS
+
+3. ✅ **Prop `difficulty` Non Supportata** (Commit `426ac3d`)
+   - Problema: Componente `Challenge` non accetta prop `difficulty`
+   - Fix: Rimossa prop non supportata (già corretto in Sessione 6 per altre lezioni)
+
+### Miglioramenti Pedagogici - Lezione 3 CSS
+
+**Problema identificato dall'utente:**
+- ❌ Codice veniva DOPO il risultato visivo (ordine sbagliato)
+- ❌ Esempi mostravano solo CSS, mancava l'HTML
+- ❌ Gli studenti non vedevano la struttura completa
+
+**Refactor Struttura (Commit `64d7be7`):**
+- ✅ **Ordine corretto**: Prima codice (HTML + CSS), poi risultato
+- ✅ **Layout side-by-side**: HTML e CSS affiancati in 2 colonne
+- ✅ **Titoli chiari**: "Esempio Pratico: Come Scriverlo" → "Risultato nel Browser"
+- ✅ Applicato a tutte e 3 le sezioni: `font-size`, `font-weight`, `text-align`
+
+**Fix Coerenza Codice/Output (Commit `bb239ed`):**
+- ✅ **font-size**: Testo HTML sincronizzato tra codice e preview
+- ✅ **font-weight**: Testo HTML sincronizzato tra codice e preview
+- ✅ **text-align**: CSS completo mostrato (incluso `background-color`, `padding`)
+- ✅ Aggiunta nota esplicativa per proprietà ausiliarie
+
+**Fix Progressione Didattica (Commit `6f77455` + `edb2915`):**
+
+**Problema critico:** Lezione 3 usava `padding` e `margin` prima della Lezione 4
+
+- ❌ Prima: `padding: 10px` e `margin-bottom: 10px` in esempi `text-align`
+- ❌ Prima: `padding: 15px` nell'esempio "Combinare Tutto Insieme"
+- ✅ Ora: Rimossi completamente `padding` e `margin` da tutti gli esempi
+- ✅ Ora: Usa SOLO proprietà già insegnate:
+  - `font-size`, `font-weight`, `text-align` (Lezione 3)
+  - `color`, `background-color` (Lezione 2)
+
+**Nota aggiunta:** Chiarisce che gli sfondi colorati sono già stati imparati nella Lezione 2
+
+### Principi Pedagogici Rispettati
+
+1. ✅ **Progressione Graduale**: Nessuna proprietà futura usata prematuramente
+2. ✅ **Trasparenza Totale**: Codice mostrato = Risultato ottenuto (zero "magia nascosta")
+3. ✅ **Ordine Logico**: Prima scrivi (codice), poi vedi (risultato)
+4. ✅ **Contesto Completo**: HTML + CSS sempre mostrati insieme
+
+### File Modificati
+- `/app/moduli/modulo-2-css/lezione-3-classi-dimensioni-testo/page.tsx` - 5 refactor iterativi
+
+### Commit Effettuati
+- `d02027c` - Fix: Corretti import path componenti
+- `bb21c85` - Fix: Aggiunte props mancanti e LessonHeader
+- `426ac3d` - Fix: Rimossa prop difficulty non supportata
+- `64d7be7` - Refactor: Migliorata struttura pedagogica (codice prima, risultato dopo)
+- `bb239ed` - Fix: Risolti problemi coerenza tra codice e preview
+- `6f77455` - Fix: Rimosso padding e margin non ancora insegnati
+- `edb2915` - Fix: Rimosso padding dall'esempio "Combinare Tutto Insieme"
+
+### Stato Modulo 2 CSS
+**Progresso:** 3/17 lezioni implementate (18%)
+- ✅ Lezione 1: Il Primo Stile
+- ✅ Lezione 2: Selettore Elemento + Colori
+- ✅ Lezione 3: Classi + Dimensioni Testo (completamente rivista)
+- ⏳ Lezione 4: ID + Spaziatura Base (prossima)
+- ⏳ Lezioni 5-17: Da creare
+
+### Deployment
+- ✅ Build Vercel: **SUCCESSO**
+- ✅ TypeScript validation: **PASSED**
+- ✅ Nessun errore di runtime
+- ✅ Lezione 3 CSS completamente funzionante in produzione
 
 ---
 
