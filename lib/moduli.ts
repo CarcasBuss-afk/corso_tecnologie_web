@@ -198,6 +198,13 @@ export const moduli: Modulo[] = [
         durata: "1.5 ore",
         difficolta: "facile",
       },
+      {
+        id: "5",
+        titolo: "Font e Decorazioni Testo",
+        slug: "lezione-5-font-decorazioni",
+        durata: "1.5 ore",
+        difficolta: "facile",
+      },
     ],
   },
   {
