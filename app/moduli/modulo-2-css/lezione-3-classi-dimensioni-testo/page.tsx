@@ -439,11 +439,9 @@ export default function Lezione3ClassiDimensioniTesto() {
 
   .citazione {
     font-size: 16px;
-    font-weight: normal;
     text-align: center;
     color: #555;
     background-color: #ECF0F1;
-    padding: 15px;
   }
 </style>
 
@@ -482,7 +480,6 @@ export default function Lezione3ClassiDimensioniTesto() {
   text-align: center;
   color: #555;
   background-color: #ECF0F1;
-  padding: 15px;
 }`}
           />
         </div>
