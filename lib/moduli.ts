@@ -191,6 +191,13 @@ export const moduli: Modulo[] = [
         durata: "1.5 ore",
         difficolta: "facile",
       },
+      {
+        id: "4",
+        titolo: "ID + Spaziatura Base",
+        slug: "lezione-4-id-spaziatura",
+        durata: "1.5 ore",
+        difficolta: "facile",
+      },
     ],
   },
   {
