@@ -327,6 +327,79 @@ width: 200px;
           </div>
         </div>
 
+        <h3 className="text-xl font-bold mb-3">Vedi la Differenza nel Browser</h3>
+        <LessonPreview
+          title="content-box vs border-box - Entrambi con width: 200px"
+          html={`<style>
+.demo-container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.box-content-box {
+  box-sizing: content-box;
+  width: 200px;
+  padding: 20px;
+  border: 5px solid #E74C3C;
+  background-color: #FADBD8;
+  text-align: center;
+  font-weight: bold;
+}
+
+.box-border-box {
+  box-sizing: border-box;
+  width: 200px;
+  padding: 20px;
+  border: 5px solid #2ECC71;
+  background-color: #D5F4E6;
+  text-align: center;
+  font-weight: bold;
+}
+
+.label {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+</style>
+
+<div class="demo-container">
+  <div>
+    <div class="box-content-box">
+      width: 200px<br>
+      padding: 20px<br>
+      border: 5px
+    </div>
+    <div class="label" style="color: #E74C3C;">
+      ❌ content-box<br>
+      Larghezza TOTALE: 250px<br>
+      (200 + 40 + 10)
+    </div>
+  </div>
+
+  <div>
+    <div class="box-border-box">
+      width: 200px<br>
+      padding: 20px<br>
+      border: 5px
+    </div>
+    <div class="label" style="color: #2ECC71;">
+      ✅ border-box<br>
+      Larghezza TOTALE: 200px<br>
+      (come dichiarato!)
+    </div>
+  </div>
+</div>
+
+<div style="text-align: center; margin-top: 20px; padding: 15px; background-color: #FFF3CD; border-left: 4px solid #FFC107; font-size: 14px;">
+  <strong>👀 Guarda bene:</strong> entrambi hanno <code>width: 200px</code>, ma il box rosso (content-box) è più largo perché padding e border vengono aggiunti FUORI!
+</div>`}
+        />
+
         <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-6 rounded-lg">
           <h3 className="font-bold text-xl mb-3">🎯 Best Practice Universale</h3>
           <p className="mb-3">
@@ -350,6 +423,22 @@ width: 200px;
         <p className="text-lg mb-6">
           Abbiamo già visto <code className="bg-gray-200 px-2 py-1 rounded">width</code>, ma ci sono molte varianti utili!
         </p>
+
+        <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-6">
+          <h3 className="font-bold text-blue-700 mb-3">💡 Cosa Significa "Responsive"?</h3>
+          <p className="mb-3">
+            Un sito <strong>responsive</strong> (dall&apos;inglese &quot;reattivo&quot;) si <strong>adatta automaticamente</strong> alle dimensioni dello schermo.
+          </p>
+          <p className="mb-3">
+            📱 Su smartphone è stretto → 📱 Su tablet è medio → 💻 Su desktop è largo
+          </p>
+          <p className="mb-3">
+            Il contenuto si <strong>ridimensiona</strong> per essere leggibile su qualsiasi dispositivo!
+          </p>
+          <p className="font-bold text-blue-700">
+            🌟 Questo è fondamentale oggi: oltre il 60% degli utenti naviga da mobile!
+          </p>
+        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
           <div className="bg-blue-50 border-l-4 border-blue-500 p-4">
