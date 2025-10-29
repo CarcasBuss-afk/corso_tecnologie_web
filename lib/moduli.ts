@@ -219,6 +219,13 @@ export const moduli: Modulo[] = [
         durata: "2 ore",
         difficolta: "media",
       },
+      {
+        id: "8",
+        titolo: "Bordi e Sfondi",
+        slug: "lezione-8-bordi-sfondi",
+        durata: "1.5 ore",
+        difficolta: "facile",
+      },
     ],
   },
   {

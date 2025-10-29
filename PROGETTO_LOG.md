@@ -7,7 +7,153 @@
 
 ---
 
-## 📅 CHANGELOG SESSIONE 11 (29 Ottobre 2025)
+## 📅 CHANGELOG SESSIONE 11 (29 Ottobre 2025) - Parte 2
+
+### Nuova Lezione Creata - Lezione 8 CSS: Bordi e Sfondi
+
+**Creazione Completa:**
+- ✅ **1200+ righe** di contenuto didattico
+- ✅ **Durata:** 1.5 ore
+- ✅ **Difficoltà:** Facile
+- ✅ Aggiunta a `lib/moduli.ts` per navigazione sidebar
+
+**Argomenti Insegnati - Decorazioni Visive:**
+1. **Bordi Personalizzati (border):**
+   - Sintassi: width style color (es: 3px solid #3498DB)
+   - 6 stili: solid, dashed, dotted, double, groove, ridge
+   - Bordi individuali: border-top, border-right, border-bottom, border-left
+   - Trucco: border-bottom per linea sotto titoli
+
+2. **border-radius - Angoli Arrotondati:**
+   - 5-10px per card e box moderni
+   - 20-30px per bottoni pillola
+   - 50% per cerchi perfetti (avatar, icone)
+   - Quasi tutti i siti moderni usano border-radius
+
+3. **background-image - Immagini di Sfondo:**
+   - Sintassi: url('percorso/immagine.jpg')
+   - Percorsi relativi e assoluti
+   - Hero section con immagini
+
+4. **background-size - Controllo Dimensione:**
+   - cover: copre tutto (può tagliare) - meglio per hero
+   - contain: immagine intera (spazi vuoti possibili) - meglio per loghi
+   - 100% 100%: riempi esattamente (può deformare)
+
+5. **background-position - Posizionamento:**
+   - center (default), top, bottom, left, right
+   - Combinazioni: top right, bottom left
+   - Percentuali e pixel precisi
+
+6. **background-repeat - Ripetizione:**
+   - repeat (default): si ripete ovunque
+   - no-repeat: immagine singola (più usato)
+   - repeat-x: solo orizzontale
+   - repeat-y: solo verticale
+
+7. **background-attachment - Effetto Parallasse:**
+   - scroll (default): sfondo scrolla con la pagina
+   - fixed: sfondo fermo (effetto parallax wow!)
+
+8. **Shorthand background:**
+   - Sintassi: color image position/size repeat attachment
+   - Esempio: url('foto.jpg') center/cover no-repeat
+   - Slash (/) obbligatorio tra position e size
+
+**Struttura Pedagogica Applicata:**
+- ✅ Grid 3x2 stili bordo con esempi visivi
+- ✅ Grid 2x2 per border-radius (0px, 8px, 20px, 50%)
+- ✅ Confronto visivo cover vs contain side-by-side
+- ✅ **7 LessonPreview interattivi** con sfondi reali
+- ✅ Grid 4 colonne per background-position
+- ✅ Grid 2x2 per background-repeat
+- ✅ Card prodotto finale con tutti i concetti applicati
+
+**Contenuti Pratici:**
+- ✅ Esempio 1: Box con bordi solid, dashed, dotted
+- ✅ Esempio 2: Box con 4 bordi diversi su ogni lato
+- ✅ Esempio 3: border-radius da 0px a 50% (cerchio)
+- ✅ Esempio 4: Hero section con background-image
+- ✅ Esempio 5: Confronto cover vs contain
+- ✅ Esempio 6: Hero perfetta con tutti i parametri
+- ✅ Esempio 7: Card prodotto professionale completa
+- ✅ Tutti gli esempi con HTML + CSS side-by-side
+
+**Esercizi e Sfide:**
+- ✅ **Exercise:** Portfolio con bordi e sfondi (15 step)
+  - Hero con background-image + border-radius
+  - Sezione con border dashed
+  - 3 card con immagini di sfondo
+  - Bottoni pillola (border-radius 25px)
+  - Footer con border-top
+  - Hover su tutte le card
+- ✅ **Challenge:** Sito multi-sezione con parallasse (15 requisiti)
+  - 5 sezioni alternate (testo → parallax → testo)
+  - background-attachment: fixed per effetto parallax
+  - Bordi personalizzati su ogni sezione
+  - Almeno 3 border-radius diversi
+  - Hero section completa
+  - Responsive con max-width
+- ✅ **Checklist:** 15 punti auto-valutazione
+
+**Highlights Didattici Speciali:**
+- 🎨 **Grid Stili Bordo**: 6 tipi visualizzati con esempi reali
+- ⭕ **Magia border-radius**: Da quadrato a cerchio in 4 step
+- 📐 **cover vs contain**: Confronto side-by-side per capire differenze
+- 🌄 **Hero Section Perfetta**: Template completo con tutti i parametri
+- 📌 **Effetto Parallasse**: background-attachment: fixed spiegato
+- ⚡ **Shorthand Potente**: Tutte le proprietà in una riga
+
+**Sezione Riepilogo Completa:**
+- ✅ **Riepilogo Selettori CSS (3)**: elemento, .classe, #id
+- ✅ **Riepilogo Pseudo-classi (5)**: :link, :visited, :hover, :active, :focus
+- ✅ **Riepilogo Unità (6)**: px, %, em, rem, vw, vh
+- ✅ **Riepilogo Proprietà CSS (30 totali)**:
+  - Lezione 1-2: color, background-color, border
+  - Lezione 3: font-size, font-weight, text-align
+  - Lezione 4: padding, margin, width
+  - Lezione 5: font-family, font-style, text-decoration, text-transform, letter-spacing, word-spacing
+  - Lezione 6: cursor, transition
+  - Lezione 7: box-sizing, max-width, min-height
+  - **Lezione 8 (9 NUOVE)**: border-radius, border-top/right/bottom/left, background-image, background-size, background-position, background-repeat, background-attachment ✨
+- ✅ **Preview Prossima Lezione**: Display e Posizionamento - block vs inline, position!
+
+**Principi Pedagogici Applicati:**
+- ✅ Esempi visuali immediati per ogni concetto
+- ✅ Confronti side-by-side (cover vs contain)
+- ✅ Progressione da semplice a complesso
+- ✅ Card finale che combina tutti i concetti
+- ✅ Trucchi pratici (border-bottom per titoli)
+- ✅ Casi d'uso reali (hero section, parallax)
+
+### File Creati/Modificati (Parte 2)
+1. `/app/moduli/modulo-2-css/lezione-8-bordi-sfondi/page.tsx` - Lezione completa (1200+ righe)
+2. `/lib/moduli.ts` - Aggiunta Lezione 8 al Modulo 2
+
+### Commit Sessione 11 (Parte 2)
+- Da committare: Feature: Lezione 8 CSS - Bordi e Sfondi completa
+
+### Stato Modulo 2 CSS
+**Progresso:** 8/17 lezioni implementate (47%)
+- ✅ Lezione 1: Il Primo Stile
+- ✅ Lezione 2: Selettore Elemento + Colori
+- ✅ Lezione 3: Classi + Dimensioni Testo
+- ✅ Lezione 4: ID + Spaziatura Base
+- ✅ Lezione 5: Font e Decorazioni Testo
+- ✅ Lezione 6: Link Interattivi e :hover + Unità
+- ✅ Lezione 7: Box Model
+- ✅ Lezione 8: Bordi e Sfondi (NUOVA - DECORAZIONI)
+- ⏳ Lezione 9: Display e Posizionamento Base (prossima)
+- ⏳ Lezioni 10-17: Da creare
+
+**BLOCCO 3: Box Model e Layout Base** 🟡 2/3 completato
+- ✅ Lezione 7: Box Model
+- ✅ Lezione 8: Bordi e Sfondi
+- ⏳ Lezione 9: Display e Posizionamento Base (ultima del blocco)
+
+---
+
+## 📅 CHANGELOG SESSIONE 11 (29 Ottobre 2025) - Parte 1
 
 ### Nuova Lezione Creata - Lezione 7 CSS: Box Model - Il Concetto Fondamentale
 
