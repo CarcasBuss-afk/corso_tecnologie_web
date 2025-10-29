@@ -1009,7 +1009,7 @@ background: #3498DB;`}
       <Exercise
         title="Crea una Pagina Portfolio con Bordi e Sfondi"
         steps={[
-          '📝 NOTA IMPORTANTE: Le 3 card saranno VERTICALI (una sotto l\'altra) perché i div hanno display: block di default. Questo è corretto! Nella prossima lezione (Lezione 9) imparerai come affiancarle orizzontalmente.',
+          '📝 NOTA: Le 3 card saranno una sotto l\'altra (verticali). Nella prossima lezione imparerai come affiancarle orizzontalmente!',
           'Crea una cartella "portfolio-bordi" in VS Code',
           'Crea index.html con struttura base',
           'Crea style.css con box-sizing: border-box universale',
@@ -1033,9 +1033,9 @@ background: #3498DB;`}
       {/* Sfida */}
       <Challenge
         title="Sito Multi-Sezione con Effetti Parallasse"
-        description="Crea un sito con 5 sezioni alternate (verticali, una sotto l'altra): testo → immagine fissa → testo → immagine fissa → testo. Le sezioni saranno verticali perché i div hanno display: block - perfetto per lo scroll e l'effetto parallasse!"
+        description="Crea un sito con 5 sezioni alternate, una sotto l'altra: testo → immagine fissa → testo → immagine fissa → testo"
         requirements={[
-          '📝 NOTA: Le 5 sezioni saranno VERTICALI (una sotto l\'altra) - questo è il layout corretto per pagine con scroll. I div hanno display: block di default.',
+          '📝 NOTA: Le 5 sezioni saranno una sotto l\'altra (verticali) - perfetto per lo scroll e l\'effetto parallasse!',
           'Crea 5 sezioni in totale',
           'Sezioni 1, 3, 5: Testo normale con background-color e padding generoso',
           'Sezioni 2, 4: Immagini con background-attachment: fixed (parallax)',
