@@ -1,9 +1,30 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 29 Ottobre 2025 - Sessione 10
+**Ultimo aggiornamento:** 29 Ottobre 2025 - Sessione 11 Fix
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
+
+---
+
+## 📅 CHANGELOG SESSIONE 11 (29 Ottobre 2025) - Parte 3 (FIX)
+
+### Fix Visibilità Testo - Lezione 7 CSS: Box Model
+
+**Problema Segnalato dall'Utente:**
+- ❌ Nella sezione "Quando Usare Cosa?" (riquadro verde) i riquadri bianchi avevano testo illeggibile
+- ❌ Testo bianco su sfondo bianco semi-trasparente (`bg-white bg-opacity-20`)
+- ❌ Eredità del colore `text-white` dal contenitore genitore verde
+
+**Soluzione Implementata:**
+- ✅ Aggiunto `text-gray-900` ai titoli in grassetto nei riquadri bianchi
+- ✅ Aggiunto `text-gray-800` ai paragrafi nei riquadri bianchi
+- ✅ Mantenuto `text-white` esplicito per i tag `<code>` (sfondo nero)
+
+**File Modificato:**
+- `app/moduli/modulo-2-css/lezione-7-box-model/page.tsx` (linee 396-415)
+
+**Commit:** `b3e3802` - Fix: Risolto problema visibilità testo in Lezione 7 Box Model
 
 ---
 
