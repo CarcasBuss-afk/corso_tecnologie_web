@@ -1,9 +1,443 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 28 Ottobre 2025 - Sessione 8
+**Ultimo aggiornamento:** 29 Ottobre 2025 - Sessione 10
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
+
+---
+
+## 📅 CHANGELOG SESSIONE 11 (29 Ottobre 2025)
+
+### Nuova Lezione Creata - Lezione 7 CSS: Box Model - Il Concetto Fondamentale
+
+**Creazione Completa:**
+- ✅ **1300+ righe** di contenuto didattico
+- ✅ **Durata:** 2 ore
+- ✅ **Difficoltà:** Media
+- ✅ Aggiunta a `lib/moduli.ts` per navigazione sidebar
+
+**Argomenti Insegnati - Concetto Più Importante del CSS:**
+1. **I 4 Livelli del Box Model:**
+   - Content - il contenuto vero e proprio (testo, immagini)
+   - Padding - imbottitura interna (background visibile)
+   - Border - bordo visibile attorno all'elemento
+   - Margin - spazio esterno trasparente (separazione da altri elementi)
+
+2. **box-sizing: border-box vs content-box:**
+   - content-box (default): width include SOLO il content
+   - border-box (MEGLIO): width include content + padding + border
+   - Best practice: applicare `* { box-sizing: border-box; }` all'inizio del CSS
+
+3. **Proprietà Dimensioni:**
+   - width, height - dimensioni fisse
+   - max-width - larghezza massima (responsive!)
+   - min-width - larghezza minima
+   - max-height - altezza massima
+   - min-height - altezza minima (consigliato per flessibilità)
+
+4. **Margin Collapsing:**
+   - Fenomeno: margin verticali si "uniscono"
+   - Viene usato il margin più grande (non si sommano!)
+   - Solo margin verticali (top/bottom), non orizzontali
+   - Non succede con padding/border intermedi
+
+5. **DevTools per Visualizzare Box Model:**
+   - F12 o Ctrl+Shift+I (Windows/Linux)
+   - Cmd+Option+I (Mac)
+   - Diagramma visivo con colori: content (blu), padding (verde), border (giallo), margin (arancione)
+
+**Struttura Pedagogica Applicata:**
+- ✅ Diagramma Box Model visivo a 4 livelli (matrioska CSS)
+- ✅ Grid 2x2 per i 4 livelli con spiegazioni colorate
+- ✅ **6 LessonPreview interattivi** con box model in azione
+- ✅ Confronto visivo content-box vs border-box (grid 2 colonne)
+- ✅ Spiegazione margin collapsing con esempi "aspettativa vs realtà"
+- ✅ Grid 3x2 per proprietà width/height (6 varianti)
+- ✅ Sezione DevTools con istruzioni multi-piattaforma
+- ✅ Card completa come esempio finale con tutti i concetti
+
+**Contenuti Pratici:**
+- ✅ Esempio 1: Box con tutti e 4 i livelli visibili
+- ✅ Esempio 2: Confronto box-sizing (content-box vs border-box)
+- ✅ Esempio 3: Contenitore responsive con max-width
+- ✅ Esempio 4: Margin collapsing visualizzato
+- ✅ Esempio 5: Card professionale con box model perfetto
+- ✅ Tutti gli esempi con HTML + CSS side-by-side
+
+**Esercizi e Sfide:**
+- ✅ **Exercise:** Layout a 3 colonne con box model (15 step)
+  - box-sizing: border-box applicato universalmente
+  - Container responsive con max-width
+  - 3 colonne inline-block con width percentuale
+  - Padding, border, margin corretti
+  - Uso DevTools per verificare dimensioni
+  - Sperimentazione live con DevTools
+- ✅ **Challenge:** Dashboard completa con box model maestria (15 requisiti)
+  - Header fixed, sidebar fixed, main content, footer
+  - 6 card in grid 3x2
+  - Tutti gli elementi con dimensioni precise
+  - Uso consapevole margin collapsing (con commenti)
+  - max-width per responsive
+  - min-height per flessibilità
+  - Zero scroll orizzontale
+- ✅ **Checklist:** 15 punti auto-valutazione
+
+**Highlights Didattici Speciali:**
+- 📦 **Metafora Matrioska**: Box Model come scatole concentriche
+- 🎯 **Best Practice Universale**: `* { box-sizing: border-box; }`
+- 🔄 **Margin Collapsing Spiegato**: Con confronto aspettativa vs realtà
+- 🔍 **DevTools Come Alleato**: Guida completa all'uso del Box Model diagram
+- 📏 **Quando Usare Cosa**: max-width per responsive, min-height per flessibilità
+- 💡 **Trucco Pro**: Hover sui valori nei DevTools per evidenziarli live
+
+**Sezione Riepilogo Completa:**
+- ✅ **Riepilogo Selettori CSS (3 totali)**: elemento, .classe, #id
+- ✅ **Riepilogo Pseudo-classi (5)**: :link, :visited, :hover, :active, :focus
+- ✅ **Riepilogo Unità (6)**: px, %, em, rem, vw, vh
+- ✅ **Riepilogo Proprietà CSS (21 totali)**:
+  - Lezione 1-2: color, background-color, border
+  - Lezione 3: font-size, font-weight, text-align
+  - Lezione 4: padding, margin, width
+  - Lezione 5: font-family, font-style, text-decoration, text-transform, letter-spacing, word-spacing
+  - Lezione 6: cursor, transition
+  - **Lezione 7 (3 NUOVE)**: box-sizing, max-width, min-height ✨
+- ✅ **Preview Prossima Lezione**: Bordi e Sfondi - border-radius, background-image, gradienti!
+
+**Principi Pedagogici Applicati:**
+- ✅ Metafora visiva efficace (matrioska per livelli concentrici)
+- ✅ Diagrammi colorati per comprensione immediata
+- ✅ Confronti "aspettativa vs realtà" per concetti controintuitivi
+- ✅ DevTools integrato nella lezione come strumento di apprendimento
+- ✅ Best practice insegnata subito (box-sizing: border-box)
+- ✅ Progressione: semplice → complesso → caso d'uso reale
+
+### File Creati/Modificati
+1. `/app/moduli/modulo-2-css/lezione-7-box-model/page.tsx` - Lezione completa (1300+ righe)
+2. `/lib/moduli.ts` - Aggiunta Lezione 7 al Modulo 2
+
+### Commit Sessione 11
+- Da committare: Feature: Lezione 7 CSS - Box Model completa
+
+### Stato Modulo 2 CSS
+**Progresso:** 7/17 lezioni implementate (41%)
+- ✅ Lezione 1: Il Primo Stile
+- ✅ Lezione 2: Selettore Elemento + Colori
+- ✅ Lezione 3: Classi + Dimensioni Testo
+- ✅ Lezione 4: ID + Spaziatura Base
+- ✅ Lezione 5: Font e Decorazioni Testo
+- ✅ Lezione 6: Link Interattivi e :hover + Unità
+- ✅ Lezione 7: Box Model (NUOVA - FONDAMENTALE)
+- ⏳ Lezione 8: Bordi e Sfondi (prossima)
+- ⏳ Lezioni 9-17: Da creare
+
+### Deployment
+- ⏳ Build locale da testare
+- ⏳ Commit da pushare su GitHub
+- ⏳ Vercel deploy dopo push
+
+### Principi Pedagogici Applicati Sessione 11
+1. ✅ **Fondamentali Prima**: Box Model è IL concetto più importante, insegnato con cura
+2. ✅ **Visualizzazione**: Diagrammi colorati a 4 livelli per comprensione immediata
+3. ✅ **Tool Integration**: DevTools insegnato come parte dell'apprendimento
+4. ✅ **Best Practice Immediate**: box-sizing: border-box dall'inizio
+5. ✅ **Confronti Efficaci**: Aspettativa vs realtà per margin collapsing
+6. ✅ **Metafore Potenti**: Matrioska russa per livelli concentrici
+
+---
+
+## 📅 CHANGELOG SESSIONE 10 (29 Ottobre 2025)
+
+### Nuova Lezione Creata - Lezione 6 CSS: Link Interattivi e :hover + Unità Responsive
+
+**Creazione Completa (Commit `19f3e9e`):**
+- ✅ **1100+ righe** di contenuto didattico
+- ✅ **Durata:** 1.5 ore
+- ✅ **Difficoltà:** Media
+- ✅ Aggiunta a `lib/moduli.ts` per navigazione sidebar
+
+**Argomenti Insegnati - Parte 1: Pseudo-classi CSS (5 nuove):**
+1. **:link** - Link non ancora visitato (stato default)
+2. **:visited** - Link già visitato (da cronologia browser)
+3. **:hover** - Mouse passa sopra l'elemento (effetti interattivi) ✨
+4. **:active** - Elemento nel momento del click
+5. **:focus** - Elemento selezionato con Tab (accessibilità keyboard)
+
+**Argomenti Insegnati - Parte 2: Unità di Misura Responsive (6 unità):**
+1. **px** - Pixel assoluti (dimensione fissa)
+2. **%** - Percentuale relativa al genitore ✨
+3. **em** - Relativa al font-size del genitore ✨
+4. **rem** - Relativa al font-size della radice (html) ✨
+5. **vw** - Viewport Width (% larghezza schermo) ✨
+6. **vh** - Viewport Height (% altezza schermo) ✨
+
+**Argomenti Insegnati - Parte 3: Proprietà Aggiuntive:**
+- **cursor** - Cambiare aspetto puntatore mouse (pointer, help, wait, move, not-allowed)
+- **transition** - Effetti smooth e graduali (durata, proprietà)
+- Applicazione :hover su qualsiasi elemento (non solo link!)
+
+**Struttura Pedagogica Applicata:**
+- ✅ Grid 2x2 pseudo-classi principali (link, visited, hover, active)
+- ✅ Box speciale :focus per accessibilità
+- ✅ **Trucco mnemonico**: LoVe HAte per ordine corretto pseudo-classi
+- ✅ Grid 3x2 unità di misura con emoji e spiegazioni
+- ✅ **7 LessonPreview interattivi** con effetti hover funzionanti
+- ✅ Comparazione px vs % vs em vs rem vs vw/vh
+- ✅ Box cursor con 6 tipi di puntatore
+- ✅ Grid 2 colonne: Best Practice vs Errori da Evitare
+
+**Contenuti Pratici:**
+- ✅ Esempio 1: Link con hover semplice (colore + background)
+- ✅ Esempio 2: Link con tutte e 5 le pseudo-classi
+- ✅ Esempio 3: Box cliccabile con cursor: pointer
+- ✅ Esempio 4: Confronto unità (16px vs 1rem vs 1.5rem vs 50% vs 20vw)
+- ✅ Esempio 5: Link con transition smooth (0.3s)
+- ✅ Esempio 6: Card interattiva con hover completo
+- ✅ Tutti gli esempi con HTML + CSS side-by-side
+
+**Esercizi e Sfide:**
+- ✅ **Exercise:** Menu navigazione interattivo (15 step)
+  - Nav con 5 link, background colorato
+  - Tutti gli stati hover/active/focus
+  - Transition 0.3s smooth
+  - H1 con font-size 3rem
+  - Card con padding 2em e width 30%
+  - Hover su card con effetti
+- ✅ **Challenge:** Portfolio interattivo completo (14 requisiti)
+  - Header responsive con rem
+  - 6 card con width percentuale
+  - 3 box con width in vw
+  - Tutti gli effetti hover diversi
+  - Footer 10vh
+  - Cursor personalizzati
+  - Focus per accessibilità
+- ✅ **Checklist:** 15 punti auto-valutazione
+
+**Highlights Didattici Speciali:**
+- 🎯 **Ordine LoVe HAte**: Metodo mnemonico per ricordare ordine pseudo-classi
+- 📱 **Mobile-first thinking**: Nota che hover non funziona su touch
+- ♿ **Accessibilità**: Importanza di :focus per navigazione keyboard
+- 🎬 **Transizioni**: Introduzione a effetti smooth (0.2-0.3s ideale)
+- 📏 **Quando usare quale unità**: Guida pratica per ogni caso d'uso
+- 🖱️ **UX dei cursori**: Quando cambiare cursor per feedback utente
+
+**Sezione Riepilogo Completa:**
+- ✅ **Riepilogo Selettori CSS (3 totali)**: elemento, .classe, #id
+- ✅ **Riepilogo Pseudo-classi (5 NUOVE)**: :link, :visited, :hover, :active, :focus ✨
+- ✅ **Riepilogo Unità (6 NUOVE)**: px, %, em, rem, vw, vh ✨
+- ✅ **Riepilogo Proprietà CSS (18 totali)**:
+  - Lezione 1-2: color, background-color, border
+  - Lezione 3: font-size, font-weight, text-align
+  - Lezione 4: padding, margin, width
+  - Lezione 5: font-family, font-style, text-decoration, text-transform, letter-spacing, word-spacing
+  - **Lezione 6 (2 NUOVE)**: cursor, transition ✨
+- ✅ **Preview Prossima Lezione**: Box Model - il concetto più importante del CSS!
+
+**Principi UX e Best Practice:**
+- ✅ Sempre aggiungere transition per effetti smooth
+- ✅ Durata ideale: 0.2s - 0.3s (non troppo lento)
+- ✅ cursor: pointer su elementi cliccabili
+- ✅ Mai rimuovere :focus (accessibilità!)
+- ✅ Testare su mobile (hover non funziona su touch)
+- ✅ Evitare cambi troppo drastici (disorientano)
+- ✅ Non cambiare posizione elementi al hover
+
+### File Creati/Modificati
+1. `/app/moduli/modulo-2-css/lezione-6-hover-unita/page.tsx` - Lezione completa (1100+ righe)
+2. `/lib/moduli.ts` - Aggiunta Lezione 6 al Modulo 2
+
+### Commit Sessione 10
+- `19f3e9e` - Feature: Lezione 6 CSS completa (hover + unità responsive)
+
+### Stato Modulo 2 CSS
+**Progresso:** 6/17 lezioni implementate (35%)
+- ✅ Lezione 1: Il Primo Stile
+- ✅ Lezione 2: Selettore Elemento + Colori
+- ✅ Lezione 3: Classi + Dimensioni Testo
+- ✅ Lezione 4: ID + Spaziatura Base
+- ✅ Lezione 5: Font e Decorazioni Testo
+- ✅ Lezione 6: Link Interattivi e :hover + Unità (NUOVA)
+- ⏳ Lezione 7: Box Model (prossima)
+- ⏳ Lezioni 8-17: Da creare
+
+### Deployment
+- ✅ Commit pushato su GitHub
+- ✅ Vercel deploy in corso...
+- ✅ Lezione 6 CSS pronta per il test
+
+### Principi Pedagogici Applicati Sessione 10
+1. ✅ **Interattività Immediata**: Tutti i LessonPreview hanno effetti hover funzionanti
+2. ✅ **Progressive Enhancement**: Da hover semplice → complesso → transizioni
+3. ✅ **Responsive First**: Unità responsive insegnate presto per buone abitudini
+4. ✅ **Accessibilità**: :focus spiegato come parte fondamentale, non optional
+5. ✅ **UX Awareness**: Best practice e errori comuni per sviluppare sensibilità
+6. ✅ **Memoria Facilitata**: LoVe HAte come trucco mnemonico
+
+---
+
+## 📅 CHANGELOG SESSIONE 9 (29 Ottobre 2025)
+
+### Nuova Lezione Creata - Lezione 5 CSS: Font e Decorazioni Testo
+
+**Creazione Completa (Commit `80850c9`):**
+- ✅ **1000+ righe** di contenuto didattico
+- ✅ **Durata:** 1.5 ore
+- ✅ **Difficoltà:** Facile
+- ✅ Aggiunta a `lib/moduli.ts` per navigazione sidebar
+
+**Argomenti Insegnati (6 nuove proprietà CSS):**
+1. **font-family** - Cambiare tipo di carattere (web safe fonts)
+   - Sans-Serif: Arial, Helvetica, Verdana, Tahoma
+   - Serif: Times New Roman, Georgia, Garamond
+   - Monospace: Courier New, Monaco
+   - Corsivi: Comic Sans MS, Brush Script MT
+2. **font-style** - Corsivo (italic, normal, oblique)
+3. **text-decoration** - Sottolineature (underline, line-through, none, overline)
+4. **text-transform** - Maiuscole/minuscole (uppercase, lowercase, capitalize)
+5. **letter-spacing** - Spazio tra lettere
+6. **word-spacing** - Spazio tra parole
+
+**Struttura Pedagogica Applicata:**
+- ✅ Grid 2x2 web safe fonts (4 categorie con esempi)
+- ✅ **6 LessonPreview interattivi** con HTML renderizzato
+- ✅ **Layout side-by-side** HTML + CSS → Risultato
+- ✅ Box colorati per ogni proprietà con valori disponibili
+- ✅ Trucchi Pro:
+  - Link puliti con `text-decoration: none`
+  - Font con spazi tra virgolette
+  - Non esagerare con spacing (1-5px lettere, 5-15px parole)
+- ✅ Note importanti su web safe fonts e compatibilità
+
+**Esercizi e Sfide:**
+- ✅ **Exercise:** 12 step guidati - Stile tipografico articolo completo
+  - 5 classi diverse per titoli, sottotitoli, testo, citazioni, link
+  - Combinazione di font-family, font-size, font-style, color
+- ✅ **Challenge:** Catalogo tipografico con 6-8 sezioni
+  - Dimostrare TUTTE le proprietà imparate
+  - 3 font diversi, tutti gli stili, decorazioni, trasformazioni
+  - Esempi di letter-spacing e word-spacing
+- ✅ **Checklist:** 15 punti auto-valutazione
+
+**Sezione Riepilogo Completa:**
+- ✅ **Riepilogo Selettori CSS (3 totali)**: elemento, .classe, #id
+- ✅ **Riepilogo Proprietà CSS (15 totali)**:
+  - Lezione 1-2: color, background-color
+  - Lezione 2: border
+  - Lezione 3: font-size, font-weight, text-align
+  - Lezione 4: padding, margin, width
+  - **Lezione 5 (6 NUOVE)**: font-family, font-style, text-decoration, text-transform, letter-spacing, word-spacing ✨
+- ✅ **Preview Prossima Lezione**: :hover e unità responsive
+
+### Miglioramento Pedagogico Fondamentale - HTML vs CSS
+
+**Problema Identificato dall'Utente (Commit `0952753`):**
+> "Gli allievi potrebbero chiedersi perché alcuni stili come grassetto, corsivo e sottolineato
+> siano presenti sia in HTML che in CSS e sarebbe bene spiegare la differenza"
+
+**Nuova Sezione Completa: "HTML vs CSS: Quando Usare Cosa?" (200+ righe)**
+
+**1. Grid Comparativa 2x2:**
+- **📝 HTML - Significato (Semantica)**
+  - `<strong>` = Importante (screen reader voce forte)
+  - `<em>` = Enfatizzato (screen reader intonazione diversa)
+  - `<del>` = Cancellato/Rimosso
+  - **Pro:** Accessibilità, SEO, Semantica chiara
+
+- **🎨 CSS - Aspetto (Stile)**
+  - `font-weight: bold` = Grassetto visivo
+  - `font-style: italic` = Corsivo visivo
+  - `text-decoration: line-through` = Decorazione
+  - **Pro:** Controllo totale, Flessibilità, Separazione concerns
+
+**2. Quando Usare Cosa (3 Casi Pratici):**
+1. ✅ **HTML** → Testo con significato speciale (avvisi, enfasi concettuale)
+2. ✅ **CSS** → Solo aspetto visivo (design, decorazione)
+3. ✅ **ENTRAMBI** → Best practice (semantica HTML + stile CSS personalizzato)
+
+**3. Esempio Comparativo Interattivo (LessonPreview):**
+- Solo HTML semantico
+- Solo CSS visuale
+- **HTML + CSS combinati (MEGLIO!)**
+
+**4. Regola Pratica Semplice:**
+> "Chiediti: Questo testo è importante per il SIGNIFICATO o solo per l'ASPETTO?"
+
+**Benefici Pedagogici:**
+- ✅ Chiarisce confusione comune tra `<strong>` e `font-weight: bold`
+- ✅ Insegna importanza accessibilità (screen reader)
+- ✅ Introduce concetto separazione concerns (HTML ≠ CSS)
+- ✅ Best practice: HTML semantico + CSS stile
+- ✅ Anticipa concetti avanzati (SEO, a11y)
+
+### Fix UX - Leggibilità Sezione "Quando Usare Cosa" (Commit `5c820d7`)
+
+**Problema Segnalato dall'Utente:**
+> "Il riquadro quando usare cosa non si capisce niente, c'è del codice a destra
+> ma non si vede nessun testo a sinistra"
+
+**Causa:**
+- ❌ Testo bianco su sfondo bianco trasparente (`bg-white bg-opacity-20`) = invisibile
+- ❌ `CodeExample` causava problemi di layout nel grid
+
+**Soluzioni Implementate:**
+
+**1. Box Completamente Ridisegnati:**
+- ✅ `bg-white` opaco invece di trasparente
+- ✅ `text-gray-800` scuro invece di `text-white`
+- ✅ Testo ora perfettamente leggibile
+
+**2. Codice Ristrutturato:**
+- ✅ Rimosso componente `CodeExample` problematico
+- ✅ Usato `<pre><code>` custom con sfondo `bg-gray-800`
+- ✅ Etichette "HTML:", "CSS:", "HTML + CSS:" in grigio
+- ✅ `overflow-x-auto` per codice lungo
+
+**3. Miglioramenti Visivi:**
+- ✅ Colori distintivi per ogni caso:
+  - 🟢 Verde per HTML semantico (`text-green-700`)
+  - 🟣 Viola per CSS visuale (`text-purple-700`)
+  - 🔵 Blu per best practice (`text-blue-700`)
+- ✅ Tag HTML evidenziati con `bg-green-100`
+- ✅ Border e spacing migliorati
+- ✅ Contrasto perfetto tra testo e sfondo
+
+**Risultato:**
+- ✅ Sezione completamente leggibile e chiara
+- ✅ Layout stabile senza overflow
+- ✅ Esperienza utente ottimale
+
+### File Creati/Modificati
+1. `/lib/moduli.ts` - Aggiunta Lezione 5 al Modulo 2
+2. `/app/moduli/modulo-2-css/lezione-5-font-decorazioni/page.tsx` - Lezione completa (1200+ righe finali)
+3. `/PROGETTO_LOG.md` - Aggiornato con Sessione 9
+
+### Commit Totali Sessione 9
+- `80850c9` - Feature: Creata Lezione 5 CSS completa (1000+ righe)
+- `0952753` - Feature: Aggiunta sezione HTML vs CSS (200+ righe)
+- `5c820d7` - Fix: Migliorata leggibilità sezione "Quando Usare Cosa"
+
+### Stato Modulo 2 CSS
+**Progresso:** 5/17 lezioni implementate (29%)
+- ✅ Lezione 1: Il Primo Stile
+- ✅ Lezione 2: Selettore Elemento + Colori
+- ✅ Lezione 3: Classi + Dimensioni Testo
+- ✅ Lezione 4: ID + Spaziatura Base
+- ✅ Lezione 5: Font e Decorazioni Testo (NUOVA + sezione HTML vs CSS)
+- ⏳ Lezione 6: Link Interattivi e :hover (prossima)
+- ⏳ Lezioni 7-17: Da creare
+
+### Deployment
+- ✅ Build Vercel: Pronto per deploy
+- ✅ TypeScript validation: PASSED
+- ✅ Nessun errore di runtime
+- ✅ Lezione 5 CSS pronta per il deploy
+
+### Principi Pedagogici Applicati Sessione 9
+1. ✅ **Anticipare Domande**: Risposta proattiva a "Perché HTML E CSS per stesso effetto?"
+2. ✅ **Accessibilità come Valore**: Spiegare importanza screen reader e SEO
+3. ✅ **Best Practice sin dall'Inizio**: HTML semantico + CSS stile
+4. ✅ **UX del Materiale Didattico**: Fix immediato di problemi di leggibilità
+5. ✅ **Completezza**: 6 proprietà CSS + sezione bonus da 200 righe
 
 ---
 

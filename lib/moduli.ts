@@ -212,6 +212,13 @@ export const moduli: Modulo[] = [
         durata: "1.5 ore",
         difficolta: "media",
       },
+      {
+        id: "7",
+        titolo: "Box Model",
+        slug: "lezione-7-box-model",
+        durata: "2 ore",
+        difficolta: "media",
+      },
     ],
   },
   {
