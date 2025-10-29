@@ -1005,6 +1005,20 @@ background: #3498DB;`}
         />
       </section>
 
+      {/* Nota prima dell'esercizio */}
+      <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
+        <h3 className="font-bold text-blue-800 mb-3">💡 Nota sul Layout delle Card</h3>
+        <p className="mb-3">
+          In questo esercizio le card saranno <strong>verticali</strong> (una sotto l&apos;altra), perché i <code className="bg-blue-100 px-2 py-1 rounded">div</code> di default hanno <code className="bg-blue-100 px-2 py-1 rounded">display: block</code>.
+        </p>
+        <p className="mb-3">
+          Questo è il comportamento normale! I blocchi vanno automaticamente a capo.
+        </p>
+        <p className="font-bold text-blue-700">
+          🚀 Nella <strong>prossima lezione</strong> imparerai come affiancarle orizzontalmente con <code className="bg-blue-100 px-2 py-1 rounded">display: inline-block</code> e altre tecniche!
+        </p>
+      </div>
+
       {/* Esercizio */}
       <Exercise
         title="Crea una Pagina Portfolio con Bordi e Sfondi"
@@ -1015,22 +1029,35 @@ background: #3498DB;`}
           'Hero section: background-image, background-size: cover, height 400px, border-radius 15px',
           'Hero: aggiungi h1 e p centrati con text-shadow per leggibilità',
           'Sezione "Chi Sono": box con border 3px dashed, border-radius 10px, padding 30px',
-          'Sezione "Progetti": 3 card con border-radius 12px',
-          'Ogni card: immagine di sfondo in alto (height 150px, background-size: cover)',
-          'Card: padding 20px nella parte contenuto, border 2px solid #E0E0E0',
-          'Bottone in ogni card: border-radius 25px (pillola), background colorato',
+          'Sezione "Progetti": crea 3 div.card (una sotto l\'altra - verticali)',
+          'Ogni card: width 100% o max-width 600px, margin-bottom 20px per separarle',
+          'Ogni card: border-radius 12px, border 2px solid #E0E0E0',
+          'Card: div superiore per immagine di sfondo (height 150px, background-size: cover)',
+          'Card: div inferiore per contenuto (padding 20px, h3 titolo, p descrizione)',
+          'Bottone in ogni card: border-radius 25px (pillola), background colorato, padding 10px 20px',
           'Footer: border-top 5px solid con colore a scelta',
           'Aggiungi :hover su tutte le card (border-color cambia)',
-          'Testa con Live Server',
+          'Testa con Live Server - le card saranno verticali (è corretto!)',
           'Apri DevTools e verifica che tutti i border-radius siano applicati',
           'Sperimenta cambiando i valori di border-radius (5px, 20px, 50%)'
         ]}
       />
 
+      {/* Nota prima della Challenge */}
+      <div className="bg-purple-50 border-l-4 border-purple-500 p-6 mb-8">
+        <h3 className="font-bold text-purple-800 mb-3">📚 Nota sul Layout Verticale</h3>
+        <p className="mb-3">
+          Le 5 sezioni della challenge saranno <strong>verticali</strong> (una sotto l&apos;altra) - perfetto per lo scrolling e l&apos;effetto parallasse!
+        </p>
+        <p className="text-sm text-purple-700">
+          I div hanno <code className="bg-purple-100 px-2 py-1 rounded">display: block</code> di default, quindi si impilano verticalmente. Questo è esattamente ciò che vogliamo per una pagina con scroll!
+        </p>
+      </div>
+
       {/* Sfida */}
       <Challenge
         title="Sito Multi-Sezione con Effetti Parallasse"
-        description="Crea un sito con 5 sezioni alternate: testo → immagine fissa → testo → immagine fissa → testo"
+        description="Crea un sito con 5 sezioni alternate (verticali): testo → immagine fissa → testo → immagine fissa → testo"
         requirements={[
           'Crea 5 sezioni in totale',
           'Sezioni 1, 3, 5: Testo normale con background-color e padding generoso',
