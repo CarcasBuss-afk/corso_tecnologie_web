@@ -1,15 +1,15 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 29 Ottobre 2025 - Sessione 11 Fix
+**Ultimo aggiornamento:** 29 Ottobre 2025 - Sessione 11 Miglioramenti
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
 
 ---
 
-## 📅 CHANGELOG SESSIONE 11 (29 Ottobre 2025) - Parte 3 (FIX)
+## 📅 CHANGELOG SESSIONE 11 (29 Ottobre 2025) - Parte 3 (FIX E MIGLIORAMENTI)
 
-### Fix Visibilità Testo - Lezione 7 CSS: Box Model
+### 1. Fix Visibilità Testo - Lezione 7 CSS: Box Model
 
 **Problema Segnalato dall'Utente:**
 - ❌ Nella sezione "Quando Usare Cosa?" (riquadro verde) i riquadri bianchi avevano testo illeggibile
@@ -21,10 +21,36 @@
 - ✅ Aggiunto `text-gray-800` ai paragrafi nei riquadri bianchi
 - ✅ Mantenuto `text-white` esplicito per i tag `<code>` (sfondo nero)
 
-**File Modificato:**
-- `app/moduli/modulo-2-css/lezione-7-box-model/page.tsx` (linee 396-415)
-
 **Commit:** `b3e3802` - Fix: Risolto problema visibilità testo in Lezione 7 Box Model
+
+### 2. Miglioramenti Didattici - Lezione 7 CSS: Box Model
+
+**Problemi Identificati dall'Utente:**
+- ❌ Termine "responsive" usato senza spiegazione
+- ❌ Sezione box-sizing spiegata teoricamente ma senza output visivo
+
+**Miglioramenti Implementati:**
+
+**A) Spiegazione del termine "Responsive"**
+- ✅ Aggiunto box informativo blu prima della grid width/height
+- ✅ Definizione: "Un sito responsive si adatta automaticamente alle dimensioni dello schermo"
+- ✅ Esempi visivi: smartphone (stretto) → tablet (medio) → desktop (largo)
+- ✅ Statistica: "oltre il 60% degli utenti naviga da mobile"
+- ✅ Ora gli studenti capiscono il concetto prima di usare max-width
+
+**B) Demo Visivo border-box vs content-box**
+- ✅ Aggiunto LessonPreview interattivo dopo il confronto testuale
+- ✅ Due box side-by-side:
+  - Box rosso (content-box): width 200px → larghezza totale 250px (padding/border aggiunti fuori)
+  - Box verde (border-box): width 200px → larghezza totale 200px (padding/border inclusi)
+- ✅ Etichette con calcoli espliciti sotto ogni box
+- ✅ Nota finale gialla: "entrambi hanno width: 200px, ma il box rosso è più largo!"
+- ✅ Gli studenti VEDONO la differenza reale, non solo teoria
+
+**File Modificato:**
+- `app/moduli/modulo-2-css/lezione-7-box-model/page.tsx` (+89 righe)
+
+**Commit:** `af49c0a` - Feature: Migliorata Lezione 7 - Spiegazione responsive + Demo visivo box-sizing
 
 ---
 
