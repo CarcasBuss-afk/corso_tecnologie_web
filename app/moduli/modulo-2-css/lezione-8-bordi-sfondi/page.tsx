@@ -1005,24 +1005,11 @@ background: #3498DB;`}
         />
       </section>
 
-      {/* Nota prima dell'esercizio */}
-      <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
-        <h3 className="font-bold text-blue-800 mb-3">💡 Nota sul Layout delle Card</h3>
-        <p className="mb-3">
-          In questo esercizio le card saranno <strong>verticali</strong> (una sotto l&apos;altra), perché i <code className="bg-blue-100 px-2 py-1 rounded">div</code> di default hanno <code className="bg-blue-100 px-2 py-1 rounded">display: block</code>.
-        </p>
-        <p className="mb-3">
-          Questo è il comportamento normale! I blocchi vanno automaticamente a capo.
-        </p>
-        <p className="font-bold text-blue-700">
-          🚀 Nella <strong>prossima lezione</strong> imparerai come affiancarle orizzontalmente con <code className="bg-blue-100 px-2 py-1 rounded">display: inline-block</code> e altre tecniche!
-        </p>
-      </div>
-
       {/* Esercizio */}
       <Exercise
         title="Crea una Pagina Portfolio con Bordi e Sfondi"
         steps={[
+          '📝 NOTA IMPORTANTE: Le 3 card saranno VERTICALI (una sotto l\'altra) perché i div hanno display: block di default. Questo è corretto! Nella prossima lezione (Lezione 9) imparerai come affiancarle orizzontalmente.',
           'Crea una cartella "portfolio-bordi" in VS Code',
           'Crea index.html con struttura base',
           'Crea style.css con box-sizing: border-box universale',
@@ -1043,22 +1030,12 @@ background: #3498DB;`}
         ]}
       />
 
-      {/* Nota prima della Challenge */}
-      <div className="bg-purple-50 border-l-4 border-purple-500 p-6 mb-8">
-        <h3 className="font-bold text-purple-800 mb-3">📚 Nota sul Layout Verticale</h3>
-        <p className="mb-3">
-          Le 5 sezioni della challenge saranno <strong>verticali</strong> (una sotto l&apos;altra) - perfetto per lo scrolling e l&apos;effetto parallasse!
-        </p>
-        <p className="text-sm text-purple-700">
-          I div hanno <code className="bg-purple-100 px-2 py-1 rounded">display: block</code> di default, quindi si impilano verticalmente. Questo è esattamente ciò che vogliamo per una pagina con scroll!
-        </p>
-      </div>
-
       {/* Sfida */}
       <Challenge
         title="Sito Multi-Sezione con Effetti Parallasse"
-        description="Crea un sito con 5 sezioni alternate (verticali): testo → immagine fissa → testo → immagine fissa → testo"
+        description="Crea un sito con 5 sezioni alternate (verticali, una sotto l'altra): testo → immagine fissa → testo → immagine fissa → testo. Le sezioni saranno verticali perché i div hanno display: block - perfetto per lo scroll e l'effetto parallasse!"
         requirements={[
+          '📝 NOTA: Le 5 sezioni saranno VERTICALI (una sotto l\'altra) - questo è il layout corretto per pagine con scroll. I div hanno display: block di default.',
           'Crea 5 sezioni in totale',
           'Sezioni 1, 3, 5: Testo normale con background-color e padding generoso',
           'Sezioni 2, 4: Immagini con background-attachment: fixed (parallax)',
