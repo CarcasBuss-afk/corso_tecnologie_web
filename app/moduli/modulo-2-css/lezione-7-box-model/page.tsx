@@ -393,24 +393,24 @@ width: 200px;
           <h3 className="font-bold text-xl mb-3">🎯 Quando Usare Cosa?</h3>
           <div className="grid md:grid-cols-2 gap-4">
             <div className="bg-white bg-opacity-20 p-4 rounded">
-              <p className="font-bold mb-2">✅ max-width (CONSIGLIATO)</p>
-              <p className="text-sm">Usa per contenitori responsive:</p>
-              <code className="text-xs bg-black bg-opacity-30 px-2 py-1 rounded block mt-2">
+              <p className="font-bold mb-2 text-gray-900">✅ max-width (CONSIGLIATO)</p>
+              <p className="text-sm text-gray-800">Usa per contenitori responsive:</p>
+              <code className="text-xs bg-black bg-opacity-30 px-2 py-1 rounded block mt-2 text-white">
                 width: 90%;<br/>
                 max-width: 1200px;
               </code>
-              <p className="text-xs mt-2">
+              <p className="text-xs mt-2 text-gray-800">
                 Si restringe su mobile, max 1200px su desktop!
               </p>
             </div>
 
             <div className="bg-white bg-opacity-20 p-4 rounded">
-              <p className="font-bold mb-2">✅ min-height</p>
-              <p className="text-sm">Per sezioni con altezza flessibile:</p>
-              <code className="text-xs bg-black bg-opacity-30 px-2 py-1 rounded block mt-2">
+              <p className="font-bold mb-2 text-gray-900">✅ min-height</p>
+              <p className="text-sm text-gray-800">Per sezioni con altezza flessibile:</p>
+              <code className="text-xs bg-black bg-opacity-30 px-2 py-1 rounded block mt-2 text-white">
                 min-height: 300px;
               </code>
-              <p className="text-xs mt-2">
+              <p className="text-xs mt-2 text-gray-800">
                 Minimo 300px, ma cresce se il contenuto è più lungo
               </p>
             </div>
