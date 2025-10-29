@@ -710,67 +710,62 @@ export default function Lezione5FontDecorazioni() {
           <h3 className="text-xl font-bold mb-4">📚 Quando Usare Cosa?</h3>
 
           <div className="space-y-4">
-            <div className="bg-white bg-opacity-20 p-4 rounded">
-              <p className="font-bold mb-2">1️⃣ Usa HTML quando il testo ha SIGNIFICATO speciale</p>
-              <div className="grid md:grid-cols-2 gap-3 text-sm">
+            <div className="bg-white p-4 rounded-lg text-gray-800">
+              <p className="font-bold mb-3 text-lg">1️⃣ Usa HTML quando il testo ha SIGNIFICATO speciale</p>
+              <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <p className="font-bold text-yellow-200">✅ Esempi:</p>
-                  <ul className="ml-4 space-y-1">
-                    <li>&lt;strong&gt; per avvisi importanti</li>
-                    <li>&lt;em&gt; per enfasi concettuale</li>
-                    <li>&lt;del&gt; per prezzi vecchi, info rimosse</li>
+                  <p className="font-bold text-green-700 mb-2">✅ Esempi:</p>
+                  <ul className="ml-4 space-y-1 text-sm">
+                    <li>• <code className="bg-green-100 px-2 py-1 rounded">&lt;strong&gt;</code> per avvisi importanti</li>
+                    <li>• <code className="bg-green-100 px-2 py-1 rounded">&lt;em&gt;</code> per enfasi concettuale</li>
+                    <li>• <code className="bg-green-100 px-2 py-1 rounded">&lt;del&gt;</code> per prezzi vecchi, info rimosse</li>
                   </ul>
                 </div>
-                <div>
-                  <CodeExample
-                    language="html"
-                    code={`<p>
+                <div className="bg-gray-50 p-3 rounded border border-gray-200">
+                  <p className="text-xs font-bold text-gray-600 mb-2">HTML:</p>
+                  <pre className="text-xs bg-gray-800 text-white p-3 rounded overflow-x-auto"><code>{`<p>
   <strong>Attenzione!</strong>
   Questo è importante.
-</p>`}
-                  />
+</p>`}</code></pre>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white bg-opacity-20 p-4 rounded">
-              <p className="font-bold mb-2">2️⃣ Usa CSS quando vuoi SOLO cambiare l&apos;aspetto</p>
-              <div className="grid md:grid-cols-2 gap-3 text-sm">
+            <div className="bg-white p-4 rounded-lg text-gray-800">
+              <p className="font-bold mb-3 text-lg">2️⃣ Usa CSS quando vuoi SOLO cambiare l&apos;aspetto</p>
+              <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <p className="font-bold text-yellow-200">✅ Esempi:</p>
-                  <ul className="ml-4 space-y-1">
-                    <li>Titoli decorativi in grassetto</li>
-                    <li>Citazioni in corsivo per stile</li>
-                    <li>Link senza sottolineatura</li>
+                  <p className="font-bold text-purple-700 mb-2">✅ Esempi:</p>
+                  <ul className="ml-4 space-y-1 text-sm">
+                    <li>• Titoli decorativi in grassetto</li>
+                    <li>• Citazioni in corsivo per stile</li>
+                    <li>• Link senza sottolineatura</li>
                   </ul>
                 </div>
-                <div>
-                  <CodeExample
-                    language="css"
-                    code={`.titolo-decorativo {
+                <div className="bg-gray-50 p-3 rounded border border-gray-200">
+                  <p className="text-xs font-bold text-gray-600 mb-2">CSS:</p>
+                  <pre className="text-xs bg-gray-800 text-white p-3 rounded overflow-x-auto"><code>{`.titolo-decorativo {
   font-weight: bold;
   font-style: italic;
-}`}
-                  />
+}`}</code></pre>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white bg-opacity-20 p-4 rounded">
-              <p className="font-bold mb-2">3️⃣ Usa ENTRAMBI per il massimo controllo!</p>
-              <div className="grid md:grid-cols-2 gap-3 text-sm">
+            <div className="bg-white p-4 rounded-lg text-gray-800">
+              <p className="font-bold mb-3 text-lg">3️⃣ Usa ENTRAMBI per il massimo controllo!</p>
+              <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <p className="font-bold text-yellow-200">✅ Best Practice:</p>
-                  <ul className="ml-4 space-y-1">
-                    <li>HTML per la semantica</li>
-                    <li>CSS per personalizzare lo stile</li>
-                    <li>Accessibilità + Design perfetto</li>
+                  <p className="font-bold text-blue-700 mb-2">✅ Best Practice:</p>
+                  <ul className="ml-4 space-y-1 text-sm">
+                    <li>• HTML per la semantica</li>
+                    <li>• CSS per personalizzare lo stile</li>
+                    <li>• Accessibilità + Design perfetto</li>
                   </ul>
                 </div>
-                <div>
-                  <CodeExample
-                    language="html"
-                    code={`<!-- HTML semantico -->
+                <div className="bg-gray-50 p-3 rounded border border-gray-200">
+                  <p className="text-xs font-bold text-gray-600 mb-2">HTML + CSS:</p>
+                  <pre className="text-xs bg-gray-800 text-white p-3 rounded overflow-x-auto"><code>{`<!-- HTML semantico -->
 <strong class="avviso">
   Pericolo!
 </strong>
@@ -779,8 +774,7 @@ export default function Lezione5FontDecorazioni() {
 .avviso {
   color: red;
   font-size: 20px;
-}`}
-                  />
+}`}</code></pre>
                 </div>
               </div>
             </div>
