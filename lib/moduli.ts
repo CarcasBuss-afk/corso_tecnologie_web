@@ -205,6 +205,13 @@ export const moduli: Modulo[] = [
         durata: "1.5 ore",
         difficolta: "facile",
       },
+      {
+        id: "6",
+        titolo: "Link Interattivi e :hover + Unità",
+        slug: "lezione-6-hover-unita",
+        durata: "1.5 ore",
+        difficolta: "media",
+      },
     ],
   },
   {
