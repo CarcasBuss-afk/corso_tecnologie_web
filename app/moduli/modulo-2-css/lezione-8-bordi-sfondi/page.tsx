@@ -971,21 +971,53 @@ background-position: 20px 40px;  /* pixel precisi */`}
         </div>
       </section>
 
+      {/* Box di Transizione - Il Problema */}
+      <section className="mb-12">
+        <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 mb-6">
+          <h3 className="font-bold text-yellow-800 mb-3">🤔 Troppe Righe da Scrivere!</h3>
+          <p className="mb-3">
+            Guarda quante righe dobbiamo scrivere per uno sfondo completo:
+          </p>
+          <CodeExample
+            language="css"
+            code={`.hero {
+  background-image: url('foto.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* 5 righe ogni volta! 😓 */`}
+          />
+          <p className="mt-4 mb-2 font-bold text-yellow-700">
+            💡 Ti ricordi la shorthand di <code className="bg-yellow-100 px-2 py-1 rounded">border</code>?
+          </p>
+          <p className="text-sm text-gray-700">
+            Anche <code className="bg-yellow-100 px-2 py-1 rounded">background</code> ha la sua <strong>scorciatoia</strong>! Vediamola insieme.
+          </p>
+        </div>
+      </section>
+
       {/* Shorthand Concetto Generale */}
       <section className="mb-12">
-        <h2 className="text-3xl font-bold mb-6">⚡ Shorthand: Il Concetto Generale nel CSS</h2>
+        <h2 className="text-3xl font-bold mb-6">⚡ Shorthand background: Ancora Più Potente!</h2>
 
         <div className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white p-8 rounded-lg mb-6">
-          <h3 className="text-2xl font-bold mb-4">💡 Cosa Sono le Shorthand?</h3>
+          <h3 className="text-2xl font-bold mb-4">🔁 Ripassiamo: Cosa Sono le Shorthand?</h3>
           <p className="text-lg mb-4">
-            Le <strong>shorthand properties</strong> (proprietà scorciatoia) sono un modo per scrivere <strong>più proprietà CSS in una sola riga</strong>.
+            Hai già visto le <strong>shorthand</strong> con <code className="bg-black bg-opacity-20 px-2 py-1 rounded">border</code>!
+          </p>
+          <p className="text-lg mb-4">
+            Le <strong>shorthand properties</strong> sono un modo per scrivere <strong>più proprietà CSS in una sola riga</strong>.
           </p>
           <p className="text-lg font-bold">
-            Invece di scrivere 3-5 righe separate, ne scrivi una sola! ✨
+            ✅ border: 3 proprietà → 1 riga<br/>
+            ✅ background: fino a 8 proprietà → 1 riga! 🤯
           </p>
         </div>
 
-        <h3 className="text-xl font-bold mb-4">📚 Le Shorthand Viste Oggi</h3>
+        <h3 className="text-xl font-bold mb-4">📚 Confronto: border vs background</h3>
 
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <div className="bg-blue-50 border-l-4 border-blue-500 p-6">
