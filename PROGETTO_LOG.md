@@ -2566,3 +2566,24 @@ corso_tecnologie_web/
 **Commit:** `24b73eb` - Fix: Migliorato collegamento didattico tra border e background shorthand
 
 ---
+
+### 9. Fix Visibilità Testo - Lezione 8: Box "Regola d'Oro"
+
+**Problema Segnalato dall'Utente:**
+- ❌ Nel box verde "Il Concetto Generale delle Shorthand" il riquadro bianco interno aveva testo illeggibile
+- ❌ Testo bianco su sfondo bianco semi-trasparente (`bg-white bg-opacity-20`)
+- ❌ Stesso problema già risolto nella Lezione 7, ripetuto qui
+
+**Soluzione Implementata:**
+- ✅ Aggiunto `text-gray-900` al titolo "💡 Regola d'Oro:"
+- ✅ Aggiunto `text-gray-800` al paragrafo descrittivo
+- ✅ Ora perfettamente leggibile
+
+**File Modificato:**
+- `app/moduli/modulo-2-css/lezione-8-bordi-sfondi/page.tsx` (linee 1123-1124)
+
+**Commit:** `9a66c99` - Fix: Risolto problema visibilità testo in box bianco "Regola d'Oro"
+
+**Nota:** Stesso pattern di fix applicato con successo in Lezione 7. Potrebbe essere utile creare un componente riutilizzabile per questi box in futuro per evitare il problema.
+
+---
