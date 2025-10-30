@@ -2587,3 +2587,34 @@ corso_tecnologie_web/
 **Nota:** Stesso pattern di fix applicato con successo in Lezione 7. Potrebbe essere utile creare un componente riutilizzabile per questi box in futuro per evitare il problema.
 
 ---
+
+### 10. Rimozione Ombreggiature - Lezione 8: Coerenza Didattica
+
+**Problema Identificato dall'Utente:**
+- ❌ `text-shadow` e `box-shadow` usati negli esempi e demo
+- ❌ Proprietà NON ancora insegnate
+- ❌ Studenti vedono CSS senza spiegazione
+- ❌ Incoerenza: lezione su bordi/sfondi ma usa anche ombre
+
+**Ombreggiature Rimosse:**
+1. `text-shadow` da Hero demo (riga ~658)
+2. `text-shadow` da Hero section perfetta (riga ~890)
+3. `box-shadow` da Card prodotto professionale (riga ~1204)
+4. `text-shadow` da step Esercizio guidato (riga ~1279)
+5. `text-shadow` da step Challenge (riga ~1308)
+
+**Motivazione Didattica:**
+- ✅ Mantiene focus esclusivo su bordi e sfondi (argomento della lezione)
+- ✅ Non introduce concetti non spiegati
+- ✅ Coerenza: insegniamo solo ciò che è stato già spiegato
+- ✅ Le ombreggiature saranno insegnate in una lezione futura dedicata
+- ✅ Gli esempi rimangono visivamente chiari anche senza ombre
+
+**File Modificato:**
+- `app/moduli/modulo-2-css/lezione-8-bordi-sfondi/page.tsx` (-3 righe nette)
+
+**Commit:** `5b73305` - Refactor: Rimosse tutte le ombreggiature dalla Lezione 8
+
+**Principio Didattico:** "Insegna prima le basi, poi aggiungi decorazioni avanzate". Le ombreggiature sono effetti avanzati che meritano una spiegazione dedicata.
+
+---
