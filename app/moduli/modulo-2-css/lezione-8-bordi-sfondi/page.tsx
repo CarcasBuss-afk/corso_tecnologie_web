@@ -68,10 +68,10 @@ export default function Lezione8BordiSfondi() {
         <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-6">
           <h3 className="font-bold text-blue-700 mb-2">📌 Ti Ricordi?</h3>
           <p className="mb-2">
-            Nella <strong>Lezione 2</strong> hai già visto <code className="bg-blue-100 px-2 py-1 rounded">border</code> con lo stile base <code className="bg-blue-100 px-2 py-1 rounded">solid</code>.
+            Nella <strong>Lezione 2</strong> hai già visto <code className="bg-blue-100 px-2 py-1 rounded">border</code> con alcuni stili base: <code className="bg-blue-100 px-2 py-1 rounded">solid</code>, <code className="bg-blue-100 px-2 py-1 rounded">dashed</code>, <code className="bg-blue-100 px-2 py-1 rounded">dotted</code>.
           </p>
           <p className="font-bold text-blue-700">
-            Oggi approfondiamo: scoprirai <strong>tutti gli stili disponibili</strong> (dashed, dotted, double, groove, ridge) e come controllare ogni lato separatamente!
+            Oggi approfondiamo: scoprirai <strong>TUTTI gli stili disponibili</strong> (anche double, groove, ridge) e come controllare ogni lato separatamente!
           </p>
         </div>
 
@@ -86,10 +86,25 @@ export default function Lezione8BordiSfondi() {
             code={`border: width style color;
 
 /* Esempio: */
-border: 3px solid #3498DB;
-/*      ↑    ↑      ↑
-      larghezza  stile  colore */`}
+border: 3px solid #3498DB;`}
           />
+          <div className="mt-4 bg-white bg-opacity-20 p-4 rounded">
+            <p className="text-sm mb-3 font-bold">Anatomia del border:</p>
+            <div className="grid grid-cols-3 gap-3 text-center text-sm">
+              <div className="bg-blue-400 bg-opacity-70 p-3 rounded">
+                <div className="font-bold mb-1">3px</div>
+                <div className="text-xs">↑ larghezza</div>
+              </div>
+              <div className="bg-green-400 bg-opacity-70 p-3 rounded">
+                <div className="font-bold mb-1">solid</div>
+                <div className="text-xs">↑ stile</div>
+              </div>
+              <div className="bg-purple-400 bg-opacity-70 p-3 rounded">
+                <div className="font-bold mb-1">#3498DB</div>
+                <div className="text-xs">↑ colore</div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Grid Stili Bordo */}
