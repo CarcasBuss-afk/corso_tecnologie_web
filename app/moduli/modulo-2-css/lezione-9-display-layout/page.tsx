@@ -18,10 +18,18 @@ export default function Lezione9DisplayLayout() {
       lezioneTitolo="Display e Layout Base"
     >
       <LessonHeader
-        titolo="Display e Layout Base"
-        numeroLezione={9}
+        numero={9}
+        titolo="Display e Layout Base - Affiancare Elementi"
         durata="2 ore"
         difficolta="media"
+        obiettivi={[
+          'Capire cos\'è la proprietà display e il flusso del documento',
+          'Conoscere la differenza tra block, inline e inline-block',
+          'Affiancare elementi orizzontalmente con inline-block',
+          'Creare layout a 2-3 colonne con card',
+          'Usare display: none per nascondere elementi',
+          'Applicare vertical-align per allineare elementi',
+        ]}
       />
 
         {/* Introduzione */}
