@@ -1,21 +1,28 @@
-import LessonHeader from '@/components/lessons/LessonHeader';
-import LessonPreview from '@/components/lessons/LessonPreview';
-import CodeExample from '@/components/lessons/CodeExample';
-import Exercise from '@/components/lessons/Exercise';
-import Challenge from '@/components/lessons/Challenge';
-import LessonNav from '@/components/lessons/LessonNav';
+import { getLezioniByModuloSlug } from '@/lib/moduli';
+import LessonLayout from '@/components/layout/LessonLayout';
+import LessonHeader from '@/components/layout/LessonHeader';
+import CodeExample from '@/components/didattica/CodeExample';
+import Exercise from '@/components/didattica/Exercise';
+import Challenge from '@/components/didattica/Challenge';
+import LessonPreview from '@/components/didattica/LessonPreview';
 
-export default function Lezione9() {
+export default function Lezione9DisplayLayout() {
+  const lezioni = getLezioniByModuloSlug('modulo-2-css');
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-900 dark:to-purple-900">
-      <div className="container mx-auto px-4 py-12">
-        <LessonHeader
-          modulo="modulo-2-css"
-          lezione="9"
-          titolo="Display e Layout Base"
-          durata="2 ore"
-          difficolta="media"
-        />
+    <LessonLayout
+      moduloSlug="modulo-2-css"
+      moduloTitolo="Modulo 2: CSS"
+      lezioni={lezioni}
+      lezioneSlug="lezione-9-display-layout"
+      lezioneTitolo="Display e Layout Base"
+    >
+      <LessonHeader
+        titolo="Display e Layout Base"
+        numeroLezione={9}
+        durata="2 ore"
+        difficolta="media"
+      />
 
         {/* Introduzione */}
         <section className="mb-16">
@@ -973,20 +980,6 @@ export default function Lezione9() {
             'Testa responsive: riduci larghezza finestra e vedi card andare a capo automaticamente',
           ]}
         />
-
-        {/* Navigazione */}
-        <LessonNav
-          previousLesson={{
-            slug: '/moduli/modulo-2-css/lezione-8-bordi-sfondi',
-            title: 'Lezione 8: Bordi e Sfondi',
-          }}
-          nextLesson={{
-            slug: '/moduli/modulo-2-css',
-            title: 'Torna al Modulo CSS',
-          }}
-          moduloSlug="modulo-2-css"
-        />
-      </div>
-    </div>
+    </LessonLayout>
   );
 }
