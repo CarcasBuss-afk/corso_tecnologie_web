@@ -19,14 +19,18 @@ export default function Sidebar({ moduloSlug, moduloTitolo, lezioni }: SidebarPr
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 bg-gray-50 border-r border-gray-200 p-6 h-screen sticky top-0 overflow-y-auto">
-      <Link href="/" className="text-sm text-blue-600 hover:underline mb-4 block">
-        ← Tutti i moduli
-      </Link>
+    <aside className="w-64 bg-gray-50 border-r border-gray-200 h-screen sticky top-0 flex flex-col">
+      {/* Header fisso - sempre visibile */}
+      <div className="p-6 flex-shrink-0 border-b border-gray-200">
+        <Link href="/" className="text-sm text-blue-600 hover:underline mb-4 block">
+          ← Tutti i moduli
+        </Link>
 
-      <h2 className="text-lg font-bold text-gray-900 mb-4">{moduloTitolo}</h2>
+        <h2 className="text-lg font-bold text-gray-900">{moduloTitolo}</h2>
+      </div>
 
-      <nav>
+      {/* Nav scrollabile - solo questa parte scorre */}
+      <nav className="flex-1 overflow-y-auto px-6 py-4">
         <ul className="space-y-2">
           {lezioni.map((lezione, index) => {
             const lezioneUrl = `/moduli/${moduloSlug}/${lezione.slug}`;
