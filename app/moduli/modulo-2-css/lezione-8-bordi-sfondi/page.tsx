@@ -1187,6 +1187,10 @@ background: #3498DB;`}
   padding: 12px 25px;
   font-weight: bold;
   cursor: pointer;
+}
+
+.buy-btn:hover {
+  background-color: #2980B9;
 }`}
             />
           </div>
