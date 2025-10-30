@@ -1120,8 +1120,8 @@ background: #3498DB;`}
             <li>✅ <strong>font</strong> → combina font-size, font-family, font-weight (prossime lezioni)</li>
           </ul>
           <div className="bg-white bg-opacity-20 p-4 rounded mt-4">
-            <p className="font-bold text-xl mb-2">💡 Regola d&apos;Oro:</p>
-            <p className="text-lg">
+            <p className="font-bold text-xl mb-2 text-gray-900">💡 Regola d&apos;Oro:</p>
+            <p className="text-lg text-gray-800">
               Impara prima le <strong>proprietà separate</strong> per capire cosa fa ogni pezzo, poi usa le <strong>shorthand</strong> per scrivere più veloce!
             </p>
           </div>
