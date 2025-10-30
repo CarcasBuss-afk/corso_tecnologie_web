@@ -52,6 +52,24 @@
 
 **Commit:** `af49c0a` - Feature: Migliorata Lezione 7 - Spiegazione responsive + Demo visivo box-sizing
 
+### 3. Miglioramento Continuità Didattica - Lezione 8 CSS: Bordi e Sfondi
+
+**Problema Identificato dall'Utente:**
+- ❌ La proprietà `border` era già stata introdotta nella Lezione 2 in modo semplice
+- ❌ Nella Lezione 8 si riprende `border` per approfondire, ma senza riferimento alla lezione precedente
+- ❌ Rischio di confusione negli studenti: "Ma questo non l'avevamo già visto?"
+
+**Soluzione Implementata:**
+- ✅ Aggiunto box informativo blu all'inizio della sezione border (Lezione 8)
+- ✅ Richiamo esplicito: "Nella Lezione 2 hai già visto border con lo stile base solid"
+- ✅ Contestualizzazione: "Oggi approfondiamo: scoprirai tutti gli stili disponibili"
+- ✅ Migliora il flusso didattico e la continuità tra le lezioni
+
+**File Modificato:**
+- `app/moduli/modulo-2-css/lezione-8-bordi-sfondi/page.tsx` (linee 68-76)
+
+**Commit:** `e66941b` - Feature: Aggiunto richiamo Lezione 2 per evitare confusione su border
+
 ---
 
 ## 📅 CHANGELOG SESSIONE 11 (29 Ottobre 2025) - Parte 2
