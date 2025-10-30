@@ -70,6 +70,36 @@
 
 **Commit:** `e66941b` - Feature: Aggiunto richiamo Lezione 2 per evitare confusione su border
 
+### 4. Box Richiamo Lezioni Precedenti - Lezione 7 CSS: Box Model
+
+**Miglioramento Implementato:**
+- ✅ Aggiunto box informativo blu "📌 Ti Ricordi?" all'inizio della Lezione 7
+- ✅ Richiama border (Lezione 2), padding e margin (Lezione 4)
+- ✅ Contestualizza: "Oggi capirai come funzionano davvero insieme"
+- ✅ Migliora continuità didattica tra le lezioni
+
+**Commit:** `de0a132` - Feature: Aggiunto richiamo lezioni precedenti in Lezione 7 Box Model
+
+### 5. Coerenza Didattica Esercizio - Lezione 7 CSS: Box Model
+
+**Problema Identificato dall'Utente:**
+- ❌ L'esercizio della Lezione 7 chiedeva di affiancare 3 colonne con `display inline-block`
+- ❌ Incoerente: display non ancora insegnato (arriverà nella Lezione 9)
+- ❌ Mancava la nota esplicativa come nella Lezione 8
+
+**Soluzione Implementata:**
+- ✅ Aggiunta nota iniziale: "📝 NOTA: Le 3 card saranno una sotto l'altra (verticali). Nella prossima lezione imparerai come affiancarle orizzontalmente!"
+- ✅ Rimosso `display inline-block` e `width 30%`
+- ✅ Card verticali al 100% larghezza con `margin-bottom` per separazione
+- ✅ Cambiato "colonne" → "card" per coerenza terminologica con Lezione 8
+- ✅ max-width 800px invece di 1200px (più adatto per layout verticale)
+- ✅ Ora coerente con l'approccio didattico progressivo
+
+**File Modificato:**
+- `app/moduli/modulo-2-css/lezione-7-box-model/page.tsx` (esercizio guidato)
+
+**Commit:** `7bbb5f5` - Feature: Aggiunta nota card verticali in Lezione 7 esercizio
+
 ---
 
 ## 📅 CHANGELOG SESSIONE 11 (29 Ottobre 2025) - Parte 2
