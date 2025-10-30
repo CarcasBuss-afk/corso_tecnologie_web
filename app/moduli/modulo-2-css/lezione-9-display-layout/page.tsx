@@ -46,7 +46,7 @@ export default function Lezione9DisplayLayout() {
               🎉 <strong>Oggi impari come affiancare gli elementi orizzontalmente!</strong>
             </p>
             <p className="text-lg">
-              La chiave è la proprietà <code className="bg-white bg-opacity-20 px-2 py-1 rounded">display</code> che
+              La chiave è la proprietà <code className="bg-white bg-opacity-20 px-2 py-1 rounded text-gray-900 font-bold">display</code> che
               controlla <strong>come gli elementi si posizionano</strong> nella pagina.
             </p>
           </div>
@@ -308,7 +308,7 @@ export default function Lezione9DisplayLayout() {
           <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-8 rounded-lg mb-6">
             <h3 className="text-2xl font-bold mb-4">🎯 Il Meglio dei Due Mondi!</h3>
             <p className="text-lg mb-4">
-              <code className="bg-white bg-opacity-20 px-2 py-1 rounded">inline-block</code> combina i vantaggi di{' '}
+              <code className="bg-white bg-opacity-20 px-2 py-1 rounded text-gray-900 font-bold">inline-block</code> combina i vantaggi di{' '}
               <code>inline</code> e <code>block</code>:
             </p>
             <ul className="space-y-2 ml-6">
@@ -619,7 +619,7 @@ export default function Lezione9DisplayLayout() {
               Ricordi quando nelle Lezioni 7 e 8 abbiamo detto che le card sarebbero state verticali?
             </p>
             <p className="text-xl font-bold mt-3">
-              Ora con <code className="bg-white bg-opacity-20 px-2 py-1 rounded">display: inline-block</code> possiamo
+              Ora con <code className="bg-white bg-opacity-20 px-2 py-1 rounded text-gray-900">display: inline-block</code> possiamo
               affiancarle! 🚀
             </p>
           </div>
