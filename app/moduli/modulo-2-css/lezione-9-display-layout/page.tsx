@@ -97,20 +97,20 @@ export default function Lezione9DisplayLayout() {
             <h3 className="font-bold text-xl mb-3">🔑 I Valori Principali</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-white bg-opacity-20 p-4 rounded">
-                <p className="font-bold mb-2">display: block;</p>
-                <p className="text-sm">Elemento occupa tutta la larghezza disponibile</p>
+                <p className="font-bold mb-2 text-gray-900">display: block;</p>
+                <p className="text-sm text-gray-800">Elemento occupa tutta la larghezza disponibile</p>
               </div>
               <div className="bg-white bg-opacity-20 p-4 rounded">
-                <p className="font-bold mb-2">display: inline;</p>
-                <p className="text-sm">Elemento sta sulla stessa riga del testo</p>
+                <p className="font-bold mb-2 text-gray-900">display: inline;</p>
+                <p className="text-sm text-gray-800">Elemento sta sulla stessa riga del testo</p>
               </div>
               <div className="bg-white bg-opacity-20 p-4 rounded">
-                <p className="font-bold mb-2">display: inline-block;</p>
-                <p className="text-sm">Combina i vantaggi di block e inline</p>
+                <p className="font-bold mb-2 text-gray-900">display: inline-block;</p>
+                <p className="text-sm text-gray-800">Combina i vantaggi di block e inline</p>
               </div>
               <div className="bg-white bg-opacity-20 p-4 rounded">
-                <p className="font-bold mb-2">display: none;</p>
-                <p className="text-sm">Elemento nascosto completamente</p>
+                <p className="font-bold mb-2 text-gray-900">display: none;</p>
+                <p className="text-sm text-gray-800">Elemento nascosto completamente</p>
               </div>
             </div>
           </div>
@@ -160,6 +160,10 @@ export default function Lezione9DisplayLayout() {
   display: block;
   padding: 20px;
   margin-bottom: 10px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 8px;
 }
 
 .box1 { background-color: #3498DB; }
@@ -238,12 +242,15 @@ export default function Lezione9DisplayLayout() {
                 language="css"
                 code={`.inline1, .inline2, .inline3 {
   display: inline;
-  padding: 10px 15px;
+  padding: 8px 15px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
 }
 
-.inline1 { background-color: #3498DB; color: white; }
-.inline2 { background-color: #E74C3C; color: white; }
-.inline3 { background-color: #2ECC71; color: white; }`}
+.inline1 { background-color: #3498DB; }
+.inline2 { background-color: #E74C3C; }
+.inline3 { background-color: #2ECC71; }`}
               />
             </div>
           </div>
@@ -337,13 +344,14 @@ export default function Lezione9DisplayLayout() {
                 code={`.card {
   display: inline-block;
   width: 150px;
-  height: 100px;
   padding: 20px;
   margin: 10px;
   background-color: #3498DB;
   color: white;
   border-radius: 10px;
+  border: 3px solid #2980B9;
   text-align: center;
+  font-weight: bold;
 }`}
               />
             </div>
@@ -551,6 +559,9 @@ export default function Lezione9DisplayLayout() {
   margin-bottom: 10px;
   background-color: #3498DB;
   color: white;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 8px;
 }
 
 .hidden {
@@ -633,16 +644,16 @@ export default function Lezione9DisplayLayout() {
                 language="html"
                 code={`<div class="container">
   <div class="card">
-    <h3>Card 1</h3>
-    <p>Contenuto della card 1</p>
+    <h3 class="card-title">Card 1</h3>
+    <p class="card-text">Contenuto della card 1</p>
   </div>
   <div class="card">
-    <h3>Card 2</h3>
-    <p>Contenuto della card 2</p>
+    <h3 class="card-title">Card 2</h3>
+    <p class="card-text">Contenuto della card 2</p>
   </div>
   <div class="card">
-    <h3>Card 3</h3>
-    <p>Contenuto della card 3</p>
+    <h3 class="card-title">Card 3</h3>
+    <p class="card-text">Contenuto della card 3</p>
   </div>
 </div>`}
               />
@@ -657,22 +668,26 @@ export default function Lezione9DisplayLayout() {
 
 .card {
   display: inline-block;
-  width: 30%;
+  width: 28%;
   margin: 10px;
   padding: 20px;
   background-color: white;
   border: 2px solid #E0E0E0;
   border-radius: 12px;
+  vertical-align: top;
 }
 
-.card h3 {
+.card-title {
   margin: 0 0 10px 0;
   color: #2C3E50;
+  font-size: 18px;
 }
 
-.card p {
+.card-text {
   margin: 0;
   color: #7F8C8D;
+  font-size: 14px;
+  line-height: 1.6;
 }`}
               />
             </div>
@@ -777,16 +792,16 @@ export default function Lezione9DisplayLayout() {
   <div class="product-card">
     <div class="product-image"></div>
     <div class="product-content">
-      <h3>Prodotto 1</h3>
-      <p>Descrizione breve</p>
+      <h3 class="product-title">Prodotto 1</h3>
+      <p class="product-text">Descrizione breve</p>
       <button class="btn">Scopri</button>
     </div>
   </div>
   <div class="product-card">
     <div class="product-image"></div>
     <div class="product-content">
-      <h3>Prodotto 2</h3>
-      <p>Descrizione breve</p>
+      <h3 class="product-title">Prodotto 2</h3>
+      <p class="product-text">Descrizione breve</p>
       <button class="btn">Scopri</button>
     </div>
   </div>
@@ -805,12 +820,13 @@ export default function Lezione9DisplayLayout() {
 
 .product-card {
   display: inline-block;
-  width: 280px;
+  width: 260px;
   margin: 15px;
   border: 2px solid #E0E0E0;
   border-radius: 15px;
   overflow: hidden;
   vertical-align: top;
+  background-color: white;
 }
 
 .product-card:hover {
@@ -818,23 +834,25 @@ export default function Lezione9DisplayLayout() {
 }
 
 .product-image {
-  height: 180px;
-  background: url('foto.jpg') center/cover;
+  height: 160px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .product-content {
   padding: 20px;
-  background-color: white;
 }
 
-.product-content h3 {
+.product-title {
   margin: 0 0 10px 0;
   color: #2C3E50;
+  font-size: 18px;
 }
 
-.product-content p {
+.product-text {
   margin: 0 0 15px 0;
   color: #7F8C8D;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .btn {
@@ -844,6 +862,7 @@ export default function Lezione9DisplayLayout() {
   border-radius: 25px;
   padding: 10px 25px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .btn:hover {
