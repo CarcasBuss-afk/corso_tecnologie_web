@@ -2618,3 +2618,94 @@ corso_tecnologie_web/
 **Principio Didattico:** "Insegna prima le basi, poi aggiungi decorazioni avanzate". Le ombreggiature sono effetti avanzati che meritano una spiegazione dedicata.
 
 ---
+
+### 11. Rimozione CSS Avanzati - Lezione 8: Card Professionale
+
+**Problemi Identificati dall'Utente:**
+1. ❌ `transition` + `transform` sulla card con `:hover` (non insegnati)
+2. ❌ Selettori discendenza: `.card-content h3`, `.card-content p` (non insegnati)
+3. ❌ Discrepanza tra CSS di esempio e LessonPreview
+
+**Modifiche Implementate:**
+
+**A) Rimossi Effetti Avanzati:**
+- ❌ Rimosso `transition: transform 0.3s`
+- ❌ Rimosso `:hover { transform: translateY(-5px); }` sulla card
+- ✅ Mantenuto `:hover` sul bottone (già insegnato Lezione 6)
+
+**B) Sostituiti Selettori Discendenza con Classi Dirette:**
+- Prima: `.card-content h3 { ... }` (selettore discendenza)
+- Ora: `.card-title { ... }` (classe diretta)
+- Prima: `.card-content p { ... }` (selettore discendenza)
+- Ora: `.card-text { ... }` (classe diretta)
+
+**C) Aggiornato HTML con Classi Esplicite:**
+```html
+<h3 class="card-title">Prodotto Premium</h3>
+<p class="card-text">Descrizione del prodotto...</p>
+```
+
+**D) Applicato Coerenza:**
+- CSS di esempio e LessonPreview ora identici
+- Lista "Elementi usati" aggiornata: "Hover sul bottone (cambio colore)"
+
+**Motivazione Didattica:**
+- ✅ Usa solo selettori già insegnati (elemento, classe, ID)
+- ✅ Non introduce CSS avanzato senza spiegazione
+- ✅ Coerenza totale tra teoria ed esempi
+- ✅ transform, transition e selettori discendenza saranno insegnati in futuro
+
+**File Modificato:**
+- `app/moduli/modulo-2-css/lezione-8-bordi-sfondi/page.tsx` (-6 righe nette)
+
+**Commit:** `c388718` - Refactor: Rimossi CSS avanzati non insegnati da Card Professionale
+
+---
+
+## 📐 REGOLA DIDATTICA FONDAMENTALE
+
+### Principio di Coerenza Pedagogica degli Esempi
+
+**REGOLA AUREA:**
+> **Tutti gli output, esempi, LessonPreview, esercizi e demo NON POSSONO MAI utilizzare HTML, CSS o JavaScript non ancora studiato fino alla lezione corrente.**
+
+**Motivazioni:**
+1. **Confusione Cognitiva:** Gli studenti vedono codice sconosciuto e si chiedono "cosa significa?"
+2. **Perdita di Fiducia:** "Non capisco l'esempio" → frustrazione → abbandono
+3. **Progressione Rotta:** Viola il principio "semplice → complesso"
+4. **Incoerenza:** "Nella teoria non c'era, perché nell'esempio sì?"
+
+**Esempi Concreti di Violazioni Corrette:**
+
+| Lezione | Violazione | Problema | Soluzione |
+|---------|-----------|----------|-----------|
+| 7 | `display: inline-block` in esercizio | Display non insegnato | Card verticali (block default) |
+| 8 | `text-shadow`, `box-shadow` | Ombre non insegnate | Rimosso completamente |
+| 8 | `transform`, `transition` | Animazioni non insegnate | Rimosso, mantenuto :hover |
+| 8 | `.parent child` selettori | Selettori discendenza non insegnati | Classi dirette (.card-title) |
+
+**Checklist Pre-Commit per Ogni Lezione:**
+- [ ] Tutti i selettori CSS usati sono stati spiegati?
+- [ ] Tutte le proprietà CSS usate sono state insegnate?
+- [ ] Tutti i tag HTML usati sono stati presentati?
+- [ ] LessonPreview usa SOLO concetti già visti?
+- [ ] Esempi di codice coerenti con teoria?
+- [ ] Esercizi e Challenge accessibili con conoscenze attuali?
+
+**Eccezioni Permesse:**
+1. **Stili di Layout Necessari:** `display: flex` nel LessonPreview per visualizzazione (se invisibile, va bene)
+2. **Reset CSS Standard:** `* { box-sizing: border-box; }` anche se non ancora spiegato nel dettaglio
+3. **Con Nota Esplicita:** Se ASSOLUTAMENTE necessario, aggiungere nota: "💡 Nota: [proprietà] sarà spiegata nella Lezione X"
+
+**Responsabilità:**
+- Prima di creare una nuova lezione: rivedere tutte le lezioni precedenti per sapere cosa è permesso
+- Prima di ogni commit: verificare checklist
+- Nei code review: priorità massima alla coerenza didattica
+
+**Beneficio Atteso:**
+- ✅ Studenti mai confusi da "codice magico"
+- ✅ Progressione lineare e chiara
+- ✅ Fiducia nel materiale didattico
+- ✅ Tasso di completamento più alto
+
+---
