@@ -655,7 +655,6 @@ background-image: url('../images/sfondo.jpg');`}
   justify-content: center;
   align-items: center;
   background-color: #34495E;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 
 .hero-demo h1 {
@@ -887,7 +886,6 @@ background-position: 20px 40px;  /* pixel precisi */`}
   justify-content: center;
   text-align: center;
   padding: 20px;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
   border-radius: 10px;
 }
 
@@ -1203,7 +1201,6 @@ background: #3498DB;`}
   overflow: hidden;
   max-width: 350px;
   margin: 0 auto;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: transform 0.3s;
 }
 
@@ -1279,7 +1276,7 @@ background: #3498DB;`}
           'Crea index.html con struttura base',
           'Crea style.css con box-sizing: border-box universale',
           'Hero section: background-image, background-size: cover, height 400px, border-radius 15px',
-          'Hero: aggiungi h1 e p centrati con text-shadow per leggibilità',
+          'Hero: aggiungi h1 e p centrati',
           'Sezione "Chi Sono": box con border 3px dashed, border-radius 10px, padding 30px',
           'Sezione "Progetti": crea 3 div.card (una sotto l\'altra - verticali)',
           'Ogni card: width 100% o max-width 600px, margin-bottom 20px per separarle',
@@ -1308,7 +1305,7 @@ background: #3498DB;`}
           'Ogni sezione testo: border-left 5px solid con colore diverso',
           'Almeno 3 elementi con border-radius (bottoni, box, immagini)',
           'Hero section iniziale: background-image + border-radius 20px + height 500px',
-          'Hero: testo centrato con text-shadow per leggibilità',
+          'Hero: testo centrato',
           'Sezione contatti: box con border dashed, border-radius 15px',
           'Bottoni: border-radius 25px (pillola), almeno 3 colori diversi',
           'Almeno un elemento con border-top, uno con border-bottom (no border completo)',
