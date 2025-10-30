@@ -1141,8 +1141,8 @@ background: #3498DB;`}
               code={`<div class="product-card">
   <div class="card-image"></div>
   <div class="card-content">
-    <h3>Prodotto Premium</h3>
-    <p>Descrizione del prodotto fantastico.</p>
+    <h3 class="card-title">Prodotto Premium</h3>
+    <p class="card-text">Descrizione del prodotto fantastico.</p>
     <button class="buy-btn">Acquista - 49€</button>
   </div>
 </div>`}
@@ -1169,12 +1169,12 @@ background: #3498DB;`}
   background-color: white;
 }
 
-.card-content h3 {
+.card-title {
   margin: 0 0 10px 0;
   color: #2C3E50;
 }
 
-.card-content p {
+.card-text {
   margin: 0 0 15px 0;
   color: #7F8C8D;
 }
@@ -1201,11 +1201,6 @@ background: #3498DB;`}
   overflow: hidden;
   max-width: 350px;
   margin: 0 auto;
-  transition: transform 0.3s;
-}
-
-.product-card-demo:hover {
-  transform: translateY(-5px);
 }
 
 .card-image-demo {
@@ -1218,13 +1213,13 @@ background: #3498DB;`}
   background-color: white;
 }
 
-.card-content-demo h3 {
+.card-title-demo {
   margin: 0 0 10px 0;
   color: #2C3E50;
   font-size: 22px;
 }
 
-.card-content-demo p {
+.card-text-demo {
   margin: 0 0 15px 0;
   color: #7F8C8D;
   line-height: 1.6;
@@ -1238,7 +1233,6 @@ background: #3498DB;`}
   padding: 12px 25px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 .buy-btn-demo:hover {
@@ -1249,8 +1243,8 @@ background: #3498DB;`}
 <div class="product-card-demo">
   <div class="card-image-demo"></div>
   <div class="card-content-demo">
-    <h3>🌟 Prodotto Premium</h3>
-    <p>Descrizione del prodotto fantastico con tutti gli elementi di stile professionale.</p>
+    <h3 class="card-title-demo">🌟 Prodotto Premium</h3>
+    <p class="card-text-demo">Descrizione del prodotto fantastico con tutti gli elementi di stile professionale.</p>
     <button class="buy-btn-demo">Acquista - 49€</button>
   </div>
 </div>
@@ -1261,7 +1255,7 @@ background: #3498DB;`}
     <li>✅ border + border-radius arrotondato</li>
     <li>✅ background-image con cover</li>
     <li>✅ Bottone pillola con border-radius</li>
-    <li>✅ Hover effect con transition</li>
+    <li>✅ Hover sul bottone (cambio colore)</li>
   </ul>
 </div>`}
         />
