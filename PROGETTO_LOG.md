@@ -100,6 +100,32 @@
 
 **Commit:** `7bbb5f5` - Feature: Aggiunta nota card verticali in Lezione 7 esercizio
 
+### 6. Miglioramenti Precisione e UX - Lezione 8 CSS: Bordi e Sfondi
+
+**Problemi Identificati dall'Utente:**
+- ❌ Richiamo Lezione 2 impreciso: diceva solo "solid" ma erano stati visti anche dashed e dotted
+- ❌ Sintassi border con frecce ASCII disallineate e poco chiare
+
+**Soluzioni Implementate:**
+
+**A) Correzione Richiamo Lezione 2**
+- Prima: "hai già visto border con lo stile base solid"
+- Ora: "hai già visto border con alcuni stili base: solid, dashed, dotted"
+- ✅ Più accurato rispetto ai contenuti effettivi della Lezione 2
+
+**B) Visualizzazione Sintassi Border**
+- ❌ Rimosse frecce ASCII disallineate: `/*  ↑    ↑      ↑ */`
+- ✅ Aggiunta sezione "Anatomia del border" con 3 blocchi colorati visivi:
+  - Blocco blu: "3px" → larghezza
+  - Blocco verde: "solid" → stile
+  - Blocco viola: "#3498DB" → colore
+- ✅ Grid responsive 3 colonne, molto più chiara e intuitiva
+
+**File Modificato:**
+- `app/moduli/modulo-2-css/lezione-8-bordi-sfondi/page.tsx` (linee 68-108)
+
+**Commit:** `2a66fe6` - Fix: Migliorata precisione e chiarezza Lezione 8 - Sezione border
+
 ---
 
 ## 📅 CHANGELOG SESSIONE 11 (29 Ottobre 2025) - Parte 2
