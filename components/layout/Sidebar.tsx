@@ -19,7 +19,7 @@ export default function Sidebar({ moduloSlug, moduloTitolo, lezioni }: SidebarPr
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 bg-gray-50 border-r border-gray-200 p-6 min-h-screen">
+    <aside className="w-64 bg-gray-50 border-r border-gray-200 p-6 h-screen sticky top-0 overflow-y-auto">
       <Link href="/" className="text-sm text-blue-600 hover:underline mb-4 block">
         ← Tutti i moduli
       </Link>
