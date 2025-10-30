@@ -76,20 +76,146 @@ export default function Lezione8BordiSfondi() {
         </div>
 
         <p className="text-lg mb-6">
-          La proprietà <code className="bg-gray-200 px-2 py-1 rounded">border</code> ha 3 valori: <strong>spessore, stile, colore</strong>.
+          Un bordo è composto da <strong>3 proprietà separate</strong>: spessore, stile, colore.
+        </p>
+
+        {/* Le 3 Proprietà Separate */}
+        <h3 className="text-2xl font-bold mb-4">🔧 Le 3 Proprietà Separate del Bordo</h3>
+        <p className="text-lg mb-6">
+          Prima di imparare la scorciatoia, vediamo come funziona <strong>internamente</strong> un bordo.
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-6 mb-6">
+          <div className="bg-blue-50 border-l-4 border-blue-500 p-4">
+            <h4 className="font-bold text-blue-700 mb-2">1️⃣ border-width</h4>
+            <p className="text-sm text-gray-700 mb-3">Spessore del bordo</p>
+            <CodeExample
+              language="css"
+              code={`border-width: 3px;
+border-width: 5px;
+border-width: 10px;`}
+            />
+          </div>
+
+          <div className="bg-green-50 border-l-4 border-green-500 p-4">
+            <h4 className="font-bold text-green-700 mb-2">2️⃣ border-style</h4>
+            <p className="text-sm text-gray-700 mb-3">Tipo di linea</p>
+            <CodeExample
+              language="css"
+              code={`border-style: solid;
+border-style: dashed;
+border-style: dotted;`}
+            />
+          </div>
+
+          <div className="bg-purple-50 border-l-4 border-purple-500 p-4">
+            <h4 className="font-bold text-purple-700 mb-2">3️⃣ border-color</h4>
+            <p className="text-sm text-gray-700 mb-3">Colore del bordo</p>
+            <CodeExample
+              language="css"
+              code={`border-color: #3498DB;
+border-color: red;
+border-color: #E74C3C;`}
+            />
+          </div>
+        </div>
+
+        <h3 className="text-xl font-bold mb-3">Esempio: Usare le 3 Proprietà Separate</h3>
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <h4 className="font-bold mb-2">HTML:</h4>
+            <CodeExample
+              language="html"
+              code={`<div class="box">
+  Bordo con 3 proprietà
+</div>`}
+            />
+          </div>
+          <div>
+            <h4 className="font-bold mb-2">CSS:</h4>
+            <CodeExample
+              language="css"
+              code={`.box {
+  /* 3 proprietà separate: */
+  border-width: 3px;
+  border-style: solid;
+  border-color: #3498DB;
+
+  padding: 20px;
+  background-color: #EBF5FB;
+}`}
+            />
+          </div>
+        </div>
+
+        <LessonPreview
+          title="Bordo con 3 Proprietà Separate"
+          html={`<style>
+.box-separate {
+  border-width: 3px;
+  border-style: solid;
+  border-color: #3498DB;
+  padding: 20px;
+  background-color: #EBF5FB;
+  text-align: center;
+  font-weight: bold;
+  color: #2C3E50;
+}
+</style>
+
+<div class="box-separate">
+  📦 Bordo creato con 3 proprietà separate
+</div>`}
+        />
+
+        <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 mt-6 mb-6">
+          <h3 className="font-bold text-yellow-800 mb-2">🤔 Il Problema</h3>
+          <p className="mb-2">
+            Scrivere <strong>3 righe</strong> ogni volta è lungo e ripetitivo!
+          </p>
+          <CodeExample
+            language="css"
+            code={`.box1 {
+  border-width: 3px;
+  border-style: solid;
+  border-color: red;
+}
+
+.box2 {
+  border-width: 2px;
+  border-style: dashed;
+  border-color: blue;
+}
+
+/* Tante righe! 😓 */`}
+          />
+          <p className="mt-3 font-bold text-yellow-700">
+            💡 Per fortuna c&apos;è una <strong>scorciatoia</strong>!
+          </p>
+        </div>
+
+        {/* La Shorthand */}
+        <h3 className="text-2xl font-bold mb-4">⚡ La Scorciatoia: border (shorthand)</h3>
+        <p className="text-lg mb-6">
+          Invece di 3 righe, puoi scrivere <strong>tutto in una riga</strong> con la proprietà <code className="bg-gray-200 px-2 py-1 rounded">border</code>!
         </p>
 
         <div className="bg-gradient-to-r from-green-500 to-teal-500 text-white p-6 rounded-lg mb-6">
-          <h3 className="text-xl font-bold mb-3">📋 Sintassi Completa</h3>
+          <h3 className="text-xl font-bold mb-3">📋 Sintassi Shorthand</h3>
           <CodeExample
             language="css"
             code={`border: width style color;
 
 /* Esempio: */
-border: 3px solid #3498DB;`}
+border: 3px solid #3498DB;
+
+/* Equivale a: */
+border-width: 3px;
+border-style: solid;
+border-color: #3498DB;`}
           />
           <div className="mt-4 bg-white bg-opacity-20 p-4 rounded">
-            <p className="text-sm mb-3 font-bold">Anatomia del border:</p>
+            <p className="text-sm mb-3 font-bold">Anatomia della shorthand:</p>
             <div className="grid grid-cols-3 gap-3 text-center text-sm">
               <div className="bg-blue-400 bg-opacity-70 p-3 rounded">
                 <div className="font-bold mb-1">3px</div>
@@ -105,6 +231,19 @@ border: 3px solid #3498DB;`}
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-6 rounded-lg mb-6">
+          <h3 className="font-bold text-xl mb-3">✨ Perché la Shorthand è Meglio</h3>
+          <ul className="space-y-2 ml-6">
+            <li>✅ <strong>Più veloce:</strong> 1 riga invece di 3</li>
+            <li>✅ <strong>Più leggibile:</strong> vedi tutto insieme</li>
+            <li>✅ <strong>Più comune:</strong> usata da tutti i professionisti</li>
+            <li>✅ <strong>Meno errori:</strong> impossibile dimenticare una proprietà</li>
+          </ul>
+          <p className="mt-4 font-bold text-yellow-200">
+            💡 D&apos;ora in poi useremo sempre la shorthand <code className="bg-black bg-opacity-20 px-2 py-1 rounded">border</code>!
+          </p>
         </div>
 
         {/* Grid Stili Bordo */}
@@ -832,12 +971,60 @@ background-position: 20px 40px;  /* pixel precisi */`}
         </div>
       </section>
 
-      {/* Shorthand background */}
+      {/* Shorthand Concetto Generale */}
       <section className="mb-12">
-        <h2 className="text-3xl font-bold mb-6">⚡ Shorthand: Tutte le Proprietà in Una Riga</h2>
-        <p className="text-lg mb-6">
-          Invece di scrivere 5 proprietà separate, puoi usare la <strong>shorthand</strong>!
-        </p>
+        <h2 className="text-3xl font-bold mb-6">⚡ Shorthand: Il Concetto Generale nel CSS</h2>
+
+        <div className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white p-8 rounded-lg mb-6">
+          <h3 className="text-2xl font-bold mb-4">💡 Cosa Sono le Shorthand?</h3>
+          <p className="text-lg mb-4">
+            Le <strong>shorthand properties</strong> (proprietà scorciatoia) sono un modo per scrivere <strong>più proprietà CSS in una sola riga</strong>.
+          </p>
+          <p className="text-lg font-bold">
+            Invece di scrivere 3-5 righe separate, ne scrivi una sola! ✨
+          </p>
+        </div>
+
+        <h3 className="text-xl font-bold mb-4">📚 Le Shorthand Viste Oggi</h3>
+
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+          <div className="bg-blue-50 border-l-4 border-blue-500 p-6">
+            <h4 className="font-bold text-blue-700 mb-3 text-lg">1️⃣ border (già vista!)</h4>
+            <p className="text-sm text-gray-700 mb-3">Combina 3 proprietà:</p>
+            <CodeExample
+              language="css"
+              code={`/* Invece di: */
+border-width: 3px;
+border-style: solid;
+border-color: #3498DB;
+
+/* Usi: */
+border: 3px solid #3498DB;`}
+            />
+            <p className="text-xs text-blue-600 mt-2">✅ 3 righe → 1 riga!</p>
+          </div>
+
+          <div className="bg-green-50 border-l-4 border-green-500 p-6">
+            <h4 className="font-bold text-green-700 mb-3 text-lg">2️⃣ background (la più complessa!)</h4>
+            <p className="text-sm text-gray-700 mb-3">Combina fino a 8 proprietà:</p>
+            <CodeExample
+              language="css"
+              code={`/* Invece di 8 righe: */
+background-color: #3498DB;
+background-image: url('foto.jpg');
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+/* ... altre ...
+
+/* Usi: */
+background: #3498DB url('foto.jpg') center/cover no-repeat;`}
+            />
+            <p className="text-xs text-green-600 mt-2">✅ 8 righe → 1 riga!</p>
+          </div>
+        </div>
+
+        <h3 className="text-xl font-bold mb-4">🎨 Shorthand background: Sintassi Completa</h3>
 
         <div className="bg-gradient-to-r from-red-500 to-pink-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3">📝 Sintassi Completa</h3>
@@ -876,7 +1063,7 @@ background: #3498DB;`}
           />
         </div>
 
-        <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6">
+        <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 mb-6">
           <h3 className="font-bold text-yellow-800 mb-2">⚠️ Nota su background-size</h3>
           <p className="mb-2">
             Nella shorthand, <code className="bg-yellow-100 px-2 py-1 rounded">background-size</code> va
@@ -886,6 +1073,26 @@ background: #3498DB;`}
             background: url(&apos;foto.jpg&apos;) center<strong className="text-red-600">/</strong>cover;
           </code>
           <p className="text-sm mt-2">↑ Il <strong className="text-red-600">/</strong> è obbligatorio!</p>
+        </div>
+
+        <div className="bg-gradient-to-r from-green-500 to-teal-500 text-white p-8 rounded-lg">
+          <h3 className="text-2xl font-bold mb-4">🌟 Il Concetto Generale delle Shorthand</h3>
+          <p className="text-lg mb-4">
+            Le shorthand sono <strong>ovunque nel CSS professionale</strong>!
+          </p>
+          <ul className="space-y-3 ml-6 text-lg">
+            <li>✅ <strong>border</strong> → combina width, style, color</li>
+            <li>✅ <strong>background</strong> → combina color, image, position, size, repeat, attachment</li>
+            <li>✅ <strong>padding</strong> → combina padding-top, right, bottom, left (Lezione 4)</li>
+            <li>✅ <strong>margin</strong> → combina margin-top, right, bottom, left (Lezione 4)</li>
+            <li>✅ <strong>font</strong> → combina font-size, font-family, font-weight (prossime lezioni)</li>
+          </ul>
+          <div className="bg-white bg-opacity-20 p-4 rounded mt-4">
+            <p className="font-bold text-xl mb-2">💡 Regola d&apos;Oro:</p>
+            <p className="text-lg">
+              Impara prima le <strong>proprietà separate</strong> per capire cosa fa ogni pezzo, poi usa le <strong>shorthand</strong> per scrivere più veloce!
+            </p>
+          </div>
         </div>
       </section>
 
