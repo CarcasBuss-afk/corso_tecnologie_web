@@ -126,6 +126,69 @@
 
 **Commit:** `2a66fe6` - Fix: Migliorata precisione e chiarezza Lezione 8 - Sezione border
 
+### 7. Ristrutturazione Didattica Completa - Lezione 8 CSS: Bordi e Sfondi (OPZIONE B)
+
+**Problema Identificato dall'Utente:**
+- ❌ Shorthand `border` usata da subito senza spiegazione
+- ❌ Concetto "shorthand" spiegato solo alla fine della lezione
+- ❌ Studenti confusi: usavano una sintassi senza capire cos'è
+- ❌ Incoerenza didattica: prima uso → poi spiegazione
+
+**Decisione Presa:**
+- Implementazione **Opzione B** (ristrutturazione media)
+- Flow didattico: proprietà separate → problema → shorthand → concetto generale
+- Stimato 3-4 ore di lavoro, ~200-250 righe modifiche
+
+**Ristrutturazione Implementata:**
+
+**1. 🔧 Nuova Sezione: "Le 3 Proprietà Separate del Bordo"**
+- Grid 3 colonne: border-width, border-style, border-color
+- Esempio pratico con 3 proprietà separate
+- LessonPreview interattivo per vedere il risultato
+- Box giallo "Il Problema": "Scrivere 3 righe è lungo e ripetitivo!"
+- ✅ Gli studenti CAPISCONO cosa compone un bordo
+
+**2. ⚡ Sezione Modificata: "La Scorciatoia: border (shorthand)"**
+- Introduce il concetto di shorthand naturalmente
+- Mostra equivalenza: `border: 3px solid red` = 3 proprietà separate
+- "Anatomia della shorthand" con blocchi colorati (già presente)
+- Box viola "Perché la Shorthand è Meglio": veloce, leggibile, comune, meno errori
+- Dichiarazione: "D'ora in poi useremo sempre la shorthand!"
+- ✅ Gli studenti CAPISCONO perché la shorthand è meglio
+
+**3. ⚡ Sezione Ampliata: "Shorthand: Il Concetto Generale nel CSS"**
+- Box viola: definizione chiara "shorthand properties = più proprietà in una riga"
+- Grid comparativa 2 colonne:
+  - border (già vista): 3 proprietà → 1 riga
+  - background (la più complessa): 8 proprietà → 1 riga
+- Sintassi completa background (invariata)
+- Box verde finale: "Il Concetto Generale delle Shorthand"
+  - Lista tutte le shorthand viste nel corso
+  - Richiama padding e margin (Lezione 4)
+  - Anticipa font (prossime lezioni)
+  - **Regola d'Oro:** "Impara prima le proprietà separate per capire, poi usa shorthand per velocità"
+- ✅ Gli studenti CAPISCONO il pattern generale
+
+**Benefici Didattici:**
+- ✅ Progressione logica: semplice → complesso → scorciatoia
+- ✅ Studenti capiscono PERCHÉ shorthand è utile (non solo COME usarla)
+- ✅ Concetto "shorthand" introdotto naturalmente, non "buttato alla fine"
+- ✅ Coerenza: stesso approccio per border e background
+- ✅ Preparazione: ora sanno riconoscere shorthand in futuro
+- ✅ Riduce confusione: "Ah ecco, prima abbiamo visto le basi!"
+
+**Statistiche:**
+- +217 righe, -10 righe (netto: +207 righe)
+- Tempo effettivo: ~2 ore
+- 3 nuove sezioni didattiche
+- 1 LessonPreview aggiunto
+- 4 box informativi colorati
+
+**File Modificato:**
+- `app/moduli/modulo-2-css/lezione-8-bordi-sfondi/page.tsx` (+207 righe nette)
+
+**Commit:** `300c498` - Refactor: Ristrutturata Lezione 8 - Approccio didattico proprietà separate → shorthand
+
 ---
 
 ## 📅 CHANGELOG SESSIONE 11 (29 Ottobre 2025) - Parte 2
@@ -2390,5 +2453,70 @@ corso_tecnologie_web/
 - **Pedagogia progressiva:** HTML puro → CSS styling (Modulo 2)
 - **Liste:** Completamente funzionanti con formattazione corretta
 - **Tabelle:** Visualizzazione HTML pura senza CSS aggiuntivo
+
+---
+
+### 7. Ristrutturazione Didattica Completa - Lezione 8 CSS: Bordi e Sfondi (OPZIONE B) - Sessione 11 Parte 4
+
+**Problema Identificato dall'Utente:**
+- ❌ Shorthand `border` usata da subito senza spiegazione
+- ❌ Concetto "shorthand" spiegato solo alla fine della lezione
+- ❌ Studenti confusi: usavano una sintassi senza capire cos'è
+- ❌ Incoerenza didattica: prima uso → poi spiegazione
+
+**Decisione Presa:**
+- Implementazione **Opzione B** (ristrutturazione media)
+- Flow didattico: proprietà separate → problema → shorthand → concetto generale
+- Stimato 3-4 ore di lavoro, ~200-250 righe modifiche
+
+**Ristrutturazione Implementata:**
+
+**1. 🔧 Nuova Sezione: "Le 3 Proprietà Separate del Bordo"**
+- Grid 3 colonne: border-width, border-style, border-color
+- Esempio pratico con 3 proprietà separate
+- LessonPreview interattivo per vedere il risultato
+- Box giallo "Il Problema": "Scrivere 3 righe è lungo e ripetitivo!"
+- ✅ Gli studenti CAPISCONO cosa compone un bordo
+
+**2. ⚡ Sezione Modificata: "La Scorciatoia: border (shorthand)"**
+- Introduce il concetto di shorthand naturalmente
+- Mostra equivalenza: `border: 3px solid red` = 3 proprietà separate
+- "Anatomia della shorthand" con blocchi colorati (già presente)
+- Box viola "Perché la Shorthand è Meglio": veloce, leggibile, comune, meno errori
+- Dichiarazione: "D'ora in poi useremo sempre la shorthand!"
+- ✅ Gli studenti CAPISCONO perché la shorthand è meglio
+
+**3. ⚡ Sezione Ampliata: "Shorthand: Il Concetto Generale nel CSS"**
+- Box viola: definizione chiara "shorthand properties = più proprietà in una riga"
+- Grid comparativa 2 colonne:
+  - border (già vista): 3 proprietà → 1 riga
+  - background (la più complessa): 8 proprietà → 1 riga
+- Sintassi completa background (invariata)
+- Box verde finale: "Il Concetto Generale delle Shorthand"
+  - Lista tutte le shorthand viste nel corso
+  - Richiama padding e margin (Lezione 4)
+  - Anticipa font (prossime lezioni)
+  - **Regola d'Oro:** "Impara prima le proprietà separate per capire, poi usa shorthand per velocità"
+- ✅ Gli studenti CAPISCONO il pattern generale
+
+**Benefici Didattici:**
+- ✅ Progressione logica: semplice → complesso → scorciatoia
+- ✅ Studenti capiscono PERCHÉ shorthand è utile (non solo COME usarla)
+- ✅ Concetto "shorthand" introdotto naturalmente, non "buttato alla fine"
+- ✅ Coerenza: stesso approccio per border e background
+- ✅ Preparazione: ora sanno riconoscere shorthand in futuro
+- ✅ Riduce confusione: "Ah ecco, prima abbiamo visto le basi!"
+
+**Statistiche:**
+- +217 righe, -10 righe (netto: +207 righe)
+- Tempo effettivo: ~2 ore
+- 3 nuove sezioni didattiche
+- 1 LessonPreview aggiunto
+- 4 box informativi colorati
+
+**File Modificato:**
+- `app/moduli/modulo-2-css/lezione-8-bordi-sfondi/page.tsx` (+207 righe nette)
+
+**Commit:** `300c498` - Refactor: Ristrutturata Lezione 8 - Approccio didattico proprietà separate → shorthand
 
 ---
