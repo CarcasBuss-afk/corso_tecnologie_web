@@ -64,6 +64,17 @@ export default function Lezione8BordiSfondi() {
       {/* Bordi Base */}
       <section className="mb-12">
         <h2 className="text-3xl font-bold mb-6">🔲 border - Bordi Personalizzati</h2>
+
+        <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-6">
+          <h3 className="font-bold text-blue-700 mb-2">📌 Ti Ricordi?</h3>
+          <p className="mb-2">
+            Nella <strong>Lezione 2</strong> hai già visto <code className="bg-blue-100 px-2 py-1 rounded">border</code> con lo stile base <code className="bg-blue-100 px-2 py-1 rounded">solid</code>.
+          </p>
+          <p className="font-bold text-blue-700">
+            Oggi approfondiamo: scoprirai <strong>tutti gli stili disponibili</strong> (dashed, dotted, double, groove, ridge) e come controllare ogni lato separatamente!
+          </p>
+        </div>
+
         <p className="text-lg mb-6">
           La proprietà <code className="bg-gray-200 px-2 py-1 rounded">border</code> ha 3 valori: <strong>spessore, stile, colore</strong>.
         </p>
