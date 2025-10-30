@@ -968,7 +968,7 @@ export default function Lezione9DisplayLayout() {
         <Challenge
           title="Card Prodotti E-commerce con Immagini di Sfondo"
           description="Crea una galleria di prodotti e-commerce professionale con card affiancate, immagini di sfondo, prezzi e bottoni. Usa tutto quello che hai imparato finora!"
-          steps={[
+          requirements={[
             'Crea "shop-cards" con index.html e style.css',
             'Header: "Prodotti in Offerta" centrato, font-size 36px, color #2C3E50, margin-bottom 30px',
             'Container con text-align: center, max-width 1200px, margin 0 auto',
