@@ -1,9 +1,129 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 29 Ottobre 2025 - Sessione 11 Miglioramenti
+**Ultimo aggiornamento:** 30 Ottobre 2025 - Sessione 12 Lezione 9 Display
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
+
+---
+
+## 📅 CHANGELOG SESSIONE 12 (30 Ottobre 2025) - LEZIONE 9 CSS: DISPLAY E LAYOUT
+
+### 🎉 Creazione Lezione 9: Display e Layout Base
+
+**Contesto:**
+Nelle lezioni 7 e 8 gli studenti hanno creato card verticali con la nota "Nella prossima lezione imparerai come affiancarle orizzontalmente!". Oggi è arrivato quel momento!
+
+**Obiettivi della Lezione:**
+- ✅ Insegnare la proprietà `display` e il "flusso" del documento
+- ✅ Spiegare `block`, `inline`, `inline-block`, `none`
+- ✅ Permettere agli studenti di affiancare elementi orizzontalmente
+- ✅ Creare layout a 2-3 colonne con card
+
+**Contenuti Sviluppati:**
+
+**1. Introduzione al Concetto di Display**
+- Spiegazione del "flusso del documento"
+- I 4 valori principali di display
+- Quando usare ciascuno
+
+**2. display: block**
+- Come funziona (occupa 100% larghezza, va a capo)
+- Elementi block di default (div, p, h1-h6, section, etc.)
+- Esempio visivo con 3 box colorati verticali
+- LessonPreview interattivo
+
+**3. display: inline**
+- Come funziona (sulla stessa riga, solo spazio necessario)
+- Limitazioni (no width/height, margin/padding verticali problematici)
+- Elementi inline di default (span, a, strong, em, img)
+- Esempio visivo con 3 elementi sulla stessa riga
+- Warning box sul problema delle dimensioni
+
+**4. display: inline-block (Il Migliore!)**
+- Combina vantaggi di block e inline
+- Permette width, height, margin, padding completi
+- Perfetto per affiancare card
+- Esempio con 3 card affiancate
+- Box "Quando usare inline-block"
+
+**5. Confronto Visivo dei 3 Tipi**
+- LessonPreview con sezioni separate per block, inline, inline-block
+- Tabella di confronto completa con tutte le proprietà
+- Chiara distinzione visiva tra i comportamenti
+
+**6. display: none**
+- Nascondere elementi completamente
+- Differenza tra nascondere e occupare spazio
+- Esempi pratici (menu mobile, messaggi errore, etc.)
+
+**7. Applicazione Pratica: Card Orizzontali**
+- 🎉 Finalmente card affiancate!
+- Tecnica: inline-block + width 30% + margin
+- Trucco importante: `vertical-align: top`
+- Container con `text-align: center`
+
+**8. Esempio Completo: Card Prodotto**
+- Combina tutti i concetti delle lezioni precedenti:
+  - display: inline-block (Lezione 9)
+  - border + border-radius (Lezione 8)
+  - background-image (Lezione 8)
+  - :hover (Lezione 6)
+  - box-sizing (Lezione 7)
+- Card professionali con immagine, contenuto, bottone
+- Hover sulla card (cambio border-color)
+- Hover sul bottone (cambio background-color)
+
+**9. Esercizio Guidato**
+- Galleria servizi con 3 card orizzontali
+- 20 step progressivi
+- Focus su: inline-block, width 30%, vertical-align top
+- Test responsive (card vanno a capo automaticamente)
+
+**10. Challenge Avanzato**
+- Shop e-commerce con 4 card prodotto
+- Immagini di sfondo con gradient o url
+- Prezzi, descrizioni, bottoni
+- Hover effects multipli
+- Extra: badge "SCONTO 20%" con margin/padding creativi
+
+**Coerenza Didattica (REGOLA FONDAMENTALE rispettata):**
+- ✅ Solo CSS già insegnato nelle lezioni 1-8
+- ✅ Nessun flexbox, grid, position (verranno dopo)
+- ✅ Nessun transform, transition (già rimossi lezione 8)
+- ✅ Nessun selettore avanzato (solo elemento, class, id)
+- ✅ Tutti gli esempi replicabili dagli studenti con conoscenze attuali
+
+**Progressione Pedagogica:**
+```
+Lezione 7: Box Model → margin, padding, border
+Lezione 8: Bordi + Sfondi → border-radius, background-image
+Lezione 9: Display → FINALMENTE affiancare elementi! 🎉
+```
+
+**Statistiche:**
+- **File creato:** `app/moduli/modulo-2-css/lezione-9-display-layout/page.tsx`
+- **Righe di codice:** ~1100 righe
+- **LessonPreview:** 5 demo interattivi
+- **Esercizi:** 1 guidato + 1 challenge
+- **Durata stimata:** 2 ore
+- **Difficoltà:** Media
+
+**File Modificati:**
+- ✅ Creato: `app/moduli/modulo-2-css/lezione-9-display-layout/page.tsx`
+- ✅ Aggiornato: `lib/moduli.ts` (aggiunta Lezione 9 all'elenco)
+
+**Impatto:**
+- 🎯 Gli studenti possono finalmente creare layout orizzontali
+- 🎯 Le card non sono più solo verticali
+- 🎯 Capiscono il flusso del documento HTML
+- 🎯 Sanno quando usare block, inline, inline-block
+- 🎯 Possono creare gallerie, menu, griglie di prodotti
+
+**Prossimi Passi:**
+- Lezione 10: Position (relative, absolute, fixed)
+- Lezione 11: Flexbox (layout moderno)
+- Lezione 12: Grid (layout bidimensionale)
 
 ---
 

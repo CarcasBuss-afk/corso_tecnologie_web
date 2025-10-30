@@ -226,6 +226,13 @@ export const moduli: Modulo[] = [
         durata: "1.5 ore",
         difficolta: "facile",
       },
+      {
+        id: "9",
+        titolo: "Display e Layout Base",
+        slug: "lezione-9-display-layout",
+        durata: "2 ore",
+        difficolta: "media",
+      },
     ],
   },
   {
