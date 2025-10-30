@@ -233,6 +233,13 @@ export const moduli: Modulo[] = [
         durata: "2 ore",
         difficolta: "media",
       },
+      {
+        id: "10",
+        titolo: "Position - Posizionamento Avanzato",
+        slug: "lezione-10-position",
+        durata: "2 ore",
+        difficolta: "media",
+      },
     ],
   },
   {
