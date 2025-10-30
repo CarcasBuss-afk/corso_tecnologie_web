@@ -36,6 +36,21 @@ export default function Lezione7BoxModel() {
       {/* Introduzione */}
       <section className="mb-12">
         <h2 className="text-3xl font-bold mb-6">📦 Il Box Model - La Chiave del CSS!</h2>
+
+        <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-6">
+          <h3 className="font-bold text-blue-700 mb-2">📌 Ti Ricordi?</h3>
+          <p className="mb-2">
+            Nelle lezioni precedenti hai già usato alcune proprietà del Box Model:
+          </p>
+          <ul className="space-y-1 ml-6 mb-3">
+            <li>• <strong>Lezione 2:</strong> <code className="bg-blue-100 px-2 py-1 rounded">border</code> per creare bordi base</li>
+            <li>• <strong>Lezione 4:</strong> <code className="bg-blue-100 px-2 py-1 rounded">padding</code> e <code className="bg-blue-100 px-2 py-1 rounded">margin</code> per spaziatura</li>
+          </ul>
+          <p className="font-bold text-blue-700">
+            Oggi capirai <strong>come funzionano davvero</strong> insieme e come controllare perfettamente le dimensioni dei tuoi elementi!
+          </p>
+        </div>
+
         <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white p-8 rounded-lg mb-6">
           <p className="text-xl mb-4">
             <strong>Ogni elemento HTML è una scatola.</strong> 📦
