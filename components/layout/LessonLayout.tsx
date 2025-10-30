@@ -33,7 +33,7 @@ export default function LessonLayout({
           moduloTitolo={moduloTitolo}
           lezioni={lezioni}
         />
-        <main className="flex-1 p-8 max-w-4xl relative">
+        <main className="flex-1 p-8 max-w-4xl relative ml-64">
           {/* Pulsante PDF in alto a destra */}
           {lezioneSlug && lezioneTitolo && (
             <div className="absolute top-4 right-4 z-10">
