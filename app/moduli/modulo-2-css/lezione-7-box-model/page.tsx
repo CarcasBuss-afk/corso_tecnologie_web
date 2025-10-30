@@ -866,21 +866,21 @@ width: 200px;
 
       {/* Esercizio */}
       <Exercise
-        title="Crea un Layout a 3 Colonne con Box Model"
+        title="Crea un Layout a 3 Card con Box Model"
         steps={[
+          '📝 NOTA: Le 3 card saranno una sotto l\'altra (verticali). Nella prossima lezione imparerai come affiancarle orizzontalmente!',
           'Crea una cartella "box-model-layout" in VS Code',
           'Crea index.html con struttura base',
           'Aggiungi CSS universale: * { box-sizing: border-box; }',
-          'Crea un container con class="container": width 90%, max-width 1200px, margin 0 auto',
-          'Dentro il container, crea 3 div con class="column"',
-          'Ogni column: width 30%, display inline-block, padding 20px',
-          'Column: background-color diverso per ognuna, border 3px solid, border-radius 8px',
-          'Column: margin-right 3% (tranne l\'ultima - usa :last-child per rimuoverlo)',
-          'Aggiungi h3 e p dentro ogni column con margin adeguati',
-          'Column h3: margin 0 0 15px 0',
-          'Column p: margin 0 (ultimo margin già dato dal padding della column)',
-          'Apri in Live Server',
-          'Apri DevTools (F12) e ispeziona una column',
+          'Crea un container con class="container": width 90%, max-width 800px, margin 0 auto',
+          'Dentro il container, crea 3 div con class="card" (una sotto l\'altra)',
+          'Ogni card: width 100%, padding 25px, margin-bottom 20px',
+          'Card: background-color diverso per ognuna, border 3px solid, border-radius 8px',
+          'Aggiungi h3 e p dentro ogni card con margin adeguati',
+          'Card h3: margin 0 0 15px 0',
+          'Card p: margin 0 (ultimo margin già dato dal padding della card)',
+          'Apri in Live Server - vedrai le 3 card una sotto l\'altra (verticali)',
+          'Apri DevTools (F12) e ispeziona una card',
           'Guarda il Box Model diagram e verifica padding, border, margin',
           'Sperimenta cambiando padding e margin nei DevTools per vedere l\'effetto in tempo reale!'
         ]}
