@@ -2520,3 +2520,49 @@ corso_tecnologie_web/
 **Commit:** `300c498` - Refactor: Ristrutturata Lezione 8 - Approccio didattico proprietà separate → shorthand
 
 ---
+
+### 8. Migliorato Collegamento Didattico - Lezione 8: Transizione border → background shorthand
+
+**Problema Identificato dall'Utente:**
+- ❌ Sezione background presentava shorthand come concetto nuovo
+- ❌ Nessun richiamo alla shorthand border già vista in precedenza
+- ❌ Studenti confusi: "Ma non l'avevamo già spiegato?"
+- ❌ Rottura della continuità didattica
+
+**Soluzione Implementata:**
+
+**1. Box di Transizione Giallo "🤔 Troppe Righe da Scrivere!"**
+- Posizionato dopo background-attachment, prima della sezione shorthand
+- Mostra il problema: 5 righe CSS per uno sfondo completo
+- **Richiama esplicitamente:** "Ti ricordi la shorthand di border?"
+- Anticipa: "Anche background ha la sua scorciatoia!"
+- ✅ Crea ponte tra le due sezioni
+
+**2. Titolo Sezione Modificato**
+- Prima: "⚡ Shorthand: Il Concetto Generale nel CSS" (troppo generico)
+- Ora: "⚡ Shorthand background: Ancora Più Potente!" (specifico + richiama progressione)
+
+**3. Box Viola Introduttivo Modificato**
+- Prima: "💡 Cosa Sono le Shorthand?" (presentate come nuove)
+- Ora: "🔁 Ripassiamo: Cosa Sono le Shorthand?" (richiama conoscenze)
+- Aggiunto: "Hai già visto le shorthand con border!"
+- Confronto esplicito: border (3→1) vs background (8→1)
+- ✅ Valorizza conoscenza pregressa
+
+**4. Titolo Grid Comparativa Modificato**
+- Prima: "📚 Le Shorthand Viste Oggi" (implica novità)
+- Ora: "📚 Confronto: border vs background" (enfatizza parallelismo)
+
+**Benefici Didattici:**
+- ✅ Continuità didattica: richiama border prima di introdurre background
+- ✅ Valorizza apprendimento pregresso: "Hai già visto..."
+- ✅ Non ripete concetto da zero: "Ripassiamo" invece di "Impariamo"
+- ✅ Progressione naturale: semplice (border 3) → complesso (background 8)
+- ✅ Riduce confusione: transizione esplicita tra sezioni
+
+**File Modificato:**
+- `app/moduli/modulo-2-css/lezione-8-bordi-sfondi/page.tsx` (+37 righe, -5 righe)
+
+**Commit:** `24b73eb` - Fix: Migliorato collegamento didattico tra border e background shorthand
+
+---
