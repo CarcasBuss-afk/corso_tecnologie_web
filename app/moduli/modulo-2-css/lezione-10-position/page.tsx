@@ -565,12 +565,31 @@ export default function Lezione10Position() {
   <p style="margin: 20px 0;">Ora "Sezione 3" è sticky!</p>
   <p style="margin: 20px 0;">Questa è l'ultima sezione.</p>
   <p style="margin: 20px 0;">Prova a scrollare su e giù per vedere l'effetto completo! 🎯</p>
+  <p style="margin: 20px 0;">Contenuto extra per permettere lo scroll...</p>
+  <p style="margin: 20px 0;">Ancora un po' di testo...</p>
+  <p style="margin: 20px 0;">Questo permette al titolo "Sezione 3" di restare sticky in alto!</p>
+  <p style="margin: 20px 0;">Senza questo contenuto extra, il titolo rimarrebbe a metà.</p>
+  <p style="margin: 20px 0;">Fine del contenuto! 👋</p>
 </div>
 
 <p style="margin-top: 20px; text-align: center; color: #666; font-weight: bold;">
   📜 Scrolla il riquadro sopra! I titoli si "attaccano" in alto (sticky) finché non arriva il titolo successivo.
 </p>`}
           />
+
+          <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 mt-6">
+            <h3 className="font-bold text-yellow-800 mb-3">⚠️ Importante: Serve Contenuto Sufficiente!</h3>
+            <p className="text-gray-700 mb-3">
+              Perché l&apos;ultimo titolo sticky funzioni correttamente, serve <strong>abbastanza contenuto</strong> dopo di esso
+              per permettere lo scroll.
+            </p>
+            <p className="text-gray-700 mb-3">
+              Se il contenuto finisce subito, il titolo resta &quot;a metà&quot; perché non ha più spazio per scrollare via!
+            </p>
+            <p className="text-gray-700">
+              💡 <strong>Soluzione:</strong> Aggiungi più paragrafi o usa <code>padding-bottom</code> sul container scrollabile.
+            </p>
+          </div>
 
           <div className="bg-green-50 border-l-4 border-green-500 p-6 mt-6">
             <h3 className="font-bold text-green-700 mb-3">💡 Quando Usare sticky?</h3>
