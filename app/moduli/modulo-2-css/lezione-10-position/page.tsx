@@ -521,7 +521,58 @@ export default function Lezione10Position() {
             </div>
           </div>
 
-          <div className="bg-green-50 border-l-4 border-green-500 p-6">
+          <LessonPreview
+            title="position: sticky - Titoli che si attaccano in alto scrollando"
+            html={`<style>
+.section-title {
+  position: sticky;
+  top: 0;
+  background-color: #3498DB;
+  color: white;
+  padding: 15px 20px;
+  margin: 0;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.sticky-container {
+  height: 400px;
+  overflow-y: auto;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: #F8F9FA;
+}
+</style>
+
+<div class="sticky-container">
+  <h2 class="section-title">Sezione 1</h2>
+  <p style="margin: 20px 0;">Contenuto della sezione 1...</p>
+  <p style="margin: 20px 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  <p style="margin: 20px 0;">Prova a scrollare verso il basso! 👇</p>
+  <p style="margin: 20px 0;">Il titolo "Sezione 1" resterà fermo in alto finché...</p>
+  <p style="margin: 20px 0;">...non arriva il titolo "Sezione 2" che lo sostituirà!</p>
+
+  <h2 class="section-title">Sezione 2</h2>
+  <p style="margin: 20px 0;">Contenuto della sezione 2...</p>
+  <p style="margin: 20px 0;">Continua a scrollare! Il titolo "Sezione 2" ora è sticky.</p>
+  <p style="margin: 20px 0;">Mentre "Sezione 1" è scomparso scrollando.</p>
+  <p style="margin: 20px 0;">Più contenuto per vedere l'effetto...</p>
+  <p style="margin: 20px 0;">Ancora un po'...</p>
+
+  <h2 class="section-title">Sezione 3</h2>
+  <p style="margin: 20px 0;">Contenuto della sezione 3...</p>
+  <p style="margin: 20px 0;">Ora "Sezione 3" è sticky!</p>
+  <p style="margin: 20px 0;">Questa è l'ultima sezione.</p>
+  <p style="margin: 20px 0;">Prova a scrollare su e giù per vedere l'effetto completo! 🎯</p>
+</div>
+
+<p style="margin-top: 20px; text-align: center; color: #666; font-weight: bold;">
+  📜 Scrolla il riquadro sopra! I titoli si "attaccano" in alto (sticky) finché non arriva il titolo successivo.
+</p>`}
+          />
+
+          <div className="bg-green-50 border-l-4 border-green-500 p-6 mt-6">
             <h3 className="font-bold text-green-700 mb-3">💡 Quando Usare sticky?</h3>
             <ul className="space-y-2">
               <li>✅ Header di tabelle che restano visibili scrollando</li>
