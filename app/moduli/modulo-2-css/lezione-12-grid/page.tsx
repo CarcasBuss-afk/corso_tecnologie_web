@@ -834,7 +834,7 @@ export default function Lezione12Grid() {
           <Exercise
             title="Gallery Fotografica Responsive"
             difficulty="media"
-            requirements={[
+            steps={[
               'Crea un file HTML con un container class="gallery"',
               'Dentro il container, aggiungi 9 div class="photo" con testo "Photo 1", "Photo 2", etc.',
               'CSS: .gallery con display: grid, grid-template-columns: 1fr 1fr 1fr (3 colonne)',
