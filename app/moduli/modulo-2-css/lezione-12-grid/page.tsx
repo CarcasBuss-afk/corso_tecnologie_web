@@ -853,7 +853,6 @@ export default function Lezione12Grid() {
 
           <Challenge
             title="Dashboard Completa"
-            difficulty="difficile"
             requirements={[
               'Crea un layout completo di dashboard con Grid',
               'Elementi richiesti: header (span tutte le colonne), sidebar 250px fissa, main content flessibile, 3 widget in riga (1fr ciascuno), footer (span tutto)',
