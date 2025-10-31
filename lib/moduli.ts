@@ -247,6 +247,13 @@ export const moduli: Modulo[] = [
         durata: "2.5 ore",
         difficolta: "media",
       },
+      {
+        id: "12",
+        titolo: "Grid - Layout Bidimensionale",
+        slug: "lezione-12-grid",
+        durata: "2.5 ore",
+        difficolta: "media",
+      },
     ],
   },
   {
