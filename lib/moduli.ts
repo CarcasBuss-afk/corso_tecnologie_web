@@ -240,6 +240,13 @@ export const moduli: Modulo[] = [
         durata: "2 ore",
         difficolta: "media",
       },
+      {
+        id: "11",
+        titolo: "Flexbox - Layout Moderno",
+        slug: "lezione-11-flexbox",
+        durata: "2.5 ore",
+        difficolta: "media",
+      },
     ],
   },
   {
