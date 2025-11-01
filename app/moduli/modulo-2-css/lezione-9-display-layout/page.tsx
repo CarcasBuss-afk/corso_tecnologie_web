@@ -1007,6 +1007,63 @@ export default function Lezione9DisplayLayout() {
             'Testa responsive: riduci larghezza finestra e vedi card andare a capo automaticamente',
           ]}
         />
+
+      {/* Conclusione e Riepilogo */}
+      <section className="mt-12 bg-gradient-to-r from-pink-500 to-purple-500 text-white p-8 rounded-lg">
+        <h2 className="text-3xl font-bold mb-4">🎉 Fantastico! Ora Sai Creare Layout Orizzontali!</h2>
+        <p className="text-xl mb-4">
+          Hai imparato a controllare il <strong>display degli elementi</strong> e affiancarli orizzontalmente!
+        </p>
+        <p className="text-lg mb-6">
+          display: inline-block è la chiave per creare gallery, card e layout multi-colonna! 🌐
+        </p>
+
+        <div className="bg-black bg-opacity-20 p-6 rounded border-2 border-white border-opacity-30 mb-6">
+          <p className="font-bold mb-3 text-yellow-200 text-xl">📊 Riepilogo Completo CSS Finora</p>
+
+          <div className="mb-4">
+            <p className="font-bold text-yellow-200 mb-2">🎯 Selettori CSS (3):</p>
+            <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
+              <li>elemento, .classe, #id</li>
+            </ul>
+          </div>
+
+          <div className="mb-4">
+            <p className="font-bold text-yellow-200 mb-2">🔮 Pseudo-classi (5):</p>
+            <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
+              <li>:link, :visited, :hover, :active, :focus</li>
+            </ul>
+          </div>
+
+          <div className="mb-4">
+            <p className="font-bold text-yellow-200 mb-2">📏 Unità di Misura (6):</p>
+            <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
+              <li>px, %, em, rem, vw, vh</li>
+            </ul>
+          </div>
+
+          <div>
+            <p className="font-bold text-yellow-200 mb-2">🎨 Proprietà CSS (37 totali):</p>
+            <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
+              <li>Lezione 1-2: color, background-color, border</li>
+              <li>Lezione 3: font-size, font-weight, text-align</li>
+              <li>Lezione 4: padding, margin, width</li>
+              <li>Lezione 5: font-family, font-style, text-decoration, text-transform, letter-spacing, word-spacing</li>
+              <li>Lezione 6: cursor, transition</li>
+              <li>Lezione 7: box-sizing, max-width, min-height</li>
+              <li>Lezione 8: border-radius, border-top/right/bottom/left, background-image, background-size, background-position, background-repeat, background-attachment</li>
+              <li><strong>Lezione 9 (2 NUOVE)</strong>: display, vertical-align ✨</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="bg-green-400 bg-opacity-30 p-4 rounded border-2 border-green-300">
+          <p className="font-bold mb-2">🚀 Prossima Lezione</p>
+          <p className="text-lg">
+            Imparerai <strong>Position</strong>! Posizionamento assoluto, relativo, fisso e molto altro! 📍
+          </p>
+        </div>
+      </section>
     </LessonLayout>
   );
 }
