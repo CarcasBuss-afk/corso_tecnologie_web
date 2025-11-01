@@ -261,6 +261,13 @@ export const moduli: Modulo[] = [
         durata: "2 ore",
         difficolta: "media",
       },
+      {
+        id: "14",
+        titolo: "Transitions e Transform 2D",
+        slug: "lezione-14-transitions-transform",
+        durata: "2 ore",
+        difficolta: "media",
+      },
     ],
   },
   {
