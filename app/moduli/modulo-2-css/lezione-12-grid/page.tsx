@@ -123,19 +123,26 @@ export default function Lezione12Grid() {
             </p>
           </div>
 
-          <CodeExample
-            language="html"
-            code={`<div class="grid-container">
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <h4 className="font-bold mb-2">HTML:</h4>
+              <CodeExample
+                language="html"
+                code={`<div class="grid-container">
   <div class="item">1</div>
   <div class="item">2</div>
   <div class="item">3</div>
   <div class="item">4</div>
   <div class="item">5</div>
   <div class="item">6</div>
-</div>
-
-<style>
-.grid-container {
+</div>`}
+              />
+            </div>
+            <div>
+              <h4 className="font-bold mb-2">CSS:</h4>
+              <CodeExample
+                language="css"
+                code={`.grid-container {
   display: grid;
   grid-template-columns: 200px 200px 200px;
   gap: 20px;
@@ -151,9 +158,10 @@ export default function Lezione12Grid() {
   font-size: 24px;
   font-weight: bold;
   border-radius: 8px;
-}
-</style>`}
-          />
+}`}
+              />
+            </div>
+          </div>
 
           <LessonPreview
             title="Risultato: 3 colonne da 200px ciascuna"
@@ -231,9 +239,23 @@ export default function Lezione12Grid() {
 
           <h3 className="text-2xl font-bold mb-4">Esempio 1: Tre Colonne Uguali con fr</h3>
 
-          <CodeExample
-            language="css"
-            code={`.grid-equal {
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <h4 className="font-bold mb-2">HTML:</h4>
+              <CodeExample
+                language="html"
+                code={`<div class="grid-equal">
+  <div class="box">1fr</div>
+  <div class="box">1fr</div>
+  <div class="box">1fr</div>
+</div>`}
+              />
+            </div>
+            <div>
+              <h4 className="font-bold mb-2">CSS:</h4>
+              <CodeExample
+                language="css"
+                code={`.grid-equal {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 15px;
@@ -249,7 +271,9 @@ export default function Lezione12Grid() {
   font-weight: bold;
   border-radius: 8px;
 }`}
-          />
+              />
+            </div>
+          </div>
 
           <LessonPreview
             title="3 colonne uguali che si adattano allo spazio"
@@ -282,9 +306,23 @@ export default function Lezione12Grid() {
 
           <h3 className="text-2xl font-bold mb-4 mt-8">Esempio 2: Colonna Centrale Doppia</h3>
 
-          <CodeExample
-            language="css"
-            code={`.grid-proportion {
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <h4 className="font-bold mb-2">HTML:</h4>
+              <CodeExample
+                language="html"
+                code={`<div class="grid-proportion">
+  <div class="box-small">1fr</div>
+  <div class="box-large">2fr (DOPPIA!)</div>
+  <div class="box-small">1fr</div>
+</div>`}
+              />
+            </div>
+            <div>
+              <h4 className="font-bold mb-2">CSS:</h4>
+              <CodeExample
+                language="css"
+                code={`.grid-proportion {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   gap: 15px;
@@ -309,7 +347,9 @@ export default function Lezione12Grid() {
   font-weight: bold;
   border-radius: 8px;
 }`}
-          />
+              />
+            </div>
+          </div>
 
           <LessonPreview
             title="La colonna centrale è DOPPIA!"
@@ -351,9 +391,23 @@ export default function Lezione12Grid() {
 
           <h3 className="text-2xl font-bold mb-4 mt-8">Esempio 3: Mix Fisso + Flessibile</h3>
 
-          <CodeExample
-            language="css"
-            code={`.grid-mix {
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <h4 className="font-bold mb-2">HTML:</h4>
+              <CodeExample
+                language="html"
+                code={`<div class="grid-mix">
+  <div class="box-fixed">150px fissi</div>
+  <div class="box-flex">1fr</div>
+  <div class="box-fixed">150px fissi</div>
+</div>`}
+              />
+            </div>
+            <div>
+              <h4 className="font-bold mb-2">CSS:</h4>
+              <CodeExample
+                language="css"
+                code={`.grid-mix {
   display: grid;
   grid-template-columns: 150px 1fr 150px;
   gap: 15px;
@@ -378,7 +432,9 @@ export default function Lezione12Grid() {
   font-weight: bold;
   border-radius: 8px;
 }`}
-          />
+              />
+            </div>
+          </div>
 
           <LessonPreview
             title="Colonne laterali fisse, centrale flessibile"
@@ -444,9 +500,26 @@ export default function Lezione12Grid() {
             </p>
           </div>
 
-          <CodeExample
-            language="css"
-            code={`.grid-rows {
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <h4 className="font-bold mb-2">HTML:</h4>
+              <CodeExample
+                language="html"
+                code={`<div class="grid-rows">
+  <div class="row-item">100px alto</div>
+  <div class="row-item">100px alto</div>
+  <div class="row-item">100px alto</div>
+  <div class="row-item">150px alto</div>
+  <div class="row-item">150px alto</div>
+  <div class="row-item">150px alto</div>
+</div>`}
+              />
+            </div>
+            <div>
+              <h4 className="font-bold mb-2">CSS:</h4>
+              <CodeExample
+                language="css"
+                code={`.grid-rows {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 100px 150px;
@@ -463,7 +536,9 @@ export default function Lezione12Grid() {
   font-weight: bold;
   border-radius: 8px;
 }`}
-          />
+              />
+            </div>
+          </div>
 
           <LessonPreview
             title="Prima riga 100px, seconda riga 150px"
@@ -526,17 +601,24 @@ export default function Lezione12Grid() {
             </ul>
           </div>
 
-          <CodeExample
-            language="html"
-            code={`<div class="grid-span">
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <h4 className="font-bold mb-2">HTML:</h4>
+              <CodeExample
+                language="html"
+                code={`<div class="grid-span">
   <div class="header">Header (span 3 colonne)</div>
   <div class="box">Box 1</div>
   <div class="box">Box 2</div>
   <div class="box">Box 3</div>
-</div>
-
-<style>
-.grid-span {
+</div>`}
+              />
+            </div>
+            <div>
+              <h4 className="font-bold mb-2">CSS:</h4>
+              <CodeExample
+                language="css"
+                code={`.grid-span {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 15px;
@@ -562,9 +644,10 @@ export default function Lezione12Grid() {
   text-align: center;
   font-weight: bold;
   border-radius: 8px;
-}
-</style>`}
-          />
+}`}
+              />
+            </div>
+          </div>
 
           <LessonPreview
             title="Header espanso su tutte e 3 le colonne!"
@@ -634,17 +717,24 @@ export default function Lezione12Grid() {
             </ul>
           </div>
 
-          <CodeExample
-            language="html"
-            code={`<div class="page-layout">
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <h4 className="font-bold mb-2">HTML:</h4>
+              <CodeExample
+                language="html"
+                code={`<div class="page-layout">
   <header class="page-header">Header</header>
   <aside class="sidebar">Sidebar</aside>
   <main class="main-content">Main Content</main>
   <footer class="page-footer">Footer</footer>
-</div>
-
-<style>
-.page-layout {
+</div>`}
+              />
+            </div>
+            <div>
+              <h4 className="font-bold mb-2">CSS:</h4>
+              <CodeExample
+                language="css"
+                code={`.page-layout {
   display: grid;
   grid-template-columns: 200px 1fr;
   grid-template-rows: 80px 1fr 60px;
@@ -690,9 +780,10 @@ export default function Lezione12Grid() {
   text-align: center;
   font-weight: bold;
   border-radius: 8px;
-}
-</style>`}
-          />
+}`}
+              />
+            </div>
+          </div>
 
           <LessonPreview
             title="Layout completo: Header, Sidebar, Content, Footer"
@@ -901,11 +992,11 @@ export default function Lezione12Grid() {
             </div>
 
             <div className="mt-6 bg-white bg-opacity-20 p-6 rounded-lg">
-              <h3 className="text-xl font-bold mb-3">🔥 Ora Sai Usare i 2 Sistemi di Layout Moderni!</h3>
-              <p className="text-lg mb-2">
+              <h3 className="text-xl font-bold mb-3 text-gray-900">🔥 Ora Sai Usare i 2 Sistemi di Layout Moderni!</h3>
+              <p className="text-lg mb-2 text-gray-900">
                 <strong>Flexbox</strong> → Layout unidimensionali (navbar, card in riga, centratura)
               </p>
-              <p className="text-lg">
+              <p className="text-lg text-gray-900">
                 <strong>Grid</strong> → Layout bidimensionali (gallery, dashboard, pagine complete)
               </p>
             </div>
