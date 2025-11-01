@@ -1003,42 +1003,63 @@ export default function Lezione12Grid() {
           </div>
         </section>
 
-        {/* Prossima lezione */}
-        <section className="mb-16">
-          <div className="bg-blue-50 border-l-4 border-blue-500 p-6">
-            <h3 className="font-bold text-blue-700 mb-3">📚 Prossima Lezione</h3>
-            <p className="text-gray-700">
-              Hai completato i fondamentali di CSS Layout! Nella prossima lezione esploreremo concetti avanzati
-              come la relazione tra contenitori padre e figli, overflow, e inheritance delle proprietà CSS.
-            </p>
-          </div>
-        </section>
+        {/* Conclusione e Riepilogo */}
+        <section className="mt-12 bg-gradient-to-r from-pink-500 to-purple-500 text-white p-8 rounded-lg">
+          <h2 className="text-3xl font-bold mb-4">🎉 Fantastico! Ora Padroneggi i Layout Bidimensionali!</h2>
+          <p className="text-xl mb-4">
+            Hai imparato <strong>CSS Grid</strong>, il sistema di layout più potente per creare strutture complesse!
+          </p>
+          <p className="text-lg mb-6">
+            Combinando Flexbox (1D) e Grid (2D), puoi creare QUALSIASI layout moderno! 🚀
+          </p>
 
-        {/* Riepilogo CSS imparati */}
-        <section className="mb-16">
-          <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-4">📝 CSS Imparati in Questa Lezione</h3>
-            <div className="grid md:grid-cols-3 gap-4">
-              <ul className="space-y-1 text-sm">
-                <li><strong>Lezione 12 (NUOVE)</strong>:</li>
-                <li>• display: grid ✨</li>
-                <li>• grid-template-columns ✨</li>
-                <li>• grid-template-rows ✨</li>
-              </ul>
-              <ul className="space-y-1 text-sm">
-                <li><strong>Unità Nuova</strong>:</li>
-                <li>• fr (fraction) ✨</li>
-                <li><strong>Espansione</strong>:</li>
-                <li>• grid-column: span N ✨</li>
-                <li>• grid-row: span N ✨</li>
-              </ul>
-              <ul className="space-y-1 text-sm">
-                <li><strong>Già Visto</strong>:</li>
-                <li>• gap (Lezione 11)</li>
-                <li>• border-radius (Lezione 8)</li>
-                <li>• padding, margin (Lezione 4, 7)</li>
+          <div className="bg-black bg-opacity-20 p-6 rounded border-2 border-white border-opacity-30 mb-6">
+            <p className="font-bold mb-3 text-yellow-200 text-xl">📊 Riepilogo Completo CSS Finora</p>
+
+            <div className="mb-4">
+              <p className="font-bold text-yellow-200 mb-2">🎯 Selettori CSS (3):</p>
+              <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
+                <li>elemento, .classe, #id</li>
               </ul>
             </div>
+
+            <div className="mb-4">
+              <p className="font-bold text-yellow-200 mb-2">🔮 Pseudo-classi (5):</p>
+              <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
+                <li>:link, :visited, :hover, :active, :focus</li>
+              </ul>
+            </div>
+
+            <div className="mb-4">
+              <p className="font-bold text-yellow-200 mb-2">📏 Unità di Misura (7):</p>
+              <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
+                <li>px, %, em, rem, vw, vh, <strong className="text-yellow-300">fr (fraction) ✨</strong></li>
+              </ul>
+            </div>
+
+            <div>
+              <p className="font-bold text-yellow-200 mb-2">🎨 Proprietà CSS (54 totali):</p>
+              <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
+                <li>Lezione 1-2: color, background-color, border</li>
+                <li>Lezione 3: font-size, font-weight, text-align</li>
+                <li>Lezione 4: padding, margin, width</li>
+                <li>Lezione 5: font-family, font-style, text-decoration, text-transform, letter-spacing, word-spacing</li>
+                <li>Lezione 6: cursor, transition</li>
+                <li>Lezione 7: box-sizing, max-width, min-height</li>
+                <li>Lezione 8: border-radius, border-top/right/bottom/left, background-image, background-size, background-position, background-repeat, background-attachment</li>
+                <li>Lezione 9: display, vertical-align</li>
+                <li>Lezione 10: position, top, right, bottom, left, z-index</li>
+                <li>Lezione 11: flex-direction, justify-content, align-items, gap, flex-wrap, flex</li>
+                <li><strong>Lezione 12 (5 NUOVE)</strong>: grid-template-columns, grid-template-rows, grid-column, grid-row, height ✨</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-green-400 bg-opacity-30 p-4 rounded border-2 border-green-300">
+            <p className="font-bold mb-2">🚀 Prossima Lezione</p>
+            <p className="text-lg">
+              Esploreremo concetti avanzati come la <strong>relazione tra contenitori padre e figli</strong>, overflow, e inheritance delle proprietà CSS! 🔗
+            </p>
           </div>
         </section>
 
