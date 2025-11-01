@@ -254,6 +254,13 @@ export const moduli: Modulo[] = [
         durata: "2.5 ore",
         difficolta: "media",
       },
+      {
+        id: "13",
+        titolo: "Contenitori e Figli - Relazioni CSS",
+        slug: "lezione-13-contenitori-figli",
+        durata: "2 ore",
+        difficolta: "media",
+      },
     ],
   },
   {
