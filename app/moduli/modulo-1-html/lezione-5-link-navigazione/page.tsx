@@ -154,10 +154,9 @@ export default function Lezione5() {
 <p>Altro testo...</p>
 
 <!-- 2. Crea link che puntano all'ancora -->
-<nav>
-  <a href="#capitolo1">Vai al Capitolo 1</a>
-  <a href="#capitolo2">Vai al Capitolo 2</a>
-</nav>
+<p>Indice:</p>
+<a href="#capitolo1">Vai al Capitolo 1</a><br>
+<a href="#capitolo2">Vai al Capitolo 2</a>
 
 <!-- Link per tornare all'inizio della pagina -->
 <a href="#top">Torna su ↑</a>`}
@@ -320,7 +319,7 @@ export default function Lezione5() {
 </html>`,
             },
             {
-              text: 'Aggiungi un h1 "Il Mio Sito Web" e inizia la sezione <nav>',
+              text: 'Aggiungi un h1 "Il Mio Sito Web" e un h2 "Menu del Sito"',
               code: `<!DOCTYPE html>
 <html>
   <head>
@@ -329,14 +328,13 @@ export default function Lezione5() {
   <body>
     <h1>Il Mio Sito Web</h1>
 
-    <nav>
-    </nav>
+    <h2>Menu del Sito</h2>
   </body>
 </html>`,
-              highlightLines: [7, 9, 10],
+              highlightLines: [7, 9],
             },
             {
-              text: 'Dentro <nav>, crea una lista <ul> con 5 link interni alle pagine del sito',
+              text: 'Aggiungi 5 link interni alle pagine del sito, separati da <br>',
               code: `<!DOCTYPE html>
 <html>
   <head>
@@ -345,18 +343,15 @@ export default function Lezione5() {
   <body>
     <h1>Il Mio Sito Web</h1>
 
-    <nav>
-      <ul>
-        <li><a href="home.html">Home</a></li>
-        <li><a href="chi-sono.html">Chi Sono</a></li>
-        <li><a href="servizi.html">Servizi</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
-      </ul>
-    </nav>
+    <h2>Menu del Sito</h2>
+    <a href="home.html">Home</a><br>
+    <a href="chi-sono.html">Chi Sono</a><br>
+    <a href="servizi.html">Servizi</a><br>
+    <a href="portfolio.html">Portfolio</a><br>
+    <a href="contatti.html">Contatti</a><br>
   </body>
 </html>`,
-              highlightLines: [10, 11, 12, 13, 14, 15, 16],
+              highlightLines: [10, 11, 12, 13, 14],
             },
             {
               text: 'Aggiungi un h2 "Link Esterni" con un link a Google che si apre in nuova tab',
@@ -368,21 +363,18 @@ export default function Lezione5() {
   <body>
     <h1>Il Mio Sito Web</h1>
 
-    <nav>
-      <ul>
-        <li><a href="home.html">Home</a></li>
-        <li><a href="chi-sono.html">Chi Sono</a></li>
-        <li><a href="servizi.html">Servizi</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
-      </ul>
-    </nav>
+    <h2>Menu del Sito</h2>
+    <a href="home.html">Home</a><br>
+    <a href="chi-sono.html">Chi Sono</a><br>
+    <a href="servizi.html">Servizi</a><br>
+    <a href="portfolio.html">Portfolio</a><br>
+    <a href="contatti.html">Contatti</a><br>
 
     <h2>Link Esterni</h2>
     <p><a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Cerca su Google</a></p>
   </body>
 </html>`,
-              highlightLines: [19, 20],
+              highlightLines: [16, 17],
             },
             {
               text: 'Crea una sezione h2 con id="contatti" e aggiungi un paragrafo',
@@ -394,15 +386,12 @@ export default function Lezione5() {
   <body>
     <h1>Il Mio Sito Web</h1>
 
-    <nav>
-      <ul>
-        <li><a href="home.html">Home</a></li>
-        <li><a href="chi-sono.html">Chi Sono</a></li>
-        <li><a href="servizi.html">Servizi</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
-      </ul>
-    </nav>
+    <h2>Menu del Sito</h2>
+    <a href="home.html">Home</a><br>
+    <a href="chi-sono.html">Chi Sono</a><br>
+    <a href="servizi.html">Servizi</a><br>
+    <a href="portfolio.html">Portfolio</a><br>
+    <a href="contatti.html">Contatti</a><br>
 
     <h2>Link Esterni</h2>
     <p><a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Cerca su Google</a></p>
@@ -411,7 +400,7 @@ export default function Lezione5() {
     <p>Scrivici o chiamaci per qualsiasi informazione!</p>
   </body>
 </html>`,
-              highlightLines: [22, 23],
+              highlightLines: [19, 20],
             },
             {
               text: 'Aggiungi un anchor link nel menu che porta alla sezione contatti',
@@ -423,16 +412,13 @@ export default function Lezione5() {
   <body>
     <h1>Il Mio Sito Web</h1>
 
-    <nav>
-      <ul>
-        <li><a href="home.html">Home</a></li>
-        <li><a href="chi-sono.html">Chi Sono</a></li>
-        <li><a href="servizi.html">Servizi</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
-        <li><a href="#contatti">Vai ai Contatti (anchor) ↓</a></li>
-      </ul>
-    </nav>
+    <h2>Menu del Sito</h2>
+    <a href="home.html">Home</a><br>
+    <a href="chi-sono.html">Chi Sono</a><br>
+    <a href="servizi.html">Servizi</a><br>
+    <a href="portfolio.html">Portfolio</a><br>
+    <a href="contatti.html">Contatti</a><br>
+    <a href="#contatti">Vai ai Contatti (anchor) ↓</a><br>
 
     <h2>Link Esterni</h2>
     <p><a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Cerca su Google</a></p>
@@ -441,7 +427,7 @@ export default function Lezione5() {
     <p>Scrivici o chiamaci per qualsiasi informazione!</p>
   </body>
 </html>`,
-              highlightLines: [16],
+              highlightLines: [15],
             },
             {
               text: 'Aggiungi un link email nella sezione contatti',
@@ -453,16 +439,13 @@ export default function Lezione5() {
   <body>
     <h1>Il Mio Sito Web</h1>
 
-    <nav>
-      <ul>
-        <li><a href="home.html">Home</a></li>
-        <li><a href="chi-sono.html">Chi Sono</a></li>
-        <li><a href="servizi.html">Servizi</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
-        <li><a href="#contatti">Vai ai Contatti (anchor) ↓</a></li>
-      </ul>
-    </nav>
+    <h2>Menu del Sito</h2>
+    <a href="home.html">Home</a><br>
+    <a href="chi-sono.html">Chi Sono</a><br>
+    <a href="servizi.html">Servizi</a><br>
+    <a href="portfolio.html">Portfolio</a><br>
+    <a href="contatti.html">Contatti</a><br>
+    <a href="#contatti">Vai ai Contatti (anchor) ↓</a><br>
 
     <h2>Link Esterni</h2>
     <p><a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Cerca su Google</a></p>
@@ -472,7 +455,7 @@ export default function Lezione5() {
     <p>📧 Email: <a href="mailto:info@miosito.com">info@miosito.com</a></p>
   </body>
 </html>`,
-              highlightLines: [25],
+              highlightLines: [22],
             },
             {
               text: 'Aggiungi un link telefono',
@@ -484,16 +467,13 @@ export default function Lezione5() {
   <body>
     <h1>Il Mio Sito Web</h1>
 
-    <nav>
-      <ul>
-        <li><a href="home.html">Home</a></li>
-        <li><a href="chi-sono.html">Chi Sono</a></li>
-        <li><a href="servizi.html">Servizi</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
-        <li><a href="#contatti">Vai ai Contatti (anchor) ↓</a></li>
-      </ul>
-    </nav>
+    <h2>Menu del Sito</h2>
+    <a href="home.html">Home</a><br>
+    <a href="chi-sono.html">Chi Sono</a><br>
+    <a href="servizi.html">Servizi</a><br>
+    <a href="portfolio.html">Portfolio</a><br>
+    <a href="contatti.html">Contatti</a><br>
+    <a href="#contatti">Vai ai Contatti (anchor) ↓</a><br>
 
     <h2>Link Esterni</h2>
     <p><a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Cerca su Google</a></p>
@@ -504,7 +484,7 @@ export default function Lezione5() {
     <p>📱 Telefono: <a href="tel:+393331234567">+39 333 123 4567</a></p>
   </body>
 </html>`,
-              highlightLines: [26],
+              highlightLines: [23],
             },
             'Salva il file (Ctrl+S o Cmd+S)',
             'Fai doppio click sul file "menu-navigazione.html" per aprirlo nel browser! 🎉',
