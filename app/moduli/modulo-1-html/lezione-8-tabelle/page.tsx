@@ -652,15 +652,291 @@ export default function Lezione8Page() {
           title="🎯 Esercizio Guidato: Tabella Voti Scolastici"
           difficulty="media"
           steps={[
-            'Inizia con i tag <table>, <thead>, <tbody>, <tfoot>',
-            'Inserisci <caption>Voti Primo Quadrimestre - Classe 2B</caption>',
-            'In <thead>, crea una riga con 4 celle <th>: Materia, Ottobre, Novembre, Dicembre',
-            'In <tbody>, crea riga con Matematica e voti: 8, 7, 9',
-            'Crea righe per Italiano (7, 8, 8), Inglese (9, 9, 8), Storia (6, 7, 7)',
-            'Aggiungi ultima riga in <tbody> con Media: 7.5, 7.75, 8',
-            'In <tfoot>, crea riga con colspan="3" per "Media Generale:" e cella con 7.75',
-            'Usa <strong> per rendere in grassetto i numeri delle medie',
-            'Verifica che tutte le intestazioni usino <th> e ci sia il caption'
+            'Crea un file "voti-scolastici.html" in VS Code',
+            {
+              text: 'Scrivi la struttura HTML base con title "Voti Scolastici"',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Voti Scolastici</title>
+  </head>
+  <body>
+
+  </body>
+</html>`,
+            },
+            {
+              text: 'Aggiungi h1 "Registro Voti" e inizia la struttura della tabella',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Voti Scolastici</title>
+  </head>
+  <body>
+    <h1>Registro Voti</h1>
+
+    <table border="1">
+      <caption>Voti Primo Quadrimestre - Classe 2B</caption>
+      <thead>
+      </thead>
+      <tbody>
+      </tbody>
+      <tfoot>
+      </tfoot>
+    </table>
+  </body>
+</html>`,
+              highlightLines: [7, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+            },
+            {
+              text: 'In <thead>, crea la riga di intestazione con 4 colonne',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Voti Scolastici</title>
+  </head>
+  <body>
+    <h1>Registro Voti</h1>
+
+    <table border="1">
+      <caption>Voti Primo Quadrimestre - Classe 2B</caption>
+      <thead>
+        <tr>
+          <th>Materia</th>
+          <th>Ottobre</th>
+          <th>Novembre</th>
+          <th>Dicembre</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+      <tfoot>
+      </tfoot>
+    </table>
+  </body>
+</html>`,
+              highlightLines: [12, 13, 14, 15, 16, 17],
+            },
+            {
+              text: 'In <tbody>, aggiungi la prima riga con Matematica e i suoi voti',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Voti Scolastici</title>
+  </head>
+  <body>
+    <h1>Registro Voti</h1>
+
+    <table border="1">
+      <caption>Voti Primo Quadrimestre - Classe 2B</caption>
+      <thead>
+        <tr>
+          <th>Materia</th>
+          <th>Ottobre</th>
+          <th>Novembre</th>
+          <th>Dicembre</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Matematica</td>
+          <td>8</td>
+          <td>7</td>
+          <td>9</td>
+        </tr>
+      </tbody>
+      <tfoot>
+      </tfoot>
+    </table>
+  </body>
+</html>`,
+              highlightLines: [20, 21, 22, 23, 24, 25],
+            },
+            {
+              text: 'Aggiungi le righe per Italiano, Inglese e Storia',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Voti Scolastici</title>
+  </head>
+  <body>
+    <h1>Registro Voti</h1>
+
+    <table border="1">
+      <caption>Voti Primo Quadrimestre - Classe 2B</caption>
+      <thead>
+        <tr>
+          <th>Materia</th>
+          <th>Ottobre</th>
+          <th>Novembre</th>
+          <th>Dicembre</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Matematica</td>
+          <td>8</td>
+          <td>7</td>
+          <td>9</td>
+        </tr>
+        <tr>
+          <td>Italiano</td>
+          <td>7</td>
+          <td>8</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>Inglese</td>
+          <td>9</td>
+          <td>9</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>Storia</td>
+          <td>6</td>
+          <td>7</td>
+          <td>7</td>
+        </tr>
+      </tbody>
+      <tfoot>
+      </tfoot>
+    </table>
+  </body>
+</html>`,
+              highlightLines: [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42],
+            },
+            {
+              text: 'Aggiungi una riga in <tbody> con le medie mensili',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Voti Scolastici</title>
+  </head>
+  <body>
+    <h1>Registro Voti</h1>
+
+    <table border="1">
+      <caption>Voti Primo Quadrimestre - Classe 2B</caption>
+      <thead>
+        <tr>
+          <th>Materia</th>
+          <th>Ottobre</th>
+          <th>Novembre</th>
+          <th>Dicembre</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Matematica</td>
+          <td>8</td>
+          <td>7</td>
+          <td>9</td>
+        </tr>
+        <tr>
+          <td>Italiano</td>
+          <td>7</td>
+          <td>8</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>Inglese</td>
+          <td>9</td>
+          <td>9</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>Storia</td>
+          <td>6</td>
+          <td>7</td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td><strong>Media Mensile</strong></td>
+          <td><strong>7.5</strong></td>
+          <td><strong>7.75</strong></td>
+          <td><strong>8</strong></td>
+        </tr>
+      </tbody>
+      <tfoot>
+      </tfoot>
+    </table>
+  </body>
+</html>`,
+              highlightLines: [43, 44, 45, 46, 47, 48],
+            },
+            {
+              text: 'In <tfoot>, aggiungi una riga con la media generale usando colspan',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Voti Scolastici</title>
+  </head>
+  <body>
+    <h1>Registro Voti</h1>
+
+    <table border="1">
+      <caption>Voti Primo Quadrimestre - Classe 2B</caption>
+      <thead>
+        <tr>
+          <th>Materia</th>
+          <th>Ottobre</th>
+          <th>Novembre</th>
+          <th>Dicembre</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Matematica</td>
+          <td>8</td>
+          <td>7</td>
+          <td>9</td>
+        </tr>
+        <tr>
+          <td>Italiano</td>
+          <td>7</td>
+          <td>8</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>Inglese</td>
+          <td>9</td>
+          <td>9</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>Storia</td>
+          <td>6</td>
+          <td>7</td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td><strong>Media Mensile</strong></td>
+          <td><strong>7.5</strong></td>
+          <td><strong>7.75</strong></td>
+          <td><strong>8</strong></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3"><strong>Media Generale:</strong></td>
+          <td><strong>7.75</strong></td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>`,
+              highlightLines: [51, 52, 53, 54],
+            },
+            'Salva il file (Ctrl+S o Cmd+S)',
+            'Fai doppio click sul file "voti-scolastici.html" per aprirlo nel browser! 🎉',
+            'Osserva come la tabella organizza i dati in modo chiaro e professionale!',
+          ]}
+          experiments={[
+            'Rimuovi border="1" dalla <table>, salva e ricarica (F5) - i bordi scompaiono! Le tabelle moderne usano CSS per i bordi',
+            'Cambia colspan="3" in colspan="2", salva e ricarica - la cella si restringe e la tabella si disallinea',
+            'Aggiungi una quinta materia (es: Scienze con voti 8, 9, 8), salva e ricarica - la tabella si espande automaticamente',
+            'Scambia <thead> con <tbody>, salva e ricarica - funziona comunque ma perde il significato semantico',
+            'Aggiungi rowspan="2" a una cella, salva e ricarica - la cella occuperà due righe verticalmente!',
           ]}
         />
 
