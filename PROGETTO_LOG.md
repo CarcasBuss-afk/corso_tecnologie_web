@@ -3747,6 +3747,179 @@ corso_tecnologie_web/
 
 ---
 
+---
+
+## 📅 SESSION 16 - Miglioramenti Pedagogici Esercizi Guidati (3 Novembre 2025)
+
+### 🎯 Obiettivo
+Rivedere e migliorare gli esercizi guidati delle lezioni HTML 4-8 applicando il nuovo formato didattico già utilizzato nelle lezioni 1-3, che prevede:
+- Codice completo mostrato ad ogni step (non solo istruzioni testuali)
+- Evidenziazione delle righe nuove con `highlightLines`
+- Sezione "Esperimenti" obbligatoria per apprendimento attivo
+- Rimozione riferimenti a Live Server (workflow semplificato: doppio click + F5)
+
+### 🔧 Lavoro Svolto
+
+#### 1. **Lezione 4 - Formattare il Testo**
+**Esercizio:** "Formatta le tue Note Scolastiche"
+- ✅ Ristrutturato con 12 step progressivi (3 intro + 8 con codice + 1 conclusione)
+- ✅ Esempio: note di scienze con formule chimiche (H₂O) e fisiche (E=mc²)
+- ✅ Progressione: base HTML → h1 → h2+p con `<strong>` → formula `<sub>` → h2+p → formula `<sup>` → `<mark>` per keywords → `<small>` per copyright
+- ✅ 5 esperimenti aggiunti: `strong` vs `b`, `em`, combinazioni tag, `del/ins`, `mark+strong`
+- **Commit:** `4baea8c` - 153 insertions, 9 deletions
+- **File:** `lezione-4-formattare-testo/page.tsx`
+
+#### 2. **Lezione 5 - Link e Navigazione**
+**Problema Critico Rilevato:** Uso di tag non ancora spiegati! ⚠️
+- ❌ `<nav>` usato ma spiegato solo nella Lezione 17 (HTML Semantico)
+- ❌ `<ul>` e `<li>` usati ma spiegati solo nella Lezione 7 (Liste)
+- **Soluzione:** Rimossi tutti i tag non ancora spiegati
+
+**Esercizio:** "Crea un Menu di Navigazione" (RISCIRTTO COMPLETAMENTE)
+- ✅ Sostituito `<nav>` con semplice `<h2>Menu del Sito</h2>`
+- ✅ Sostituito `<ul><li>` con link `<a>` separati da `<br>` (già spiegato in Lezione 3)
+- ✅ Ristrutturato con 12 step progressivi (1 intro + 9 con codice + 2 conclusione)
+- ✅ Esempio: menu sito con link interni, esterni, anchor, email, telefono
+- ✅ Rimosso `<nav>` anche da esempio CodeExample nel corpo della lezione
+- ✅ 5 esperimenti aggiunti: `target="_blank"`, anchor scroll, `mailto` con subject, `title` tooltip, `rel` security
+- **Commit 1:** `5fbe6e0` - 209 insertions, 10 deletions (nuovo formato)
+- **Commit 2:** `98635dd` - 52 insertions, 72 deletions (fix tag non spiegati)
+- **File:** `lezione-5-link-navigazione/page.tsx`
+
+**Impatto Pedagogico:**
+- Ora l'esercizio usa SOLO concetti già spiegati: `h1`, `h2`, `p`, `br`, `a`, `href`, `target`, `rel`, `mailto`, `tel`
+- Gli studenti non si confonderanno più con tag che non hanno ancora studiato
+- Coerenza didattica ripristinata ✅
+
+#### 3. **Lezione 6 - Immagini**
+**Esercizio:** "Crea una Gallery di Immagini"
+- ✅ Ristrutturato con 13 step progressivi (3 intro + 8 con codice + 2 conclusione)
+- ✅ Esempio: gallery fotografica con 3 immagini (natura, città, mare)
+- ✅ Progressione: base HTML → h1 → `img` con `src/alt/width` → didascalia `p` → seconda e terza immagine → link cliccabile con `<a>`
+- ✅ Percorsi relativi (`immagini/nomefile.jpg`) spiegati chiaramente
+- ✅ 5 esperimenti aggiunti: `width`, `alt`, `title`, `loading="lazy"`, URL esterni
+- **Commit:** `3044eb4` - 134 insertions, 11 deletions
+- **File:** `lezione-6-immagini/page.tsx`
+
+#### 4. **Lezione 7 - Liste**
+**Esercizio:** "Menu Ristorante"
+- ✅ Ristrutturato con 11 step progressivi (1 intro + 8 con codice + 2 conclusione)
+- ✅ Esempio: menu ristorante con liste ordinate (`<ol>`) e annidate (`<ul>`)
+- ✅ Dimostrato concetto di liste annidate con 4 portate (Antipasto, Primo, Secondo, Dolce)
+- ✅ Progressione: base HTML → h1+h2 → `ol` con 4 `li` → lista annidata nell'Antipasto → liste annidate in Primo, Secondo, Dolce → lista semplice per Bevande
+- ✅ 5 esperimenti aggiunti: `ol` vs `ul`, `type="A"`, `start`, `strong`, liste multi-livello
+- **Commit:** `55d4455` - 217 insertions, 10 deletions
+- **File:** `lezione-7-liste/page.tsx`
+
+**Nota Pedagogica:** Questa lezione spiega FINALMENTE `<ul>` e `<li>` che abbiamo dovuto rimuovere dalla Lezione 5. Ora la sequenza didattica è corretta! ✅
+
+#### 5. **Lezione 8 - Tabelle**
+**Esercizio:** "Tabella Voti Scolastici"
+- ✅ Ristrutturato con 11 step progressivi (1 intro + 8 con codice + 2 conclusione)
+- ✅ Esempio: tabella voti con `thead`, `tbody`, `tfoot`, `caption` e `colspan`
+- ✅ Dimostrato l'uso di tag semantici per strutturare tabelle professionali
+- ✅ Progressione: base HTML → h1 + struttura `table` → `caption` + `thead/tbody/tfoot` → intestazioni `th` → prima riga dati → tutte le righe dati → riga medie → `tfoot` con `colspan`
+- ✅ Concetti: `table`, `caption`, `thead`, `tbody`, `tfoot`, `tr`, `th`, `td`, `colspan`, `border` attribute
+- ✅ 5 esperimenti aggiunti: `border`, `colspan`, aggiunta riga, `thead/tbody` swap, `rowspan`
+- **Commit:** `b6596dc` - 285 insertions, 9 deletions
+- **File:** `lezione-8-tabelle/page.tsx`
+
+### 📊 Statistiche Sessione
+
+**Lezioni Aggiornate:** 5 (Lezioni 4, 5, 6, 7, 8)
+**Commit Totali:** 6
+- `4baea8c` - Lezione 4 Formattare Testo
+- `5fbe6e0` - Lezione 5 Link (nuovo formato)
+- `98635dd` - Lezione 5 Link (fix tag non spiegati) 🔧
+- `3044eb4` - Lezione 6 Immagini
+- `55d4455` - Lezione 7 Liste
+- `b6596dc` - Lezione 8 Tabelle
+
+**Righe di Codice:**
+- Inserite: ~1,030 righe
+- Eliminate: ~121 righe
+- Netto: +909 righe di miglioramenti didattici
+
+**Problemi Risolti:**
+1. ✅ Coerenza pedagogica: rimossi tag non ancora spiegati dalla Lezione 5
+2. ✅ Esercizi guidati ora mostrano codice completo ad ogni step
+3. ✅ Aggiunta sezione "Esperimenti" in tutte le lezioni per apprendimento attivo
+4. ✅ Rimosso Live Server da tutte le lezioni (workflow semplificato)
+
+**Tempo Stimato:** 3-4 ore di lavoro
+**Deployment:** Tutti i commit pushati su GitHub e deployati automaticamente su Vercel ✅
+
+### 🎓 Miglioramenti Didattici
+
+**Prima (vecchio formato):**
+```jsx
+steps={[
+  'Crea un file HTML',
+  'Aggiungi un h1',
+  'Inserisci un paragrafo',
+  // ... istruzioni testuali
+]}
+```
+
+**Dopo (nuovo formato):**
+```jsx
+steps={[
+  'Crea un file HTML in VS Code',
+  {
+    text: 'Aggiungi un h1 "Titolo"',
+    code: `<!DOCTYPE html>
+<html>
+  <head><title>Pagina</title></head>
+  <body>
+    <h1>Titolo</h1>  <!-- EVIDENZIATO IN VERDE -->
+  </body>
+</html>`,
+    highlightLines: [5]  // Riga evidenziata
+  },
+  // ... codice completo ad ogni step
+],
+experiments={[
+  'Prova a cambiare il testo, salva e ricarica (F5) - vedi il cambiamento!',
+  // ... 5 esperimenti per ogni esercizio
+]}
+```
+
+**Vantaggi del Nuovo Formato:**
+1. **Chiarezza:** Lo studente vede ESATTAMENTE cosa deve scrivere
+2. **Progressione:** Codice completo ad ogni step, non frammenti isolati
+3. **Visual Feedback:** Righe nuove evidenziate in verde = focus immediato
+4. **Sperimentazione:** 5 esperimenti incoraggiano l'apprendimento attivo
+5. **Autonomia:** Workflow semplice (doppio click + F5) senza dipendenze
+
+### 🐛 Bug Fix Critici
+
+**Problema:** Lezione 5 usava `<nav>`, `<ul>`, `<li>` senza averli spiegati
+**Impatto:** Gli studenti sarebbero stati confusi da tag sconosciuti
+**Soluzione:** Riscrittura completa dell'esercizio usando solo tag già spiegati
+**Risultato:** Sequenza didattica coerente ripristinata ✅
+
+**Problema:** Riferimenti a "Live Server" senza spiegazione
+**Impatto:** Studenti confusi su come aprire i file HTML
+**Soluzione:** Sostituito con "doppio click + F5" (universale e semplice)
+**Risultato:** Workflow più accessibile per tutti ✅
+
+### 🚀 Stato del Progetto
+
+**Lezioni HTML (Modulo 1) - 18 totali:**
+- ✅ Lezione 1-3: Già aggiornate (Session 15)
+- ✅ Lezione 4-8: Aggiornate (Session 16) ← OGGI
+- ⏳ Lezione 9-18: Da aggiornare
+
+**Lezioni CSS (Modulo 2) - 14 totali:**
+- ⏳ Tutte da rivedere con il nuovo formato
+
+**Prossimi Passi:**
+1. Continuare con Lezioni HTML 9-18 (Form, Semantic HTML, Containers, Mini-Project)
+2. Applicare lo stesso formato alle 14 lezioni CSS
+3. Testing completo di tutte le lezioni aggiornate
+
+---
+
 ### 🎯 PROSSIMI PASSI
 
 **Priorità 1: Modulo 3 - Progetto Intermedio** (RACCOMANDATO)
