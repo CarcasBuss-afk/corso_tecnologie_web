@@ -1,9 +1,210 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 2 Novembre 2025 - Sessione 15 Miglioramenti Didattici Esercizi Guidati
+**Ultimo aggiornamento:** 3 Novembre 2025 - Sessione 16 Completamento Lezioni HTML 3-9
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
+
+---
+
+## 📅 CHANGELOG SESSIONE 16 (3 Novembre 2025) - COMPLETAMENTO LEZIONI HTML 3-9
+
+### 🎯 Obiettivo Sessione
+Applicare il nuovo formato didattico (codice completo + evidenziazione + esperimenti) alle Lezioni HTML 3-9, correggendo errori pedagogici e raggiungendo il 50% di completamento del modulo HTML (9/18 lezioni).
+
+---
+
+### 1. 📝 Aggiornamento Lezione 3 - "Paragrafi e Testo"
+
+**Modifiche:**
+- ✅ Rimossa sezione "Esempio Pratico" ridondante
+- ✅ Mantenuto solo "Esercizio Guidato" con nuovo formato
+- ✅ 8 step con codice HTML completo progressivo
+- ✅ Evidenziate righe nuove con `highlightLines`
+- ✅ 5 esperimenti pratici
+
+**File modificato:** `/app/moduli/modulo-1-html/lezione-3-paragrafi-testo/page.tsx`
+**Commit:** `e4cf80f`
+
+---
+
+### 2. 📝 Aggiornamento Lezione 4 - "Formattare Testo"
+
+**Esercizio Guidato: "Note Scolastiche"**
+- 12 step totali con progressione completa
+- Tags usati: `<strong>`, `<em>`, `<mark>`, `<small>`, `<sub>`, `<sup>`, `<br>`
+- Formule: H₂O, E=mc²
+- 5 esperimenti pratici
+- Evidenziazione righe nuove
+
+**File modificato:** `/app/moduli/modulo-1-html/lezione-4-formattare-testo/page.tsx`
+**Commit:** `4baea8c`
+
+---
+
+### 3. 📝 Aggiornamento Lezione 5 - "Link e Navigazione"
+
+**Prima versione** ❌:
+- Usava `<nav>`, `<ul>`, `<li>` (spiegati solo in Lezioni 7 e 17)
+- Errore pedagogico: tags usati prima della spiegazione
+
+**Seconda versione** ✅:
+- Riscritto completamente usando solo tags già conosciuti
+- Usati: `<h2>`, `<a>`, `<br>` per separare i link
+- 12 step con progressione corretta
+- 5 esperimenti pratici
+
+**File modificato:** `/app/moduli/modulo-1-html/lezione-5-link-navigazione/page.tsx`
+**Commits:** `5fbe6e0` (prima versione), `98635dd` (fix pedagogico)
+
+---
+
+### 4. 📝 Aggiornamento Lezione 6 - "Immagini"
+
+**Esercizio Guidato: "Galleria Fotografica"**
+- 10 step con 3 immagini (natura.jpg, citta.jpg, mare.jpg)
+- Attributi: `src`, `alt`, `width`, `height`
+- 5 esperimenti pratici su dimensioni e alt text
+- Output visivo con LessonPreview
+
+**File modificato:** `/app/moduli/modulo-1-html/lezione-6-immagini/page.tsx`
+**Commit:** `3044eb4`
+
+---
+
+### 5. 📝 Aggiornamento Lezione 7 - "Liste"
+
+**Esercizio Guidato: "Menu Ristorante"**
+- 11 step con liste ordinate e non ordinate
+- Liste nidificate (lista dentro lista)
+- 5 esperimenti pratici su type, start, nested lists
+- FINALMENTE introduce `<ul>` e `<li>` che erano usati erroneamente in Lezione 5
+
+**File modificato:** `/app/moduli/modulo-1-html/lezione-7-liste/page.tsx`
+**Commit:** `55d4455`
+
+---
+
+### 6. 📝 Aggiornamento Lezione 8 - "Tabelle"
+
+**Esercizio Guidato: "Registro Voti Scolastici"**
+- 14 step con tabella completa
+- Struttura: `<table>`, `<thead>`, `<tbody>`, `<tfoot>`, `<tr>`, `<th>`, `<td>`
+- Attributi: `colspan`, `rowspan`
+- 5 esperimenti pratici su struttura e spanning
+- Output visivo con LessonPreview
+
+**File modificato:** `/app/moduli/modulo-1-html/lezione-8-tabelle/page.tsx`
+**Commit:** `b6596dc`
+
+---
+
+### 7. 📝 Aggiornamento Lezione 9 - "Form - Input Base"
+
+**Prima versione:**
+- ✅ 12 step con form login completo
+- ✅ Input types: text, password, email, number, tel
+- ✅ 5 esperimenti pratici
+- ❌ Problema 1: usava attributo `id` senza spiegarlo
+- ❌ Problema 2: form completo senza output visivo
+
+**Fix applicati (Commit `c69f763`):**
+
+#### A) Aggiunta sezione "🔗 Collegare Label e Input: id e for"
+**Posizione:** Prima della sezione sui tipi di input
+**Contenuti:**
+- Spiegazione attributo `id` (identificatore univoco, come "codice fiscale")
+- Spiegazione attributo `for` (collega label a input)
+- CodeExample con label/input collegati
+- Vantaggi: etichette cliccabili, screen reader, mobile-friendly
+- ⚠️ Regola importante: id deve essere univoco nella pagina
+
+#### B) Aggiunto output visivo form completo
+- LessonPreview dopo il CodeExample del form registrazione
+- Mostra esattamente il codice: 5 campi (nome, email, password, età, telefono) + bottone
+- Styling inline per renderlo visibile senza CSS esterno
+- Descrizione: "Prova a compilare i campi..."
+
+**File modificato:** `/app/moduli/modulo-1-html/lezione-9-form-input-base/page.tsx`
+**Commits:** `5604ec5` (aggiornamento formato), `c69f763` (fix id/for + preview)
+
+**Statistiche Lezione 9:**
+- +92 righe aggiunte con i fix
+- Sezione id/for: ~65 righe
+- LessonPreview form: ~22 righe
+- Miglioramento pedagogico: ✅ Nessun concetto usato prima della spiegazione
+
+---
+
+### 📊 Statistiche Sessione 16
+
+**Lezioni aggiornate:** 7 (Lezioni 3-9)
+**Totale lezioni HTML completate:** 9/18 (50% ✅)
+
+**Dettaglio progressione:**
+- ✅ Lezione 1: Il Primo Giorno (Sessione 15)
+- ✅ Lezione 2: Titoli e Gerarchia (Sessione 15)
+- ✅ Lezione 3: Paragrafi e Testo
+- ✅ Lezione 4: Formattare Testo
+- ✅ Lezione 5: Link e Navigazione (+ fix pedagogico)
+- ✅ Lezione 6: Immagini
+- ✅ Lezione 7: Liste
+- ✅ Lezione 8: Tabelle
+- ✅ Lezione 9: Form Input Base (+ fix id/for + preview)
+- ⏳ Lezione 10: Form Input Avanzati
+- ⏳ Lezione 11: Textarea e Select
+- ⏳ Lezioni 12-18: Da aggiornare
+
+**Commits totali Sessione 16:** 10
+- 7 lezioni aggiornate
+- 2 fix pedagogici (Lezione 5 nav, Lezione 9 id/for)
+- 1 aggiornamento PROGETTO_LOG.md
+
+**Miglioramenti pedagogici:**
+- ✅ Coerenza sequenza didattica (fix Lezione 5: rimosso nav/ul/li)
+- ✅ Spiegazioni prima dell'uso (fix Lezione 9: id/for spiegati prima)
+- ✅ Output visivi completi (Lezione 9: form preview)
+- ✅ 35 esperimenti pratici totali (5 per lezione × 7 lezioni)
+
+**Righe di codice:**
+- ~800 righe modificate/aggiunte nelle 7 lezioni
+- Media: ~115 righe per lezione
+
+---
+
+### 🐛 Bug Risolti
+
+**1. Lezione 5 - Tags non spiegati**
+- **Problema:** Usava `<nav>`, `<ul>`, `<li>` prima della loro spiegazione
+- **Fix:** Riscritto esercizio usando solo `<h2>`, `<a>`, `<br>`
+- **Commit:** `98635dd`
+
+**2. Lezione 9 - Attributo id non spiegato**
+- **Problema:** Esercizio usava `id` e `for` senza spiegarli prima
+- **Fix:** Aggiunta sezione completa su id/for PRIMA degli input types
+- **Commit:** `c69f763`
+
+**3. Lezione 9 - Form completo senza output**
+- **Problema:** CodeExample del form registrazione senza LessonPreview
+- **Fix:** Aggiunto LessonPreview con form renderizzato
+- **Commit:** `c69f763`
+
+---
+
+### 🎯 Prossimi Passi
+
+**Lezioni HTML rimanenti (9 lezioni - 50%):**
+- Lezione 10: Form - Input Avanzati (checkbox, radio, range, color)
+- Lezione 11: Form - Textarea e Select
+- Lezione 12: Audio e Video
+- Lezione 13: Iframe e Embed
+- Lezione 14: Entità HTML
+- Lezione 15: Div e Span
+- Lezione 16: Semantica HTML5
+- Lezione 17: Header, Nav, Footer
+- Lezione 18: Progetto Finale HTML
+
+**Obiettivo Sessione 17:** Completare Lezioni 10-15 (75% modulo HTML)
 
 ---
 
