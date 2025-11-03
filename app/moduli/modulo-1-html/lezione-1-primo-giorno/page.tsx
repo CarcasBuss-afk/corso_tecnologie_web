@@ -149,12 +149,55 @@ export default function Lezione1() {
             'Apri Visual Studio Code sul tuo computer',
             'Vai su File → Nuovo File (oppure premi Ctrl+N su Windows o Cmd+N su Mac)',
             'Salva il file: File → Salva con nome... e chiamalo "prima-pagina.html"',
-            'Copia esattamente questa struttura base nel tuo file',
-            'Dentro il tag <body>, scrivi: <h1>Ciao, sono [il tuo nome]!</h1>',
-            'Sotto, aggiungi: <p>Questa è la mia prima pagina web e sono super fiero/a!</p>',
+            {
+              text: 'Scrivi la struttura base HTML nel tuo file',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La mia prima pagina</title>
+  </head>
+  <body>
+
+  </body>
+</html>`,
+            },
+            {
+              text: 'Dentro il tag <body>, aggiungi un titolo con il tuo nome',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La mia prima pagina</title>
+  </head>
+  <body>
+    <h1>Ciao, sono Marco!</h1>
+  </body>
+</html>`,
+              highlightLines: [7], // Evidenzia la riga nuova
+            },
+            {
+              text: 'Sotto il titolo, aggiungi un paragrafo di presentazione',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La mia prima pagina</title>
+  </head>
+  <body>
+    <h1>Ciao, sono Marco!</h1>
+    <p>Questa è la mia prima pagina web e sono super fiero!</p>
+  </body>
+</html>`,
+              highlightLines: [8], // Evidenzia la riga nuova
+            },
             'Salva il file (Ctrl+S o Cmd+S)',
             'Clicca col tasto destro sul file e seleziona "Open with Live Server"',
             'Guarda la tua pagina aprirsi nel browser! 🎉',
+          ]}
+          experiments={[
+            'Cambia il testo dentro <title> e guarda la tab del browser cambiare',
+            'Aggiungi un secondo paragrafo <p> con una frase a tua scelta - vedrai che va automaticamente a capo',
+            'Prova a scrivere "Benvenuto" al posto di "Ciao" nel tag <h1> - il testo grande cambierà',
+            'Prova a dimenticare di chiudere un tag </p> - cosa succede? Il browser prova a indovinare!',
+            'Cambia <h1> con <h2> e guarda come il titolo diventa più piccolo',
           ]}
         />
 

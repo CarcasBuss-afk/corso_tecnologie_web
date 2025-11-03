@@ -8,13 +8,15 @@ interface CodeExampleProps {
   language?: string;
   title?: string;
   showLineNumbers?: boolean;
+  highlightLines?: number[]; // Righe da evidenziare (1-based)
 }
 
 export default function CodeExample({
   code,
   language = 'html',
   title,
-  showLineNumbers = true
+  showLineNumbers = true,
+  highlightLines = []
 }: CodeExampleProps) {
   return (
     <div className="my-6 rounded-lg overflow-hidden border border-gray-700">
@@ -27,6 +29,17 @@ export default function CodeExample({
         language={language}
         style={vscDarkPlus}
         showLineNumbers={showLineNumbers}
+        wrapLines={highlightLines.length > 0}
+        lineProps={(lineNumber) => {
+          const isHighlighted = highlightLines.includes(lineNumber);
+          return {
+            style: {
+              backgroundColor: isHighlighted ? 'rgba(34, 197, 94, 0.15)' : 'transparent',
+              display: 'block',
+              width: '100%',
+            }
+          };
+        }}
         customStyle={{
           margin: 0,
           padding: '1rem',
