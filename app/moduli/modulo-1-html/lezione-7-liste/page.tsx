@@ -543,16 +543,223 @@ export default function Lezione7Page() {
           title="🎯 Esercizio Guidato: Menu Ristorante"
           difficulty="facile"
           steps={[
-            'Aggiungi un titolo H2 "Menu del Giorno"',
-            'Usa <ol> per creare una lista ordinata delle portate',
-            'Crea 4 elementi <li>: Antipasto, Primo, Secondo, Dolce',
-            'Dentro "Antipasto", crea una <ul> con 3 antipasti a scelta',
-            'Dentro "Primo", crea una <ul> con 3 primi piatti',
-            'Dentro "Secondo", crea una <ul> con 3 secondi piatti',
-            'Dentro "Dolce", crea una <ul> con 3 dolci',
-            'Dopo la lista ordinata, aggiungi un H3 "Bevande" e una <ul> con 5 bevande',
-            'Crea un H3 "Allergie" e usa <dl> per definire 3 allergeni comuni (es: Glutine, Lattosio, Frutta a guscio)',
-            'Salva il file e apri nel browser. Verifica che le liste siano ben annidate e leggibili'
+            'Crea un file "menu-ristorante.html" in VS Code',
+            {
+              text: 'Scrivi la struttura HTML base con title "Menu Ristorante"',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu Ristorante</title>
+  </head>
+  <body>
+
+  </body>
+</html>`,
+            },
+            {
+              text: 'Aggiungi un h1 "Ristorante Da Luigi" e un h2 "Menu del Giorno"',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu Ristorante</title>
+  </head>
+  <body>
+    <h1>Ristorante Da Luigi</h1>
+    <h2>Menu del Giorno</h2>
+  </body>
+</html>`,
+              highlightLines: [7, 8],
+            },
+            {
+              text: 'Crea una lista ordinata <ol> con le 4 portate principali',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu Ristorante</title>
+  </head>
+  <body>
+    <h1>Ristorante Da Luigi</h1>
+    <h2>Menu del Giorno</h2>
+
+    <ol>
+      <li>Antipasto</li>
+      <li>Primo</li>
+      <li>Secondo</li>
+      <li>Dolce</li>
+    </ol>
+  </body>
+</html>`,
+              highlightLines: [10, 11, 12, 13, 14, 15],
+            },
+            {
+              text: 'Dentro "Antipasto", aggiungi una lista <ul> annidata con 3 antipasti',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu Ristorante</title>
+  </head>
+  <body>
+    <h1>Ristorante Da Luigi</h1>
+    <h2>Menu del Giorno</h2>
+
+    <ol>
+      <li>Antipasto
+        <ul>
+          <li>Bruschetta al pomodoro</li>
+          <li>Prosciutto e melone</li>
+          <li>Carpaccio di manzo</li>
+        </ul>
+      </li>
+      <li>Primo</li>
+      <li>Secondo</li>
+      <li>Dolce</li>
+    </ol>
+  </body>
+</html>`,
+              highlightLines: [12, 13, 14, 15, 16],
+            },
+            {
+              text: 'Aggiungi una lista <ul> annidata dentro "Primo" con 3 primi piatti',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu Ristorante</title>
+  </head>
+  <body>
+    <h1>Ristorante Da Luigi</h1>
+    <h2>Menu del Giorno</h2>
+
+    <ol>
+      <li>Antipasto
+        <ul>
+          <li>Bruschetta al pomodoro</li>
+          <li>Prosciutto e melone</li>
+          <li>Carpaccio di manzo</li>
+        </ul>
+      </li>
+      <li>Primo
+        <ul>
+          <li>Spaghetti alla carbonara</li>
+          <li>Lasagne al forno</li>
+          <li>Risotto ai funghi</li>
+        </ul>
+      </li>
+      <li>Secondo</li>
+      <li>Dolce</li>
+    </ol>
+  </body>
+</html>`,
+              highlightLines: [19, 20, 21, 22, 23],
+            },
+            {
+              text: 'Aggiungi liste <ul> annidate anche dentro "Secondo" e "Dolce"',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu Ristorante</title>
+  </head>
+  <body>
+    <h1>Ristorante Da Luigi</h1>
+    <h2>Menu del Giorno</h2>
+
+    <ol>
+      <li>Antipasto
+        <ul>
+          <li>Bruschetta al pomodoro</li>
+          <li>Prosciutto e melone</li>
+          <li>Carpaccio di manzo</li>
+        </ul>
+      </li>
+      <li>Primo
+        <ul>
+          <li>Spaghetti alla carbonara</li>
+          <li>Lasagne al forno</li>
+          <li>Risotto ai funghi</li>
+        </ul>
+      </li>
+      <li>Secondo
+        <ul>
+          <li>Bistecca alla fiorentina</li>
+          <li>Pollo arrosto con patate</li>
+          <li>Pesce spada ai ferri</li>
+        </ul>
+      </li>
+      <li>Dolce
+        <ul>
+          <li>Tiramisù della casa</li>
+          <li>Panna cotta</li>
+          <li>Gelato artigianale</li>
+        </ul>
+      </li>
+    </ol>
+  </body>
+</html>`,
+              highlightLines: [26, 27, 28, 29, 30, 33, 34, 35, 36, 37],
+            },
+            {
+              text: 'Aggiungi un h3 "Bevande" con una lista <ul> di 5 bevande',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu Ristorante</title>
+  </head>
+  <body>
+    <h1>Ristorante Da Luigi</h1>
+    <h2>Menu del Giorno</h2>
+
+    <ol>
+      <li>Antipasto
+        <ul>
+          <li>Bruschetta al pomodoro</li>
+          <li>Prosciutto e melone</li>
+          <li>Carpaccio di manzo</li>
+        </ul>
+      </li>
+      <li>Primo
+        <ul>
+          <li>Spaghetti alla carbonara</li>
+          <li>Lasagne al forno</li>
+          <li>Risotto ai funghi</li>
+        </ul>
+      </li>
+      <li>Secondo
+        <ul>
+          <li>Bistecca alla fiorentina</li>
+          <li>Pollo arrosto con patate</li>
+          <li>Pesce spada ai ferri</li>
+        </ul>
+      </li>
+      <li>Dolce
+        <ul>
+          <li>Tiramisù della casa</li>
+          <li>Panna cotta</li>
+          <li>Gelato artigianale</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3>Bevande</h3>
+    <ul>
+      <li>Acqua naturale/frizzante</li>
+      <li>Vino rosso della casa</li>
+      <li>Vino bianco della casa</li>
+      <li>Birra alla spina</li>
+      <li>Caffè espresso</li>
+    </ul>
+  </body>
+</html>`,
+              highlightLines: [41, 42, 43, 44, 45, 46, 47, 48],
+            },
+            'Salva il file (Ctrl+S o Cmd+S)',
+            'Fai doppio click sul file "menu-ristorante.html" per aprirlo nel browser! 🎉',
+            'Osserva come le liste annidate creano una struttura gerarchica chiara e leggibile!',
+          ]}
+          experiments={[
+            'Cambia <ol> in <ul>, salva e ricarica (F5) - i numeri diventano pallini!',
+            'Aggiungi type="A" al tag <ol>, salva e ricarica - i numeri diventano lettere maiuscole (A, B, C, D)',
+            'Prova start="5" nel tag <ol>, salva e ricarica - la numerazione parte da 5!',
+            'Aggiungi <strong> ai nomi dei piatti preferiti, salva e ricarica - appariranno in grassetto',
+            'Prova a creare una lista annidata dentro un\'altra lista annidata (3 livelli!), salva e ricarica - vedi come l\'indentazione aumenta',
           ]}
         />
 
