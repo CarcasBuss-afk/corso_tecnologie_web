@@ -145,6 +145,73 @@ export default function Lezione9Page() {
           </div>
         </section>
 
+        {/* Spiegazione ID e FOR */}
+        <section>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">🔗 Collegare Label e Input: id e for</h2>
+
+          <p className="text-gray-700 mb-4">
+            Prima di vedere gli input, devi capire un concetto fondamentale: <strong>come collegare le etichette ai campi</strong>.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-4 my-6">
+            <div className="bg-purple-50 p-5 rounded-lg border-2 border-purple-300">
+              <h3 className="font-bold text-purple-900 mb-3 text-lg">🏷️ Attributo: id</h3>
+              <p className="text-sm text-gray-700 mb-3">
+                L'attributo <code className="bg-white px-2 py-1 rounded">id</code> è un <strong>identificatore univoco</strong> che dai a un elemento HTML.
+              </p>
+              <p className="text-sm text-gray-700 mb-2">
+                È come il codice fiscale: ogni elemento può avere un id diverso!
+              </p>
+              <code className="text-xs bg-white px-2 py-1 rounded block mt-2">
+                &lt;input id="email"&gt;
+              </code>
+            </div>
+
+            <div className="bg-blue-50 p-5 rounded-lg border-2 border-blue-300">
+              <h3 className="font-bold text-blue-900 mb-3 text-lg">🔗 Attributo: for</h3>
+              <p className="text-sm text-gray-700 mb-3">
+                L'attributo <code className="bg-white px-2 py-1 rounded">for</code> nella label dice: "io sono l'etichetta del campo con questo id".
+              </p>
+              <p className="text-sm text-gray-700 mb-2">
+                Il valore di <code>for</code> deve corrispondere all'<code>id</code> dell'input!
+              </p>
+              <code className="text-xs bg-white px-2 py-1 rounded block mt-2">
+                &lt;label for="email"&gt;
+              </code>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-5 rounded-lg border-2 border-green-300 my-6">
+            <h3 className="font-bold text-green-900 mb-3">✅ Come funziona il collegamento</h3>
+            <CodeExample
+              language="html"
+              title="Label e Input collegati"
+              code={`<!-- La label ha for="email" -->
+<label for="email">Indirizzo Email:</label>
+
+<!-- L'input ha id="email" (stesso valore!) -->
+<input type="email" id="email" name="email">`}
+              showLineNumbers
+            />
+            <div className="mt-4 p-4 bg-white rounded-lg">
+              <p className="text-sm text-gray-700 mb-2"><strong>Vantaggi del collegamento:</strong></p>
+              <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                <li>✅ Cliccando sulla label, il cursore va automaticamente nel campo</li>
+                <li>♿ Gli screen reader leggono la label quando l'utente entra nel campo</li>
+                <li>📱 Più facile cliccare su mobile (area cliccabile più grande)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-400 my-6">
+            <p className="text-sm text-red-900 font-semibold mb-2">⚠️ Regola importante:</p>
+            <p className="text-sm text-gray-800">
+              Ogni <code>id</code> deve essere <strong>univoco</strong> nella pagina! Non puoi avere due elementi con lo stesso id.
+              Altrimenti il collegamento label-input non funziona correttamente.
+            </p>
+          </div>
+        </section>
+
         {/* Type text */}
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-4">📝 Input type="text"</h2>
@@ -169,9 +236,8 @@ export default function Lezione9Page() {
 
           <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 my-6">
             <p className="text-sm text-gray-800">
-              <strong>♿ Accessibilità:</strong> Il tag <code>&lt;label&gt;</code> è fondamentale!
-              Collega il testo al campo grazie agli attributi <code>for</code> (label) e <code>id</code> (input) con lo stesso valore.
-              Gli screen reader leggono la label quando l'utente è sul campo.
+              <strong>💡 Nota:</strong> Ora che conosci <code>id</code> e <code>for</code>, vedi come sono collegati!
+              Prova a cliccare sulla label "Nome:" - il cursore salterà automaticamente nel campo!
             </p>
           </div>
         </section>
@@ -362,6 +428,29 @@ export default function Lezione9Page() {
   <button type="submit">Registrati</button>
 </form>`}
             showLineNumbers
+          />
+
+          <LessonPreview
+            title="Come appare il form completo"
+            html={`<form action="/registrati" method="POST">
+  <label for="nome">Nome completo:</label><br>
+  <input type="text" id="nome" name="nome" placeholder="Mario Rossi" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 300px; margin-bottom: 10px;"><br><br>
+
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" name="email" placeholder="mario@esempio.com" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 300px; margin-bottom: 10px;"><br><br>
+
+  <label for="password">Password:</label><br>
+  <input type="password" id="password" name="password" placeholder="Minimo 8 caratteri" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 300px; margin-bottom: 10px;"><br><br>
+
+  <label for="eta">Età:</label><br>
+  <input type="number" id="eta" name="eta" min="13" max="120" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 150px; margin-bottom: 10px;"><br><br>
+
+  <label for="telefono">Telefono:</label><br>
+  <input type="tel" id="telefono" name="telefono" placeholder="+39 123 456 7890" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 300px; margin-bottom: 10px;"><br><br>
+
+  <button type="submit" style="padding: 10px 20px; background: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">Registrati</button>
+</form>`}
+            description="Prova a compilare i campi e cliccare Registrati - vedi come il browser valida automaticamente email e numero!"
           />
         </section>
 
