@@ -117,7 +117,7 @@ export default function Lezione9Page() {
           <CodeExample
             language="html"
             title="Input base"
-            code={`<input type="text" name="nome" placeholder="Inserisci il tuo nome">`}
+            code={`<input type="text" name="nome">`}
             showLineNumbers
           />
 
@@ -133,15 +133,64 @@ export default function Lezione9Page() {
                 <strong className="text-gray-900">name:</strong>
                 <span className="text-gray-700 ml-2">Nome del campo (serve al server per riconoscere i dati)</span>
               </div>
-              <div className="bg-white p-3 rounded">
-                <strong className="text-gray-900">placeholder:</strong>
-                <span className="text-gray-700 ml-2">Testo di esempio che sparisce quando scrivi</span>
-              </div>
-              <div className="bg-white p-3 rounded">
-                <strong className="text-gray-900">value:</strong>
-                <span className="text-gray-700 ml-2">Valore pre-compilato del campo</span>
-              </div>
             </div>
+          </div>
+        </section>
+
+        {/* Attributo placeholder */}
+        <section>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">💬 Attributo: placeholder</h2>
+
+          <p className="text-gray-700 mb-4">
+            L'attributo <code className="bg-gray-200 px-2 py-1 rounded">placeholder</code> mostra un <strong>testo di suggerimento</strong> dentro il campo quando è vuoto.
+            Appena l'utente inizia a scrivere, il placeholder sparisce automaticamente!
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-4 my-6">
+            <div>
+              <CodeExample
+                language="html"
+                title="Senza placeholder"
+                code={`<input type="text" name="nome">`}
+                showLineNumbers
+              />
+              <LessonPreview
+                title="Come appare"
+                html={`<input type="text" name="nome" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 200px;">`}
+              />
+              <p className="text-sm text-gray-600 mt-2">Il campo è vuoto, nessun suggerimento</p>
+            </div>
+
+            <div>
+              <CodeExample
+                language="html"
+                title="Con placeholder"
+                code={`<input type="text" name="nome" placeholder="Mario Rossi">`}
+                showLineNumbers
+              />
+              <LessonPreview
+                title="Come appare"
+                html={`<input type="text" name="nome" placeholder="Mario Rossi" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 200px;">`}
+              />
+              <p className="text-sm text-gray-600 mt-2">Il testo grigio chiaro è il placeholder</p>
+            </div>
+          </div>
+
+          <div className="bg-green-50 p-5 rounded-lg border-2 border-green-300 my-6">
+            <h3 className="font-bold text-green-900 mb-3">✅ Quando usare placeholder</h3>
+            <ul className="space-y-2 text-sm text-gray-800">
+              <li>✅ <strong>Esempi di formato:</strong> "nome@esempio.com" per un campo email</li>
+              <li>✅ <strong>Suggerimenti:</strong> "Cerca un prodotto..." in una barra di ricerca</li>
+              <li>✅ <strong>Formati specifici:</strong> "+39 123 456 7890" per un telefono</li>
+              <li>✅ <strong>Indicazioni brevi:</strong> "Minimo 8 caratteri" per una password</li>
+            </ul>
+          </div>
+
+          <div className="bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400 my-6">
+            <p className="text-sm text-gray-800">
+              <strong>⚠️ Attenzione:</strong> Il placeholder NON sostituisce la label! Serve solo come suggerimento visivo aggiuntivo.
+              Usa sempre <code>&lt;label&gt;</code> per descrivere il campo (lo vedremo tra poco).
+            </p>
           </div>
         </section>
 
