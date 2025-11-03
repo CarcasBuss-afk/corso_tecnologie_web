@@ -107,10 +107,11 @@ Applicare il nuovo formato didattico (codice completo + evidenziazione + esperim
 - ✅ 5 esperimenti pratici
 - ❌ Problema 1: usava attributo `id` senza spiegarlo
 - ❌ Problema 2: form completo senza output visivo
+- ❌ Problema 3: usava attributo `placeholder` senza spiegarlo
 
-**Fix applicati (Commit `c69f763`):**
+**Fix applicati:**
 
-#### A) Aggiunta sezione "🔗 Collegare Label e Input: id e for"
+#### A) Aggiunta sezione "🔗 Collegare Label e Input: id e for" (Commit `c69f763`)
 **Posizione:** Prima della sezione sui tipi di input
 **Contenuti:**
 - Spiegazione attributo `id` (identificatore univoco, come "codice fiscale")
@@ -119,20 +120,31 @@ Applicare il nuovo formato didattico (codice completo + evidenziazione + esperim
 - Vantaggi: etichette cliccabili, screen reader, mobile-friendly
 - ⚠️ Regola importante: id deve essere univoco nella pagina
 
-#### B) Aggiunto output visivo form completo
+#### B) Aggiunto output visivo form completo (Commit `c69f763`)
 - LessonPreview dopo il CodeExample del form registrazione
 - Mostra esattamente il codice: 5 campi (nome, email, password, età, telefono) + bottone
 - Styling inline per renderlo visibile senza CSS esterno
 - Descrizione: "Prova a compilare i campi..."
 
+#### C) Aggiunta sezione "💬 Attributo: placeholder" (Commit `bdd5c44`)
+**Posizione:** Dopo "Attributi fondamentali", prima di "id e for"
+**Contenuti:**
+- Spiegazione completa: testo di suggerimento che sparisce quando scrivi
+- Confronto visivo side-by-side: campo senza vs con placeholder
+- Lista di quando usarlo: esempi formato, suggerimenti, formati specifici, indicazioni brevi
+- ⚠️ Avviso importante: placeholder NON sostituisce la label
+- Rimosso placeholder dal primo esempio di input (ora usa solo type e name)
+
 **File modificato:** `/app/moduli/modulo-1-html/lezione-9-form-input-base/page.tsx`
-**Commits:** `5604ec5` (aggiornamento formato), `c69f763` (fix id/for + preview)
+**Commits:** `5604ec5` (aggiornamento formato), `c69f763` (fix id/for + preview), `bdd5c44` (fix placeholder)
 
 **Statistiche Lezione 9:**
-- +92 righe aggiunte con i fix
+- +150 righe aggiunte con tutti i fix
 - Sezione id/for: ~65 righe
 - LessonPreview form: ~22 righe
+- Sezione placeholder: ~58 righe
 - Miglioramento pedagogico: ✅ Nessun concetto usato prima della spiegazione
+- Sequenza corretta: input base → type/name → placeholder → id/for → input types
 
 ---
 
@@ -188,6 +200,12 @@ Applicare il nuovo formato didattico (codice completo + evidenziazione + esperim
 - **Problema:** CodeExample del form registrazione senza LessonPreview
 - **Fix:** Aggiunto LessonPreview con form renderizzato
 - **Commit:** `c69f763`
+
+**4. Lezione 9 - Attributo placeholder non spiegato**
+- **Problema:** Attributo `placeholder` usato negli esempi senza spiegazione preventiva
+- **Fix:** Aggiunta sezione dedicata "💬 Attributo: placeholder" con confronto visivo e best practices
+- **Sequenza corretta:** input base → type/name → placeholder → id/for → input types
+- **Commit:** `bdd5c44`
 
 ---
 
