@@ -121,6 +121,12 @@ export default function Lezione9Page() {
             showLineNumbers
           />
 
+          <LessonPreview
+            title="Come appare l'input base"
+            html={`<input type="text" name="nome" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 250px;">`}
+            description="Un campo di testo vuoto dove l'utente può scrivere"
+          />
+
           <div className="bg-gradient-to-r from-cyan-50 to-blue-50 p-6 rounded-lg border-2 border-cyan-300 my-6">
             <h3 className="font-bold text-cyan-900 mb-4 text-lg">🔑 Attributi fondamentali</h3>
 
