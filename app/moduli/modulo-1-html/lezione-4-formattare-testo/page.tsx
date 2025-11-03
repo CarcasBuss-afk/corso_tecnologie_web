@@ -347,15 +347,159 @@ export default function Lezione4() {
           difficulty="facile"
           steps={[
             'Crea un file "note-scolastiche.html" in VS Code',
-            'Scrivi la struttura HTML base',
-            'Aggiungi un h1: "Le Mie Note di Scienze"',
-            'Scrivi un h2: "Lezione 1: L\'Acqua"',
-            'Scrivi un paragrafo e usa <strong> per evidenziare "formula chimica"',
-            'Aggiungi la formula: H<sub>2</sub>O usando il tag <sub>',
-            'Aggiungi un h2: "Lezione 2: La Fisica"',
-            'Scrivi un paragrafo con la formula E=mc<sup>2</sup> usando <sup>',
-            'Usa <mark> per evidenziare parole chiave importanti',
-            'Aggiungi <small> alla fine con "Note dell\'anno 2025"',
+            {
+              text: 'Scrivi la struttura HTML base',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Le Mie Note di Scienze</title>
+  </head>
+  <body>
+
+  </body>
+</html>`,
+            },
+            {
+              text: 'Aggiungi un h1: "Le Mie Note di Scienze"',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Le Mie Note di Scienze</title>
+  </head>
+  <body>
+    <h1>Le Mie Note di Scienze</h1>
+  </body>
+</html>`,
+              highlightLines: [7],
+            },
+            {
+              text: 'Aggiungi un h2 "Lezione 1: L\'Acqua" e un paragrafo con <strong>',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Le Mie Note di Scienze</title>
+  </head>
+  <body>
+    <h1>Le Mie Note di Scienze</h1>
+
+    <h2>Lezione 1: L'Acqua</h2>
+    <p>L'acqua è fondamentale per la vita. La sua <strong>formula chimica</strong> è molto semplice!</p>
+  </body>
+</html>`,
+              highlightLines: [9, 10],
+            },
+            {
+              text: 'Aggiungi la formula H₂O usando il tag <sub> per il numero 2',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Le Mie Note di Scienze</title>
+  </head>
+  <body>
+    <h1>Le Mie Note di Scienze</h1>
+
+    <h2>Lezione 1: L'Acqua</h2>
+    <p>L'acqua è fondamentale per la vita. La sua <strong>formula chimica</strong> è molto semplice!</p>
+    <p>Formula: H<sub>2</sub>O</p>
+  </body>
+</html>`,
+              highlightLines: [11],
+            },
+            {
+              text: 'Aggiungi un h2 "Lezione 2: La Fisica" con un paragrafo',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Le Mie Note di Scienze</title>
+  </head>
+  <body>
+    <h1>Le Mie Note di Scienze</h1>
+
+    <h2>Lezione 1: L'Acqua</h2>
+    <p>L'acqua è fondamentale per la vita. La sua <strong>formula chimica</strong> è molto semplice!</p>
+    <p>Formula: H<sub>2</sub>O</p>
+
+    <h2>Lezione 2: La Fisica</h2>
+    <p>Einstein scoprì la famosa equazione che mette in relazione energia e massa.</p>
+  </body>
+</html>`,
+              highlightLines: [13, 14],
+            },
+            {
+              text: 'Aggiungi la formula E=mc² usando <sup> per l\'esponente',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Le Mie Note di Scienze</title>
+  </head>
+  <body>
+    <h1>Le Mie Note di Scienze</h1>
+
+    <h2>Lezione 1: L'Acqua</h2>
+    <p>L'acqua è fondamentale per la vita. La sua <strong>formula chimica</strong> è molto semplice!</p>
+    <p>Formula: H<sub>2</sub>O</p>
+
+    <h2>Lezione 2: La Fisica</h2>
+    <p>Einstein scoprì la famosa equazione che mette in relazione energia e massa.</p>
+    <p>Formula: E = mc<sup>2</sup></p>
+  </body>
+</html>`,
+              highlightLines: [15],
+            },
+            {
+              text: 'Usa <mark> per evidenziare le parole chiave più importanti',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Le Mie Note di Scienze</title>
+  </head>
+  <body>
+    <h1>Le Mie Note di Scienze</h1>
+
+    <h2>Lezione 1: L'Acqua</h2>
+    <p>L'acqua è <mark>fondamentale per la vita</mark>. La sua <strong>formula chimica</strong> è molto semplice!</p>
+    <p>Formula: H<sub>2</sub>O</p>
+
+    <h2>Lezione 2: La Fisica</h2>
+    <p>Einstein scoprì la famosa equazione che mette in relazione <mark>energia e massa</mark>.</p>
+    <p>Formula: E = mc<sup>2</sup></p>
+  </body>
+</html>`,
+              highlightLines: [10, 14],
+            },
+            {
+              text: 'Aggiungi <small> alla fine con "Note dell\'anno 2025"',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Le Mie Note di Scienze</title>
+  </head>
+  <body>
+    <h1>Le Mie Note di Scienze</h1>
+
+    <h2>Lezione 1: L'Acqua</h2>
+    <p>L'acqua è <mark>fondamentale per la vita</mark>. La sua <strong>formula chimica</strong> è molto semplice!</p>
+    <p>Formula: H<sub>2</sub>O</p>
+
+    <h2>Lezione 2: La Fisica</h2>
+    <p>Einstein scoprì la famosa equazione che mette in relazione <mark>energia e massa</mark>.</p>
+    <p>Formula: E = mc<sup>2</sup></p>
+
+    <p><small>Note dell'anno 2025</small></p>
+  </body>
+</html>`,
+              highlightLines: [17],
+            },
+            'Salva il file (Ctrl+S o Cmd+S)',
+            'Fai doppio click sul file "note-scolastiche.html" per aprirlo nel browser! 🎉',
+            'Osserva come ogni tag di formattazione cambia l\'aspetto del testo!',
+          ]}
+          experiments={[
+            'Cambia <strong> con <b>, salva e ricarica (F5) - visivamente sembrano uguali, ma <strong> è semantico',
+            'Aggiungi <em> intorno a "Einstein", salva e ricarica - apparirà in corsivo',
+            'Prova a combinare <strong><em>parola</em></strong>, salva e ricarica - grassetto E corsivo insieme!',
+            'Aggiungi <del>Vecchia info</del> e <ins>Nuova info</ins>, salva e ricarica - vedi barrato e sottolineato',
+            'Prova <mark><strong>testo</strong></mark>, salva e ricarica - evidenziato E grassetto combinati!',
           ]}
         />
 
