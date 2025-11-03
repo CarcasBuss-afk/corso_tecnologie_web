@@ -617,18 +617,293 @@ export default function Lezione10Page() {
 
         {/* Esercizio */}
         <Exercise
-          title="Esercizio: Form Sondaggio Musicale"
+          title="🎯 Esercizio Guidato: Form Sondaggio Musicale"
           difficulty="media"
           steps={[
-            'Crea un form con titolo "Sondaggio Preferenze Musicali"',
-            'Aggiungi un gruppo di checkbox per i generi musicali preferiti (Rock, Pop, Jazz, Classica, Hip-Hop)',
-            'Aggiungi radio button per chiedere "Quante ore al giorno ascolti musica?" (0-1, 1-3, 3-5, Più di 5)',
-            'Aggiungi un input date per chiedere "Data del tuo ultimo concerto"',
-            'Aggiungi un input range (min=1, max=10) per chiedere "Quanto ami la musica?" con label appropriata',
-            'Aggiungi un input color per chiedere "Colore associato alla tua musica preferita"',
-            'Aggiungi un input file per "Carica la copertina del tuo album preferito" (solo immagini)',
-            'Aggiungi un bottone "Invia Sondaggio"',
-            'Testa il form: prova a selezionare checkbox multipli e verifica che i radio permettano una sola scelta'
+            'Crea un file "sondaggio-musica.html" in VS Code',
+            {
+              text: 'Scrivi la struttura HTML base con title "Sondaggio Musicale"',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sondaggio Musicale</title>
+  </head>
+  <body>
+
+  </body>
+</html>`,
+              language: 'html',
+            },
+            {
+              text: 'Aggiungi il titolo principale e apri il form',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sondaggio Musicale</title>
+  </head>
+  <body>
+    <h1>Sondaggio Preferenze Musicali</h1>
+
+    <form>
+    </form>
+  </body>
+</html>`,
+              language: 'html',
+              highlightLines: [7, 9, 10],
+            },
+            {
+              text: 'Aggiungi il gruppo di checkbox per i generi musicali (puoi selezionarne più di uno!)',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sondaggio Musicale</title>
+  </head>
+  <body>
+    <h1>Sondaggio Preferenze Musicali</h1>
+
+    <form>
+      <p>Quali generi musicali preferisci? (puoi sceglierne più di uno)</p>
+      <label><input type="checkbox" name="genere" value="rock"> Rock</label><br>
+      <label><input type="checkbox" name="genere" value="pop"> Pop</label><br>
+      <label><input type="checkbox" name="genere" value="jazz"> Jazz</label><br>
+      <label><input type="checkbox" name="genere" value="classica"> Classica</label><br>
+      <label><input type="checkbox" name="genere" value="hiphop"> Hip-Hop</label><br><br>
+    </form>
+  </body>
+</html>`,
+              language: 'html',
+              highlightLines: [10, 11, 12, 13, 14, 15, 16],
+            },
+            {
+              text: 'Aggiungi radio button per le ore di ascolto (puoi selezionarne solo uno!)',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sondaggio Musicale</title>
+  </head>
+  <body>
+    <h1>Sondaggio Preferenze Musicali</h1>
+
+    <form>
+      <p>Quali generi musicali preferisci? (puoi sceglierne più di uno)</p>
+      <label><input type="checkbox" name="genere" value="rock"> Rock</label><br>
+      <label><input type="checkbox" name="genere" value="pop"> Pop</label><br>
+      <label><input type="checkbox" name="genere" value="jazz"> Jazz</label><br>
+      <label><input type="checkbox" name="genere" value="classica"> Classica</label><br>
+      <label><input type="checkbox" name="genere" value="hiphop"> Hip-Hop</label><br><br>
+
+      <p>Quante ore al giorno ascolti musica?</p>
+      <label><input type="radio" name="ore" value="0-1"> 0-1 ore</label><br>
+      <label><input type="radio" name="ore" value="1-3"> 1-3 ore</label><br>
+      <label><input type="radio" name="ore" value="3-5"> 3-5 ore</label><br>
+      <label><input type="radio" name="ore" value="5+"> Più di 5 ore</label><br><br>
+    </form>
+  </body>
+</html>`,
+              language: 'html',
+              highlightLines: [17, 18, 19, 20, 21, 22],
+            },
+            {
+              text: 'Aggiungi input date per la data dell\'ultimo concerto',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sondaggio Musicale</title>
+  </head>
+  <body>
+    <h1>Sondaggio Preferenze Musicali</h1>
+
+    <form>
+      <p>Quali generi musicali preferisci? (puoi sceglierne più di uno)</p>
+      <label><input type="checkbox" name="genere" value="rock"> Rock</label><br>
+      <label><input type="checkbox" name="genere" value="pop"> Pop</label><br>
+      <label><input type="checkbox" name="genere" value="jazz"> Jazz</label><br>
+      <label><input type="checkbox" name="genere" value="classica"> Classica</label><br>
+      <label><input type="checkbox" name="genere" value="hiphop"> Hip-Hop</label><br><br>
+
+      <p>Quante ore al giorno ascolti musica?</p>
+      <label><input type="radio" name="ore" value="0-1"> 0-1 ore</label><br>
+      <label><input type="radio" name="ore" value="1-3"> 1-3 ore</label><br>
+      <label><input type="radio" name="ore" value="3-5"> 3-5 ore</label><br>
+      <label><input type="radio" name="ore" value="5+"> Più di 5 ore</label><br><br>
+
+      <label for="ultimo-concerto">Data del tuo ultimo concerto:</label><br>
+      <input type="date" id="ultimo-concerto" name="ultimo-concerto"><br><br>
+    </form>
+  </body>
+</html>`,
+              language: 'html',
+              highlightLines: [23, 24],
+            },
+            {
+              text: 'Aggiungi range slider per valutare quanto ami la musica (da 1 a 10)',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sondaggio Musicale</title>
+  </head>
+  <body>
+    <h1>Sondaggio Preferenze Musicali</h1>
+
+    <form>
+      <p>Quali generi musicali preferisci? (puoi sceglierne più di uno)</p>
+      <label><input type="checkbox" name="genere" value="rock"> Rock</label><br>
+      <label><input type="checkbox" name="genere" value="pop"> Pop</label><br>
+      <label><input type="checkbox" name="genere" value="jazz"> Jazz</label><br>
+      <label><input type="checkbox" name="genere" value="classica"> Classica</label><br>
+      <label><input type="checkbox" name="genere" value="hiphop"> Hip-Hop</label><br><br>
+
+      <p>Quante ore al giorno ascolti musica?</p>
+      <label><input type="radio" name="ore" value="0-1"> 0-1 ore</label><br>
+      <label><input type="radio" name="ore" value="1-3"> 1-3 ore</label><br>
+      <label><input type="radio" name="ore" value="3-5"> 3-5 ore</label><br>
+      <label><input type="radio" name="ore" value="5+"> Più di 5 ore</label><br><br>
+
+      <label for="ultimo-concerto">Data del tuo ultimo concerto:</label><br>
+      <input type="date" id="ultimo-concerto" name="ultimo-concerto"><br><br>
+
+      <label for="amore-musica">Quanto ami la musica? (1-10)</label><br>
+      <input type="range" id="amore-musica" name="amore-musica" min="1" max="10" value="5"><br><br>
+    </form>
+  </body>
+</html>`,
+              language: 'html',
+              highlightLines: [26, 27],
+            },
+            {
+              text: 'Aggiungi color picker per il colore associato alla musica preferita',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sondaggio Musicale</title>
+  </head>
+  <body>
+    <h1>Sondaggio Preferenze Musicali</h1>
+
+    <form>
+      <p>Quali generi musicali preferisci? (puoi sceglierne più di uno)</p>
+      <label><input type="checkbox" name="genere" value="rock"> Rock</label><br>
+      <label><input type="checkbox" name="genere" value="pop"> Pop</label><br>
+      <label><input type="checkbox" name="genere" value="jazz"> Jazz</label><br>
+      <label><input type="checkbox" name="genere" value="classica"> Classica</label><br>
+      <label><input type="checkbox" name="genere" value="hiphop"> Hip-Hop</label><br><br>
+
+      <p>Quante ore al giorno ascolti musica?</p>
+      <label><input type="radio" name="ore" value="0-1"> 0-1 ore</label><br>
+      <label><input type="radio" name="ore" value="1-3"> 1-3 ore</label><br>
+      <label><input type="radio" name="ore" value="3-5"> 3-5 ore</label><br>
+      <label><input type="radio" name="ore" value="5+"> Più di 5 ore</label><br><br>
+
+      <label for="ultimo-concerto">Data del tuo ultimo concerto:</label><br>
+      <input type="date" id="ultimo-concerto" name="ultimo-concerto"><br><br>
+
+      <label for="amore-musica">Quanto ami la musica? (1-10)</label><br>
+      <input type="range" id="amore-musica" name="amore-musica" min="1" max="10" value="5"><br><br>
+
+      <label for="colore-musica">Colore associato alla tua musica preferita:</label><br>
+      <input type="color" id="colore-musica" name="colore-musica" value="#FF6B6B"><br><br>
+    </form>
+  </body>
+</html>`,
+              language: 'html',
+              highlightLines: [29, 30],
+            },
+            {
+              text: 'Aggiungi file input per caricare la copertina dell\'album preferito (solo immagini)',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sondaggio Musicale</title>
+  </head>
+  <body>
+    <h1>Sondaggio Preferenze Musicali</h1>
+
+    <form>
+      <p>Quali generi musicali preferisci? (puoi sceglierne più di uno)</p>
+      <label><input type="checkbox" name="genere" value="rock"> Rock</label><br>
+      <label><input type="checkbox" name="genere" value="pop"> Pop</label><br>
+      <label><input type="checkbox" name="genere" value="jazz"> Jazz</label><br>
+      <label><input type="checkbox" name="genere" value="classica"> Classica</label><br>
+      <label><input type="checkbox" name="genere" value="hiphop"> Hip-Hop</label><br><br>
+
+      <p>Quante ore al giorno ascolti musica?</p>
+      <label><input type="radio" name="ore" value="0-1"> 0-1 ore</label><br>
+      <label><input type="radio" name="ore" value="1-3"> 1-3 ore</label><br>
+      <label><input type="radio" name="ore" value="3-5"> 3-5 ore</label><br>
+      <label><input type="radio" name="ore" value="5+"> Più di 5 ore</label><br><br>
+
+      <label for="ultimo-concerto">Data del tuo ultimo concerto:</label><br>
+      <input type="date" id="ultimo-concerto" name="ultimo-concerto"><br><br>
+
+      <label for="amore-musica">Quanto ami la musica? (1-10)</label><br>
+      <input type="range" id="amore-musica" name="amore-musica" min="1" max="10" value="5"><br><br>
+
+      <label for="colore-musica">Colore associato alla tua musica preferita:</label><br>
+      <input type="color" id="colore-musica" name="colore-musica" value="#FF6B6B"><br><br>
+
+      <label for="copertina">Carica la copertina del tuo album preferito:</label><br>
+      <input type="file" id="copertina" name="copertina" accept="image/*"><br><br>
+    </form>
+  </body>
+</html>`,
+              language: 'html',
+              highlightLines: [32, 33],
+            },
+            {
+              text: 'Aggiungi il bottone submit per inviare il sondaggio',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sondaggio Musicale</title>
+  </head>
+  <body>
+    <h1>Sondaggio Preferenze Musicali</h1>
+
+    <form>
+      <p>Quali generi musicali preferisci? (puoi sceglierne più di uno)</p>
+      <label><input type="checkbox" name="genere" value="rock"> Rock</label><br>
+      <label><input type="checkbox" name="genere" value="pop"> Pop</label><br>
+      <label><input type="checkbox" name="genere" value="jazz"> Jazz</label><br>
+      <label><input type="checkbox" name="genere" value="classica"> Classica</label><br>
+      <label><input type="checkbox" name="genere" value="hiphop"> Hip-Hop</label><br><br>
+
+      <p>Quante ore al giorno ascolti musica?</p>
+      <label><input type="radio" name="ore" value="0-1"> 0-1 ore</label><br>
+      <label><input type="radio" name="ore" value="1-3"> 1-3 ore</label><br>
+      <label><input type="radio" name="ore" value="3-5"> 3-5 ore</label><br>
+      <label><input type="radio" name="ore" value="5+"> Più di 5 ore</label><br><br>
+
+      <label for="ultimo-concerto">Data del tuo ultimo concerto:</label><br>
+      <input type="date" id="ultimo-concerto" name="ultimo-concerto"><br><br>
+
+      <label for="amore-musica">Quanto ami la musica? (1-10)</label><br>
+      <input type="range" id="amore-musica" name="amore-musica" min="1" max="10" value="5"><br><br>
+
+      <label for="colore-musica">Colore associato alla tua musica preferita:</label><br>
+      <input type="color" id="colore-musica" name="colore-musica" value="#FF6B6B"><br><br>
+
+      <label for="copertina">Carica la copertina del tuo album preferito:</label><br>
+      <input type="file" id="copertina" name="copertina" accept="image/*"><br><br>
+
+      <button type="submit">Invia Sondaggio</button>
+    </form>
+  </body>
+</html>`,
+              language: 'html',
+              highlightLines: [35],
+            },
+            'Salva il file (Ctrl+S o Cmd+S)',
+            'Fai doppio click sul file "sondaggio-musica.html" per aprirlo nel browser! 🎉',
+            'Prova a selezionare TUTTI i generi musicali checkbox - funziona! ✅',
+            'Ora prova a selezionare due opzioni diverse nei radio button - puoi sceglierne solo una! 🔘',
+            'Sperimenta con tutti gli input: trascina lo slider, scegli un colore, seleziona una data!',
+          ]}
+          experiments={[
+            'Aggiungi "checked" a uno dei checkbox, salva e ricarica (F5) - quel genere sarà già selezionato!',
+            'Cambia min="1" in min="0" nello slider, salva e ricarica - ora parte da zero',
+            'Rimuovi accept="image/*" dal file input, salva e ricarica - ora puoi caricare qualsiasi file!',
+            'Aggiungi un sesto checkbox per il genere "Elettronica", salva e ricarica - nuovo genere disponibile!',
+            'Cambia value="#FF6B6B" del color picker in value="#00FF00", salva e ricarica - il colore iniziale sarà verde!',
           ]}
         />
 
