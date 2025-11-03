@@ -409,17 +409,140 @@ export default function Lezione6() {
           title="Esercizio Guidato: Crea una Gallery di Immagini"
           difficulty="facile"
           steps={[
-            'Crea una cartella "immagini" nella stessa cartella del tuo HTML',
-            'Trova 4 immagini a piacere e mettile nella cartella (puoi usare immagini da Unsplash o Pexels)',
-            'Crea un file "gallery.html" con struttura HTML base',
-            'Nel <title> scrivi: "La Mia Gallery Fotografica"',
-            'Aggiungi un <h1> con: "La Mia Collezione di Foto"',
-            'Inserisci le 4 immagini usando il tag <img> con percorso relativo',
-            'Ogni immagine deve avere un alt descrittivo',
-            'Imposta width="300" per tutte le immagini',
-            'Aggiungi un <p> sotto ogni immagine con una didascalia',
-            'Rendi cliccabile la prima immagine con un link a un sito a piacere',
-            'Salva e apri con Live Server!',
+            'Crea una cartella "immagini" nella stessa cartella dove creerai il file HTML',
+            'Scarica 3-4 immagini a piacere e mettile nella cartella "immagini" (usa Unsplash.com o cerca "immagini gratis")',
+            'Crea un file "gallery.html" nella cartella principale (fuori da "immagini")',
+            {
+              text: 'Scrivi la struttura HTML base con title "La Mia Gallery Fotografica"',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La Mia Gallery Fotografica</title>
+  </head>
+  <body>
+
+  </body>
+</html>`,
+            },
+            {
+              text: 'Aggiungi un h1 "La Mia Collezione di Foto"',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La Mia Gallery Fotografica</title>
+  </head>
+  <body>
+    <h1>La Mia Collezione di Foto</h1>
+  </body>
+</html>`,
+              highlightLines: [7],
+            },
+            {
+              text: 'Aggiungi la prima immagine usando il percorso relativo (immagini/nomefile.jpg)',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La Mia Gallery Fotografica</title>
+  </head>
+  <body>
+    <h1>La Mia Collezione di Foto</h1>
+
+    <img src="immagini/natura.jpg" alt="Paesaggio naturale con montagne" width="400">
+  </body>
+</html>`,
+              highlightLines: [9],
+            },
+            {
+              text: 'Aggiungi un paragrafo con la didascalia sotto la prima foto',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La Mia Gallery Fotografica</title>
+  </head>
+  <body>
+    <h1>La Mia Collezione di Foto</h1>
+
+    <img src="immagini/natura.jpg" alt="Paesaggio naturale con montagne" width="400">
+    <p>Un bellissimo paesaggio montano al tramonto</p>
+  </body>
+</html>`,
+              highlightLines: [10],
+            },
+            {
+              text: 'Aggiungi la seconda immagine con la sua didascalia',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La Mia Gallery Fotografica</title>
+  </head>
+  <body>
+    <h1>La Mia Collezione di Foto</h1>
+
+    <img src="immagini/natura.jpg" alt="Paesaggio naturale con montagne" width="400">
+    <p>Un bellissimo paesaggio montano al tramonto</p>
+
+    <img src="immagini/citta.jpg" alt="Skyline di una città moderna di notte" width="400">
+    <p>Le luci della città al calar della sera</p>
+  </body>
+</html>`,
+              highlightLines: [12, 13],
+            },
+            {
+              text: 'Aggiungi la terza immagine con didascalia',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La Mia Gallery Fotografica</title>
+  </head>
+  <body>
+    <h1>La Mia Collezione di Foto</h1>
+
+    <img src="immagini/natura.jpg" alt="Paesaggio naturale con montagne" width="400">
+    <p>Un bellissimo paesaggio montano al tramonto</p>
+
+    <img src="immagini/citta.jpg" alt="Skyline di una città moderna di notte" width="400">
+    <p>Le luci della città al calar della sera</p>
+
+    <img src="immagini/mare.jpg" alt="Spiaggia tropicale con acqua cristallina" width="400">
+    <p>Una spiaggia da sogno con acqua turchese</p>
+  </body>
+</html>`,
+              highlightLines: [15, 16],
+            },
+            {
+              text: 'Rendi cliccabile la prima immagine con un link esterno',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La Mia Gallery Fotografica</title>
+  </head>
+  <body>
+    <h1>La Mia Collezione di Foto</h1>
+
+    <a href="https://unsplash.com" target="_blank">
+      <img src="immagini/natura.jpg" alt="Paesaggio naturale con montagne" width="400">
+    </a>
+    <p>Un bellissimo paesaggio montano al tramonto (clicca per vedere più foto!)</p>
+
+    <img src="immagini/citta.jpg" alt="Skyline di una città moderna di notte" width="400">
+    <p>Le luci della città al calar della sera</p>
+
+    <img src="immagini/mare.jpg" alt="Spiaggia tropicale con acqua cristallina" width="400">
+    <p>Una spiaggia da sogno con acqua turchese</p>
+  </body>
+</html>`,
+              highlightLines: [9, 11],
+            },
+            'Salva il file (Ctrl+S o Cmd+S)',
+            'Fai doppio click sul file "gallery.html" per aprirlo nel browser! 🎉',
+            'Se le immagini non si vedono, controlla che siano nella cartella "immagini" e che i nomi file corrispondano!',
+          ]}
+          experiments={[
+            'Cambia width="400" in width="200" nella prima immagine, salva e ricarica (F5) - diventa più piccola mantenendo le proporzioni',
+            'Rimuovi l\'alt da un\'immagine, salva e ricarica (F5) - funziona comunque ma è scorretto! L\'alt è obbligatorio per accessibilità',
+            'Aggiungi title="Clicca per ingrandire" alla prima immagine, salva e ricarica (F5) - passa il mouse sopra per vedere il tooltip',
+            'Aggiungi loading="lazy" a tutte le immagini, salva e ricarica (F5) - caricheranno solo quando visibili (ottimizzazione)',
+            'Prova a usare un\'immagine da internet con URL completo: src="https://picsum.photos/400/300", salva e ricarica - funziona anche senza scaricarla!',
           ]}
         />
 
