@@ -307,16 +307,215 @@ export default function Lezione5() {
           difficulty="media"
           steps={[
             'Crea un nuovo file "menu-navigazione.html" in VS Code',
-            'Scrivi la struttura HTML base',
-            'Nel <title> scrivi: "Menu di Navigazione"',
-            'Crea un <nav> con 5 link a pagine diverse (home.html, chi-sono.html, servizi.html, portfolio.html, contatti.html)',
-            'Usa una lista <ul> per organizzare i link',
-            'Aggiungi un link esterno a Google con target="_blank" e rel="noopener noreferrer"',
-            'Crea una sezione con id="contatti"',
-            'Aggiungi un anchor link nel menu che porta alla sezione contatti',
-            'Aggiungi un link email: mailto:tuo@email.com',
-            'Aggiungi un link telefono: tel:+393331234567',
-            'Salva e apri con Live Server!',
+            {
+              text: 'Scrivi la struttura HTML base con il title "Menu di Navigazione"',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu di Navigazione</title>
+  </head>
+  <body>
+
+  </body>
+</html>`,
+            },
+            {
+              text: 'Aggiungi un h1 "Il Mio Sito Web" e inizia la sezione <nav>',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu di Navigazione</title>
+  </head>
+  <body>
+    <h1>Il Mio Sito Web</h1>
+
+    <nav>
+    </nav>
+  </body>
+</html>`,
+              highlightLines: [7, 9, 10],
+            },
+            {
+              text: 'Dentro <nav>, crea una lista <ul> con 5 link interni alle pagine del sito',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu di Navigazione</title>
+  </head>
+  <body>
+    <h1>Il Mio Sito Web</h1>
+
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="chi-sono.html">Chi Sono</a></li>
+        <li><a href="servizi.html">Servizi</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+      </ul>
+    </nav>
+  </body>
+</html>`,
+              highlightLines: [10, 11, 12, 13, 14, 15, 16],
+            },
+            {
+              text: 'Aggiungi un h2 "Link Esterni" con un link a Google che si apre in nuova tab',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu di Navigazione</title>
+  </head>
+  <body>
+    <h1>Il Mio Sito Web</h1>
+
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="chi-sono.html">Chi Sono</a></li>
+        <li><a href="servizi.html">Servizi</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+      </ul>
+    </nav>
+
+    <h2>Link Esterni</h2>
+    <p><a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Cerca su Google</a></p>
+  </body>
+</html>`,
+              highlightLines: [19, 20],
+            },
+            {
+              text: 'Crea una sezione h2 con id="contatti" e aggiungi un paragrafo',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu di Navigazione</title>
+  </head>
+  <body>
+    <h1>Il Mio Sito Web</h1>
+
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="chi-sono.html">Chi Sono</a></li>
+        <li><a href="servizi.html">Servizi</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+      </ul>
+    </nav>
+
+    <h2>Link Esterni</h2>
+    <p><a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Cerca su Google</a></p>
+
+    <h2 id="contatti">Contatti</h2>
+    <p>Scrivici o chiamaci per qualsiasi informazione!</p>
+  </body>
+</html>`,
+              highlightLines: [22, 23],
+            },
+            {
+              text: 'Aggiungi un anchor link nel menu che porta alla sezione contatti',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu di Navigazione</title>
+  </head>
+  <body>
+    <h1>Il Mio Sito Web</h1>
+
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="chi-sono.html">Chi Sono</a></li>
+        <li><a href="servizi.html">Servizi</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="#contatti">Vai ai Contatti (anchor) ↓</a></li>
+      </ul>
+    </nav>
+
+    <h2>Link Esterni</h2>
+    <p><a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Cerca su Google</a></p>
+
+    <h2 id="contatti">Contatti</h2>
+    <p>Scrivici o chiamaci per qualsiasi informazione!</p>
+  </body>
+</html>`,
+              highlightLines: [16],
+            },
+            {
+              text: 'Aggiungi un link email nella sezione contatti',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu di Navigazione</title>
+  </head>
+  <body>
+    <h1>Il Mio Sito Web</h1>
+
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="chi-sono.html">Chi Sono</a></li>
+        <li><a href="servizi.html">Servizi</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="#contatti">Vai ai Contatti (anchor) ↓</a></li>
+      </ul>
+    </nav>
+
+    <h2>Link Esterni</h2>
+    <p><a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Cerca su Google</a></p>
+
+    <h2 id="contatti">Contatti</h2>
+    <p>Scrivici o chiamaci per qualsiasi informazione!</p>
+    <p>📧 Email: <a href="mailto:info@miosito.com">info@miosito.com</a></p>
+  </body>
+</html>`,
+              highlightLines: [25],
+            },
+            {
+              text: 'Aggiungi un link telefono',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu di Navigazione</title>
+  </head>
+  <body>
+    <h1>Il Mio Sito Web</h1>
+
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="chi-sono.html">Chi Sono</a></li>
+        <li><a href="servizi.html">Servizi</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="#contatti">Vai ai Contatti (anchor) ↓</a></li>
+      </ul>
+    </nav>
+
+    <h2>Link Esterni</h2>
+    <p><a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Cerca su Google</a></p>
+
+    <h2 id="contatti">Contatti</h2>
+    <p>Scrivici o chiamaci per qualsiasi informazione!</p>
+    <p>📧 Email: <a href="mailto:info@miosito.com">info@miosito.com</a></p>
+    <p>📱 Telefono: <a href="tel:+393331234567">+39 333 123 4567</a></p>
+  </body>
+</html>`,
+              highlightLines: [26],
+            },
+            'Salva il file (Ctrl+S o Cmd+S)',
+            'Fai doppio click sul file "menu-navigazione.html" per aprirlo nel browser! 🎉',
+            'Clicca sull\'anchor link "Vai ai Contatti" - la pagina scorrerà automaticamente alla sezione contatti!',
+          ]}
+          experiments={[
+            'Clicca sul link Google e nota che si apre in una nuova tab - ora rimuovi target="_blank", salva e ricarica (F5) - si apre nella stessa tab',
+            'Clicca sull\'anchor link "#contatti" - la pagina salta alla sezione! Prova ad aggiungere <br> ripetuti prima della sezione per vedere meglio lo scroll',
+            'Clicca sul link email - si apre il tuo client di posta! Prova mailto:test@test.com?subject=Ciao per vedere l\'oggetto precompilato',
+            'Aggiungi title="Vai alla homepage" al primo link, salva e ricarica (F5) - passa il mouse sopra per vedere il tooltip',
+            'Rimuovi rel="noopener noreferrer" dal link Google, salva e ricarica (F5) - funziona comunque, ma è meno sicuro (problema di tabnapping)',
           ]}
         />
 
