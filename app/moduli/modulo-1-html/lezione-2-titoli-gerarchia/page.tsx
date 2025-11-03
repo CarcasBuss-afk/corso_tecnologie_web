@@ -289,15 +289,15 @@ export default function Lezione2() {
               highlightLines: [17, 18],
             },
             'Salva il file (Ctrl+S o Cmd+S)',
-            'Apri con Live Server (tasto destro → Open with Live Server)',
+            'Fai doppio click sul file "articolo-blog.html" per aprirlo nel browser',
             'Osserva come la gerarchia dei titoli crea una struttura visiva chiara! 🎉',
           ]}
           experiments={[
-            'Prova a cambiare <h1> in <h2> - vedrai il titolo principale diventare più piccolo',
-            'Aggiungi un <h6> alla fine per vedere quanto è piccolo rispetto agli altri',
-            'Prova a scrivere un secondo <h1> (è sbagliato ma funziona) - nota come sono della stessa dimensione',
-            'Cambia un <h3> in <h4> - diventa ancora più piccolo!',
-            'Prova a saltare un livello: metti <h4> dopo <h2> (senza <h3>) - funziona ma è scorretto gerarchicamente',
+            'Prova a cambiare <h1> in <h2>, salva e ricarica (F5) - il titolo principale diventerà più piccolo',
+            'Aggiungi un <h6> alla fine, salva e ricarica - vedrai quanto è piccolo rispetto agli altri',
+            'Prova a scrivere un secondo <h1> (è sbagliato ma funziona), salva e ricarica - nota come sono della stessa dimensione',
+            'Cambia un <h3> in <h4>, salva e ricarica - diventa ancora più piccolo!',
+            'Prova a saltare un livello: metti <h4> dopo <h2> (senza <h3>), salva e ricarica - funziona ma è scorretto gerarchicamente',
           ]}
         />
 

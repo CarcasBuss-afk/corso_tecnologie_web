@@ -189,15 +189,15 @@ export default function Lezione1() {
               highlightLines: [8], // Evidenzia la riga nuova
             },
             'Salva il file (Ctrl+S o Cmd+S)',
-            'Clicca col tasto destro sul file e seleziona "Open with Live Server"',
-            'Guarda la tua pagina aprirsi nel browser! 🎉',
+            'Fai doppio click sul file "prima-pagina.html" - si apre nel browser! 🎉',
+            'Ogni volta che modifichi il codice, salva (Ctrl+S) e ricarica la pagina nel browser (tasto F5)',
           ]}
           experiments={[
-            'Cambia il testo dentro <title> e guarda la tab del browser cambiare',
-            'Aggiungi un secondo paragrafo <p> con una frase a tua scelta - vedrai che va automaticamente a capo',
-            'Prova a scrivere "Benvenuto" al posto di "Ciao" nel tag <h1> - il testo grande cambierà',
-            'Prova a dimenticare di chiudere un tag </p> - cosa succede? Il browser prova a indovinare!',
-            'Cambia <h1> con <h2> e guarda come il titolo diventa più piccolo',
+            'Cambia il testo dentro <title>, salva e ricarica (F5) - la tab del browser cambierà',
+            'Aggiungi un secondo paragrafo <p> con una frase a tua scelta, salva e ricarica - andrà automaticamente a capo',
+            'Prova a scrivere "Benvenuto" al posto di "Ciao" nel <h1>, salva e ricarica - il testo grande cambierà',
+            'Prova a dimenticare di chiudere un tag </p>, salva e ricarica - cosa succede? Il browser prova a indovinare!',
+            'Cambia <h1> con <h2>, salva e ricarica - guarda come il titolo diventa più piccolo',
           ]}
         />
 
