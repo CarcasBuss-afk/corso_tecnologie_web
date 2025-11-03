@@ -414,16 +414,150 @@ export default function Lezione9Page() {
           title="🎯 Esercizio Guidato: Form Login"
           difficulty="facile"
           steps={[
-            'Crea un file "login.html"',
-            'Aggiungi un titolo H1 "Accedi al tuo account"',
-            'Crea un <form> (senza action e method per ora)',
-            'Aggiungi un campo email con label "Email:"',
-            'Aggiungi un campo password con label "Password:"',
-            'Aggiungi un bottone "Accedi" con <button type="submit">',
-            'Aggiungi placeholder appropriati ai campi',
-            'Usa gli id e for per collegare label e input',
-            'Testa il form nel browser',
-            'Prova a inviare senza compilare la email - vedi l\'errore di validazione?'
+            'Crea un file "login.html" in VS Code',
+            {
+              text: 'Scrivi la struttura HTML base con title "Login"',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+  </head>
+  <body>
+
+  </body>
+</html>`,
+            },
+            {
+              text: 'Aggiungi un h1 "Accedi al tuo account"',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>Accedi al tuo account</h1>
+  </body>
+</html>`,
+              highlightLines: [7],
+            },
+            {
+              text: 'Crea un <form> (senza action per ora, invierà alla stessa pagina)',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>Accedi al tuo account</h1>
+
+    <form>
+    </form>
+  </body>
+</html>`,
+              highlightLines: [9, 10],
+            },
+            {
+              text: 'Aggiungi il campo email con label collegata tramite id e for',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>Accedi al tuo account</h1>
+
+    <form>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <br><br>
+    </form>
+  </body>
+</html>`,
+              highlightLines: [10, 11, 12],
+            },
+            {
+              text: 'Aggiungi il campo password con label collegata',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>Accedi al tuo account</h1>
+
+    <form>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <br><br>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <br><br>
+    </form>
+  </body>
+</html>`,
+              highlightLines: [14, 15, 16],
+            },
+            {
+              text: 'Aggiungi un bottone "Accedi" di tipo submit',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>Accedi al tuo account</h1>
+
+    <form>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <br><br>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <br><br>
+
+      <button type="submit">Accedi</button>
+    </form>
+  </body>
+</html>`,
+              highlightLines: [18],
+            },
+            {
+              text: 'Aggiungi placeholder appropriati ai campi per dare indicazioni',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>Accedi al tuo account</h1>
+
+    <form>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="tua@email.com" required>
+      <br><br>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Minimo 6 caratteri" required>
+      <br><br>
+
+      <button type="submit">Accedi</button>
+    </form>
+  </body>
+</html>`,
+              highlightLines: [11, 15],
+            },
+            'Salva il file (Ctrl+S o Cmd+S)',
+            'Fai doppio click sul file "login.html" per aprirlo nel browser! 🎉',
+            'Prova a cliccare "Accedi" SENZA compilare i campi - il browser ti chiederà di compilare l\'email (validazione automatica)!',
+          ]}
+          experiments={[
+            'Rimuovi required da un campo, salva e ricarica (F5) - puoi inviare il form anche vuoto!',
+            'Cambia type="email" in type="text", salva e ricarica - non validerà più il formato email',
+            'Prova a scrivere "test" nel campo email e invia - vedi l\'errore "Inserisci un indirizzo email"?',
+            'Aggiungi minlength="8" al campo password, salva e ricarica - richiederà almeno 8 caratteri',
+            'Cambia type="submit" in type="button", salva e ricarica - il bottone non invierà più il form!',
           ]}
         />
 
