@@ -240,15 +240,117 @@ nel codice ma appare tutta di seguito!</p>`}
           difficulty="facile"
           steps={[
             'Crea un nuovo file "storia.html" in VS Code',
-            'Scrivi la struttura HTML base (DOCTYPE, html, head, body)',
-            'Nel <title> scrivi: "La Mia Prima Storia"',
-            'Nel body, aggiungi un <h1> con il titolo della tua storia',
-            'Scrivi il primo paragrafo della storia (almeno 2-3 righe)',
-            'Aggiungi <hr> per separare',
-            'Scrivi un secondo paragrafo con il seguito della storia',
-            'Nel secondo paragrafo, usa almeno un <br> per andare a capo',
-            'Aggiungi un terzo paragrafo per concludere',
-            'Salva e apri con Live Server per vedere il risultato!',
+            {
+              text: 'Scrivi la struttura HTML base con il titolo "La Mia Prima Storia"',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La Mia Prima Storia</title>
+  </head>
+  <body>
+
+  </body>
+</html>`,
+            },
+            {
+              text: 'Aggiungi un h1 con il titolo della tua storia',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La Mia Prima Storia</title>
+  </head>
+  <body>
+    <h1>L'Avventura nel Bosco Incantato</h1>
+  </body>
+</html>`,
+              highlightLines: [7],
+            },
+            {
+              text: 'Scrivi il primo paragrafo della storia (2-3 frasi)',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La Mia Prima Storia</title>
+  </head>
+  <body>
+    <h1>L'Avventura nel Bosco Incantato</h1>
+
+    <p>C'era una volta un giovane esploratore di nome Luca. Un giorno decise di avventurarsi nel misterioso bosco vicino al suo villaggio. Nessuno ci era mai entrato prima!</p>
+  </body>
+</html>`,
+              highlightLines: [9],
+            },
+            {
+              text: 'Aggiungi una linea separatrice <hr>',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La Mia Prima Storia</title>
+  </head>
+  <body>
+    <h1>L'Avventura nel Bosco Incantato</h1>
+
+    <p>C'era una volta un giovane esploratore di nome Luca. Un giorno decise di avventurarsi nel misterioso bosco vicino al suo villaggio. Nessuno ci era mai entrato prima!</p>
+
+    <hr>
+  </body>
+</html>`,
+              highlightLines: [11],
+            },
+            {
+              text: 'Aggiungi un secondo paragrafo usando <br> per andare a capo',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La Mia Prima Storia</title>
+  </head>
+  <body>
+    <h1>L'Avventura nel Bosco Incantato</h1>
+
+    <p>C'era una volta un giovane esploratore di nome Luca. Un giorno decise di avventurarsi nel misterioso bosco vicino al suo villaggio. Nessuno ci era mai entrato prima!</p>
+
+    <hr>
+
+    <p>Nel cuore del bosco trovò qualcosa di incredibile:<br>
+    Una porta magica nascosta tra gli alberi!<br>
+    Cosa ci sarebbe stato dall'altra parte?</p>
+  </body>
+</html>`,
+              highlightLines: [13, 14, 15],
+            },
+            {
+              text: 'Aggiungi un terzo paragrafo per concludere la storia',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La Mia Prima Storia</title>
+  </head>
+  <body>
+    <h1>L'Avventura nel Bosco Incantato</h1>
+
+    <p>C'era una volta un giovane esploratore di nome Luca. Un giorno decise di avventurarsi nel misterioso bosco vicino al suo villaggio. Nessuno ci era mai entrato prima!</p>
+
+    <hr>
+
+    <p>Nel cuore del bosco trovò qualcosa di incredibile:<br>
+    Una porta magica nascosta tra gli alberi!<br>
+    Cosa ci sarebbe stato dall'altra parte?</p>
+
+    <p>Con coraggio, Luca aprì la porta e scoprì un mondo fantastico pieno di creature magiche. Da quel giorno, il bosco non fu più così misterioso!</p>
+  </body>
+</html>`,
+              highlightLines: [17],
+            },
+            'Salva il file (Ctrl+S o Cmd+S)',
+            'Fai doppio click su "storia.html" per aprirlo nel browser',
+            'Osserva come i paragrafi sono separati, la linea <hr> divide le sezioni, e <br> va a capo! 🎉',
+          ]}
+          experiments={[
+            'Prova a scrivere 10 spazi tra due parole, salva e ricarica (F5) - vedrai solo uno spazio!',
+            'Rimuovi tutti i <br> dal secondo paragrafo, salva e ricarica - il testo andrà tutto su una riga',
+            'Aggiungi un secondo <hr> dopo il terzo paragrafo, salva e ricarica - avrai due separatori',
+            'Prova a scrivere un paragrafo su 5 righe nel codice (senza <br>), salva e ricarica - apparirà tutto su una riga!',
+            'Aggiungi <br><br><br> (tre br di fila) e vedi come crea spazio verticale (anche se non è il modo corretto!)',
           ]}
         />
 
@@ -265,41 +367,6 @@ nel codice ma appare tutta di seguito!</p>`}
           ]}
           hint="Ricorda: ogni poesia sta dentro un <p>, e usi <br> alla fine di ogni verso per andare a capo. Tra una poesia e l'altra, usa <hr> per separare!"
         />
-
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg border-l-4 border-blue-400 my-8">
-          <h3 className="text-lg font-bold text-blue-900 mb-3">🎨 Esempio Pratico: Formattare un Indirizzo</h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <p className="text-sm font-semibold text-gray-700 mb-2">Codice:</p>
-              <CodeExample
-                code={`<p>
-  <strong>Contatti</strong><br>
-  Mario Rossi<br>
-  Via Roma 123<br>
-  00100 Roma (RM)<br>
-  Tel: 06-1234567
-</p>`}
-              />
-            </div>
-
-            <div>
-              <p className="text-sm font-semibold text-gray-700 mb-2">Risultato:</p>
-              <div className="bg-white p-4 rounded border-2 border-blue-200">
-                <LessonPreview
-                  title="🔍 Indirizzo formattato:"
-                  html={`<p>
-  <strong>Contatti</strong><br>
-  Mario Rossi<br>
-  Via Roma 123<br>
-  00100 Roma (RM)<br>
-  Tel: 06-1234567
-</p>`}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
 
         <Checklist
           items={[
