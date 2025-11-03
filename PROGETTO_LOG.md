@@ -1,9 +1,233 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 1 Novembre 2025 - Sessione 14 Completamento Modulo 2 CSS
+**Ultimo aggiornamento:** 2 Novembre 2025 - Sessione 15 Miglioramenti Didattici Esercizi Guidati
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
+
+---
+
+## 📅 CHANGELOG SESSIONE 15 (2 Novembre 2025) - MIGLIORAMENTI DIDATTICI ESERCIZI GUIDATI
+
+### 🎯 Obiettivo Sessione
+Rivedere e migliorare drasticamente gli esercizi guidati per renderli più efficaci pedagogicamente, mostrando codice completo ad ogni step con evidenziazione righe nuove e aggiungendo esperimenti pratici obbligatori.
+
+---
+
+### 1. 🔧 Implementazione Soluzione Robusta - Componenti Didattici
+
+**Problema Identificato:**
+- ❌ Esercizi guidati poco chiari: "copia questa struttura" senza mostrare quale
+- ❌ Studenti confusi su dove inserire il codice
+- ❌ Nessun modo di verificare se stavano scrivendo correttamente
+- ❌ Mancava apprendimento attivo tramite sperimentazione
+
+**Soluzione Implementata:**
+
+#### **A) CodeExample.tsx - Aggiunto supporto evidenziazione righe**
+```tsx
+highlightLines?: number[]  // Righe da evidenziare (1-based)
+```
+- Righe evidenziate con sfondo verde chiaro (`rgba(34, 197, 94, 0.15)`)
+- Perfetto per mostrare cosa è stato aggiunto in ogni step incrementale
+- Usa `wrapLines` e `lineProps` di react-syntax-highlighter
+
+**File modificato:** `/components/didattica/CodeExample.tsx`
+
+#### **B) Exercise.tsx - Ristrutturazione completa con retrocompatibilità**
+
+**Nuova interfaccia:**
+```tsx
+interface ExerciseStep {
+  text: string;           // Istruzione testuale
+  code?: string;          // Codice completo opzionale
+  language?: string;      // Linguaggio (default: html)
+  highlightLines?: number[]; // Righe da evidenziare
+}
+
+interface ExerciseProps {
+  steps: (string | ExerciseStep)[]; // Retrocompatibile!
+  experiments?: string[];           // OBBLIGATORIO pedagogicamente
+  // ... altri props
+}
+```
+
+**Features implementate:**
+- ✅ Step possono essere stringhe semplici (vecchio formato) O oggetti con codice
+- ✅ Codice completo mostrato progressivamente sotto ogni step
+- ✅ Righe nuove evidenziate automaticamente in verde
+- ✅ Sezione "🧪 Esperimenti da Provare" con sfondo viola
+- ✅ Normalizzazione automatica: converte stringhe in oggetti internamente
+- ✅ Aggiunto `'use client'` per compatibilità con CodeExample
+
+**File modificato:** `/components/didattica/Exercise.tsx`
+
+**Statistiche:**
+- CodeExample: +12 righe (supporto highlightLines)
+- Exercise: +65 righe (da 43 → 108 righe totali)
+
+---
+
+### 2. 📝 Aggiornamento Lezione 1 HTML - "Il Primo Giorno"
+
+**Prima** ❌:
+```tsx
+steps={[
+  'Copia esattamente questa struttura base',  // Quale???
+  'Dentro <body>, scrivi: <h1>...',
+]}
+```
+
+**Dopo** ✅:
+```tsx
+steps={[
+  {
+    text: 'Scrivi la struttura base HTML',
+    code: `<!DOCTYPE html>\n<html>...`  // CODICE COMPLETO
+  },
+  {
+    text: 'Aggiungi il titolo con il tuo nome',
+    code: `<!DOCTYPE html>...<h1>Ciao, sono Marco!</h1>...`,
+    highlightLines: [7]  // RIGA NUOVA EVIDENZIATA IN VERDE
+  }
+]}
+experiments={[
+  'Cambia <title> e guarda la tab del browser',
+  'Aggiungi un secondo <p>...',
+  // ... 5 esperimenti totali
+]}
+```
+
+**Contenuti Esercizio Guidato:**
+- 9 step totali (3 setup + 3 codice incrementale + 3 conclusione)
+- Progressione: struttura base → h1 → h1+p
+- 5 esperimenti pratici per apprendimento attivo
+
+**File modificato:** `/app/moduli/modulo-1-html/lezione-1-primo-giorno/page.tsx`
+
+---
+
+### 3. 📝 Aggiornamento Lezione 2 HTML - "Titoli e Gerarchia"
+
+**Esercizio Guidato: "Struttura un Articolo"**
+
+**Contenuti:**
+- 10 step totali
+- Progressione codice: base → h1 → h2+p → h2 → h3+p → h3+p
+- 6 step con codice HTML completo progressivo
+- Evidenziate righe nuove: [7], [9,10], [12], [14,15], [17,18]
+- 5 esperimenti pratici su gerarchia titoli
+
+**Esperimenti specifici:**
+1. Cambiare h1 → h2 (vedere differenza dimensione)
+2. Aggiungere h6 (il più piccolo)
+3. Provare secondo h1 (scorretto ma funzionante)
+4. Cambiare h3 → h4 (ancora più piccolo)
+5. Saltare livelli (h2 → h4 senza h3, scorretto)
+
+**File modificato:** `/app/moduli/modulo-1-html/lezione-2-titoli-gerarchia/page.tsx`
+
+---
+
+### 4. 🚫 Rimozione Live Server - Semplificazione Workflow
+
+**Problema Identificato dall'Utente:**
+- ❌ Live Server richiede installazione estensione VS Code
+- ❌ Overkill per HTML base (serve solo per JavaScript con CORS)
+- ❌ Confonde i principianti: "cos'è Live Server?"
+- ❌ Non necessario: basta doppio click + F5
+
+**Soluzione Implementata:**
+
+**Prima** ❌:
+```
+- Clicca tasto destro → "Open with Live Server"
+```
+
+**Dopo** ✅:
+```
+- Fai doppio click sul file "nome.html" - si apre nel browser! 🎉
+- Ogni volta che modifichi, salva (Ctrl+S) e ricarica (F5)
+- Esperimenti: "cambia X, salva e ricarica (F5) - vedrai Y"
+```
+
+**Vantaggi:**
+- ✅ Zero configurazione necessaria
+- ✅ Workflow standard: modifica → salva → F5
+- ✅ Funziona su ogni sistema operativo
+- ✅ Più chiaro per principianti assoluti
+
+**File modificati:**
+- `/app/moduli/modulo-1-html/lezione-1-primo-giorno/page.tsx`
+- `/app/moduli/modulo-1-html/lezione-2-titoli-gerarchia/page.tsx`
+
+**Nota:** Live Server verrà introdotto solo quando necessario (JavaScript avanzato con fetch/CORS).
+
+---
+
+### 📊 Impatto Didattico Complessivo
+
+**Prima (esercizi vecchio formato):**
+- ❓ Studenti confusi: "dove scrivo il codice?"
+- ❓ Non sapevano se stavano facendo giusto
+- ❓ Zero sperimentazione guidata
+
+**Dopo (nuovo formato):**
+- ✅ Codice completo visibile ad ogni step
+- ✅ Righe nuove evidenziate in verde chiaro
+- ✅ Possono confrontare il loro codice con quello mostrato
+- ✅ 5 esperimenti guidati per apprendimento attivo
+- ✅ Workflow semplificato: doppio click + F5
+
+---
+
+### 🔧 Commits Creati
+
+**1. Feature: Esercizi guidati con codice completo ed esperimenti**
+- Commit: `77bd34d`
+- Modificati: CodeExample.tsx, Exercise.tsx, Lezione 1
+- +150 righe circa
+
+**2. Feature: Esercizio guidato Lezione 2 con codice completo**
+- Commit: `dcac6ea`
+- Modificato: Lezione 2
+- +114 righe, -9 righe
+
+**3. Refactor: Rimosso Live Server da Lezioni 1 e 2**
+- Commit: `4a6d1fe`
+- Modificati: Lezione 1, Lezione 2
+- Sostituito "Live Server" con "doppio click + F5"
+
+---
+
+### 📈 Statistiche Sessione 15
+
+**Componenti modificati:**
+- 2 componenti didattici core (CodeExample, Exercise)
+- 2 lezioni HTML complete (Lezione 1, Lezione 2)
+
+**Righe di codice:**
+- Componenti: ~77 righe aggiunte
+- Lezioni: ~225 righe modificate/aggiunte
+- Totale: ~300 righe di miglioramenti didattici
+
+**Miglioramenti pedagogici:**
+- ✅ Codice completo mostrato ad ogni step
+- ✅ Evidenziazione visiva righe nuove (verde)
+- ✅ 10 esperimenti pratici totali (5+5)
+- ✅ Workflow semplificato (no Live Server)
+- ✅ Retrocompatibilità totale con lezioni esistenti
+
+---
+
+### 🎯 Prossimi Passi
+
+**Applicazione a tutte le lezioni HTML:**
+- Lezione 3: Paragrafi e Testo → da aggiornare
+- Lezione 4: Formattare il Testo → da aggiornare
+- Lezioni 5-18: da aggiornare progressivamente
+
+**Obiettivo:** Portare tutte le 18 lezioni HTML al nuovo formato per massimizzare l'efficacia didattica.
 
 ---
 
