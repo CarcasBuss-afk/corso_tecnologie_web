@@ -184,15 +184,120 @@ export default function Lezione2() {
           difficulty="facile"
           steps={[
             'Apri VS Code e crea un nuovo file "articolo-blog.html"',
-            'Scrivi la struttura HTML base (DOCTYPE, html, head, body)',
-            'Nel body, aggiungi un h1 con: "Il Mio Primo Articolo"',
-            'Aggiungi un h2 con: "Introduzione"',
-            'Sotto, scrivi un paragrafo che spiega di cosa parla l\'articolo',
-            'Aggiungi un altro h2 con: "Capitolo 1: Gli Inizi"',
-            'Sotto questo h2, aggiungi un h3 con: "Come ho iniziato"',
-            'Aggiungi un paragrafo con testo a piacere',
-            'Aggiungi un altro h3 con: "Le prime difficoltà"',
-            'Salva e apri con Live Server per vedere la gerarchia!',
+            {
+              text: 'Scrivi la struttura HTML base completa',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Il Mio Primo Articolo</title>
+  </head>
+  <body>
+
+  </body>
+</html>`,
+            },
+            {
+              text: 'Nel body, aggiungi il titolo principale (h1)',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Il Mio Primo Articolo</title>
+  </head>
+  <body>
+    <h1>Il Mio Primo Articolo</h1>
+  </body>
+</html>`,
+              highlightLines: [7],
+            },
+            {
+              text: 'Aggiungi la prima sezione con h2 "Introduzione" e un paragrafo',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Il Mio Primo Articolo</title>
+  </head>
+  <body>
+    <h1>Il Mio Primo Articolo</h1>
+
+    <h2>Introduzione</h2>
+    <p>Questo articolo parla della mia esperienza nell'imparare l'HTML!</p>
+  </body>
+</html>`,
+              highlightLines: [9, 10],
+            },
+            {
+              text: 'Aggiungi una seconda sezione h2 "Capitolo 1: Gli Inizi"',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Il Mio Primo Articolo</title>
+  </head>
+  <body>
+    <h1>Il Mio Primo Articolo</h1>
+
+    <h2>Introduzione</h2>
+    <p>Questo articolo parla della mia esperienza nell'imparare l'HTML!</p>
+
+    <h2>Capitolo 1: Gli Inizi</h2>
+  </body>
+</html>`,
+              highlightLines: [12],
+            },
+            {
+              text: 'Sotto il Capitolo 1, aggiungi una sottosezione h3 con paragrafo',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Il Mio Primo Articolo</title>
+  </head>
+  <body>
+    <h1>Il Mio Primo Articolo</h1>
+
+    <h2>Introduzione</h2>
+    <p>Questo articolo parla della mia esperienza nell'imparare l'HTML!</p>
+
+    <h2>Capitolo 1: Gli Inizi</h2>
+
+    <h3>Come ho iniziato</h3>
+    <p>Ho aperto VS Code per la prima volta e ho scritto il mio primo tag HTML.</p>
+  </body>
+</html>`,
+              highlightLines: [14, 15],
+            },
+            {
+              text: 'Aggiungi un\'altra sottosezione h3 per completare la struttura',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Il Mio Primo Articolo</title>
+  </head>
+  <body>
+    <h1>Il Mio Primo Articolo</h1>
+
+    <h2>Introduzione</h2>
+    <p>Questo articolo parla della mia esperienza nell'imparare l'HTML!</p>
+
+    <h2>Capitolo 1: Gli Inizi</h2>
+
+    <h3>Come ho iniziato</h3>
+    <p>Ho aperto VS Code per la prima volta e ho scritto il mio primo tag HTML.</p>
+
+    <h3>Le prime difficoltà</h3>
+    <p>All'inizio dimenticavo sempre di chiudere i tag, ma con la pratica è diventato naturale!</p>
+  </body>
+</html>`,
+              highlightLines: [17, 18],
+            },
+            'Salva il file (Ctrl+S o Cmd+S)',
+            'Apri con Live Server (tasto destro → Open with Live Server)',
+            'Osserva come la gerarchia dei titoli crea una struttura visiva chiara! 🎉',
+          ]}
+          experiments={[
+            'Prova a cambiare <h1> in <h2> - vedrai il titolo principale diventare più piccolo',
+            'Aggiungi un <h6> alla fine per vedere quanto è piccolo rispetto agli altri',
+            'Prova a scrivere un secondo <h1> (è sbagliato ma funziona) - nota come sono della stessa dimensione',
+            'Cambia un <h3> in <h4> - diventa ancora più piccolo!',
+            'Prova a saltare un livello: metti <h4> dopo <h2> (senza <h3>) - funziona ma è scorretto gerarchicamente',
           ]}
         />
 
