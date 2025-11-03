@@ -3824,21 +3824,35 @@ Rivedere e migliorare gli esercizi guidati delle lezioni HTML 4-8 applicando il 
 - **Commit:** `b6596dc` - 285 insertions, 9 deletions
 - **File:** `lezione-8-tabelle/page.tsx`
 
+#### 6. **Lezione 9 - Form Input Base**
+**Esercizio:** "Form Login"
+- ✅ Ristrutturato con 11 step progressivi (1 intro + 8 con codice + 2 conclusione)
+- ✅ Esempio: form login completo con email e password
+- ✅ Dimostrati concetti di form: `<form>`, `<label>`, `<input>`, validazione browser
+- ✅ Progressione: base HTML → h1 → form vuoto → campo email con label/id/for → campo password → button submit → placeholder
+- ✅ Collegamento label-input con `id` e `for` spiegato chiaramente
+- ✅ Concetti chiave: `form`, `label`, `input`, `type="email"`, `type="password"`, `id`, `for`, `name`, `required`, `placeholder`, `button type="submit"`
+- ✅ 5 esperimenti aggiunti: `required`, validazione email, `minlength`, `type="submit"` vs `type="button"`
+- **Commit:** `5604ec5` - 144 insertions, 10 deletions
+- **File:** `lezione-9-form-input-base/page.tsx`
+
 ### 📊 Statistiche Sessione
 
-**Lezioni Aggiornate:** 5 (Lezioni 4, 5, 6, 7, 8)
-**Commit Totali:** 6
+**Lezioni Aggiornate:** 6 (Lezioni 4, 5, 6, 7, 8, 9)
+**Commit Totali:** 8
 - `4baea8c` - Lezione 4 Formattare Testo
 - `5fbe6e0` - Lezione 5 Link (nuovo formato)
 - `98635dd` - Lezione 5 Link (fix tag non spiegati) 🔧
 - `3044eb4` - Lezione 6 Immagini
 - `55d4455` - Lezione 7 Liste
 - `b6596dc` - Lezione 8 Tabelle
+- `5604ec5` - Lezione 9 Form Input Base
+- `4ca656d` - Docs: PROGETTO_LOG.md aggiornato
 
 **Righe di Codice:**
-- Inserite: ~1,030 righe
-- Eliminate: ~121 righe
-- Netto: +909 righe di miglioramenti didattici
+- Inserite: ~1,174 righe
+- Eliminate: ~131 righe
+- Netto: +1,043 righe di miglioramenti didattici
 
 **Problemi Risolti:**
 1. ✅ Coerenza pedagogica: rimossi tag non ancora spiegati dalla Lezione 5
@@ -3907,14 +3921,14 @@ experiments={[
 
 **Lezioni HTML (Modulo 1) - 18 totali:**
 - ✅ Lezione 1-3: Già aggiornate (Session 15)
-- ✅ Lezione 4-8: Aggiornate (Session 16) ← OGGI
-- ⏳ Lezione 9-18: Da aggiornare
+- ✅ Lezione 4-9: Aggiornate (Session 16) ← OGGI  🎉 **50% COMPLETATO!**
+- ⏳ Lezione 10-18: Da aggiornare (9 lezioni rimanenti)
 
 **Lezioni CSS (Modulo 2) - 14 totali:**
 - ⏳ Tutte da rivedere con il nuovo formato
 
 **Prossimi Passi:**
-1. Continuare con Lezioni HTML 9-18 (Form, Semantic HTML, Containers, Mini-Project)
+1. Continuare con Lezioni HTML 10-18 (Form avanzati, Semantic HTML, Containers, Mini-Project)
 2. Applicare lo stesso formato alle 14 lezioni CSS
 3. Testing completo di tutte le lezioni aggiornate
 
