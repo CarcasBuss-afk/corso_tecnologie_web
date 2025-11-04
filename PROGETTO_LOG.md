@@ -1,9 +1,235 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 3 Novembre 2025 - Sessione 16 Completamento Lezioni HTML 3-9
+**Ultimo aggiornamento:** 5 Novembre 2025 - Sessione 17 Completamento Lezioni HTML 9-13
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
+
+---
+
+## 📅 CHANGELOG SESSIONE 17 (5 Novembre 2025) - COMPLETAMENTO LEZIONI HTML 9-13
+
+### 🎯 Obiettivo Sessione
+Completare l'aggiornamento delle Lezioni HTML 9-13 con il nuovo formato didattico, correggere ulteriori errori pedagogici (placeholder non spiegato, esempi ridondanti) e raggiungere il 72% di completamento del modulo HTML (13/18 lezioni).
+
+---
+
+### 1. 📝 Fix Lezione 9 - "Form - Input Base" (Placeholder + Struttura)
+
+**Problemi identificati:**
+- ❌ Attributo `placeholder` usato senza spiegazione preventiva
+- ❌ Sezione "Il Tag &lt;input&gt;" mancava di output visivo
+
+**Fix applicati:**
+
+#### A) Aggiunta sezione "💬 Attributo: placeholder" (Commit `bdd5c44`)
+**Posizione:** Dopo "Attributi fondamentali", prima di "id e for"
+**Contenuti:**
+- Spiegazione completa: testo di suggerimento che sparisce quando scrivi
+- Confronto visivo side-by-side: campo senza vs con placeholder
+- Lista di quando usarlo: esempi formato, suggerimenti, formati specifici
+- ⚠️ Avviso: placeholder NON sostituisce la label
+- Rimosso placeholder dal primo esempio di input (ora usa solo type e name)
+
+#### B) Separata visualizzazione input base da placeholder (Commit `a496a01`)
+- Aggiunto LessonPreview nella sezione "Il Tag &lt;input&gt;" per mostrare output del campo base
+- Struttura migliorata: prima si vede l'input base + output, poi il placeholder + confronto
+- Progressione didattica: tag → output → attributi type/name → placeholder → confronto
+
+**File modificato:** `/app/moduli/modulo-1-html/lezione-9-form-input-base/page.tsx`
+**Commits:** `bdd5c44` (fix placeholder), `a496a01` (refactor struttura)
+
+**Statistiche:**
+- +58 righe per sezione placeholder
+- +5 righe per preview input base
+- Miglioramento pedagogico: ✅ Nessun attributo usato prima della spiegazione
+
+---
+
+### 2. 📝 Aggiornamento Lezione 10 - "Form - Input Avanzati"
+
+**Esercizio Guidato: "Form Sondaggio Musicale"**
+- 14 step totali (2 setup + 7 codice progressivo + 5 verifica)
+- Codice HTML completo mostrato ad ogni step
+- Evidenziazione righe nuove con `highlightLines`
+- Progressione: base → checkbox (5 generi) → radio (4 opzioni ore) → date → range → color → file → submit
+- Input avanzati coperti: checkbox, radio, date, range, color, file
+- 5 esperimenti pratici: checked, min/max, accept, nuovo checkbox, color value
+- Uso doppio click + F5 invece di Live Server
+- Enfasi differenza checkbox (multipli) vs radio (singola scelta)
+
+**File modificato:** `/app/moduli/modulo-1-html/lezione-10-form-input-avanzati/page.tsx`
+**Commit:** `45c2a4a`
+
+**Statistiche:**
+- +285 righe aggiunte
+- 7 input types diversi utilizzati
+- 9 step di test/verifica
+
+---
+
+### 3. 📝 Aggiornamento Lezione 11 - "Form - Validazione"
+
+**Esercizio Guidato: "Form Iscrizione Evento con Validazione"**
+- 21 step totali (2 setup + 9 codice progressivo + 9 test + 1 salva)
+- Codice HTML completo mostrato ad ogni step
+- Evidenziazione righe nuove con `highlightLines`
+- Progressione: base → nome → email → età → telefono → username → textarea → codice readonly → privacy → submit
+- Validazioni coperte: `required`, `minlength`, `maxlength`, `min`, `max`, `pattern`, `readonly`
+- 9 step di test dettagliati per ogni validazione:
+  - Nome con 2 caratteri (troppo corto)
+  - Email senza @ (formato invalido)
+  - Età < 14 (fuori range)
+  - Telefono con pattern 10 cifre
+  - Username con pattern alfanumerico
+  - Checkbox privacy obbligatorio
+- 5 esperimenti pratici: minlength, required removal, max change, pattern change, disabled vs readonly
+- Uso doppio click + F5 invece di Live Server
+
+**File modificato:** `/app/moduli/modulo-1-html/lezione-11-form-validazione/page.tsx`
+**Commit:** `48e628d`
+
+**Statistiche:**
+- +331 righe aggiunte
+- 7 attributi di validazione diversi
+- 9 step di test dedicati
+
+---
+
+### 4. 📝 Aggiornamento Lezione 12 - "Audio e Video"
+
+**Esercizio Guidato: "Pagina Portfolio Multimediale"**
+- 13 step totali (1 setup + 4 codice progressivo + 1 salva + 6 verifica)
+- Codice HTML completo mostrato ad ogni step
+- Evidenziazione righe nuove con `highlightLines`
+- Progressione: base → titolo → audio multiformat → video locale (poster + 2 formati) → YouTube iframe responsive
+- Tag coperti: `<audio>`, `<video>`, `<source>`, `<iframe>` con stile responsive
+- Attributi: `controls`, `poster`, `width`, `height`, `type`, `src`
+- Formati multipli: MP3/OGG per audio, MP4/WebM per video
+- Tecnica responsive per iframe YouTube: `padding-bottom: 56.25%`
+- 6 step di verifica: controlli audio, poster video, YouTube funzionante, responsive
+- 5 esperimenti pratici: loop audio, autoplay muted, dimensioni video, cambio video YouTube, rimozione poster
+- Uso doppio click + F5 invece di Live Server
+
+**File modificato:** `/app/moduli/modulo-1-html/lezione-12-audio-video/page.tsx`
+**Commit:** `80eb4c8`
+
+**Statistiche:**
+- +135 righe aggiunte
+- 4 tag multimediali utilizzati
+- 3 sezioni diverse: audio, video locale, video YouTube
+
+---
+
+### 5. 📝 Aggiornamento Lezione 13 - "Contenitori e Divisioni"
+
+**Esercizio Guidato: "Crea una Scheda Ricetta"**
+- 11 step totali (1 setup + 5 codice progressivo + 1 salva + 4 verifica)
+- Codice HTML completo mostrato ad ogni step
+- Evidenziazione righe nuove con `highlightLines`
+- Progressione: base → div contenitore → titolo + descrizione → div ingredienti → lista con span
+- Tag coperti: `<div>` (contenitori block), `<span>` (elementi inline)
+- Nidificazione: div dentro div per sezioni separate
+- Uso pratico: scheda ricetta con struttura logica
+- 4 step di verifica: struttura div esterno, div interno ingredienti, comportamento span inline
+- 5 esperimenti pratici: rimozione div, span vs div, nuova sezione preparazione, span inline nella descrizione, più ingredienti
+- **✅ Eliminato CodeExample "Esempio da seguire" ridondante**
+- Uso doppio click + F5 invece di Live Server
+
+**File modificato:** `/app/moduli/modulo-1-html/lezione-13-contenitori-divisioni/page.tsx`
+**Commit:** `053496b`
+
+**Statistiche:**
+- +105 righe aggiunte per nuovo formato
+- -30 righe rimosse (esempio ridondante)
+- 2 tag fondamentali spiegati praticamente
+- Nidificazione a 2 livelli (div > div)
+
+---
+
+### 📊 Statistiche Sessione 17
+
+**Lezioni aggiornate:** 5 (Lezioni 9-13)
+**Totale lezioni HTML completate:** 13/18 (72.2% ✅)
+
+**Dettaglio progressione:**
+- ✅ Lezione 1-8: Completate (Sessioni precedenti)
+- ✅ Lezione 9: Form Input Base (+ fix placeholder + refactor struttura)
+- ✅ Lezione 10: Form Input Avanzati
+- ✅ Lezione 11: Form Validazione
+- ✅ Lezione 12: Audio e Video
+- ✅ Lezione 13: Contenitori e Divisioni
+- ⏳ Lezione 14-18: Da aggiornare (28% rimanente)
+
+**Commits totali Sessione 17:** 6
+- 5 lezioni aggiornate (10, 11, 12, 13)
+- 2 fix pedagogici Lezione 9 (placeholder, struttura)
+- 1 rimozione esempio ridondante (Lezione 13)
+
+**Miglioramenti pedagogici:**
+- ✅ Attributo placeholder spiegato prima dell'uso (Lezione 9)
+- ✅ Separazione chiara tra concetti (input base vs placeholder)
+- ✅ Output visivi per ogni concetto
+- ✅ Eliminato contenuto ridondante (Lezione 13)
+- ✅ 25 esperimenti pratici totali (5 per lezione × 5 lezioni)
+
+**Righe di codice:**
+- ~914 righe aggiunte nelle 5 lezioni
+- ~30 righe rimosse (contenuto ridondante)
+- Media: ~183 righe per lezione
+
+**Form e Validazione (Lezioni 9-11):**
+- Input types coperti: 13 diversi (text, password, email, number, tel, checkbox, radio, date, time, file, range, color, datetime-local)
+- Attributi di validazione: 7 (required, minlength, maxlength, min, max, pattern, readonly/disabled)
+- Total form fields nell'intero blocco: ~15
+
+**Multimedia (Lezione 12):**
+- Formati audio: 3 (MP3, OGG, WAV)
+- Formati video: 3 (MP4, WebM, OGG)
+- Piattaforme integrate: 2 (YouTube, iframe responsive)
+
+**Contenitori (Lezione 13):**
+- Tag di layout: 2 (`<div>`, `<span>`)
+- Differenza block vs inline chiarita con esempi pratici
+
+---
+
+### 🐛 Bug Risolti Sessione 17
+
+**1. Lezione 9 - Attributo placeholder non spiegato**
+- **Problema:** `placeholder` usato negli esempi senza spiegazione preventiva
+- **Fix:** Aggiunta sezione dedicata "💬 Attributo: placeholder" con confronto visivo e best practices
+- **Sequenza corretta:** input base → type/name → placeholder → id/for → input types
+- **Commit:** `bdd5c44`
+
+**2. Lezione 9 - Input base senza output visivo**
+- **Problema:** Sezione tag input non mostrava come appariva il campo
+- **Fix:** Aggiunto LessonPreview nella sezione "Il Tag &lt;input&gt;"
+- **Struttura migliorata:** separazione chiara tra input base e attributo placeholder
+- **Commit:** `a496a01`
+
+**3. Lezione 13 - Esempio ridondante**
+- **Problema:** CodeExample "Esempio da seguire" duplicava il contenuto dell'esercizio guidato
+- **Fix:** Rimosso completamente, esercizio guidato già completo con codice progressivo
+- **Commit:** `053496b`
+
+---
+
+### 🎯 Prossimi Passi
+
+**Lezioni HTML rimanenti (5 lezioni - 28%):**
+- Lezione 14: Entità HTML
+- Lezione 15: Semantica HTML5
+- Lezione 16: Header, Nav, Footer
+- Lezione 17: Article, Section, Aside
+- Lezione 18: Progetto Finale HTML
+
+**Obiettivo Sessione 18:** Completare tutte le Lezioni HTML (14-18) e raggiungere 100% modulo HTML
+
+**Dopo Modulo HTML:**
+- Review e aggiornamento Modulo CSS (14 lezioni)
+- Applicare stesso formato didattico
+- Verificare coerenza pedagogica
 
 ---
 
