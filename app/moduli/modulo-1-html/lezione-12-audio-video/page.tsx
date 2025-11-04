@@ -533,21 +533,142 @@ Iniziamo con il tag <audio>...`}</code></pre>
 
       {/* Esercizio */}
       <Exercise
-        title="Pagina Portfolio Multimediale"
+        title="🎯 Esercizio Guidato: Pagina Portfolio Multimediale"
+        difficulty="facile"
         steps={[
-          'Crea un file "portfolio-media.html"',
-          'Aggiungi la struttura HTML base',
-          'Titolo H1: "Il Mio Portfolio Multimediale"',
-          'Sezione 1 - Audio: Aggiungi un tag <audio> con controls per una tua playlist/podcast',
-          'Usa almeno 2 formati (<source> con MP3 e OGG) per compatibilità',
-          'Sezione 2 - Video Locale: Aggiungi un tag <video> con width="640" height="360" e controls',
-          'Aggiungi poster="anteprima.jpg" al video',
-          'Usa 2 formati video (MP4 e WebM)',
-          'Sezione 3 - Video YouTube: Incorpora un tuo video preferito da YouTube con <iframe>',
-          'Rendi l\'iframe responsive usando il trucco padding-bottom: 56.25%',
-          'BONUS: Aggiungi un file di sottotitoli .vtt al video locale con <track>',
-          'BONUS: Crea un video background muted loop autoplay per la hero section',
-          'Testa che tutti i player funzionino correttamente',
+          'Crea un file "portfolio-media.html" in VS Code',
+          {
+            text: 'Scrivi la struttura HTML base con title "Portfolio Multimediale"',
+            code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Portfolio Multimediale</title>
+  </head>
+  <body>
+
+  </body>
+</html>`,
+            language: 'html',
+          },
+          {
+            text: 'Aggiungi il titolo principale della pagina',
+            code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Portfolio Multimediale</title>
+  </head>
+  <body>
+    <h1>Il Mio Portfolio Multimediale</h1>
+  </body>
+</html>`,
+            language: 'html',
+            highlightLines: [7],
+          },
+          {
+            text: 'Sezione Audio - Aggiungi un titolo H2 e un player audio con controls e formati multipli',
+            code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Portfolio Multimediale</title>
+  </head>
+  <body>
+    <h1>Il Mio Portfolio Multimediale</h1>
+
+    <h2>🎵 La Mia Playlist</h2>
+    <audio controls>
+      <source src="musica.mp3" type="audio/mpeg">
+      <source src="musica.ogg" type="audio/ogg">
+      Il tuo browser non supporta l'audio HTML5.
+    </audio>
+    <br><br>
+  </body>
+</html>`,
+            language: 'html',
+            highlightLines: [9, 10, 11, 12, 13, 14, 15],
+          },
+          {
+            text: 'Sezione Video Locale - Aggiungi titolo H2 e video con dimensioni, poster e formati multipli',
+            code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Portfolio Multimediale</title>
+  </head>
+  <body>
+    <h1>Il Mio Portfolio Multimediale</h1>
+
+    <h2>🎵 La Mia Playlist</h2>
+    <audio controls>
+      <source src="musica.mp3" type="audio/mpeg">
+      <source src="musica.ogg" type="audio/ogg">
+      Il tuo browser non supporta l'audio HTML5.
+    </audio>
+    <br><br>
+
+    <h2>🎬 Video Presentazione</h2>
+    <video width="640" height="360" controls poster="anteprima.jpg">
+      <source src="presentazione.mp4" type="video/mp4">
+      <source src="presentazione.webm" type="video/webm">
+      Il tuo browser non supporta il video HTML5.
+    </video>
+    <br><br>
+  </body>
+</html>`,
+            language: 'html',
+            highlightLines: [17, 18, 19, 20, 21, 22, 23],
+          },
+          {
+            text: 'Sezione Video YouTube - Aggiungi titolo H2 e incorpora un video YouTube responsive',
+            code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Portfolio Multimediale</title>
+  </head>
+  <body>
+    <h1>Il Mio Portfolio Multimediale</h1>
+
+    <h2>🎵 La Mia Playlist</h2>
+    <audio controls>
+      <source src="musica.mp3" type="audio/mpeg">
+      <source src="musica.ogg" type="audio/ogg">
+      Il tuo browser non supporta l'audio HTML5.
+    </audio>
+    <br><br>
+
+    <h2>🎬 Video Presentazione</h2>
+    <video width="640" height="360" controls poster="anteprima.jpg">
+      <source src="presentazione.mp4" type="video/mp4">
+      <source src="presentazione.webm" type="video/webm">
+      Il tuo browser non supporta il video HTML5.
+    </video>
+    <br><br>
+
+    <h2>📺 Tutorial da YouTube</h2>
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; max-width: 640px;">
+      <iframe
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </body>
+</html>`,
+            language: 'html',
+            highlightLines: [25, 26, 27, 28, 29, 30, 31, 32, 33],
+          },
+          'Salva il file (Ctrl+S o Cmd+S)',
+          'Fai doppio click sul file "portfolio-media.html" per aprirlo nel browser! 🎉',
+          'Verifica che il player audio mostri i controlli (play, pausa, volume) ▶️',
+          'Controlla che il video locale mostri il poster come anteprima 🖼️',
+          'Clicca play sul video YouTube incorporato - deve funzionare perfettamente! 📺',
+          'Prova a ridimensionare la finestra del browser - il video YouTube si adatta? (responsive)',
+        ]}
+        experiments={[
+          'Aggiungi loop all\'audio, salva e ricarica (F5) - la musica si ripeterà all\'infinito!',
+          'Aggiungi autoplay muted al video locale, salva e ricarica - parte automaticamente senza audio',
+          'Cambia width="640" in width="320" per il video, salva e ricarica - dimensioni ridotte',
+          'Sostituisci l\'ID YouTube (dQw4w9WgXcQ) con un altro video a tua scelta, salva e ricarica!',
+          'Rimuovi poster="anteprima.jpg" dal video, salva e ricarica - vedi il primo frame invece dell\'anteprima',
         ]}
       />
 
