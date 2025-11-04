@@ -760,22 +760,338 @@ export default function Lezione11Page() {
 
       {/* Esercizio */}
       <Exercise
-        title="Form Iscrizione Evento con Validazione"
+        title="🎯 Esercizio Guidato: Form Iscrizione Evento con Validazione"
+        difficulty="media"
         steps={[
-          'Crea un file "iscrizione.html"',
-          'Aggiungi la struttura HTML base',
-          'Crea un <form> con method="post"',
-          'Campo Nome Completo: required, minlength="3", maxlength="50"',
-          'Campo Email: type="email", required',
-          'Campo Età: type="number", min="14", max="99", required',
-          'Campo Telefono: type="tel", pattern="[0-9]{10}", title="10 cifre", required',
-          'Campo Username: pattern="[a-z0-9]{4,12}", title="Solo minuscole e numeri, 4-12 caratteri"',
-          'Textarea Messaggio: maxlength="300"',
-          'Campo Codice Evento (readonly): value="EVT-2024-SUMMER", readonly',
-          'Checkbox Accetto privacy: required',
-          'Button submit con testo "Iscriviti"',
-          'Testa il form: prova a inviare senza compilare, scrivi email sbagliate, testa tutti i vincoli',
-          'BONUS: Aggiungi un input date per data di nascita con max="2010-12-31"',
+          'Crea un file "iscrizione-evento.html" in VS Code',
+          {
+            text: 'Scrivi la struttura HTML base con title "Iscrizione Evento"',
+            code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iscrizione Evento</title>
+  </head>
+  <body>
+
+  </body>
+</html>`,
+            language: 'html',
+          },
+          {
+            text: 'Aggiungi titolo e apri il form con method="POST"',
+            code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iscrizione Evento</title>
+  </head>
+  <body>
+    <h1>Iscrizione Evento Estate 2024</h1>
+
+    <form method="POST">
+    </form>
+  </body>
+</html>`,
+            language: 'html',
+            highlightLines: [7, 9, 10],
+          },
+          {
+            text: 'Aggiungi campo Nome Completo con validazione (required, minlength 3, maxlength 50)',
+            code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iscrizione Evento</title>
+  </head>
+  <body>
+    <h1>Iscrizione Evento Estate 2024</h1>
+
+    <form method="POST">
+      <label for="nome">Nome Completo:</label><br>
+      <input type="text" id="nome" name="nome" minlength="3" maxlength="50" required><br><br>
+    </form>
+  </body>
+</html>`,
+            language: 'html',
+            highlightLines: [10, 11],
+          },
+          {
+            text: 'Aggiungi campo Email obbligatorio (il browser controllerà il formato automaticamente)',
+            code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iscrizione Evento</title>
+  </head>
+  <body>
+    <h1>Iscrizione Evento Estate 2024</h1>
+
+    <form method="POST">
+      <label for="nome">Nome Completo:</label><br>
+      <input type="text" id="nome" name="nome" minlength="3" maxlength="50" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+    </form>
+  </body>
+</html>`,
+            language: 'html',
+            highlightLines: [13, 14],
+          },
+          {
+            text: 'Aggiungi campo Età con limiti (minimo 14, massimo 99 anni)',
+            code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iscrizione Evento</title>
+  </head>
+  <body>
+    <h1>Iscrizione Evento Estate 2024</h1>
+
+    <form method="POST">
+      <label for="nome">Nome Completo:</label><br>
+      <input type="text" id="nome" name="nome" minlength="3" maxlength="50" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+
+      <label for="eta">Età:</label><br>
+      <input type="number" id="eta" name="eta" min="14" max="99" required><br><br>
+    </form>
+  </body>
+</html>`,
+            language: 'html',
+            highlightLines: [16, 17],
+          },
+          {
+            text: 'Aggiungi campo Telefono con pattern per 10 cifre (usa title per spiegare il formato)',
+            code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iscrizione Evento</title>
+  </head>
+  <body>
+    <h1>Iscrizione Evento Estate 2024</h1>
+
+    <form method="POST">
+      <label for="nome">Nome Completo:</label><br>
+      <input type="text" id="nome" name="nome" minlength="3" maxlength="50" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+
+      <label for="eta">Età:</label><br>
+      <input type="number" id="eta" name="eta" min="14" max="99" required><br><br>
+
+      <label for="telefono">Telefono:</label><br>
+      <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" title="Inserisci 10 cifre senza spazi" placeholder="3331234567" required><br><br>
+    </form>
+  </body>
+</html>`,
+            language: 'html',
+            highlightLines: [19, 20],
+          },
+          {
+            text: 'Aggiungi campo Username con pattern personalizzato (solo lettere minuscole e numeri, 4-12 caratteri)',
+            code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iscrizione Evento</title>
+  </head>
+  <body>
+    <h1>Iscrizione Evento Estate 2024</h1>
+
+    <form method="POST">
+      <label for="nome">Nome Completo:</label><br>
+      <input type="text" id="nome" name="nome" minlength="3" maxlength="50" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+
+      <label for="eta">Età:</label><br>
+      <input type="number" id="eta" name="eta" min="14" max="99" required><br><br>
+
+      <label for="telefono">Telefono:</label><br>
+      <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" title="Inserisci 10 cifre senza spazi" placeholder="3331234567" required><br><br>
+
+      <label for="username">Username (4-12 caratteri):</label><br>
+      <input type="text" id="username" name="username" pattern="[a-z0-9]{4,12}" title="Solo lettere minuscole e numeri, da 4 a 12 caratteri" placeholder="mario123" required><br><br>
+    </form>
+  </body>
+</html>`,
+            language: 'html',
+            highlightLines: [22, 23],
+          },
+          {
+            text: 'Aggiungi textarea Messaggio con lunghezza massima 300 caratteri',
+            code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iscrizione Evento</title>
+  </head>
+  <body>
+    <h1>Iscrizione Evento Estate 2024</h1>
+
+    <form method="POST">
+      <label for="nome">Nome Completo:</label><br>
+      <input type="text" id="nome" name="nome" minlength="3" maxlength="50" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+
+      <label for="eta">Età:</label><br>
+      <input type="number" id="eta" name="eta" min="14" max="99" required><br><br>
+
+      <label for="telefono">Telefono:</label><br>
+      <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" title="Inserisci 10 cifre senza spazi" placeholder="3331234567" required><br><br>
+
+      <label for="username">Username (4-12 caratteri):</label><br>
+      <input type="text" id="username" name="username" pattern="[a-z0-9]{4,12}" title="Solo lettere minuscole e numeri, da 4 a 12 caratteri" placeholder="mario123" required><br><br>
+
+      <label for="messaggio">Messaggio (opzionale, max 300 caratteri):</label><br>
+      <textarea id="messaggio" name="messaggio" maxlength="300" rows="4" cols="50"></textarea><br><br>
+    </form>
+  </body>
+</html>`,
+            language: 'html',
+            highlightLines: [25, 26],
+          },
+          {
+            text: 'Aggiungi campo Codice Evento readonly (generato automaticamente, l\'utente non può modificarlo)',
+            code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iscrizione Evento</title>
+  </head>
+  <body>
+    <h1>Iscrizione Evento Estate 2024</h1>
+
+    <form method="POST">
+      <label for="nome">Nome Completo:</label><br>
+      <input type="text" id="nome" name="nome" minlength="3" maxlength="50" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+
+      <label for="eta">Età:</label><br>
+      <input type="number" id="eta" name="eta" min="14" max="99" required><br><br>
+
+      <label for="telefono">Telefono:</label><br>
+      <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" title="Inserisci 10 cifre senza spazi" placeholder="3331234567" required><br><br>
+
+      <label for="username">Username (4-12 caratteri):</label><br>
+      <input type="text" id="username" name="username" pattern="[a-z0-9]{4,12}" title="Solo lettere minuscole e numeri, da 4 a 12 caratteri" placeholder="mario123" required><br><br>
+
+      <label for="messaggio">Messaggio (opzionale, max 300 caratteri):</label><br>
+      <textarea id="messaggio" name="messaggio" maxlength="300" rows="4" cols="50"></textarea><br><br>
+
+      <label for="codice-evento">Codice Evento (generato automaticamente):</label><br>
+      <input type="text" id="codice-evento" name="codice-evento" value="EVT-2024-SUMMER" readonly><br><br>
+    </form>
+  </body>
+</html>`,
+            language: 'html',
+            highlightLines: [28, 29],
+          },
+          {
+            text: 'Aggiungi checkbox Privacy obbligatorio (required impedisce l\'invio se non spuntato)',
+            code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iscrizione Evento</title>
+  </head>
+  <body>
+    <h1>Iscrizione Evento Estate 2024</h1>
+
+    <form method="POST">
+      <label for="nome">Nome Completo:</label><br>
+      <input type="text" id="nome" name="nome" minlength="3" maxlength="50" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+
+      <label for="eta">Età:</label><br>
+      <input type="number" id="eta" name="eta" min="14" max="99" required><br><br>
+
+      <label for="telefono">Telefono:</label><br>
+      <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" title="Inserisci 10 cifre senza spazi" placeholder="3331234567" required><br><br>
+
+      <label for="username">Username (4-12 caratteri):</label><br>
+      <input type="text" id="username" name="username" pattern="[a-z0-9]{4,12}" title="Solo lettere minuscole e numeri, da 4 a 12 caratteri" placeholder="mario123" required><br><br>
+
+      <label for="messaggio">Messaggio (opzionale, max 300 caratteri):</label><br>
+      <textarea id="messaggio" name="messaggio" maxlength="300" rows="4" cols="50"></textarea><br><br>
+
+      <label for="codice-evento">Codice Evento (generato automaticamente):</label><br>
+      <input type="text" id="codice-evento" name="codice-evento" value="EVT-2024-SUMMER" readonly><br><br>
+
+      <label>
+        <input type="checkbox" name="privacy" required>
+        Accetto l'informativa sulla privacy (obbligatorio)
+      </label><br><br>
+    </form>
+  </body>
+</html>`,
+            language: 'html',
+            highlightLines: [31, 32, 33, 34],
+          },
+          {
+            text: 'Aggiungi il bottone submit per completare il form',
+            code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iscrizione Evento</title>
+  </head>
+  <body>
+    <h1>Iscrizione Evento Estate 2024</h1>
+
+    <form method="POST">
+      <label for="nome">Nome Completo:</label><br>
+      <input type="text" id="nome" name="nome" minlength="3" maxlength="50" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+
+      <label for="eta">Età:</label><br>
+      <input type="number" id="eta" name="eta" min="14" max="99" required><br><br>
+
+      <label for="telefono">Telefono:</label><br>
+      <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" title="Inserisci 10 cifre senza spazi" placeholder="3331234567" required><br><br>
+
+      <label for="username">Username (4-12 caratteri):</label><br>
+      <input type="text" id="username" name="username" pattern="[a-z0-9]{4,12}" title="Solo lettere minuscole e numeri, da 4 a 12 caratteri" placeholder="mario123" required><br><br>
+
+      <label for="messaggio">Messaggio (opzionale, max 300 caratteri):</label><br>
+      <textarea id="messaggio" name="messaggio" maxlength="300" rows="4" cols="50"></textarea><br><br>
+
+      <label for="codice-evento">Codice Evento (generato automaticamente):</label><br>
+      <input type="text" id="codice-evento" name="codice-evento" value="EVT-2024-SUMMER" readonly><br><br>
+
+      <label>
+        <input type="checkbox" name="privacy" required>
+        Accetto l'informativa sulla privacy (obbligatorio)
+      </label><br><br>
+
+      <button type="submit">Iscriviti all'Evento</button>
+    </form>
+  </body>
+</html>`,
+            language: 'html',
+            highlightLines: [36],
+          },
+          'Salva il file (Ctrl+S o Cmd+S)',
+          'Fai doppio click sul file "iscrizione-evento.html" per aprirlo nel browser! 🎉',
+          'Prova a cliccare "Iscriviti" SENZA compilare nulla - il browser ti bloccherà sul primo campo obbligatorio! 🚨',
+          'Compila solo il nome con 2 caratteri e prova a inviare - ti dirà "Usa almeno 3 caratteri" ✅',
+          'Scrivi un\'email sbagliata (senza @) e prova a inviare - il browser la rifiuterà! 📧',
+          'Inserisci un\'età di 10 anni - il browser ti dirà che il valore deve essere >= 14 🔢',
+          'Nel telefono scrivi solo 5 cifre invece di 10 - pattern impedirà l\'invio! 📱',
+          'Prova a scrivere "Mario123" (con maiuscola) nell\'username - pattern richiede solo minuscole! 🔤',
+          'Prova a NON spuntare il checkbox privacy e inviare - required lo impedirà! ✅',
+        ]}
+        experiments={[
+          'Cambia minlength="3" in minlength="10" per il nome, salva e ricarica (F5) - ora serve un nome più lungo!',
+          'Rimuovi required dal campo email, salva e ricarica - ora puoi inviare senza email (non farlo mai in un form vero!)',
+          'Cambia max="99" in max="150" per l\'età, salva e ricarica - ora accetta età superiori a 99',
+          'Cambia pattern="[0-9]{10}" in pattern="[0-9]{8}" nel telefono, salva e ricarica - ora bastano 8 cifre!',
+          'Aggiungi disabled al campo codice evento invece di readonly, salva e ricarica - vedi la differenza visiva (grigio)!',
         ]}
       />
 
