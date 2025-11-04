@@ -242,42 +242,117 @@ export default function Lezione13() {
         />
 
         <Exercise
-          title="Esercizio Guidato: Crea una Scheda Ricetta"
+          title="🎯 Esercizio Guidato: Crea una Scheda Ricetta"
           difficulty="facile"
           steps={[
-            'Crea un nuovo file HTML chiamato "ricetta.html"',
-            'Usa un <div> per contenere tutta la ricetta',
-            'Dentro il div, aggiungi un titolo <h2> con il nome della ricetta',
-            'Aggiungi un paragrafo <p> con la descrizione',
-            'Crea un altro <div> per gli ingredienti con un <h3> e una lista',
-            'Usa <span> per evidenziare le quantità importanti negli ingredienti',
-            'Salva e visualizza nel browser!',
-          ]}
-        />
-
-        <CodeExample
-          title="Esempio da seguire"
-          code={`<!DOCTYPE html>
+            'Crea un file "ricetta.html" in VS Code',
+            {
+              text: 'Scrivi la struttura HTML base con title "La Mia Ricetta"',
+              code: `<!DOCTYPE html>
 <html>
-<head>
-  <title>La Mia Ricetta</title>
-</head>
-<body>
-  <div>
-    <h2>Pasta al Pomodoro</h2>
-    <p>Una ricetta semplice e deliziosa!</p>
+  <head>
+    <title>La Mia Ricetta</title>
+  </head>
+  <body>
 
+  </body>
+</html>`,
+              language: 'html',
+            },
+            {
+              text: 'Apri un <div> contenitore per tutta la ricetta',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La Mia Ricetta</title>
+  </head>
+  <body>
     <div>
-      <h3>Ingredienti:</h3>
-      <ul>
-        <li><span>500g</span> di pasta</li>
-        <li><span>400g</span> di pomodori pelati</li>
-        <li><span>2 cucchiai</span> di olio d'oliva</li>
-      </ul>
     </div>
-  </div>
-</body>
-</html>`}
+  </body>
+</html>`,
+              language: 'html',
+              highlightLines: [7, 8],
+            },
+            {
+              text: 'Dentro il div, aggiungi titolo H2 e descrizione della ricetta',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La Mia Ricetta</title>
+  </head>
+  <body>
+    <div>
+      <h2>Pasta al Pomodoro</h2>
+      <p>Una ricetta semplice e deliziosa!</p>
+    </div>
+  </body>
+</html>`,
+              language: 'html',
+              highlightLines: [8, 9],
+            },
+            {
+              text: 'Crea un secondo <div> per la sezione ingredienti con titolo H3',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La Mia Ricetta</title>
+  </head>
+  <body>
+    <div>
+      <h2>Pasta al Pomodoro</h2>
+      <p>Una ricetta semplice e deliziosa!</p>
+
+      <div>
+        <h3>Ingredienti:</h3>
+      </div>
+    </div>
+  </body>
+</html>`,
+              language: 'html',
+              highlightLines: [11, 12, 13],
+            },
+            {
+              text: 'Aggiungi la lista degli ingredienti usando <span> per evidenziare le quantità',
+              code: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>La Mia Ricetta</title>
+  </head>
+  <body>
+    <div>
+      <h2>Pasta al Pomodoro</h2>
+      <p>Una ricetta semplice e deliziosa!</p>
+
+      <div>
+        <h3>Ingredienti:</h3>
+        <ul>
+          <li><span>500g</span> di pasta</li>
+          <li><span>400g</span> di pomodori pelati</li>
+          <li><span>2 cucchiai</span> di olio d'oliva</li>
+          <li><span>1 spicchio</span> di aglio</li>
+          <li><span>q.b.</span> di basilico fresco</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>`,
+              language: 'html',
+              highlightLines: [13, 14, 15, 16, 17, 18, 19],
+            },
+            'Salva il file (Ctrl+S o Cmd+S)',
+            'Fai doppio click sul file "ricetta.html" per aprirlo nel browser! 🎉',
+            'Nota come il <div> esterno contenga tutta la ricetta come un blocco unico 📦',
+            'Nota come il <div> interno crei una sezione separata per gli ingredienti 📋',
+            'Guarda come gli <span> evidenziano solo le quantità, senza andare a capo! 🔢',
+          ]}
+          experiments={[
+            'Rimuovi uno dei <div>, salva e ricarica (F5) - la struttura è ancora logica? Prova!',
+            'Cambia <span> in <div> per le quantità, salva e ricarica - vanno a capo! Vedi la differenza?',
+            'Aggiungi un terzo <div> per una sezione "Preparazione" con una lista ordinata <ol>',
+            'Usa <span> per evidenziare parole nella descrizione (es: <span>semplice</span>)',
+            'Aggiungi più <li> con altre quantità usando <span> - prova "1 pizzico di sale"',
+          ]}
         />
 
         <Challenge
