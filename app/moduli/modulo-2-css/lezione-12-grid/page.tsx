@@ -926,14 +926,205 @@ export default function Lezione12Grid() {
             title="Gallery Fotografica Responsive"
             difficulty="media"
             steps={[
-              'Crea un file HTML con un container class="gallery"',
-              'Dentro il container, aggiungi 9 div class="photo" con testo "Photo 1", "Photo 2", etc.',
-              'CSS: .gallery con display: grid, grid-template-columns: 1fr 1fr 1fr (3 colonne)',
-              'Aggiungi gap: 20px',
-              'Ogni .photo: background-color a scelta, padding 40px, text-align center, color white, font-weight bold',
-              'Aggiungi border-radius: 12px alle foto',
-              'La prima foto (aggiungi class="featured") deve espandersi su 2 colonne: grid-column: span 2',
-              'Apri in Live Server e verifica che la gallery abbia 3 colonne e la prima foto sia doppia',
+              {
+                title: "Crea index.html con struttura base",
+                code: {
+                  language: "html",
+                  code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery Grid</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Galleria Fotografica</h1>
+</body>
+</html>`,
+                  highlightLines: []
+                }
+              },
+              {
+                title: "Crea il container gallery con 9 foto",
+                code: {
+                  language: "html",
+                  code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery Grid</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Galleria Fotografica</h1>
+
+  <div class="gallery">
+    <div class="photo featured">Photo 1</div>
+    <div class="photo">Photo 2</div>
+    <div class="photo">Photo 3</div>
+    <div class="photo">Photo 4</div>
+    <div class="photo">Photo 5</div>
+    <div class="photo">Photo 6</div>
+    <div class="photo">Photo 7</div>
+    <div class="photo">Photo 8</div>
+    <div class="photo">Photo 9</div>
+  </div>
+</body>
+</html>`,
+                  highlightLines: [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+                }
+              },
+              {
+                title: "Crea style.css con reset",
+                code: {
+                  language: "css",
+                  code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2C3E50;
+}`,
+                  highlightLines: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+                }
+              },
+              {
+                title: "Stila gallery con Grid a 3 colonne",
+                code: {
+                  language: "css",
+                  code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2C3E50;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}`,
+                  highlightLines: [19, 20, 21, 22, 23]
+                }
+              },
+              {
+                title: "Stila le foto",
+                code: {
+                  language: "css",
+                  code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2C3E50;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.photo {
+  background-color: #3498DB;
+  padding: 40px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  border-radius: 12px;
+  font-size: 20px;
+}`,
+                  highlightLines: [25, 26, 27, 28, 29, 30, 31, 32, 33]
+                }
+              },
+              {
+                title: "Rendi la prima foto doppia con grid-column: span 2",
+                code: {
+                  language: "css",
+                  code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2C3E50;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.photo {
+  background-color: #3498DB;
+  padding: 40px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  border-radius: 12px;
+  font-size: 20px;
+}
+
+.featured {
+  grid-column: span 2;
+  background-color: #E74C3C;
+}`,
+                  highlightLines: [35, 36, 37, 38]
+                }
+              },
+              "Salva i file e apri in Live Server (doppio clic index.html + F5)",
+              "Osserva la grid a 3 colonne con la prima foto che occupa 2 colonne!",
+              "Riduci la finestra - la grid rimane a 3 colonne (non è responsive ancora)"
+            ]}
+            experiments={[
+              "Cambia grid-template-columns da '1fr 1fr 1fr' a '1fr 2fr 1fr' - la colonna centrale sarà più larga!",
+              "Cambia gap da 20px a 5px - le foto si avvicinano",
+              "Aggiungi grid-column: span 3 alla classe .featured - la prima foto occuperà tutta la riga!",
+              "Prova grid-template-columns: repeat(4, 1fr) - avrai 4 colonne invece di 3",
+              "Rimuovi grid-column: span 2 dalla .featured - tornerà grande come le altre"
             ]}
           />
         </section>
