@@ -716,15 +716,374 @@ transition: all 0.3s;`}
             title="Card Gallery con Effetti"
             difficulty="media"
             steps={[
-              'Crea un file HTML con 6 div class="card"',
-              'Container: display flex, flex-wrap wrap, gap 20px, justify-content center, padding 30px',
-              'Ogni card: width 200px, height 250px, background gradient (scegli colori), border-radius 15px, padding 20px, text-align center, cursor pointer',
-              'Card CSS: transition all 0.3s ease-in-out',
-              'Card hover: transform translateY(-10px) scale(1.05)',
-              'Dentro ogni card: h3 (nome), p (descrizione), emoji grande (usa font-size 60px)',
-              'Aggiungi una card speciale con class="featured": border 3px solid gold',
-              'Featured hover: transform translateY(-15px) scale(1.1) rotate(2deg)',
-              'Testa in Live Server: passa sopra le card e vedi gli effetti!',
+              {
+                title: "Crea index.html con struttura base",
+                code: {
+                  language: "html",
+                  code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Interattive</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Servizi con Effetti</h1>
+</body>
+</html>`,
+                  highlightLines: []
+                }
+              },
+              {
+                title: "Crea il container con 6 card",
+                code: {
+                  language: "html",
+                  code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Interattive</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Servizi con Effetti</h1>
+
+  <div class="container">
+    <div class="card">
+      <div class="emoji">🎨</div>
+      <h3>Design</h3>
+      <p>Creiamo design moderni</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">💻</div>
+      <h3>Development</h3>
+      <p>Sviluppo web professionale</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">📱</div>
+      <h3>Mobile</h3>
+      <p>App iOS e Android</p>
+    </div>
+
+    <div class="card featured">
+      <div class="emoji">⭐</div>
+      <h3>Premium</h3>
+      <p>Servizio esclusivo VIP</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🚀</div>
+      <h3>Marketing</h3>
+      <p>Strategia digitale</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🎯</div>
+      <h3>SEO</h3>
+      <p>Ottimizzazione motori</p>
+    </div>
+  </div>
+</body>
+</html>`,
+                  highlightLines: [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]
+                }
+              },
+              {
+                title: "Crea style.css con reset",
+                code: {
+                  language: "css",
+                  code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2C3E50;
+}`,
+                  highlightLines: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+                }
+              },
+              {
+                title: "Stila il container con Flexbox",
+                code: {
+                  language: "css",
+                  code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2C3E50;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 30px;
+}`,
+                  highlightLines: [19, 20, 21, 22, 23, 24, 25]
+                }
+              },
+              {
+                title: "Stila le card con transition",
+                code: {
+                  language: "css",
+                  code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2C3E50;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 30px;
+}
+
+.card {
+  width: 200px;
+  height: 250px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}`,
+                  highlightLines: [27, 28, 29, 30, 31, 32, 33, 34, 35, 36]
+                }
+              },
+              {
+                title: "Aggiungi transform al hover",
+                code: {
+                  language: "css",
+                  code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2C3E50;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 30px;
+}
+
+.card {
+  width: 200px;
+  height: 250px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+}`,
+                  highlightLines: [38, 39, 40]
+                }
+              },
+              {
+                title: "Stila i contenuti della card",
+                code: {
+                  language: "css",
+                  code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2C3E50;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 30px;
+}
+
+.card {
+  width: 200px;
+  height: 250px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+}
+
+.emoji {
+  font-size: 60px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.card p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+}`,
+                  highlightLines: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56]
+                }
+              },
+              {
+                title: "Stila la card featured con effetto speciale",
+                code: {
+                  language: "css",
+                  code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2C3E50;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 30px;
+}
+
+.card {
+  width: 200px;
+  height: 250px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+}
+
+.emoji {
+  font-size: 60px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.card p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+}
+
+.featured {
+  border: 3px solid gold;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.featured:hover {
+  transform: translateY(-15px) scale(1.1) rotate(2deg);
+}`,
+                  highlightLines: [58, 59, 60, 61, 62, 63, 64, 65]
+                }
+              },
+              "Salva i file e apri in Live Server (doppio clic + F5)",
+              "Passa il mouse sulle card normali - si sollevano e ingrandiscono!",
+              "Passa il mouse sulla card Premium (featured) - si solleva di più, ingrandisce di più E ruota!",
+              "Osserva come la transizione rende tutto fluido grazie a transition: all 0.3s"
+            ]}
+            experiments={[
+              "Cambia transition da 0.3s a 1s - l'animazione sarà più lenta",
+              "Cambia ease-in-out in linear - l'animazione avrà velocità costante",
+              "Cambia translateY(-10px) in translateY(-30px) - le card si solleveranno di più",
+              "Cambia scale(1.05) in scale(1.2) - le card diventeranno più grandi",
+              "Aggiungi box-shadow: 0 10px 30px rgba(0,0,0,0.3); nel hover - crea ombra!"
             ]}
           />
         </section>
