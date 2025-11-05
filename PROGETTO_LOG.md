@@ -1,9 +1,140 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 5 Novembre 2025 - Sessione 17 Completamento Lezioni HTML 9-14
+**Ultimo aggiornamento:** 5 Novembre 2025 - Sessione 18 Miglioramenti Lezioni CSS
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
+
+---
+
+## 📅 CHANGELOG SESSIONE 18 (5 Novembre 2025) - MIGLIORAMENTI LEZIONI CSS
+
+### 🎯 Obiettivo Sessione
+Migliorare la didattica delle lezioni CSS aggiungendo una spiegazione approfondita delle classi multiple (identificato gap pedagogico tra Lezione 3 e Lezione 11) e standardizzare i titoli degli esercizi per uniformità in tutte le 14 lezioni CSS.
+
+---
+
+### 1. ✨ Feature: Spiegazione Dettagliata Classi Multiple in Lezione 3
+
+**Problema identificato:**
+- In Lezione 11 (Flexbox) l'esercizio usa classi multiple senza preavviso: `class="card-image card-image-1"`
+- In Lezione 3 le classi multiple erano solo brevemente accennate (1 riga alla linea 108)
+- Gap pedagogico: studenti usano una funzionalità prima di comprenderla a fondo
+
+**Soluzione implementata:**
+Aggiunta nuova sezione "🎯 Combinare Più Classi" dopo "Vediamolo in Azione!" nella Lezione 3.
+
+**Contenuti aggiunti:**
+1. **Introduzione visiva** (box verde/teal)
+   - Spiega il "superpotere" di combinare più classi con spazio
+   - Gli stili si sommano e si applicano insieme
+
+2. **Confronto didattico** (side-by-side)
+   - ❌ Approccio non flessibile: `.testo-rosso-grassetto-grande` (monolitico)
+   - ✅ Approccio flessibile: `.rosso .grassetto .grande` (combinabili)
+   - Mostra perché piccole classi componibili sono meglio
+
+3. **Esempi pratici**
+   - HTML con classi `.rosso`, `.grassetto`, `.sottolineato`
+   - CSS con classi separate riutilizzabili
+   - Combinazioni progressive negli esempi
+
+4. **LessonPreview interattivo**
+   - Mostra visivamente:
+     - Solo rosso
+     - Rosso + grassetto
+     - Rosso + grassetto + sottolineato
+     - Tutte e quattro le classi insieme (+ `.grande`)
+
+5. **Warning importante**
+   - ⚠️ Spazio vs virgola (errore comune studenti)
+   - ✅ `class="rosso grassetto"` (corretto)
+   - ❌ `class="rosso, grassetto"` (sbagliato)
+
+6. **Lista benefici**
+   - Riutilizzo: `.rosso` usabile ovunque
+   - Flessibilità: combinazioni infinite senza creare nuove classi
+   - Manutenzione: modifica `.rosso` → cambia ovunque
+   - Meno codice: 10 classi combinate → 100+ combinazioni
+
+**File modificato:** `/app/moduli/modulo-2-css/lezione-3-classi-dimensioni-testo/page.tsx`
+**Commit:** `c23381c` - "Feature: Aggiungi spiegazione dettagliata classi multiple in Lezione 3"
+**Linee aggiunte:** +136 righe (nuova sezione completa)
+**Posizione:** Dopo linea 149 (dopo "Vediamolo in Azione!", prima di "font-size")
+
+**Impatto pedagogico:**
+- ✅ Gap colmato: ora studenti comprendono classi multiple prima di usarle in Lezione 11
+- ✅ Progressione didattica corretta: teoria → esempi → pratica
+- ✅ Fondamenta per pattern moderni (utility-first CSS, Tailwind-like)
+
+---
+
+### 2. 🔧 Refactor: Standardizzazione Titoli Esercizi Lezioni 7-14
+
+**Problema identificato:**
+Inconsistenza nei titoli degli esercizi:
+- **Lezioni 1-6:** Formato `🎯 Esercizio Guidato: [Titolo]`
+- **Lezioni 7-14:** Solo `[Titolo]` (senza emoji e prefisso)
+
+**Soluzione implementata:**
+Aggiunto prefisso `🎯 Esercizio Guidato:` ai titoli degli esercizi nelle Lezioni 7-14.
+
+**Modifiche specifiche:**
+
+| Lezione | Prima | Dopo |
+|---------|-------|------|
+| **L7** | "Crea un Layout a 3 Card con Box Model" | "🎯 Esercizio Guidato: Crea un Layout a 3 Card con Box Model" |
+| **L8** | "Crea una Pagina Portfolio con Bordi e Sfondi" | "🎯 Esercizio Guidato: Crea una Pagina Portfolio con Bordi e Sfondi" |
+| **L9** | "Crea una Galleria di Servizi con Card Orizzontali" | "🎯 Esercizio Guidato: Crea una Galleria di Servizi con Card Orizzontali" |
+| **L10** | "Crea una Card Prodotto con Badge e Tooltip" | "🎯 Esercizio Guidato: Crea una Card Prodotto con Badge e Tooltip" |
+| **L11** | "Crea una Card Gallery Responsive con Flexbox" | "🎯 Esercizio Guidato: Crea una Card Gallery Responsive con Flexbox" |
+| **L12** | "Gallery Fotografica Responsive" | "🎯 Esercizio Guidato: Gallery Fotografica Responsive" |
+| **L13** | "Card Container con Overflow" | "🎯 Esercizio Guidato: Card Container con Overflow" |
+| **L14** | "Card Gallery con Effetti" | "🎯 Esercizio Guidato: Card Gallery con Effetti" |
+
+**File modificati:**
+- `/app/moduli/modulo-2-css/lezione-7-box-model/page.tsx`
+- `/app/moduli/modulo-2-css/lezione-8-bordi-sfondi/page.tsx`
+- `/app/moduli/modulo-2-css/lezione-9-display-layout/page.tsx`
+- `/app/moduli/modulo-2-css/lezione-10-position/page.tsx`
+- `/app/moduli/modulo-2-css/lezione-11-flexbox/page.tsx`
+- `/app/moduli/modulo-2-css/lezione-12-grid/page.tsx`
+- `/app/moduli/modulo-2-css/lezione-13-contenitori-figli/page.tsx`
+- `/app/moduli/modulo-2-css/lezione-14-transitions-transform/page.tsx`
+
+**Commit:** `305a492` - "Refactor: Standardizza titoli esercizi nelle Lezioni CSS 7-14"
+**Linee modificate:** 8 file, 8 righe cambiate
+
+**Impatto UX:**
+- ✅ Uniformità completa: tutte le 14 lezioni CSS ora hanno lo stesso formato
+- ✅ Riconoscibilità: emoji 🎯 aiuta studenti a identificare rapidamente gli esercizi
+- ✅ Consistenza esperienza didattica attraverso tutto il modulo CSS
+
+---
+
+### 📊 Riepilogo Sessione 18
+
+**Commits totali:** 2
+- ✅ `c23381c` - Feature: Classi multiple in Lezione 3
+- ✅ `305a492` - Refactor: Titoli esercizi standardizzati
+
+**File modificati totali:** 9 file
+- 1 file con contenuto nuovo (Lezione 3 CSS)
+- 8 file con refactor titoli (Lezioni 7-14 CSS)
+
+**Righe totali:** +144 righe aggiunte, -8 righe modificate
+
+**Miglioramenti pedagogici:**
+- ✅ Gap classi multiple colmato (Lezione 3 → Lezione 11)
+- ✅ Uniformità titoli esercizi (tutte le 14 lezioni CSS)
+- ✅ Esperienza didattica più coerente e professionale
+
+**Impatto studenti:**
+- Comprensione anticipata di pattern CSS avanzati
+- Navigazione più intuitiva grazie ai titoli uniformi
+- Riduzione confusione su sintassi classi multiple (warning spazio vs virgola)
+
+**Deploy:** ✅ Pushato su main, Vercel deployment in corso
 
 ---
 
