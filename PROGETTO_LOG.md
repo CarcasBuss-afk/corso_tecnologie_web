@@ -1,9 +1,359 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 5 Novembre 2025 - Sessione 18 Miglioramenti Lezioni CSS
+**Ultimo aggiornamento:** 5 Novembre 2025 - Sessione 19 Planning Modulo 3 Progetto Intermedio
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
+
+---
+
+## 📅 CHANGELOG SESSIONE 19 (5 Novembre 2025) - PLANNING MODULO 3 PROGETTO INTERMEDIO
+
+### 🎯 Obiettivo Sessione
+Pianificare e strutturare il Modulo 3 "Progetto Intermedio" (5 ore) - primo progetto completo degli studenti dopo aver completato HTML e CSS. Attraverso brainstorming, decidere approccio didattico, definire temi, creare asset e preparare struttura per 4 lezioni.
+
+---
+
+### 1. 💡 Brainstorming e Decisioni Strategiche
+
+**Contesto studenti:**
+- ✅ HTML completo: struttura, testo, link, immagini, liste, tabelle, form, semantica
+- ✅ CSS completo: selettori, box model, flexbox, grid, transitions, transform
+- ❌ NO JavaScript (viene dopo nel Modulo 4)
+- ❌ NO Media Queries responsive avanzate
+- **Budget:** 5 ore totali
+
+**Opzioni valutate:**
+
+| Opzione | Descrizione | Decisione |
+|---------|-------------|-----------|
+| 1. Portfolio Multi-Pagina | Sito personale con about, progetti, contatti | ❌ Troppo personale per 14enni |
+| **2. Landing Page** | **Single-page professionale per prodotto/servizio** | **✅ SCELTA** |
+| 3. Blog/Magazine | Mini blog con articoli su hobby | ❌ Richiede troppo contenuto testuale |
+| 4. Choose Your Adventure | Scelta tra 3 progetti diversi | ⚠️ Integrato in opzione 2 |
+| 5. Progetto Collaborativo | Un sito unico costruito insieme | ❌ Difficile senza Git |
+
+**Decisioni finali:**
+1. ✅ **Landing Page** con scelta tra 3 temi predefiniti
+2. ✅ Sezioni obbligatorie: Navbar, Hero, Features, How It Works, Form, Footer
+3. ✅ Sezioni bonus: Testimonials, Pricing (se studenti veloci)
+4. ✅ **Completamente guidato** Lezione 1-2, **semi-guidato** Lezione 3-4
+5. ✅ Nuovo componente `<ProjectMilestone>` per tracking progressi visivo
+
+---
+
+### 2. 🎨 Definizione dei 3 Temi
+
+**File creato:** `/MODULO_3_TEMI.md` (documentazione completa con tutti gli asset)
+
+#### **Tema 1: 🎮 GameVerse - Piattaforma Gaming**
+
+**Target:** Gamer 14-25 anni, casual e competitivi
+
+**Palette colori:**
+```css
+--primary: #6366F1 (Indigo)
+--secondary: #EC4899 (Pink energetico)
+--bg-dark: #0F172A (Slate dark)
+--accent-green: #10B981 (Online/success)
+```
+
+**Typography:** Rajdhani (heading) + Inter (body)
+
+**Contenuti chiave:**
+- Hero: "La Tua Destinazione Gaming Definitiva"
+- 6 Features: Libreria infinita, Tornei, Statistiche, Community, Voice Chat, Cloud Save
+- 3 Steps: Crea account → Esplora libreria → Inizia a giocare
+- Footer: 4 colonne (Prodotto, Community, Supporto, Azienda)
+
+---
+
+#### **Tema 2: 🍕 TasteHub - Food Delivery**
+
+**Target:** Foodies, studenti universitari, giovani professionisti 18-35
+
+**Palette colori:**
+```css
+--primary: #EF4444 (Red appetitoso)
+--secondary: #F59E0B (Amber/gold)
+--bg-cream: #FFFBEB (Warm cream)
+--accent-green: #10B981 (Fresh/healthy)
+```
+
+**Typography:** Poppins (heading) + Open Sans (body)
+
+**Contenuti chiave:**
+- Hero: "Il Cibo che Ami, a Casa Tua in 30 Minuti"
+- 6 Features: Menu infinito, Consegna veloce, Tracking real-time, Pagamenti sicuri, Recensioni, Offerte
+- 3 Steps: Scegli ristorante → Personalizza ordine → Ricevi a casa
+- Footer: 4 colonne (Esplora, Per i Ristoranti, Supporto, Azienda)
+
+---
+
+#### **Tema 3: 🎵 BeatStream - Streaming Musicale**
+
+**Target:** Music lovers, studenti, millennials/Gen Z 16-30
+
+**Palette colori:**
+```css
+--primary: #8B5CF6 (Purple vibrante)
+--secondary: #06B6D4 (Cyan elettrico)
+--bg-dark: #18181B (Zinc dark)
+--accent-pink: #EC4899 (Live/trending)
+```
+
+**Typography:** Montserrat (heading) + Lato (body)
+
+**Contenuti chiave:**
+- Hero: "Milioni di Brani, Zero Pubblicità"
+- 6 Features: 70M+ brani, Playlist AI, Offline mode, Podcasts, Qualità HiFi, Listen Together
+- 3 Steps: Scegli piano → Crea profilo → Ascolta ovunque
+- Footer: 4 colonne (Prodotto, Discover, Supporto, Azienda)
+
+---
+
+### 3. 🧩 Componente ProjectMilestone.tsx
+
+**File creato:** `/components/didattica/ProjectMilestone.tsx`
+
+**Tipo:** Componente visivo (solo UI, senza salvataggio dati)
+
+**Funzionalità:**
+- Mostra numero milestone e titolo
+- Lista requisiti numerati da completare
+- Suggerimenti opzionali (best practices)
+- Screenshot risultato atteso (opzionale)
+- Footer motivazionale
+
+**Props interface:**
+```typescript
+interface ProjectMilestoneProps {
+  numero: number;
+  titolo: string;
+  requisiti: string[];
+  screenshot?: string;
+  suggerimenti?: string[];
+}
+```
+
+**Esempio utilizzo:**
+```tsx
+<ProjectMilestone
+  numero={1}
+  titolo="Hero Section Completo"
+  requisiti={[
+    "Navbar con logo e 4 menu items",
+    "Hero con h1 headline (font-size: 48px)",
+    "CTA button con :hover transition",
+    "Background gradient o hero image"
+  ]}
+  suggerimenti={[
+    "Usa justify-content: center per centrare",
+    "Il button dovrebbe avere border-radius: 8px"
+  ]}
+  screenshot="/modulo-3/milestone-1-hero.png"
+/>
+```
+
+**Perché senza salvataggio:**
+- ✅ Semplicità: focus sul codice, non sul tracker
+- ✅ Offline-friendly: funziona sempre
+- ✅ Auto-valutazione: studenti imparano a valutarsi
+- ✅ Zero manutenzione: nessun bug localStorage/database
+
+**Alternativa valutata e scartata:**
+- ❌ Checkbox con localStorage (troppo complesso)
+- ❌ Database + Auth (overkill totale per corso didattico)
+
+---
+
+### 4. 📚 Struttura delle 4 Lezioni Pianificate
+
+#### **Lezione 1: Planning & Setup**
+
+**Obiettivi:**
+- Insegnare a progettare prima di codare
+- Introdurre wireframing
+- Setup progetto con struttura corretta
+
+**Contenuti:**
+- 📝 Teoria: Il processo di design (wireframe → palette → codice)
+- 🎨 Scelta tema tra 3 opzioni (GameVerse/TasteHub/BeatStream)
+- ✏️ Esercizio: Creare wireframe base (carta o digitale)
+- 🎨 Scegliere palette colori e font Google
+- 💻 Setup: cartelle, file HTML/CSS, head completo, CSS custom properties
+
+**Output:** Progetto vuoto ma ben strutturato + wireframe + palette definita
+
+---
+
+#### **Lezione 2: Hero + Navbar**
+
+**Obiettivi:**
+- Costruire header professionale
+- Creare hero section impattante
+- Applicare Flexbox per layout
+
+**Contenuti:**
+- Navbar responsive (Flexbox)
+  - Logo + menu links + CTA button
+  - Sticky positioning
+- Hero section full-height
+  - Headline + Subheadline
+  - CTA primary + secondary
+  - Hero image/background
+- CSS: Flexbox, gradients, typography, button hover
+
+**Milestone 1:** Navbar + Hero completi e funzionanti
+
+**Output:** Landing page con header e hero visivamente completi
+
+---
+
+#### **Lezione 3: Features + How It Works**
+
+**Obiettivi:**
+- Layout Grid per features
+- Timeline/process steps
+- Hover effects
+
+**Contenuti:**
+- **Sezione Features** (CSS Grid 3 colonne)
+  - 6 features con emoji/icone
+  - Card design con hover
+  - Box-shadow e border-radius
+- **Sezione How It Works** (3 step)
+  - Layout Flexbox orizzontale
+  - Step numerati con icone
+  - Visual process flow
+
+**Milestone 2:** Features + Steps completi con interattività
+
+**Approccio:** Semi-guidato (milestone + suggerimenti, più autonomia)
+
+**Output:** Pagina con 2 sezioni chiave complete
+
+---
+
+#### **Lezione 4: Form + Footer + Polish**
+
+**Obiettivi:**
+- Form moderno funzionante
+- Footer completo multi-colonna
+- Rifinitura finale
+
+**Contenuti:**
+- **Newsletter/Contact Form**
+  - Input email + submit button
+  - Validazione HTML5
+  - Form styling moderno
+- **Footer completo**
+  - 4 colonne links (Flexbox)
+  - Social media icons
+  - Copyright
+- **Polish finale:**
+  - Smooth scroll behavior
+  - Ultimi hover effects
+  - Spacing refinement
+  - Cross-browser testing
+
+**Milestone 3:** Landing page completa e rifinita! 🎉
+
+**Output:** Progetto finale deployabile
+
+---
+
+### 5. 🎯 Sezioni Landing Page (Checklist Completa)
+
+**Obbligatorie (1-4 + 7-8):**
+- ✅ 1. Navbar (sticky) - Logo, menu, CTA
+- ✅ 2. Hero Section - Headline, subheadline, CTA, hero image
+- ✅ 3. Features Section - Grid 3 col, 6 features con icone
+- ✅ 4. How It Works - 3 steps con timeline/process
+- ✅ 7. Newsletter/Contact Form - Email input, submit, validazione
+- ✅ 8. Footer - 4 colonne links, social, copyright
+
+**Bonus (se tempo):**
+- ⚪ 5. Social Proof - 3 testimonials con rating stars
+- ⚪ 6. Pricing - 3 piani side-by-side con features
+
+---
+
+### 6. 📦 Asset e Risorse Preparate
+
+**File documentazione:**
+- ✅ `MODULO_3_TEMI.md` - Specifiche complete 3 temi (palette, typography, contenuti)
+
+**Componenti:**
+- ✅ `ProjectMilestone.tsx` - Componente milestone tracker visivo
+
+**Per ogni tema fornito:**
+- ✅ Palette colori completa (CSS custom properties)
+- ✅ Typography pairings (Google Fonts)
+- ✅ Tutti i testi (hero, features, footer, etc.)
+- ✅ Struttura navbar e footer
+- ✅ CTA copy
+
+**Da preparare durante sviluppo lezioni:**
+- ⏳ Immagini hero per 3 temi (Unsplash)
+- ⏳ Screenshots milestone per preview
+- ⏳ File esempio completati per ogni lezione
+
+---
+
+### 7. 🎓 Approccio Didattico
+
+**Progressione:**
+1. **Lezione 1-2:** Completamente guidato (step-by-step come lezioni precedenti)
+2. **Lezione 3-4:** Semi-guidato (milestone + suggerimenti, più autonomia)
+
+**Formato ogni lezione:**
+- 📚 Teoria (15-20%) - Concetti design, best practices UI/UX
+- 💪 Esercizio Guidato (60-70%) - Step-by-step con codice incrementale
+- 🧪 Esperimenti (5-10%) - Modifiche da provare
+- ✅ Checklist (5%) - Verifica completamento
+- 🏆 Challenge Bonus (opzionale) - Feature extra
+
+**Differenza con moduli precedenti:**
+- Focus su **progetto unico** invece di tanti micro-esercizi
+- Introduzione **design thinking** (wireframe → codice)
+- Più **autonomia progressiva** (da guidato a semi-guidato)
+- **Milestone system** per tracking progressi
+
+---
+
+### 📊 Riepilogo Sessione 19
+
+**Decisioni strategiche:**
+- ✅ Modulo 3: Landing Page con scelta tra 3 temi
+- ✅ 4 lezioni: Planning → Hero+Navbar → Features+Steps → Form+Footer
+- ✅ Approccio: guidato → semi-guidato
+- ✅ Nuovo componente ProjectMilestone (solo visivo)
+
+**File creati:**
+1. ✅ `MODULO_3_TEMI.md` - Documentazione completa 3 temi
+2. ✅ `components/didattica/ProjectMilestone.tsx` - Componente milestone
+
+**File modificati:**
+- Nessuno (solo planning, implementazione prossima sessione)
+
+**Temi definiti:**
+1. 🎮 GameVerse (Gaming) - Indigo/Pink, tech/energetico
+2. 🍕 TasteHub (Food) - Red/Amber, caldo/appetitoso
+3. 🎵 BeatStream (Music) - Purple/Cyan, moderno/vibrante
+
+**Prossimi step (Sessione 20):**
+- Aggiungere 4 lezioni in `lib/moduli.ts`
+- Creare Lezione 1: Planning & Setup
+- Creare Lezione 2: Hero + Navbar
+- Creare Lezione 3: Features + How It Works
+- Creare Lezione 4: Form + Footer + Polish
+
+**Impatto studenti:**
+- Primo progetto completo e professionale
+- Apprendimento design thinking
+- Portfolio piece utilizzabile
+- Consolidamento HTML/CSS completo
 
 ---
 
