@@ -1,16 +1,16 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 5 Novembre 2025 - Sessione 17 Completamento Lezioni HTML 9-13
+**Ultimo aggiornamento:** 5 Novembre 2025 - Sessione 17 Completamento Lezioni HTML 9-14
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
 
 ---
 
-## 📅 CHANGELOG SESSIONE 17 (5 Novembre 2025) - COMPLETAMENTO LEZIONI HTML 9-13
+## 📅 CHANGELOG SESSIONE 17 (5 Novembre 2025) - COMPLETAMENTO LEZIONI HTML 9-14
 
 ### 🎯 Obiettivo Sessione
-Completare l'aggiornamento delle Lezioni HTML 9-13 con il nuovo formato didattico, correggere ulteriori errori pedagogici (placeholder non spiegato, esempi ridondanti) e raggiungere il 72% di completamento del modulo HTML (13/18 lezioni).
+Completare l'aggiornamento delle Lezioni HTML 9-14 con il nuovo formato didattico, correggere ulteriori errori pedagogici (placeholder non spiegato, esempi ridondanti, classi CSS non studiate) e raggiungere il 77.8% di completamento del modulo HTML (14/18 lezioni).
 
 ---
 
@@ -147,10 +147,46 @@ Completare l'aggiornamento delle Lezioni HTML 9-13 con il nuovo formato didattic
 
 ---
 
+### 6. 📝 Aggiornamento Lezione 14 - "HTML Semantico"
+
+**Esercizio Guidato: "Blog Post con HTML Semantico"**
+- 13 step totali (1 setup + 6 codice progressivo + 1 salva + 5 verifica)
+- Codice HTML completo mostrato ad ogni step
+- Evidenziazione righe nuove con `highlightLines`
+- Progressione: base → header+nav → main → article → 2 sections → footer
+- Tag semantici HTML5 coperti: `<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, `<footer>`
+- Esercizio completo da zero invece di modificare file precedente
+- Struttura: blog con intestazione, navigazione, articolo con sezioni tematiche, piè di pagina
+- 5 step di verifica: significato semantico di ogni tag
+- 5 esperimenti pratici: secondo article, rimozione nav, aside sidebar, article vs div, time tag
+- **✅ Eliminato CodeExample "Esempio di trasformazione" ridondante**
+- Uso doppio click + F5 invece di Live Server
+
+**Fix pedagogico applicato (Commit `37e149b`):**
+- **Problema:** Esempio "PRIMA vs DOPO" usava attributi `class` CSS non ancora studiati
+- **Violazione:** Classi come `class="header"`, `class="menu"`, `class="content"` nel Modulo 1 HTML
+- **Soluzione:** Rimossi tutti gli attributi class dall'esempio PRIMA
+- **Esempio PRIMA ora:** Solo `<div>` generici (già studiati nella Lezione 13) con commenti
+- **Esempio DOPO:** Tag semantici HTML5 (`<header>`, `<nav>`, `<main>`, `<article>`, `<footer>`)
+- **Risultato:** Confronto pedagogicamente corretto e comprensibile
+
+**File modificato:** `/app/moduli/modulo-1-html/lezione-14-html-semantico/page.tsx`
+**Commits:** `8026678` (aggiornamento esercizio), `37e149b` (fix classi CSS)
+
+**Statistiche:**
+- +206 righe aggiunte per nuovo formato
+- -49 righe rimosse (esempio ridondante)
+- +21 righe fix pedagogico
+- -13 righe rimosse (classi CSS)
+- 6 tag semantici HTML5 fondamentali
+- Confronto PRIMA/DOPO semanticamente corretto
+
+---
+
 ### 📊 Statistiche Sessione 17
 
-**Lezioni aggiornate:** 5 (Lezioni 9-13)
-**Totale lezioni HTML completate:** 13/18 (72.2% ✅)
+**Lezioni aggiornate:** 6 (Lezioni 9-14)
+**Totale lezioni HTML completate:** 14/18 (77.8% ✅)
 
 **Dettaglio progressione:**
 - ✅ Lezione 1-8: Completate (Sessioni precedenti)
@@ -159,24 +195,26 @@ Completare l'aggiornamento delle Lezioni HTML 9-13 con il nuovo formato didattic
 - ✅ Lezione 11: Form Validazione
 - ✅ Lezione 12: Audio e Video
 - ✅ Lezione 13: Contenitori e Divisioni
-- ⏳ Lezione 14-18: Da aggiornare (28% rimanente)
+- ✅ Lezione 14: HTML Semantico (+ fix classi CSS + rimozione esempio ridondante)
+- ⏳ Lezione 15-18: Da aggiornare (22% rimanente)
 
-**Commits totali Sessione 17:** 6
-- 5 lezioni aggiornate (10, 11, 12, 13)
+**Commits totali Sessione 17:** 8
+- 6 lezioni aggiornate (9, 10, 11, 12, 13, 14)
 - 2 fix pedagogici Lezione 9 (placeholder, struttura)
+- 2 aggiornamenti Lezione 14 (esercizio + fix classi CSS)
 - 1 rimozione esempio ridondante (Lezione 13)
 
 **Miglioramenti pedagogici:**
 - ✅ Attributo placeholder spiegato prima dell'uso (Lezione 9)
 - ✅ Separazione chiara tra concetti (input base vs placeholder)
 - ✅ Output visivi per ogni concetto
-- ✅ Eliminato contenuto ridondante (Lezione 13)
-- ✅ 25 esperimenti pratici totali (5 per lezione × 5 lezioni)
+- ✅ Eliminato contenuto ridondante (Lezioni 13, 14)
+- ✅ 30 esperimenti pratici totali (5 per lezione × 6 lezioni)
 
 **Righe di codice:**
-- ~914 righe aggiunte nelle 5 lezioni
-- ~30 righe rimosse (contenuto ridondante)
-- Media: ~183 righe per lezione
+- ~1120 righe aggiunte nelle 6 lezioni
+- ~92 righe rimosse (contenuto ridondante + classi CSS)
+- Media: ~187 righe per lezione
 
 **Form e Validazione (Lezioni 9-11):**
 - Input types coperti: 13 diversi (text, password, email, number, tel, checkbox, radio, date, time, file, range, color, datetime-local)
@@ -191,6 +229,11 @@ Completare l'aggiornamento delle Lezioni HTML 9-13 con il nuovo formato didattic
 **Contenitori (Lezione 13):**
 - Tag di layout: 2 (`<div>`, `<span>`)
 - Differenza block vs inline chiarita con esempi pratici
+
+**HTML Semantico (Lezione 14):**
+- Tag semantici HTML5: 6 (`<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, `<footer>`)
+- Esercizio completo: blog post con struttura semantica
+- Fix pedagogico: rimossi attributi `class` CSS non ancora studiati
 
 ---
 
@@ -213,18 +256,24 @@ Completare l'aggiornamento delle Lezioni HTML 9-13 con il nuovo formato didattic
 - **Fix:** Rimosso completamente, esercizio guidato già completo con codice progressivo
 - **Commit:** `053496b`
 
+**4. Lezione 14 - Classi CSS non ancora studiate**
+- **Problema:** Esempio "PRIMA vs DOPO" usava attributi `class` CSS non ancora insegnati
+- **Violazione:** `class="header"`, `class="menu"`, `class="content"` nel Modulo 1 HTML
+- **Fix:** Rimossi tutti gli attributi class dall'esempio PRIMA
+- **Soluzione:** Esempio PRIMA usa solo `<div>` generici (già studiati Lezione 13)
+- **Commit:** `37e149b`
+
 ---
 
 ### 🎯 Prossimi Passi
 
-**Lezioni HTML rimanenti (5 lezioni - 28%):**
-- Lezione 14: Entità HTML
-- Lezione 15: Semantica HTML5
-- Lezione 16: Header, Nav, Footer
-- Lezione 17: Article, Section, Aside
+**Lezioni HTML rimanenti (4 lezioni - 22%):**
+- Lezione 15: Entità HTML
+- Lezione 16: Meta Tag e SEO Base
+- Lezione 17: Accessibilità (ARIA, alt, lang)
 - Lezione 18: Progetto Finale HTML
 
-**Obiettivo Sessione 18:** Completare tutte le Lezioni HTML (14-18) e raggiungere 100% modulo HTML
+**Obiettivo Sessione 18:** Completare tutte le Lezioni HTML (15-18) e raggiungere 100% modulo HTML
 
 **Dopo Modulo HTML:**
 - Review e aggiornamento Modulo CSS (14 lezioni)
