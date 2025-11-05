@@ -955,24 +955,804 @@ export default function Lezione10Position() {
         <Exercise
           title="Crea una Card Prodotto con Badge e Tooltip"
           steps={[
-            'Crea una cartella "card-position" in VS Code',
-            'Crea index.html con struttura base HTML5',
-            'Crea style.css e collegalo',
-            'CSS universale: * { box-sizing: border-box; margin: 0; padding: 0; }',
-            'Body: font-family Arial, padding 40px, background-color #F5F5F5',
-            'Crea un div.card-product: position relative, width 300px, border 2px solid #E0E0E0, border-radius 12px, background white, margin 0 auto',
-            'Dentro card: div.product-image (height 200px, background linear-gradient, border-radius top 12px)',
-            'Badge "NUOVO": position absolute, top 10px, right 10px, padding 5px 15px, background #E74C3C, color white, border-radius 20px, font-size 12px, font-weight bold, z-index 10',
-            'Sotto image: div.product-info (padding 20px)',
-            'In product-info: h2 (product-name), p (descrizione), p.price (font-size 24px, color #E74C3C, font-weight bold)',
-            'Button.buy: padding 12px 30px, background #3498DB, color white, border none, border-radius 25px, font-weight bold, cursor pointer, margin-top 15px',
-            'Button hover: background-color #2980B9',
-            'Tooltip container: div.tooltip-wrapper (position relative, display inline-block)',
-            'Info icon: span.info-icon ("ℹ️", cursor pointer, font-size 18px)',
-            'Tooltip: div.tooltip-text (position absolute, bottom 100%, left 50%, margin-left -75px, margin-bottom 10px, width 150px, padding 8px, background #2C3E50, color white, text-align center, border-radius 6px, font-size 12px, display none, z-index 100)',
-            'Hover tooltip: .tooltip-wrapper:hover .tooltip-text { display: block; }',
-            'Testa con Live Server - badge in alto a destra, tooltip appare al passaggio del mouse',
-            'Prova a cambiare le coordinate del badge (top, right) per sperimentare',
+            {
+              title: "Crea index.html con struttura base",
+              code: {
+                language: "html",
+                code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Prodotto</title>
+</head>
+<body>
+  <h1>Card con Position</h1>
+</body>
+</html>`,
+                highlightLines: []
+              }
+            },
+            {
+              title: "Collega style.css",
+              code: {
+                language: "html",
+                code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Prodotto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Card con Position</h1>
+</body>
+</html>`,
+                highlightLines: [7]
+              }
+            },
+            {
+              title: "Crea style.css con reset",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}`,
+                highlightLines: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+              }
+            },
+            {
+              title: "Crea la card nel HTML",
+              code: {
+                language: "html",
+                code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Prodotto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Card con Position</h1>
+
+  <div class="card-product">
+    <!-- Contenuto card qui -->
+  </div>
+</body>
+</html>`,
+                highlightLines: [12, 13, 14]
+              }
+            },
+            {
+              title: "Stila la card con position: relative",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}
+
+.card-product {
+  position: relative;
+  width: 300px;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  background-color: white;
+  margin: 0 auto;
+}`,
+                highlightLines: [13, 14, 15, 16, 17, 18, 19, 20]
+              }
+            },
+            {
+              title: "Aggiungi l'immagine prodotto e il badge",
+              code: {
+                language: "html",
+                code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Prodotto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Card con Position</h1>
+
+  <div class="card-product">
+    <div class="product-image">
+      <span class="badge">NUOVO</span>
+    </div>
+  </div>
+</body>
+</html>`,
+                highlightLines: [13, 14, 15]
+              }
+            },
+            {
+              title: "Stila l'immagine prodotto",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}
+
+.card-product {
+  position: relative;
+  width: 300px;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.product-image {
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px 12px 0 0;
+}`,
+                highlightLines: [22, 23, 24, 25, 26]
+              }
+            },
+            {
+              title: "Stila il badge con position: absolute",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}
+
+.card-product {
+  position: relative;
+  width: 300px;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.product-image {
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px 12px 0 0;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 15px;
+  background-color: #E74C3C;
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 10;
+}`,
+                highlightLines: [28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39]
+              }
+            },
+            {
+              title: "Aggiungi le info prodotto nel HTML",
+              code: {
+                language: "html",
+                code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Prodotto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Card con Position</h1>
+
+  <div class="card-product">
+    <div class="product-image">
+      <span class="badge">NUOVO</span>
+    </div>
+
+    <div class="product-info">
+      <h2>Smartphone X Pro</h2>
+      <p>Ultimo modello con fotocamera 108MP e 5G</p>
+      <p class="price">€ 799</p>
+    </div>
+  </div>
+</body>
+</html>`,
+                highlightLines: [17, 18, 19, 20, 21]
+              }
+            },
+            {
+              title: "Stila le info prodotto",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}
+
+.card-product {
+  position: relative;
+  width: 300px;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.product-image {
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px 12px 0 0;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 15px;
+  background-color: #E74C3C;
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.product-info {
+  padding: 20px;
+}
+
+.product-info h2 {
+  margin: 0 0 10px 0;
+  color: #2C3E50;
+  font-size: 20px;
+}
+
+.product-info p {
+  margin: 0 0 10px 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.price {
+  font-size: 24px;
+  color: #E74C3C;
+  font-weight: bold;
+  margin-top: 15px;
+}`,
+                highlightLines: [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]
+              }
+            },
+            {
+              title: "Aggiungi il bottone",
+              code: {
+                language: "html",
+                code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Prodotto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Card con Position</h1>
+
+  <div class="card-product">
+    <div class="product-image">
+      <span class="badge">NUOVO</span>
+    </div>
+
+    <div class="product-info">
+      <h2>Smartphone X Pro</h2>
+      <p>Ultimo modello con fotocamera 108MP e 5G</p>
+      <p class="price">€ 799</p>
+      <button class="buy">Aggiungi al Carrello</button>
+    </div>
+  </div>
+</body>
+</html>`,
+                highlightLines: [21]
+              }
+            },
+            {
+              title: "Stila il bottone con hover",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}
+
+.card-product {
+  position: relative;
+  width: 300px;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.product-image {
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px 12px 0 0;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 15px;
+  background-color: #E74C3C;
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.product-info {
+  padding: 20px;
+}
+
+.product-info h2 {
+  margin: 0 0 10px 0;
+  color: #2C3E50;
+  font-size: 20px;
+}
+
+.product-info p {
+  margin: 0 0 10px 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.price {
+  font-size: 24px;
+  color: #E74C3C;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.buy {
+  padding: 12px 30px;
+  background-color: #3498DB;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.3s;
+}
+
+.buy:hover {
+  background-color: #2980B9;
+}`,
+                highlightLines: [63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77]
+              }
+            },
+            {
+              title: "Aggiungi tooltip nel HTML",
+              code: {
+                language: "html",
+                code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Prodotto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Card con Position</h1>
+
+  <div class="card-product">
+    <div class="product-image">
+      <span class="badge">NUOVO</span>
+    </div>
+
+    <div class="product-info">
+      <h2>
+        Smartphone X Pro
+        <div class="tooltip-wrapper">
+          <span class="info-icon">ℹ️</span>
+          <div class="tooltip-text">Disponibile in 3 colori: Nero, Bianco, Blu</div>
+        </div>
+      </h2>
+      <p>Ultimo modello con fotocamera 108MP e 5G</p>
+      <p class="price">€ 799</p>
+      <button class="buy">Aggiungi al Carrello</button>
+    </div>
+  </div>
+</body>
+</html>`,
+                highlightLines: [20, 21, 22, 23]
+              }
+            },
+            {
+              title: "Stila il wrapper tooltip con position: relative",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}
+
+.card-product {
+  position: relative;
+  width: 300px;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.product-image {
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px 12px 0 0;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 15px;
+  background-color: #E74C3C;
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.product-info {
+  padding: 20px;
+}
+
+.product-info h2 {
+  margin: 0 0 10px 0;
+  color: #2C3E50;
+  font-size: 20px;
+}
+
+.product-info p {
+  margin: 0 0 10px 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.price {
+  font-size: 24px;
+  color: #E74C3C;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.buy {
+  padding: 12px 30px;
+  background-color: #3498DB;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.3s;
+}
+
+.buy:hover {
+  background-color: #2980B9;
+}
+
+.tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.info-icon {
+  cursor: pointer;
+  font-size: 18px;
+}`,
+                highlightLines: [79, 80, 81, 82, 83, 84, 85, 86, 87, 88]
+              }
+            },
+            {
+              title: "Stila il tooltip con position: absolute",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}
+
+.card-product {
+  position: relative;
+  width: 300px;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.product-image {
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px 12px 0 0;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 15px;
+  background-color: #E74C3C;
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.product-info {
+  padding: 20px;
+}
+
+.product-info h2 {
+  margin: 0 0 10px 0;
+  color: #2C3E50;
+  font-size: 20px;
+}
+
+.product-info p {
+  margin: 0 0 10px 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.price {
+  font-size: 24px;
+  color: #E74C3C;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.buy {
+  padding: 12px 30px;
+  background-color: #3498DB;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.3s;
+}
+
+.buy:hover {
+  background-color: #2980B9;
+}
+
+.tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.info-icon {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.tooltip-text {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -75px;
+  margin-bottom: 10px;
+  width: 150px;
+  padding: 8px;
+  background-color: #2C3E50;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 12px;
+  display: none;
+  z-index: 100;
+}`,
+                highlightLines: [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106]
+              }
+            },
+            {
+              title: "Aggiungi effetto hover per mostrare tooltip",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}
+
+.card-product {
+  position: relative;
+  width: 300px;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.product-image {
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px 12px 0 0;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 15px;
+  background-color: #E74C3C;
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.product-info {
+  padding: 20px;
+}
+
+.product-info h2 {
+  margin: 0 0 10px 0;
+  color: #2C3E50;
+  font-size: 20px;
+}
+
+.product-info p {
+  margin: 0 0 10px 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.price {
+  font-size: 24px;
+  color: #E74C3C;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.buy {
+  padding: 12px 30px;
+  background-color: #3498DB;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.3s;
+}
+
+.buy:hover {
+  background-color: #2980B9;
+}
+
+.tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.info-icon {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.tooltip-text {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -75px;
+  margin-bottom: 10px;
+  width: 150px;
+  padding: 8px;
+  background-color: #2C3E50;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 12px;
+  display: none;
+  z-index: 100;
+}
+
+.tooltip-wrapper:hover .tooltip-text {
+  display: block;
+}`,
+                highlightLines: [108, 109, 110]
+              }
+            },
+            "Salva tutti i file (Ctrl+S su HTML e CSS) e apri in Live Server (doppio clic + F5)",
+            "Osserva il badge 'NUOVO' posizionato in alto a destra sull'immagine",
+            "Passa il mouse sull'icona info (ℹ️) - apparirà il tooltip sopra di essa!",
+            "Il tooltip scompare quando togli il mouse - tutto grazie a position: absolute!"
+          ]}
+          experiments={[
+            "Cambia le coordinate del badge (top: 10px; right: 10px) con (bottom: 10px; left: 10px) - il badge si sposta in basso a sinistra!",
+            "Rimuovi position: relative dalla .card-product - il badge si posizionerà rispetto alla pagina invece che alla card",
+            "Cambia bottom: 100% del tooltip in top: 100% - il tooltip apparirà sotto invece che sopra",
+            "Cambia z-index del badge da 10 a 1 - potrebbe andare sotto altri elementi",
+            "Aggiungi un secondo badge con position: absolute; top: 10px; left: 10px; - avrai 2 badge agli angoli opposti!"
           ]}
         />
 
