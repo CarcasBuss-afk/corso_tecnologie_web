@@ -868,21 +868,557 @@ width: 200px;
       <Exercise
         title="Crea un Layout a 3 Card con Box Model"
         steps={[
-          '📝 NOTA: Le 3 card saranno una sotto l\'altra (verticali). Nella prossima lezione imparerai come affiancarle orizzontalmente!',
-          'Crea una cartella "box-model-layout" in VS Code',
-          'Crea index.html con struttura base',
-          'Aggiungi CSS universale: * { box-sizing: border-box; }',
-          'Crea un container con class="container": width 90%, max-width 800px, margin 0 auto',
-          'Dentro il container, crea 3 div con class="card" (una sotto l\'altra)',
-          'Ogni card: width 100%, padding 25px, margin-bottom 20px',
-          'Card: background-color diverso per ognuna, border 3px solid, border-radius 8px',
-          'Aggiungi h3 e p dentro ogni card con margin adeguati',
-          'Card h3: margin 0 0 15px 0',
-          'Card p: margin 0 (ultimo margin già dato dal padding della card)',
-          'Apri in Live Server - vedrai le 3 card una sotto l\'altra (verticali)',
-          'Apri DevTools (F12) e ispeziona una card',
-          'Guarda il Box Model diagram e verifica padding, border, margin',
-          'Sperimenta cambiando padding e margin nei DevTools per vedere l\'effetto in tempo reale!'
+          {
+            title: "Crea index.html con struttura base",
+            code: {
+              language: "html",
+              code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box Model Layout</title>
+</head>
+<body>
+  <h1>Il Mio Layout a 3 Card</h1>
+</body>
+</html>`,
+              highlightLines: []
+            }
+          },
+          {
+            title: "Collega il file CSS",
+            code: {
+              language: "html",
+              code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box Model Layout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Il Mio Layout a 3 Card</h1>
+</body>
+</html>`,
+              highlightLines: [7]
+            }
+          },
+          {
+            title: "Crea style.css con box-sizing universale",
+            code: {
+              language: "css",
+              code: `/* Applica border-box a TUTTI gli elementi */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+}`,
+              highlightLines: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            }
+          },
+          {
+            title: "Crea il container con max-width",
+            code: {
+              language: "css",
+              code: `/* Applica border-box a TUTTI gli elementi */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+}
+
+/* Container responsive */
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 0;
+}`,
+              highlightLines: [12, 13, 14, 15, 16, 17, 18]
+            }
+          },
+          {
+            title: "Aggiungi il container nel HTML",
+            code: {
+              language: "html",
+              code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box Model Layout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Il Mio Layout a 3 Card</h1>
+
+  <div class="container">
+    <!-- Le card andranno qui -->
+  </div>
+</body>
+</html>`,
+              highlightLines: [12, 13, 14]
+            }
+          },
+          {
+            title: "Aggiungi la prima card nel HTML",
+            code: {
+              language: "html",
+              code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box Model Layout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Il Mio Layout a 3 Card</h1>
+
+  <div class="container">
+    <div class="card card-blue">
+      <h3>Card Blu</h3>
+      <p>Questa è la prima card con padding e margin perfetti grazie al Box Model!</p>
+    </div>
+  </div>
+</body>
+</html>`,
+              highlightLines: [13, 14, 15, 16]
+            }
+          },
+          {
+            title: "Stila la card con Box Model completo",
+            code: {
+              language: "css",
+              code: `/* Applica border-box a TUTTI gli elementi */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+}
+
+/* Container responsive */
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+/* Card styling - Box Model in azione! */
+.card {
+  width: 100%;
+  padding: 25px;
+  margin-bottom: 20px;
+  border: 3px solid;
+  border-radius: 8px;
+}`,
+              highlightLines: [20, 21, 22, 23, 24, 25, 26, 27]
+            }
+          },
+          {
+            title: "Aggiungi colori specifici per la card blu",
+            code: {
+              language: "css",
+              code: `/* Applica border-box a TUTTI gli elementi */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+}
+
+/* Container responsive */
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+/* Card styling - Box Model in azione! */
+.card {
+  width: 100%;
+  padding: 25px;
+  margin-bottom: 20px;
+  border: 3px solid;
+  border-radius: 8px;
+}
+
+.card-blue {
+  background-color: #D6EAF8;
+  border-color: #3498DB;
+}`,
+              highlightLines: [29, 30, 31, 32]
+            }
+          },
+          {
+            title: "Stila h3 e p dentro le card con margin corretti",
+            code: {
+              language: "css",
+              code: `/* Applica border-box a TUTTI gli elementi */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+}
+
+/* Container responsive */
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+/* Card styling - Box Model in azione! */
+.card {
+  width: 100%;
+  padding: 25px;
+  margin-bottom: 20px;
+  border: 3px solid;
+  border-radius: 8px;
+}
+
+.card-blue {
+  background-color: #D6EAF8;
+  border-color: #3498DB;
+}
+
+/* Contenuti card - margin perfetti */
+.card h3 {
+  margin: 0 0 15px 0;
+  color: #2C3E50;
+}
+
+.card p {
+  margin: 0;
+  color: #34495E;
+  line-height: 1.6;
+}`,
+              highlightLines: [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+            }
+          },
+          {
+            title: "Aggiungi la seconda card verde",
+            code: {
+              language: "html",
+              code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box Model Layout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Il Mio Layout a 3 Card</h1>
+
+  <div class="container">
+    <div class="card card-blue">
+      <h3>Card Blu</h3>
+      <p>Questa è la prima card con padding e margin perfetti grazie al Box Model!</p>
+    </div>
+
+    <div class="card card-green">
+      <h3>Card Verde</h3>
+      <p>Nota come il margin-bottom di 20px separa questa card dalla precedente.</p>
+    </div>
+  </div>
+</body>
+</html>`,
+              highlightLines: [18, 19, 20, 21]
+            }
+          },
+          {
+            title: "Aggiungi stili per la card verde",
+            code: {
+              language: "css",
+              code: `/* Applica border-box a TUTTI gli elementi */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+}
+
+/* Container responsive */
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+/* Card styling - Box Model in azione! */
+.card {
+  width: 100%;
+  padding: 25px;
+  margin-bottom: 20px;
+  border: 3px solid;
+  border-radius: 8px;
+}
+
+.card-blue {
+  background-color: #D6EAF8;
+  border-color: #3498DB;
+}
+
+.card-green {
+  background-color: #D5F4E6;
+  border-color: #2ECC71;
+}
+
+/* Contenuti card - margin perfetti */
+.card h3 {
+  margin: 0 0 15px 0;
+  color: #2C3E50;
+}
+
+.card p {
+  margin: 0;
+  color: #34495E;
+  line-height: 1.6;
+}`,
+              highlightLines: [34, 35, 36, 37]
+            }
+          },
+          {
+            title: "Aggiungi la terza card viola",
+            code: {
+              language: "html",
+              code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box Model Layout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Il Mio Layout a 3 Card</h1>
+
+  <div class="container">
+    <div class="card card-blue">
+      <h3>Card Blu</h3>
+      <p>Questa è la prima card con padding e margin perfetti grazie al Box Model!</p>
+    </div>
+
+    <div class="card card-green">
+      <h3>Card Verde</h3>
+      <p>Nota come il margin-bottom di 20px separa questa card dalla precedente.</p>
+    </div>
+
+    <div class="card card-purple">
+      <h3>Card Viola</h3>
+      <p>Tutte le card hanno width: 100%, padding: 25px e border: 3px grazie a border-box!</p>
+    </div>
+  </div>
+</body>
+</html>`,
+              highlightLines: [23, 24, 25, 26]
+            }
+          },
+          {
+            title: "Aggiungi stili per la card viola",
+            code: {
+              language: "css",
+              code: `/* Applica border-box a TUTTI gli elementi */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+}
+
+/* Container responsive */
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+/* Card styling - Box Model in azione! */
+.card {
+  width: 100%;
+  padding: 25px;
+  margin-bottom: 20px;
+  border: 3px solid;
+  border-radius: 8px;
+}
+
+.card-blue {
+  background-color: #D6EAF8;
+  border-color: #3498DB;
+}
+
+.card-green {
+  background-color: #D5F4E6;
+  border-color: #2ECC71;
+}
+
+.card-purple {
+  background-color: #E8DAEF;
+  border-color: #9B59B6;
+}
+
+/* Contenuti card - margin perfetti */
+.card h3 {
+  margin: 0 0 15px 0;
+  color: #2C3E50;
+}
+
+.card p {
+  margin: 0;
+  color: #34495E;
+  line-height: 1.6;
+}`,
+              highlightLines: [39, 40, 41, 42]
+            }
+          },
+          {
+            title: "Aggiungi stile al titolo principale",
+            code: {
+              language: "css",
+              code: `/* Applica border-box a TUTTI gli elementi */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+}
+
+h1 {
+  text-align: center;
+  color: #2C3E50;
+  margin: 30px 0;
+}
+
+/* Container responsive */
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+/* Card styling - Box Model in azione! */
+.card {
+  width: 100%;
+  padding: 25px;
+  margin-bottom: 20px;
+  border: 3px solid;
+  border-radius: 8px;
+}
+
+.card-blue {
+  background-color: #D6EAF8;
+  border-color: #3498DB;
+}
+
+.card-green {
+  background-color: #D5F4E6;
+  border-color: #2ECC71;
+}
+
+.card-purple {
+  background-color: #E8DAEF;
+  border-color: #9B59B6;
+}
+
+/* Contenuti card - margin perfetti */
+.card h3 {
+  margin: 0 0 15px 0;
+  color: #2C3E50;
+}
+
+.card p {
+  margin: 0;
+  color: #34495E;
+  line-height: 1.6;
+}`,
+              highlightLines: [12, 13, 14, 15, 16]
+            }
+          },
+          {
+            title: "Apri in Live Server e salva tutto (Ctrl+S HTML + CSS)",
+            code: {
+              language: "html",
+              code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box Model Layout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Il Mio Layout a 3 Card</h1>
+
+  <div class="container">
+    <div class="card card-blue">
+      <h3>Card Blu</h3>
+      <p>Questa è la prima card con padding e margin perfetti grazie al Box Model!</p>
+    </div>
+
+    <div class="card card-green">
+      <h3>Card Verde</h3>
+      <p>Nota come il margin-bottom di 20px separa questa card dalla precedente.</p>
+    </div>
+
+    <div class="card card-purple">
+      <h3>Card Viola</h3>
+      <p>Tutte le card hanno width: 100%, padding: 25px e border: 3px grazie a border-box!</p>
+    </div>
+  </div>
+</body>
+</html>`,
+              highlightLines: []
+            }
+          },
+          "Apri i DevTools (premi F12) e clicca sull'icona 'Ispeziona elemento' (freccia in alto a sinistra)",
+          "Clicca su una delle card nel browser - nei DevTools vedrai il Box Model diagram",
+          "Osserva il diagramma: Content (blu), Padding (verde), Border (giallo), Margin (arancione)",
+          "Nei DevTools, prova a modificare il padding della card (es. cambia 25px in 40px) e vedi l'effetto in tempo reale",
+          "Prova a modificare il margin-bottom (es. da 20px a 50px) e osserva come aumenta lo spazio tra le card"
+        ]}
+        experiments={[
+          "Cambia il padding delle card da 25px a 40px - vedi come aumenta lo spazio interno",
+          "Rimuovi * { box-sizing: border-box; } e ricarica - le dimensioni cambiano! Poi rimettilo",
+          "Cambia max-width del container da 800px a 600px - le card si restringono",
+          "Aggiungi min-height: 200px; alla classe .card - anche le card vuote avranno altezza minima",
+          "Cambia i margin-bottom delle card da 20px a 0 - le card si toccano senza spazio!"
         ]}
       />
 
