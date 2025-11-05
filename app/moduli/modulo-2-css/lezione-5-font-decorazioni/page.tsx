@@ -819,20 +819,330 @@ export default function Lezione5FontDecorazioni() {
 
       {/* Esercizio */}
       <Exercise
-        title="Crea uno Stile Tipografico per un Articolo"
+        title="🎯 Esercizio Guidato: Stile Tipografico Completo per un Articolo"
         steps={[
           'Crea una cartella "tipografia-css" in VS Code',
-          'Crea index.html con struttura base',
-          'Aggiungi un h1 (titolo), un h2 (sottotitolo), 3 paragrafi, una citazione, 2 link',
-          'Crea style.css e collegalo',
-          'Classe .titolo-principale: font Georgia, 32px, bold, uppercase, letter-spacing 3px, center',
-          'Classe .sottotitolo: font Arial, 20px, italic, color #555, center',
-          'Classe .testo-articolo: font Verdana, 16px, word-spacing 3px',
-          'Classe .citazione: font Georgia, 18px, italic, color #666, background #F5F5F5, text-align center',
-          'Classe .link-pulito: text-decoration none, color #3498DB, capitalize',
-          'Applica le classi agli elementi HTML corrispondenti',
-          'Apri in Live Server e verifica tutti gli stili',
-          'Sperimenta cambiando font-family con altri web safe fonts'
+          'Dentro la cartella, crea due file: "index.html" e "style.css"',
+          {
+            text: 'Apri index.html e scrivi la struttura di un articolo completo',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Articolo Tipografico</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>L'ARTE DELLA TIPOGRAFIA</h1>
+  <h2>Come i Font Cambiano la Percezione del Testo</h2>
+
+  <p>La tipografia è l'arte di organizzare e presentare il testo in modo efficace. Un buon design tipografico rende il contenuto più leggibile e piacevole.</p>
+
+  <p>I font giusti comunicano il tono del messaggio: formale, giocoso, moderno o classico. Ogni carattere ha una personalità.</p>
+
+  <p>La spaziatura tra lettere e parole influenza la leggibilità e l'impatto visivo del testo.</p>
+
+  <blockquote>"La tipografia è ciò che il linguaggio sembra" - Ellen Lupton</blockquote>
+
+  <a href="#">leggi di più</a> | <a href="#">articoli correlati</a>
+</body>
+</html>`,
+            language: 'html',
+          },
+          {
+            text: 'Apri style.css e crea la classe .titolo-principale (Georgia, grande, grassetto, maiuscolo, spaziato)',
+            code: `/* Stile Tipografico */
+.titolo-principale {
+  font-family: Georgia, serif;
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+}`,
+            language: 'css',
+          },
+          {
+            text: 'In index.html, applica la classe al h1',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Articolo Tipografico</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 class="titolo-principale">L'ARTE DELLA TIPOGRAFIA</h1>
+  <h2>Come i Font Cambiano la Percezione del Testo</h2>
+
+  <p>La tipografia è l'arte di organizzare e presentare il testo in modo efficace. Un buon design tipografico rende il contenuto più leggibile e piacevole.</p>
+
+  <p>I font giusti comunicano il tono del messaggio: formale, giocoso, moderno o classico. Ogni carattere ha una personalità.</p>
+
+  <p>La spaziatura tra lettere e parole influenza la leggibilità e l'impatto visivo del testo.</p>
+
+  <blockquote>"La tipografia è ciò che il linguaggio sembra" - Ellen Lupton</blockquote>
+
+  <a href="#">leggi di più</a> | <a href="#">articoli correlati</a>
+</body>
+</html>`,
+            language: 'html',
+            highlightLines: [9],
+          },
+          'Salva entrambi i file (Ctrl+S) e fai doppio click su index.html',
+          'Verifica che il titolo sia in MAIUSCOLO, con font Georgia e lettere SPAZIATE! 🎨',
+          {
+            text: 'In style.css, aggiungi la classe .sottotitolo (Arial, corsivo, grigio, centrato)',
+            code: `/* Stile Tipografico */
+.titolo-principale {
+  font-family: Georgia, serif;
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.sottotitolo {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-style: italic;
+  color: #555;
+  text-align: center;
+}`,
+            language: 'css',
+            highlightLines: [11, 12, 13, 14, 15, 16, 17],
+          },
+          {
+            text: 'In index.html, applica la classe al h2',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Articolo Tipografico</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 class="titolo-principale">L'ARTE DELLA TIPOGRAFIA</h1>
+  <h2 class="sottotitolo">Come i Font Cambiano la Percezione del Testo</h2>
+
+  <p>La tipografia è l'arte di organizzare e presentare il testo in modo efficace. Un buon design tipografico rende il contenuto più leggibile e piacevole.</p>
+
+  <p>I font giusti comunicano il tono del messaggio: formale, giocoso, moderno o classico. Ogni carattere ha una personalità.</p>
+
+  <p>La spaziatura tra lettere e parole influenza la leggibilità e l'impatto visivo del testo.</p>
+
+  <blockquote>"La tipografia è ciò che il linguaggio sembra" - Ellen Lupton</blockquote>
+
+  <a href="#">leggi di più</a> | <a href="#">articoli correlati</a>
+</body>
+</html>`,
+            language: 'html',
+            highlightLines: [10],
+          },
+          'Salva (Ctrl+S) e ricarica (F5) - il sottotitolo deve essere CORSIVO e GRIGIO!',
+          {
+            text: 'In style.css, aggiungi la classe .testo-articolo (Verdana, spaziatura tra parole)',
+            code: `/* Stile Tipografico */
+.titolo-principale {
+  font-family: Georgia, serif;
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.sottotitolo {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-style: italic;
+  color: #555;
+  text-align: center;
+}
+
+.testo-articolo {
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
+  word-spacing: 3px;
+}`,
+            language: 'css',
+            highlightLines: [19, 20, 21, 22, 23],
+          },
+          {
+            text: 'In index.html, applica .testo-articolo ai TRE paragrafi',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Articolo Tipografico</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 class="titolo-principale">L'ARTE DELLA TIPOGRAFIA</h1>
+  <h2 class="sottotitolo">Come i Font Cambiano la Percezione del Testo</h2>
+
+  <p class="testo-articolo">La tipografia è l'arte di organizzare e presentare il testo in modo efficace. Un buon design tipografico rende il contenuto più leggibile e piacevole.</p>
+
+  <p class="testo-articolo">I font giusti comunicano il tono del messaggio: formale, giocoso, moderno o classico. Ogni carattere ha una personalità.</p>
+
+  <p class="testo-articolo">La spaziatura tra lettere e parole influenza la leggibilità e l'impatto visivo del testo.</p>
+
+  <blockquote>"La tipografia è ciò che il linguaggio sembra" - Ellen Lupton</blockquote>
+
+  <a href="#">leggi di più</a> | <a href="#">articoli correlati</a>
+</body>
+</html>`,
+            language: 'html',
+            highlightLines: [12, 14, 16],
+          },
+          'Salva e ricarica (F5) - i paragrafi devono avere font Verdana con parole SPAZIATE!',
+          {
+            text: 'In style.css, aggiungi la classe .citazione (Georgia, corsivo, grigio, sfondo chiaro, centrata)',
+            code: `/* Stile Tipografico */
+.titolo-principale {
+  font-family: Georgia, serif;
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.sottotitolo {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-style: italic;
+  color: #555;
+  text-align: center;
+}
+
+.testo-articolo {
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
+  word-spacing: 3px;
+}
+
+.citazione {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  color: #666;
+  background-color: #F5F5F5;
+  text-align: center;
+  padding: 20px;
+}`,
+            language: 'css',
+            highlightLines: [25, 26, 27, 28, 29, 30, 31, 32, 33],
+          },
+          {
+            text: 'In index.html, applica .citazione al blockquote',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Articolo Tipografico</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 class="titolo-principale">L'ARTE DELLA TIPOGRAFIA</h1>
+  <h2 class="sottotitolo">Come i Font Cambiano la Percezione del Testo</h2>
+
+  <p class="testo-articolo">La tipografia è l'arte di organizzare e presentare il testo in modo efficace. Un buon design tipografico rende il contenuto più leggibile e piacevole.</p>
+
+  <p class="testo-articolo">I font giusti comunicano il tono del messaggio: formale, giocoso, moderno o classico. Ogni carattere ha una personalità.</p>
+
+  <p class="testo-articolo">La spaziatura tra lettere e parole influenza la leggibilità e l'impatto visivo del testo.</p>
+
+  <blockquote class="citazione">"La tipografia è ciò che il linguaggio sembra" - Ellen Lupton</blockquote>
+
+  <a href="#">leggi di più</a> | <a href="#">articoli correlati</a>
+</body>
+</html>`,
+            language: 'html',
+            highlightLines: [18],
+          },
+          'Salva e ricarica (F5) - la citazione deve essere CORSIVA su SFONDO GRIGIO CHIARO!',
+          {
+            text: 'In style.css, aggiungi la classe .link-pulito (nessuna sottolineatura, blu, capitalizzato)',
+            code: `/* Stile Tipografico */
+.titolo-principale {
+  font-family: Georgia, serif;
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.sottotitolo {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-style: italic;
+  color: #555;
+  text-align: center;
+}
+
+.testo-articolo {
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
+  word-spacing: 3px;
+}
+
+.citazione {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  color: #666;
+  background-color: #F5F5F5;
+  text-align: center;
+  padding: 20px;
+}
+
+.link-pulito {
+  text-decoration: none;
+  color: #3498DB;
+  text-transform: capitalize;
+}`,
+            language: 'css',
+            highlightLines: [35, 36, 37, 38, 39],
+          },
+          {
+            text: 'In index.html, applica .link-pulito ai DUE link',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Articolo Tipografico</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 class="titolo-principale">L'ARTE DELLA TIPOGRAFIA</h1>
+  <h2 class="sottotitolo">Come i Font Cambiano la Percezione del Testo</h2>
+
+  <p class="testo-articolo">La tipografia è l'arte di organizzare e presentare il testo in modo efficace. Un buon design tipografico rende il contenuto più leggibile e piacevole.</p>
+
+  <p class="testo-articolo">I font giusti comunicano il tono del messaggio: formale, giocoso, moderno o classico. Ogni carattere ha una personalità.</p>
+
+  <p class="testo-articolo">La spaziatura tra lettere e parole influenza la leggibilità e l'impatto visivo del testo.</p>
+
+  <blockquote class="citazione">"La tipografia è ciò che il linguaggio sembra" - Ellen Lupton</blockquote>
+
+  <a href="#" class="link-pulito">leggi di più</a> | <a href="#" class="link-pulito">articoli correlati</a>
+</body>
+</html>`,
+            language: 'html',
+            highlightLines: [20],
+          },
+          'Salva e ricarica (F5) - i link devono essere BLU, SENZA SOTTOLINEATURA e con Prima Lettera Maiuscola! ✨',
+          'Verifica nel browser: hai creato un articolo con 5 stili tipografici diversi!',
+        ]}
+        experiments={[
+          'Cambia font-family di .titolo-principale da Georgia a "Times New Roman" - diventa più classico!',
+          'Cambia letter-spacing di .titolo-principale da 3px a 8px - lettere molto distanziate!',
+          'Cambia text-transform di .titolo-principale da uppercase a lowercase - tutto minuscolo!',
+          'Aggiungi "text-decoration: underline;" a .citazione - la citazione avrà una sottolineatura!',
+          'Cambia word-spacing di .testo-articolo da 3px a 10px - parole molto distanziate!',
         ]}
       />
 
