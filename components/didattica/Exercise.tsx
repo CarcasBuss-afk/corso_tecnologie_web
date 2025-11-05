@@ -4,8 +4,13 @@ import CodeExample from './CodeExample';
 
 // Step può essere una stringa semplice (retrocompatibilità) o un oggetto con codice
 export interface ExerciseStep {
-  text: string;
-  code?: string;
+  text?: string;
+  title?: string; // Alias per text (nuovo formato)
+  code?: string | {
+    code: string;
+    language: string;
+    highlightLines?: number[];
+  };
   language?: string;
   highlightLines?: number[]; // Righe da evidenziare (1-based)
 }
@@ -36,9 +41,32 @@ export default function Exercise({
   };
 
   // Normalizza gli step: converte stringhe in oggetti
-  const normalizedSteps = steps.map(step =>
-    typeof step === 'string' ? { text: step } : step
-  );
+  const normalizedSteps = steps.map(step => {
+    if (typeof step === 'string') {
+      return { text: step };
+    }
+
+    // Gestisce il nuovo formato con title invece di text
+    const text = step.title || step.text || '';
+
+    // Gestisce code come oggetto o stringa
+    if (typeof step.code === 'object' && step.code !== null) {
+      return {
+        text,
+        code: step.code.code,
+        language: step.code.language,
+        highlightLines: step.code.highlightLines
+      };
+    }
+
+    // Formato vecchio: code, language, highlightLines come proprietà separate
+    return {
+      text,
+      code: step.code,
+      language: step.language,
+      highlightLines: step.highlightLines
+    };
+  });
 
   return (
     <div className="my-8 p-6 bg-blue-50 border-2 border-blue-200 rounded-lg">
