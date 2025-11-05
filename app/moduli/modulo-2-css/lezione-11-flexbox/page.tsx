@@ -1092,24 +1092,623 @@ export default function Lezione11Flexbox() {
         <Exercise
           title="Crea una Card Gallery Responsive con Flexbox"
           steps={[
-            'Crea una cartella "gallery-flexbox" in VS Code',
-            'Crea index.html con struttura base HTML5',
-            'Crea style.css e collegalo',
-            'CSS universale: * { box-sizing: border-box; margin: 0; padding: 0; }',
-            'Body: font-family Arial, padding 40px, background-color #F5F5F5',
-            'Header: h1 "Galleria Progetti", text-align center, margin-bottom 40px, color #2C3E50',
-            'Container .gallery: display flex, flex-wrap wrap, gap 20px, justify-content center',
-            'Crea 6 div.card dentro .gallery',
-            'Ogni card: width 250px, background white, border-radius 12px, overflow hidden, border 2px solid #E0E0E0',
-            'Dentro card: div.card-image (height 150px, background gradient diverso per ognuna)',
-            'Sotto image: div.card-body (padding 20px)',
-            'In card-body: h3.card-title (margin 0 0 10px 0, color #2C3E50), p.card-description (color #7F8C8D, margin 0 0 15px 0)',
-            'Button: padding 10px 20px, background #3498DB, color white, border none, border-radius 25px, font-weight bold, cursor pointer, width 100%',
-            'Button hover: background #2980B9',
-            'Card hover: border-color #3498DB',
-            'Testa con Live Server - riduci finestra: le card vanno a capo automaticamente!',
-            'Verifica che con finestra larga ci siano 3 card per riga, con finestra stretta 2 o 1',
-            'Prova a cambiare gap e justify-content per sperimentare',
+            {
+              title: "Crea index.html con struttura base",
+              code: {
+                language: "html",
+                code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galleria Progetti</title>
+</head>
+<body>
+  <h1>Galleria Progetti</h1>
+</body>
+</html>`,
+                highlightLines: []
+              }
+            },
+            {
+              title: "Collega style.css",
+              code: {
+                language: "html",
+                code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galleria Progetti</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Galleria Progetti</h1>
+</body>
+</html>`,
+                highlightLines: [7]
+              }
+            },
+            {
+              title: "Crea style.css con reset",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}`,
+                highlightLines: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+              }
+            },
+            {
+              title: "Stila il titolo principale",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2C3E50;
+  font-size: 36px;
+}`,
+                highlightLines: [13, 14, 15, 16, 17, 18]
+              }
+            },
+            {
+              title: "Crea il container gallery nel HTML",
+              code: {
+                language: "html",
+                code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galleria Progetti</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Galleria Progetti</h1>
+
+  <div class="gallery">
+    <!-- Le card andranno qui -->
+  </div>
+</body>
+</html>`,
+                highlightLines: [12, 13, 14]
+              }
+            },
+            {
+              title: "Stila gallery con Flexbox",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2C3E50;
+  font-size: 36px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}`,
+                highlightLines: [20, 21, 22, 23, 24, 25]
+              }
+            },
+            {
+              title: "Aggiungi la prima card nel HTML",
+              code: {
+                language: "html",
+                code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galleria Progetti</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Galleria Progetti</h1>
+
+  <div class="gallery">
+    <div class="card">
+      <div class="card-image card-image-1"></div>
+      <div class="card-body">
+        <h3 class="card-title">Progetto Web</h3>
+        <p class="card-description">Sito web responsive moderno con design accattivante</p>
+        <button>Vedi dettagli</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>`,
+                highlightLines: [13, 14, 15, 16, 17, 18, 19, 20]
+              }
+            },
+            {
+              title: "Stila la card base",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2C3E50;
+  font-size: 36px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  width: 250px;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #E0E0E0;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  border-color: #3498DB;
+}`,
+                highlightLines: [27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38]
+              }
+            },
+            {
+              title: "Stila l'immagine della card",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2C3E50;
+  font-size: 36px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  width: 250px;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #E0E0E0;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  border-color: #3498DB;
+}
+
+.card-image {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-image-1 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}`,
+                highlightLines: [40, 41, 42, 43, 44, 45, 46, 47, 48]
+              }
+            },
+            {
+              title: "Stila il corpo della card",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2C3E50;
+  font-size: 36px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  width: 250px;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #E0E0E0;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  border-color: #3498DB;
+}
+
+.card-image {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-image-1 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  margin: 0 0 10px 0;
+  color: #2C3E50;
+  font-size: 20px;
+}
+
+.card-description {
+  color: #7F8C8D;
+  margin: 0 0 15px 0;
+  line-height: 1.6;
+}`,
+                highlightLines: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64]
+              }
+            },
+            {
+              title: "Stila il bottone",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2C3E50;
+  font-size: 36px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  width: 250px;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #E0E0E0;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  border-color: #3498DB;
+}
+
+.card-image {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-image-1 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  margin: 0 0 10px 0;
+  color: #2C3E50;
+  font-size: 20px;
+}
+
+.card-description {
+  color: #7F8C8D;
+  margin: 0 0 15px 0;
+  line-height: 1.6;
+}
+
+.card button {
+  padding: 10px 20px;
+  background-color: #3498DB;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s;
+}
+
+.card button:hover {
+  background-color: #2980B9;
+}`,
+                highlightLines: [66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80]
+              }
+            },
+            {
+              title: "Aggiungi altre 5 card nel HTML",
+              code: {
+                language: "html",
+                code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galleria Progetti</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Galleria Progetti</h1>
+
+  <div class="gallery">
+    <div class="card">
+      <div class="card-image card-image-1"></div>
+      <div class="card-body">
+        <h3 class="card-title">Progetto Web</h3>
+        <p class="card-description">Sito web responsive moderno con design accattivante</p>
+        <button>Vedi dettagli</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image card-image-2"></div>
+      <div class="card-body">
+        <h3 class="card-title">App Mobile</h3>
+        <p class="card-description">Applicazione mobile iOS e Android con UI intuitiva</p>
+        <button>Vedi dettagli</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image card-image-3"></div>
+      <div class="card-body">
+        <h3 class="card-title">Dashboard Admin</h3>
+        <p class="card-description">Pannello amministrativo con grafici e statistiche</p>
+        <button>Vedi dettagli</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image card-image-4"></div>
+      <div class="card-body">
+        <h3 class="card-title">E-commerce</h3>
+        <p class="card-description">Piattaforma e-commerce completa con carrello e pagamenti</p>
+        <button>Vedi dettagli</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image card-image-5"></div>
+      <div class="card-body">
+        <h3 class="card-title">Blog Platform</h3>
+        <p class="card-description">Sistema di blogging con editor markdown integrato</p>
+        <button>Vedi dettagli</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image card-image-6"></div>
+      <div class="card-body">
+        <h3 class="card-title">Social Network</h3>
+        <p class="card-description">Piattaforma social con chat e condivisione contenuti</p>
+        <button>Vedi dettagli</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>`,
+                highlightLines: [22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68]
+              }
+            },
+            {
+              title: "Aggiungi colori gradient per tutte le card",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #F5F5F5;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2C3E50;
+  font-size: 36px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  width: 250px;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #E0E0E0;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  border-color: #3498DB;
+}
+
+.card-image {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-image-1 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.card-image-2 {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.card-image-3 {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.card-image-4 {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.card-image-5 {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.card-image-6 {
+  background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  margin: 0 0 10px 0;
+  color: #2C3E50;
+  font-size: 20px;
+}
+
+.card-description {
+  color: #7F8C8D;
+  margin: 0 0 15px 0;
+  line-height: 1.6;
+}
+
+.card button {
+  padding: 10px 20px;
+  background-color: #3498DB;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s;
+}
+
+.card button:hover {
+  background-color: #2980B9;
+}`,
+                highlightLines: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68]
+              }
+            },
+            "Salva tutti i file (Ctrl+S su HTML e CSS) e apri in Live Server (doppio clic + F5)",
+            "Osserva le 6 card disposte in righe grazie a flex-wrap: wrap",
+            "Con finestra larga vedrai 3-4 card per riga, con finestra stretta 1-2 card per riga",
+            "Riduci e allarga la finestra del browser - le card si riorganizzano automaticamente!",
+            "Questo è il potere di Flexbox: layout responsive senza media queries!"
+          ]}
+          experiments={[
+            "Cambia justify-content da center a flex-start - le card si allineano a sinistra",
+            "Cambia gap da 20px a 40px - aumenta lo spazio tra le card",
+            "Rimuovi flex-wrap: wrap - tutte le card staranno su una sola riga (overflow!)",
+            "Cambia width delle card da 250px a 300px - vedrai meno card per riga",
+            "Aggiungi align-items: stretch alla .gallery - le card si allungheranno per avere tutte la stessa altezza!"
           ]}
         />
 
