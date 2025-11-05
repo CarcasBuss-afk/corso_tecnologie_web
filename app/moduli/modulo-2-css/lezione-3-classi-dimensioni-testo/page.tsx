@@ -148,6 +148,142 @@ export default function Lezione3ClassiDimensioniTesto() {
         </div>
       </section>
 
+      {/* Classi Multiple */}
+      <section className="mb-12">
+        <h2 className="text-3xl font-bold mb-4">🎯 Combinare Più Classi</h2>
+
+        <div className="bg-gradient-to-r from-green-500 to-teal-500 text-white p-6 rounded-lg mb-6">
+          <h3 className="text-xl font-bold mb-3">💎 Il Superpotere delle Classi</h3>
+          <p className="text-lg mb-3">
+            Puoi applicare <strong>più classi allo stesso elemento</strong> separandole con uno <strong>spazio</strong>!
+          </p>
+          <p className="text-lg">
+            Gli stili di tutte le classi si <strong>sommano</strong> e si applicano insieme.
+          </p>
+        </div>
+
+        <h3 className="text-xl font-bold mb-3">Come Funziona</h3>
+        <p className="text-lg mb-4">
+          Invece di creare una classe gigante con tutti gli stili, puoi creare <strong>tante piccole classi</strong> e combinarle!
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+          <div className="bg-red-50 border-2 border-red-200 p-4 rounded-lg">
+            <h4 className="font-bold mb-2 text-red-700">❌ Approccio NON Flessibile</h4>
+            <p className="text-sm mb-3">Una classe con tutto dentro:</p>
+            <CodeExample
+              language="css"
+              code={`.testo-rosso-grassetto-grande {
+  color: red;
+  font-weight: bold;
+  font-size: 24px;
+}`}
+            />
+            <p className="text-sm text-gray-600 mt-2">
+              Devi creare una classe diversa per ogni combinazione possibile! 😰
+            </p>
+          </div>
+
+          <div className="bg-green-50 border-2 border-green-200 p-4 rounded-lg">
+            <h4 className="font-bold mb-2 text-green-700">✅ Approccio Flessibile</h4>
+            <p className="text-sm mb-3">Tante classi piccole combinate:</p>
+            <CodeExample
+              language="css"
+              code={`.rosso { color: red; }
+.grassetto { font-weight: bold; }
+.grande { font-size: 24px; }`}
+            />
+            <p className="text-sm text-gray-600 mt-2">
+              Puoi combinare come vuoi: solo rosso, rosso + grassetto, tutte e tre! 🎯
+            </p>
+          </div>
+        </div>
+
+        <h3 className="text-xl font-bold mb-3">Esempio Pratico: Combinare le Classi</h3>
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <h4 className="font-bold mb-2">HTML - Varie Combinazioni</h4>
+            <CodeExample
+              language="html"
+              code={`<!-- Solo una classe -->
+<p class="rosso">Testo rosso</p>
+
+<!-- Due classi separate da spazio -->
+<p class="rosso grassetto">Rosso E grassetto</p>
+
+<!-- Tre classi insieme! -->
+<p class="rosso grassetto sottolineato">
+  Rosso, grassetto E sottolineato!
+</p>`}
+            />
+          </div>
+          <div>
+            <h4 className="font-bold mb-2">CSS - Classi Separate</h4>
+            <CodeExample
+              language="css"
+              code={`.rosso {
+  color: red;
+}
+
+.grassetto {
+  font-weight: bold;
+}
+
+.sottolineato {
+  text-decoration: underline;
+}`}
+            />
+          </div>
+        </div>
+
+        <h3 className="text-xl font-bold mb-3">Risultato nel Browser</h3>
+        <LessonPreview
+          title="Combinare Più Classi"
+          html={`<style>
+  .rosso { color: red; }
+  .grassetto { font-weight: bold; }
+  .sottolineato { text-decoration: underline; }
+  .grande { font-size: 24px; }
+</style>
+
+<p class="rosso">Solo rosso</p>
+<p class="rosso grassetto">Rosso E grassetto</p>
+<p class="rosso grassetto sottolineato">Rosso, grassetto E sottolineato</p>
+<p class="rosso grassetto sottolineato grande">Tutte e quattro le classi insieme!</p>`}
+        />
+
+        <div className="mt-6 bg-yellow-50 border-l-4 border-yellow-500 p-6">
+          <h3 className="font-bold text-yellow-700 mb-2">⚠️ ATTENZIONE: Spazio, NON Virgola!</h3>
+          <div className="grid md:grid-cols-2 gap-4 mt-3">
+            <div>
+              <p className="font-bold text-green-700 mb-2">✅ CORRETTO - Spazio tra le classi</p>
+              <CodeExample
+                language="html"
+                code={`<p class="rosso grassetto">Testo</p>`}
+              />
+            </div>
+            <div>
+              <p className="font-bold text-red-700 mb-2">❌ SBAGLIATO - Virgola</p>
+              <CodeExample
+                language="html"
+                code={`<p class="rosso, grassetto">Testo</p>`}
+              />
+              <p className="text-sm text-red-600 mt-1">NON funziona! Usa lo spazio!</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-6 bg-blue-50 border-l-4 border-blue-500 p-6">
+          <h3 className="font-bold text-blue-700 mb-2">💡 Perché è Utile?</h3>
+          <ul className="space-y-2">
+            <li>✅ <strong>Riutilizzo</strong> - La classe .rosso può essere usata ovunque, anche con altre classi</li>
+            <li>✅ <strong>Flessibilità</strong> - Puoi combinare le classi come vuoi senza crearne di nuove</li>
+            <li>✅ <strong>Manutenzione</strong> - Se cambi .rosso, cambia ovunque venga usato</li>
+            <li>✅ <strong>Meno Codice</strong> - Invece di 100 classi, ne scrivi 10 e le combini!</li>
+          </ul>
+        </div>
+      </section>
+
       {/* Proprietà 1: font-size */}
       <section className="mb-12">
         <h2 className="text-3xl font-bold mb-4">📏 font-size - Dimensione del Testo</h2>
