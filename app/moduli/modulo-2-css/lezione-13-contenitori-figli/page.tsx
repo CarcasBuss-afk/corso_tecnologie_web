@@ -685,15 +685,155 @@ export default function Lezione13ContenitioriFilgi() {
             title="Card Container con Overflow"
             difficulty="media"
             steps={[
-              'Crea un file HTML con un div class="card-container"',
-              'Container: width 400px, height 300px, overflow auto, background-color #F5F5F5, padding 20px, border 2px solid #999',
-              'Dentro il container, crea 8 div class="card"',
-              'Ogni card: width 100%, height 80px, background-color white, margin-bottom 15px, padding 15px, border 1px solid #DDD, border-radius 8px',
-              'Card text: color #333, font-size 16px, font-family Arial (si eredita dal body!)',
-              'Imposta sul body: font-family Arial, color #333 (vedi l\'inheritance in azione!)',
-              'Apri in Live Server: vedi la barra di scorrimento nel container',
-              'Cambia overflow da auto a hidden: vedi che le card extra spariscono',
-              'Cambia width card al 80%: vedi che si adatta al container',
+              {
+                title: "Crea index.html con struttura base",
+                code: {
+                  language: "html",
+                  code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Container</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Card Container con Overflow</h1>
+</body>
+</html>`,
+                  highlightLines: []
+                }
+              },
+              {
+                title: "Crea il container con 8 card",
+                code: {
+                  language: "html",
+                  code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Container</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Card Container con Overflow</h1>
+
+  <div class="card-container">
+    <div class="card">Card 1 - Lorem ipsum dolor sit amet</div>
+    <div class="card">Card 2 - Consectetur adipiscing elit</div>
+    <div class="card">Card 3 - Sed do eiusmod tempor</div>
+    <div class="card">Card 4 - Incididunt ut labore et dolore</div>
+    <div class="card">Card 5 - Magna aliqua ut enim</div>
+    <div class="card">Card 6 - Ad minim veniam quis</div>
+    <div class="card">Card 7 - Nostrud exercitation ullamco</div>
+    <div class="card">Card 8 - Laboris nisi ut aliquip</div>
+  </div>
+</body>
+</html>`,
+                  highlightLines: [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+                }
+              },
+              {
+                title: "Crea style.css con body che definisce inheritance",
+                code: {
+                  language: "css",
+                  code: `body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+  background-color: #ECF0F1;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}`,
+                  highlightLines: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              },
+              {
+                title: "Stila il container con overflow: auto",
+                code: {
+                  language: "css",
+                  code: `body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+  background-color: #ECF0F1;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.card-container {
+  width: 400px;
+  height: 300px;
+  overflow: auto;
+  background-color: #F5F5F5;
+  padding: 20px;
+  border: 2px solid #999;
+  margin: 0 auto;
+}`,
+                  highlightLines: [14, 15, 16, 17, 18, 19, 20, 21, 22]
+                }
+              },
+              {
+                title: "Stila le card (width 100% eredita dal container!)",
+                code: {
+                  language: "css",
+                  code: `body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+  background-color: #ECF0F1;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.card-container {
+  width: 400px;
+  height: 300px;
+  overflow: auto;
+  background-color: #F5F5F5;
+  padding: 20px;
+  border: 2px solid #999;
+  margin: 0 auto;
+}
+
+.card {
+  width: 100%;
+  height: 80px;
+  background-color: white;
+  margin-bottom: 15px;
+  padding: 15px;
+  border: 1px solid #DDD;
+  border-radius: 8px;
+  font-size: 16px;
+}`,
+                  highlightLines: [24, 25, 26, 27, 28, 29, 30, 31, 32, 33]
+                }
+              },
+              "Salva i file e apri in Live Server (doppio clic + F5)",
+              "Osserva la barra di scorrimento nel container - ci sono 8 card ma lo spazio è solo per 3!",
+              "Il colore #333 e font Arial sono ereditati dal body alle card",
+              "Prova a cambiare overflow da auto a hidden - le card extra spariscono!",
+              "Prova a cambiare width delle card da 100% a 80% - si adattano al container"
+            ]}
+            experiments={[
+              "Cambia overflow da auto a scroll - la scrollbar sarà sempre visibile anche se non necessaria",
+              "Cambia overflow a hidden - le card extra vengono tagliate fuori",
+              "Cambia width delle card da 100% a 50% - saranno la metà del container",
+              "Cambia height del container da 300px a 600px - vedrai tutte le 8 card senza scrollare",
+              "Aggiungi color: red; alla classe .card - vedi come overrida l'inheritance del body!"
             ]}
           />
         </section>
