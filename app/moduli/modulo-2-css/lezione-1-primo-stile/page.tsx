@@ -450,21 +450,103 @@ p {
 
       {/* Exercise */}
       <Exercise
-        title="Il Tuo Primo File CSS"
-        difficulty="facile"
+        title="🎯 Esercizio Guidato: Il Tuo Primo File CSS"
         steps={[
-          'Apri VS Code e crea una nuova cartella "primo-css"',
+          'Apri VS Code e crea una nuova cartella chiamata "primo-css"',
           'Dentro la cartella, crea due file: "index.html" e "style.css"',
-          'In index.html, scrivi una struttura HTML base con <h1>, <h2> e 3 paragrafi',
-          'Aggiungi il tag <link> nel <head> per collegare style.css',
-          'In style.css, scrivi: h1 { color: blue; }',
-          'Salva entrambi i file',
-          'Apri index.html nel browser (click destro → Open with Live Server o doppio click)',
-          'Verifica che il titolo sia blu!',
-          'Nei DevTools (F12), trova il tuo <h1> e guarda il CSS applicato',
-          'In style.css, aggiungi: h2 { color: green; background-color: yellow; }',
-          'Salva e ricarica il browser - il sottotitolo deve essere verde su giallo',
-          'Aggiungi stili per i paragrafi: p { color: gray; }'
+          {
+            text: 'Apri index.html e scrivi la struttura HTML base con titoli e paragrafi',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Il Mio Primo CSS</title>
+</head>
+<body>
+  <h1>Benvenuto nel Mondo CSS!</h1>
+  <h2>Cosa Impareremo</h2>
+  <p>CSS permette di dare stile alle pagine web.</p>
+  <p>Possiamo cambiare colori, dimensioni e layout.</p>
+  <p>Iniziamo con i colori del testo e dello sfondo!</p>
+</body>
+</html>`,
+            language: 'html',
+          },
+          {
+            text: 'Nel <head>, aggiungi il tag <link> per collegare il file CSS',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Il Mio Primo CSS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Benvenuto nel Mondo CSS!</h1>
+  <h2>Cosa Impareremo</h2>
+  <p>CSS permette di dare stile alle pagine web.</p>
+  <p>Possiamo cambiare colori, dimensioni e layout.</p>
+  <p>Iniziamo con i colori del testo e dello sfondo!</p>
+</body>
+</html>`,
+            language: 'html',
+            highlightLines: [6],
+          },
+          {
+            text: 'Apri style.css e scrivi la tua prima regola CSS per rendere il titolo blu',
+            code: `/* Il mio primo file CSS! */
+h1 {
+  color: blue;
+}`,
+            language: 'css',
+          },
+          'Salva entrambi i file (Ctrl+S o Cmd+S)',
+          'Fai doppio click su "index.html" per aprirlo nel browser 🎉',
+          'Verifica che il titolo <h1> sia diventato BLU!',
+          'Premi F12 per aprire i DevTools, clicca sulla freccia in alto a sinistra e poi clicca sul titolo blu per ispezionarlo',
+          {
+            text: 'Torna in style.css e aggiungi uno stile per h2 (testo verde su sfondo giallo)',
+            code: `/* Il mio primo file CSS! */
+h1 {
+  color: blue;
+}
+
+h2 {
+  color: green;
+  background-color: yellow;
+}`,
+            language: 'css',
+            highlightLines: [6, 7, 8, 9],
+          },
+          'Salva style.css (Ctrl+S) e ricarica il browser (F5)',
+          'Verifica che il sottotitolo <h2> sia VERDE su sfondo GIALLO!',
+          {
+            text: 'Aggiungi uno stile per tutti i paragrafi (testo grigio)',
+            code: `/* Il mio primo file CSS! */
+h1 {
+  color: blue;
+}
+
+h2 {
+  color: green;
+  background-color: yellow;
+}
+
+p {
+  color: gray;
+}`,
+            language: 'css',
+            highlightLines: [11, 12, 13],
+          },
+          'Salva style.css (Ctrl+S) e ricarica il browser (F5)',
+          'Verifica che TUTTI e TRE i paragrafi siano grigi! ✨',
+        ]}
+        experiments={[
+          'Cambia il colore di h1 da "blue" a "red", salva e ricarica (F5) - cosa succede?',
+          'Aggiungi "background-color: lightblue;" dentro la regola h1, salva e ricarica',
+          'Cambia il colore dei paragrafi da "gray" a "purple", salva e ricarica',
+          'Nei DevTools (F12), clicca su un paragrafo e prova a cambiare il colore live - le modifiche spariscono ricaricando!',
+          'Aggiungi una nuova regola "h2 { color: red; }" DOPO quella esistente - quale colore vince? (scoprirai il "cascade"!)',
         ]}
       />
 
