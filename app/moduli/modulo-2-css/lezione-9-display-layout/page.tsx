@@ -961,25 +961,588 @@ export default function Lezione9DisplayLayout() {
         <Exercise
           title="Crea una Galleria di Servizi con Card Orizzontali"
           steps={[
-            'Crea una cartella "galleria-servizi" in VS Code',
-            'Crea index.html con struttura base HTML5',
-            'Crea style.css e collegalo',
-            'CSS universale: * { box-sizing: border-box; margin: 0; padding: 0; }',
-            'Body: font-family Arial, background-color #F5F5F5, padding 20px',
-            'Crea un <h1> centrato: "I Nostri Servizi"',
-            'Crea un div.container con text-align: center',
-            'Dentro il container, crea 3 div.service-card (classi multiple!)',
-            'Ogni card: display inline-block, width 30%, margin 10px, vertical-align top',
-            'Ogni card: border 2px solid #E0E0E0, border-radius 12px, padding 30px',
-            'Ogni card: background-color white',
-            'Dentro ogni card: h2 (titolo servizio), p (descrizione), button (CTA)',
-            'Stile h2: color #2C3E50, margin-bottom 15px',
-            'Stile p: color #7F8C8D, line-height 1.6, margin-bottom 20px',
-            'Stile button: background #3498DB, color white, border none, border-radius 25px, padding 12px 30px, cursor pointer',
-            'Hover sulla card: border-color cambia a #3498DB',
-            'Hover sul button: background-color cambia a #2980B9',
-            'Testa con Live Server - le card devono essere affiancate!',
-            'Riduci la larghezza della finestra: nota come le card vanno a capo automaticamente',
+            {
+              title: "Crea index.html con struttura base",
+              code: {
+                language: "html",
+                code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Nostri Servizi</title>
+</head>
+<body>
+  <h1>I Nostri Servizi</h1>
+</body>
+</html>`,
+                highlightLines: []
+              }
+            },
+            {
+              title: "Collega style.css",
+              code: {
+                language: "html",
+                code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Nostri Servizi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>I Nostri Servizi</h1>
+</body>
+</html>`,
+                highlightLines: [7]
+              }
+            },
+            {
+              title: "Crea style.css con reset universale",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}`,
+                highlightLines: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+              }
+            },
+            {
+              title: "Stila il titolo principale",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #2C3E50;
+  margin-bottom: 40px;
+  font-size: 36px;
+}`,
+                highlightLines: [13, 14, 15, 16, 17, 18]
+              }
+            },
+            {
+              title: "Crea il container nel HTML",
+              code: {
+                language: "html",
+                code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Nostri Servizi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>I Nostri Servizi</h1>
+
+  <div class="container">
+    <!-- Le card andranno qui -->
+  </div>
+</body>
+</html>`,
+                highlightLines: [12, 13, 14]
+              }
+            },
+            {
+              title: "Stila il container con text-align center",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #2C3E50;
+  margin-bottom: 40px;
+  font-size: 36px;
+}
+
+.container {
+  text-align: center;
+}`,
+                highlightLines: [20, 21, 22]
+              }
+            },
+            {
+              title: "Aggiungi la prima card nel HTML",
+              code: {
+                language: "html",
+                code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Nostri Servizi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>I Nostri Servizi</h1>
+
+  <div class="container">
+    <div class="service-card">
+      <h2>Web Design</h2>
+      <p>Creiamo siti web moderni, responsive e ottimizzati per tutti i dispositivi.</p>
+      <button>Scopri di più</button>
+    </div>
+  </div>
+</body>
+</html>`,
+                highlightLines: [13, 14, 15, 16, 17]
+              }
+            },
+            {
+              title: "Stila la card con display inline-block",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #2C3E50;
+  margin-bottom: 40px;
+  font-size: 36px;
+}
+
+.container {
+  text-align: center;
+}
+
+.service-card {
+  display: inline-block;
+  width: 30%;
+  margin: 10px;
+  vertical-align: top;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  padding: 30px;
+  background-color: white;
+}`,
+                highlightLines: [24, 25, 26, 27, 28, 29, 30, 31, 32, 33]
+              }
+            },
+            {
+              title: "Stila il titolo h2 della card",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #2C3E50;
+  margin-bottom: 40px;
+  font-size: 36px;
+}
+
+.container {
+  text-align: center;
+}
+
+.service-card {
+  display: inline-block;
+  width: 30%;
+  margin: 10px;
+  vertical-align: top;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  padding: 30px;
+  background-color: white;
+}
+
+.service-card h2 {
+  color: #2C3E50;
+  margin-bottom: 15px;
+  font-size: 24px;
+}`,
+                highlightLines: [35, 36, 37, 38, 39]
+              }
+            },
+            {
+              title: "Stila il paragrafo della card",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #2C3E50;
+  margin-bottom: 40px;
+  font-size: 36px;
+}
+
+.container {
+  text-align: center;
+}
+
+.service-card {
+  display: inline-block;
+  width: 30%;
+  margin: 10px;
+  vertical-align: top;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  padding: 30px;
+  background-color: white;
+}
+
+.service-card h2 {
+  color: #2C3E50;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.service-card p {
+  color: #7F8C8D;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}`,
+                highlightLines: [41, 42, 43, 44, 45]
+              }
+            },
+            {
+              title: "Stila il bottone",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #2C3E50;
+  margin-bottom: 40px;
+  font-size: 36px;
+}
+
+.container {
+  text-align: center;
+}
+
+.service-card {
+  display: inline-block;
+  width: 30%;
+  margin: 10px;
+  vertical-align: top;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  padding: 30px;
+  background-color: white;
+}
+
+.service-card h2 {
+  color: #2C3E50;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.service-card p {
+  color: #7F8C8D;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.service-card button {
+  background-color: #3498DB;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-weight: bold;
+}`,
+                highlightLines: [47, 48, 49, 50, 51, 52, 53, 54, 55]
+              }
+            },
+            {
+              title: "Aggiungi seconda card",
+              code: {
+                language: "html",
+                code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Nostri Servizi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>I Nostri Servizi</h1>
+
+  <div class="container">
+    <div class="service-card">
+      <h2>Web Design</h2>
+      <p>Creiamo siti web moderni, responsive e ottimizzati per tutti i dispositivi.</p>
+      <button>Scopri di più</button>
+    </div>
+
+    <div class="service-card">
+      <h2>SEO</h2>
+      <p>Ottimizziamo il tuo sito per i motori di ricerca e aumentiamo la tua visibilità online.</p>
+      <button>Scopri di più</button>
+    </div>
+  </div>
+</body>
+</html>`,
+                highlightLines: [19, 20, 21, 22, 23]
+              }
+            },
+            {
+              title: "Aggiungi terza card - ora saranno affiancate!",
+              code: {
+                language: "html",
+                code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Nostri Servizi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>I Nostri Servizi</h1>
+
+  <div class="container">
+    <div class="service-card">
+      <h2>Web Design</h2>
+      <p>Creiamo siti web moderni, responsive e ottimizzati per tutti i dispositivi.</p>
+      <button>Scopri di più</button>
+    </div>
+
+    <div class="service-card">
+      <h2>SEO</h2>
+      <p>Ottimizziamo il tuo sito per i motori di ricerca e aumentiamo la tua visibilità online.</p>
+      <button>Scopri di più</button>
+    </div>
+
+    <div class="service-card">
+      <h2>Marketing</h2>
+      <p>Strategie di marketing digitale per far crescere il tuo business online.</p>
+      <button>Scopri di più</button>
+    </div>
+  </div>
+</body>
+</html>`,
+                highlightLines: [25, 26, 27, 28, 29]
+              }
+            },
+            {
+              title: "Aggiungi hover sulla card",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #2C3E50;
+  margin-bottom: 40px;
+  font-size: 36px;
+}
+
+.container {
+  text-align: center;
+}
+
+.service-card {
+  display: inline-block;
+  width: 30%;
+  margin: 10px;
+  vertical-align: top;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  padding: 30px;
+  background-color: white;
+  transition: all 0.3s;
+}
+
+.service-card:hover {
+  border-color: #3498DB;
+}
+
+.service-card h2 {
+  color: #2C3E50;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.service-card p {
+  color: #7F8C8D;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.service-card button {
+  background-color: #3498DB;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-weight: bold;
+}`,
+                highlightLines: [33, 36, 37, 38]
+              }
+            },
+            {
+              title: "Aggiungi hover sul bottone",
+              code: {
+                language: "css",
+                code: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #2C3E50;
+  margin-bottom: 40px;
+  font-size: 36px;
+}
+
+.container {
+  text-align: center;
+}
+
+.service-card {
+  display: inline-block;
+  width: 30%;
+  margin: 10px;
+  vertical-align: top;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  padding: 30px;
+  background-color: white;
+  transition: all 0.3s;
+}
+
+.service-card:hover {
+  border-color: #3498DB;
+}
+
+.service-card h2 {
+  color: #2C3E50;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.service-card p {
+  color: #7F8C8D;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.service-card button {
+  background-color: #3498DB;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.service-card button:hover {
+  background-color: #2980B9;
+}`,
+                highlightLines: [58, 61, 62, 63]
+              }
+            },
+            "Salva tutti i file (Ctrl+S su HTML e CSS) e apri in Live Server (doppio clic + F5)",
+            "Osserva le 3 card affiancate orizzontalmente grazie a display: inline-block!",
+            "Passa il mouse sulle card - il bordo diventa blu",
+            "Passa il mouse sui bottoni - il colore di sfondo cambia",
+            "Riduci la larghezza della finestra del browser - le card vanno a capo automaticamente quando lo spazio finisce!"
+          ]}
+          experiments={[
+            "Cambia width delle card da 30% a 45% - vedrai solo 2 card per riga",
+            "Rimuovi display: inline-block dalle card - torneranno verticali (una sotto l'altra)",
+            "Rimuovi vertical-align: top - le card si disallineano verticalmente",
+            "Cambia text-align del container da center a left - le card si allineano a sinistra",
+            "Aggiungi una 4a card nel HTML - andrà a capo automaticamente perché 4 card al 30% non stanno su una riga!"
           ]}
         />
 
