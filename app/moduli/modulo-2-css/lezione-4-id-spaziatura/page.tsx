@@ -561,19 +561,143 @@ export default function Lezione4IDSpaziatura() {
 
       {/* Esercizio */}
       <Exercise
-        title="Layout con Header, Nav, Content e Footer"
+        title="🎯 Esercizio Guidato: Layout Completo con ID e Spaziatura"
         steps={[
           'Crea una cartella "layout-id" in VS Code',
-          'Crea index.html con struttura base (<!DOCTYPE>, head, body)',
-          'Crea 4 sezioni con ID: #header, #nav, #content, #footer',
-          'Crea style.css e collegalo',
-          '#header: background blu scuro (#2C3E50), testo bianco, padding 30px, text-align center',
-          '#nav: background grigio (#95A5A6), testo bianco, padding 15px',
-          '#content: width 800px, margin auto (per centrare), padding 40px, background grigio chiaro (#ECF0F1)',
-          '#footer: background blu (#3498DB), testo bianco, padding 20px, text-align center, margin 30px sopra',
-          'Apri con Live Server e verifica che il contenuto sia centrato',
-          'Aggiungi testo in ogni sezione per vedere meglio padding e margin',
-          'Cambia i valori di padding e margin per sperimentare!'
+          'Dentro la cartella, crea due file: "index.html" e "style.css"',
+          {
+            text: 'Apri index.html e scrivi la struttura con 4 sezioni usando ID unici',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Layout con ID</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="header">
+    <h1>Il Mio Sito Web</h1>
+  </header>
+
+  <nav id="nav">
+    <a href="#">Home</a> | <a href="#">Chi Sono</a> | <a href="#">Contatti</a>
+  </nav>
+
+  <main id="content">
+    <h2>Benvenuto!</h2>
+    <p>Questo è il contenuto principale del mio sito.</p>
+    <p>Qui puoi scrivere articoli, progetti e molto altro.</p>
+  </main>
+
+  <footer id="footer">
+    <p>© 2025 - Tutti i diritti riservati</p>
+  </footer>
+</body>
+</html>`,
+            language: 'html',
+          },
+          {
+            text: 'Apri style.css e scrivi lo stile per #header (sfondo blu scuro, testo bianco, padding, centrato)',
+            code: `/* Layout con ID e Spaziatura */
+#header {
+  background-color: #2C3E50;
+  color: white;
+  padding: 30px;
+  text-align: center;
+}`,
+            language: 'css',
+          },
+          'Salva entrambi i file (Ctrl+S) e fai doppio click su index.html',
+          'Verifica che l\'header sia BLU SCURO con TANTO SPAZIO interno (padding)! 🎨',
+          {
+            text: 'Torna in style.css e aggiungi lo stile per #nav (sfondo grigio, testo bianco, padding)',
+            code: `/* Layout con ID e Spaziatura */
+#header {
+  background-color: #2C3E50;
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+#nav {
+  background-color: #95A5A6;
+  color: white;
+  padding: 15px;
+}`,
+            language: 'css',
+            highlightLines: [9, 10, 11, 12, 13],
+          },
+          'Salva (Ctrl+S) e ricarica il browser (F5) - il menu nav deve essere GRIGIO con padding!',
+          {
+            text: 'Aggiungi lo stile per #content (larghezza fissa, centrato con margin auto, padding, sfondo chiaro)',
+            code: `/* Layout con ID e Spaziatura */
+#header {
+  background-color: #2C3E50;
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+#nav {
+  background-color: #95A5A6;
+  color: white;
+  padding: 15px;
+}
+
+#content {
+  width: 800px;
+  margin: auto;
+  padding: 40px;
+  background-color: #ECF0F1;
+}`,
+            language: 'css',
+            highlightLines: [15, 16, 17, 18, 19, 20],
+          },
+          'Salva e ricarica (F5) - il contenuto deve essere CENTRATO nella pagina! ✨',
+          'Nota: margin: auto centra automaticamente un elemento con width fissa!',
+          {
+            text: 'Aggiungi lo stile per #footer (sfondo blu, testo bianco, padding, centrato, margin-top per distanza)',
+            code: `/* Layout con ID e Spaziatura */
+#header {
+  background-color: #2C3E50;
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+#nav {
+  background-color: #95A5A6;
+  color: white;
+  padding: 15px;
+}
+
+#content {
+  width: 800px;
+  margin: auto;
+  padding: 40px;
+  background-color: #ECF0F1;
+}
+
+#footer {
+  background-color: #3498DB;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  margin-top: 30px;
+}`,
+            language: 'css',
+            highlightLines: [22, 23, 24, 25, 26, 27, 28],
+          },
+          'Salva e ricarica (F5) - il footer deve essere BLU e DISTANZIATO dal contenuto! 🎉',
+          'Verifica nel browser: hai creato un layout completo con 4 sezioni uniche!',
+          'Prova a ridimensionare la finestra del browser - il content resta centrato!',
+        ]}
+        experiments={[
+          'Cambia padding di #header da 30px a 60px - lo spazio interno raddoppia!',
+          'Cambia width di #content da 800px a 600px - diventa più stretto ma resta centrato!',
+          'Cambia margin-top di #footer da 30px a 80px - si allontana dal contenuto!',
+          'Aggiungi "margin-top: 20px;" anche a #content per distanziarlo dal nav',
+          'Aggiungi "padding: 30px;" a #nav per dare più aria ai link del menu',
         ]}
       />
 
