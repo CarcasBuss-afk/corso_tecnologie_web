@@ -705,23 +705,320 @@ transition: all 0.3s;  /* tutte le proprietà */`}
 
       {/* Esercizio */}
       <Exercise
-        title="Menu di Navigazione Interattivo"
+        title="🎯 Esercizio Guidato: Menu di Navigazione Interattivo"
         steps={[
           'Crea una cartella "menu-interattivo" in VS Code',
-          'Crea index.html con struttura base',
-          'Crea un nav con 5 link: Home, Chi Siamo, Servizi, Portfolio, Contatti',
-          'Crea style.css e collegalo',
-          'Stile base nav: background-color #2C3E50, padding 15px',
-          'Stile base link: color white, text-decoration none, font-size 18px, padding 10px 20px',
-          'Aggiungi transition: all 0.3s; sui link',
-          'Link:hover: background-color #3498DB, font-weight bold',
-          'Link:active: background-color #2980B9',
-          'Aggiungi cursor: pointer; su tutti i link',
-          'Crea un h1 sotto il menu con font-size 3rem (responsive!)',
-          'Crea 3 div.card con classe: width 30%, padding 2em (usando em!)',
-          'Card:hover: cambia background-color e aggiungi transition 0.3s',
-          'Apri in Live Server e prova tutti gli effetti hover',
-          'Ridimensiona la finestra per vedere il font-size responsive'
+          'Dentro la cartella, crea due file: "index.html" e "style.css"',
+          {
+            text: 'Apri index.html e scrivi la struttura con menu di navigazione e contenuto',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu Interattivo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#chi-siamo">Chi Siamo</a>
+    <a href="#servizi">Servizi</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contatti">Contatti</a>
+  </nav>
+
+  <h1>Benvenuto nel Nostro Sito</h1>
+
+  <div class="container">
+    <div class="card">
+      <h3>Servizio 1</h3>
+      <p>Sviluppo Web Professionale</p>
+    </div>
+    <div class="card">
+      <h3>Servizio 2</h3>
+      <p>Design Responsive e Moderno</p>
+    </div>
+    <div class="card">
+      <h3>Servizio 3</h3>
+      <p>Consulenza Tecnologica</p>
+    </div>
+  </div>
+</body>
+</html>`,
+            language: 'html',
+          },
+          {
+            text: 'Apri style.css e scrivi lo stile base per nav (sfondo blu scuro, padding)',
+            code: `/* Menu Interattivo con Hover */
+nav {
+  background-color: #2C3E50;
+  padding: 15px;
+  text-align: center;
+}`,
+            language: 'css',
+          },
+          'Salva entrambi i file (Ctrl+S) e fai doppio click su index.html',
+          'Verifica che il menu abbia lo sfondo BLU SCURO! 🎨',
+          {
+            text: 'In style.css, aggiungi lo stile base per i link (bianco, senza sottolineatura, padding)',
+            code: `/* Menu Interattivo con Hover */
+nav {
+  background-color: #2C3E50;
+  padding: 15px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 20px;
+  display: inline-block;
+}`,
+            language: 'css',
+            highlightLines: [7, 8, 9, 10, 11, 12, 13],
+          },
+          'Salva (Ctrl+S) e ricarica (F5) - i link devono essere BIANCHI e SENZA SOTTOLINEATURA!',
+          {
+            text: 'Aggiungi la transizione smooth per effetti fluidi',
+            code: `/* Menu Interattivo con Hover */
+nav {
+  background-color: #2C3E50;
+  padding: 15px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 20px;
+  display: inline-block;
+  transition: all 0.3s;
+}`,
+            language: 'css',
+            highlightLines: [14],
+          },
+          'Salva e ricarica (F5) - adesso i cambiamenti saranno SMOOTH!',
+          {
+            text: 'Aggiungi l\'effetto :hover (sfondo blu chiaro, grassetto, cursore pointer)',
+            code: `/* Menu Interattivo con Hover */
+nav {
+  background-color: #2C3E50;
+  padding: 15px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 20px;
+  display: inline-block;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+nav a:hover {
+  background-color: #3498DB;
+  font-weight: bold;
+}`,
+            language: 'css',
+            highlightLines: [15, 18, 19, 20, 21],
+          },
+          'Salva e ricarica (F5) - passa il mouse sui link e guarda l\'effetto! ✨',
+          'I link cambiano colore e peso quando ci passi sopra!',
+          {
+            text: 'Aggiungi l\'effetto :active (quando clicchi, colore ancora più scuro)',
+            code: `/* Menu Interattivo con Hover */
+nav {
+  background-color: #2C3E50;
+  padding: 15px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 20px;
+  display: inline-block;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+nav a:hover {
+  background-color: #3498DB;
+  font-weight: bold;
+}
+
+nav a:active {
+  background-color: #2980B9;
+}`,
+            language: 'css',
+            highlightLines: [23, 24, 25],
+          },
+          'Salva e ricarica (F5) - clicca sui link e nota il colore più SCURO al click!',
+          {
+            text: 'Aggiungi lo stile per h1 con unità responsive (3rem = 3 volte la dimensione base)',
+            code: `/* Menu Interattivo con Hover */
+nav {
+  background-color: #2C3E50;
+  padding: 15px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 20px;
+  display: inline-block;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+nav a:hover {
+  background-color: #3498DB;
+  font-weight: bold;
+}
+
+nav a:active {
+  background-color: #2980B9;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  margin: 40px 0;
+  color: #2C3E50;
+}`,
+            language: 'css',
+            highlightLines: [27, 28, 29, 30, 31, 32],
+          },
+          'Salva e ricarica (F5) - il titolo deve essere MOLTO GRANDE! 3rem è responsive!',
+          {
+            text: 'Aggiungi gli stili per le card con unità em (relativa al font-size)',
+            code: `/* Menu Interattivo con Hover */
+nav {
+  background-color: #2C3E50;
+  padding: 15px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 20px;
+  display: inline-block;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+nav a:hover {
+  background-color: #3498DB;
+  font-weight: bold;
+}
+
+nav a:active {
+  background-color: #2980B9;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  margin: 40px 0;
+  color: #2C3E50;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  width: 30%;
+  padding: 2em;
+  background-color: #ECF0F1;
+  border-radius: 8px;
+  transition: all 0.3s;
+}`,
+            language: 'css',
+            highlightLines: [34, 35, 36, 37, 38, 39, 41, 42, 43, 44, 45, 46, 47],
+          },
+          'Salva e ricarica (F5) - le card devono apparire affiancate! Padding 2em è responsive!',
+          {
+            text: 'Aggiungi l\'effetto hover sulle card (cambio colore sfondo, ombra)',
+            code: `/* Menu Interattivo con Hover */
+nav {
+  background-color: #2C3E50;
+  padding: 15px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 20px;
+  display: inline-block;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+nav a:hover {
+  background-color: #3498DB;
+  font-weight: bold;
+}
+
+nav a:active {
+  background-color: #2980B9;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  margin: 40px 0;
+  color: #2C3E50;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  width: 30%;
+  padding: 2em;
+  background-color: #ECF0F1;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  background-color: #3498DB;
+  color: white;
+  transform: scale(1.05);
+  cursor: pointer;
+}`,
+            language: 'css',
+            highlightLines: [49, 50, 51, 52, 53, 54],
+          },
+          'Salva e ricarica (F5) - passa il mouse sulle card e guarda l\'effetto WOW! 🎉',
+          'Le card cambiano colore e si ingrandiscono leggermente!',
+          'Prova a ridimensionare la finestra del browser - il font-size in rem si adatta!',
+        ]}
+        experiments={[
+          'Cambia transition da 0.3s a 1s nei link - gli effetti diventano più LENTI e drammatici!',
+          'Cambia font-size di h1 da 3rem a 5rem - il titolo diventa GIGANTE!',
+          'Cambia padding delle card da 2em a 4em - le card hanno PIÙ SPAZIO interno!',
+          'Aggiungi "nav a:hover { border-radius: 5px; }" - i link avranno angoli arrotondati al hover!',
+          'Cambia transform: scale(1.05) in scale(1.2) nelle card - l\'ingrandimento è più evidente!',
         ]}
       />
 
