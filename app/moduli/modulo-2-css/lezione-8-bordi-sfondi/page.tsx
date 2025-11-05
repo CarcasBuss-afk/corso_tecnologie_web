@@ -1267,7 +1267,7 @@ background: #3498DB;`}
 
       {/* Esercizio */}
       <Exercise
-        title="Crea una Pagina Portfolio con Bordi e Sfondi"
+        title="🎯 Esercizio Guidato: Crea una Pagina Portfolio con Bordi e Sfondi"
         steps={[
           {
             title: "Crea index.html con struttura base",

@@ -713,7 +713,7 @@ transition: all 0.3s;`}
           <h2 className="text-3xl font-bold mb-6">💪 Esercizio Pratico</h2>
 
           <Exercise
-            title="Card Gallery con Effetti"
+            title="🎯 Esercizio Guidato: Card Gallery con Effetti"
             difficulty="media"
             steps={[
               {

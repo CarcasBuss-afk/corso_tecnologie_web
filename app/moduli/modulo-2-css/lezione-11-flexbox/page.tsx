@@ -1090,7 +1090,7 @@ export default function Lezione11Flexbox() {
 
         {/* Esercizio */}
         <Exercise
-          title="Crea una Card Gallery Responsive con Flexbox"
+          title="🎯 Esercizio Guidato: Crea una Card Gallery Responsive con Flexbox"
           steps={[
             {
               title: "Crea index.html con struttura base",

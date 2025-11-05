@@ -959,7 +959,7 @@ export default function Lezione9DisplayLayout() {
 
         {/* Esercizio */}
         <Exercise
-          title="Crea una Galleria di Servizi con Card Orizzontali"
+          title="🎯 Esercizio Guidato: Crea una Galleria di Servizi con Card Orizzontali"
           steps={[
             {
               title: "Crea index.html con struttura base",

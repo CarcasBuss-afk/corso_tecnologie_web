@@ -953,7 +953,7 @@ export default function Lezione10Position() {
 
         {/* Esercizio */}
         <Exercise
-          title="Crea una Card Prodotto con Badge e Tooltip"
+          title="🎯 Esercizio Guidato: Crea una Card Prodotto con Badge e Tooltip"
           steps={[
             {
               title: "Crea index.html con struttura base",

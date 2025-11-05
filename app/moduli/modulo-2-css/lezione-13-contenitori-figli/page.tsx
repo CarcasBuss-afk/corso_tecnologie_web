@@ -682,7 +682,7 @@ export default function Lezione13ContenitioriFilgi() {
           <h2 className="text-3xl font-bold mb-6">💪 Esercizio Pratico</h2>
 
           <Exercise
-            title="Card Container con Overflow"
+            title="🎯 Esercizio Guidato: Card Container con Overflow"
             difficulty="media"
             steps={[
               {

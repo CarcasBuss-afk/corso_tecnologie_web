@@ -866,7 +866,7 @@ width: 200px;
 
       {/* Esercizio */}
       <Exercise
-        title="Crea un Layout a 3 Card con Box Model"
+        title="🎯 Esercizio Guidato: Crea un Layout a 3 Card con Box Model"
         steps={[
           {
             title: "Crea index.html con struttura base",

@@ -923,7 +923,7 @@ export default function Lezione12Grid() {
           <h2 className="text-3xl font-bold mb-6">💪 Esercizio Pratico</h2>
 
           <Exercise
-            title="Gallery Fotografica Responsive"
+            title="🎯 Esercizio Guidato: Gallery Fotografica Responsive"
             difficulty="media"
             steps={[
               {
