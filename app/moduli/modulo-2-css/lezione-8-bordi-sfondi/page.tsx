@@ -1269,24 +1269,1400 @@ background: #3498DB;`}
       <Exercise
         title="Crea una Pagina Portfolio con Bordi e Sfondi"
         steps={[
-          '📝 NOTA: Le 3 card saranno una sotto l\'altra (verticali). Nella prossima lezione imparerai come affiancarle orizzontalmente!',
-          'Crea una cartella "portfolio-bordi" in VS Code',
-          'Crea index.html con struttura base',
-          'Crea style.css con box-sizing: border-box universale',
-          'Hero section: background-image, background-size: cover, height 400px, border-radius 15px',
-          'Hero: aggiungi h1 e p centrati',
-          'Sezione "Chi Sono": box con border 3px dashed, border-radius 10px, padding 30px',
-          'Sezione "Progetti": crea 3 div.card (una sotto l\'altra - verticali)',
-          'Ogni card: width 100% o max-width 600px, margin-bottom 20px per separarle',
-          'Ogni card: border-radius 12px, border 2px solid #E0E0E0',
-          'Card: div superiore per immagine di sfondo (height 150px, background-size: cover)',
-          'Card: div inferiore per contenuto (padding 20px, h3 titolo, p descrizione)',
-          'Bottone in ogni card: border-radius 25px (pillola), background colorato, padding 10px 20px',
-          'Footer: border-top 5px solid con colore a scelta',
-          'Aggiungi :hover su tutte le card (border-color cambia)',
-          'Testa con Live Server - le card saranno verticali (è corretto!)',
-          'Apri DevTools e verifica che tutti i border-radius siano applicati',
-          'Sperimenta cambiando i valori di border-radius (5px, 20px, 50%)'
+          {
+            title: "Crea index.html con struttura base",
+            code: {
+              language: "html",
+              code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il Mio Portfolio</title>
+</head>
+<body>
+  <h1>Portfolio Design</h1>
+</body>
+</html>`,
+              highlightLines: []
+            }
+          },
+          {
+            title: "Collega style.css",
+            code: {
+              language: "html",
+              code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il Mio Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Portfolio Design</h1>
+</body>
+</html>`,
+              highlightLines: [7]
+            }
+          },
+          {
+            title: "Crea style.css con reset e box-sizing universale",
+            code: {
+              language: "css",
+              code: `* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}`,
+              highlightLines: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            }
+          },
+          {
+            title: "Crea la Hero Section nel HTML",
+            code: {
+              language: "html",
+              code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il Mio Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="hero">
+    <h1>Benvenuto nel Mio Portfolio</h1>
+    <p>Designer e Sviluppatore Creativo</p>
+  </section>
+</body>
+</html>`,
+              highlightLines: [10, 11, 12, 13]
+            }
+          },
+          {
+            title: "Stila la Hero con background-image e border-radius",
+            code: {
+              language: "css",
+              code: `* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+.hero {
+  background: url('https://picsum.photos/1200/400') center/cover no-repeat;
+  height: 400px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+.hero h1 {
+  margin: 0 0 15px 0;
+  font-size: 48px;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 24px;
+}`,
+              highlightLines: [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33]
+            }
+          },
+          {
+            title: "Aggiungi sezione Chi Sono nel HTML",
+            code: {
+              language: "html",
+              code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il Mio Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="hero">
+    <h1>Benvenuto nel Mio Portfolio</h1>
+    <p>Designer e Sviluppatore Creativo</p>
+  </section>
+
+  <section class="about">
+    <h2>Chi Sono</h2>
+    <p>Sono un designer appassionato con 5 anni di esperienza nel settore digitale.</p>
+  </section>
+</body>
+</html>`,
+              highlightLines: [15, 16, 17, 18]
+            }
+          },
+          {
+            title: "Stila la sezione Chi Sono con border dashed",
+            code: {
+              language: "css",
+              code: `* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+.hero {
+  background: url('https://picsum.photos/1200/400') center/cover no-repeat;
+  height: 400px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+.hero h1 {
+  margin: 0 0 15px 0;
+  font-size: 48px;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 24px;
+}
+
+.about {
+  margin-top: 30px;
+  padding: 30px;
+  background-color: white;
+  border: 3px dashed #3498DB;
+  border-radius: 10px;
+}
+
+.about h2 {
+  margin: 0 0 15px 0;
+  color: #2C3E50;
+}
+
+.about p {
+  margin: 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}`,
+              highlightLines: [35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
+            }
+          },
+          {
+            title: "Aggiungi sezione Progetti con prima card",
+            code: {
+              language: "html",
+              code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il Mio Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="hero">
+    <h1>Benvenuto nel Mio Portfolio</h1>
+    <p>Designer e Sviluppatore Creativo</p>
+  </section>
+
+  <section class="about">
+    <h2>Chi Sono</h2>
+    <p>Sono un designer appassionato con 5 anni di esperienza nel settore digitale.</p>
+  </section>
+
+  <section class="projects">
+    <h2>I Miei Progetti</h2>
+
+    <div class="card">
+      <div class="card-image card-image-1"></div>
+      <div class="card-content">
+        <h3>Progetto 1</h3>
+        <p>Sito web moderno per azienda tech</p>
+        <button class="btn">Scopri di più</button>
+      </div>
+    </div>
+  </section>
+</body>
+</html>`,
+              highlightLines: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+            }
+          },
+          {
+            title: "Stila l'intestazione progetti",
+            code: {
+              language: "css",
+              code: `* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+.hero {
+  background: url('https://picsum.photos/1200/400') center/cover no-repeat;
+  height: 400px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+.hero h1 {
+  margin: 0 0 15px 0;
+  font-size: 48px;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 24px;
+}
+
+.about {
+  margin-top: 30px;
+  padding: 30px;
+  background-color: white;
+  border: 3px dashed #3498DB;
+  border-radius: 10px;
+}
+
+.about h2 {
+  margin: 0 0 15px 0;
+  color: #2C3E50;
+}
+
+.about p {
+  margin: 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.projects {
+  margin-top: 30px;
+}
+
+.projects h2 {
+  color: #2C3E50;
+  margin-bottom: 20px;
+}`,
+              highlightLines: [53, 54, 55, 56, 57, 58, 59, 60, 61]
+            }
+          },
+          {
+            title: "Stila la card con border e border-radius",
+            code: {
+              language: "css",
+              code: `* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+.hero {
+  background: url('https://picsum.photos/1200/400') center/cover no-repeat;
+  height: 400px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+.hero h1 {
+  margin: 0 0 15px 0;
+  font-size: 48px;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 24px;
+}
+
+.about {
+  margin-top: 30px;
+  padding: 30px;
+  background-color: white;
+  border: 3px dashed #3498DB;
+  border-radius: 10px;
+}
+
+.about h2 {
+  margin: 0 0 15px 0;
+  color: #2C3E50;
+}
+
+.about p {
+  margin: 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.projects {
+  margin-top: 30px;
+}
+
+.projects h2 {
+  color: #2C3E50;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: white;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}`,
+              highlightLines: [63, 64, 65, 66, 67, 68, 69]
+            }
+          },
+          {
+            title: "Stila l'immagine della card con background",
+            code: {
+              language: "css",
+              code: `* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+.hero {
+  background: url('https://picsum.photos/1200/400') center/cover no-repeat;
+  height: 400px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+.hero h1 {
+  margin: 0 0 15px 0;
+  font-size: 48px;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 24px;
+}
+
+.about {
+  margin-top: 30px;
+  padding: 30px;
+  background-color: white;
+  border: 3px dashed #3498DB;
+  border-radius: 10px;
+}
+
+.about h2 {
+  margin: 0 0 15px 0;
+  color: #2C3E50;
+}
+
+.about p {
+  margin: 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.projects {
+  margin-top: 30px;
+}
+
+.projects h2 {
+  color: #2C3E50;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: white;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.card-image {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-image-1 {
+  background-image: url('https://picsum.photos/600/150?random=1');
+}`,
+              highlightLines: [71, 72, 73, 74, 75, 76, 77, 78, 79]
+            }
+          },
+          {
+            title: "Stila il contenuto della card",
+            code: {
+              language: "css",
+              code: `* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+.hero {
+  background: url('https://picsum.photos/1200/400') center/cover no-repeat;
+  height: 400px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+.hero h1 {
+  margin: 0 0 15px 0;
+  font-size: 48px;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 24px;
+}
+
+.about {
+  margin-top: 30px;
+  padding: 30px;
+  background-color: white;
+  border: 3px dashed #3498DB;
+  border-radius: 10px;
+}
+
+.about h2 {
+  margin: 0 0 15px 0;
+  color: #2C3E50;
+}
+
+.about p {
+  margin: 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.projects {
+  margin-top: 30px;
+}
+
+.projects h2 {
+  color: #2C3E50;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: white;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.card-image {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-image-1 {
+  background-image: url('https://picsum.photos/600/150?random=1');
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h3 {
+  margin: 0 0 10px 0;
+  color: #2C3E50;
+}
+
+.card-content p {
+  margin: 0 0 15px 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}`,
+              highlightLines: [81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95]
+            }
+          },
+          {
+            title: "Stila il bottone con border-radius pillola",
+            code: {
+              language: "css",
+              code: `* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+.hero {
+  background: url('https://picsum.photos/1200/400') center/cover no-repeat;
+  height: 400px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+.hero h1 {
+  margin: 0 0 15px 0;
+  font-size: 48px;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 24px;
+}
+
+.about {
+  margin-top: 30px;
+  padding: 30px;
+  background-color: white;
+  border: 3px dashed #3498DB;
+  border-radius: 10px;
+}
+
+.about h2 {
+  margin: 0 0 15px 0;
+  color: #2C3E50;
+}
+
+.about p {
+  margin: 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.projects {
+  margin-top: 30px;
+}
+
+.projects h2 {
+  color: #2C3E50;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: white;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.card-image {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-image-1 {
+  background-image: url('https://picsum.photos/600/150?random=1');
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h3 {
+  margin: 0 0 10px 0;
+  color: #2C3E50;
+}
+
+.card-content p {
+  margin: 0 0 15px 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.btn {
+  background-color: #3498DB;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+}`,
+              highlightLines: [97, 98, 99, 100, 101, 102, 103, 104, 105]
+            }
+          },
+          {
+            title: "Aggiungi seconda card nel HTML",
+            code: {
+              language: "html",
+              code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il Mio Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="hero">
+    <h1>Benvenuto nel Mio Portfolio</h1>
+    <p>Designer e Sviluppatore Creativo</p>
+  </section>
+
+  <section class="about">
+    <h2>Chi Sono</h2>
+    <p>Sono un designer appassionato con 5 anni di esperienza nel settore digitale.</p>
+  </section>
+
+  <section class="projects">
+    <h2>I Miei Progetti</h2>
+
+    <div class="card">
+      <div class="card-image card-image-1"></div>
+      <div class="card-content">
+        <h3>Progetto 1</h3>
+        <p>Sito web moderno per azienda tech</p>
+        <button class="btn">Scopri di più</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image card-image-2"></div>
+      <div class="card-content">
+        <h3>Progetto 2</h3>
+        <p>App mobile per fitness tracker</p>
+        <button class="btn btn-green">Scopri di più</button>
+      </div>
+    </div>
+  </section>
+</body>
+</html>`,
+              highlightLines: [32, 33, 34, 35, 36, 37, 38, 39]
+            }
+          },
+          {
+            title: "Aggiungi stili per seconda card",
+            code: {
+              language: "css",
+              code: `* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+.hero {
+  background: url('https://picsum.photos/1200/400') center/cover no-repeat;
+  height: 400px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+.hero h1 {
+  margin: 0 0 15px 0;
+  font-size: 48px;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 24px;
+}
+
+.about {
+  margin-top: 30px;
+  padding: 30px;
+  background-color: white;
+  border: 3px dashed #3498DB;
+  border-radius: 10px;
+}
+
+.about h2 {
+  margin: 0 0 15px 0;
+  color: #2C3E50;
+}
+
+.about p {
+  margin: 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.projects {
+  margin-top: 30px;
+}
+
+.projects h2 {
+  color: #2C3E50;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: white;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.card-image {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-image-1 {
+  background-image: url('https://picsum.photos/600/150?random=1');
+}
+
+.card-image-2 {
+  background-image: url('https://picsum.photos/600/150?random=2');
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h3 {
+  margin: 0 0 10px 0;
+  color: #2C3E50;
+}
+
+.card-content p {
+  margin: 0 0 15px 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.btn {
+  background-color: #3498DB;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-green {
+  background-color: #2ECC71;
+}`,
+              highlightLines: [81, 82, 83, 84, 111, 112, 113]
+            }
+          },
+          {
+            title: "Aggiungi terza card",
+            code: {
+              language: "html",
+              code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il Mio Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="hero">
+    <h1>Benvenuto nel Mio Portfolio</h1>
+    <p>Designer e Sviluppatore Creativo</p>
+  </section>
+
+  <section class="about">
+    <h2>Chi Sono</h2>
+    <p>Sono un designer appassionato con 5 anni di esperienza nel settore digitale.</p>
+  </section>
+
+  <section class="projects">
+    <h2>I Miei Progetti</h2>
+
+    <div class="card">
+      <div class="card-image card-image-1"></div>
+      <div class="card-content">
+        <h3>Progetto 1</h3>
+        <p>Sito web moderno per azienda tech</p>
+        <button class="btn">Scopri di più</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image card-image-2"></div>
+      <div class="card-content">
+        <h3>Progetto 2</h3>
+        <p>App mobile per fitness tracker</p>
+        <button class="btn btn-green">Scopri di più</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image card-image-3"></div>
+      <div class="card-content">
+        <h3>Progetto 3</h3>
+        <p>E-commerce per brand di moda</p>
+        <button class="btn btn-purple">Scopri di più</button>
+      </div>
+    </div>
+  </section>
+</body>
+</html>`,
+              highlightLines: [41, 42, 43, 44, 45, 46, 47, 48]
+            }
+          },
+          {
+            title: "Aggiungi stili per terza card",
+            code: {
+              language: "css",
+              code: `* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+.hero {
+  background: url('https://picsum.photos/1200/400') center/cover no-repeat;
+  height: 400px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+.hero h1 {
+  margin: 0 0 15px 0;
+  font-size: 48px;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 24px;
+}
+
+.about {
+  margin-top: 30px;
+  padding: 30px;
+  background-color: white;
+  border: 3px dashed #3498DB;
+  border-radius: 10px;
+}
+
+.about h2 {
+  margin: 0 0 15px 0;
+  color: #2C3E50;
+}
+
+.about p {
+  margin: 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.projects {
+  margin-top: 30px;
+}
+
+.projects h2 {
+  color: #2C3E50;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: white;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.card-image {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-image-1 {
+  background-image: url('https://picsum.photos/600/150?random=1');
+}
+
+.card-image-2 {
+  background-image: url('https://picsum.photos/600/150?random=2');
+}
+
+.card-image-3 {
+  background-image: url('https://picsum.photos/600/150?random=3');
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h3 {
+  margin: 0 0 10px 0;
+  color: #2C3E50;
+}
+
+.card-content p {
+  margin: 0 0 15px 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.btn {
+  background-color: #3498DB;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-green {
+  background-color: #2ECC71;
+}
+
+.btn-purple {
+  background-color: #9B59B6;
+}`,
+              highlightLines: [85, 86, 87, 88, 118, 119, 120]
+            }
+          },
+          {
+            title: "Aggiungi effetto hover alle card",
+            code: {
+              language: "css",
+              code: `* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+.hero {
+  background: url('https://picsum.photos/1200/400') center/cover no-repeat;
+  height: 400px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+.hero h1 {
+  margin: 0 0 15px 0;
+  font-size: 48px;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 24px;
+}
+
+.about {
+  margin-top: 30px;
+  padding: 30px;
+  background-color: white;
+  border: 3px dashed #3498DB;
+  border-radius: 10px;
+}
+
+.about h2 {
+  margin: 0 0 15px 0;
+  color: #2C3E50;
+}
+
+.about p {
+  margin: 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.projects {
+  margin-top: 30px;
+}
+
+.projects h2 {
+  color: #2C3E50;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: white;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  border-color: #3498DB;
+  transform: translateY(-5px);
+}
+
+.card-image {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-image-1 {
+  background-image: url('https://picsum.photos/600/150?random=1');
+}
+
+.card-image-2 {
+  background-image: url('https://picsum.photos/600/150?random=2');
+}
+
+.card-image-3 {
+  background-image: url('https://picsum.photos/600/150?random=3');
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h3 {
+  margin: 0 0 10px 0;
+  color: #2C3E50;
+}
+
+.card-content p {
+  margin: 0 0 15px 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.btn {
+  background-color: #3498DB;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn-green {
+  background-color: #2ECC71;
+}
+
+.btn-purple {
+  background-color: #9B59B6;
+}`,
+              highlightLines: [68, 70, 71, 72, 73, 119, 121, 122, 123]
+            }
+          },
+          {
+            title: "Aggiungi footer con border-top",
+            code: {
+              language: "html",
+              code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il Mio Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="hero">
+    <h1>Benvenuto nel Mio Portfolio</h1>
+    <p>Designer e Sviluppatore Creativo</p>
+  </section>
+
+  <section class="about">
+    <h2>Chi Sono</h2>
+    <p>Sono un designer appassionato con 5 anni di esperienza nel settore digitale.</p>
+  </section>
+
+  <section class="projects">
+    <h2>I Miei Progetti</h2>
+
+    <div class="card">
+      <div class="card-image card-image-1"></div>
+      <div class="card-content">
+        <h3>Progetto 1</h3>
+        <p>Sito web moderno per azienda tech</p>
+        <button class="btn">Scopri di più</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image card-image-2"></div>
+      <div class="card-content">
+        <h3>Progetto 2</h3>
+        <p>App mobile per fitness tracker</p>
+        <button class="btn btn-green">Scopri di più</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image card-image-3"></div>
+      <div class="card-content">
+        <h3>Progetto 3</h3>
+        <p>E-commerce per brand di moda</p>
+        <button class="btn btn-purple">Scopri di più</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Il Mio Portfolio - Tutti i diritti riservati</p>
+  </footer>
+</body>
+</html>`,
+              highlightLines: [50, 51, 52]
+            }
+          },
+          {
+            title: "Stila il footer",
+            code: {
+              language: "css",
+              code: `* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+.hero {
+  background: url('https://picsum.photos/1200/400') center/cover no-repeat;
+  height: 400px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+.hero h1 {
+  margin: 0 0 15px 0;
+  font-size: 48px;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 24px;
+}
+
+.about {
+  margin-top: 30px;
+  padding: 30px;
+  background-color: white;
+  border: 3px dashed #3498DB;
+  border-radius: 10px;
+}
+
+.about h2 {
+  margin: 0 0 15px 0;
+  color: #2C3E50;
+}
+
+.about p {
+  margin: 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.projects {
+  margin-top: 30px;
+}
+
+.projects h2 {
+  color: #2C3E50;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: white;
+  border: 2px solid #E0E0E0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  border-color: #3498DB;
+  transform: translateY(-5px);
+}
+
+.card-image {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-image-1 {
+  background-image: url('https://picsum.photos/600/150?random=1');
+}
+
+.card-image-2 {
+  background-image: url('https://picsum.photos/600/150?random=2');
+}
+
+.card-image-3 {
+  background-image: url('https://picsum.photos/600/150?random=3');
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h3 {
+  margin: 0 0 10px 0;
+  color: #2C3E50;
+}
+
+.card-content p {
+  margin: 0 0 15px 0;
+  color: #7F8C8D;
+  line-height: 1.6;
+}
+
+.btn {
+  background-color: #3498DB;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn-green {
+  background-color: #2ECC71;
+}
+
+.btn-purple {
+  background-color: #9B59B6;
+}
+
+footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 5px solid #E74C3C;
+  text-align: center;
+  color: #7F8C8D;
+}`,
+              highlightLines: [135, 136, 137, 138, 139, 140, 141]
+            }
+          },
+          "Salva tutti i file (Ctrl+S su HTML e CSS) e apri in Live Server (doppio clic + F5)",
+          "Passa il mouse sulle card - vedrai l'effetto hover con bordo blu e spostamento",
+          "Passa il mouse sui bottoni - si ingrandiranno leggermente",
+          "Osserva come le 3 card sono disposte verticalmente una sotto l'altra (è corretto!)"
+        ]}
+        experiments={[
+          "Cambia border-radius della hero da 15px a 0 - gli angoli diventano squadrati",
+          "Cambia border-radius delle card da 12px a 50px - angoli molto arrotondati!",
+          "Cambia border della sezione 'about' da dashed a dotted - vedi lo stile punteggiato",
+          "Modifica background-size nella hero da cover a contain - vedi come cambia l'immagine",
+          "Aggiungi background-attachment: fixed; alla hero - crea effetto parallasse quando scrolli!"
         ]}
       />
 
