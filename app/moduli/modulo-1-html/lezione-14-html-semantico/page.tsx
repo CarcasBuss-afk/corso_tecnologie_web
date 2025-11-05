@@ -376,58 +376,215 @@ export default function Lezione14() {
         />
 
         <Exercise
-          title="Esercizio Guidato: Converti in Semantico"
+          title="🎯 Esercizio Guidato: Blog Post con HTML Semantico"
           difficulty="media"
           steps={[
-            'Apri il file "ricetta.html" che hai creato nella lezione precedente',
-            'Identifica le diverse parti: intestazione, contenuto principale, piè di pagina',
-            'Sostituisci il <div> principale con <main>',
-            'Se hai un titolo e introduzione all\'inizio, mettili in un <header>',
-            'Ogni ricetta completa diventa un <article>',
-            'Gli ingredienti e le istruzioni diventano <section> separate',
-            'Aggiungi un <footer> con il tuo nome e la data',
-            'Salva e controlla che tutto funzioni ancora!',
+            'Crea un file "blog-semantico.html" in VS Code',
+            {
+              text: 'Scrivi la struttura HTML base con title "Il Mio Blog"',
+              code: `<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8">
+    <title>Il Mio Blog</title>
+  </head>
+  <body>
+
+  </body>
+</html>`,
+              language: 'html',
+            },
+            {
+              text: 'Aggiungi un <header> con titolo del blog e barra di navigazione',
+              code: `<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8">
+    <title>Il Mio Blog</title>
+  </head>
+  <body>
+    <header>
+      <h1>Il Mio Blog di Tecnologia</h1>
+      <nav>
+        <a href="#home">Home</a> |
+        <a href="#articoli">Articoli</a> |
+        <a href="#contatti">Contatti</a>
+      </nav>
+    </header>
+  </body>
+</html>`,
+              language: 'html',
+              highlightLines: [8, 9, 10, 11, 12, 13, 14, 15],
+            },
+            {
+              text: 'Apri il <main> per il contenuto principale della pagina',
+              code: `<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8">
+    <title>Il Mio Blog</title>
+  </head>
+  <body>
+    <header>
+      <h1>Il Mio Blog di Tecnologia</h1>
+      <nav>
+        <a href="#home">Home</a> |
+        <a href="#articoli">Articoli</a> |
+        <a href="#contatti">Contatti</a>
+      </nav>
+    </header>
+
+    <main>
+    </main>
+  </body>
+</html>`,
+              language: 'html',
+              highlightLines: [17, 18],
+            },
+            {
+              text: 'Dentro <main>, crea un <article> per il primo articolo del blog con titolo H2',
+              code: `<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8">
+    <title>Il Mio Blog</title>
+  </head>
+  <body>
+    <header>
+      <h1>Il Mio Blog di Tecnologia</h1>
+      <nav>
+        <a href="#home">Home</a> |
+        <a href="#articoli">Articoli</a> |
+        <a href="#contatti">Contatti</a>
+      </nav>
+    </header>
+
+    <main>
+      <article>
+        <h2>Guida all'HTML Semantico</h2>
+        <p>Pubblicato il 5 novembre 2025</p>
+        <p>Scopriamo insieme come usare i tag semantici per creare pagine web più chiare e accessibili!</p>
+      </article>
+    </main>
+  </body>
+</html>`,
+              language: 'html',
+              highlightLines: [18, 19, 20, 21, 22],
+            },
+            {
+              text: 'Dentro l\'<article>, aggiungi due <section>: una per l\'introduzione e una per i dettagli',
+              code: `<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8">
+    <title>Il Mio Blog</title>
+  </head>
+  <body>
+    <header>
+      <h1>Il Mio Blog di Tecnologia</h1>
+      <nav>
+        <a href="#home">Home</a> |
+        <a href="#articoli">Articoli</a> |
+        <a href="#contatti">Contatti</a>
+      </nav>
+    </header>
+
+    <main>
+      <article>
+        <h2>Guida all'HTML Semantico</h2>
+        <p>Pubblicato il 5 novembre 2025</p>
+        <p>Scopriamo insieme come usare i tag semantici per creare pagine web più chiare e accessibili!</p>
+
+        <section>
+          <h3>Cos'è l'HTML Semantico?</h3>
+          <p>L'HTML semantico usa tag che descrivono il significato del contenuto, non solo l'aspetto.</p>
+        </section>
+
+        <section>
+          <h3>Tag Principali</h3>
+          <ul>
+            <li><strong>header:</strong> intestazione della pagina</li>
+            <li><strong>nav:</strong> menu di navigazione</li>
+            <li><strong>main:</strong> contenuto principale</li>
+            <li><strong>article:</strong> contenuto autonomo</li>
+            <li><strong>section:</strong> sezioni tematiche</li>
+            <li><strong>footer:</strong> piè di pagina</li>
+          </ul>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>`,
+              language: 'html',
+              highlightLines: [23, 24, 25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40],
+            },
+            {
+              text: 'Aggiungi un <footer> alla fine del body con informazioni sull\'autore e copyright',
+              code: `<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8">
+    <title>Il Mio Blog</title>
+  </head>
+  <body>
+    <header>
+      <h1>Il Mio Blog di Tecnologia</h1>
+      <nav>
+        <a href="#home">Home</a> |
+        <a href="#articoli">Articoli</a> |
+        <a href="#contatti">Contatti</a>
+      </nav>
+    </header>
+
+    <main>
+      <article>
+        <h2>Guida all'HTML Semantico</h2>
+        <p>Pubblicato il 5 novembre 2025</p>
+        <p>Scopriamo insieme come usare i tag semantici per creare pagine web più chiare e accessibili!</p>
+
+        <section>
+          <h3>Cos'è l'HTML Semantico?</h3>
+          <p>L'HTML semantico usa tag che descrivono il significato del contenuto, non solo l'aspetto.</p>
+        </section>
+
+        <section>
+          <h3>Tag Principali</h3>
+          <ul>
+            <li><strong>header:</strong> intestazione della pagina</li>
+            <li><strong>nav:</strong> menu di navigazione</li>
+            <li><strong>main:</strong> contenuto principale</li>
+            <li><strong>article:</strong> contenuto autonomo</li>
+            <li><strong>section:</strong> sezioni tematiche</li>
+            <li><strong>footer:</strong> piè di pagina</li>
+          </ul>
+        </section>
+      </article>
+    </main>
+
+    <footer>
+      <p>© 2025 Il Mio Blog - Scritto con passione da Marco</p>
+      <p>Contattami: marco@esempio.com</p>
+    </footer>
+  </body>
+</html>`,
+              language: 'html',
+              highlightLines: [42, 43, 44, 45],
+            },
+            'Salva il file (Ctrl+S o Cmd+S)',
+            'Fai doppio click sul file "blog-semantico.html" per aprirlo nel browser! 🎉',
+            'Nota come <header> contiene intestazione e navigazione - ha senso semanticamente! 🎯',
+            'Nota come <main> racchiude il contenuto principale (l\'articolo) 📄',
+            'Nota come <article> è un contenuto completo che potrebbe stare da solo 📰',
+            'Nota come le <section> dividono l\'articolo in parti tematiche 📚',
+            'Nota come <footer> contiene informazioni sul sito e l\'autore 👤',
           ]}
-        />
-
-        <CodeExample
-          title="Esempio di trasformazione"
-          code={`<!-- PRIMA -->
-<div>
-  <div>
-    <h1>Ricette della Nonna</h1>
-  </div>
-  <div>
-    <h2>Pasta al Pomodoro</h2>
-    <p>Una ricetta classica...</p>
-  </div>
-</div>
-
-<!-- DOPO -->
-<header>
-  <h1>Ricette della Nonna</h1>
-</header>
-
-<main>
-  <article>
-    <h2>Pasta al Pomodoro</h2>
-    <p>Una ricetta classica...</p>
-
-    <section>
-      <h3>Ingredienti</h3>
-      <ul>...</ul>
-    </section>
-
-    <section>
-      <h3>Preparazione</h3>
-      <ol>...</ol>
-    </section>
-  </article>
-</main>
-
-<footer>
-  <p>Ricette raccolte da Marco - 2025</p>
-</footer>`}
+          experiments={[
+            'Aggiungi un secondo <article> dopo il primo con un altro post del blog, salva e ricarica (F5)!',
+            'Rimuovi il tag <nav> e lascia solo i link dentro <header>, salva e ricarica - funziona ma perde significato semantico!',
+            'Aggiungi un <aside> dopo il <main> con una sidebar "Articoli Correlati", salva e ricarica',
+            'Cambia <article> in <div>, salva e ricarica - visivamente uguale ma semanticamente sbagliato!',
+            'Aggiungi un tag <time datetime="2025-11-05"> alla data di pubblicazione per renderlo ancora più semantico!',
+          ]}
         />
 
         <Challenge
