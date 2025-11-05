@@ -265,34 +265,39 @@ export default function Lezione14() {
           <div>
             <h3 className="font-bold text-red-600 mb-3">❌ PRIMA (senza semantica)</h3>
             <CodeExample
-              code={`<div class="header">
-  <div class="title">Blog</div>
-  <div class="menu">
-    <div><a href="/">Home</a></div>
-    <div><a href="/blog">Blog</a></div>
+              code={`<!-- Tutto con div generici -->
+<div>
+  <h1>Blog</h1>
+  <div>
+    <a href="/">Home</a> |
+    <a href="/blog">Blog</a>
   </div>
 </div>
 
-<div class="content">
-  <div class="post">
-    <div class="post-title">Articolo</div>
-    <div class="post-text">Testo...</div>
+<div>
+  <div>
+    <h2>Articolo</h2>
+    <p>Testo...</p>
   </div>
 </div>
 
-<div class="footer">
-  <div>© 2025</div>
+<div>
+  <p>© 2025</p>
 </div>`}
             />
+            <p className="text-sm text-gray-600 mt-2">
+              ❌ Solo &lt;div&gt; generici - non chiaro cosa rappresenta ogni parte
+            </p>
           </div>
 
           <div>
             <h3 className="font-bold text-green-600 mb-3">✅ DOPO (con semantica)</h3>
             <CodeExample
-              code={`<header>
+              code={`<!-- Tag semantici specifici -->
+<header>
   <h1>Blog</h1>
   <nav>
-    <a href="/">Home</a>
+    <a href="/">Home</a> |
     <a href="/blog">Blog</a>
   </nav>
 </header>
@@ -308,6 +313,9 @@ export default function Lezione14() {
   <p>© 2025</p>
 </footer>`}
             />
+            <p className="text-sm text-gray-600 mt-2">
+              ✅ Tag semantici - subito chiaro: intestazione, navigazione, contenuto, piè di pagina!
+            </p>
           </div>
         </div>
 
