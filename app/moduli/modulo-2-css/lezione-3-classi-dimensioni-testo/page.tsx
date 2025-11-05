@@ -487,26 +487,271 @@ export default function Lezione3ClassiDimensioniTesto() {
 
       {/* Esercizio */}
       <Exercise
-        title="Crea il Tuo Sistema di Classi"
-        difficulty="facile"
+        title="🎯 Esercizio Guidato: Il Tuo Sistema di Classi CSS"
         steps={[
           'Crea una cartella "classi-css" in VS Code',
-          'Crea index.html con struttura base (<!DOCTYPE>, head, body)',
-          'Nel body, aggiungi: h1 (titolo principale), h2 (sottotitolo), 4 paragrafi, una citazione',
-          'Crea style.css e collegalo con <link>',
-          'Crea classe .titolo-principale con font-size: 40px, font-weight: bold, text-align: center, color: #2C3E50',
-          'Crea classe .sottotitolo con font-size: 24px, font-weight: 300, text-align: center, color: #7F8C8D',
-          'Crea classe .importante con font-size: 20px, font-weight: bold, color: #E74C3C',
-          'Crea classe .evidenziato con background-color: #FFFACD, padding: 10px, border: 2px solid #FFD700',
-          'Crea classe .citazione con font-size: 18px, text-align: center, font-weight: 300, color: #555',
-          'Applica .titolo-principale al h1',
-          'Applica .sottotitolo al h2',
-          'Applica .importante ai primi due paragrafi',
-          'Applica .evidenziato al terzo paragrafo',
-          'Applica .citazione al quarto paragrafo (la citazione)',
-          'Apri in Live Server e verifica che tutti gli stili funzionino',
-          'Prova a cambiare i valori di font-size e osserva le differenze',
-          'Prova a cambiare font-weight da 300 a 700 sulla citazione'
+          'Dentro la cartella, crea due file: "index.html" e "style.css"',
+          {
+            text: 'Apri index.html e scrivi la struttura con titoli e paragrafi (SENZA classi ancora)',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema di Classi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Il Potere delle Classi CSS</h1>
+  <h2>Impariamo a Controllare lo Stile</h2>
+  <p>Le classi ci permettono di dare stili diversi agli elementi.</p>
+  <p>Possiamo controllare dimensione, peso e allineamento del testo.</p>
+  <p>Questa sezione è particolarmente importante!</p>
+  <p>"CSS is awesome!" - Un web developer</p>
+</body>
+</html>`,
+            language: 'html',
+          },
+          {
+            text: 'Apri style.css e crea la prima classe: .titolo-principale (grande, grassetto, centrato)',
+            code: `/* Sistema di Classi CSS */
+.titolo-principale {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: #2C3E50;
+}`,
+            language: 'css',
+          },
+          {
+            text: 'Torna in index.html e applica la classe al h1',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema di Classi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 class="titolo-principale">Il Potere delle Classi CSS</h1>
+  <h2>Impariamo a Controllare lo Stile</h2>
+  <p>Le classi ci permettono di dare stili diversi agli elementi.</p>
+  <p>Possiamo controllare dimensione, peso e allineamento del testo.</p>
+  <p>Questa sezione è particolarmente importante!</p>
+  <p>"CSS is awesome!" - Un web developer</p>
+</body>
+</html>`,
+            language: 'html',
+            highlightLines: [9],
+          },
+          'Salva entrambi i file (Ctrl+S) e fai doppio click su index.html',
+          'Verifica che il titolo h1 sia GRANDE, GRASSETTO e CENTRATO! 🎨',
+          {
+            text: 'Torna in style.css e aggiungi la classe .sottotitolo (medio, leggero, centrato)',
+            code: `/* Sistema di Classi CSS */
+.titolo-principale {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: #2C3E50;
+}
+
+.sottotitolo {
+  font-size: 24px;
+  font-weight: 300;
+  text-align: center;
+  color: #7F8C8D;
+}`,
+            language: 'css',
+            highlightLines: [9, 10, 11, 12, 13, 14],
+          },
+          {
+            text: 'In index.html, applica la classe al h2',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema di Classi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 class="titolo-principale">Il Potere delle Classi CSS</h1>
+  <h2 class="sottotitolo">Impariamo a Controllare lo Stile</h2>
+  <p>Le classi ci permettono di dare stili diversi agli elementi.</p>
+  <p>Possiamo controllare dimensione, peso e allineamento del testo.</p>
+  <p>Questa sezione è particolarmente importante!</p>
+  <p>"CSS is awesome!" - Un web developer</p>
+</body>
+</html>`,
+            language: 'html',
+            highlightLines: [10],
+          },
+          'Salva (Ctrl+S) e ricarica il browser (F5) - h2 deve essere centrato e leggero!',
+          {
+            text: 'In style.css, aggiungi la classe .importante (grande, grassetto, rosso)',
+            code: `/* Sistema di Classi CSS */
+.titolo-principale {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: #2C3E50;
+}
+
+.sottotitolo {
+  font-size: 24px;
+  font-weight: 300;
+  text-align: center;
+  color: #7F8C8D;
+}
+
+.importante {
+  font-size: 20px;
+  font-weight: bold;
+  color: #E74C3C;
+}`,
+            language: 'css',
+            highlightLines: [16, 17, 18, 19, 20],
+          },
+          {
+            text: 'In index.html, applica .importante ai primi DUE paragrafi',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema di Classi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 class="titolo-principale">Il Potere delle Classi CSS</h1>
+  <h2 class="sottotitolo">Impariamo a Controllare lo Stile</h2>
+  <p class="importante">Le classi ci permettono di dare stili diversi agli elementi.</p>
+  <p class="importante">Possiamo controllare dimensione, peso e allineamento del testo.</p>
+  <p>Questa sezione è particolarmente importante!</p>
+  <p>"CSS is awesome!" - Un web developer</p>
+</body>
+</html>`,
+            language: 'html',
+            highlightLines: [11, 12],
+          },
+          'Salva e ricarica (F5) - i primi 2 paragrafi devono essere ROSSI e GRASSETTI!',
+          {
+            text: 'In style.css, aggiungi la classe .evidenziato (sfondo giallo)',
+            code: `/* Sistema di Classi CSS */
+.titolo-principale {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: #2C3E50;
+}
+
+.sottotitolo {
+  font-size: 24px;
+  font-weight: 300;
+  text-align: center;
+  color: #7F8C8D;
+}
+
+.importante {
+  font-size: 20px;
+  font-weight: bold;
+  color: #E74C3C;
+}
+
+.evidenziato {
+  background-color: #FFFACD;
+  color: #333;
+}`,
+            language: 'css',
+            highlightLines: [22, 23, 24, 25],
+          },
+          {
+            text: 'In index.html, applica .evidenziato al terzo paragrafo',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema di Classi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 class="titolo-principale">Il Potere delle Classi CSS</h1>
+  <h2 class="sottotitolo">Impariamo a Controllare lo Stile</h2>
+  <p class="importante">Le classi ci permettono di dare stili diversi agli elementi.</p>
+  <p class="importante">Possiamo controllare dimensione, peso e allineamento del testo.</p>
+  <p class="evidenziato">Questa sezione è particolarmente importante!</p>
+  <p>"CSS is awesome!" - Un web developer</p>
+</body>
+</html>`,
+            language: 'html',
+            highlightLines: [13],
+          },
+          'Salva e ricarica (F5) - il terzo paragrafo deve avere sfondo GIALLO!',
+          {
+            text: 'In style.css, aggiungi la classe .citazione (centrato, leggero, grigio)',
+            code: `/* Sistema di Classi CSS */
+.titolo-principale {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: #2C3E50;
+}
+
+.sottotitolo {
+  font-size: 24px;
+  font-weight: 300;
+  text-align: center;
+  color: #7F8C8D;
+}
+
+.importante {
+  font-size: 20px;
+  font-weight: bold;
+  color: #E74C3C;
+}
+
+.evidenziato {
+  background-color: #FFFACD;
+  color: #333;
+}
+
+.citazione {
+  font-size: 18px;
+  text-align: center;
+  font-weight: 300;
+  color: #555;
+}`,
+            language: 'css',
+            highlightLines: [27, 28, 29, 30, 31, 32],
+          },
+          {
+            text: 'In index.html, applica .citazione al quarto paragrafo (la citazione)',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema di Classi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 class="titolo-principale">Il Potere delle Classi CSS</h1>
+  <h2 class="sottotitolo">Impariamo a Controllare lo Stile</h2>
+  <p class="importante">Le classi ci permettono di dare stili diversi agli elementi.</p>
+  <p class="importante">Possiamo controllare dimensione, peso e allineamento del testo.</p>
+  <p class="evidenziato">Questa sezione è particolarmente importante!</p>
+  <p class="citazione">"CSS is awesome!" - Un web developer</p>
+</body>
+</html>`,
+            language: 'html',
+            highlightLines: [14],
+          },
+          'Salva e ricarica (F5) - la citazione deve essere CENTRATA e LEGGERA! ✨',
+          'Verifica nel browser: ogni paragrafo ha uno stile diverso grazie alle classi!',
+        ]}
+        experiments={[
+          'Cambia font-size di .titolo-principale da 40px a 60px - diventa gigante!',
+          'Cambia font-weight di .citazione da 300 a 700 (bold) - diventa grassetto!',
+          'Cambia text-align di .importante da sinistra a "center" - si centra!',
+          'Applica la classe .importante anche al terzo paragrafo (quello evidenziato) - può avere DUE classi: class="evidenziato importante"',
+          'Crea una nuova classe .piccolo con font-size: 12px e applicala a un paragrafo - diventa minuscolo!',
         ]}
       />
 
