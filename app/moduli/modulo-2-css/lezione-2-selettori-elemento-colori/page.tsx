@@ -397,23 +397,140 @@ div {
 
       {/* Esercizio */}
       <Exercise
-        title="Pagina con Sezioni Colorate"
-        difficulty="facile"
+        title="🎯 Esercizio Guidato: Pagina con Colori HEX e Bordi"
         steps={[
           'Crea una cartella "colori-css" in VS Code',
-          'Crea index.html con struttura base (<!DOCTYPE>, head, body)',
-          'Nel body, aggiungi: h1, h2, 3 paragrafi, 2 link',
-          'Crea style.css e collegalo con <link>',
-          'In CSS: h1 con color #2C3E50 e border 3px solid #3498DB',
-          'h2 con color #E74C3C e background-color #FADBD8',
-          'Tutti i p con color #34495E',
-          'Il primo p con background-color #D5F4E6 e border 2px dashed green',
-          'Il secondo p con background-color #FCF3CF',
-          'Il terzo p con background-color #EBDEF0',
-          'Tutti i link (a) con color #8E44AD (viola)',
-          'body con background-color #ECF0F1 (grigio chiaro)',
-          'Apri in browser e verifica che tutti i colori siano applicati',
-          'Sperimenta nei DevTools cambiando i codici hex'
+          'Dentro la cartella, crea due file: "index.html" e "style.css"',
+          {
+            text: 'Apri index.html e scrivi la struttura con titoli, paragrafi e link',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Colori HEX e Bordi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Il Potere dei Colori HEX</h1>
+  <h2>Cosa Sono i Codici Esadecimali?</h2>
+  <p>I codici HEX ci danno accesso a milioni di colori!</p>
+  <p>Ogni codice è formato da 6 caratteri: #RRGGBB</p>
+  <p>Possiamo creare qualsiasi sfumatura vogliamo.</p>
+  <a href="#">Scopri di più sui colori</a> |
+  <a href="#">Guida completa HEX</a>
+</body>
+</html>`,
+            language: 'html',
+          },
+          {
+            text: 'Apri style.css e scrivi la prima regola: h1 con colore e bordo blu',
+            code: `/* Selettori elemento con HEX */
+h1 {
+  color: #2C3E50;
+  border: 3px solid #3498DB;
+}`,
+            language: 'css',
+          },
+          'Salva entrambi i file (Ctrl+S o Cmd+S)',
+          'Fai doppio click su "index.html" per aprirlo nel browser',
+          'Verifica che il titolo h1 sia grigio scuro con bordo blu! 🎨',
+          {
+            text: 'Torna in style.css e aggiungi lo stile per h2 (rosso su sfondo rosa)',
+            code: `/* Selettori elemento con HEX */
+h1 {
+  color: #2C3E50;
+  border: 3px solid #3498DB;
+}
+
+h2 {
+  color: #E74C3C;
+  background-color: #FADBD8;
+}`,
+            language: 'css',
+            highlightLines: [7, 8, 9, 10],
+          },
+          'Salva (Ctrl+S) e ricarica il browser (F5)',
+          'Verifica che h2 sia rosso su sfondo rosa chiaro!',
+          {
+            text: 'Aggiungi lo stile per TUTTI i paragrafi (colore grigio scuro)',
+            code: `/* Selettori elemento con HEX */
+h1 {
+  color: #2C3E50;
+  border: 3px solid #3498DB;
+}
+
+h2 {
+  color: #E74C3C;
+  background-color: #FADBD8;
+}
+
+p {
+  color: #34495E;
+}`,
+            language: 'css',
+            highlightLines: [12, 13, 14],
+          },
+          'Salva e ricarica (F5) - tutti e 3 i paragrafi devono essere grigio scuro!',
+          {
+            text: 'Aggiungi lo stile per TUTTI i link (viola)',
+            code: `/* Selettori elemento con HEX */
+h1 {
+  color: #2C3E50;
+  border: 3px solid #3498DB;
+}
+
+h2 {
+  color: #E74C3C;
+  background-color: #FADBD8;
+}
+
+p {
+  color: #34495E;
+}
+
+a {
+  color: #8E44AD;
+}`,
+            language: 'css',
+            highlightLines: [16, 17, 18],
+          },
+          'Salva e ricarica (F5) - i link devono essere viola!',
+          {
+            text: 'Infine, aggiungi lo stile per body (sfondo grigio chiaro)',
+            code: `/* Selettori elemento con HEX */
+h1 {
+  color: #2C3E50;
+  border: 3px solid #3498DB;
+}
+
+h2 {
+  color: #E74C3C;
+  background-color: #FADBD8;
+}
+
+p {
+  color: #34495E;
+}
+
+a {
+  color: #8E44AD;
+}
+
+body {
+  background-color: #ECF0F1;
+}`,
+            language: 'css',
+            highlightLines: [20, 21, 22],
+          },
+          'Salva e ricarica (F5) - tutta la pagina deve avere sfondo grigio chiaro! ✨',
+          'Premi F12, vai alla tab "Elements" e clicca su un elemento per vedere i colori HEX applicati',
+        ]}
+        experiments={[
+          'Cambia il colore di h1 da #2C3E50 a #FF0000 (rosso puro), salva e ricarica - cosa noti?',
+          'Cambia lo stile del border di h1 da "solid" a "dashed", poi prova "dotted"',
+          'Nei DevTools (F12), clicca sul quadratino colorato vicino a un codice HEX - si apre il color picker! Scegli un nuovo colore',
+          'Aggiungi "background-color: #D5F4E6;" dentro la regola p{} - tutti i paragrafi avranno lo sfondo verde chiaro!',
+          'In VS Code, quando scrivi un codice HEX come #FF6B6B, clicca sul quadratino colorato che appare - puoi scegliere colori visivamente!',
         ]}
       />
 
