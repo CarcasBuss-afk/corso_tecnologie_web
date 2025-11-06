@@ -1,9 +1,501 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 5 Novembre 2025 - Sessione 19 Planning Modulo 3 Progetto Intermedio
+**Ultimo aggiornamento:** 6 Novembre 2025 - Sessione 20 Implementazione Lezioni 1-2 Modulo 3
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
+
+---
+
+## 📅 CHANGELOG SESSIONE 20 (6 Novembre 2025) - IMPLEMENTAZIONE LEZIONI 1-2 MODULO 3
+
+### 🎯 Obiettivo Sessione
+Implementare le prime due lezioni del Modulo 3 "Progetto Intermedio" seguendo il planning della Sessione 19. Creare Lezione 1 (Planning & Setup) e Lezione 2 (Hero + Navbar) con contenuti completi, attivare il modulo nella homepage e aggiungere glossario termini tecnici per accessibilità studenti 14 anni.
+
+---
+
+### 1. 📝 Aggiornamento lib/moduli.ts
+
+**File modificato:** `/lib/moduli.ts`
+
+**Cosa fatto:**
+Aggiunto array `lezioni` al Modulo 3 con le 4 lezioni pianificate:
+
+```typescript
+lezioni: [
+  {
+    id: "1",
+    titolo: "Planning & Setup",
+    slug: "lezione-1-planning-setup",
+    durata: "1 ora",
+    difficolta: "facile",
+  },
+  {
+    id: "2",
+    titolo: "Hero + Navbar",
+    slug: "lezione-2-hero-navbar",
+    durata: "1.5 ore",
+    difficolta: "media",
+  },
+  {
+    id: "3",
+    titolo: "Features + How It Works",
+    slug: "lezione-3-features-how-it-works",
+    durata: "1.5 ore",
+    difficolta: "media",
+  },
+  {
+    id: "4",
+    titolo: "Form + Footer + Polish",
+    slug: "lezione-4-form-footer-polish",
+    durata: "1 ora",
+    difficolta: "media",
+  },
+]
+```
+
+**Totale ore:** 5 ore (1h + 1.5h + 1.5h + 1h)
+
+**Commit:** `e32cc90` (incluso con Lezione 1)
+
+---
+
+### 2. 🎓 Lezione 1: Planning & Setup
+
+**File creato:** `/app/moduli/modulo-3-progetto-intermedio/lezione-1-planning-setup/page.tsx`
+
+**Dimensione:** ~3200 righe di codice
+
+**Contenuti:**
+
+#### A) Introduzione Progetto
+- Spiegazione cos'è una landing page
+- Differenza con esercizi precedenti (micro-esercizi → progetto unico)
+- Lista completa sezioni da costruire (navbar, hero, features, how it works, form, footer)
+- Concetto di "portfolio piece"
+
+#### B) Glossario Termini Tecnici (AGGIUNTO SUCCESSIVAMENTE)
+**Problema identificato:** Troppi termini tecnici/professionali non comprensibili per 14 anni
+
+**Soluzione:** Aggiunta sezione "📖 Parole Nuove da Imparare" con 13 termini spiegati
+
+Ogni termine include:
+- **Definizione chiara** ("Cos'è:")
+- **Analogia comprensibile** (💡 con paragoni che conoscono)
+- **Esempio pratico** (📝 con app/siti famosi)
+
+Termini spiegati:
+1. **Landing Page** - Pagina che vuole convincerti
+   - Analogia: poster pubblicitario digitale
+   - Esempio: iscrizione Spotify/TikTok
+
+2. **Navbar** - Barra navigazione in cima
+   - Analogia: indice di un libro
+   - Esempio: barra YouTube
+
+3. **Hero Section** - Sezione grande sotto navbar
+   - Analogia: copertina rivista/videogioco
+   - Esempio: Netflix/Instagram
+
+4. **CTA** - Bottone che dice cosa fare
+   - Analogia: "Clicca qui!"
+   - Esempio: "Iscriviti" YouTube
+
+5. **Wireframe** - Disegno semplice pagina
+   - Analogia: piantina camera
+   - Esempio: schizzo con "QUI VA IL TITOLO"
+
+6. **Features** - Funzioni/vantaggi
+   - Analogia: caratteristiche smartphone
+   - Esempio: "70M brani", "Offline mode"
+
+7. **Palette** - Set colori coerenti
+   - Analogia: dipingere stanza
+   - Esempio: Instagram viola/rosa/arancio
+
+8. **Typography** - Font/caratteri
+   - Analogia: scrittura a mano vs computer
+   - Esempio: Google "Roboto"
+
+9. **Layout** - Organizzazione elementi
+   - Analogia: sistemare quaderni zaino
+   - Esempio: Instagram foto centro
+
+10. **Gradient** - Sfumatura colori
+    - Analogia: tramonto
+    - Esempio: logo Instagram
+
+11. **Hover** - Al passaggio mouse
+    - Analogia: puntare dito
+    - Esempio: link Google sottolineati
+
+12. **Sticky** - Sempre visibile scrollando
+    - Analogia: post-it su monitor
+    - Esempio: barra YouTube sempre in alto
+
+13. **Portfolio Piece** - Progetto da mostrare
+    - Analogia: disegno appeso in camera
+    - Esempio: questo progetto!
+
+**Box motivazionale:** "Diventeranno normali usandole!" + "Questa è il tuo dizionario"
+
+**Commit glossario:** `91c8f17` - "Feature: Aggiunto glossario termini tecnici alla Lezione 1"
+
+#### C) Processo di Design Professionale
+- 4 step spiegati (wireframe → palette → setup → codice)
+- Diagramma visivo con card colorate
+- Errori comuni principianti (saltare planning)
+- Concetto design thinking
+
+#### D) Presentazione 3 Temi
+
+**🎮 Tema 1: GameVerse** (Gaming Platform)
+- Target: Gamer 14-25 anni
+- Palette: Indigo (#6366F1), Pink (#EC4899), Dark (#0F172A), Green (#10B981)
+- Font: Rajdhani (heading) + Inter (body)
+- Hero: "La Tua Destinazione Gaming Definitiva"
+- 6 Features: Libreria infinita, Tornei, Statistiche, Community, Voice Chat, Cloud Save
+- Footer: Prodotto, Community, Supporto, Azienda
+
+**🍕 Tema 2: TasteHub** (Food Delivery)
+- Target: Foodies, studenti 18-35
+- Palette: Red (#EF4444), Amber (#F59E0B), Cream (#FFFBEB), Green (#10B981)
+- Font: Poppins (heading) + Open Sans (body)
+- Hero: "Il Cibo che Ami, a Casa Tua in 30 Minuti"
+- 6 Features: Menu infinito, Consegna veloce, Tracking, Pagamenti sicuri, Recensioni, Offerte
+- Footer: Esplora, Per i Ristoranti, Supporto, Azienda
+
+**🎵 Tema 3: BeatStream** (Music Streaming)
+- Target: Music lovers 16-30
+- Palette: Purple (#8B5CF6), Cyan (#06B6D4), Dark (#18181B), Pink (#EC4899)
+- Font: Montserrat (heading) + Lato (body)
+- Hero: "Milioni di Brani, Zero Pubblicità"
+- 6 Features: 70M+ brani, Playlist AI, Offline, Podcasts, HiFi, Listen Together
+- Footer: Prodotto, Discover, Supporto, Azienda
+
+Ogni tema presentato con:
+- Card colorata con gradient header
+- Palette visiva (quadrati colore + HEX)
+- Typography indicata
+- Lista 6 features con emoji
+- Descrizione stile
+
+#### E) Wireframing
+- Spiegazione cos'è wireframe
+- Esercizio guidato: disegna su carta 6 sezioni
+- Diagramma visivo struttura (6 rettangoli colorati)
+- Consigli pratici (usa rettangoli, niente dettagli)
+
+#### F) Setup Progetto
+- Struttura cartelle (`landing-page-progetto/`, `css/`, `images/`)
+- HTML base con head completo e title personalizzato per tema
+- Link a CSS esterno
+
+#### G) CSS Custom Properties per Tema
+**3 blocchi CSS completi** (copia-incolla per tema scelto):
+
+**GameVerse CSS:**
+```css
+@import url('Rajdhani + Inter');
+:root {
+  --primary: #6366F1;
+  --secondary: #EC4899;
+  --bg-dark: #0F172A;
+  /* ...tutti i colori */
+}
+```
+
+**TasteHub CSS:**
+```css
+@import url('Poppins + Open Sans');
+:root {
+  --primary: #EF4444;
+  --secondary: #F59E0B;
+  --bg-cream: #FFFBEB;
+  /* ...tutti i colori */
+}
+```
+
+**BeatStream CSS:**
+```css
+@import url('Montserrat + Lato');
+:root {
+  --primary: #8B5CF6;
+  --secondary: #06B6D4;
+  --bg-dark: #18181B;
+  /* ...tutti i colori */
+}
+```
+
+Ogni blocco include:
+- Import Google Fonts
+- Custom properties (colori primari, secondari, backgrounds, text, accents)
+- Reset CSS (margin/padding: 0, box-sizing)
+- Stili base body (font-family, background, color, line-height)
+- Stili heading (font-family, font-weight)
+- Test visivo (h1 colorato, p con text-secondary)
+
+#### H) Test e Verifica
+- Istruzioni test step-by-step
+- Verifica colore titolo
+- Verifica font cambiato
+
+#### I) Checklist Completamento
+10 punti per verifica finale
+
+**Commit:** `e32cc90` - "Feature: Creata Lezione 1 - Planning & Setup (Modulo 3)"
+
+**Approccio didattico:** Completamente guidato, focus su process > codice
+
+---
+
+### 3. 🎨 Lezione 2: Hero + Navbar
+
+**File creato:** `/app/moduli/modulo-3-progetto-intermedio/lezione-2-hero-navbar/page.tsx`
+
+**Dimensione:** ~3400 righe di codice
+
+**Contenuti:**
+
+#### A) Introduzione
+- Importanza prime impressioni (navbar + hero)
+- Spiegazione perché sono le sezioni PIÙ IMPORTANTI
+- Anatomia navbar (logo, menu, CTA)
+- Anatomia hero (headline, subheadline, CTA, image)
+- Grid 2 colonne con card descrittive
+
+#### B) ProjectMilestone Component (PRIMO USO!)
+```tsx
+<ProjectMilestone
+  numero={1}
+  titolo="Navbar + Hero Completi"
+  requisiti={[
+    "Navbar con logo, 4 menu items, CTA button",
+    "Navbar sticky (rimane fissa scrollando)",
+    "Hero full-height (100vh)",
+    "Hero headline 48px+",
+    "Hero subheadline descrittiva",
+    "Due CTA buttons (primary + secondary)",
+    "Flexbox per layout",
+    "Hover effects su link e button",
+    "Font tema applicati",
+    "Colori tema applicati"
+  ]}
+  suggerimenti={[
+    "display: flex + justify-content: space-between",
+    "Hero: flex-direction: column + align-items: center",
+    "Button primary: background primario + padding",
+    "transition: all 0.3s ease"
+  ]}
+/>
+```
+
+#### C) Parte 1: Costruire Navbar
+
+**HTML Navbar:**
+```html
+<nav class="navbar">
+  <div class="logo">🎮 GameVerse</div>
+  <ul class="nav-menu">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how-it-works">Come Funziona</a></li>
+    <li><a href="#pricing">Prezzi</a></li>
+    <li><a href="#contact">Contatti</a></li>
+  </ul>
+  <a href="#" class="nav-cta">Inizia Gratis</a>
+</nav>
+```
+
+**CSS Navbar:**
+- Flexbox layout (`display: flex`, `justify-content: space-between`)
+- Sticky positioning (`position: sticky`, `top: 0`, `z-index: 100`)
+- Logo hover effect (`transform: scale(1.05)`)
+- Menu links hover (color transition)
+- CTA button hover (`translateY(-2px)`, box-shadow)
+- Border bottom per separazione
+- Padding generoso (20px 80px)
+
+**Personalizzazioni per tema:**
+- GameVerse/BeatStream: background dark, text chiaro
+- TasteHub: background bianco, text scuro
+
+#### D) Parte 2: Costruire Hero Section
+
+**HTML Hero:**
+```html
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-headline">La Tua Destinazione Gaming Definitiva</h1>
+    <p class="hero-subheadline">Gioca, competi e connettiti...</p>
+    <div class="hero-buttons">
+      <a href="#" class="btn-primary">Inizia Gratis</a>
+      <a href="#" class="btn-secondary">Guarda il Trailer</a>
+    </div>
+  </div>
+</section>
+```
+
+**CSS Hero:**
+- Full-height (`min-height: 100vh`)
+- Flexbox centering (`display: flex`, `justify-content/align-items: center`)
+- Linear gradient background (diverso per ogni tema)
+- Radial gradient texture (pattern sottili con rgba opacity)
+- Typography sizing (headline 56px, subheadline 20px)
+- **Gradient text effect** (`-webkit-background-clip: text`, `-webkit-text-fill-color: transparent`)
+- Button primary (solid background + box-shadow colorato)
+- Button secondary (outline + hover fill)
+- Hover effects (`translateY(-3px)`, box-shadow increase)
+
+**Spiegazioni CSS Avanzate:**
+- `min-height: 100vh` (100% viewport height)
+- `linear-gradient()` per sfondi moderni
+- `radial-gradient()` per texture
+- `-webkit-background-clip: text` (magia gradient text! 🌈)
+- `box-shadow` con rgba opacity (ombre colorate)
+- `transform: translateY()` (micro-interactions)
+- `flex-wrap: wrap` (responsive buttons)
+
+#### E) Personalizzazioni per Tema
+
+**3 blocchi CSS specifici** con code examples:
+
+**GameVerse:**
+```css
+.navbar { background-color: var(--bg-dark); }
+.hero { background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1347 100%); }
+.hero-headline { color: var(--text-primary); }
+```
+
+**TasteHub:**
+```css
+.navbar { background-color: var(--bg-white); }
+.hero { background: linear-gradient(135deg, var(--bg-cream) 0%, var(--bg-light-orange) 100%); }
+.hero-headline { color: var(--text-dark); }
+```
+
+**BeatStream:**
+```css
+.navbar { background-color: var(--bg-dark); }
+.hero { background: linear-gradient(135deg, var(--bg-dark) 0%, #1e1b4b 100%); }
+.hero-headline { color: var(--text-primary); }
+```
+
+Istruzioni chiare su come commentare/decommentare righe per tema scelto.
+
+#### F) Test e Verifica
+- Test navbar sticky scrolling
+- Test hover effects smooth
+- Test hero full-height
+- Test gradient text visibile
+- Test buttons hover (sollevamento + ombra)
+
+#### G) Checklist Completamento
+12 punti per verifica finale
+
+**Commit:** `4cc33e1` - "Feature: Creata Lezione 2 - Hero + Navbar (Modulo 3)"
+
+**Approccio didattico:** Completamente guidato con spiegazioni dettagliate ogni proprietà CSS
+
+**Tecniche CSS insegnate:**
+- Flexbox avanzato (justify-content, align-items, gap)
+- Position sticky per navbar fixed
+- Gradients (linear + radial)
+- Gradient text effects (webkit magic)
+- Transform + transition per micro-interactions
+- Box-shadow colorati per depth
+- Custom properties usage (var())
+
+---
+
+### 4. 🔧 Fix Homepage - Attivazione Modulo 3
+
+**File modificato:** `/app/page.tsx`
+
+**Problema:** Modulo 3 mostrava "Prossimamente" anche dopo creazione lezioni
+
+**Causa:** `disponibile: false` nell'array moduli homepage
+
+**Fix applicato:**
+```typescript
+{
+  id: 3,
+  titolo: 'Progetto Intermedio',
+  slug: 'modulo-3-progetto-intermedio',
+  descrizione: 'Crea il tuo primo sito completo',
+  ore: 5,
+  icona: '🚀',
+  colore: 'from-green-500 to-green-600',
+  disponibile: true,  // ✅ Era false
+  primaLezione: 'lezione-1-planning-setup',  // ✅ Aggiunto
+},
+```
+
+**Risultato:**
+- Pulsante ora mostra "Inizia il Modulo →" (verde)
+- Click porta a `/moduli/modulo-3-progetto-intermedio/lezione-1-planning-setup`
+- Modulo attivo e navigabile
+
+**Commit:** `27364a1` - "Fix: Attiva Modulo 3 nella homepage"
+
+---
+
+### 📊 Riepilogo Sessione 20
+
+**Commits totali:** 4
+1. ✅ `e32cc90` - Lezione 1: Planning & Setup (3200+ righe)
+2. ✅ `4cc33e1` - Lezione 2: Hero + Navbar (3400+ righe)
+3. ✅ `27364a1` - Fix homepage attivazione Modulo 3
+4. ✅ `91c8f17` - Glossario termini tecnici Lezione 1 (285 righe)
+
+**File totali modificati/creati:** 4 file
+- `lib/moduli.ts` - Aggiunto array lezioni Modulo 3
+- `app/moduli/modulo-3-progetto-intermedio/lezione-1-planning-setup/page.tsx` - Creato
+- `app/moduli/modulo-3-progetto-intermedio/lezione-2-hero-navbar/page.tsx` - Creato
+- `app/page.tsx` - Fix disponibilità Modulo 3
+
+**Righe totali:** ~7000+ righe di codice didattico
+
+**Stato avanzamento Modulo 3:**
+- ✅ Lezione 1: Planning & Setup (completa)
+- ✅ Lezione 2: Hero + Navbar (completa)
+- ⏳ Lezione 3: Features + How It Works (da creare)
+- ⏳ Lezione 4: Form + Footer + Polish (da creare)
+
+**Progresso:** 50% (2/4 lezioni complete)
+
+**Miglioramenti pedagogici implementati:**
+- ✅ Glossario termini tecnici per accessibilità studenti 14 anni
+- ✅ Analogie comprensibili per ogni concetto nuovo
+- ✅ Esempi pratici con app/siti che studenti conoscono
+- ✅ ProjectMilestone component per tracking progressi
+- ✅ CSS custom properties per gestione temi
+- ✅ Spiegazioni dettagliate proprietà CSS avanzate
+- ✅ Personalizzazioni specifiche per ogni tema
+
+**Tecniche avanzate insegnate:**
+- CSS Custom Properties (variabili CSS)
+- Flexbox layout professionale
+- Position sticky per navbar fixed
+- Gradients (linear + radial) per sfondi moderni
+- Gradient text effect (-webkit-background-clip)
+- Transform + transitions per micro-interactions
+- Box-shadow colorati per depth
+- Hover states smooth
+
+**Impatto studenti:**
+- Primo progetto completo con design thinking
+- Comprensione terminologia professionale web design
+- Setup progetto professionale riutilizzabile
+- Componente navbar + hero production-ready
+- 3 temi completi tra cui scegliere (motivazione++)
+- Portfolio piece utilizzabile dopo completamento
+
+**Prossimi step (Sessione 21):**
+- Creare Lezione 3: Features + How It Works (Grid + Flexbox)
+- Creare Lezione 4: Form + Footer + Polish
+- Aggiornare PROGETTO_LOG.md con Sessione 21
+
+**Deploy:** ✅ Tutto pushato su main, Vercel deployment completato
 
 ---
 
