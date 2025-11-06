@@ -63,6 +63,291 @@ export default function Lezione1PlanningSetup() {
         </div>
       </section>
 
+      {/* Glossario - Parole Nuove */}
+      <section className="mb-12">
+        <h2 className="text-3xl font-bold mb-4">📖 Parole Nuove da Imparare</h2>
+
+        <p className="text-lg mb-6">
+          In questo progetto useremo parole nuove del mondo del <strong>web design</strong>.
+          Non preoccuparti! Te le spieghiamo tutte qui in modo semplice. 😊
+        </p>
+
+        <div className="space-y-4">
+          {/* Landing Page */}
+          <div className="bg-white border-2 border-purple-200 p-5 rounded-lg">
+            <div className="flex items-start gap-3">
+              <span className="text-3xl">🎯</span>
+              <div>
+                <h3 className="text-xl font-bold text-purple-900 mb-2">Landing Page</h3>
+                <p className="text-gray-700 mb-2">
+                  <strong>Cos&apos;è:</strong> Una pagina web speciale che vuole <strong>convincerti a fare qualcosa</strong>
+                  (iscriverti, scaricare un&apos;app, comprare qualcosa).
+                </p>
+                <p className="text-gray-600 text-sm italic">
+                  💡 Analogia: È come un <strong>poster pubblicitario</strong> ma digitale e interattivo!
+                </p>
+                <p className="text-gray-600 text-sm mt-2">
+                  📝 Esempio: La pagina dove ti iscrivi a Spotify o scarichi TikTok.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Navbar */}
+          <div className="bg-white border-2 border-blue-200 p-5 rounded-lg">
+            <div className="flex items-start gap-3">
+              <span className="text-3xl">🧭</span>
+              <div>
+                <h3 className="text-xl font-bold text-blue-900 mb-2">Navbar (Navigation Bar)</h3>
+                <p className="text-gray-700 mb-2">
+                  <strong>Cos&apos;è:</strong> La <strong>barra di navigazione</strong> in cima alla pagina.
+                  Contiene il logo e i link per muoverti nel sito.
+                </p>
+                <p className="text-gray-600 text-sm italic">
+                  💡 Analogia: È come l&apos;<strong>indice</strong> all&apos;inizio di un libro che ti dice dove andare!
+                </p>
+                <p className="text-gray-600 text-sm mt-2">
+                  📝 Esempio: La barra in alto su YouTube con il logo, la ricerca e il tuo profilo.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Hero Section */}
+          <div className="bg-white border-2 border-pink-200 p-5 rounded-lg">
+            <div className="flex items-start gap-3">
+              <span className="text-3xl">🚀</span>
+              <div>
+                <h3 className="text-xl font-bold text-pink-900 mb-2">Hero Section</h3>
+                <p className="text-gray-700 mb-2">
+                  <strong>Cos&apos;è:</strong> La <strong>sezione GRANDE</strong> appena sotto la navbar.
+                  È la prima cosa che vedi e deve catturare la tua attenzione subito!
+                </p>
+                <p className="text-gray-600 text-sm italic">
+                  💡 Analogia: È come la <strong>copertina</strong> di una rivista o di un videogioco - deve essere WOW! ✨
+                </p>
+                <p className="text-gray-600 text-sm mt-2">
+                  📝 Esempio: L&apos;immagine grande con il titolo quando apri Netflix o Instagram.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="bg-white border-2 border-green-200 p-5 rounded-lg">
+            <div className="flex items-start gap-3">
+              <span className="text-3xl">👆</span>
+              <div>
+                <h3 className="text-xl font-bold text-green-900 mb-2">CTA (Call To Action)</h3>
+                <p className="text-gray-700 mb-2">
+                  <strong>Cos&apos;è:</strong> Un <strong>bottone</strong> o link che ti dice cosa fare.
+                  Tipo &quot;Iscriviti&quot;, &quot;Scarica&quot;, &quot;Inizia Gratis&quot;.
+                </p>
+                <p className="text-gray-600 text-sm italic">
+                  💡 Analogia: È come quando qualcuno ti dice <strong>&quot;Clicca qui!&quot;</strong>
+                </p>
+                <p className="text-gray-600 text-sm mt-2">
+                  📝 Esempio: Il bottone rosso &quot;Iscriviti&quot; su YouTube.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Wireframe */}
+          <div className="bg-white border-2 border-indigo-200 p-5 rounded-lg">
+            <div className="flex items-start gap-3">
+              <span className="text-3xl">📝</span>
+              <div>
+                <h3 className="text-xl font-bold text-indigo-900 mb-2">Wireframe</h3>
+                <p className="text-gray-700 mb-2">
+                  <strong>Cos&apos;è:</strong> Un <strong>disegno semplice</strong> (schizzo) di come sarà la pagina.
+                  Solo rettangoli e linee, senza colori o dettagli.
+                </p>
+                <p className="text-gray-600 text-sm italic">
+                  💡 Analogia: Come quando disegni la <strong>piantina</strong> della tua camera su carta prima di spostare i mobili!
+                </p>
+                <p className="text-gray-600 text-sm mt-2">
+                  📝 Esempio: Schizzo con scritto &quot;QUI VA IL TITOLO&quot;, &quot;QUI VA L&apos;IMMAGINE&quot;.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Features */}
+          <div className="bg-white border-2 border-amber-200 p-5 rounded-lg">
+            <div className="flex items-start gap-3">
+              <span className="text-3xl">⭐</span>
+              <div>
+                <h3 className="text-xl font-bold text-amber-900 mb-2">Features (Caratteristiche)</h3>
+                <p className="text-gray-700 mb-2">
+                  <strong>Cos&apos;è:</strong> Le <strong>funzioni</strong> o <strong>vantaggi</strong> di quello che stai promuovendo.
+                  Tipo &quot;Veloce&quot;, &quot;Gratis&quot;, &quot;Facile da usare&quot;.
+                </p>
+                <p className="text-gray-600 text-sm italic">
+                  💡 Analogia: Come quando descrivi il tuo smartphone: &quot;Ha fotocamera da 48MP, batteria lunga, schermo grande&quot;!
+                </p>
+                <p className="text-gray-600 text-sm mt-2">
+                  📝 Esempio: Su Spotify: &quot;70M brani&quot;, &quot;Playlist personalizzate&quot;, &quot;Offline mode&quot;.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Palette Colori */}
+          <div className="bg-white border-2 border-rose-200 p-5 rounded-lg">
+            <div className="flex items-start gap-3">
+              <span className="text-3xl">🎨</span>
+              <div>
+                <h3 className="text-xl font-bold text-rose-900 mb-2">Palette (Colori)</h3>
+                <p className="text-gray-700 mb-2">
+                  <strong>Cos&apos;è:</strong> Un <strong>set di colori</strong> che usi insieme in tutto il progetto.
+                  Di solito 3-5 colori che stanno bene insieme.
+                </p>
+                <p className="text-gray-600 text-sm italic">
+                  💡 Analogia: Come quando scegli i colori per <strong>dipingere la tua stanza</strong> - non ne usi 50 diversi!
+                </p>
+                <p className="text-gray-600 text-sm mt-2">
+                  📝 Esempio: Instagram usa viola/rosa/arancio. Facebook usa solo blu e bianco.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Typography */}
+          <div className="bg-white border-2 border-cyan-200 p-5 rounded-lg">
+            <div className="flex items-start gap-3">
+              <span className="text-3xl">✍️</span>
+              <div>
+                <h3 className="text-xl font-bold text-cyan-900 mb-2">Typography (Tipografia)</h3>
+                <p className="text-gray-700 mb-2">
+                  <strong>Cos&apos;è:</strong> I <strong>font</strong> (caratteri) che usi per scrivere.
+                  Di solito uno per i titoli e uno per il testo normale.
+                </p>
+                <p className="text-gray-600 text-sm italic">
+                  💡 Analogia: Come quando scegli se scrivere <strong>a mano</strong> o con il <strong>computer</strong> - cambiano le lettere!
+                </p>
+                <p className="text-gray-600 text-sm mt-2">
+                  📝 Esempio: Google usa il font &quot;Roboto&quot;, Apple usa &quot;San Francisco&quot;.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Layout */}
+          <div className="bg-white border-2 border-teal-200 p-5 rounded-lg">
+            <div className="flex items-start gap-3">
+              <span className="text-3xl">📐</span>
+              <div>
+                <h3 className="text-xl font-bold text-teal-900 mb-2">Layout</h3>
+                <p className="text-gray-700 mb-2">
+                  <strong>Cos&apos;è:</strong> Come <strong>organizzi</strong> gli elementi sulla pagina.
+                  Dove metti titoli, immagini, bottoni, etc.
+                </p>
+                <p className="text-gray-600 text-sm italic">
+                  💡 Analogia: Come quando <strong>sistemi i quaderni</strong> nello zaino - metti quelli pesanti sotto, leggeri sopra!
+                </p>
+                <p className="text-gray-600 text-sm mt-2">
+                  📝 Esempio: Su Instagram il layout mette le foto al centro, i bottoni sotto.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Gradient */}
+          <div className="bg-white border-2 border-violet-200 p-5 rounded-lg">
+            <div className="flex items-start gap-3">
+              <span className="text-3xl">🌈</span>
+              <div>
+                <h3 className="text-xl font-bold text-violet-900 mb-2">Gradient (Sfumatura)</h3>
+                <p className="text-gray-700 mb-2">
+                  <strong>Cos&apos;è:</strong> Un colore che <strong>sfuma</strong> gradualmente in un altro.
+                  Tipo dal blu al viola, dal rosso all&apos;arancio.
+                </p>
+                <p className="text-gray-600 text-sm italic">
+                  💡 Analogia: Come il <strong>tramonto</strong> - il cielo passa da arancione a rosa a blu! 🌅
+                </p>
+                <p className="text-gray-600 text-sm mt-2">
+                  📝 Esempio: Il logo di Instagram è un gradient rosa-viola-arancio.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Hover */}
+          <div className="bg-white border-2 border-orange-200 p-5 rounded-lg">
+            <div className="flex items-start gap-3">
+              <span className="text-3xl">🖱️</span>
+              <div>
+                <h3 className="text-xl font-bold text-orange-900 mb-2">Hover (Al passaggio del mouse)</h3>
+                <p className="text-gray-700 mb-2">
+                  <strong>Cos&apos;è:</strong> Cosa succede quando <strong>passi il mouse</strong> sopra qualcosa.
+                  Tipo un bottone che cambia colore.
+                </p>
+                <p className="text-gray-600 text-sm italic">
+                  💡 Analogia: Come quando <strong>punti il dito</strong> su qualcosa prima di prenderlo - gli dai attenzione!
+                </p>
+                <p className="text-gray-600 text-sm mt-2">
+                  📝 Esempio: I link su Google diventano sottolineati quando ci passi sopra col mouse.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Sticky */}
+          <div className="bg-white border-2 border-lime-200 p-5 rounded-lg">
+            <div className="flex items-start gap-3">
+              <span className="text-3xl">📌</span>
+              <div>
+                <h3 className="text-xl font-bold text-lime-900 mb-2">Sticky (Appiccicoso/Fisso)</h3>
+                <p className="text-gray-700 mb-2">
+                  <strong>Cos&apos;è:</strong> Un elemento che <strong>rimane sempre visibile</strong> anche quando scrolli la pagina.
+                  Tipo la navbar che resta in cima.
+                </p>
+                <p className="text-gray-600 text-sm italic">
+                  💡 Analogia: Come un <strong>post-it attaccato</strong> al monitor - non si sposta mai! 📌
+                </p>
+                <p className="text-gray-600 text-sm mt-2">
+                  📝 Esempio: La barra di YouTube che rimane sempre in alto quando scrolli i video.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Portfolio Piece */}
+          <div className="bg-white border-2 border-fuchsia-200 p-5 rounded-lg">
+            <div className="flex items-start gap-3">
+              <span className="text-3xl">🎨</span>
+              <div>
+                <h3 className="text-xl font-bold text-fuchsia-900 mb-2">Portfolio Piece</h3>
+                <p className="text-gray-700 mb-2">
+                  <strong>Cos&apos;è:</strong> Un <strong>progetto finito</strong> che puoi mostrare per far vedere cosa sai fare.
+                  Come un artista che mostra i suoi quadri!
+                </p>
+                <p className="text-gray-600 text-sm italic">
+                  💡 Analogia: Come quando fai un <strong>disegno bellissimo</strong> e lo appendi in camera per farlo vedere agli amici!
+                </p>
+                <p className="text-gray-600 text-sm mt-2">
+                  📝 Esempio: Questo progetto landing page sarà il tuo primo portfolio piece!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-gradient-to-r from-purple-100 to-pink-100 border-2 border-purple-300 p-6 rounded-lg mt-8">
+          <h3 className="font-bold text-purple-900 mb-3 text-xl flex items-center gap-2">
+            <span>💪</span> Non Preoccuparti!
+          </h3>
+          <p className="text-gray-800 mb-2">
+            All&apos;inizio queste parole sembreranno strane, ma <strong>le userai così tanto</strong> in questo progetto
+            che tra qualche giorno ti sembreranno normalissime! 🚀
+          </p>
+          <p className="text-gray-800 font-semibold">
+            Se dimentichi una parola, torna qui a rileggerla. Questa pagina è il tuo <strong>dizionario</strong>! 📖
+          </p>
+        </div>
+      </section>
+
       {/* Il Processo di Design */}
       <section className="mb-12">
         <h2 className="text-3xl font-bold mb-4">🎨 Il Processo di Design Professionale</h2>
