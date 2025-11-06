@@ -278,7 +278,36 @@ export const moduli: Modulo[] = [
     ore: 5,
     icona: "🚀",
     colore: "bg-green-500",
-    lezioni: [],
+    lezioni: [
+      {
+        id: "1",
+        titolo: "Planning & Setup",
+        slug: "lezione-1-planning-setup",
+        durata: "1 ora",
+        difficolta: "facile",
+      },
+      {
+        id: "2",
+        titolo: "Hero + Navbar",
+        slug: "lezione-2-hero-navbar",
+        durata: "1.5 ore",
+        difficolta: "media",
+      },
+      {
+        id: "3",
+        titolo: "Features + How It Works",
+        slug: "lezione-3-features-how-it-works",
+        durata: "1.5 ore",
+        difficolta: "media",
+      },
+      {
+        id: "4",
+        titolo: "Form + Footer + Polish",
+        slug: "lezione-4-form-footer-polish",
+        durata: "1 ora",
+        difficolta: "media",
+      },
+    ],
   },
   {
     id: 4,
