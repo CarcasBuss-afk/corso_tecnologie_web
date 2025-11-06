@@ -33,7 +33,8 @@ export default function Home() {
       ore: 5,
       icona: '🚀',
       colore: 'from-green-500 to-green-600',
-      disponibile: false,
+      disponibile: true,
+      primaLezione: 'lezione-1-planning-setup',
     },
     {
       id: 4,
