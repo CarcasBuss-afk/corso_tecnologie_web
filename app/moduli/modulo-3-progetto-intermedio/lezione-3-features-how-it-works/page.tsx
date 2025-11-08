@@ -2,7 +2,6 @@ import { getLezioniByModuloSlug } from '@/lib/moduli';
 import LessonLayout from '@/components/layout/LessonLayout';
 import LessonHeader from '@/components/layout/LessonHeader';
 import CodeExample from '@/components/didattica/CodeExample';
-import Challenge from '@/components/didattica/Challenge';
 import ProjectMilestone from '@/components/didattica/ProjectMilestone';
 
 export default function Lezione3FeaturesHowItWorks() {
@@ -1322,7 +1321,7 @@ export default function Lezione3FeaturesHowItWorks() {
           <div className="grid md:grid-cols-3 gap-6 mb-6">
             <div className="bg-white bg-opacity-20 rounded-lg p-4 border-2 border-white border-opacity-30">
               <div className="text-2xl mb-2">✅</div>
-              <div className="font-bold mb-1">Lezione 1: Planning</div>
+              <div className="font-bold mb-1 text-white">Lezione 1: Planning</div>
               <div className="text-sm text-green-100">
                 Wireframe, tema, CSS variables
               </div>
@@ -1330,7 +1329,7 @@ export default function Lezione3FeaturesHowItWorks() {
 
             <div className="bg-white bg-opacity-20 rounded-lg p-4 border-2 border-white border-opacity-30">
               <div className="text-2xl mb-2">✅</div>
-              <div className="font-bold mb-1">Lezione 2: Navbar + Hero</div>
+              <div className="font-bold mb-1 text-white">Lezione 2: Navbar + Hero</div>
               <div className="text-sm text-green-100">
                 Flexbox, sticky navbar, hero full-height
               </div>
@@ -1338,7 +1337,7 @@ export default function Lezione3FeaturesHowItWorks() {
 
             <div className="bg-white bg-opacity-20 rounded-lg p-4 border-2 border-white border-opacity-30">
               <div className="text-2xl mb-2">✅</div>
-              <div className="font-bold mb-1">Lezione 3: Features + How</div>
+              <div className="font-bold mb-1 text-white">Lezione 3: Features + How</div>
               <div className="text-sm text-green-100">CSS Grid, Flexbox, hover effects</div>
             </div>
           </div>

@@ -2,7 +2,6 @@ import { getLezioniByModuloSlug } from '@/lib/moduli';
 import LessonLayout from '@/components/layout/LessonLayout';
 import LessonHeader from '@/components/layout/LessonHeader';
 import CodeExample from '@/components/didattica/CodeExample';
-import Challenge from '@/components/didattica/Challenge';
 import ProjectMilestone from '@/components/didattica/ProjectMilestone';
 
 export default function Lezione4FormFooterPolish() {
@@ -1255,11 +1254,11 @@ html {
           </p>
 
           <div className="bg-white bg-opacity-20 rounded-lg p-8 max-w-3xl mx-auto backdrop-blur-sm border-2 border-white border-opacity-30">
-            <h3 className="text-2xl font-bold mb-6">Cosa Hai Imparato in Questo Progetto</h3>
+            <h3 className="text-2xl font-bold mb-6 text-white">Cosa Hai Imparato in Questo Progetto</h3>
             <div className="grid md:grid-cols-2 gap-6 text-left">
               <div>
                 <h4 className="font-bold mb-3 text-yellow-200">📐 Layout & Structure</h4>
-                <ul className="space-y-1 text-sm">
+                <ul className="space-y-1 text-sm text-white">
                   <li>• Wireframing e planning</li>
                   <li>• Flexbox per navbar e footer</li>
                   <li>• CSS Grid per features</li>
@@ -1270,7 +1269,7 @@ html {
 
               <div>
                 <h4 className="font-bold mb-3 text-pink-200">🎨 Design & Styling</h4>
-                <ul className="space-y-1 text-sm">
+                <ul className="space-y-1 text-sm text-white">
                   <li>• CSS Custom Properties (variabili)</li>
                   <li>• Gradient backgrounds e text</li>
                   <li>• Box-shadow con colori</li>
@@ -1281,7 +1280,7 @@ html {
 
               <div>
                 <h4 className="font-bold mb-3 text-purple-200">⚡ Interazioni & Effects</h4>
-                <ul className="space-y-1 text-sm">
+                <ul className="space-y-1 text-sm text-white">
                   <li>• Hover effects su button e card</li>
                   <li>• Focus state su form input</li>
                   <li>• Transform (scale, translate, rotate)</li>
@@ -1292,7 +1291,7 @@ html {
 
               <div>
                 <h4 className="font-bold mb-3 text-green-200">📋 Features Avanzate</h4>
-                <ul className="space-y-1 text-sm">
+                <ul className="space-y-1 text-sm text-white">
                   <li>• HTML5 Form Validation</li>
                   <li>• Semantic HTML (section, footer, nav)</li>
                   <li>• Mobile-first responsive</li>
@@ -1314,12 +1313,12 @@ html {
           </div>
 
           <div className="mt-10 p-6 bg-white bg-opacity-10 rounded-lg border-2 border-white border-opacity-40">
-            <h3 className="text-2xl font-bold mb-4">🚀 Cosa Fare Adesso</h3>
+            <h3 className="text-2xl font-bold mb-4 text-white">🚀 Cosa Fare Adesso</h3>
             <div className="space-y-3 text-left max-w-2xl mx-auto">
               <div className="flex gap-3 items-start">
                 <span className="text-2xl">📸</span>
                 <div>
-                  <div className="font-bold">Fai Screenshot</div>
+                  <div className="font-bold text-white">Fai Screenshot</div>
                   <p className="text-sm text-white text-opacity-80">
                     Cattura il tuo progetto finito per il portfolio
                   </p>
@@ -1329,7 +1328,7 @@ html {
               <div className="flex gap-3 items-start">
                 <span className="text-2xl">💾</span>
                 <div>
-                  <div className="font-bold">Salva su GitHub</div>
+                  <div className="font-bold text-white">Salva su GitHub</div>
                   <p className="text-sm text-white text-opacity-80">
                     Crea un repository per mostrarlo nei colloqui
                   </p>
@@ -1339,7 +1338,7 @@ html {
               <div className="flex gap-3 items-start">
                 <span className="text-2xl">🌐</span>
                 <div>
-                  <div className="font-bold">Pubblica Online (opzionale)</div>
+                  <div className="font-bold text-white">Pubblica Online (opzionale)</div>
                   <p className="text-sm text-white text-opacity-80">
                     Usa Netlify o GitHub Pages per un URL pubblico
                   </p>
@@ -1349,7 +1348,7 @@ html {
               <div className="flex gap-3 items-start">
                 <span className="text-2xl">🎯</span>
                 <div>
-                  <div className="font-bold">Personalizza Ulteriormente</div>
+                  <div className="font-bold text-white">Personalizza Ulteriormente</div>
                   <p className="text-sm text-white text-opacity-80">
                     Cambia colori, immagini, testi per renderlo unico
                   </p>
@@ -1359,7 +1358,7 @@ html {
               <div className="flex gap-3 items-start">
                 <span className="text-2xl">⚡</span>
                 <div>
-                  <div className="font-bold">Passa a JavaScript (Modulo 4)</div>
+                  <div className="font-bold text-white">Passa a JavaScript (Modulo 4)</div>
                   <p className="text-sm text-white text-opacity-80">
                     Impara a rendere il sito interattivo e dinamico
                   </p>
