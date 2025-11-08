@@ -1,33 +1,35 @@
-import LessonNav from '@/components/didattica/LessonNav';
+import { getLezioniByModuloSlug } from '@/lib/moduli';
+import LessonLayout from '@/components/layout/LessonLayout';
+import LessonHeader from '@/components/layout/LessonHeader';
 import CodeExample from '@/components/didattica/CodeExample';
-import Tip from '@/components/didattica/Tip';
-import Warning from '@/components/didattica/Warning';
 import Challenge from '@/components/didattica/Challenge';
 import ProjectMilestone from '@/components/didattica/ProjectMilestone';
 
 export default function Lezione3FeaturesHowItWorks() {
+  const lezioni = getLezioniByModuloSlug('modulo-3-progetto-intermedio');
+
   return (
-    <div className="max-w-5xl mx-auto px-6 py-12">
-      {/* Header */}
-      <div className="mb-12">
-        <h1 className="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">
-          Features + How It Works
-        </h1>
-        <p className="text-xl text-gray-600">
-          Costruisci le sezioni centrali della tua landing page con CSS Grid e Flexbox
-        </p>
-        <div className="flex gap-4 mt-6">
-          <span className="px-4 py-2 bg-green-100 text-green-800 rounded-full font-semibold">
-            Modulo 3 - Lezione 3
-          </span>
-          <span className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full font-semibold">
-            1.5 ore
-          </span>
-          <span className="px-4 py-2 bg-orange-100 text-orange-800 rounded-full font-semibold">
-            Difficoltà: Media
-          </span>
-        </div>
-      </div>
+    <LessonLayout
+      moduloSlug="modulo-3-progetto-intermedio"
+      moduloTitolo="Modulo 3: Progetto Intermedio"
+      lezioni={lezioni}
+      lezioneSlug="lezione-3-features-how-it-works"
+      lezioneTitolo="Features + How It Works"
+    >
+      <LessonHeader
+        numero={3}
+        titolo="Features + How It Works"
+        durata="1.5 ore"
+        difficolta="media"
+        obiettivi={[
+          'Costruire Features Section con CSS Grid (layout 3x2)',
+          'Creare How It Works con Flexbox (3 step process)',
+          'Capire la differenza tra Grid e Flexbox',
+          'Applicare hover effects avanzati (transform + shadow)',
+          'Creare numeri circolari con gradient background',
+          'Rendere le sezioni responsive su tutti i dispositivi'
+        ]}
+      />
 
       {/* Introduzione */}
       <section className="mb-12">
@@ -89,11 +91,14 @@ export default function Lezione3FeaturesHowItWorks() {
           </div>
         </div>
 
-        <Warning>
-          Questa lezione è <strong>semi-guidata</strong>. Ti darò tutto il codice completo, ma{' '}
-          <strong>dovrai adattarlo al tuo tema</strong> (colori, testi, emoji). Usa la{' '}
-          <strong>milestone finale</strong> per verificare di aver completato tutto!
-        </Warning>
+        <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded mb-6">
+          <p className="font-bold text-yellow-800 mb-2">⚠️ Nota Importante</p>
+          <p className="text-gray-700">
+            Questa lezione è <strong>semi-guidata</strong>. Ti darò tutto il codice completo, ma{' '}
+            <strong>dovrai adattarlo al tuo tema</strong> (colori, testi, emoji). Usa la{' '}
+            <strong>milestone finale</strong> per verificare di aver completato tutto!
+          </p>
+        </div>
       </section>
 
       {/* Sezione 1: Features Section con CSS Grid */}
@@ -193,10 +198,13 @@ export default function Lezione3FeaturesHowItWorks() {
               </div>
             </div>
 
-            <Tip>
-              <strong>repeat(3, 1fr)</strong> è una scorciatoia per scrivere{' '}
-              <code>1fr 1fr 1fr</code>. Significa "ripeti 3 volte una frazione uguale".
-            </Tip>
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mb-6">
+              <p className="font-bold text-blue-800 mb-2">💡 Suggerimento</p>
+              <p className="text-gray-700">
+                <strong>repeat(3, 1fr)</strong> è una scorciatoia per scrivere{' '}
+                <code className="bg-blue-100 px-2 py-1 rounded">1fr 1fr 1fr</code>. Significa "ripeti 3 volte una frazione uguale".
+              </p>
+            </div>
           </div>
 
           {/* Step 1: HTML Structure */}
@@ -284,12 +292,15 @@ export default function Lezione3FeaturesHowItWorks() {
 </section>`}
             />
 
-            <Tip>
-              Nota la struttura: un <strong>contenitore esterno</strong> (
-              <code>.features-section</code>), un <strong>contenitore interno</strong> (
-              <code>.features-container</code> per centrare), e la <strong>griglia</strong> (
-              <code>.features-grid</code>) che contiene le 6 card.
-            </Tip>
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mb-6">
+              <p className="font-bold text-blue-800 mb-2">💡 Suggerimento</p>
+              <p className="text-gray-700">
+                Nota la struttura: un <strong>contenitore esterno</strong> (
+                <code className="bg-blue-100 px-2 py-1 rounded">.features-section</code>), un <strong>contenitore interno</strong> (
+                <code className="bg-blue-100 px-2 py-1 rounded">.features-container</code> per centrare), e la <strong>griglia</strong> (
+                <code className="bg-blue-100 px-2 py-1 rounded">.features-grid</code>) che contiene le 6 card.
+              </p>
+            </div>
           </div>
 
           {/* Step 2: CSS Grid Styling */}
@@ -478,10 +489,13 @@ export default function Lezione3FeaturesHowItWorks() {
               </ul>
             </div>
 
-            <Tip>
-              Prova a cambiare <code>gap: 32px</code> in <code>gap: 16px</code> o{' '}
-              <code>gap: 48px</code> per vedere come cambia lo spazio tra le card!
-            </Tip>
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mb-6">
+              <p className="font-bold text-blue-800 mb-2">💡 Suggerimento</p>
+              <p className="text-gray-700">
+                Prova a cambiare <code className="bg-blue-100 px-2 py-1 rounded">gap: 32px</code> in <code className="bg-blue-100 px-2 py-1 rounded">gap: 16px</code> o{' '}
+                <code className="bg-blue-100 px-2 py-1 rounded">gap: 48px</code> per vedere come cambia lo spazio tra le card!
+              </p>
+            </div>
           </div>
 
           {/* Step 3: Personalizzazione */}
@@ -567,11 +581,14 @@ export default function Lezione3FeaturesHowItWorks() {
               </div>
             </div>
 
-            <Warning>
-              Le <strong>emoji</strong> sono importantissime! Scegli emoji che rappresentano bene
-              la feature. Per TasteHub usa emoji food (🍕🍝🥗), per BeatStream usa emoji musicali
-              (🎵🎧🎤).
-            </Warning>
+            <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded mb-6">
+              <p className="font-bold text-yellow-800 mb-2">⚠️ Emoji Importanti!</p>
+              <p className="text-gray-700">
+                Le <strong>emoji</strong> sono importantissime! Scegli emoji che rappresentano bene
+                la feature. Per TasteHub usa emoji food (🍕🍝🥗), per BeatStream usa emoji musicali
+                (🎵🎧🎤).
+              </p>
+            </div>
           </div>
 
           {/* Test Risultato */}
@@ -672,11 +689,14 @@ export default function Lezione3FeaturesHowItWorks() {
               </div>
             </div>
 
-            <Tip>
-              Useremo <strong>Flexbox in modalità row</strong> per allineare i 3 step
-              orizzontalmente. Ogni step avrà un <strong>numero circolare colorato</strong>, icona
-              emoji, titolo e descrizione.
-            </Tip>
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mb-6">
+              <p className="font-bold text-blue-800 mb-2">💡 Suggerimento</p>
+              <p className="text-gray-700">
+                Useremo <strong>Flexbox in modalità row</strong> per allineare i 3 step
+                orizzontalmente. Ogni step avrà un <strong>numero circolare colorato</strong>, icona
+                emoji, titolo e descrizione.
+              </p>
+            </div>
           </div>
 
           {/* Step 1: HTML Structure */}
@@ -740,10 +760,13 @@ export default function Lezione3FeaturesHowItWorks() {
 </section>`}
             />
 
-            <Tip>
-              Nota: ogni <strong>.step</strong> contiene 4 elementi (numero, icona, titolo,
-              descrizione). La struttura è ripetuta 3 volte.
-            </Tip>
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mb-6">
+              <p className="font-bold text-blue-800 mb-2">💡 Suggerimento</p>
+              <p className="text-gray-700">
+                Nota: ogni <strong>.step</strong> contiene 4 elementi (numero, icona, titolo,
+                descrizione). La struttura è ripetuta 3 volte.
+              </p>
+            </div>
           </div>
 
           {/* Step 2: CSS Flexbox Styling */}
@@ -921,10 +944,13 @@ export default function Lezione3FeaturesHowItWorks() {
               </ul>
             </div>
 
-            <Tip>
-              Il numero circolare usa un <strong>gradient background</strong> (da primary a
-              secondary) per creare un effetto moderno. Prova a cambiare i colori!
-            </Tip>
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mb-6">
+              <p className="font-bold text-blue-800 mb-2">💡 Suggerimento</p>
+              <p className="text-gray-700">
+                Il numero circolare usa un <strong>gradient background</strong> (da primary a
+                secondary) per creare un effetto moderno. Prova a cambiare i colori!
+              </p>
+            </div>
           </div>
 
           {/* Step 3: Personalizzazione */}
@@ -1146,11 +1172,11 @@ export default function Lezione3FeaturesHowItWorks() {
       />
 
       {/* Sfida Opzionale */}
-      <Challenge
-        title="Sfida Opzionale: Aggiungi Effetto 'Arrow' tra gli Step"
-        difficulty="media"
-        points={25}
-      >
+      <div className="my-8 p-6 bg-purple-50 border-2 border-purple-300 rounded-lg">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-3xl">🎯</span>
+          <h3 className="text-xl font-bold text-purple-900">Sfida Opzionale: Aggiungi Effetto 'Arrow' tra gli Step</h3>
+        </div>
         <div className="space-y-4">
           <p>
             Vuoi rendere la sezione How It Works ancora più figa? Aggiungi delle{' '}
@@ -1234,7 +1260,7 @@ export default function Lezione3FeaturesHowItWorks() {
             </div>
           </details>
         </div>
-      </Challenge>
+      </div>
 
       {/* Concetti Appresi */}
       <section className="mb-12">
@@ -1334,12 +1360,6 @@ export default function Lezione3FeaturesHowItWorks() {
         </div>
       </section>
 
-      {/* Navigazione */}
-      <LessonNav
-        moduloSlug="modulo-3-progetto-intermedio"
-        previousLesson="lezione-2-hero-navbar"
-        nextLesson="lezione-4-form-footer-polish"
-      />
-    </div>
+    </LessonLayout>
   );
 }

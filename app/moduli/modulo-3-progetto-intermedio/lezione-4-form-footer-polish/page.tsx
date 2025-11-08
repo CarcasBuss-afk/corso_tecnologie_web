@@ -1,33 +1,35 @@
-import LessonNav from '@/components/didattica/LessonNav';
+import { getLezioniByModuloSlug } from '@/lib/moduli';
+import LessonLayout from '@/components/layout/LessonLayout';
+import LessonHeader from '@/components/layout/LessonHeader';
 import CodeExample from '@/components/didattica/CodeExample';
-import Tip from '@/components/didattica/Tip';
-import Warning from '@/components/didattica/Warning';
 import Challenge from '@/components/didattica/Challenge';
 import ProjectMilestone from '@/components/didattica/ProjectMilestone';
 
 export default function Lezione4FormFooterPolish() {
+  const lezioni = getLezioniByModuloSlug('modulo-3-progetto-intermedio');
+
   return (
-    <div className="max-w-5xl mx-auto px-6 py-12">
-      {/* Header */}
-      <div className="mb-12">
-        <h1 className="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">
-          Form + Footer + Polish Finale
-        </h1>
-        <p className="text-xl text-gray-600">
-          Completa la tua landing page con form, footer e tocchi finali professionali
-        </p>
-        <div className="flex gap-4 mt-6">
-          <span className="px-4 py-2 bg-green-100 text-green-800 rounded-full font-semibold">
-            Modulo 3 - Lezione 4 (FINALE)
-          </span>
-          <span className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full font-semibold">
-            1 ora
-          </span>
-          <span className="px-4 py-2 bg-orange-100 text-orange-800 rounded-full font-semibold">
-            Difficoltà: Media
-          </span>
-        </div>
-      </div>
+    <LessonLayout
+      moduloSlug="modulo-3-progetto-intermedio"
+      moduloTitolo="Modulo 3: Progetto Intermedio"
+      lezioni={lezioni}
+      lezioneSlug="lezione-4-form-footer-polish"
+      lezioneTitolo="Form + Footer + Polish"
+    >
+      <LessonHeader
+        numero={4}
+        titolo="Form + Footer + Polish Finale"
+        durata="1 ora"
+        difficolta="media"
+        obiettivi={[
+          'Creare un form di contatto/newsletter con HTML5 validation',
+          'Costruire un footer professionale a 4 colonne con Flexbox',
+          'Applicare smooth scroll su tutta la pagina',
+          'Aggiungere focus states avanzati su input',
+          'Creare back to top button',
+          'Finalizzare il progetto con polish e refinement'
+        ]}
+      />
 
       {/* Introduzione */}
       <section className="mb-12">
@@ -214,10 +216,13 @@ export default function Lezione4FormFooterPolish() {
               </div>
             </div>
 
-            <Tip>
-              Se provi a inviare un form con <code>type="email"</code> e scrivi "ciao" invece di
-              un'email valida, il browser ti fermerà automaticamente! Provalo quando hai finito.
-            </Tip>
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mb-6">
+              <p className="font-bold text-blue-800 mb-2">💡 Suggerimento</p>
+              <p className="text-gray-700">
+                Se provi a inviare un form con <code className="bg-blue-100 px-2 py-1 rounded">type="email"</code> e scrivi "ciao" invece di
+                un'email valida, il browser ti fermerà automaticamente! Provalo quando hai finito.
+              </p>
+            </div>
           </div>
 
           {/* Step 1: HTML Form */}
@@ -462,11 +467,14 @@ export default function Lezione4FormFooterPolish() {
               </ul>
             </div>
 
-            <Tip>
-              Prova a scrivere nell'input email e nota come il bordo diventa colorato e appare
-              un'ombra leggera quando è "focused". Questo si chiama <strong>focus state</strong> ed
-              è importante per l'accessibilità!
-            </Tip>
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mb-6">
+              <p className="font-bold text-blue-800 mb-2">💡 Suggerimento</p>
+              <p className="text-gray-700">
+                Prova a scrivere nell'input email e nota come il bordo diventa colorato e appare
+                un'ombra leggera quando è "focused". Questo si chiama <strong>focus state</strong> ed
+                è importante per l'accessibilità!
+              </p>
+            </div>
           </div>
 
           {/* Personalizzazione */}
@@ -580,10 +588,13 @@ export default function Lezione4FormFooterPolish() {
               </div>
             </div>
 
-            <Tip>
-              Useremo <strong>Flexbox</strong> per creare 4 colonne che si dispongono in stack
-              verticale su mobile. È simile a How It Works ma con più colonne.
-            </Tip>
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mb-6">
+              <p className="font-bold text-blue-800 mb-2">💡 Suggerimento</p>
+              <p className="text-gray-700">
+                Useremo <strong>Flexbox</strong> per creare 4 colonne che si dispongono in stack
+                verticale su mobile. È simile a How It Works ma con più colonne.
+              </p>
+            </div>
           </div>
 
           {/* Step 1: HTML Footer */}
@@ -656,11 +667,14 @@ export default function Lezione4FormFooterPolish() {
 </footer>`}
             />
 
-            <Tip>
-              Nota la struttura: un <strong>contenitore principale</strong> (.footer-container) con
-              4 colonne (.footer-column), e poi una <strong>barra copyright</strong> (
-              .footer-bottom) separata sotto.
-            </Tip>
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mb-6">
+              <p className="font-bold text-blue-800 mb-2">💡 Suggerimento</p>
+              <p className="text-gray-700">
+                Nota la struttura: un <strong>contenitore principale</strong> (.footer-container) con
+                4 colonne (.footer-column), e poi una <strong>barra copyright</strong> (
+                .footer-bottom) separata sotto.
+              </p>
+            </div>
           </div>
 
           {/* Step 2: CSS Footer */}
@@ -961,10 +975,13 @@ html {
 }`}
             />
 
-            <Tip>
-              Ora prova a cliccare su "Features" nella navbar. La pagina{' '}
-              <strong>scrolla dolcemente</strong> invece di saltare! Questa è magia CSS pura.
-            </Tip>
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mb-6">
+              <p className="font-bold text-blue-800 mb-2">💡 Suggerimento</p>
+              <p className="text-gray-700">
+                Ora prova a cliccare su "Features" nella navbar. La pagina{' '}
+                <strong>scrolla dolcemente</strong> invece di saltare! Questa è magia CSS pura.
+              </p>
+            </div>
           </div>
 
           {/* Back to Top Button (opzionale) */}
@@ -1069,10 +1086,13 @@ html {
               </ul>
             </div>
 
-            <Warning>
-              Se una sezione sembra "schiacciata" o "troppo spaziosa" rispetto alle altre, è
-              probabile che il padding non sia uniforme. Usa il browser DevTools per ispezionare!
-            </Warning>
+            <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded mb-6">
+              <p className="font-bold text-yellow-800 mb-2">⚠️ Attenzione</p>
+              <p className="text-gray-700">
+                Se una sezione sembra "schiacciata" o "troppo spaziosa" rispetto alle altre, è
+                probabile che il padding non sia uniforme. Usa il browser DevTools per ispezionare!
+              </p>
+            </div>
           </div>
 
           {/* Final Touches */}
@@ -1351,11 +1371,11 @@ html {
       </section>
 
       {/* Challenge Extra */}
-      <Challenge
-        title="Sfida Extra: Aggiungi una Sezione Pricing"
-        difficulty="difficile"
-        points={50}
-      >
+      <div className="my-8 p-6 bg-purple-50 border-2 border-purple-300 rounded-lg">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-3xl">🎯</span>
+          <h3 className="text-xl font-bold text-purple-900">Sfida Extra: Aggiungi una Sezione Pricing</h3>
+        </div>
         <div className="space-y-4">
           <p>
             Vuoi spingere il progetto ancora più in là? Aggiungi una{' '}
@@ -1542,7 +1562,7 @@ html {
             </div>
           </details>
         </div>
-      </Challenge>
+      </div>
 
       {/* Concetti Appresi */}
       <section className="mb-12">
@@ -1594,8 +1614,6 @@ html {
         </div>
       </section>
 
-      {/* Navigazione */}
-      <LessonNav moduloSlug="modulo-3-progetto-intermedio" previousLesson="lezione-3-features-how-it-works" />
-    </div>
+    </LessonLayout>
   );
 }
