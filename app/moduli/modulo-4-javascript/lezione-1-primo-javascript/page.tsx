@@ -3,7 +3,8 @@ import LessonLayout from '@/components/layout/LessonLayout';
 import LessonHeader from '@/components/layout/LessonHeader';
 import CodeExample from '@/components/didattica/CodeExample';
 import Exercise from '@/components/didattica/Exercise';
-import ProjectMilestone from '@/components/didattica/ProjectMilestone';
+import LessonPreview from '@/components/didattica/LessonPreview';
+import Challenge from '@/components/didattica/Challenge';
 
 export default function Lezione1PrimoJavaScript() {
   const lezioni = getLezioniByModuloSlug('modulo-4-javascript');
@@ -25,18 +26,15 @@ export default function Lezione1PrimoJavaScript() {
           'Capire dove si scrive JavaScript',
           'Usare console.log() per stampare messaggi',
           'Aprire la Console del browser (F12)',
-          'Scrivere commenti nel codice JavaScript',
-          'Creare il tuo primo programma interattivo'
+          'Scrivere commenti nel codice JavaScript'
         ]}
       />
 
-      {/* INTRODUZIONE */}
+      {/* Introduzione */}
       <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">
-          Benvenuto nel Mondo di JavaScript!
-        </h2>
+        <h2 className="text-3xl font-bold mb-4">Benvenuto nel Mondo di JavaScript!</h2>
 
-        <div className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white p-8 rounded-lg mb-8">
+        <div className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white p-8 rounded-lg mb-6">
           <p className="text-xl mb-4">
             Se HTML è lo <strong>scheletro</strong> della pagina e CSS è il <strong>vestito</strong>...
           </p>
@@ -45,49 +43,40 @@ export default function Lezione1PrimoJavaScript() {
           </p>
         </div>
 
-        <div className="prose max-w-none mb-8">
-          <p className="text-lg text-gray-700 mb-4">
-            JavaScript è quello che rende le pagine web <strong>vive</strong> e <strong>interattive</strong>.
-          </p>
+        <p className="text-lg mb-4">
+          JavaScript è quello che rende le pagine web <strong>vive</strong> e <strong>interattive</strong>.
+        </p>
 
-          <div className="grid md:grid-cols-3 gap-6 my-8">
-            <div className="bg-blue-50 p-6 rounded-lg border-2 border-blue-200">
-              <div className="text-4xl mb-3">📱</div>
-              <h3 className="font-bold text-gray-900 mb-2">Instagram</h3>
-              <p className="text-gray-600 text-sm">
-                Quando clicchi ❤️ e il cuore diventa rosso? JavaScript!
-              </p>
-            </div>
-
-            <div className="bg-purple-50 p-6 rounded-lg border-2 border-purple-200">
-              <div className="text-4xl mb-3">🎮</div>
-              <h3 className="font-bold text-gray-900 mb-2">Giochi Browser</h3>
-              <p className="text-gray-600 text-sm">
-                Il personaggio si muove quando premi le frecce? JavaScript!
-              </p>
-            </div>
-
-            <div className="bg-green-50 p-6 rounded-lg border-2 border-green-200">
-              <div className="text-4xl mb-3">🛒</div>
-              <h3 className="font-bold text-gray-900 mb-2">Shopping Online</h3>
-              <p className="text-gray-600 text-sm">
-                Il carrello che si aggiorna quando aggiungi prodotti? JavaScript!
-              </p>
-            </div>
+        <div className="grid md:grid-cols-3 gap-6 my-8">
+          <div className="bg-blue-50 p-6 rounded-lg border-2 border-blue-200">
+            <div className="text-4xl mb-3">📱</div>
+            <h3 className="font-bold text-gray-900 mb-2">Instagram</h3>
+            <p className="text-gray-600 text-sm">
+              Quando clicchi ❤️ e il cuore diventa rosso? JavaScript!
+            </p>
           </div>
 
-          <p className="text-lg text-gray-700">
-            In questa lezione imparerai a scrivere il tuo primo codice JavaScript
-            e a vedere i risultati nella <strong>Console del browser</strong>.
-          </p>
+          <div className="bg-purple-50 p-6 rounded-lg border-2 border-purple-200">
+            <div className="text-4xl mb-3">🎮</div>
+            <h3 className="font-bold text-gray-900 mb-2">Giochi Browser</h3>
+            <p className="text-gray-600 text-sm">
+              Il personaggio si muove quando premi le frecce? JavaScript!
+            </p>
+          </div>
+
+          <div className="bg-green-50 p-6 rounded-lg border-2 border-green-200">
+            <div className="text-4xl mb-3">🛒</div>
+            <h3 className="font-bold text-gray-900 mb-2">Shopping Online</h3>
+            <p className="text-gray-600 text-sm">
+              Il carrello che si aggiorna quando aggiungi prodotti? JavaScript!
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* TEORIA: DOVE SCRIVERE JAVASCRIPT */}
+      {/* Dove scrivere JavaScript */}
       <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">
-          Dove Si Scrive JavaScript?
-        </h2>
+        <h2 className="text-3xl font-bold mb-4">📄 Dove Si Scrive JavaScript?</h2>
 
         <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mb-6">
           <p className="font-bold text-blue-800 mb-2">💡 Ricordi il tag &lt;style&gt; per il CSS?</p>
@@ -97,8 +86,9 @@ export default function Lezione1PrimoJavaScript() {
           </p>
         </div>
 
+        <h3 className="text-xl font-bold mb-3">Struttura HTML con JavaScript</h3>
         <CodeExample
-          title="Struttura HTML con JavaScript"
+          title="La posizione del tag <script>"
           code={`<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -110,7 +100,7 @@ export default function Lezione1PrimoJavaScript() {
   <h1>Ciao Mondo!</h1>
   <p>Guarda la console per vedere la magia! 🎩✨</p>
 
-  <!-- JavaScript va qui, alla fine del body -->
+  <!-- JavaScript va QUI, alla fine del body -->
   <script>
     // Il tuo codice JavaScript va qui dentro!
     console.log("Ciao dal JavaScript!");
@@ -122,8 +112,8 @@ export default function Lezione1PrimoJavaScript() {
           showLineNumbers
         />
 
-        <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded my-6">
-          <p className="font-bold text-yellow-800 mb-2">⚠️ Perché alla fine del &lt;body&gt;?</p>
+        <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded mt-6">
+          <h3 className="font-bold text-yellow-800 mb-2">⚠️ Perché alla fine del &lt;body&gt;?</h3>
           <p className="text-gray-700">
             Così JavaScript può "vedere" tutto l'HTML che c'è prima. È come leggere un libro:
             prima leggi la storia (HTML), poi capisci cosa fare (JavaScript).
@@ -131,31 +121,38 @@ export default function Lezione1PrimoJavaScript() {
         </div>
       </section>
 
-      {/* TEORIA: CONSOLE.LOG */}
+      {/* console.log() */}
       <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">
-          Il Tuo Primo Comando: console.log()
-        </h2>
+        <h2 className="text-3xl font-bold mb-4">🖨️ Il Tuo Primo Comando: console.log()</h2>
 
-        <div className="prose max-w-none mb-6">
-          <p className="text-lg text-gray-700 mb-4">
-            <code className="bg-gray-100 px-2 py-1 rounded text-blue-600 font-mono">console.log()</code>
-            {' '}è il comando più importante per iniziare. Significa: <strong>"stampa questo messaggio nella console"</strong>.
+        <p className="text-lg mb-4">
+          <code className="bg-gray-100 px-2 py-1 rounded text-blue-600 font-mono">console.log()</code>
+          {' '}è il comando più importante per iniziare.
+        </p>
+
+        <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-6 rounded-lg mb-6">
+          <h3 className="text-xl font-bold mb-3">📘 Cosa Fa?</h3>
+          <p className="text-lg mb-3">
+            <strong>"Stampa questo messaggio nella console del browser"</strong>
           </p>
-
-          <div className="bg-purple-50 p-6 rounded-lg border-2 border-purple-200 my-6">
-            <h3 className="text-xl font-bold text-purple-900 mb-3">
-              🎮 Pensa a console.log come alla chat di un gioco
-            </h3>
-            <p className="text-gray-700">
-              Quando giochi online e scrivi messaggi che solo i developer (tu!) possono vedere.
-              Gli utenti normali NON vedono la console, è il tuo <strong>strumento segreto</strong>! 🔧
-            </p>
+          <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+            <p className="font-mono text-lg text-yellow-200">console.log("Il tuo messaggio");</p>
           </div>
         </div>
 
+        <div className="bg-purple-50 p-6 rounded-lg border-2 border-purple-200 mb-6">
+          <h3 className="text-xl font-bold text-purple-900 mb-3">
+            🎮 Pensa a console.log come alla chat di un gioco
+          </h3>
+          <p className="text-gray-700">
+            Quando giochi online e scrivi messaggi che solo i developer (tu!) possono vedere.
+            Gli utenti normali NON vedono la console, è il tuo <strong>strumento segreto</strong>! 🔧
+          </p>
+        </div>
+
+        <h3 className="text-xl font-bold mb-3">Esempi di Utilizzo</h3>
         <CodeExample
-          title="Sintassi di console.log()"
+          title="Diversi tipi di messaggi"
           code={`// Stampa un messaggio di testo
 console.log("Ciao a tutti!");
 
@@ -171,80 +168,87 @@ console.log("Ho", 15, "anni e amo programmare! 💻");`}
           showLineNumbers
         />
 
-        <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded my-6">
+        <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded mt-6">
           <p className="font-bold text-green-800 mb-2">✅ Regole Importanti</p>
           <ul className="text-gray-700 space-y-2 ml-4">
             <li><strong>Virgolette:</strong> Il testo va tra virgolette: <code className="bg-green-100 px-1 rounded">"così"</code> o <code className="bg-green-100 px-1 rounded">'così'</code></li>
             <li><strong>Punto e virgola:</strong> Ogni comando finisce con <code className="bg-green-100 px-1 rounded">;</code></li>
-            <li><strong>Maiuscole/minuscole:</strong> JavaScript è sensibile! <code className="bg-green-100 px-1 rounded">Console.log()</code> NON funziona (C maiuscola)</li>
+            <li><strong>Maiuscole/minuscole:</strong> JavaScript è sensibile! <code className="bg-green-100 px-1 rounded">Console.log()</code> NON funziona</li>
             <li><strong>Parentesi:</strong> Apri <code className="bg-green-100 px-1 rounded">(</code> e chiudi <code className="bg-green-100 px-1 rounded">)</code> sempre!</li>
           </ul>
         </div>
       </section>
 
-      {/* TEORIA: APRIRE LA CONSOLE */}
+      {/* Aprire la Console */}
       <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">
-          Aprire la Console del Browser
-        </h2>
+        <h2 className="text-3xl font-bold mb-4">🔍 Aprire la Console del Browser</h2>
 
-        <div className="prose max-w-none mb-6">
-          <p className="text-lg text-gray-700 mb-6">
-            La <strong>Console</strong> è una finestra segreta nel browser dove puoi vedere
-            i messaggi di <code className="bg-gray-100 px-2 py-1 rounded">console.log()</code>
-            {' '}e gli errori del tuo codice.
-          </p>
+        <p className="text-lg mb-6">
+          La <strong>Console</strong> è una finestra segreta nel browser dove puoi vedere
+          i messaggi di <code className="bg-gray-100 px-2 py-1 rounded">console.log()</code>
+          {' '}e gli errori del tuo codice.
+        </p>
 
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-lg mb-6">
-            <h3 className="text-2xl font-bold mb-4">🔑 Come Aprire la Console</h3>
-            <div className="grid md:grid-cols-3 gap-4 text-center">
-              <div className="bg-white bg-opacity-20 rounded-lg p-4">
-                <p className="font-bold mb-2 text-white">Windows/Linux</p>
-                <p className="text-xl font-mono text-white">F12</p>
-                <p className="text-sm mt-2 text-white">oppure</p>
-                <p className="text-xl font-mono text-white">Ctrl + Shift + I</p>
-              </div>
-              <div className="bg-white bg-opacity-20 rounded-lg p-4">
-                <p className="font-bold mb-2 text-white">Mac</p>
-                <p className="text-xl font-mono text-white">Cmd + Option + I</p>
-              </div>
-              <div className="bg-white bg-opacity-20 rounded-lg p-4">
-                <p className="font-bold mb-2 text-white">Oppure</p>
-                <p className="text-sm text-white">Click destro sulla pagina</p>
-                <p className="text-sm text-white">→ "Ispeziona"</p>
-                <p className="text-sm text-white">→ Tab "Console"</p>
-              </div>
+        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-lg mb-6">
+          <h3 className="text-2xl font-bold mb-4 text-white">🔑 Come Aprire la Console</h3>
+          <div className="grid md:grid-cols-3 gap-4 text-center">
+            <div className="bg-white bg-opacity-20 rounded-lg p-4">
+              <p className="font-bold mb-2 text-white">Windows/Linux</p>
+              <p className="text-xl font-mono text-white">F12</p>
+              <p className="text-sm mt-2 text-white">oppure</p>
+              <p className="text-xl font-mono text-white">Ctrl + Shift + I</p>
+            </div>
+            <div className="bg-white bg-opacity-20 rounded-lg p-4">
+              <p className="font-bold mb-2 text-white">Mac</p>
+              <p className="text-xl font-mono text-white">Cmd + Option + I</p>
+            </div>
+            <div className="bg-white bg-opacity-20 rounded-lg p-4">
+              <p className="font-bold mb-2 text-white">Oppure</p>
+              <p className="text-sm text-white">Click destro sulla pagina</p>
+              <p className="text-sm text-white">→ "Ispeziona"</p>
+              <p className="text-sm text-white">→ Tab "Console"</p>
             </div>
           </div>
+        </div>
 
-          <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded">
-            <p className="font-bold text-blue-800 mb-2">💡 Pro Tip</p>
-            <p className="text-gray-700">
-              Lascia sempre la console aperta mentre programmi JavaScript.
-              È come avere un pannello di controllo della tua astronave! 🚀
-            </p>
-          </div>
+        <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded">
+          <p className="font-bold text-blue-800 mb-2">💡 Pro Tip</p>
+          <p className="text-gray-700">
+            Lascia sempre la console aperta mentre programmi JavaScript.
+            È come avere un pannello di controllo della tua astronave! 🚀
+          </p>
         </div>
       </section>
 
-      {/* TEORIA: COMMENTI */}
+      {/* Commenti */}
       <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">
-          Commenti: Le Note per Te Stesso
-        </h2>
+        <h2 className="text-3xl font-bold mb-4">💬 Commenti: Le Note per Te Stesso</h2>
 
-        <div className="prose max-w-none mb-6">
-          <p className="text-lg text-gray-700 mb-4">
-            I <strong>commenti</strong> sono note che scrivi per te stesso (o per altri developer).
-            JavaScript li ignora completamente!
-          </p>
+        <p className="text-lg mb-4">
+          I <strong>commenti</strong> sono note che scrivi per te stesso (o per altri developer).
+          JavaScript li ignora completamente!
+        </p>
 
-          <CodeExample
-            title="Tipi di Commenti"
-            code={`// Questo è un commento su una riga singola
+        <div className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white p-6 rounded-lg mb-6">
+          <h3 className="text-xl font-bold mb-3 text-white">📝 Due Tipi di Commenti</h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+              <p className="font-bold text-yellow-200 mb-2">Commento Singolo</p>
+              <code className="text-sm text-white">// Commento su una riga</code>
+            </div>
+            <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+              <p className="font-bold text-yellow-200 mb-2">Commento Multi-riga</p>
+              <code className="text-sm text-white">/* Commento su<br/>più righe */</code>
+            </div>
+          </div>
+        </div>
+
+        <CodeExample
+          title="Esempi di Commenti"
+          code={`// Questo è un commento su una riga singola
 // JavaScript ignora tutto quello che sta dopo //
 
-console.log("Questo codice funziona!"); // Commento alla fine della riga
+console.log("Questo codice funziona!"); // Commento alla fine
 
 /*
   Questo è un commento
@@ -254,486 +258,336 @@ console.log("Questo codice funziona!"); // Commento alla fine della riga
 
 console.log("Anche questo funziona!");
 
-// console.log("Questo NON viene eseguito perché è commentato");`}
-            language="javascript"
-            showLineNumbers
-          />
+// console.log("Questo NON viene eseguito");`}
+          language="javascript"
+          showLineNumbers
+        />
 
-          <div className="bg-purple-50 p-6 rounded-lg border-2 border-purple-200 my-6">
-            <h3 className="text-xl font-bold text-purple-900 mb-3">
-              📝 Quando Usare i Commenti?
-            </h3>
-            <ul className="text-gray-700 space-y-2 ml-4">
-              <li>• Per spiegare <strong>perché</strong> hai scritto qualcosa (non <em>cosa</em> fa, quello si vede dal codice!)</li>
-              <li>• Per organizzare sezioni del codice: <code className="bg-purple-100 px-1 rounded">// === GESTIONE PUNTEGGIO ===</code></li>
-              <li>• Per "spegnere" temporaneamente del codice senza cancellarlo</li>
-              <li>• Per lasciare TODO: <code className="bg-purple-100 px-1 rounded">// TODO: aggiungere animazione</code></li>
-            </ul>
-          </div>
+        <div className="bg-purple-50 p-6 rounded-lg border-2 border-purple-200 mt-6">
+          <h3 className="text-xl font-bold text-purple-900 mb-3">📌 Quando Usare i Commenti?</h3>
+          <ul className="text-gray-700 space-y-2 ml-4">
+            <li>• Per spiegare <strong>perché</strong> hai scritto qualcosa</li>
+            <li>• Per organizzare sezioni: <code className="bg-purple-100 px-1 rounded">// === SEZIONE ===</code></li>
+            <li>• Per "spegnere" temporaneamente del codice</li>
+            <li>• Per lasciare note: <code className="bg-purple-100 px-1 rounded">// TODO: migliorare</code></li>
+          </ul>
         </div>
       </section>
 
-      {/* ESERCIZI GUIDATI */}
+      {/* Calcoli Matematici */}
       <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">
-          Esercizi Guidati
-        </h2>
+        <h2 className="text-3xl font-bold mb-4">🧮 Calcoli Matematici in JavaScript</h2>
 
-        <Exercise
-          title="Esercizio 1: Il Tuo Nome nella Console"
-          difficulty="facile"
-          steps={[
-            'Crea un nuovo file HTML chiamato "primo-javascript.html"',
-            'Copia la struttura HTML base vista sopra',
-            'Dentro il tag <script>, scrivi console.log() con il tuo nome',
-            'Apri il file nel browser e premi F12 per vedere la console',
-            'Dovresti vedere il tuo nome stampato! 🎉'
-          ]}
-          experiments={[
-            'Prova a scrivere il tuo nome in maiuscolo',
-            'Aggiungi delle emoji vicino al tuo nome',
-            'Cosa succede se dimentichi le virgolette?',
-            'Cosa succede se scrivi Console.log() con la C maiuscola?'
-          ]}
+        <p className="text-lg mb-4">
+          JavaScript sa fare calcoli matematici! Puoi usare i numeri direttamente (senza virgolette).
+        </p>
+
+        <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white p-6 rounded-lg mb-6">
+          <h3 className="text-xl font-bold mb-3 text-white">➕ Operatori Matematici</h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+              <p className="font-mono text-yellow-200">+ addizione</p>
+              <p className="font-mono text-yellow-200">- sottrazione</p>
+            </div>
+            <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+              <p className="font-mono text-yellow-200">* moltiplicazione</p>
+              <p className="font-mono text-yellow-200">/ divisione</p>
+            </div>
+          </div>
+        </div>
+
+        <CodeExample
+          title="Esempi di Calcoli"
+          code={`// Calcoli semplici
+console.log(10 + 5);  // 15
+console.log(20 - 8);  // 12
+console.log(6 * 7);   // 42
+console.log(100 / 4); // 25
+
+// Calcoli con testo
+console.log("Ho", 15, "anni");
+console.log("Sono circa", 15 * 365, "giorni!");`}
+          language="javascript"
+          showLineNumbers
         />
 
-        <details className="my-6 bg-gray-50 p-6 rounded-lg border-2 border-gray-200">
-          <summary className="font-bold text-gray-900 cursor-pointer hover:text-blue-600">
-            💡 Soluzione Esercizio 1
-          </summary>
-          <CodeExample
-            title="primo-javascript.html"
-            code={`<!DOCTYPE html>
+        <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded mt-6">
+          <p className="font-bold text-yellow-800 mb-2">⚠️ Attenzione!</p>
+          <p className="text-gray-700">
+            I <strong>numeri NON vanno tra virgolette</strong>. Se scrivi <code className="bg-yellow-100 px-1 rounded">"15"</code> è un testo,
+            se scrivi <code className="bg-yellow-100 px-1 rounded">15</code> è un numero che puoi usare nei calcoli!
+          </p>
+        </div>
+      </section>
+
+      {/* Esercizio Guidato */}
+      <Exercise
+        title="🎯 Esercizio Guidato: La Tua Prima Pagina JavaScript"
+        steps={[
+          'Crea una cartella "primo-javascript" in VS Code',
+          'Dentro la cartella, crea un file "index.html"',
+          {
+            text: 'Scrivi la struttura HTML base (senza JavaScript ancora)',
+            code: `<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Esercizio 1</title>
+  <title>Il Mio Primo JavaScript</title>
 </head>
 <body>
 
-  <h1>Primo JavaScript</h1>
+  <h1>La Console JavaScript</h1>
+  <p>Premi F12 e guarda la tab "Console"! 🎉</p>
+
+</body>
+</html>`,
+            language: 'html',
+          },
+          'Salva (Ctrl+S) e apri index.html nel browser',
+          'Premi F12 per aprire gli strumenti per sviluppatori',
+          'Clicca sulla tab "Console" in alto - deve essere vuota per ora',
+          {
+            text: 'Torna in VS Code e aggiungi il tag <script> alla fine, prima di </body>',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Il Mio Primo JavaScript</title>
+</head>
+<body>
+
+  <h1>La Console JavaScript</h1>
+  <p>Premi F12 e guarda la tab "Console"! 🎉</p>
 
   <script>
-    console.log("Mario"); // Sostituisci "Mario" con il tuo nome!
+    // Il mio primo JavaScript!
   </script>
 
 </body>
-</html>`}
-            language="html"
-            showLineNumbers
-          />
-        </details>
-
-        <Exercise
-          title="Esercizio 2: Numeri ed Emoji"
-          difficulty="facile"
-          steps={[
-            'Nello stesso file, aggiungi altri console.log()',
-            'Stampa la tua età (senza virgolette, è un numero!)',
-            'Stampa la tua emoji preferita (con virgolette)',
-            'Stampa un calcolo matematico: 10 + 5',
-            'Stampa tutto insieme: il tuo nome, età e emoji sulla stessa riga'
-          ]}
-          experiments={[
-            'Prova calcoli diversi: moltiplicazione (*), divisione (/), sottrazione (-)',
-            'Cosa succede se metti un numero tra virgolette?',
-            'Prova a stampare 5 cose diverse sulla stessa riga'
-          ]}
-        />
-
-        <details className="my-6 bg-gray-50 p-6 rounded-lg border-2 border-gray-200">
-          <summary className="font-bold text-gray-900 cursor-pointer hover:text-blue-600">
-            💡 Soluzione Esercizio 2
-          </summary>
-          <CodeExample
-            title="Soluzione"
-            code={`<script>
-  // Nome
-  console.log("Mario");
-
-  // Età (numero, senza virgolette)
-  console.log(15);
-
-  // Emoji preferita
-  console.log("🎮");
-
-  // Calcolo
-  console.log(10 + 5); // Stampa: 15
-
-  // Tutto insieme
-  console.log("Ciao, sono Mario, ho", 15, "anni e amo", "🎮");
-</script>`}
-            language="html"
-            showLineNumbers
-          />
-        </details>
-
-        <Exercise
-          title="Esercizio 3: Organizza con i Commenti"
-          difficulty="facile"
-          steps={[
-            'Aggiungi commenti al codice che hai scritto',
-            'Crea un commento "titolo" sopra ogni sezione (esempio: // INFORMAZIONI PERSONALI)',
-            'Aggiungi commenti inline per spiegare cosa fa ogni console.log()',
-            'Prova a "commentare" (disattivare) una riga con //',
-            'Prova a creare un commento su più righe con /* ... */'
-          ]}
-          experiments={[
-            'Commenta diversi console.log() e vedi come cambia l\'output',
-            'Prova a creare separatori con i commenti: // ========== SEZIONE 1 ==========',
-            'Scrivi un TODO nel codice'
-          ]}
-        />
-
-        <details className="my-6 bg-gray-50 p-6 rounded-lg border-2 border-gray-200">
-          <summary className="font-bold text-gray-900 cursor-pointer hover:text-blue-600">
-            💡 Soluzione Esercizio 3
-          </summary>
-          <CodeExample
-            title="Soluzione"
-            code={`<script>
-  // ========== INFORMAZIONI PERSONALI ==========
-
-  // Stampa il nome
-  console.log("Mario");
-
-  // Stampa l'età
-  console.log(15); // Numero senza virgolette
-
-  // console.log("Questa riga NON viene eseguita!");
-
-  /*
-     Questa è una sezione di test
-     con commenti su più righe
-  */
-
-  // ========== EMOJI E CALCOLI ==========
-
-  console.log("🎮"); // Emoji preferita
-  console.log(10 + 5); // Risultato: 15
-</script>`}
-            language="javascript"
-            showLineNumbers
-          />
-        </details>
-
-        <Exercise
-          title="Esercizio 4: Messaggio Creativo"
-          difficulty="facile"
-          steps={[
-            'Crea un messaggio di presentazione creativo con 5 console.log() separati',
-            'Usa emoji, numeri e testo',
-            'Ogni console.log() dovrebbe stampare una riga della presentazione',
-            'Bonus: aggiungi calcoli matematici (esempio: giorni vissuti = età * 365)'
-          ]}
-          experiments={[
-            'Calcola quante ore hai vissuto',
-            'Calcola quanti minuti hai vissuto',
-            'Crea una presentazione ancora più lunga con 10 righe'
-          ]}
-        />
-
-        <details className="my-6 bg-gray-50 p-6 rounded-lg border-2 border-gray-200">
-          <summary className="font-bold text-gray-900 cursor-pointer hover:text-blue-600">
-            💡 Soluzione Esercizio 4
-          </summary>
-          <CodeExample
-            title="Soluzione"
-            code={`<script>
-  // ========== LA MIA PRESENTAZIONE ==========
-
-  console.log("🌟 Ciao a tutti!");
-  console.log("👋 Mi chiamo Mario e ho 15 anni");
-  console.log("🎂 Questo significa che ho vissuto circa", 15 * 365, "giorni!");
-  console.log("💻 Sto imparando JavaScript!");
-  console.log("🚀 E mi piace un sacco!");
-
-  // Bonus: calcoli divertenti
-  console.log("Ho vissuto circa", 15 * 365 * 24, "ore! 🕐");
-</script>`}
-            language="javascript"
-            showLineNumbers
-          />
-        </details>
-
-        <Exercise
-          title="Esercizio 5: Debug - Trova l'Errore!"
-          difficulty="media"
-          steps={[
-            'Copia il codice con errori qui sotto nel tuo file',
-            'Apri la console - vedrai degli ERRORI in rosso!',
-            'Leggi i messaggi di errore (ti dicono cosa è sbagliato e in quale riga)',
-            'Correggi gli errori uno alla volta',
-            'Quando tutto è corretto, vedrai i messaggi stampati senza errori'
-          ]}
-          experiments={[
-            'Prova a introdurre altri errori volontariamente per vedere i messaggi',
-            'Cosa succede se dimentichi il punto e virgola?',
-            'Cosa succede se scrivi log.console() invece di console.log()?'
-          ]}
-        />
-
-        <details className="my-6 bg-gray-50 p-6 rounded-lg border-2 border-gray-200">
-          <summary className="font-bold text-gray-900 cursor-pointer hover:text-blue-600">
-            💡 Codice con Errori e Soluzione
-          </summary>
-          <div className="space-y-4">
-            <div>
-              <h4 className="font-bold text-gray-900 mb-2">Codice con errori (da correggere):</h4>
-              <CodeExample
-                title="Codice con errori"
-                code={`Console.log("Ciao);           // Errore 1: Console con C maiuscola + virgolette non chiuse
-console.log("Mondo!;          // Errore 2: virgolette non chiuse
-console.log(Sono un messaggio); // Errore 3: testo senza virgolette
-console.log("Fine"            // Errore 4: parentesi non chiusa`}
-                language="javascript"
-              />
-            </div>
-            <div>
-              <h4 className="font-bold text-gray-900 mb-2">Codice corretto:</h4>
-              <CodeExample
-                title="Soluzione"
-                code={`console.log("Ciao");           // ✅ console minuscolo + virgolette chiuse
-console.log("Mondo!");         // ✅ virgolette chiuse
-console.log("Sono un messaggio"); // ✅ testo tra virgolette
-console.log("Fine");           // ✅ parentesi chiusa`}
-                language="javascript"
-              />
-            </div>
-          </div>
-        </details>
-      </section>
-
-      {/* MINI-PROGETTO */}
-      <section className="mb-12">
-        <ProjectMilestone
-          numero={1}
-          titolo="La Tua Carta d'Identità Digitale"
-          requisiti={[
-            'Creare un file HTML chiamato "carta-identita.html" con la struttura base',
-            'Aggiungere il tag <script> alla fine del body',
-            'Stampare un\'intestazione con emoji usando console.log()',
-            'Stampare nome, età e città con console.log() separati',
-            'Stampare almeno 3 hobby/passioni con emoji',
-            'Calcolare e stampare: età in giorni, ore vissute, minuti vissuti',
-            'Aggiungere commenti per organizzare le sezioni del codice',
-            'Stampare un messaggio finale con emoji',
-            'Testare aprendo il file nel browser e verificando che tutto appaia nella console (F12)'
-          ]}
-          suggerimenti={[
-            'Usa righe vuote (console.log("");) per separare le sezioni',
-            'Crea intestazioni con emoji e simboli: console.log("🌟 === LA MIA CARTA D\'IDENTITÀ ===")',
-            'Per i calcoli: età * 365 per i giorni, età * 365 * 24 per le ore',
-            'Organizza il codice con commenti tipo: // ========== SEZIONE ==========',
-            'Testa spesso! Apri la console dopo ogni console.log() che aggiungi'
-          ]}
-        />
-
-        <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white p-6 rounded-lg mt-6">
-          <h3 className="text-xl font-bold mb-3">💡 Esempio di Risultato Finale nella Console</h3>
-          <div className="bg-black bg-opacity-30 p-4 rounded font-mono text-sm">
-            <p>🌟 === LA MIA CARTA D'IDENTITÀ ===</p>
-            <p>&nbsp;</p>
-            <p>👤 Nome: Mario Rossi</p>
-            <p>🎂 Età: 15 anni</p>
-            <p>🏠 Città: Milano</p>
-            <p>&nbsp;</p>
-            <p>❤️ === LE MIE PASSIONI ===</p>
-            <p>🎮 Videogiochi</p>
-            <p>⚽ Calcio</p>
-            <p>💻 Programmazione</p>
-            <p>&nbsp;</p>
-            <p>📊 === STATISTICHE DIVERTENTI ===</p>
-            <p>📅 Ho vissuto circa 5475 giorni</p>
-            <p>🕐 Ho vissuto circa 131400 ore</p>
-            <p>⏱️ Ho vissuto circa 7884000 minuti!</p>
-            <p>&nbsp;</p>
-            <p>🚀 Grazie per aver letto! 👋</p>
-          </div>
-        </div>
-
-        <details className="mt-6 bg-gray-50 p-6 rounded-lg border-2 border-gray-200">
-          <summary className="font-bold text-gray-900 cursor-pointer hover:text-blue-600">
-            💡 Soluzione Completa (prova prima da solo!)
-          </summary>
-          <CodeExample
-            title="carta-identita.html"
-            code={`<!DOCTYPE html>
+</html>`,
+            language: 'html',
+            highlightLines: [12, 13, 14],
+          },
+          {
+            text: 'Dentro <script>, scrivi il tuo primo console.log con il tuo nome',
+            code: `<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>La Mia Carta d'Identità Digitale</title>
+  <title>Il Mio Primo JavaScript</title>
 </head>
 <body>
 
-  <h1>Apri la Console (F12) per vedere la tua carta d'identità! 🎉</h1>
+  <h1>La Console JavaScript</h1>
+  <p>Premi F12 e guarda la tab "Console"! 🎉</p>
 
   <script>
-    // ========== INTESTAZIONE ==========
-    console.log("🌟 === LA MIA CARTA D'IDENTITÀ ===");
-    console.log(""); // Riga vuota per spaziare
+    // Il mio primo JavaScript!
+    console.log("Ciao, sono Mario!");
+  </script>
 
-    // ========== INFORMAZIONI BASE ==========
-    console.log("👤 Nome: Mario Rossi");
-    console.log("🎂 Età: 15 anni");
-    console.log("🏠 Città: Milano");
+</body>
+</html>`,
+            language: 'html',
+            highlightLines: [14],
+          },
+          'Salva (Ctrl+S) e ricarica il browser (F5)',
+          'Guarda la Console - dovresti vedere il tuo messaggio! 🎉',
+          {
+            text: 'Aggiungi altri console.log con la tua età e città',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Il Mio Primo JavaScript</title>
+</head>
+<body>
+
+  <h1>La Console JavaScript</h1>
+  <p>Premi F12 e guarda la tab "Console"! 🎉</p>
+
+  <script>
+    // Il mio primo JavaScript!
+    console.log("Ciao, sono Mario!");
+    console.log("Ho 15 anni");
+    console.log("Vivo a Milano");
+  </script>
+
+</body>
+</html>`,
+            language: 'html',
+            highlightLines: [15, 16],
+          },
+          'Salva (Ctrl+S) e ricarica (F5) - dovresti vedere 3 messaggi nella console!',
+          {
+            text: 'Aggiungi un commento-sezione e stampa delle emoji',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Il Mio Primo JavaScript</title>
+</head>
+<body>
+
+  <h1>La Console JavaScript</h1>
+  <p>Premi F12 e guarda la tab "Console"! 🎉</p>
+
+  <script>
+    // Il mio primo JavaScript!
+    console.log("Ciao, sono Mario!");
+    console.log("Ho 15 anni");
+    console.log("Vivo a Milano");
+
+    // === LE MIE PASSIONI ===
+    console.log("🎮 Videogiochi");
+    console.log("⚽ Calcio");
+    console.log("💻 Programmazione");
+  </script>
+
+</body>
+</html>`,
+            language: 'html',
+            highlightLines: [18, 19, 20, 21],
+          },
+          'Salva e ricarica - dovresti vedere anche le emoji! 😊',
+          {
+            text: 'Aggiungi una sezione con calcoli matematici (età in giorni!)',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Il Mio Primo JavaScript</title>
+</head>
+<body>
+
+  <h1>La Console JavaScript</h1>
+  <p>Premi F12 e guarda la tab "Console"! 🎉</p>
+
+  <script>
+    // Il mio primo JavaScript!
+    console.log("Ciao, sono Mario!");
+    console.log("Ho 15 anni");
+    console.log("Vivo a Milano");
+
+    // === LE MIE PASSIONI ===
+    console.log("🎮 Videogiochi");
+    console.log("⚽ Calcio");
+    console.log("💻 Programmazione");
+
+    // === CALCOLI DIVERTENTI ===
+    console.log("Ho vissuto circa", 15 * 365, "giorni!");
+    console.log("Sono circa", 15 * 365 * 24, "ore!");
+  </script>
+
+</body>
+</html>`,
+            language: 'html',
+            highlightLines: [23, 24, 25],
+          },
+          'Salva e ricarica - JavaScript ha calcolato automaticamente i numeri! 🧮',
+          {
+            text: 'Aggiungi un messaggio finale e una riga vuota per separare le sezioni',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Il Mio Primo JavaScript</title>
+</head>
+<body>
+
+  <h1>La Console JavaScript</h1>
+  <p>Premi F12 e guarda la tab "Console"! 🎉</p>
+
+  <script>
+    // === PRESENTAZIONE ===
+    console.log("Ciao, sono Mario!");
+    console.log("Ho 15 anni");
+    console.log("Vivo a Milano");
     console.log(""); // Riga vuota
 
-    // ========== PASSIONI E HOBBY ==========
-    console.log("❤️ === LE MIE PASSIONI ===");
-    console.log("🎮 Videogiochi (Fortnite, Minecraft)");
-    console.log("⚽ Calcio - Tifo Inter!");
-    console.log("💻 Programmazione - Sto imparando JavaScript!");
-    console.log("🎵 Musica - Ascolto rap e pop");
+    // === LE MIE PASSIONI ===
+    console.log("🎮 Videogiochi");
+    console.log("⚽ Calcio");
+    console.log("💻 Programmazione");
     console.log(""); // Riga vuota
 
-    // ========== STATISTICHE DIVERTENTI ==========
-    console.log("📊 === STATISTICHE DIVERTENTI ===");
-    console.log("📅 Ho vissuto circa", 15 * 365, "giorni");
-    console.log("🕐 Ho vissuto circa", 15 * 365 * 24, "ore");
-    console.log("⏱️ Ho vissuto circa", 15 * 365 * 24 * 60, "minuti!");
+    // === CALCOLI DIVERTENTI ===
+    console.log("Ho vissuto circa", 15 * 365, "giorni!");
+    console.log("Sono circa", 15 * 365 * 24, "ore!");
     console.log(""); // Riga vuota
 
-    // ========== CHIUSURA ==========
-    console.log("🚀 Grazie per aver letto la mia carta d'identità!");
+    // === SALUTI ===
+    console.log("🚀 Grazie per aver letto!");
     console.log("👋 A presto!");
   </script>
 
 </body>
-</html>`}
-            language="html"
-            showLineNumbers
-          />
-        </details>
-      </section>
+</html>`,
+            language: 'html',
+            highlightLines: [13, 17, 23, 28, 30, 31, 32],
+          },
+          'Salva e ricarica - la tua presentazione completa è pronta! 🎊',
+          'Prova a modificare i valori (nome, età, città, passioni) e ricarica per vedere i cambiamenti'
+        ]}
+        experiments={[
+          'Aggiungi altre passioni/hobby con emoji diverse',
+          'Calcola quanti minuti hai vissuto (età * 365 * 24 * 60)',
+          'Prova a commentare una riga con // e vedi cosa succede',
+          'Cosa succede se scrivi Console.log() con la C maiuscola?',
+          'Cosa succede se dimentichi le virgolette intorno al testo?'
+        ]}
+      />
 
-      {/* RIEPILOGO */}
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">
-          📝 Riepilogo della Lezione
-        </h2>
-
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-lg">
-          <h3 className="text-2xl font-bold mb-6 text-white">Cosa Hai Imparato Oggi</h3>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white bg-opacity-20 rounded-lg p-6">
-              <h4 className="font-bold text-xl mb-3 text-white">✅ Concetti</h4>
-              <ul className="space-y-2 text-white">
-                <li>• JavaScript rende le pagine <strong>interattive</strong></li>
-                <li>• Si scrive dentro il tag <code className="bg-white bg-opacity-30 px-2 py-1 rounded">&lt;script&gt;</code></li>
-                <li>• La Console è il tuo strumento di debug</li>
-                <li>• I commenti aiutano a organizzare il codice</li>
-              </ul>
-            </div>
-
-            <div className="bg-white bg-opacity-20 rounded-lg p-6">
-              <h4 className="font-bold text-xl mb-3 text-white">⚡ Comandi</h4>
-              <ul className="space-y-2 text-white">
-                <li>• <code className="bg-white bg-opacity-30 px-2 py-1 rounded">console.log()</code> - Stampa messaggi</li>
-                <li>• <code className="bg-white bg-opacity-30 px-2 py-1 rounded">// commento</code> - Commento singolo</li>
-                <li>• <code className="bg-white bg-opacity-30 px-2 py-1 rounded">/* */</code> - Commento multi-riga</li>
-                <li>• <code className="bg-white bg-opacity-30 px-2 py-1 rounded">F12</code> - Apre la Console</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-6 bg-white bg-opacity-20 rounded-lg p-6">
-            <h4 className="font-bold text-xl mb-3 text-white">🎯 Regole d'Oro</h4>
-            <ul className="space-y-2 text-white">
-              <li>1. Il testo va sempre tra <strong>virgolette</strong>: <code className="bg-white bg-opacity-30 px-2 py-1 rounded">"così"</code></li>
-              <li>2. I numeri NON vanno tra virgolette: <code className="bg-white bg-opacity-30 px-2 py-1 rounded">42</code></li>
-              <li>3. Ogni comando finisce con <strong>punto e virgola</strong>: <code className="bg-white bg-opacity-30 px-2 py-1 rounded">;</code></li>
-              <li>4. JavaScript è <strong>case-sensitive</strong>: <code className="bg-white bg-opacity-30 px-2 py-1 rounded">console</code> ≠ <code className="bg-white bg-opacity-30 px-2 py-1 rounded">Console</code></li>
-              <li>5. Apri <code className="bg-white bg-opacity-30 px-2 py-1 rounded">(</code> chiudi <code className="bg-white bg-opacity-30 px-2 py-1 rounded">)</code> sempre!</li>
+      {/* Checklist Finale */}
+      <section className="mb-12 mt-12">
+        <div className="bg-green-50 border-2 border-green-200 rounded-lg p-6">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <span>✅</span> Hai Completato la Lezione!
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Fantastico! Ora sai usare JavaScript e la console come un vero developer! 🎉
+          </p>
+          <div className="bg-white rounded p-4 border border-green-200">
+            <p className="font-bold text-gray-900 mb-2">Cosa hai imparato:</p>
+            <ul className="space-y-1 text-gray-700">
+              <li>✅ Dove scrivere JavaScript (tag &lt;script&gt;)</li>
+              <li>✅ Come usare console.log() per stampare messaggi</li>
+              <li>✅ Come aprire la Console del browser (F12)</li>
+              <li>✅ Come scrivere commenti in JavaScript</li>
+              <li>✅ Come fare calcoli matematici</li>
             </ul>
           </div>
         </div>
       </section>
 
-      {/* SFIDA OPZIONALE */}
+      {/* Sfida Opzionale */}
+      <Challenge
+        title="Console Art!"
+        description="Usa console.log() per disegnare qualcosa nella console usando solo caratteri ed emoji. Esempi: una faccina, un cuore, il tuo nome in ASCII art, una bandiera..."
+        requirements={[
+          'Usa almeno 5 console.log() per creare il tuo disegno',
+          'Usa emoji o caratteri speciali (█ ░ ▓ ■ ● ★ ♥)',
+          'Aggiungi commenti per spiegare cosa hai disegnato',
+          'Bonus: crea un\'animazione o un pattern ripetuto'
+        ]}
+        hint="Esempio di cuore: console.log('  ❤️ ❤️    ❤️ ❤️  ');"
+      />
+
+      {/* Prossimi Passi */}
       <section className="mb-12">
-        <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-8 rounded-lg">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-4xl">🏆</span>
-            <h2 className="text-3xl font-bold">Sfida Opzionale: Console Art!</h2>
-          </div>
-
-          <div className="bg-white bg-opacity-20 rounded-lg p-6 mb-6">
-            <h3 className="text-xl font-bold mb-4 text-white">🎨 Crea un'opera d'arte nella console!</h3>
-            <p className="mb-4 text-white">
-              Usa console.log() per disegnare qualcosa usando solo caratteri e emoji.
-              Puoi creare: una faccina, un cuore, il tuo nome in ASCII art, una bandiera...
-            </p>
-
-            <div className="bg-black bg-opacity-50 p-4 rounded font-mono text-sm mb-4">
-              <p className="text-white">Esempio - Faccina sorridente:</p>
-              <p className="mt-2 text-white">😊 😊 😊 😊 😊</p>
-              <p className="text-white">😊 👀 👀 👀 😊</p>
-              <p className="text-white">😊 😊 😊 😊 😊</p>
-              <p className="text-white">😊 😃 😃 😃 😊</p>
-              <p className="text-white">😊 😊 😊 😊 😊</p>
-            </div>
-
-            <h4 className="font-bold mb-2 text-white">📋 Requisiti:</h4>
-            <ul className="space-y-1 ml-4 text-white">
-              <li>• Usa almeno 5 console.log()</li>
-              <li>• Crea un "disegno" riconoscibile</li>
-              <li>• Usa emoji o caratteri speciali (█ ░ ▓ ■ ● ★ ♥)</li>
-              <li>• Aggiungi commenti per spiegare cosa hai disegnato</li>
-            </ul>
-          </div>
-
-          <details className="bg-white bg-opacity-20 rounded-lg p-6">
-            <summary className="font-bold cursor-pointer hover:text-yellow-200 text-white">
-              💡 Idee e Suggerimenti
-            </summary>
-            <div className="mt-4 space-y-3 text-white">
-              <p><strong>Idee facili:</strong></p>
-              <ul className="ml-4 space-y-1">
-                <li>• Cuore: usa ❤️ o ♥</li>
-                <li>• Bandiera italiana: 🟢 ⚪ 🔴 ripetuti</li>
-                <li>• Albero di Natale con 🎄 🎁 ⭐</li>
-                <li>• Muraglia con █ e ░</li>
-              </ul>
-
-              <p className="mt-4"><strong>Esempio - Cuore:</strong></p>
-              <div className="bg-black bg-opacity-50 p-3 rounded font-mono text-sm mt-2">
-                <p>console.log("  ❤️ ❤️    ❤️ ❤️  ");</p>
-                <p>console.log("❤️ ❤️ ❤️  ❤️ ❤️ ❤️");</p>
-                <p>console.log("❤️ ❤️ ❤️ ❤️ ❤️ ❤️");</p>
-                <p>console.log("  ❤️ ❤️ ❤️ ❤️  ");</p>
-                <p>console.log("    ❤️ ❤️    ");</p>
-                <p>console.log("      ❤️      ");</p>
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      {/* PROSSIMI PASSI */}
-      <section className="mb-12">
-        <div className="bg-green-50 border-2 border-green-200 rounded-lg p-8">
+        <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
             🚀 Prossimi Passi
           </h2>
           <p className="text-gray-700 mb-4">
-            Ottimo lavoro! Ora sai scrivere JavaScript e usare la console come un vero developer! 🎉
-          </p>
-          <p className="text-gray-700 mb-4">
             <strong>Nella prossima lezione</strong> imparerai a creare <strong>dialoghi con l'utente</strong>
-            usando <code className="bg-green-100 px-2 py-1 rounded">alert()</code>, <code className="bg-green-100 px-2 py-1 rounded">prompt()</code> e
-            <code className="bg-green-100 px-2 py-1 rounded">confirm()</code>.
+            usando <code className="bg-blue-100 px-2 py-1 rounded">alert()</code>,
+            <code className="bg-blue-100 px-2 py-1 rounded">prompt()</code> e
+            <code className="bg-blue-100 px-2 py-1 rounded">confirm()</code>.
+          </p>
+          <p className="text-gray-700">
             Finalmente potrai creare pagine che <strong>parlano</strong> con chi le visita! 💬
           </p>
-
-          <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white p-6 rounded-lg mt-6">
-            <p className="font-bold text-lg mb-2">💪 Pratica Consigliata</p>
-            <p className="text-green-50">
-              Prima di passare alla prossima lezione, prova a creare 2-3 file HTML con JavaScript diversi.
-              Sperimenta con emoji, calcoli, messaggi creativi. Più scrivi codice, più diventa naturale! 🌟
-            </p>
-          </div>
         </div>
       </section>
 
