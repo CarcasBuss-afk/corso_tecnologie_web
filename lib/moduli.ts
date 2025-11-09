@@ -317,7 +317,15 @@ export const moduli: Modulo[] = [
     ore: 28,
     icona: "⚡",
     colore: "bg-yellow-500",
-    lezioni: [],
+    lezioni: [
+      {
+        id: "1",
+        titolo: "Il Primo JavaScript",
+        slug: "lezione-1-primo-javascript",
+        durata: "1.5 ore",
+        difficolta: "facile",
+      },
+    ],
   },
   {
     id: 5,

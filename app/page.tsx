@@ -44,7 +44,8 @@ export default function Home() {
       ore: 28,
       icona: '⚡',
       colore: 'from-yellow-500 to-yellow-600',
-      disponibile: false,
+      disponibile: true,
+      primaLezione: 'lezione-1-primo-javascript',
     },
     {
       id: 5,
