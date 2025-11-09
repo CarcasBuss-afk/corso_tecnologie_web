@@ -325,6 +325,13 @@ export const moduli: Modulo[] = [
         durata: "1.5 ore",
         difficolta: "facile",
       },
+      {
+        id: "2",
+        titolo: "Dialoghi con l'Utente",
+        slug: "lezione-2-dialoghi-utente",
+        durata: "1.5 ore",
+        difficolta: "facile",
+      },
     ],
   },
   {
