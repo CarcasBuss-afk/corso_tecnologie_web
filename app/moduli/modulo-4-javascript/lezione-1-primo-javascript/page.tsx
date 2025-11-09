@@ -192,17 +192,17 @@ console.log("Ho", 15, "anni e amo programmare! 💻");`}
         <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-lg mb-6">
           <h3 className="text-2xl font-bold mb-4 text-white">🔑 Come Aprire la Console</h3>
           <div className="grid md:grid-cols-3 gap-4 text-center">
-            <div className="bg-white bg-opacity-20 rounded-lg p-4">
+            <div className="bg-black bg-opacity-30 rounded-lg p-4 border-2 border-white border-opacity-30">
               <p className="font-bold mb-2 text-white">Windows/Linux</p>
               <p className="text-xl font-mono text-white">F12</p>
               <p className="text-sm mt-2 text-white">oppure</p>
               <p className="text-xl font-mono text-white">Ctrl + Shift + I</p>
             </div>
-            <div className="bg-white bg-opacity-20 rounded-lg p-4">
+            <div className="bg-black bg-opacity-30 rounded-lg p-4 border-2 border-white border-opacity-30">
               <p className="font-bold mb-2 text-white">Mac</p>
               <p className="text-xl font-mono text-white">Cmd + Option + I</p>
             </div>
-            <div className="bg-white bg-opacity-20 rounded-lg p-4">
+            <div className="bg-black bg-opacity-30 rounded-lg p-4 border-2 border-white border-opacity-30">
               <p className="font-bold mb-2 text-white">Oppure</p>
               <p className="text-sm text-white">Click destro sulla pagina</p>
               <p className="text-sm text-white">→ "Ispeziona"</p>
