@@ -3,7 +3,7 @@ import LessonLayout from '@/components/layout/LessonLayout';
 import LessonHeader from '@/components/layout/LessonHeader';
 import CodeExample from '@/components/didattica/CodeExample';
 import Exercise from '@/components/didattica/Exercise';
-import LessonPreview from '@/components/didattica/LessonPreview';
+import JavaScriptDemo from '@/components/didattica/JavaScriptDemo';
 import Challenge from '@/components/didattica/Challenge';
 
 export default function Lezione2DialoghiUtente() {
@@ -125,9 +125,10 @@ alert("Hai " + (15 * 365) + " giorni!");`}
         />
 
         <h3 className="text-xl font-bold mb-3 mt-6">Vedi in Azione!</h3>
-        <LessonPreview
+        <JavaScriptDemo
           title="alert() - Esempio Live"
-          html={`<!DOCTYPE html>
+          description="Clicca il pulsante per vedere un alert()"
+          code={`<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
@@ -212,9 +213,10 @@ alert("Bello il " + colore + "!");`}
         />
 
         <h3 className="text-xl font-bold mb-3 mt-6">Vedi in Azione!</h3>
-        <LessonPreview
+        <JavaScriptDemo
           title="prompt() - Esempio Live"
-          html={`<!DOCTYPE html>
+          description="Clicca il pulsante e inserisci il tuo nome"
+          code={`<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
@@ -324,9 +326,10 @@ if (confirm("Vuoi continuare?")) {
         />
 
         <h3 className="text-xl font-bold mb-3 mt-6">Vedi in Azione!</h3>
-        <LessonPreview
+        <JavaScriptDemo
           title="confirm() - Esempio Live"
-          html={`<!DOCTYPE html>
+          description="Clicca il pulsante e scegli OK o Annulla"
+          code={`<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
@@ -429,9 +432,11 @@ if (confirm("Vuoi fare un'altra domanda?")) {
         />
 
         <h3 className="text-xl font-bold mb-3 mt-6">Vedi il Quiz Completo!</h3>
-        <LessonPreview
+        <JavaScriptDemo
           title="Quiz Interattivo Completo"
-          html={`<!DOCTYPE html>
+          description="Un quiz che usa alert(), prompt() e confirm() insieme"
+          height="500px"
+          code={`<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
