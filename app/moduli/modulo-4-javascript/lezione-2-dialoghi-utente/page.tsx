@@ -15,19 +15,21 @@ export default function Lezione2DialoghiUtente() {
       moduloTitolo="Modulo 4: JavaScript - Interattività"
       lezioni={lezioni}
       lezioneSlug="lezione-2-dialoghi-utente"
-      lezioneTitolo="Dialoghi con l'Utente"
+      lezioneTitolo="Dialoghi e Variabili"
     >
       <LessonHeader
         numero={2}
-        titolo="Dialoghi con l'Utente"
+        titolo="Dialoghi e Variabili"
         durata="1.5 ore"
         difficolta="facile"
         obiettivi={[
-          'Usare alert() per mostrare messaggi all\'utente',
-          'Usare prompt() per chiedere informazioni',
+          'Salvare dati in variabili con let e const',
+          'Capire i tipi di dati (stringhe, numeri, boolean)',
+          'Concatenare stringhe con il simbolo +',
+          'Usare alert() per mostrare messaggi',
+          'Usare prompt() per chiedere informazioni e salvarle',
           'Usare confirm() per chiedere conferme',
-          'Salvare le risposte dell\'utente',
-          'Creare il tuo primo quiz interattivo'
+          'Creare conversazioni interattive con l\'utente'
         ]}
       />
 
@@ -87,6 +89,147 @@ export default function Lezione2DialoghiUtente() {
         </div>
       </section>
 
+      {/* Variabili */}
+      <section className="mb-12">
+        <h2 className="text-3xl font-bold mb-4">📦 Variabili - Le Scatole della Memoria</h2>
+
+        <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white p-8 rounded-lg mb-6">
+          <p className="text-xl mb-4">
+            Prima di parlare con l'utente, dobbiamo imparare a <strong>salvare</strong> quello che ci dice!
+          </p>
+          <p className="text-2xl font-bold">
+            Le <strong>variabili</strong> sono come scatole dove metti i dati! 📦
+          </p>
+        </div>
+
+        <p className="text-lg mb-4">
+          Immagina di avere tante scatole con etichette: una per il nome, una per l'età, una per la città...
+        </p>
+
+        <h3 className="text-2xl font-bold mb-4 mt-8">Come Si Creano le Variabili?</h3>
+
+        <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mb-6">
+          <h4 className="font-bold text-blue-800 mb-3 text-lg">Usa <code className="bg-blue-100 px-2 py-1 rounded">let</code> per creare una scatola</h4>
+
+          <CodeExample
+            title="Creare variabili con let"
+            code={`// Creo una scatola chiamata "nome" con dentro "Mario"
+let nome = "Mario";
+
+// Creo una scatola "eta" con dentro il numero 15
+let eta = 15;
+
+// Creo una scatola "citta" con dentro "Roma"
+let citta = "Roma";
+
+// Posso usare le scatole per stampare!
+console.log(nome);    // Mario
+console.log(eta);     // 15`}
+            language="javascript"
+            showLineNumbers
+          />
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6 my-8">
+          <div className="bg-green-50 p-6 rounded-lg border-2 border-green-200">
+            <h4 className="font-bold text-gray-900 mb-3">✅ let - Può cambiare</h4>
+            <CodeExample
+              code={`let punteggio = 0;
+punteggio = 10;  // ✅ OK!
+punteggio = 20;  // ✅ OK!`}
+              language="javascript"
+            />
+            <p className="text-gray-600 text-sm mt-3">
+              Usa <code className="bg-green-100 px-1 rounded">let</code> quando il valore può cambiare
+            </p>
+          </div>
+
+          <div className="bg-purple-50 p-6 rounded-lg border-2 border-purple-200">
+            <h4 className="font-bold text-gray-900 mb-3">🔒 const - Non cambia mai</h4>
+            <CodeExample
+              code={`const SCUOLA = "Liceo";
+SCUOLA = "Università"; // ❌ ERRORE!`}
+              language="javascript"
+            />
+            <p className="text-gray-600 text-sm mt-3">
+              Usa <code className="bg-purple-100 px-1 rounded">const</code> per valori fissi
+            </p>
+          </div>
+        </div>
+
+        <h3 className="text-2xl font-bold mb-4 mt-8">Tipi di Dati</h3>
+
+        <div className="grid md:grid-cols-3 gap-6 my-8">
+          <div className="bg-yellow-50 p-6 rounded-lg border-2 border-yellow-200">
+            <div className="text-4xl mb-3">📝</div>
+            <h4 className="font-bold text-gray-900 mb-2">Stringhe (testo)</h4>
+            <CodeExample
+              code={`let nome = "Mario";
+let citta = "Roma";
+let emoji = "🎉";`}
+              language="javascript"
+            />
+            <p className="text-gray-600 text-sm mt-2">Testo tra virgolette</p>
+          </div>
+
+          <div className="bg-blue-50 p-6 rounded-lg border-2 border-blue-200">
+            <div className="text-4xl mb-3">🔢</div>
+            <h4 className="font-bold text-gray-900 mb-2">Numeri</h4>
+            <CodeExample
+              code={`let eta = 15;
+let punteggio = 100;
+let prezzo = 9.99;`}
+              language="javascript"
+            />
+            <p className="text-gray-600 text-sm mt-2">Senza virgolette</p>
+          </div>
+
+          <div className="bg-green-50 p-6 rounded-lg border-2 border-green-200">
+            <div className="text-4xl mb-3">✅</div>
+            <h4 className="font-bold text-gray-900 mb-2">Boolean (vero/falso)</h4>
+            <CodeExample
+              code={`let loggato = true;
+let premium = false;`}
+              language="javascript"
+            />
+            <p className="text-gray-600 text-sm mt-2">Solo true o false</p>
+          </div>
+        </div>
+
+        <h3 className="text-2xl font-bold mb-4 mt-8">Concatenare (Unire) Stringhe</h3>
+
+        <p className="text-lg mb-4">
+          Puoi <strong>unire</strong> più pezzi di testo con il simbolo <code className="bg-gray-100 px-2 py-1 rounded text-blue-600">+</code>:
+        </p>
+
+        <CodeExample
+          title="Concatenazione con +"
+          code={`let nome = "Mario";
+let eta = 15;
+
+// Unisco stringhe e variabili
+let messaggio = "Ciao " + nome + "!";
+console.log(messaggio);  // Ciao Mario!
+
+// Unisco anche numeri
+let frase = nome + " ha " + eta + " anni";
+console.log(frase);  // Mario ha 15 anni
+
+// Unisco testo ed emoji
+let saluto = "Ciao " + nome + "! 👋";
+console.log(saluto);  // Ciao Mario! 👋`}
+          language="javascript"
+          showLineNumbers
+        />
+
+        <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded mt-6">
+          <p className="font-bold text-green-800 mb-2">✅ Ora sei pronto!</p>
+          <p className="text-gray-700">
+            Adesso che sai salvare dati in variabili e unirli, possiamo iniziare a parlare con l'utente! 🎉
+          </p>
+        </div>
+      </section>
+
       {/* alert() */}
       <section className="mb-12">
         <h2 className="text-3xl font-bold mb-4">💬 alert() - Mostra un Messaggio</h2>
@@ -115,11 +258,17 @@ alert("Ciao! Benvenuto nel sito!");
 // Messaggio con emoji
 alert("🎉 Complimenti! Hai vinto!");
 
-// Più righe (usa \\n per andare a capo)
-alert("Questo è il tuo punteggio:\\n100 punti!");
+// Con variabili - NUOVO!
+let nome = "Mario";
+alert("Ciao " + nome + "!");  // Ciao Mario!
 
-// Con calcoli
-alert("Hai " + (15 * 365) + " giorni!");`}
+// Con più variabili
+let nome = "Luigi";
+let punteggio = 100;
+alert("Bravo " + nome + "! Hai " + punteggio + " punti!");
+
+// Più righe (usa \\n per andare a capo)
+alert("Questo è il tuo punteggio:\\n100 punti!");`}
           language="javascript"
           showLineNumbers
         />
@@ -188,33 +337,58 @@ alert("Hai " + (15 * 365) + " giorni!");`}
             È come quando un sito ti chiede il tuo nome o email per registrarti.
           </p>
           <div className="bg-black bg-opacity-30 p-4 rounded border-2 border-white border-opacity-30">
-            <p className="font-mono text-lg text-yellow-200">prompt("La domanda");</p>
+            <p className="font-mono text-lg text-yellow-200">let risposta = prompt("La domanda");</p>
           </div>
-          <p className="text-sm mt-3">L'utente può <strong>scrivere la risposta</strong> in una casella di testo!</p>
+          <p className="text-sm mt-3">La risposta viene <strong>salvata nella variabile</strong> e puoi riusarla!</p>
+        </div>
+
+        <h3 className="text-xl font-bold mb-3">Salvare la Risposta in una Variabile</h3>
+
+        <div className="bg-purple-50 border-l-4 border-purple-500 p-6 rounded mb-6">
+          <p className="font-bold text-purple-800 mb-3">💡 La vera potenza di prompt()</p>
+          <p className="text-gray-700 mb-4">
+            Puoi <strong>salvare</strong> quello che l'utente scrive in una variabile e usarlo più volte!
+          </p>
+
+          <CodeExample
+            code={`// PASSO 1: Chiedi e salva in una variabile
+let nome = prompt("Come ti chiami?");
+
+// PASSO 2: Usa la variabile quante volte vuoi!
+alert("Ciao " + nome + "!");
+alert("Benvenuto " + nome + "!");
+alert("Sei pronto " + nome + "?");`}
+            language="javascript"
+            showLineNumbers
+          />
         </div>
 
         <h3 className="text-xl font-bold mb-3">Esempi Pratici</h3>
         <CodeExample
-          title="Esempi di prompt()"
-          code={`// Chiede il nome
-prompt("Come ti chiami?");
+          title="Esempi di prompt() con variabili"
+          code={`// Chiedi il nome e salvalo
+let nome = prompt("Come ti chiami?");
+alert("Ciao " + nome + "!");
 
-// Chiede l'età
-prompt("Quanti anni hai?");
+// Chiedi l'età
+let eta = prompt("Quanti anni hai?");
+alert("Hai " + eta + " anni!");
+
+// Più domande insieme
+let nome = prompt("Come ti chiami?");
+let citta = prompt("Di dove sei?");
+alert("Ciao " + nome + " di " + citta + "!");
 
 // Con valore predefinito (suggerisce "Roma")
-prompt("In che città vivi?", "Roma");
-
-// Usa la risposta direttamente in alert
-alert("Ciao " + prompt("Come ti chiami?") + "!");`}
+let citta = prompt("In che città vivi?", "Roma");`}
           language="javascript"
           showLineNumbers
         />
 
         <h3 className="text-xl font-bold mb-3 mt-6">Vedi in Azione!</h3>
         <JavaScriptDemo
-          title="prompt() - Esempio Live"
-          description="Clicca il pulsante e inserisci il tuo nome"
+          title="prompt() - Esempio Live con Variabile"
+          description="Salva il nome e riusalo più volte!"
           code={`<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -234,17 +408,39 @@ alert("Ciao " + prompt("Come ti chiami?") + "!");`}
       border-radius: 8px;
       cursor: pointer;
       transition: transform 0.2s;
+      margin: 10px;
     }
     button:hover {
       transform: scale(1.05);
+    }
+    #risultato {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #f5576c;
     }
   </style>
 </head>
 <body>
   <h2>Clicca per rispondere!</h2>
-  <button onclick="alert('Ciao ' + prompt('Come ti chiami?') + '! 👋')">
+  <button onclick="chiediNome()">
     Dimmi il tuo nome
   </button>
+  <div id="risultato"></div>
+
+  <script>
+    function chiediNome() {
+      // SALVA in una variabile
+      let nome = prompt("Come ti chiami?");
+
+      if (nome) {
+        // USA la variabile più volte!
+        alert("Ciao " + nome + "! 👋");
+        alert("Benvenuto " + nome + "!");
+        document.getElementById('risultato').innerHTML = "Nome salvato: " + nome;
+      }
+    }
+  </script>
 </body>
 </html>`}
         />
@@ -288,17 +484,39 @@ alert("Ciao " + prompt("Come ti chiami?") + "!");`}
         </div>
 
         <h3 className="text-xl font-bold mb-3">Esempi Pratici</h3>
-        <CodeExample
-          title="Esempi di confirm()"
-          code={`// Chiede conferma semplice
-confirm("Vuoi davvero cancellare tutto?");
 
-// Usa confirm() dentro alert
-alert("Hai cliccato: " + confirm("Sei pronto?"));
+        <div className="bg-purple-50 border-l-4 border-purple-500 p-6 rounded mb-6">
+          <p className="font-bold text-purple-800 mb-3">💡 Salvare la Risposta di confirm()</p>
+          <p className="text-gray-700 mb-4">
+            confirm() restituisce <code className="bg-purple-100 px-1 rounded">true</code> (OK) o <code className="bg-purple-100 px-1 rounded">false</code> (Annulla).
+            Possiamo salvare questa risposta in una variabile!
+          </p>
+          <CodeExample
+            code={`// SALVA la risposta in una variabile
+let vuoleContinuare = confirm("Vuoi continuare?");
 
-// Usa confirm() direttamente in un if
-if (confirm("Vuoi continuare?")) {
+// USA la variabile nell'if
+if (vuoleContinuare) {
   alert("Ok, continuiamo!");
+} else {
+  alert("Operazione annullata");
+}`}
+            language="javascript"
+            showLineNumbers
+          />
+        </div>
+
+        <CodeExample
+          title="Altri Esempi con Variabili"
+          code={`// Esempio 1: Salva e mostra la risposta
+let risposta = confirm("Sei pronto?");
+alert("Hai cliccato: " + risposta);  // true o false
+
+// Esempio 2: Usa la variabile più volte
+let vuoleCancellare = confirm("Vuoi davvero cancellare?");
+if (vuoleCancellare) {
+  alert("File cancellato!");
+  alert("Ricordati: hai detto " + vuoleCancellare);
 } else {
   alert("Operazione annullata");
 }`}
@@ -308,8 +526,8 @@ if (confirm("Vuoi continuare?")) {
 
         <h3 className="text-xl font-bold mb-3 mt-6">Vedi in Azione!</h3>
         <JavaScriptDemo
-          title="confirm() - Esempio Live"
-          description="Clicca il pulsante e scegli OK o Annulla"
+          title="confirm() - Esempio Live con Variabile"
+          description="Salva la risposta e usala più volte!"
           code={`<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -333,6 +551,11 @@ if (confirm("Vuoi continuare?")) {
     button:hover {
       transform: scale(1.05);
     }
+    #risultato {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -340,13 +563,20 @@ if (confirm("Vuoi continuare?")) {
   <button onclick="chiediConferma()">
     Sei pronto?
   </button>
+  <div id="risultato"></div>
 
   <script>
     function chiediConferma() {
-      if (confirm("Sei pronto per iniziare?")) {
+      // SALVA la risposta in una variabile
+      let risposta = confirm("Sei pronto per iniziare?");
+
+      // USA la variabile nell'if
+      if (risposta) {
         alert("🎉 Perfetto! Iniziamo!");
+        document.getElementById('risultato').innerHTML = "Risposta salvata: " + risposta + " (true = OK)";
       } else {
         alert("😊 Va bene, aspetto...");
+        document.getElementById('risultato').innerHTML = "Risposta salvata: " + risposta + " (false = Annulla)";
       }
     }
   </script>
@@ -370,29 +600,50 @@ if (confirm("Vuoi continuare?")) {
         <h2 className="text-3xl font-bold mb-4">🎯 Combinare alert, prompt e confirm</h2>
 
         <p className="text-lg mb-6">
-          La vera magia succede quando <strong>combini</strong> questi 3 comandi per creare conversazioni!
+          La vera magia succede quando <strong>combini</strong> questi 3 comandi con le <strong>variabili</strong> per creare conversazioni!
         </p>
 
+        <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-6 rounded-lg mb-6">
+          <h3 className="text-xl font-bold mb-3 text-white">🌟 Il Potere delle Variabili</h3>
+          <p className="text-lg mb-3">
+            Salvando i dati in variabili, puoi riusarli tante volte senza chiedere di nuovo!
+          </p>
+          <div className="bg-black bg-opacity-30 p-4 rounded border-2 border-white border-opacity-30">
+            <p className="font-mono text-yellow-200">let nome = prompt("Nome?");</p>
+            <p className="font-mono text-yellow-200">alert("Ciao " + nome);</p>
+            <p className="font-mono text-yellow-200">alert("Benvenuto " + nome);</p>
+          </div>
+        </div>
+
         <CodeExample
-          title="Esempio Completo - Quiz Interattivo"
+          title="Esempio Completo - Quiz Interattivo con Variabili"
           code={`// 1. Saluta l'utente
 alert("Benvenuto al quiz! 🎯");
 
-// 2. Chiedi il nome e saluta subito
-alert("Ciao " + prompt("Come ti chiami?") + "! Pronto per il quiz?");
+// 2. SALVA il nome in una variabile
+let nome = prompt("Come ti chiami?");
 
-// 3. Prima domanda e controlla risposta
-if (prompt("Quanto fa 5 + 3?") === "8") {
-  alert("✅ Esatto! Bravo!");
+// 3. USA il nome salvato
+alert("Ciao " + nome + "! Pronto per il quiz?");
+
+// 4. SALVA la risposta alla domanda
+let rispostaMath = prompt("Quanto fa 5 + 3?");
+
+// 5. Controlla la risposta
+if (rispostaMath === "8") {
+  alert("✅ Esatto " + nome + "! Bravo!");
 } else {
-  alert("❌ Sbagliato! La risposta è 8");
+  alert("❌ Sbagliato " + nome + "! La risposta è 8");
 }
 
-// 4. Chiedi se vuole continuare
-if (confirm("Vuoi fare un'altra domanda?")) {
-  alert("Ok! Prossima domanda...");
+// 6. SALVA la conferma
+let vuoleContinuare = confirm("Vuoi fare un'altra domanda " + nome + "?");
+
+// 7. Usa la variabile salvata
+if (vuoleContinuare) {
+  alert("Ok " + nome + "! Prossima domanda...");
 } else {
-  alert("Va bene, alla prossima!");
+  alert("Va bene " + nome + ", alla prossima!");
 }`}
           language="javascript"
           showLineNumbers
@@ -453,26 +704,38 @@ if (confirm("Vuoi fare un'altra domanda?")) {
       // Saluta
       alert("Benvenuto al quiz matematico! 🎯");
 
-      // Chiedi nome e saluta
-      alert("Ciao " + prompt("Come ti chiami?") + "! Pronto per il quiz?");
+      // SALVA il nome in una variabile
+      let nome = prompt("Come ti chiami?");
 
-      // Prima domanda
-      if (prompt("Quanto fa 5 + 3?") === "8") {
-        alert("✅ Esatto! Bravo!");
+      // USA il nome salvato
+      alert("Ciao " + nome + "! Pronto per il quiz?");
+
+      // SALVA la prima risposta
+      let risposta1 = prompt("Domanda 1: Quanto fa 5 + 3?");
+
+      // Controlla
+      if (risposta1 === "8") {
+        alert("✅ Esatto " + nome + "! Bravo!");
       } else {
-        alert("❌ Sbagliato! La risposta era 8");
+        alert("❌ Sbagliato " + nome + "! La risposta era 8");
       }
 
-      // Chiedi se vuole continuare
-      if (confirm("Vuoi fare un'altra domanda?")) {
-        if (prompt("Quanto fa 10 - 4?") === "6") {
-          alert("✅ Fantastico!");
+      // SALVA la conferma
+      let vuoleContinuare = confirm("Vuoi fare un'altra domanda " + nome + "?");
+
+      // Usa la variabile
+      if (vuoleContinuare) {
+        // SALVA la seconda risposta
+        let risposta2 = prompt("Domanda 2: Quanto fa 10 - 4?");
+
+        if (risposta2 === "6") {
+          alert("✅ Fantastico " + nome + "!");
         } else {
-          alert("❌ La risposta era 6");
+          alert("❌ La risposta era 6, " + nome);
         }
-        alert("Grazie per aver giocato! 🎉");
+        alert("Grazie per aver giocato " + nome + "! 🎉");
       } else {
-        alert("Va bene, alla prossima!");
+        alert("Va bene " + nome + ", alla prossima!");
       }
     }
   </script>
@@ -530,7 +793,7 @@ if (confirm("Vuoi fare un'altra domanda?")) {
           },
           'Ricarica (F5) - Dovresti vedere il popup di benvenuto!',
           {
-            text: 'Chiedi il nome e usa subito la risposta in un alert',
+            text: 'SALVA il nome in una variabile e poi usalo nel saluto',
             code: `<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -546,18 +809,21 @@ if (confirm("Vuoi fare un'altra domanda?")) {
     // Saluto iniziale
     alert("Benvenuto al mio quiz! 🎉");
 
-    // Chiedi il nome e saluta subito
-    alert("Ciao " + prompt("Come ti chiami?") + "! Iniziamo! 🚀");
+    // SALVA il nome in una variabile
+    let nome = prompt("Come ti chiami?");
+
+    // USA la variabile per salutare
+    alert("Ciao " + nome + "! Iniziamo! 🚀");
   </script>
 
 </body>
 </html>`,
             language: 'html',
-            highlightLines: [17],
+            highlightLines: [17, 18, 19, 20],
           },
           'Ricarica (F5) - Scrivi il tuo nome nel prompt e vedrai il saluto personalizzato!',
           {
-            text: 'Aggiungi la prima domanda del quiz',
+            text: 'SALVA la risposta alla prima domanda in una variabile',
             code: `<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -573,20 +839,23 @@ if (confirm("Vuoi fare un'altra domanda?")) {
     // Saluto iniziale
     alert("Benvenuto al mio quiz! 🎉");
 
-    // Chiedi il nome e saluta subito
-    alert("Ciao " + prompt("Come ti chiami?") + "! Iniziamo! 🚀");
+    // SALVA il nome
+    let nome = prompt("Come ti chiami?");
 
-    // Prima domanda (solo chiede, non controlla ancora)
-    prompt("Domanda 1: Quanto fa 7 + 8?");
+    // USA la variabile
+    alert("Ciao " + nome + "! Iniziamo! 🚀");
+
+    // SALVA la risposta alla prima domanda
+    let risposta1 = prompt("Domanda 1: Quanto fa 7 + 8?");
   </script>
 
 </body>
 </html>`,
             language: 'html',
-            highlightLines: [19, 20],
+            highlightLines: [23, 24],
           },
           {
-            text: 'Controlla la risposta e mostra se è giusta o sbagliata',
+            text: 'Controlla la risposta usando la variabile e personalizza con il nome',
             code: `<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -602,55 +871,20 @@ if (confirm("Vuoi fare un'altra domanda?")) {
     // Saluto iniziale
     alert("Benvenuto al mio quiz! 🎉");
 
-    // Chiedi il nome e saluta subito
-    alert("Ciao " + prompt("Come ti chiami?") + "! Iniziamo! 🚀");
+    // SALVA il nome
+    let nome = prompt("Come ti chiami?");
 
-    // Prima domanda con controllo
-    if (prompt("Domanda 1: Quanto fa 7 + 8?") === "15") {
-      alert("✅ Esatto! Bravo!");
+    // USA la variabile
+    alert("Ciao " + nome + "! Iniziamo! 🚀");
+
+    // SALVA la risposta
+    let risposta1 = prompt("Domanda 1: Quanto fa 7 + 8?");
+
+    // CONTROLLA usando la variabile
+    if (risposta1 === "15") {
+      alert("✅ Esatto " + nome + "! Bravo!");
     } else {
-      alert("❌ Sbagliato! La risposta è 15");
-    }
-  </script>
-
-</body>
-</html>`,
-            language: 'html',
-            highlightLines: [20, 21, 22, 23, 24],
-          },
-          'Ricarica e prova a rispondere 15, poi prova con una risposta sbagliata!',
-          {
-            text: 'Aggiungi una seconda domanda',
-            code: `<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <title>Il Mio Quiz</title>
-</head>
-<body>
-
-  <h1>Quiz Interattivo</h1>
-  <p>Apri la pagina e il quiz partirà automaticamente!</p>
-
-  <script>
-    // Saluto iniziale
-    alert("Benvenuto al mio quiz! 🎉");
-
-    // Chiedi il nome e saluta subito
-    alert("Ciao " + prompt("Come ti chiami?") + "! Iniziamo! 🚀");
-
-    // Prima domanda con controllo
-    if (prompt("Domanda 1: Quanto fa 7 + 8?") === "15") {
-      alert("✅ Esatto! Bravo!");
-    } else {
-      alert("❌ Sbagliato! La risposta è 15");
-    }
-
-    // Seconda domanda con controllo
-    if (prompt("Domanda 2: Quanti pianeti ha il sistema solare?") === "8") {
-      alert("✅ Corretto! Ottimo!");
-    } else {
-      alert("❌ Sbagliato! Sono 8 pianeti");
+      alert("❌ Sbagliato " + nome + "! La risposta è 15");
     }
   </script>
 
@@ -659,8 +893,9 @@ if (confirm("Vuoi fare un'altra domanda?")) {
             language: 'html',
             highlightLines: [26, 27, 28, 29, 30],
           },
+          'Ricarica e prova a rispondere 15, poi prova con una risposta sbagliata!',
           {
-            text: 'Alla fine, chiedi con confirm() se vuole rifare il quiz',
+            text: 'Aggiungi una seconda domanda con variabile',
             code: `<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -676,38 +911,87 @@ if (confirm("Vuoi fare un'altra domanda?")) {
     // Saluto iniziale
     alert("Benvenuto al mio quiz! 🎉");
 
-    // Chiedi il nome e saluta subito
-    alert("Ciao " + prompt("Come ti chiami?") + "! Iniziamo! 🚀");
+    // SALVA il nome
+    let nome = prompt("Come ti chiami?");
+    alert("Ciao " + nome + "! Iniziamo! 🚀");
 
-    // Prima domanda con controllo
-    if (prompt("Domanda 1: Quanto fa 7 + 8?") === "15") {
-      alert("✅ Esatto! Bravo!");
+    // Prima domanda
+    let risposta1 = prompt("Domanda 1: Quanto fa 7 + 8?");
+    if (risposta1 === "15") {
+      alert("✅ Esatto " + nome + "! Bravo!");
     } else {
-      alert("❌ Sbagliato! La risposta è 15");
+      alert("❌ Sbagliato " + nome + "! La risposta è 15");
     }
 
-    // Seconda domanda con controllo
-    if (prompt("Domanda 2: Quanti pianeti ha il sistema solare?") === "8") {
-      alert("✅ Corretto! Ottimo!");
+    // SALVA la seconda risposta
+    let risposta2 = prompt("Domanda 2: Quanti pianeti ha il sistema solare?");
+    if (risposta2 === "8") {
+      alert("✅ Corretto " + nome + "! Ottimo!");
     } else {
-      alert("❌ Sbagliato! Sono 8 pianeti");
-    }
-
-    // Messaggio finale
-    alert("Quiz completato! Grazie! 🎊");
-
-    // Chiedi se vuole rigiocare
-    if (confirm("Vuoi rifare il quiz?")) {
-      alert("Ricarica la pagina (F5) per giocare ancora!");
-    } else {
-      alert("Ok, alla prossima! 👋");
+      alert("❌ Sbagliato " + nome + "! Sono 8 pianeti");
     }
   </script>
 
 </body>
 </html>`,
             language: 'html',
-            highlightLines: [34, 35, 36, 37, 38, 39, 40, 41],
+            highlightLines: [28, 29, 30, 31, 32, 33],
+          },
+          {
+            text: 'SALVA la conferma in una variabile e personalizza con il nome',
+            code: `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Il Mio Quiz</title>
+</head>
+<body>
+
+  <h1>Quiz Interattivo</h1>
+  <p>Apri la pagina e il quiz partirà automaticamente!</p>
+
+  <script>
+    // Saluto iniziale
+    alert("Benvenuto al mio quiz! 🎉");
+
+    // SALVA il nome
+    let nome = prompt("Come ti chiami?");
+    alert("Ciao " + nome + "! Iniziamo! 🚀");
+
+    // Prima domanda
+    let risposta1 = prompt("Domanda 1: Quanto fa 7 + 8?");
+    if (risposta1 === "15") {
+      alert("✅ Esatto " + nome + "! Bravo!");
+    } else {
+      alert("❌ Sbagliato " + nome + "! La risposta è 15");
+    }
+
+    // Seconda domanda
+    let risposta2 = prompt("Domanda 2: Quanti pianeti ha il sistema solare?");
+    if (risposta2 === "8") {
+      alert("✅ Corretto " + nome + "! Ottimo!");
+    } else {
+      alert("❌ Sbagliato " + nome + "! Sono 8 pianeti");
+    }
+
+    // Messaggio finale con nome
+    alert("Quiz completato " + nome + "! Grazie! 🎊");
+
+    // SALVA la conferma
+    let vuoleRigiocare = confirm("Vuoi rifare il quiz " + nome + "?");
+
+    // USA la variabile
+    if (vuoleRigiocare) {
+      alert("Ricarica la pagina (F5) per giocare ancora!");
+    } else {
+      alert("Ok " + nome + ", alla prossima! 👋");
+    }
+  </script>
+
+</body>
+</html>`,
+            language: 'html',
+            highlightLines: [37, 38, 39, 40, 41, 42, 43, 44, 45, 46],
           },
           'Ricarica e completa tutto il quiz! 🎉',
           'Prova a cliccare OK e Annulla nel confirm finale per vedere i due messaggi diversi'
@@ -728,16 +1012,19 @@ if (confirm("Vuoi fare un'altra domanda?")) {
             <span>✅</span> Hai Completato la Lezione!
           </h2>
           <p className="text-gray-700 mb-4">
-            Fantastico! Ora sai creare conversazioni interattive con JavaScript! 🎉
+            Fantastico! Ora sai salvare dati e creare conversazioni interattive con JavaScript! 🎉
           </p>
           <div className="bg-white rounded p-4 border border-green-200">
             <p className="font-bold text-gray-900 mb-2">Cosa hai imparato:</p>
             <ul className="space-y-1 text-gray-700">
+              <li>✅ Creare variabili con <strong>let</strong> e <strong>const</strong></li>
+              <li>✅ Capire i tipi di dati: stringhe, numeri, boolean</li>
+              <li>✅ Concatenare stringhe con il simbolo <strong>+</strong></li>
+              <li>✅ Salvare dati in variabili e riusarli</li>
               <li>✅ Usare alert() per mostrare messaggi</li>
-              <li>✅ Usare prompt() per fare domande</li>
+              <li>✅ Usare prompt() per fare domande e salvare le risposte</li>
               <li>✅ Usare confirm() per chiedere OK/Annulla</li>
-              <li>✅ Usare prompt() direttamente dentro alert() e if</li>
-              <li>✅ Combinare i 3 comandi per creare dialoghi</li>
+              <li>✅ Combinare variabili e dialoghi per creare conversazioni personalizzate</li>
               <li>✅ Creare un quiz interattivo completo</li>
             </ul>
           </div>
