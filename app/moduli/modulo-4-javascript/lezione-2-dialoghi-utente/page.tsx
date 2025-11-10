@@ -188,26 +188,25 @@ alert("Hai " + (15 * 365) + " giorni!");`}
             È come quando un sito ti chiede il tuo nome o email per registrarti.
           </p>
           <div className="bg-black bg-opacity-30 p-4 rounded border-2 border-white border-opacity-30">
-            <p className="font-mono text-lg text-yellow-200">let risposta = prompt("La domanda");</p>
+            <p className="font-mono text-lg text-yellow-200">prompt("La domanda");</p>
           </div>
-          <p className="text-sm mt-3">La risposta viene <strong>salvata</strong> nella variabile!</p>
+          <p className="text-sm mt-3">L'utente può <strong>scrivere la risposta</strong> in una casella di testo!</p>
         </div>
 
         <h3 className="text-xl font-bold mb-3">Esempi Pratici</h3>
         <CodeExample
           title="Esempi di prompt()"
           code={`// Chiede il nome
-let nome = prompt("Come ti chiami?");
+prompt("Come ti chiami?");
 
 // Chiede l'età
-let eta = prompt("Quanti anni hai?");
+prompt("Quanti anni hai?");
 
-// Con valore predefinito
-let citta = prompt("In che città vivi?", "Roma");
+// Con valore predefinito (suggerisce "Roma")
+prompt("In che città vivi?", "Roma");
 
-// Usa la risposta
-let colore = prompt("Qual è il tuo colore preferito?");
-alert("Bello il " + colore + "!");`}
+// Usa la risposta direttamente in alert
+alert("Ciao " + prompt("Come ti chiami?") + "!");`}
           language="javascript"
           showLineNumbers
         />
@@ -239,29 +238,13 @@ alert("Bello il " + colore + "!");`}
     button:hover {
       transform: scale(1.05);
     }
-    #risultato {
-      margin-top: 20px;
-      font-size: 20px;
-      font-weight: bold;
-      color: #f5576c;
-    }
   </style>
 </head>
 <body>
   <h2>Clicca per rispondere!</h2>
-  <button onclick="chiediNome()">
+  <button onclick="alert('Ciao ' + prompt('Come ti chiami?') + '! 👋')">
     Dimmi il tuo nome
   </button>
-  <div id="risultato"></div>
-
-  <script>
-    function chiediNome() {
-      let nome = prompt("Come ti chiami?");
-      if (nome) {
-        document.getElementById('risultato').innerHTML = "Ciao " + nome + "! 👋";
-      }
-    }
-  </script>
 </body>
 </html>`}
         />
@@ -292,14 +275,14 @@ alert("Bello il " + colore + "!");`}
             È come quando vuoi cancellare un file e il computer chiede: "Sei sicuro?"
           </p>
           <div className="bg-black bg-opacity-30 p-4 rounded border-2 border-white border-opacity-30">
-            <p className="font-mono text-lg text-yellow-200">let risposta = confirm("Sei sicuro?");</p>
+            <p className="font-mono text-lg text-yellow-200">confirm("Sei sicuro?");</p>
           </div>
           <div className="mt-3 grid md:grid-cols-2 gap-3">
             <div className="bg-black bg-opacity-20 p-3 rounded">
-              <p className="text-sm"><strong>Se clicca OK:</strong> restituisce <code className="bg-white bg-opacity-30 px-1 rounded">true</code></p>
+              <p className="text-sm"><strong>Se clicca OK:</strong> la risposta è <code className="bg-white bg-opacity-30 px-1 rounded">true</code></p>
             </div>
             <div className="bg-black bg-opacity-20 p-3 rounded">
-              <p className="text-sm"><strong>Se clicca Annulla:</strong> restituisce <code className="bg-white bg-opacity-30 px-1 rounded">false</code></p>
+              <p className="text-sm"><strong>Se clicca Annulla:</strong> la risposta è <code className="bg-white bg-opacity-30 px-1 rounded">false</code></p>
             </div>
           </div>
         </div>
@@ -307,19 +290,17 @@ alert("Bello il " + colore + "!");`}
         <h3 className="text-xl font-bold mb-3">Esempi Pratici</h3>
         <CodeExample
           title="Esempi di confirm()"
-          code={`// Chiede conferma
-let sicuro = confirm("Vuoi davvero cancellare tutto?");
+          code={`// Chiede conferma semplice
+confirm("Vuoi davvero cancellare tutto?");
 
-// Controlla la risposta
-if (sicuro === true) {
-  alert("Cancellato!");
-} else {
-  alert("Operazione annullata");
-}
+// Usa confirm() dentro alert
+alert("Hai cliccato: " + confirm("Sei pronto?"));
 
-// Versione corta (true/false è già booleano)
+// Usa confirm() direttamente in un if
 if (confirm("Vuoi continuare?")) {
   alert("Ok, continuiamo!");
+} else {
+  alert("Operazione annullata");
 }`}
           language="javascript"
           showLineNumbers
@@ -352,12 +333,6 @@ if (confirm("Vuoi continuare?")) {
     button:hover {
       transform: scale(1.05);
     }
-    #risultato {
-      margin-top: 20px;
-      font-size: 20px;
-      font-weight: bold;
-      color: #43e97b;
-    }
   </style>
 </head>
 <body>
@@ -365,15 +340,13 @@ if (confirm("Vuoi continuare?")) {
   <button onclick="chiediConferma()">
     Sei pronto?
   </button>
-  <div id="risultato"></div>
 
   <script>
     function chiediConferma() {
-      let risposta = confirm("Sei pronto per iniziare?");
-      if (risposta) {
-        document.getElementById('risultato').innerHTML = "🎉 Perfetto! Iniziamo!";
+      if (confirm("Sei pronto per iniziare?")) {
+        alert("🎉 Perfetto! Iniziamo!");
       } else {
-        document.getElementById('risultato').innerHTML = "😊 Va bene, aspetto...";
+        alert("😊 Va bene, aspetto...");
       }
     }
   </script>
@@ -405,23 +378,17 @@ if (confirm("Vuoi continuare?")) {
           code={`// 1. Saluta l'utente
 alert("Benvenuto al quiz! 🎯");
 
-// 2. Chiedi il nome
-let nome = prompt("Come ti chiami?");
+// 2. Chiedi il nome e saluta subito
+alert("Ciao " + prompt("Come ti chiami?") + "! Pronto per il quiz?");
 
-// 3. Saluta per nome
-alert("Ciao " + nome + "! Pronto per il quiz?");
-
-// 4. Prima domanda
-let risposta = prompt("Quanto fa 5 + 3?");
-
-// 5. Controlla risposta
-if (risposta === "8") {
-  alert("✅ Esatto " + nome + "! Bravo!");
+// 3. Prima domanda e controlla risposta
+if (prompt("Quanto fa 5 + 3?") === "8") {
+  alert("✅ Esatto! Bravo!");
 } else {
   alert("❌ Sbagliato! La risposta è 8");
 }
 
-// 6. Chiedi se vuole continuare
+// 4. Chiedi se vuole continuare
 if (confirm("Vuoi fare un'altra domanda?")) {
   alert("Ok! Prossima domanda...");
 } else {
@@ -486,37 +453,26 @@ if (confirm("Vuoi fare un'altra domanda?")) {
       // Saluta
       alert("Benvenuto al quiz matematico! 🎯");
 
-      // Chiedi nome
-      let nome = prompt("Come ti chiami?");
-
-      if (!nome) {
-        alert("Ok, ci vediamo!");
-        return;
-      }
-
-      // Saluta per nome
-      alert("Ciao " + nome + "! Pronto per il quiz?");
+      // Chiedi nome e saluta
+      alert("Ciao " + prompt("Come ti chiami?") + "! Pronto per il quiz?");
 
       // Prima domanda
-      let risposta1 = prompt("Quanto fa 5 + 3?");
-
-      if (risposta1 === "8") {
-        alert("✅ Esatto " + nome + "! Bravo!");
+      if (prompt("Quanto fa 5 + 3?") === "8") {
+        alert("✅ Esatto! Bravo!");
       } else {
         alert("❌ Sbagliato! La risposta era 8");
       }
 
       // Chiedi se vuole continuare
       if (confirm("Vuoi fare un'altra domanda?")) {
-        let risposta2 = prompt("Quanto fa 10 - 4?");
-        if (risposta2 === "6") {
-          alert("✅ Fantastico " + nome + "!");
+        if (prompt("Quanto fa 10 - 4?") === "6") {
+          alert("✅ Fantastico!");
         } else {
           alert("❌ La risposta era 6");
         }
-        alert("Grazie per aver giocato " + nome + "! 🎉");
+        alert("Grazie per aver giocato! 🎉");
       } else {
-        alert("Va bene " + nome + ", alla prossima!");
+        alert("Va bene, alla prossima!");
       }
     }
   </script>
@@ -574,7 +530,7 @@ if (confirm("Vuoi fare un'altra domanda?")) {
           },
           'Ricarica (F5) - Dovresti vedere il popup di benvenuto!',
           {
-            text: 'Chiedi il nome dell\'utente con prompt() e salvalo',
+            text: 'Chiedi il nome e usa subito la risposta in un alert',
             code: `<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -590,46 +546,16 @@ if (confirm("Vuoi fare un'altra domanda?")) {
     // Saluto iniziale
     alert("Benvenuto al mio quiz! 🎉");
 
-    // Chiedi il nome
-    let nome = prompt("Come ti chiami?");
+    // Chiedi il nome e saluta subito
+    alert("Ciao " + prompt("Come ti chiami?") + "! Iniziamo! 🚀");
   </script>
 
 </body>
 </html>`,
             language: 'html',
-            highlightLines: [17, 18],
+            highlightLines: [17],
           },
-          'Ricarica (F5) - Scrivi il tuo nome nel prompt!',
-          {
-            text: 'Usa il nome per un saluto personalizzato',
-            code: `<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <title>Il Mio Quiz</title>
-</head>
-<body>
-
-  <h1>Quiz Interattivo</h1>
-  <p>Apri la pagina e il quiz partirà automaticamente!</p>
-
-  <script>
-    // Saluto iniziale
-    alert("Benvenuto al mio quiz! 🎉");
-
-    // Chiedi il nome
-    let nome = prompt("Come ti chiami?");
-
-    // Saluto personalizzato
-    alert("Ciao " + nome + "! Iniziamo! 🚀");
-  </script>
-
-</body>
-</html>`,
-            language: 'html',
-            highlightLines: [20, 21],
-          },
-          'Ricarica - Dovresti vedere il tuo nome nel secondo alert!',
+          'Ricarica (F5) - Scrivi il tuo nome nel prompt e vedrai il saluto personalizzato!',
           {
             text: 'Aggiungi la prima domanda del quiz',
             code: `<!DOCTYPE html>
@@ -647,20 +573,17 @@ if (confirm("Vuoi fare un'altra domanda?")) {
     // Saluto iniziale
     alert("Benvenuto al mio quiz! 🎉");
 
-    // Chiedi il nome
-    let nome = prompt("Come ti chiami?");
+    // Chiedi il nome e saluta subito
+    alert("Ciao " + prompt("Come ti chiami?") + "! Iniziamo! 🚀");
 
-    // Saluto personalizzato
-    alert("Ciao " + nome + "! Iniziamo! 🚀");
-
-    // Prima domanda
-    let risposta1 = prompt("Domanda 1: Quanto fa 7 + 8?");
+    // Prima domanda (solo chiede, non controlla ancora)
+    prompt("Domanda 1: Quanto fa 7 + 8?");
   </script>
 
 </body>
 </html>`,
             language: 'html',
-            highlightLines: [23, 24],
+            highlightLines: [19, 20],
           },
           {
             text: 'Controlla la risposta e mostra se è giusta o sbagliata',
@@ -679,18 +602,12 @@ if (confirm("Vuoi fare un'altra domanda?")) {
     // Saluto iniziale
     alert("Benvenuto al mio quiz! 🎉");
 
-    // Chiedi il nome
-    let nome = prompt("Come ti chiami?");
+    // Chiedi il nome e saluta subito
+    alert("Ciao " + prompt("Come ti chiami?") + "! Iniziamo! 🚀");
 
-    // Saluto personalizzato
-    alert("Ciao " + nome + "! Iniziamo! 🚀");
-
-    // Prima domanda
-    let risposta1 = prompt("Domanda 1: Quanto fa 7 + 8?");
-
-    // Controlla risposta
-    if (risposta1 === "15") {
-      alert("✅ Esatto! Bravo " + nome + "!");
+    // Prima domanda con controllo
+    if (prompt("Domanda 1: Quanto fa 7 + 8?") === "15") {
+      alert("✅ Esatto! Bravo!");
     } else {
       alert("❌ Sbagliato! La risposta è 15");
     }
@@ -699,7 +616,7 @@ if (confirm("Vuoi fare un'altra domanda?")) {
 </body>
 </html>`,
             language: 'html',
-            highlightLines: [26, 27, 28, 29, 30, 31],
+            highlightLines: [20, 21, 22, 23, 24],
           },
           'Ricarica e prova a rispondere 15, poi prova con una risposta sbagliata!',
           {
@@ -719,26 +636,18 @@ if (confirm("Vuoi fare un'altra domanda?")) {
     // Saluto iniziale
     alert("Benvenuto al mio quiz! 🎉");
 
-    // Chiedi il nome
-    let nome = prompt("Come ti chiami?");
+    // Chiedi il nome e saluta subito
+    alert("Ciao " + prompt("Come ti chiami?") + "! Iniziamo! 🚀");
 
-    // Saluto personalizzato
-    alert("Ciao " + nome + "! Iniziamo! 🚀");
-
-    // Prima domanda
-    let risposta1 = prompt("Domanda 1: Quanto fa 7 + 8?");
-
-    // Controlla risposta
-    if (risposta1 === "15") {
-      alert("✅ Esatto! Bravo " + nome + "!");
+    // Prima domanda con controllo
+    if (prompt("Domanda 1: Quanto fa 7 + 8?") === "15") {
+      alert("✅ Esatto! Bravo!");
     } else {
       alert("❌ Sbagliato! La risposta è 15");
     }
 
-    // Seconda domanda
-    let risposta2 = prompt("Domanda 2: Quanti pianeti ha il sistema solare?");
-
-    if (risposta2 === "8") {
+    // Seconda domanda con controllo
+    if (prompt("Domanda 2: Quanti pianeti ha il sistema solare?") === "8") {
       alert("✅ Corretto! Ottimo!");
     } else {
       alert("❌ Sbagliato! Sono 8 pianeti");
@@ -748,7 +657,7 @@ if (confirm("Vuoi fare un'altra domanda?")) {
 </body>
 </html>`,
             language: 'html',
-            highlightLines: [33, 34, 35, 36, 37, 38, 39, 40],
+            highlightLines: [26, 27, 28, 29, 30],
           },
           {
             text: 'Alla fine, chiedi con confirm() se vuole rifare il quiz',
@@ -767,32 +676,25 @@ if (confirm("Vuoi fare un'altra domanda?")) {
     // Saluto iniziale
     alert("Benvenuto al mio quiz! 🎉");
 
-    // Chiedi il nome
-    let nome = prompt("Come ti chiami?");
+    // Chiedi il nome e saluta subito
+    alert("Ciao " + prompt("Come ti chiami?") + "! Iniziamo! 🚀");
 
-    // Saluto personalizzato
-    alert("Ciao " + nome + "! Iniziamo! 🚀");
-
-    // Prima domanda
-    let risposta1 = prompt("Domanda 1: Quanto fa 7 + 8?");
-
-    if (risposta1 === "15") {
-      alert("✅ Esatto! Bravo " + nome + "!");
+    // Prima domanda con controllo
+    if (prompt("Domanda 1: Quanto fa 7 + 8?") === "15") {
+      alert("✅ Esatto! Bravo!");
     } else {
       alert("❌ Sbagliato! La risposta è 15");
     }
 
-    // Seconda domanda
-    let risposta2 = prompt("Domanda 2: Quanti pianeti ha il sistema solare?");
-
-    if (risposta2 === "8") {
+    // Seconda domanda con controllo
+    if (prompt("Domanda 2: Quanti pianeti ha il sistema solare?") === "8") {
       alert("✅ Corretto! Ottimo!");
     } else {
       alert("❌ Sbagliato! Sono 8 pianeti");
     }
 
     // Messaggio finale
-    alert("Quiz completato! Grazie " + nome + "! 🎊");
+    alert("Quiz completato! Grazie! 🎊");
 
     // Chiedi se vuole rigiocare
     if (confirm("Vuoi rifare il quiz?")) {
@@ -805,7 +707,7 @@ if (confirm("Vuoi fare un'altra domanda?")) {
 </body>
 </html>`,
             language: 'html',
-            highlightLines: [41, 42, 43, 44, 45, 46, 47, 48, 49],
+            highlightLines: [34, 35, 36, 37, 38, 39, 40, 41],
           },
           'Ricarica e completa tutto il quiz! 🎉',
           'Prova a cliccare OK e Annulla nel confirm finale per vedere i due messaggi diversi'
@@ -815,7 +717,7 @@ if (confirm("Vuoi fare un'altra domanda?")) {
           'Cambia i messaggi di risposta giusta/sbagliata con emoji diverse',
           'Aggiungi più emoji nei messaggi per renderlo più divertente',
           'Cosa succede se clicchi "Annulla" nel primo prompt? (prova!)',
-          'Conta quante risposte giuste ha dato (useremo le variabili nella prossima lezione!)'
+          'Prova a usare prompt() dentro un altro alert per messaggi personalizzati'
         ]}
       />
 
@@ -834,7 +736,7 @@ if (confirm("Vuoi fare un'altra domanda?")) {
               <li>✅ Usare alert() per mostrare messaggi</li>
               <li>✅ Usare prompt() per fare domande</li>
               <li>✅ Usare confirm() per chiedere OK/Annulla</li>
-              <li>✅ Salvare risposte dell'utente in variabili</li>
+              <li>✅ Usare prompt() direttamente dentro alert() e if</li>
               <li>✅ Combinare i 3 comandi per creare dialoghi</li>
               <li>✅ Creare un quiz interattivo completo</li>
             </ul>
