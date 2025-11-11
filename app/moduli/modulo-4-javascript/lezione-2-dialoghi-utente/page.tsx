@@ -632,10 +632,10 @@ button:hover {
           </div>
           <div className="mt-3 grid md:grid-cols-2 gap-3">
             <div className="bg-black bg-opacity-20 p-3 rounded">
-              <p className="text-sm"><strong>Se clicca OK:</strong> la risposta è <code className="bg-white bg-opacity-30 px-1 rounded">true</code></p>
+              <p className="text-sm text-white"><strong>Se clicca OK:</strong> la risposta è <code className="bg-white bg-opacity-30 px-1 rounded text-gray-900">true</code></p>
             </div>
             <div className="bg-black bg-opacity-20 p-3 rounded">
-              <p className="text-sm"><strong>Se clicca Annulla:</strong> la risposta è <code className="bg-white bg-opacity-30 px-1 rounded">false</code></p>
+              <p className="text-sm text-white"><strong>Se clicca Annulla:</strong> la risposta è <code className="bg-white bg-opacity-30 px-1 rounded text-gray-900">false</code></p>
             </div>
           </div>
         </div>
