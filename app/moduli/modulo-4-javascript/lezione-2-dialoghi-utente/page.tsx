@@ -646,18 +646,14 @@ button:hover {
           <p className="font-bold text-purple-800 mb-3">💡 Salvare la Risposta di confirm()</p>
           <p className="text-gray-700 mb-4">
             confirm() restituisce <code className="bg-purple-100 px-1 rounded">true</code> (OK) o <code className="bg-purple-100 px-1 rounded">false</code> (Annulla).
-            Possiamo salvare questa risposta in una variabile!
+            Possiamo salvare questa risposta in una variabile e visualizzarla!
           </p>
           <CodeExample
             code={`// SALVA la risposta in una variabile
 let vuoleContinuare = confirm("Vuoi continuare?");
 
-// USA la variabile nell'if
-if (vuoleContinuare) {
-  alert("Ok, continuiamo!");
-} else {
-  alert("Operazione annullata");
-}`}
+// MOSTRA la risposta
+alert("Hai cliccato: " + vuoleContinuare);  // true o false`}
             language="javascript"
             showLineNumbers
           />
@@ -665,25 +661,25 @@ if (vuoleContinuare) {
 
         <CodeExample
           title="Altri Esempi - Solo JavaScript"
-          code={`// Esempio 1: Salva e mostra la risposta
+          code={`// Esempio 1: Conferma e mostra il risultato
 let risposta = confirm("Sei pronto?");
-alert("Hai cliccato: " + risposta);  // true o false
+alert("Risposta: " + risposta);  // true o false
 
-// Esempio 2: Usa la variabile più volte
+// Esempio 2: Salva e concatena con messaggio
 let vuoleCancellare = confirm("Vuoi davvero cancellare?");
-if (vuoleCancellare) {
-  alert("File cancellato!");
-  alert("Ricordati: hai detto " + vuoleCancellare);
-} else {
-  alert("Operazione annullata");
-}`}
+alert("Hai scelto: " + vuoleCancellare);
+
+// Esempio 3: Usa variabili con concatenazione
+let nome = "Mario";
+let conferma = confirm("Ciao " + nome + ", vuoi continuare?");
+alert(nome + " ha risposto: " + conferma);`}
           language="javascript"
           showLineNumbers
         />
 
         <h3 className="text-xl font-bold mb-3 mt-8">📄 Esempio Completo - Copia e Prova!</h3>
         <p className="text-gray-700 mb-4">
-          Questo esempio chiede conferma e mostra messaggi diversi in base alla scelta:
+          Questo esempio chiede conferma e mostra cosa hai scelto (true/false):
         </p>
 
         <div className="grid md:grid-cols-2 gap-4 mb-6">
@@ -710,12 +706,8 @@ if (vuoleCancellare) {
       // SALVA la risposta
       let risposta = confirm("Sei pronto per iniziare?");
 
-      // USA la variabile nell'if
-      if (risposta) {
-        alert("🎉 Perfetto! Iniziamo!");
-      } else {
-        alert("😊 Va bene, aspetto...");
-      }
+      // MOSTRA la risposta
+      alert("Hai scelto: " + risposta);
     }
   </script>
 </body>
@@ -789,12 +781,8 @@ button:hover {
       // SALVA la risposta
       let risposta = confirm("Sei pronto per iniziare?");
 
-      // USA la variabile nell'if
-      if (risposta) {
-        alert("🎉 Perfetto! Iniziamo!");
-      } else {
-        alert("😊 Va bene, aspetto...");
-      }
+      // MOSTRA la risposta
+      alert("Hai scelto: " + risposta);
     }
   </script>
 </body>
@@ -834,35 +822,29 @@ button:hover {
 
         <h3 className="text-xl font-bold mb-3">Esempio JavaScript</h3>
         <CodeExample
-          title="Logica del Quiz - Solo JavaScript"
+          title="Conversazione con alert, prompt e confirm"
           code={`// 1. Saluta l'utente
 alert("Benvenuto al quiz! 🎯");
 
 // 2. SALVA il nome in una variabile
 let nome = prompt("Come ti chiami?");
 
-// 3. USA il nome salvato
-alert("Ciao " + nome + "! Pronto per il quiz?");
+// 3. USA il nome salvato più volte
+alert("Ciao " + nome + "! 👋");
+alert("Benvenuto " + nome + "!");
 
-// 4. SALVA la risposta alla domanda
-let rispostaMath = prompt("Quanto fa 5 + 3?");
+// 4. FAI una domanda e SALVA la risposta
+let risposta1 = prompt("Quanto fa 5 + 3?");
 
-// 5. Controlla la risposta
-if (rispostaMath === "8") {
-  alert("✅ Esatto " + nome + "! Bravo!");
-} else {
-  alert("❌ Sbagliato " + nome + "! La risposta è 8");
-}
+// 5. MOSTRA la risposta data
+alert(nome + " ha risposto: " + risposta1);
 
-// 6. SALVA la conferma
-let vuoleContinuare = confirm("Vuoi fare un'altra domanda " + nome + "?");
+// 6. CHIEDI conferma e SALVA
+let vuoleContinuare = confirm("Vuoi continuare " + nome + "?");
 
-// 7. Usa la variabile salvata
-if (vuoleContinuare) {
-  alert("Ok " + nome + "! Prossima domanda...");
-} else {
-  alert("Va bene " + nome + ", alla prossima!");
-}`}
+// 7. MOSTRA la scelta
+alert(nome + " ha scelto: " + vuoleContinuare);
+alert("Grazie " + nome + "! 🎉");`}
           language="javascript"
           showLineNumbers
         />
@@ -899,27 +881,16 @@ if (vuoleContinuare) {
       alert("Benvenuto! 🎯");
 
       let nome = prompt("Come ti chiami?");
-      alert("Ciao " + nome + "! Pronto?");
+      alert("Ciao " + nome + "! 👋");
+      alert("Benvenuto " + nome + "!");
 
       let risp1 = prompt("Quanto fa 5 + 3?");
-      if (risp1 === "8") {
-        alert("✅ Esatto " + nome + "!");
-      } else {
-        alert("❌ Sbagliato " + nome + "!");
-      }
+      alert(nome + " ha risposto: " + risp1);
 
-      let vuole = confirm("Ancora " + nome + "?");
-      if (vuole) {
-        let risp2 = prompt("Quanto fa 10 - 4?");
-        if (risp2 === "6") {
-          alert("✅ Fantastico " + nome + "!");
-        } else {
-          alert("❌ Era 6, " + nome);
-        }
-        alert("Grazie " + nome + "! 🎉");
-      } else {
-        alert("Ciao " + nome + "! 👋");
-      }
+      let vuole = confirm("Vuoi continuare " + nome + "?");
+      alert(nome + " ha scelto: " + vuole);
+
+      alert("Grazie " + nome + "! 🎉");
     }
   </script>
 </body>
@@ -1020,27 +991,16 @@ button:hover {
       alert("Benvenuto! 🎯");
 
       let nome = prompt("Come ti chiami?");
-      alert("Ciao " + nome + "! Pronto?");
+      alert("Ciao " + nome + "! 👋");
+      alert("Benvenuto " + nome + "!");
 
       let risp1 = prompt("Quanto fa 5 + 3?");
-      if (risp1 === "8") {
-        alert("✅ Esatto " + nome + "!");
-      } else {
-        alert("❌ Sbagliato " + nome + "!");
-      }
+      alert(nome + " ha risposto: " + risp1);
 
-      let vuole = confirm("Ancora " + nome + "?");
-      if (vuole) {
-        let risp2 = prompt("Quanto fa 10 - 4?");
-        if (risp2 === "6") {
-          alert("✅ Fantastico " + nome + "!");
-        } else {
-          alert("❌ Era 6, " + nome);
-        }
-        alert("Grazie " + nome + "! 🎉");
-      } else {
-        alert("Ciao " + nome + "! 👋");
-      }
+      let vuole = confirm("Vuoi continuare " + nome + "?");
+      alert(nome + " ha scelto: " + vuole);
+
+      alert("Grazie " + nome + "! 🎉");
     }
   </script>
 </body>
@@ -1159,7 +1119,7 @@ button:hover {
             highlightLines: [23, 24],
           },
           {
-            text: 'Controlla la risposta usando la variabile e personalizza con il nome',
+            text: 'Mostra la risposta usando la variabile e personalizza con il nome',
             code: `<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -1184,20 +1144,16 @@ button:hover {
     // SALVA la risposta
     let risposta1 = prompt("Domanda 1: Quanto fa 7 + 8?");
 
-    // CONTROLLA usando la variabile
-    if (risposta1 === "15") {
-      alert("✅ Esatto " + nome + "! Bravo!");
-    } else {
-      alert("❌ Sbagliato " + nome + "! La risposta è 15");
-    }
+    // MOSTRA la risposta usando la variabile
+    alert(nome + " ha risposto: " + risposta1);
   </script>
 
 </body>
 </html>`,
             language: 'html',
-            highlightLines: [26, 27, 28, 29, 30],
+            highlightLines: [26, 27],
           },
-          'Ricarica e prova a rispondere 15, poi prova con una risposta sbagliata!',
+          'Ricarica e scrivi la tua risposta - vedrai il quiz mostrarti cosa hai scritto!',
           {
             text: 'Aggiungi una seconda domanda con variabile',
             code: `<!DOCTYPE html>
@@ -1221,25 +1177,17 @@ button:hover {
 
     // Prima domanda
     let risposta1 = prompt("Domanda 1: Quanto fa 7 + 8?");
-    if (risposta1 === "15") {
-      alert("✅ Esatto " + nome + "! Bravo!");
-    } else {
-      alert("❌ Sbagliato " + nome + "! La risposta è 15");
-    }
+    alert(nome + " ha risposto: " + risposta1);
 
     // SALVA la seconda risposta
     let risposta2 = prompt("Domanda 2: Quanti pianeti ha il sistema solare?");
-    if (risposta2 === "8") {
-      alert("✅ Corretto " + nome + "! Ottimo!");
-    } else {
-      alert("❌ Sbagliato " + nome + "! Sono 8 pianeti");
-    }
+    alert(nome + " ha risposto: " + risposta2);
   </script>
 
 </body>
 </html>`,
             language: 'html',
-            highlightLines: [28, 29, 30, 31, 32, 33],
+            highlightLines: [25, 26, 27],
           },
           {
             text: 'SALVA la conferma in una variabile e personalizza con il nome',
@@ -1264,19 +1212,11 @@ button:hover {
 
     // Prima domanda
     let risposta1 = prompt("Domanda 1: Quanto fa 7 + 8?");
-    if (risposta1 === "15") {
-      alert("✅ Esatto " + nome + "! Bravo!");
-    } else {
-      alert("❌ Sbagliato " + nome + "! La risposta è 15");
-    }
+    alert(nome + " ha risposto: " + risposta1);
 
     // Seconda domanda
     let risposta2 = prompt("Domanda 2: Quanti pianeti ha il sistema solare?");
-    if (risposta2 === "8") {
-      alert("✅ Corretto " + nome + "! Ottimo!");
-    } else {
-      alert("❌ Sbagliato " + nome + "! Sono 8 pianeti");
-    }
+    alert(nome + " ha risposto: " + risposta2);
 
     // Messaggio finale con nome
     alert("Quiz completato " + nome + "! Grazie! 🎊");
@@ -1284,28 +1224,24 @@ button:hover {
     // SALVA la conferma
     let vuoleRigiocare = confirm("Vuoi rifare il quiz " + nome + "?");
 
-    // USA la variabile
-    if (vuoleRigiocare) {
-      alert("Ricarica la pagina (F5) per giocare ancora!");
-    } else {
-      alert("Ok " + nome + ", alla prossima! 👋");
-    }
+    // MOSTRA la scelta
+    alert(nome + " ha scelto: " + vuoleRigiocare);
   </script>
 
 </body>
 </html>`,
             language: 'html',
-            highlightLines: [37, 38, 39, 40, 41, 42, 43, 44, 45, 46],
+            highlightLines: [32, 33, 34, 35, 36],
           },
           'Ricarica e completa tutto il quiz! 🎉',
-          'Prova a cliccare OK e Annulla nel confirm finale per vedere i due messaggi diversi'
+          'Prova a cliccare OK e Annulla nel confirm finale - vedrai true o false!'
         ]}
         experiments={[
           'Aggiungi una terza domanda (di cultura generale, sport, o quello che vuoi!)',
-          'Cambia i messaggi di risposta giusta/sbagliata con emoji diverse',
+          'Usa il nome della persona in tutti i messaggi per personalizzare',
           'Aggiungi più emoji nei messaggi per renderlo più divertente',
           'Cosa succede se clicchi "Annulla" nel primo prompt? (prova!)',
-          'Prova a usare prompt() dentro un altro alert per messaggi personalizzati'
+          'Prova a salvare più risposte e mostrarle tutte insieme alla fine'
         ]}
       />
 
@@ -1340,10 +1276,10 @@ button:hover {
         title="Quiz a Tema Libero"
         description="Crea un quiz di almeno 5 domande su un tema che ti piace: sport, videogiochi, musica, film, scuola... Usa alert(), prompt() e confirm()!"
         requirements={[
-          'Almeno 5 domande con prompt()',
+          'Almeno 5 domande con prompt() e salva tutte le risposte in variabili',
           'Saluto iniziale con alert() che chiede il nome',
-          'Controlla ogni risposta e mostra se è giusta o sbagliata',
-          'Alla fine, chiedi con confirm() se vuole vedere il punteggio',
+          'Mostra ogni risposta usando alert() con il nome personalizzato',
+          'Alla fine, chiedi con confirm() se vuole rifare il quiz',
           'Usa emoji per rendere il quiz più divertente 🎮'
         ]}
         hint="Pensa a un tema che conosci bene! Esempio: quiz su Fortnite, quiz su Marvel, quiz sulla tua classe..."
