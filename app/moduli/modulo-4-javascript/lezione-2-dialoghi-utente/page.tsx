@@ -286,9 +286,14 @@ alert("Bravo " + nome + "! Hai " + punteggio + " punti!");`}
 </head>
 <body>
   <h2>Clicca il pulsante!</h2>
+
+  <!-- onclick chiama il codice JavaScript -->
   <button onclick="alert('🎉 Ciao! Questo è un alert!')">
     Mostra Alert
   </button>
+
+  <!-- Il JavaScript può stare anche dentro <script> -->
+  <!-- Lo vedremo nei prossimi esempi! -->
 </body>
 </html>`}
             language="html"
@@ -322,13 +327,26 @@ button:hover {
         </div>
 
         <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mb-6">
-          <p className="font-bold text-blue-800 mb-2">💡 Cosa fa onclick?</p>
-          <p className="text-gray-700 mb-2">
-            L'attributo <code className="bg-blue-100 px-1 rounded">onclick=""</code> nel pulsante dice:
-            "quando clicco, esegui questo codice JavaScript".
+          <p className="font-bold text-blue-800 mb-3">💡 Dove va il codice JavaScript?</p>
+          <p className="text-gray-700 mb-3">
+            Ricordi la <strong>Lezione 1</strong>? Il codice JavaScript va SEMPRE dentro i tag{' '}
+            <code className="bg-blue-100 px-2 py-1 rounded">&lt;script&gt;</code>!
           </p>
+          <p className="text-gray-700 mb-3">
+            L'attributo <code className="bg-blue-100 px-1 rounded">onclick="alert('...')"</code> nel pulsante
+            serve solo per <strong>chiamare</strong> il codice JavaScript quando clicchi.
+          </p>
+          <div className="bg-white p-4 rounded border border-blue-200 mb-3">
+            <p className="text-sm text-gray-600 mb-2">Esempio:</p>
+            <code className="text-xs block text-gray-800">
+              &lt;button onclick="alert('Ciao')"&gt; ← Chiama JavaScript<br/>
+              &lt;script&gt; ← TUTTO il JavaScript sta qui!<br/>
+              &nbsp;&nbsp;// Codice JavaScript...<br/>
+              &lt;/script&gt;
+            </code>
+          </div>
           <p className="text-gray-600 text-sm">
-            📝 Studieremo i pulsanti e gli eventi nella <strong>Lezione 4</strong>. Per ora concentrati su alert()!
+            📝 Nelle prossime lezioni vedremo come mettere JavaScript in un file separato .js!
           </p>
         </div>
 
@@ -460,10 +478,13 @@ let citta = prompt("In che città vivi?", "Roma");`}
 </head>
 <body>
   <h2>Clicca per rispondere!</h2>
+
+  <!-- onclick chiama la function chiediNome() -->
   <button onclick="chiediNome()">
     Dimmi il tuo nome
   </button>
 
+  <!-- TUTTO il JavaScript sta dentro <script> -->
   <script>
     function chiediNome() {
       // SALVA la risposta
@@ -508,12 +529,17 @@ button:hover {
         </div>
 
         <div className="bg-purple-50 border-l-4 border-purple-500 p-6 rounded mb-6">
-          <p className="font-bold text-purple-800 mb-2">💡 Cos'è la function?</p>
-          <p className="text-gray-700 mb-2">
-            <code className="bg-purple-100 px-1 rounded">function chiediNome()</code> è un contenitore di codice che si esegue quando clicchi il pulsante.
+          <p className="font-bold text-purple-800 mb-3">💡 Come funziona?</p>
+          <p className="text-gray-700 mb-3">
+            Il pulsante ha <code className="bg-purple-100 px-1 rounded">onclick="chiediNome()"</code> che{' '}
+            <strong>chiama</strong> la function <code className="bg-purple-100 px-1 rounded">chiediNome()</code>.
+          </p>
+          <p className="text-gray-700 mb-3">
+            La function è scritta dentro i tag <code className="bg-purple-100 px-2 py-1 rounded">&lt;script&gt;</code>{' '}
+            (come hai imparato nella Lezione 1!). Quando clicchi il pulsante, il codice dentro la function si esegue.
           </p>
           <p className="text-gray-600 text-sm">
-            📝 Le funzioni le studieremo nella <strong>Lezione 4</strong>. Per ora pensa: "il codice dentro le graffe &#123; &#125; si esegue al click".
+            📝 Le funzioni le studieremo bene nella <strong>Lezione 4</strong>. Per ora ricorda: tutto il JavaScript sta dentro <code className="bg-gray-100 px-1 rounded">&lt;script&gt;</code>!
           </p>
         </div>
 
@@ -662,10 +688,13 @@ if (vuoleCancellare) {
 </head>
 <body>
   <h2>Clicca per confermare!</h2>
+
+  <!-- onclick chiama la function chiediConferma() -->
   <button onclick="chiediConferma()">
     Sei pronto?
   </button>
 
+  <!-- TUTTO il JavaScript sta dentro <script> -->
   <script>
     function chiediConferma() {
       // SALVA la risposta
@@ -847,11 +876,14 @@ if (vuoleContinuare) {
   <div class="container">
     <h1>🎯 Quiz Matematico</h1>
     <p>Clicca per iniziare!</p>
+
+    <!-- onclick chiama la function iniziaQuiz() -->
     <button onclick="iniziaQuiz()">
       Inizia Quiz
     </button>
   </div>
 
+  <!-- TUTTO il JavaScript sta dentro <script> -->
   <script>
     function iniziaQuiz() {
       alert("Benvenuto! 🎯");
