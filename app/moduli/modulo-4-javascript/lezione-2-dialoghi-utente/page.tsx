@@ -249,34 +249,93 @@ console.log(saluto);  // Ciao Mario! 👋`}
           </div>
         </div>
 
-        <h3 className="text-xl font-bold mb-3">Esempi Pratici</h3>
+        <h3 className="text-xl font-bold mb-3">Esempi di Sintassi</h3>
         <CodeExample
-          title="Esempi di alert()"
+          title="Esempi di alert() - Solo JavaScript"
           code={`// Messaggio semplice
 alert("Ciao! Benvenuto nel sito!");
 
 // Messaggio con emoji
 alert("🎉 Complimenti! Hai vinto!");
 
-// Con variabili - NUOVO!
+// Con variabili
 let nome = "Mario";
 alert("Ciao " + nome + "!");  // Ciao Mario!
 
 // Con più variabili
-let nome = "Luigi";
 let punteggio = 100;
-alert("Bravo " + nome + "! Hai " + punteggio + " punti!");
-
-// Più righe (usa \\n per andare a capo)
-alert("Questo è il tuo punteggio:\\n100 punti!");`}
+alert("Bravo " + nome + "! Hai " + punteggio + " punti!");`}
           language="javascript"
           showLineNumbers
         />
 
+        <h3 className="text-xl font-bold mb-3 mt-8">📄 Esempio Completo - Copia e Prova!</h3>
+        <p className="text-gray-700 mb-4">
+          Crea un file <code className="bg-gray-100 px-2 py-1 rounded">index.html</code> e copia tutto questo codice per provarlo:
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-4 mb-6">
+          <CodeExample
+            title="📄 HTML"
+            code={`<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Alert Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Clicca il pulsante!</h2>
+  <button onclick="alert('🎉 Ciao! Questo è un alert!')">
+    Mostra Alert
+  </button>
+</body>
+</html>`}
+            language="html"
+            showLineNumbers
+          />
+
+          <CodeExample
+            title="🎨 CSS (style.css)"
+            code={`body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  text-align: center;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 18px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.05);
+}`}
+            language="css"
+            showLineNumbers
+          />
+        </div>
+
+        <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mb-6">
+          <p className="font-bold text-blue-800 mb-2">💡 Cosa fa onclick?</p>
+          <p className="text-gray-700 mb-2">
+            L'attributo <code className="bg-blue-100 px-1 rounded">onclick=""</code> nel pulsante dice:
+            "quando clicco, esegui questo codice JavaScript".
+          </p>
+          <p className="text-gray-600 text-sm">
+            📝 Studieremo i pulsanti e gli eventi nella <strong>Lezione 4</strong>. Per ora concentrati su alert()!
+          </p>
+        </div>
+
         <h3 className="text-xl font-bold mb-3 mt-6">Vedi in Azione!</h3>
         <JavaScriptDemo
           title="alert() - Esempio Live"
-          description="Clicca il pulsante per vedere un alert()"
+          description="Questo è esattamente il codice qui sopra ↑"
           code={`<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -295,7 +354,6 @@ alert("Questo è il tuo punteggio:\\n100 punti!");`}
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: transform 0.2s;
     }
     button:hover {
       transform: scale(1.05);
@@ -363,9 +421,9 @@ alert("Sei pronto " + nome + "?");`}
           />
         </div>
 
-        <h3 className="text-xl font-bold mb-3">Esempi Pratici</h3>
+        <h3 className="text-xl font-bold mb-3">Esempi di Sintassi</h3>
         <CodeExample
-          title="Esempi di prompt() con variabili"
+          title="Esempi di prompt() - Solo JavaScript"
           code={`// Chiedi il nome e salvalo
 let nome = prompt("Come ti chiami?");
 alert("Ciao " + nome + "!");
@@ -385,10 +443,84 @@ let citta = prompt("In che città vivi?", "Roma");`}
           showLineNumbers
         />
 
+        <h3 className="text-xl font-bold mb-3 mt-8">📄 Esempio Completo - Copia e Prova!</h3>
+        <p className="text-gray-700 mb-4">
+          Questo esempio chiede il nome e lo mostra in 3 alert diversi:
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-4 mb-6">
+          <CodeExample
+            title="📄 HTML"
+            code={`<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Prompt Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Clicca per rispondere!</h2>
+  <button onclick="chiediNome()">
+    Dimmi il tuo nome
+  </button>
+
+  <script>
+    function chiediNome() {
+      // SALVA la risposta
+      let nome = prompt("Come ti chiami?");
+
+      // USA la variabile 3 volte
+      alert("Ciao " + nome + "! 👋");
+      alert("Benvenuto " + nome + "!");
+      alert("Sei pronto " + nome + "?");
+    }
+  </script>
+</body>
+</html>`}
+            language="html"
+            showLineNumbers
+          />
+
+          <CodeExample
+            title="🎨 CSS (style.css)"
+            code={`body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  text-align: center;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 18px;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.05);
+}`}
+            language="css"
+            showLineNumbers
+          />
+        </div>
+
+        <div className="bg-purple-50 border-l-4 border-purple-500 p-6 rounded mb-6">
+          <p className="font-bold text-purple-800 mb-2">💡 Cos'è la function?</p>
+          <p className="text-gray-700 mb-2">
+            <code className="bg-purple-100 px-1 rounded">function chiediNome()</code> è un contenitore di codice che si esegue quando clicchi il pulsante.
+          </p>
+          <p className="text-gray-600 text-sm">
+            📝 Le funzioni le studieremo nella <strong>Lezione 4</strong>. Per ora pensa: "il codice dentro le graffe &#123; &#125; si esegue al click".
+          </p>
+        </div>
+
         <h3 className="text-xl font-bold mb-3 mt-6">Vedi in Azione!</h3>
         <JavaScriptDemo
-          title="prompt() - Esempio Live con Variabile"
-          description="Salva il nome e riusalo più volte!"
+          title="prompt() - Esempio Live"
+          description="Questo è esattamente il codice qui sopra ↑"
           code={`<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -407,17 +539,9 @@ let citta = prompt("In che città vivi?", "Roma");`}
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: transform 0.2s;
-      margin: 10px;
     }
     button:hover {
       transform: scale(1.05);
-    }
-    #risultato {
-      margin-top: 20px;
-      font-size: 20px;
-      font-weight: bold;
-      color: #f5576c;
     }
   </style>
 </head>
@@ -426,19 +550,16 @@ let citta = prompt("In che città vivi?", "Roma");`}
   <button onclick="chiediNome()">
     Dimmi il tuo nome
   </button>
-  <div id="risultato"></div>
 
   <script>
     function chiediNome() {
-      // SALVA in una variabile
+      // SALVA la risposta
       let nome = prompt("Come ti chiami?");
 
-      if (nome) {
-        // USA la variabile più volte!
-        alert("Ciao " + nome + "! 👋");
-        alert("Benvenuto " + nome + "!");
-        document.getElementById('risultato').innerHTML = "Nome salvato: " + nome;
-      }
+      // USA la variabile 3 volte
+      alert("Ciao " + nome + "! 👋");
+      alert("Benvenuto " + nome + "!");
+      alert("Sei pronto " + nome + "?");
     }
   </script>
 </body>
@@ -483,7 +604,7 @@ let citta = prompt("In che città vivi?", "Roma");`}
           </div>
         </div>
 
-        <h3 className="text-xl font-bold mb-3">Esempi Pratici</h3>
+        <h3 className="text-xl font-bold mb-3">Esempi di Sintassi</h3>
 
         <div className="bg-purple-50 border-l-4 border-purple-500 p-6 rounded mb-6">
           <p className="font-bold text-purple-800 mb-3">💡 Salvare la Risposta di confirm()</p>
@@ -507,7 +628,7 @@ if (vuoleContinuare) {
         </div>
 
         <CodeExample
-          title="Altri Esempi con Variabili"
+          title="Altri Esempi - Solo JavaScript"
           code={`// Esempio 1: Salva e mostra la risposta
 let risposta = confirm("Sei pronto?");
 alert("Hai cliccato: " + risposta);  // true o false
@@ -524,10 +645,76 @@ if (vuoleCancellare) {
           showLineNumbers
         />
 
+        <h3 className="text-xl font-bold mb-3 mt-8">📄 Esempio Completo - Copia e Prova!</h3>
+        <p className="text-gray-700 mb-4">
+          Questo esempio chiede conferma e mostra messaggi diversi in base alla scelta:
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-4 mb-6">
+          <CodeExample
+            title="📄 HTML"
+            code={`<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirm Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Clicca per confermare!</h2>
+  <button onclick="chiediConferma()">
+    Sei pronto?
+  </button>
+
+  <script>
+    function chiediConferma() {
+      // SALVA la risposta
+      let risposta = confirm("Sei pronto per iniziare?");
+
+      // USA la variabile nell'if
+      if (risposta) {
+        alert("🎉 Perfetto! Iniziamo!");
+      } else {
+        alert("😊 Va bene, aspetto...");
+      }
+    }
+  </script>
+</body>
+</html>`}
+            language="html"
+            showLineNumbers
+          />
+
+          <CodeExample
+            title="🎨 CSS (style.css)"
+            code={`body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  text-align: center;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 18px;
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.05);
+}`}
+            language="css"
+            showLineNumbers
+          />
+        </div>
+
         <h3 className="text-xl font-bold mb-3 mt-6">Vedi in Azione!</h3>
         <JavaScriptDemo
-          title="confirm() - Esempio Live con Variabile"
-          description="Salva la risposta e usala più volte!"
+          title="confirm() - Esempio Live"
+          description="Questo è esattamente il codice qui sopra ↑"
           code={`<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -546,15 +733,9 @@ if (vuoleCancellare) {
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: transform 0.2s;
     }
     button:hover {
       transform: scale(1.05);
-    }
-    #risultato {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
     }
   </style>
 </head>
@@ -563,20 +744,17 @@ if (vuoleCancellare) {
   <button onclick="chiediConferma()">
     Sei pronto?
   </button>
-  <div id="risultato"></div>
 
   <script>
     function chiediConferma() {
-      // SALVA la risposta in una variabile
+      // SALVA la risposta
       let risposta = confirm("Sei pronto per iniziare?");
 
       // USA la variabile nell'if
       if (risposta) {
         alert("🎉 Perfetto! Iniziamo!");
-        document.getElementById('risultato').innerHTML = "Risposta salvata: " + risposta + " (true = OK)";
       } else {
         alert("😊 Va bene, aspetto...");
-        document.getElementById('risultato').innerHTML = "Risposta salvata: " + risposta + " (false = Annulla)";
       }
     }
   </script>
@@ -615,8 +793,9 @@ if (vuoleCancellare) {
           </div>
         </div>
 
+        <h3 className="text-xl font-bold mb-3">Esempio JavaScript</h3>
         <CodeExample
-          title="Esempio Completo - Quiz Interattivo con Variabili"
+          title="Logica del Quiz - Solo JavaScript"
           code={`// 1. Saluta l'utente
 alert("Benvenuto al quiz! 🎯");
 
@@ -649,10 +828,106 @@ if (vuoleContinuare) {
           showLineNumbers
         />
 
+        <h3 className="text-xl font-bold mb-3 mt-8">📄 Quiz Completo - Copia e Prova!</h3>
+        <p className="text-gray-700 mb-4">
+          Questo quiz usa tutti e 3 i metodi insieme: alert(), prompt() e confirm()
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-4 mb-6">
+          <CodeExample
+            title="📄 HTML"
+            code={`<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Interattivo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🎯 Quiz Matematico</h1>
+    <p>Clicca per iniziare!</p>
+    <button onclick="iniziaQuiz()">
+      Inizia Quiz
+    </button>
+  </div>
+
+  <script>
+    function iniziaQuiz() {
+      alert("Benvenuto! 🎯");
+
+      let nome = prompt("Come ti chiami?");
+      alert("Ciao " + nome + "! Pronto?");
+
+      let risp1 = prompt("Quanto fa 5 + 3?");
+      if (risp1 === "8") {
+        alert("✅ Esatto " + nome + "!");
+      } else {
+        alert("❌ Sbagliato " + nome + "!");
+      }
+
+      let vuole = confirm("Ancora " + nome + "?");
+      if (vuole) {
+        let risp2 = prompt("Quanto fa 10 - 4?");
+        if (risp2 === "6") {
+          alert("✅ Fantastico " + nome + "!");
+        } else {
+          alert("❌ Era 6, " + nome);
+        }
+        alert("Grazie " + nome + "! 🎉");
+      } else {
+        alert("Ciao " + nome + "! 👋");
+      }
+    }
+  </script>
+</body>
+</html>`}
+            language="html"
+            showLineNumbers
+          />
+
+          <CodeExample
+            title="🎨 CSS (style.css)"
+            code={`body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+button {
+  padding: 20px 40px;
+  font-size: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.05);
+}`}
+            language="css"
+            showLineNumbers
+          />
+        </div>
+
         <h3 className="text-xl font-bold mb-3 mt-6">Vedi il Quiz Completo!</h3>
         <JavaScriptDemo
-          title="Quiz Interattivo Completo"
-          description="Un quiz che usa alert(), prompt() e confirm() insieme"
+          title="Quiz Interattivo - Esempio Live"
+          description="Questo è esattamente il codice qui sopra ↑"
           height="500px"
           code={`<!DOCTYPE html>
 <html lang="it">
@@ -683,7 +958,6 @@ if (vuoleContinuare) {
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      transition: transform 0.2s;
     }
     button:hover {
       transform: scale(1.05);
@@ -693,7 +967,7 @@ if (vuoleContinuare) {
 <body>
   <div class="container">
     <h1>🎯 Quiz Matematico</h1>
-    <p>Clicca per iniziare il quiz!</p>
+    <p>Clicca per iniziare!</p>
     <button onclick="iniziaQuiz()">
       Inizia Quiz
     </button>
@@ -701,41 +975,29 @@ if (vuoleContinuare) {
 
   <script>
     function iniziaQuiz() {
-      // Saluta
-      alert("Benvenuto al quiz matematico! 🎯");
+      alert("Benvenuto! 🎯");
 
-      // SALVA il nome in una variabile
       let nome = prompt("Come ti chiami?");
+      alert("Ciao " + nome + "! Pronto?");
 
-      // USA il nome salvato
-      alert("Ciao " + nome + "! Pronto per il quiz?");
-
-      // SALVA la prima risposta
-      let risposta1 = prompt("Domanda 1: Quanto fa 5 + 3?");
-
-      // Controlla
-      if (risposta1 === "8") {
-        alert("✅ Esatto " + nome + "! Bravo!");
+      let risp1 = prompt("Quanto fa 5 + 3?");
+      if (risp1 === "8") {
+        alert("✅ Esatto " + nome + "!");
       } else {
-        alert("❌ Sbagliato " + nome + "! La risposta era 8");
+        alert("❌ Sbagliato " + nome + "!");
       }
 
-      // SALVA la conferma
-      let vuoleContinuare = confirm("Vuoi fare un'altra domanda " + nome + "?");
-
-      // Usa la variabile
-      if (vuoleContinuare) {
-        // SALVA la seconda risposta
-        let risposta2 = prompt("Domanda 2: Quanto fa 10 - 4?");
-
-        if (risposta2 === "6") {
+      let vuole = confirm("Ancora " + nome + "?");
+      if (vuole) {
+        let risp2 = prompt("Quanto fa 10 - 4?");
+        if (risp2 === "6") {
           alert("✅ Fantastico " + nome + "!");
         } else {
-          alert("❌ La risposta era 6, " + nome);
+          alert("❌ Era 6, " + nome);
         }
-        alert("Grazie per aver giocato " + nome + "! 🎉");
+        alert("Grazie " + nome + "! 🎉");
       } else {
-        alert("Va bene " + nome + ", alla prossima!");
+        alert("Ciao " + nome + "! 👋");
       }
     }
   </script>
