@@ -287,13 +287,17 @@ alert("Bravo " + nome + "! Hai " + punteggio + " punti!");`}
 <body>
   <h2>Clicca il pulsante!</h2>
 
-  <!-- onclick chiama il codice JavaScript -->
-  <button onclick="alert('🎉 Ciao! Questo è un alert!')">
+  <!-- onclick chiama la function mostraAlert() -->
+  <button onclick="mostraAlert()">
     Mostra Alert
   </button>
 
-  <!-- Il JavaScript può stare anche dentro <script> -->
-  <!-- Lo vedremo nei prossimi esempi! -->
+  <!-- TUTTO il JavaScript sta dentro <script> -->
+  <script>
+    function mostraAlert() {
+      alert('🎉 Ciao! Questo è un alert!');
+    }
+  </script>
 </body>
 </html>`}
             language="html"
@@ -380,9 +384,15 @@ button:hover {
 </head>
 <body>
   <h2>Clicca il pulsante!</h2>
-  <button onclick="alert('🎉 Ciao! Questo è un alert!')">
+  <button onclick="mostraAlert()">
     Mostra Alert
   </button>
+
+  <script>
+    function mostraAlert() {
+      alert('🎉 Ciao! Questo è un alert!');
+    }
+  </script>
 </body>
 </html>`}
         />
