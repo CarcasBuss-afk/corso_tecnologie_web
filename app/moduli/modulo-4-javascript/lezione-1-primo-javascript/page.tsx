@@ -583,13 +583,9 @@ console.log("Sono circa", 15 * 365, "giorni!");`}
           Hai imparato a stampare messaggi, fare calcoli e organizzare il codice con i commenti.
         </p>
         <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
-          <p className="font-bold mb-2 text-yellow-200">🚀 Comandi JavaScript Totali Imparati: 5</p>
+          <p className="font-bold mb-2 text-yellow-200">🚀 Comandi JavaScript Imparati: 1</p>
           <ul className="list-disc list-inside space-y-1">
-            <li>console.log() - Stampa messaggi (Lezione 1)</li>
-            <li>console.warn() - Stampa avvisi (Lezione 1)</li>
-            <li>console.error() - Stampa errori (Lezione 1)</li>
-            <li>console.table() - Stampa tabelle (Lezione 1)</li>
-            <li>console.clear() - Pulisce console (Lezione 1)</li>
+            <li>console.log() - Stampa messaggi nella console (Lezione 1)</li>
           </ul>
           <p className="font-bold mt-4 mb-2 text-yellow-200">💡 Concetti Imparati:</p>
           <ul className="list-disc list-inside space-y-1">
@@ -597,6 +593,7 @@ console.log("Sono circa", 15 * 365, "giorni!");`}
             <li>Commenti // e /* */ per documentare</li>
             <li>Calcoli matematici (+, -, *, /)</li>
             <li>Console del browser (F12)</li>
+            <li>Sintassi JavaScript: virgolette, punto e virgola, parentesi</li>
           </ul>
         </div>
         <p className="text-lg font-semibold mt-4">

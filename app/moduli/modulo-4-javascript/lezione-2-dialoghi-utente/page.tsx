@@ -1295,13 +1295,9 @@ button:hover {
           Hai anche imparato a unire stringhe e usare diversi tipi di dati.
         </p>
         <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
-          <p className="font-bold mb-2 text-yellow-200">🚀 Comandi JavaScript Totali Imparati: 10</p>
+          <p className="font-bold mb-2 text-yellow-200">🚀 Comandi JavaScript Totali Imparati: 6</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
-            <li>console.log() - Stampa messaggi (Lezione 1)</li>
-            <li>console.warn() - Stampa avvisi (Lezione 1)</li>
-            <li>console.error() - Stampa errori (Lezione 1)</li>
-            <li>console.table() - Stampa tabelle (Lezione 1)</li>
-            <li>console.clear() - Pulisce console (Lezione 1)</li>
+            <li>console.log() - Stampa messaggi nella console (Lezione 1)</li>
             <li>alert() - Mostra messaggi popup (Lezione 2) ✨ NUOVO</li>
             <li>prompt() - Chiede input all'utente (Lezione 2) ✨ NUOVO</li>
             <li>confirm() - Chiede conferma OK/Annulla (Lezione 2) ✨ NUOVO</li>
@@ -1314,6 +1310,7 @@ button:hover {
             <li>Commenti // e /* */ (Lezione 1)</li>
             <li>Calcoli matematici (+, -, *, /) (Lezione 1)</li>
             <li>Console del browser F12 (Lezione 1)</li>
+            <li>Sintassi JavaScript (Lezione 1)</li>
             <li>Variabili con let e const (Lezione 2) ✨ NUOVO</li>
             <li>Tipi di dati: stringhe, numeri, boolean (Lezione 2) ✨ NUOVO</li>
             <li>Concatenazione stringhe con + (Lezione 2) ✨ NUOVO</li>
