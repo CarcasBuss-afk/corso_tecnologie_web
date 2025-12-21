@@ -6,7 +6,7 @@ import Exercise from '@/components/didattica/Exercise';
 import JavaScriptDemo from '@/components/didattica/JavaScriptDemo';
 import Challenge from '@/components/didattica/Challenge';
 
-export default function Lezione2DialoghiUtente() {
+export default function Lezione3DialoghiUtente() {
   const lezioni = getLezioniByModuloSlug('modulo-4-javascript');
 
   return (
@@ -14,11 +14,11 @@ export default function Lezione2DialoghiUtente() {
       moduloSlug="modulo-4-javascript"
       moduloTitolo="Modulo 4: JavaScript - Interattività"
       lezioni={lezioni}
-      lezioneSlug="lezione-2-dialoghi-utente"
+      lezioneSlug="lezione-3-dialoghi-utente"
       lezioneTitolo="Dialoghi e Variabili"
     >
       <LessonHeader
-        numero={2}
+        numero={3}
         titolo="Dialoghi e Variabili"
         durata="1.5 ore"
         difficolta="facile"
@@ -39,7 +39,7 @@ export default function Lezione2DialoghiUtente() {
 
         <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white p-8 rounded-lg mb-6">
           <p className="text-xl mb-4">
-            Nella lezione scorsa hai imparato a <strong>stampare messaggi nella console</strong>.
+            Hai imparato a usare <strong>console.log()</strong> e a collegare <strong>pulsanti a funzioni</strong>.
           </p>
           <p className="text-2xl font-bold">
             Ora imparerai a <strong>parlare DIRETTAMENTE con l'utente</strong>! 🗣️
@@ -1295,30 +1295,31 @@ button:hover {
           Hai anche imparato a unire stringhe e usare diversi tipi di dati.
         </p>
         <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
-          <p className="font-bold mb-2 text-yellow-200">🚀 Comandi JavaScript Totali Imparati: 6</p>
+          <p className="font-bold mb-2 text-yellow-200">🚀 Comandi JavaScript Totali Imparati: 8</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li>console.log() - Stampa messaggi nella console (Lezione 1)</li>
-            <li>alert() - Mostra messaggi popup (Lezione 2) ✨ NUOVO</li>
-            <li>prompt() - Chiede input all'utente (Lezione 2) ✨ NUOVO</li>
-            <li>confirm() - Chiede conferma OK/Annulla (Lezione 2) ✨ NUOVO</li>
-            <li>let - Dichiara variabili modificabili (Lezione 2) ✨ NUOVO</li>
-            <li>const - Dichiara variabili fisse (Lezione 2) ✨ NUOVO</li>
+            <li>onclick - Esegue codice quando clicchi (Lezione 2)</li>
+            <li>function - Crea un blocco di istruzioni (Lezione 2)</li>
+            <li>alert() - Mostra messaggi popup (Lezione 3) ✨ NUOVO</li>
+            <li>prompt() - Chiede input all'utente (Lezione 3) ✨ NUOVO</li>
+            <li>confirm() - Chiede conferma OK/Annulla (Lezione 3) ✨ NUOVO</li>
+            <li>let - Dichiara variabili modificabili (Lezione 3) ✨ NUOVO</li>
+            <li>const - Dichiara variabili fisse (Lezione 3) ✨ NUOVO</li>
           </ul>
           <p className="font-bold mt-4 mb-2 text-yellow-200">💡 Concetti Imparati:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li>Tag &lt;script&gt; per scrivere JavaScript (Lezione 1)</li>
             <li>Commenti // e /* */ (Lezione 1)</li>
-            <li>Calcoli matematici (+, -, *, /) (Lezione 1)</li>
             <li>Console del browser F12 (Lezione 1)</li>
-            <li>Sintassi JavaScript (Lezione 1)</li>
-            <li>Variabili con let e const (Lezione 2) ✨ NUOVO</li>
-            <li>Tipi di dati: stringhe, numeri, boolean (Lezione 2) ✨ NUOVO</li>
-            <li>Concatenazione stringhe con + (Lezione 2) ✨ NUOVO</li>
-            <li>Salvare e riusare dati (Lezione 2) ✨ NUOVO</li>
+            <li>Collegare pulsanti a funzioni (Lezione 2)</li>
+            <li>Variabili con let e const (Lezione 3) ✨ NUOVO</li>
+            <li>Tipi di dati: stringhe, numeri, boolean (Lezione 3) ✨ NUOVO</li>
+            <li>Concatenazione stringhe con + (Lezione 3) ✨ NUOVO</li>
+            <li>Salvare e riusare dati (Lezione 3) ✨ NUOVO</li>
           </ul>
         </div>
         <p className="text-lg font-semibold mt-4">
-          Prossima lezione: <strong>Manipolare il DOM</strong>! Cambierai la pagina HTML in tempo reale! 💪
+          Prossima lezione: <strong>Cambiare la Pagina HTML</strong>! Modificherai contenuti in tempo reale! 💪
         </p>
       </section>
 
@@ -1330,11 +1331,11 @@ button:hover {
           </h2>
           <p className="text-gray-700 mb-4">
             <strong>Nella prossima lezione</strong> imparerai a <strong>cambiare la pagina HTML</strong> con JavaScript!
-            Potrai modificare titoli, paragrafi, colori... tutto senza ricaricare la pagina!
+            Potrai modificare titoli, paragrafi e contenuti... tutto senza ricaricare la pagina!
           </p>
           <p className="text-gray-700">
             Useremo <code className="bg-blue-100 px-2 py-1 rounded">getElementById()</code> e
-            <code className="bg-blue-100 px-2 py-1 rounded">innerHTML</code> per controllare la pagina come un <strong>superpotere</strong>! 💪
+            <code className="bg-blue-100 px-2 py-1 rounded">innerHTML</code> per controllare la pagina come un vero <strong>superpotere</strong>! 💪
           </p>
         </div>
       </section>

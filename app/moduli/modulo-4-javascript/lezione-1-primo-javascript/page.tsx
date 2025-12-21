@@ -597,7 +597,7 @@ console.log("Sono circa", 15 * 365, "giorni!");`}
           </ul>
         </div>
         <p className="text-lg font-semibold mt-4">
-          Prossima lezione: <strong>Dialoghi e Variabili</strong>! Imparerai a parlare con l'utente e salvare dati! 💬
+          Prossima lezione: <strong>Pulsanti e Funzioni</strong>! Imparerai a rendere i pulsanti interattivi! 🖱️
         </p>
       </section>
 
@@ -608,13 +608,12 @@ console.log("Sono circa", 15 * 365, "giorni!");`}
             🚀 Prossimi Passi
           </h2>
           <p className="text-gray-700 mb-4">
-            <strong>Nella prossima lezione</strong> imparerai a creare <strong>dialoghi con l'utente</strong>
-            usando <code className="bg-blue-100 px-2 py-1 rounded">alert()</code>,
-            <code className="bg-blue-100 px-2 py-1 rounded">prompt()</code> e
-            <code className="bg-blue-100 px-2 py-1 rounded">confirm()</code>.
+            <strong>Nella prossima lezione</strong> imparerai a <strong>collegare pulsanti a funzioni</strong>
+            usando <code className="bg-blue-100 px-2 py-1 rounded">onclick</code> e
+            <code className="bg-blue-100 px-2 py-1 rounded">function</code>.
           </p>
           <p className="text-gray-700">
-            Finalmente potrai creare pagine che <strong>parlano</strong> con chi le visita! 💬
+            Finalmente i tuoi pulsanti faranno qualcosa quando li clicchi! 🖱️
           </p>
         </div>
       </section>

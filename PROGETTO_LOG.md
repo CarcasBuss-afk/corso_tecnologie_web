@@ -1,7 +1,7 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 9 Novembre 2025 - Sessione 22 Inizio Modulo 4 JavaScript
+**Ultimo aggiornamento:** 4 Dicembre 2025 - Sessione 24 Lezione 3 JavaScript DOM
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
 
@@ -7455,5 +7455,191 @@ L7: Dialoghi (AZIONE!)    👍 Finalmente popup!
 
 ---
 
-**Fine del Progetto Log - Ultimo aggiornamento: 10 Novembre 2025 - Sessione 23 (Aggiornata)**
+## 📅 CHANGELOG SESSIONE 24 (4 Dicembre 2025) - LEZIONE 3 JAVASCRIPT: DOM
+
+### 🎯 Obiettivo Sessione
+Creare la Lezione 3 del Modulo JavaScript seguendo l'approccio "DOM-first" invece di continuare con la matematica. Saltare gli operatori matematici per andare direttamente all'interazione con la pagina HTML (più coinvolgente per gli studenti).
+
+---
+
+### 1. 📋 Decisione Strategica
+
+**Problema identificato:**
+Il piano originale prevedeva Lezione 3 = Operatori Matematici (+, -, *, /, %). Questo avrebbe significato altra lezione "teorica" senza risultati visibili sulla pagina.
+
+**Decisione:**
+Saltare la matematica e andare direttamente al DOM. Gli studenti vedono subito risultati concreti sulla pagina!
+
+**Nuovo ordine lezioni:**
+| # | Prima (Piano Originale) | Dopo (Nuovo) |
+|---|-------------------------|--------------|
+| 3 | Operatori Matematici | **Cambiare la Pagina HTML** |
+| 4 | Confronti e Condizioni | Cambiare gli Stili CSS |
+| 5 | If e Else | Eventi e Click |
+| 6 | Operatori Logici | If e Else |
+
+---
+
+### 2. 📝 Lezione 3: Cambiare la Pagina HTML
+
+**File creato:** `/app/moduli/modulo-4-javascript/lezione-3-cambiare-pagina/page.tsx`
+
+**Dimensione:** ~750 righe di codice
+
+**Contenuti:**
+
+#### A) Introduzione
+- Il "superpotere" di JavaScript: modificare la pagina
+- Esempi dal mondo reale (Instagram like, YouTube commenti, Amazon carrello)
+
+#### B) Cos'è il DOM
+- Spiegazione visiva con albero gerarchico
+- Analogia: "mappa della pagina HTML"
+- Schema document → html → head/body → elementi
+
+#### C) getElementById()
+- Come trovare elementi HTML usando l'attributo `id`
+- Regole importanti (ID unico, case-sensitive, virgolette)
+- Esempi pratici passo-passo
+
+#### D) innerHTML
+- Cambiare il contenuto HTML di un elemento
+- Sintassi: `elemento.innerHTML = "Nuovo contenuto"`
+- Esempio completo HTML + CSS + JavaScript
+- Demo interattiva live
+
+#### E) textContent
+- Differenza con innerHTML
+- Quando usare quale
+- Esempi pratici
+
+#### F) Combinare con Variabili
+- Uso di prompt() + DOM per contenuti dinamici
+- Esempio "Saluto Personalizzato"
+- Demo interattiva con input utente
+
+#### G) Cambiare Più Elementi
+- Modificare multipli elementi nella stessa pagina
+- Esempio "Card Profilo Dinamica"
+- Demo completa con 3 campi (nome, età, città)
+
+#### H) Esercizio Guidato: Contatore di Click
+- Step-by-step da zero
+- Variabile globale per contare
+- Function che incrementa e aggiorna DOM
+- onclick per collegare pulsante a function
+- Esperimenti suggeriti (reset, colori, emoji)
+
+#### I) Challenge: Quiz con Punteggio Visibile
+- Punteggio mostrato nella pagina (non alert)
+- Almeno 3 domande
+- Aggiornamento DOM dopo ogni risposta
+
+---
+
+### 3. 🔧 File Modificati
+
+**lib/moduli.ts:**
+Aggiunta Lezione 3 all'array lezioni del Modulo 4:
+
+```typescript
+{
+  id: "3",
+  titolo: "Cambiare la Pagina HTML",
+  slug: "lezione-3-cambiare-pagina",
+  durata: "1.5 ore",
+  difficolta: "facile",
+},
+```
+
+**lezione-2-dialoghi-utente/page.tsx:**
+Aggiornati riferimenti "prossima lezione":
+- "Manipolare il DOM" → "Cambiare la Pagina HTML"
+- Testo coerente con nuovo titolo
+
+---
+
+### 4. 🚀 Comandi JavaScript Totali
+
+Dopo Lezione 3, gli studenti conoscono **8 comandi**:
+
+| Comando | Lezione | Descrizione |
+|---------|---------|-------------|
+| `console.log()` | L1 | Stampa nella console |
+| `alert()` | L2 | Mostra popup messaggio |
+| `prompt()` | L2 | Chiede input utente |
+| `confirm()` | L2 | Chiede conferma OK/Annulla |
+| `let` | L2 | Dichiara variabile modificabile |
+| `const` | L2 | Dichiara variabile fissa |
+| `document.getElementById()` | L3 ✨ | Trova elemento HTML |
+| `.innerHTML` | L3 ✨ | Cambia contenuto HTML |
+| `.textContent` | L3 ✨ | Cambia solo testo |
+
+---
+
+### 5. 🎨 Demo Interattive Create
+
+La lezione include **4 demo JavaScriptDemo** funzionanti:
+
+1. **innerHTML - Cambia il Titolo**
+   - Pulsante che modifica h1
+
+2. **Saluto Personalizzato**
+   - prompt() + getElementById() + innerHTML
+
+3. **Card Profilo Dinamica**
+   - 3 prompt() per nome/età/città
+   - Aggiorna 3 elementi nella card
+
+4. **Contatore di Click** (nell'esercizio)
+   - Variabile globale
+   - Function con incremento
+   - Aggiornamento DOM in tempo reale
+
+---
+
+### 6. 🔧 Fix Tecnico
+
+**Problema:** Build falliva per dipendenza mancante `lucide-react`
+
+**Soluzione:**
+```bash
+npm install lucide-react
+```
+
+**Risultato:** Build completato con successo ✅
+
+---
+
+### 7. ✅ Conclusioni Sessione 24
+
+**Obiettivi raggiunti:**
+- ✅ Creata Lezione 3: Cambiare la Pagina HTML
+- ✅ Approccio DOM-first (più coinvolgente)
+- ✅ 4 demo interattive funzionanti
+- ✅ Esercizio guidato step-by-step
+- ✅ Challenge per pratica autonoma
+- ✅ Aggiornato lib/moduli.ts
+- ✅ Aggiornati riferimenti in Lezione 2
+- ✅ Build verificato con successo
+
+**Qualità del lavoro:**
+- Contenuti didattici: ⭐⭐⭐⭐⭐
+- Demo interattive: ⭐⭐⭐⭐⭐
+- Progressione pedagogica: ⭐⭐⭐⭐⭐
+- Engagement studenti: ⭐⭐⭐⭐⭐
+
+**Statistiche Lezione 3:**
+- Righe codice: ~750
+- Sezioni teoria: 6
+- Demo interattive: 4
+- Esercizi guidati: 1 (con 10 step)
+- Challenge: 1
+- Nuovi comandi: 3 (getElementById, innerHTML, textContent)
+
+**Next milestone:** Creare Lezione 4 - Cambiare gli Stili CSS (element.style)!
+
+---
+
+**Fine del Progetto Log - Ultimo aggiornamento: 4 Dicembre 2025 - Sessione 24**
 
