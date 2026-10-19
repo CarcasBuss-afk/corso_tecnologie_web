@@ -609,8 +609,9 @@ console.log("Sono circa", 15 * 365, "giorni!");`}
           </h2>
           <p className="text-gray-700 mb-4">
             <strong>Nella prossima lezione</strong> imparerai a <strong>collegare pulsanti a funzioni</strong>
-            usando <code className="bg-blue-100 px-2 py-1 rounded">onclick</code> e
-            <code className="bg-blue-100 px-2 py-1 rounded">function</code>.
+            usando <code className="bg-blue-100 px-2 py-1 rounded">function</code>,{' '}
+            <code className="bg-blue-100 px-2 py-1 rounded">getElementById()</code> e{' '}
+            <code className="bg-blue-100 px-2 py-1 rounded">addEventListener()</code>.
           </p>
           <p className="text-gray-700">
             Finalmente i tuoi pulsanti faranno qualcosa quando li clicchi! 🖱️

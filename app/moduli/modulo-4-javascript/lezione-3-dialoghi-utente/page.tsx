@@ -287,8 +287,8 @@ alert("Bravo " + nome + "! Hai " + punteggio + " punti!");`}
 <body>
   <h2>Clicca il pulsante!</h2>
 
-  <!-- onclick chiama la function mostraAlert() -->
-  <button onclick="mostraAlert()">
+  <!-- Il pulsante ha solo un id -->
+  <button id="btnAlert">
     Mostra Alert
   </button>
 
@@ -297,6 +297,8 @@ alert("Bravo " + nome + "! Hai " + punteggio + " punti!");`}
     function mostraAlert() {
       alert('🎉 Ciao! Questo è un alert!');
     }
+
+    document.getElementById("btnAlert").addEventListener("click", mostraAlert);
   </script>
 </body>
 </html>`}
@@ -337,15 +339,16 @@ button:hover {
             <code className="bg-blue-100 px-2 py-1 rounded">&lt;script&gt;</code>!
           </p>
           <p className="text-gray-700 mb-3">
-            L'attributo <code className="bg-blue-100 px-1 rounded">onclick="alert('...')"</code> nel pulsante
-            serve solo per <strong>chiamare</strong> il codice JavaScript quando clicchi.
+            Il pulsante nell'HTML ha solo un <strong>id</strong>. Funzione e collegamento stanno nello script:
+            è lo <strong>schema in 3 passi</strong> della Lezione 2!
           </p>
           <div className="bg-white p-4 rounded border border-blue-200 mb-3">
             <p className="text-sm text-gray-600 mb-2">Esempio:</p>
             <code className="text-xs block text-gray-800">
-              &lt;button onclick="alert('Ciao')"&gt; ← Chiama JavaScript<br/>
+              &lt;button id="btnAlert"&gt; ← 1. Solo l'id, niente JavaScript<br/>
               &lt;script&gt; ← TUTTO il JavaScript sta qui!<br/>
-              &nbsp;&nbsp;// Codice JavaScript...<br/>
+              &nbsp;&nbsp;function mostraAlert() {'{ ... }'} ← 2. La funzione<br/>
+              &nbsp;&nbsp;document.getElementById("btnAlert").addEventListener("click", mostraAlert); ← 3. Il collegamento<br/>
               &lt;/script&gt;
             </code>
           </div>
@@ -384,7 +387,7 @@ button:hover {
 </head>
 <body>
   <h2>Clicca il pulsante!</h2>
-  <button onclick="mostraAlert()">
+  <button id="btnAlert">
     Mostra Alert
   </button>
 
@@ -392,6 +395,8 @@ button:hover {
     function mostraAlert() {
       alert('🎉 Ciao! Questo è un alert!');
     }
+
+    document.getElementById("btnAlert").addEventListener("click", mostraAlert);
   </script>
 </body>
 </html>`}
@@ -489,8 +494,7 @@ let citta = prompt("In che città vivi?", "Roma");`}
 <body>
   <h2>Clicca per rispondere!</h2>
 
-  <!-- onclick chiama la function chiediNome() -->
-  <button onclick="chiediNome()">
+  <button id="btnNome">
     Dimmi il tuo nome
   </button>
 
@@ -505,6 +509,8 @@ let citta = prompt("In che città vivi?", "Roma");`}
       alert("Benvenuto " + nome + "!");
       alert("Sei pronto " + nome + "?");
     }
+
+    document.getElementById("btnNome").addEventListener("click", chiediNome);
   </script>
 </body>
 </html>`}
@@ -541,15 +547,15 @@ button:hover {
         <div className="bg-purple-50 border-l-4 border-purple-500 p-6 rounded mb-6">
           <p className="font-bold text-purple-800 mb-3">💡 Come funziona?</p>
           <p className="text-gray-700 mb-3">
-            Il pulsante ha <code className="bg-purple-100 px-1 rounded">onclick="chiediNome()"</code> che{' '}
-            <strong>chiama</strong> la function <code className="bg-purple-100 px-1 rounded">chiediNome()</code>.
+            Il pulsante ha l'id <code className="bg-purple-100 px-1 rounded">btnNome</code>. L'ultima riga dello script
+            lo collega alla function <code className="bg-purple-100 px-1 rounded">chiediNome</code> con{' '}
+            <code className="bg-purple-100 px-1 rounded">addEventListener</code>.
           </p>
           <p className="text-gray-700 mb-3">
-            La function è scritta dentro i tag <code className="bg-purple-100 px-2 py-1 rounded">&lt;script&gt;</code>{' '}
-            (come hai imparato nella Lezione 1!). Quando clicchi il pulsante, il codice dentro la function si esegue.
+            Quando clicchi il pulsante, il codice dentro la function si esegue: prima la domanda, poi i 3 alert.
           </p>
           <p className="text-gray-600 text-sm">
-            📝 Le funzioni le studieremo bene nella <strong>Lezione 4</strong>. Per ora ricorda: tutto il JavaScript sta dentro <code className="bg-gray-100 px-1 rounded">&lt;script&gt;</code>!
+            📝 È lo stesso schema della <strong>Lezione 2</strong>: id → funzione → collegamento. Cambia solo cosa c'è dentro la funzione!
           </p>
         </div>
 
@@ -583,7 +589,7 @@ button:hover {
 </head>
 <body>
   <h2>Clicca per rispondere!</h2>
-  <button onclick="chiediNome()">
+  <button id="btnNome">
     Dimmi il tuo nome
   </button>
 
@@ -597,6 +603,8 @@ button:hover {
       alert("Benvenuto " + nome + "!");
       alert("Sei pronto " + nome + "?");
     }
+
+    document.getElementById("btnNome").addEventListener("click", chiediNome);
   </script>
 </body>
 </html>`}
@@ -695,8 +703,7 @@ alert(nome + " ha risposto: " + conferma);`}
 <body>
   <h2>Clicca per confermare!</h2>
 
-  <!-- onclick chiama la function chiediConferma() -->
-  <button onclick="chiediConferma()">
+  <button id="btnConferma">
     Sei pronto?
   </button>
 
@@ -709,6 +716,8 @@ alert(nome + " ha risposto: " + conferma);`}
       // MOSTRA la risposta
       alert("Hai scelto: " + risposta);
     }
+
+    document.getElementById("btnConferma").addEventListener("click", chiediConferma);
   </script>
 </body>
 </html>`}
@@ -772,7 +781,7 @@ button:hover {
 </head>
 <body>
   <h2>Clicca per confermare!</h2>
-  <button onclick="chiediConferma()">
+  <button id="btnConferma">
     Sei pronto?
   </button>
 
@@ -784,6 +793,8 @@ button:hover {
       // MOSTRA la risposta
       alert("Hai scelto: " + risposta);
     }
+
+    document.getElementById("btnConferma").addEventListener("click", chiediConferma);
   </script>
 </body>
 </html>`}
@@ -869,8 +880,7 @@ alert("Grazie " + nome + "! 🎉");`}
     <h1>🎯 Quiz Matematico</h1>
     <p>Clicca per iniziare!</p>
 
-    <!-- onclick chiama la function iniziaQuiz() -->
-    <button onclick="iniziaQuiz()">
+    <button id="btnQuiz">
       Inizia Quiz
     </button>
   </div>
@@ -892,6 +902,8 @@ alert("Grazie " + nome + "! 🎉");`}
 
       alert("Grazie " + nome + "! 🎉");
     }
+
+    document.getElementById("btnQuiz").addEventListener("click", iniziaQuiz);
   </script>
 </body>
 </html>`}
@@ -981,7 +993,7 @@ button:hover {
   <div class="container">
     <h1>🎯 Quiz Matematico</h1>
     <p>Clicca per iniziare!</p>
-    <button onclick="iniziaQuiz()">
+    <button id="btnQuiz">
       Inizia Quiz
     </button>
   </div>
@@ -1002,6 +1014,8 @@ button:hover {
 
       alert("Grazie " + nome + "! 🎉");
     }
+
+    document.getElementById("btnQuiz").addEventListener("click", iniziaQuiz);
   </script>
 </body>
 </html>`}
@@ -1295,11 +1309,12 @@ button:hover {
           Hai anche imparato a unire stringhe e usare diversi tipi di dati.
         </p>
         <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
-          <p className="font-bold mb-2 text-yellow-200">🚀 Comandi JavaScript Totali Imparati: 8</p>
+          <p className="font-bold mb-2 text-yellow-200">🚀 Comandi JavaScript Totali Imparati: 9</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li>console.log() - Stampa messaggi nella console (Lezione 1)</li>
-            <li>onclick - Esegue codice quando clicchi (Lezione 2)</li>
             <li>function - Crea un blocco di istruzioni (Lezione 2)</li>
+            <li>document.getElementById() - Trova un elemento tramite il suo id (Lezione 2)</li>
+            <li>addEventListener() - Esegue una funzione quando succede qualcosa (Lezione 2)</li>
             <li>alert() - Mostra messaggi popup (Lezione 3) ✨ NUOVO</li>
             <li>prompt() - Chiede input all'utente (Lezione 3) ✨ NUOVO</li>
             <li>confirm() - Chiede conferma OK/Annulla (Lezione 3) ✨ NUOVO</li>
@@ -1311,7 +1326,7 @@ button:hover {
             <li>Tag &lt;script&gt; per scrivere JavaScript (Lezione 1)</li>
             <li>Commenti // e /* */ (Lezione 1)</li>
             <li>Console del browser F12 (Lezione 1)</li>
-            <li>Collegare pulsanti a funzioni (Lezione 2)</li>
+            <li>Collegare pulsanti a funzioni: id → funzione → collegamento (Lezione 2)</li>
             <li>Variabili con let e const (Lezione 3) ✨ NUOVO</li>
             <li>Tipi di dati: stringhe, numeri, boolean (Lezione 3) ✨ NUOVO</li>
             <li>Concatenazione stringhe con + (Lezione 3) ✨ NUOVO</li>
@@ -1334,8 +1349,9 @@ button:hover {
             Potrai modificare titoli, paragrafi e contenuti... tutto senza ricaricare la pagina!
           </p>
           <p className="text-gray-700">
-            Useremo <code className="bg-blue-100 px-2 py-1 rounded">getElementById()</code> e
-            <code className="bg-blue-100 px-2 py-1 rounded">innerHTML</code> per controllare la pagina come un vero <strong>superpotere</strong>! 💪
+            <code className="bg-blue-100 px-2 py-1 rounded">getElementById()</code> lo conosci già: ora non lo userai
+            solo per i pulsanti, ma per trovare <strong>qualsiasi</strong> elemento e cambiarlo con{' '}
+            <code className="bg-blue-100 px-2 py-1 rounded">innerHTML</code>. Un vero <strong>superpotere</strong>! 💪
           </p>
         </div>
       </section>

@@ -7641,5 +7641,44 @@ npm install lucide-react
 
 ---
 
-**Fine del Progetto Log - Ultimo aggiornamento: 4 Dicembre 2025 - Sessione 24**
+## 📅 CHANGELOG SESSIONE 25 (19 Ottobre 2026) - DA onclick A addEventListener
+
+### 🎯 Obiettivo Sessione
+Eliminare `onclick` dalle lezioni JavaScript e usare un unico schema per collegare pulsanti e funzioni: `getElementById` + `addEventListener`.
+
+### 1. 📋 Decisioni Didattiche
+- **Niente JavaScript dentro l'HTML**: come per `style="..."` nel CSS, il comportamento sta tutto nello `<script>`. HTML = struttura, CSS = aspetto, JS = comportamento.
+- **Una sola sintassi per gli eventi**: evitare di insegnare `onclick` e poi doverlo "disimparare" per `addEventListener` (con ragazzi fragili due sintassi per lo stesso concetto creano confusione in verifica).
+- **getElementById, non querySelector**: scelta del docente. Si usano gli id, che serviranno comunque nelle lezioni successive.
+- **Niente variabili in L2**: le variabili arrivano in L3, quindi il collegamento si scrive in una sola riga:
+  `document.getElementById("btnSaluta").addEventListener("click", saluta);`
+- **Solo funzioni con nome**: nessuna funzione anonima dentro addEventListener.
+- **Convenzione id**: gli id dei pulsanti iniziano con `btn` (es. `btnSaluta`), per non confonderli con il nome della funzione.
+
+### 2. 📝 Schema in 3 Passi (usato in tutte le lezioni)
+1. HTML: dai un id al pulsante
+2. JavaScript: scrivi la funzione
+3. JavaScript: collega id e funzione con addEventListener
+
+### 3. 🔧 Modifiche alle Lezioni
+- **L1**: aggiornato "Prossimi Passi" (non cita più onclick).
+- **L2 Pulsanti e Funzioni**: riscritta. Ordine: funzioni → id del pulsante → collegamento. Nuova sezione "Errori Tipici" (`#` dentro getElementById, id scritto diverso, `saluta()` con le parentesi, `"Click"` maiuscolo, script nell'head). Esercizio Tastiera e sfida Telecomando (ridotta da 8 a 5 pulsanti) con il nuovo schema. Corretto il titolo della lezione successiva ("Dialoghi e Variabili").
+- **L3 Dialoghi e Variabili**: sostituiti tutti gli onclick (alert, prompt, confirm, quiz). Corretta nota obsoleta "le funzioni le studieremo nella Lezione 4".
+- **L4 Cambiare la Pagina**: la sezione getElementById diventa "Non Solo Pulsanti" (già noto da L2, ora per qualsiasi elemento + salvataggio in variabile). Sostituiti tutti gli onclick, compreso l'esercizio Contatore.
+
+### 4. 🚀 Comandi JavaScript (riepiloghi aggiornati)
+| Dopo | Totale | Nuovi |
+|------|--------|-------|
+| L1 | 1 | console.log |
+| L2 | 4 | function, getElementById, addEventListener |
+| L3 | 9 | alert, prompt, confirm, let, const |
+| L4 | 11 | innerHTML, textContent |
+
+### 5. 🎯 Impatto sul Piano Futuro
+- La vecchia "Lezione 9: Eventi e Click" (onclick + addEventListener) non serve più così: diventa "Altri Eventi" (`input`, `keydown`, `submit`...) con lo stesso schema già noto.
+- Prossima lezione da creare: **L5 Cambiare gli Stili CSS** (`element.style`), usando lo schema in 3 passi.
+
+---
+
+**Fine del Progetto Log - Ultimo aggiornamento: 19 Ottobre 2026 - Sessione 25**
 

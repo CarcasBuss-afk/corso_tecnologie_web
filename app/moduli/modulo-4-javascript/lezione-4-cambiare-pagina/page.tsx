@@ -24,7 +24,7 @@ export default function Lezione4CambiarePagina() {
         difficolta="facile"
         obiettivi={[
           'Capire cos\'è il DOM (Document Object Model)',
-          'Selezionare elementi HTML con getElementById()',
+          'Usare getElementById() per trovare qualsiasi elemento, non solo i pulsanti',
           'Cambiare il testo con innerHTML e textContent',
           'Modificare la pagina senza ricaricarla'
         ]}
@@ -132,7 +132,16 @@ export default function Lezione4CambiarePagina() {
 
       {/* getElementById */}
       <section className="mb-12">
-        <h2 className="text-3xl font-bold mb-4">🎯 getElementById() - Trova un Elemento</h2>
+        <h2 className="text-3xl font-bold mb-4">🎯 getElementById() - Non Solo Pulsanti</h2>
+
+        <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mb-6">
+          <p className="font-bold text-blue-800 mb-2">🔙 Lo conosci già dalla Lezione 2!</p>
+          <p className="text-gray-700">
+            Finora l&apos;hai usato per trovare i <strong>pulsanti</strong> e collegarli a una funzione.
+            Ma <code className="bg-blue-100 px-1 rounded">getElementById()</code> trova <strong>qualsiasi</strong> elemento
+            che abbia un id: titoli, paragrafi, immagini, div...
+          </p>
+        </div>
 
         <p className="text-lg mb-4">
           Per cambiare qualcosa nella pagina, prima devi <strong>trovarlo</strong>!
@@ -162,10 +171,11 @@ export default function Lezione4CambiarePagina() {
           showLineNumbers
         />
 
-        <h3 className="text-xl font-bold mb-3 mt-6">Passo 2: Trova l'elemento con JavaScript</h3>
+        <h3 className="text-xl font-bold mb-3 mt-6">Passo 2: Trova l'elemento e salvalo in una variabile</h3>
         <CodeExample
           title="JavaScript per trovare elementi"
           code={`// Trova l'elemento con id="titolo"
+// e SALVALO in una variabile (Lezione 3!)
 let elemento = document.getElementById("titolo");
 
 // Ora "elemento" contiene il riferimento all'h1!
@@ -173,6 +183,15 @@ console.log(elemento);  // Stampa: <h1 id="titolo">Ciao Mondo!</h1>`}
           language="javascript"
           showLineNumbers
         />
+
+        <div className="bg-purple-50 border-l-4 border-purple-500 p-6 rounded mt-6">
+          <p className="font-bold text-purple-800 mb-2">💡 Perché salvarlo in una variabile?</p>
+          <p className="text-gray-700">
+            Con i pulsanti trovavamo l&apos;elemento e lo usavamo <strong>subito</strong>, tutto in una riga.
+            Ora invece vogliamo fare <strong>più cose</strong> con lo stesso elemento: salvandolo in una variabile
+            lo cerchiamo una volta sola e poi lo usiamo quante volte vogliamo.
+          </p>
+        </div>
 
         <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded mt-6">
           <h3 className="font-bold text-yellow-800 mb-2">⚠️ Regole Importanti</h3>
@@ -235,7 +254,7 @@ titolo.innerHTML = "Benvenuto! 🎉";`}
 <body>
   <h1 id="titolo">Testo Originale</h1>
 
-  <button onclick="cambiaTesto()">
+  <button id="btnCambia">
     Cambia il Titolo!
   </button>
 
@@ -246,6 +265,8 @@ titolo.innerHTML = "Benvenuto! 🎉";`}
       // CAMBIA il contenuto
       titolo.innerHTML = "Testo Cambiato! 🎉";
     }
+
+    document.getElementById("btnCambia").addEventListener("click", cambiaTesto);
   </script>
 </body>
 </html>`}
@@ -319,7 +340,7 @@ button:hover {
 <body>
   <h1 id="titolo">Testo Originale</h1>
 
-  <button onclick="cambiaTesto()">
+  <button id="btnCambia">
     Cambia il Titolo!
   </button>
 
@@ -328,6 +349,8 @@ button:hover {
       let titolo = document.getElementById("titolo");
       titolo.innerHTML = "Testo Cambiato! 🎉";
     }
+
+    document.getElementById("btnCambia").addEventListener("click", cambiaTesto);
   </script>
 </body>
 </html>`}
@@ -429,7 +452,7 @@ messaggio.innerHTML = "Benvenuto " + nomeUtente + "!";`}
 <body>
   <h1 id="saluto">Clicca il pulsante!</h1>
 
-  <button onclick="saluta()">
+  <button id="btnSaluta">
     Dimmi il tuo nome
   </button>
 
@@ -444,6 +467,8 @@ messaggio.innerHTML = "Benvenuto " + nomeUtente + "!";`}
       // CAMBIA il contenuto con la variabile
       saluto.innerHTML = "Ciao " + nome + "! 👋";
     }
+
+    document.getElementById("btnSaluta").addEventListener("click", saluta);
   </script>
 </body>
 </html>`}
@@ -525,7 +550,7 @@ button:hover {
 <body>
   <h1 id="saluto">Clicca il pulsante!</h1>
 
-  <button onclick="saluta()">
+  <button id="btnSaluta">
     Dimmi il tuo nome
   </button>
 
@@ -535,6 +560,8 @@ button:hover {
       let saluto = document.getElementById("saluto");
       saluto.innerHTML = "Ciao " + nome + "! 👋";
     }
+
+    document.getElementById("btnSaluta").addEventListener("click", saluta);
   </script>
 </body>
 </html>`}
@@ -583,7 +610,7 @@ messaggio.innerHTML = "Il contenuto è stato aggiornato!";`}
     <p id="citta">Città: ???</p>
   </div>
 
-  <button onclick="aggiornaProfilo()">
+  <button id="btnProfilo">
     Inserisci i tuoi dati
   </button>
 
@@ -599,6 +626,8 @@ messaggio.innerHTML = "Il contenuto è stato aggiornato!";`}
       document.getElementById("eta").innerHTML = "Età: " + eta + " anni";
       document.getElementById("citta").innerHTML = "Città: " + citta;
     }
+
+    document.getElementById("btnProfilo").addEventListener("click", aggiornaProfilo);
   </script>
 </body>
 </html>`}
@@ -705,7 +734,7 @@ button:hover {
     <p id="citta">Città: ???</p>
   </div>
 
-  <button onclick="aggiornaProfilo()">
+  <button id="btnProfilo">
     Inserisci i tuoi dati
   </button>
 
@@ -719,6 +748,8 @@ button:hover {
       document.getElementById("eta").innerHTML = "Età: " + eta + " anni";
       document.getElementById("citta").innerHTML = "Città: " + citta;
     }
+
+    document.getElementById("btnProfilo").addEventListener("click", aggiornaProfilo);
   </script>
 </body>
 </html>`}
@@ -743,7 +774,7 @@ button:hover {
 
   <h1>Contatore Click</h1>
   <p id="contatore">0</p>
-  <button>Clicca!</button>
+  <button id="btnClicca">Clicca!</button>
 
 </body>
 </html>`,
@@ -795,7 +826,7 @@ button:hover {
 
   <h1>Contatore Click</h1>
   <p id="contatore">0</p>
-  <button>Clicca!</button>
+  <button id="btnClicca">Clicca!</button>
 
 </body>
 </html>`,
@@ -848,7 +879,7 @@ button:hover {
 
   <h1>Contatore Click</h1>
   <p id="contatore">0</p>
-  <button>Clicca!</button>
+  <button id="btnClicca">Clicca!</button>
 
   <script>
     // Variabile per contare i click
@@ -905,7 +936,7 @@ button:hover {
 
   <h1>Contatore Click</h1>
   <p id="contatore">0</p>
-  <button>Clicca!</button>
+  <button id="btnClicca">Clicca!</button>
 
   <script>
     // Variabile per contare i click
@@ -926,7 +957,7 @@ button:hover {
             highlightLines: [50, 51, 52, 53, 54, 55, 56],
           },
           {
-            text: 'Collega il pulsante alla function con onclick',
+            text: 'Collega il pulsante alla function con addEventListener (lo schema della Lezione 2!)',
             code: `<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -970,7 +1001,7 @@ button:hover {
 
   <h1>Contatore Click</h1>
   <p id="contatore">0</p>
-  <button onclick="aggiungiClick()">Clicca!</button>
+  <button id="btnClicca">Clicca!</button>
 
   <script>
     // Variabile per contare i click
@@ -983,12 +1014,15 @@ button:hover {
       // Trova l'elemento e aggiorna il numero
       document.getElementById("contatore").innerHTML = click;
     }
+
+    // Collega il pulsante alla funzione
+    document.getElementById("btnClicca").addEventListener("click", aggiungiClick);
   </script>
 
 </body>
 </html>`,
             language: 'html',
-            highlightLines: [44],
+            highlightLines: [58, 59],
           },
           'Ricarica e clicca il pulsante - il numero aumenta! 🎉',
           'Prova a cliccare tante volte e guarda il contatore salire!'
@@ -1014,7 +1048,7 @@ button:hover {
             <p className="font-bold text-gray-900 mb-2">Cosa hai imparato:</p>
             <ul className="space-y-1 text-gray-700">
               <li>✅ Cos'è il <strong>DOM</strong> (Document Object Model)</li>
-              <li>✅ Trovare elementi con <strong>getElementById()</strong></li>
+              <li>✅ Trovare <strong>qualsiasi</strong> elemento con <strong>getElementById()</strong>, non solo i pulsanti</li>
               <li>✅ Cambiare contenuti con <strong>innerHTML</strong></li>
               <li>✅ Usare <strong>textContent</strong> per testo puro</li>
               <li>✅ Combinare <strong>variabili</strong> con il DOM</li>
@@ -1048,13 +1082,13 @@ button:hover {
           <p className="font-bold mb-2 text-yellow-200">🚀 Comandi JavaScript Totali Imparati: 11</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li>console.log() - Stampa nella console (Lezione 1)</li>
-            <li>onclick - Esegue codice al click (Lezione 2)</li>
             <li>function - Blocco di istruzioni (Lezione 2)</li>
+            <li>document.getElementById() - Trova un elemento tramite il suo id (Lezione 2)</li>
+            <li>addEventListener() - Esegue una funzione quando succede qualcosa (Lezione 2)</li>
             <li>alert() - Mostra messaggi popup (Lezione 3)</li>
             <li>prompt() - Chiede input all'utente (Lezione 3)</li>
             <li>confirm() - Chiede conferma OK/Annulla (Lezione 3)</li>
             <li>let / const - Dichiara variabili (Lezione 3)</li>
-            <li>document.getElementById() - Trova elementi HTML (Lezione 4) ✨ NUOVO</li>
             <li>.innerHTML - Cambia contenuto HTML (Lezione 4) ✨ NUOVO</li>
             <li>.textContent - Cambia solo testo (Lezione 4) ✨ NUOVO</li>
           </ul>
