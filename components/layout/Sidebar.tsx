@@ -22,7 +22,7 @@ export default function Sidebar({ moduloSlug, moduloTitolo, lezioni }: SidebarPr
     <aside className="hidden lg:flex w-64 bg-gray-50 border-r border-gray-200 h-[calc(100vh-4rem)] fixed left-0 top-16 z-40 flex-col">
       {/* Header fisso - sempre visibile */}
       <div className="p-6 flex-shrink-0 border-b border-gray-200">
-        <Link href="/" className="text-sm text-blue-600 hover:underline mb-4 block">
+        <Link href="/manuale" className="text-sm text-blue-600 hover:underline mb-4 block">
           ← Tutti i moduli
         </Link>
 

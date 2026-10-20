@@ -1,7 +1,7 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 20 Ottobre 2026 - Sessione 26 Fix Tailwind 4 + Piano Modulo 4 + Lezione 5 + Mobile
+**Ultimo aggiornamento:** 20 Ottobre 2026 - Sessione 26 Fix Tailwind 4 + Piano Modulo 4 + Lezione 5 + Mobile + Frontespizio
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
 
@@ -7684,7 +7684,7 @@ Eliminare `onclick` dalle lezioni JavaScript e usare un unico schema per collega
 ---
 
 
-## 📅 CHANGELOG SESSIONE 26 (20 Ottobre 2026) - FIX TAILWIND 4 + PIANO MODULO 4 + LEZIONE 5 + MOBILE
+## 📅 CHANGELOG SESSIONE 26 (20 Ottobre 2026) - FIX TAILWIND 4 + PIANO MODULO 4 + LEZIONE 5 + MOBILE + FRONTESPIZIO
 
 ### 1. 🐛 Problema Segnalato
 - Nel Modulo 4 alcune scritte non si vedevano: testo bianco su sfondo bianco.
@@ -7799,6 +7799,16 @@ Eliminare `onclick` dalle lezioni JavaScript e usare un unico schema per collega
 **Verifica:** script Puppeteer a 390px di larghezza su tutte le 42 pagine: nessuna pagina più larga dello schermo. Screenshot desktop (1440px) uguale a prima.
 
 **Nota:** il link "Moduli" dell'header punta a `/moduli`, che non esiste (404). Era già così prima: da decidere se creare la pagina o puntare a `/#moduli`.
+
+### 8. 📘 Frontespizio del Manuale
+
+**Richiesta:** all'apertura del sito deve comparire prima un frontespizio con i loghi istituzionali, il titolo e "A cura di", poi un pulsante per entrare nel manuale.
+
+**Implementazione:**
+- `app/page.tsx` (indirizzo `/`): nuovo frontespizio. Fascia loghi istituzionali in alto (Coesione Italia 21-27 Piemonte, Cofinanziato dall'Unione europea, Repubblica Italiana, Regione Piemonte), logo CIAC, titolo "Tecnologie Web - HTML, CSS e JavaScript", "A cura di Fabio Regnaud", pulsante "Entra nel Manuale →".
+- `app/manuale/page.tsx` (indirizzo `/manuale`): la vecchia home con l'elenco dei moduli, spostata con `git mv` senza modifiche.
+- `public/loghi/`: `loghi-istituzionali.png` e `ciac.jpg`, estratti dal file `loghi_1.docx` fornito dal docente.
+- Header (logo, Home, menu mobile) e Sidebar ("← Tutti i moduli") puntano a `/manuale`: navigando nel sito non si torna al frontespizio.
 
 ---
 

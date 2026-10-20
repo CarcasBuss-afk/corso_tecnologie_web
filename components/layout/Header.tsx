@@ -38,13 +38,13 @@ export default function Header({ moduloSlug, moduloTitolo, lezioni }: HeaderProp
     <header className="bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold hover:opacity-80 transition">
+          <Link href="/manuale" className="text-2xl font-bold hover:opacity-80 transition">
             🌐 Corso Web
           </Link>
 
           {/* Desktop: link sempre visibili */}
           <nav className="hidden lg:flex gap-6">
-            <Link href="/" className="hover:underline">
+            <Link href="/manuale" className="hover:underline">
               Home
             </Link>
             <Link href="/moduli" className="hover:underline">
@@ -81,7 +81,7 @@ export default function Header({ moduloSlug, moduloTitolo, lezioni }: HeaderProp
           />
           <nav className="relative bg-white text-gray-900 max-h-full overflow-y-auto shadow-xl">
             <div className="flex flex-col p-4 border-b border-gray-200">
-              <Link href="/" className="px-3 py-3 rounded font-semibold hover:bg-gray-100">
+              <Link href="/manuale" className="px-3 py-3 rounded font-semibold hover:bg-gray-100">
                 🏠 Home
               </Link>
               <Link href="/moduli" className="px-3 py-3 rounded font-semibold hover:bg-gray-100">
