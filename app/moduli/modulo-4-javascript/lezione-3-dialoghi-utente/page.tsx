@@ -244,7 +244,7 @@ console.log(saluto);  // Ciao Mario! 👋`}
           <p className="text-lg mb-3">
             È come quando un'app ti manda una <strong>notifica importante</strong> e devi cliccare OK.
           </p>
-          <div className="bg-black bg-opacity-30 p-4 rounded border-2 border-white border-opacity-30">
+          <div className="bg-black/30 p-4 rounded border-2 border-white/30">
             <p className="font-mono text-lg text-yellow-200">alert("Il tuo messaggio");</p>
           </div>
         </div>
@@ -427,7 +427,7 @@ button:hover {
           <p className="text-lg mb-3">
             È come quando un sito ti chiede il tuo nome o email per registrarti.
           </p>
-          <div className="bg-black bg-opacity-30 p-4 rounded border-2 border-white border-opacity-30">
+          <div className="bg-black/30 p-4 rounded border-2 border-white/30">
             <p className="font-mono text-lg text-yellow-200">let risposta = prompt("La domanda");</p>
           </div>
           <p className="text-sm mt-3">La risposta viene <strong>salvata nella variabile</strong> e puoi riusarla!</p>
@@ -635,15 +635,15 @@ button:hover {
           <p className="text-lg mb-3">
             È come quando vuoi cancellare un file e il computer chiede: "Sei sicuro?"
           </p>
-          <div className="bg-black bg-opacity-30 p-4 rounded border-2 border-white border-opacity-30">
+          <div className="bg-black/30 p-4 rounded border-2 border-white/30">
             <p className="font-mono text-lg text-yellow-200">confirm("Sei sicuro?");</p>
           </div>
           <div className="mt-3 grid md:grid-cols-2 gap-3">
-            <div className="bg-black bg-opacity-20 p-3 rounded">
-              <p className="text-sm text-white"><strong>Se clicca OK:</strong> la risposta è <code className="bg-white bg-opacity-30 px-1 rounded text-gray-900">true</code></p>
+            <div className="bg-black/20 p-3 rounded">
+              <p className="text-sm text-white"><strong>Se clicca OK:</strong> la risposta è <code className="bg-white/30 px-1 rounded text-gray-900">true</code></p>
             </div>
-            <div className="bg-black bg-opacity-20 p-3 rounded">
-              <p className="text-sm text-white"><strong>Se clicca Annulla:</strong> la risposta è <code className="bg-white bg-opacity-30 px-1 rounded text-gray-900">false</code></p>
+            <div className="bg-black/20 p-3 rounded">
+              <p className="text-sm text-white"><strong>Se clicca Annulla:</strong> la risposta è <code className="bg-white/30 px-1 rounded text-gray-900">false</code></p>
             </div>
           </div>
         </div>
@@ -824,7 +824,7 @@ button:hover {
           <p className="text-lg mb-3">
             Salvando i dati in variabili, puoi riusarli tante volte senza chiedere di nuovo!
           </p>
-          <div className="bg-black bg-opacity-30 p-4 rounded border-2 border-white border-opacity-30">
+          <div className="bg-black/30 p-4 rounded border-2 border-white/30">
             <p className="font-mono text-yellow-200">let nome = prompt("Nome?");</p>
             <p className="font-mono text-yellow-200">alert("Ciao " + nome);</p>
             <p className="font-mono text-yellow-200">alert("Benvenuto " + nome);</p>
@@ -1308,7 +1308,7 @@ button:hover {
         <p className="text-lg mb-4">
           Hai anche imparato a unire stringhe e usare diversi tipi di dati.
         </p>
-        <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+        <div className="bg-black/20 p-4 rounded border-2 border-white/30">
           <p className="font-bold mb-2 text-yellow-200">🚀 Comandi JavaScript Totali Imparati: 9</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li>console.log() - Stampa messaggi nella console (Lezione 1)</li>

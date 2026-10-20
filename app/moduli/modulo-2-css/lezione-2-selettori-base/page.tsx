@@ -406,13 +406,13 @@ p {
           <p className="text-lg mb-2"><strong>Nomi di Classi Descrittivi</strong></p>
           <p className="mb-3">Usa nomi che descrivono <strong>cosa fa</strong> la classe, non come appare.</p>
           <div className="grid md:grid-cols-2 gap-4 mt-4">
-            <div className="bg-red-500 bg-opacity-20 p-3 rounded">
+            <div className="bg-red-500/20 p-3 rounded">
               <p className="font-semibold mb-1">❌ Male:</p>
               <code className="text-sm">.testo-rosso</code><br/>
               <code className="text-sm">.grande</code><br/>
               <code className="text-sm">.blu</code>
             </div>
-            <div className="bg-green-500 bg-opacity-20 p-3 rounded">
+            <div className="bg-green-500/20 p-3 rounded">
               <p className="font-semibold mb-1">✅ Bene:</p>
               <code className="text-sm">.errore</code><br/>
               <code className="text-sm">.titolo-principale</code><br/>

@@ -722,7 +722,7 @@ export default function Lezione2HeroNavbar() {
             </li>
           </ul>
 
-          <div className="mt-6 bg-white bg-opacity-20 p-4 rounded">
+          <div className="mt-6 bg-white/20 p-4 rounded">
             <p className="font-bold text-yellow-200 mb-2">🚀 Prossima Lezione:</p>
             <p className="text-lg">
               Costruiremo la <strong>sezione Features</strong> (Grid 3x2) e <strong>How It Works</strong> (3 step)!

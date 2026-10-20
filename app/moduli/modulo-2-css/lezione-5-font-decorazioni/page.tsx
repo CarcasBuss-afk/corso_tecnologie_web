@@ -67,7 +67,7 @@ export default function Lezione5FontDecorazioni() {
             I <strong>web safe fonts</strong> sono font disponibili su TUTTI i computer e browser.
           </p>
           <p className="mb-3">Usali per essere sicuro che tutti vedano il testo correttamente!</p>
-          <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+          <div className="bg-black/20 p-4 rounded border-2 border-white/30">
             <p className="font-mono text-yellow-200 mb-1">font-family: Arial, sans-serif;</p>
             <p className="text-sm">Se Arial non c&apos;è, usa un font sans-serif generico</p>
           </div>
@@ -177,15 +177,15 @@ export default function Lezione5FontDecorazioni() {
         <div className="bg-gradient-to-r from-green-500 to-teal-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3">📋 Valori Disponibili</h3>
           <div className="grid md:grid-cols-3 gap-3">
-            <div className="bg-black bg-opacity-20 p-3 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-3 rounded border-2 border-white/30">
               <code className="text-yellow-200 font-bold">normal</code>
               <p className="text-sm mt-1">Testo normale (default)</p>
             </div>
-            <div className="bg-black bg-opacity-20 p-3 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-3 rounded border-2 border-white/30">
               <code className="text-yellow-200 font-bold">italic</code>
               <p className="text-sm mt-1">Testo in corsivo</p>
             </div>
-            <div className="bg-black bg-opacity-20 p-3 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-3 rounded border-2 border-white/30">
               <code className="text-yellow-200 font-bold">oblique</code>
               <p className="text-sm mt-1">Simile a italic (raro)</p>
             </div>
@@ -261,19 +261,19 @@ export default function Lezione5FontDecorazioni() {
         <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3">📋 Valori Disponibili</h3>
           <div className="grid md:grid-cols-2 gap-3">
-            <div className="bg-black bg-opacity-20 p-3 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-3 rounded border-2 border-white/30">
               <code className="text-yellow-200 font-bold">none</code>
               <p className="text-sm mt-1">Nessuna decorazione (default)</p>
             </div>
-            <div className="bg-black bg-opacity-20 p-3 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-3 rounded border-2 border-white/30">
               <code className="text-yellow-200 font-bold">underline</code>
               <p className="text-sm mt-1">Sottolineato</p>
             </div>
-            <div className="bg-black bg-opacity-20 p-3 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-3 rounded border-2 border-white/30">
               <code className="text-yellow-200 font-bold">line-through</code>
               <p className="text-sm mt-1">Barrato (testo cancellato)</p>
             </div>
-            <div className="bg-black bg-opacity-20 p-3 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-3 rounded border-2 border-white/30">
               <code className="text-yellow-200 font-bold">overline</code>
               <p className="text-sm mt-1">Linea sopra (raro)</p>
             </div>
@@ -352,19 +352,19 @@ export default function Lezione5FontDecorazioni() {
         <div className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3">📋 Valori Disponibili</h3>
           <div className="grid md:grid-cols-2 gap-3">
-            <div className="bg-black bg-opacity-20 p-3 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-3 rounded border-2 border-white/30">
               <code className="text-yellow-200 font-bold">none</code>
               <p className="text-sm mt-1">Nessuna trasformazione</p>
             </div>
-            <div className="bg-black bg-opacity-20 p-3 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-3 rounded border-2 border-white/30">
               <code className="text-yellow-200 font-bold">uppercase</code>
               <p className="text-sm mt-1">TUTTO MAIUSCOLO</p>
             </div>
-            <div className="bg-black bg-opacity-20 p-3 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-3 rounded border-2 border-white/30">
               <code className="text-yellow-200 font-bold">lowercase</code>
               <p className="text-sm mt-1">tutto minuscolo</p>
             </div>
-            <div className="bg-black bg-opacity-20 p-3 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-3 rounded border-2 border-white/30">
               <code className="text-yellow-200 font-bold">capitalize</code>
               <p className="text-sm mt-1">Ogni Parola Inizia Maiuscola</p>
             </div>
@@ -441,12 +441,12 @@ export default function Lezione5FontDecorazioni() {
         <div className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3">🔍 Due Tipi di Spaziatura</h3>
           <div className="grid md:grid-cols-2 gap-4 mt-4">
-            <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-4 rounded border-2 border-white/30">
               <p className="font-bold text-yellow-200 mb-2">letter-spacing</p>
               <p className="text-sm mb-1">Spazio tra LETTERE</p>
               <code className="text-xs">letter-spacing: 2px;</code>
             </div>
-            <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-4 rounded border-2 border-white/30">
               <p className="font-bold text-yellow-200 mb-2">word-spacing</p>
               <p className="text-sm mb-1">Spazio tra PAROLE</p>
               <code className="text-xs">word-spacing: 10px;</code>
@@ -1198,7 +1198,7 @@ export default function Lezione5FontDecorazioni() {
           Font, decorazioni, trasformazioni e spaziatura: sei un maestro del testo CSS!
         </p>
 
-        <div className="bg-black bg-opacity-20 p-6 rounded border-2 border-white border-opacity-30 mb-6">
+        <div className="bg-black/20 p-6 rounded border-2 border-white/30 mb-6">
           <p className="font-bold mb-3 text-yellow-200 text-xl">📊 Selettori e Proprietà Totali Imparate</p>
 
           <div className="mb-4">
@@ -1227,7 +1227,7 @@ export default function Lezione5FontDecorazioni() {
           </div>
         </div>
 
-        <div className="bg-green-400 bg-opacity-30 p-4 rounded border-2 border-green-300">
+        <div className="bg-green-400/30 p-4 rounded border-2 border-green-300">
           <p className="font-bold mb-2">🚀 Prossima Lezione</p>
           <p className="text-lg">
             Imparerai a usare <strong>:hover</strong> per link interattivi e le <strong>unità di misura</strong> responsive (em, rem, %, vw, vh)!

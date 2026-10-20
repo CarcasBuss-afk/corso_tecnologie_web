@@ -40,7 +40,7 @@ export default function Lezione11Flexbox() {
               🚀 Flexbox: La Rivoluzione dei Layout!
             </h2>
             <p className="text-xl mb-4">
-              Fino ad ora hai usato <code className="bg-white bg-opacity-20 px-2 py-1 rounded text-gray-900 font-bold">display: inline-block</code> per
+              Fino ad ora hai usato <code className="bg-white/20 px-2 py-1 rounded text-gray-900 font-bold">display: inline-block</code> per
               affiancare elementi. Funziona, ma è limitato!
             </p>
             <p className="text-xl mb-4">
@@ -365,27 +365,27 @@ export default function Lezione11Flexbox() {
           <div className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-6 rounded-lg mb-6">
             <h3 className="font-bold text-xl mb-3">🎯 I Valori Principali</h3>
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">flex-start</p>
                 <p className="text-sm text-gray-800">Inizio (default)</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">center</p>
                 <p className="text-sm text-gray-800">Centro</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">flex-end</p>
                 <p className="text-sm text-gray-800">Fine</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">space-between</p>
                 <p className="text-sm text-gray-800">Spazio tra items</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">space-around</p>
                 <p className="text-sm text-gray-800">Spazio intorno</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">space-evenly</p>
                 <p className="text-sm text-gray-800">Spazio uguale</p>
               </div>
@@ -650,8 +650,8 @@ export default function Lezione11Flexbox() {
           <div className="bg-gradient-to-r from-green-500 to-teal-500 text-white p-8 rounded-lg mb-6">
             <h3 className="text-2xl font-bold mb-4">✨ La Combinazione Magica!</h3>
             <p className="text-lg mb-4">
-              Combinando <code className="bg-white bg-opacity-20 px-2 py-1 rounded text-gray-900 font-bold">justify-content: center</code> +{' '}
-              <code className="bg-white bg-opacity-20 px-2 py-1 rounded text-gray-900 font-bold">align-items: center</code> ottieni il
+              Combinando <code className="bg-white/20 px-2 py-1 rounded text-gray-900 font-bold">justify-content: center</code> +{' '}
+              <code className="bg-white/20 px-2 py-1 rounded text-gray-900 font-bold">align-items: center</code> ottieni il
               <strong> centraggio PERFETTO</strong> sia orizzontalmente che verticalmente!
             </p>
             <p className="text-lg">
@@ -1747,7 +1747,7 @@ h1 {
           Flexbox rende facilissimo creare navbar, centrare elementi, allineare contenuti e creare layout responsive! 💪
         </p>
 
-        <div className="bg-black bg-opacity-20 p-6 rounded border-2 border-white border-opacity-30 mb-6">
+        <div className="bg-black/20 p-6 rounded border-2 border-white/30 mb-6">
           <p className="font-bold mb-3 text-yellow-200 text-xl">📊 Riepilogo Completo CSS Finora</p>
 
           <div className="mb-4">
@@ -1788,7 +1788,7 @@ h1 {
           </div>
         </div>
 
-        <div className="bg-green-400 bg-opacity-30 p-4 rounded border-2 border-green-300">
+        <div className="bg-green-400/30 p-4 rounded border-2 border-green-300">
           <p className="font-bold mb-2">🚀 Prossima Lezione</p>
           <p className="text-lg">
             Imparerai <strong>CSS Grid</strong>! Il sistema di layout bidimensionale per creare gallery e layout complessi! 📐

@@ -291,19 +291,19 @@ export default function Lezione13ContenitioriFilgi() {
           <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-6 rounded-lg mb-6">
             <h3 className="font-bold text-xl mb-3">🎯 Valori di overflow</h3>
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">visible (default)</p>
                 <p className="text-sm text-gray-800">Il contenuto esce dal box</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">hidden</p>
                 <p className="text-sm text-gray-800">Nasconde il contenuto che esce</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">scroll</p>
                 <p className="text-sm text-gray-800">Barra di scorrimento sempre visibile</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">auto</p>
                 <p className="text-sm text-gray-800">Barra solo SE necessaria (consigliato!)</p>
               </div>
@@ -872,7 +872,7 @@ h1 {
           Ora sai quando usare %, px, em, rem - e come gestire overflow e inheritance! 🚀
         </p>
 
-        <div className="bg-black bg-opacity-20 p-6 rounded border-2 border-white border-opacity-30 mb-6">
+        <div className="bg-black/20 p-6 rounded border-2 border-white/30 mb-6">
           <p className="font-bold mb-3 text-yellow-200 text-xl">📊 Riepilogo Completo CSS Finora</p>
 
           <div className="mb-4">
@@ -915,7 +915,7 @@ h1 {
           </div>
         </div>
 
-        <div className="bg-green-400 bg-opacity-30 p-4 rounded border-2 border-green-300">
+        <div className="bg-green-400/30 p-4 rounded border-2 border-green-300">
           <p className="font-bold mb-2">🚀 Prossima Lezione</p>
           <p className="text-lg">
             Hai completato le basi del CSS! Nelle prossime lezioni metterai in pratica tutto ciò che hai imparato! 🎨

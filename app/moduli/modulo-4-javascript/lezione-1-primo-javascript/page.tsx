@@ -135,7 +135,7 @@ export default function Lezione1PrimoJavaScript() {
           <p className="text-lg mb-3">
             <strong>"Stampa questo messaggio nella console del browser"</strong>
           </p>
-          <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+          <div className="bg-black/20 p-4 rounded border-2 border-white/30">
             <p className="font-mono text-lg text-yellow-200">console.log("Il tuo messaggio");</p>
           </div>
         </div>
@@ -192,17 +192,17 @@ console.log("Ho", 15, "anni e amo programmare! 💻");`}
         <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-lg mb-6">
           <h3 className="text-2xl font-bold mb-4 text-white">🔑 Come Aprire la Console</h3>
           <div className="grid md:grid-cols-3 gap-4 text-center">
-            <div className="bg-black bg-opacity-30 rounded-lg p-4 border-2 border-white border-opacity-30">
+            <div className="bg-black/30 rounded-lg p-4 border-2 border-white/30">
               <p className="font-bold mb-2 text-white">Windows/Linux</p>
               <p className="text-xl font-mono text-white">F12</p>
               <p className="text-sm mt-2 text-white">oppure</p>
               <p className="text-xl font-mono text-white">Ctrl + Shift + I</p>
             </div>
-            <div className="bg-black bg-opacity-30 rounded-lg p-4 border-2 border-white border-opacity-30">
+            <div className="bg-black/30 rounded-lg p-4 border-2 border-white/30">
               <p className="font-bold mb-2 text-white">Mac</p>
               <p className="text-xl font-mono text-white">Cmd + Option + I</p>
             </div>
-            <div className="bg-black bg-opacity-30 rounded-lg p-4 border-2 border-white border-opacity-30">
+            <div className="bg-black/30 rounded-lg p-4 border-2 border-white/30">
               <p className="font-bold mb-2 text-white">Oppure</p>
               <p className="text-sm text-white">Click destro sulla pagina</p>
               <p className="text-sm text-white">→ "Ispeziona"</p>
@@ -232,11 +232,11 @@ console.log("Ho", 15, "anni e amo programmare! 💻");`}
         <div className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3 text-white">📝 Due Tipi di Commenti</h3>
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-4 rounded border-2 border-white/30">
               <p className="font-bold text-yellow-200 mb-2">Commento Singolo</p>
               <code className="text-sm text-white">// Commento su una riga</code>
             </div>
-            <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-4 rounded border-2 border-white/30">
               <p className="font-bold text-yellow-200 mb-2">Commento Multi-riga</p>
               <code className="text-sm text-white">/* Commento su<br/>più righe */</code>
             </div>
@@ -285,11 +285,11 @@ console.log("Anche questo funziona!");
         <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3 text-white">➕ Operatori Matematici</h3>
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-4 rounded border-2 border-white/30">
               <p className="font-mono text-yellow-200">+ addizione</p>
               <p className="font-mono text-yellow-200">- sottrazione</p>
             </div>
-            <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-4 rounded border-2 border-white/30">
               <p className="font-mono text-yellow-200">* moltiplicazione</p>
               <p className="font-mono text-yellow-200">/ divisione</p>
             </div>
@@ -582,7 +582,7 @@ console.log("Sono circa", 15 * 365, "giorni!");`}
         <p className="text-lg mb-4">
           Hai imparato a stampare messaggi, fare calcoli e organizzare il codice con i commenti.
         </p>
-        <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+        <div className="bg-black/20 p-4 rounded border-2 border-white/30">
           <p className="font-bold mb-2 text-yellow-200">🚀 Comandi JavaScript Imparati: 1</p>
           <ul className="list-disc list-inside space-y-1">
             <li>console.log() - Stampa messaggi nella console (Lezione 1)</li>

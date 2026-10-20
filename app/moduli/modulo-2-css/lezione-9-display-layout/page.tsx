@@ -46,7 +46,7 @@ export default function Lezione9DisplayLayout() {
               🎉 <strong>Oggi impari come affiancare gli elementi orizzontalmente!</strong>
             </p>
             <p className="text-lg">
-              La chiave è la proprietà <code className="bg-white bg-opacity-20 px-2 py-1 rounded text-gray-900 font-bold">display</code> che
+              La chiave è la proprietà <code className="bg-white/20 px-2 py-1 rounded text-gray-900 font-bold">display</code> che
               controlla <strong>come gli elementi si posizionano</strong> nella pagina.
             </p>
           </div>
@@ -96,19 +96,19 @@ export default function Lezione9DisplayLayout() {
           <div className="bg-gradient-to-r from-green-500 to-teal-500 text-white p-6 rounded-lg mb-6">
             <h3 className="font-bold text-xl mb-3">🔑 I Valori Principali</h3>
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">display: block;</p>
                 <p className="text-sm text-gray-800">Elemento occupa tutta la larghezza disponibile</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">display: inline;</p>
                 <p className="text-sm text-gray-800">Elemento sta sulla stessa riga del testo</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">display: inline-block;</p>
                 <p className="text-sm text-gray-800">Combina i vantaggi di block e inline</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">display: none;</p>
                 <p className="text-sm text-gray-800">Elemento nascosto completamente</p>
               </div>
@@ -308,7 +308,7 @@ export default function Lezione9DisplayLayout() {
           <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-8 rounded-lg mb-6">
             <h3 className="text-2xl font-bold mb-4">🎯 Il Meglio dei Due Mondi!</h3>
             <p className="text-lg mb-4">
-              <code className="bg-white bg-opacity-20 px-2 py-1 rounded text-gray-900 font-bold">inline-block</code> combina i vantaggi di{' '}
+              <code className="bg-white/20 px-2 py-1 rounded text-gray-900 font-bold">inline-block</code> combina i vantaggi di{' '}
               <code>inline</code> e <code>block</code>:
             </p>
             <ul className="space-y-2 ml-6">
@@ -619,7 +619,7 @@ export default function Lezione9DisplayLayout() {
               Ricordi quando nelle Lezioni 7 e 8 abbiamo detto che le card sarebbero state verticali?
             </p>
             <p className="text-xl font-bold mt-3">
-              Ora con <code className="bg-white bg-opacity-20 px-2 py-1 rounded text-gray-900">display: inline-block</code> possiamo
+              Ora con <code className="bg-white/20 px-2 py-1 rounded text-gray-900">display: inline-block</code> possiamo
               affiancarle! 🚀
             </p>
           </div>
@@ -1581,7 +1581,7 @@ h1 {
           display: inline-block è la chiave per creare gallery, card e layout multi-colonna! 🌐
         </p>
 
-        <div className="bg-black bg-opacity-20 p-6 rounded border-2 border-white border-opacity-30 mb-6">
+        <div className="bg-black/20 p-6 rounded border-2 border-white/30 mb-6">
           <p className="font-bold mb-3 text-yellow-200 text-xl">📊 Riepilogo Completo CSS Finora</p>
 
           <div className="mb-4">
@@ -1620,7 +1620,7 @@ h1 {
           </div>
         </div>
 
-        <div className="bg-green-400 bg-opacity-30 p-4 rounded border-2 border-green-300">
+        <div className="bg-green-400/30 p-4 rounded border-2 border-green-300">
           <p className="font-bold mb-2">🚀 Prossima Lezione</p>
           <p className="text-lg">
             Imparerai <strong>Position</strong>! Posizionamento assoluto, relativo, fisso e molto altro! 📍

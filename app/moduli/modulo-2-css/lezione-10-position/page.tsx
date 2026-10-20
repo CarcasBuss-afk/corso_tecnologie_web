@@ -45,7 +45,7 @@ export default function Lezione10Position() {
               🚀 <strong>Oggi impari a posizionare elementi OVUNQUE vuoi!</strong>
             </p>
             <p className="text-lg">
-              Con la proprietà <code className="bg-white bg-opacity-20 px-2 py-1 rounded text-gray-900 font-bold">position</code> puoi:
+              Con la proprietà <code className="bg-white/20 px-2 py-1 rounded text-gray-900 font-bold">position</code> puoi:
               creare tooltip, badge, navbar fisse, elementi sovrapposti e molto altro!
             </p>
           </div>
@@ -95,23 +95,23 @@ export default function Lezione10Position() {
           <div className="bg-gradient-to-r from-green-500 to-teal-500 text-white p-6 rounded-lg mb-6">
             <h3 className="font-bold text-xl mb-3">🔑 I 5 Valori Principali</h3>
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">position: static;</p>
                 <p className="text-sm text-gray-800">Default - elemento nel flusso normale</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">position: relative;</p>
                 <p className="text-sm text-gray-800">Spostato rispetto alla sua posizione originale</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">position: absolute;</p>
                 <p className="text-sm text-gray-800">Posizionato rispetto al parent positioned</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">position: fixed;</p>
                 <p className="text-sm text-gray-800">Fisso rispetto alla viewport (schermo)</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded col-span-2">
+              <div className="bg-white/20 p-4 rounded col-span-2">
                 <p className="font-bold mb-2 text-gray-900">position: sticky;</p>
                 <p className="text-sm text-gray-800">Mix tra relative e fixed - resta visibile scrollando</p>
               </div>
@@ -255,7 +255,7 @@ export default function Lezione10Position() {
           <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-8 rounded-lg mb-6">
             <h3 className="text-2xl font-bold mb-4">🚀 Posizionamento Preciso!</h3>
             <p className="text-lg mb-4">
-              <code className="bg-white bg-opacity-20 px-2 py-1 rounded text-gray-900 font-bold">position: absolute</code> è
+              <code className="bg-white/20 px-2 py-1 rounded text-gray-900 font-bold">position: absolute</code> è
               perfetto per posizionare elementi con precisione millimetrica!
             </p>
             <ul className="space-y-2 ml-6">
@@ -461,7 +461,7 @@ export default function Lezione10Position() {
           <div className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white p-8 rounded-lg mb-6">
             <h3 className="text-2xl font-bold mb-4">🎭 Il Meglio di Due Mondi!</h3>
             <p className="text-lg mb-4">
-              <code className="bg-white bg-opacity-20 px-2 py-1 rounded text-gray-900 font-bold">position: sticky</code> si
+              <code className="bg-white/20 px-2 py-1 rounded text-gray-900 font-bold">position: sticky</code> si
               comporta come <strong>relative</strong> finché scrolli, poi diventa <strong>fixed</strong>!
             </p>
             <ul className="space-y-2 ml-6">
@@ -1789,7 +1789,7 @@ body {
           position è una delle proprietà più potenti del CSS! Navbar fisse, badge, tooltip, tutto è possibile! 🚀
         </p>
 
-        <div className="bg-black bg-opacity-20 p-6 rounded border-2 border-white border-opacity-30 mb-6">
+        <div className="bg-black/20 p-6 rounded border-2 border-white/30 mb-6">
           <p className="font-bold mb-3 text-yellow-200 text-xl">📊 Riepilogo Completo CSS Finora</p>
 
           <div className="mb-4">
@@ -1829,7 +1829,7 @@ body {
           </div>
         </div>
 
-        <div className="bg-green-400 bg-opacity-30 p-4 rounded border-2 border-green-300">
+        <div className="bg-green-400/30 p-4 rounded border-2 border-green-300">
           <p className="font-bold mb-2">🚀 Prossima Lezione</p>
           <p className="text-lg">
             Imparerai <strong>Flexbox</strong>! Il sistema di layout moderno per creare layout flessibili e responsive! 💪

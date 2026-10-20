@@ -418,7 +418,7 @@ width: 200px;
         <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-6 rounded-lg">
           <h3 className="font-bold text-xl mb-3">🎯 Best Practice Universale</h3>
           <p className="mb-3">
-            La maggior parte dei sviluppatori applica <code className="bg-black bg-opacity-20 px-2 py-1 rounded">box-sizing: border-box</code> a <strong>TUTTI</strong> gli elementi:
+            La maggior parte dei sviluppatori applica <code className="bg-black/20 px-2 py-1 rounded">box-sizing: border-box</code> a <strong>TUTTI</strong> gli elementi:
           </p>
           <CodeExample
             language="css"
@@ -496,10 +496,10 @@ width: 200px;
         <div className="bg-gradient-to-r from-green-500 to-teal-500 text-white p-6 rounded-lg mb-6">
           <h3 className="font-bold text-xl mb-3">🎯 Quando Usare Cosa?</h3>
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-white bg-opacity-20 p-4 rounded">
+            <div className="bg-white/20 p-4 rounded">
               <p className="font-bold mb-2 text-gray-900">✅ max-width (CONSIGLIATO)</p>
               <p className="text-sm text-gray-800">Usa per contenitori responsive:</p>
-              <code className="text-xs bg-black bg-opacity-30 px-2 py-1 rounded block mt-2 text-white">
+              <code className="text-xs bg-black/30 px-2 py-1 rounded block mt-2 text-white">
                 width: 90%;<br/>
                 max-width: 1200px;
               </code>
@@ -508,10 +508,10 @@ width: 200px;
               </p>
             </div>
 
-            <div className="bg-white bg-opacity-20 p-4 rounded">
+            <div className="bg-white/20 p-4 rounded">
               <p className="font-bold mb-2 text-gray-900">✅ min-height</p>
               <p className="text-sm text-gray-800">Per sezioni con altezza flessibile:</p>
-              <code className="text-xs bg-black bg-opacity-30 px-2 py-1 rounded block mt-2 text-white">
+              <code className="text-xs bg-black/30 px-2 py-1 rounded block mt-2 text-white">
                 min-height: 300px;
               </code>
               <p className="text-xs mt-2 text-gray-800">
@@ -1477,15 +1477,15 @@ h1 {
           Questo è uno dei concetti più importanti del CSS. Da qui in poi, tutto il resto diventa più facile!
         </p>
 
-        <div className="bg-black bg-opacity-20 p-6 rounded border-2 border-white border-opacity-30 mb-6">
+        <div className="bg-black/20 p-6 rounded border-2 border-white/30 mb-6">
           <p className="font-bold mb-3 text-yellow-200 text-xl">📊 Riepilogo Completo CSS Finora</p>
 
           <div className="mb-4">
             <p className="font-bold text-yellow-200 mb-2">🎯 Selettori CSS (3):</p>
             <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
-              <li>elemento (Lezione 2) - es: <code className="bg-black bg-opacity-30 px-1 rounded">p</code></li>
-              <li>.classe (Lezione 3) - es: <code className="bg-black bg-opacity-30 px-1 rounded">.card</code></li>
-              <li>#id (Lezione 4) - es: <code className="bg-black bg-opacity-30 px-1 rounded">#header</code></li>
+              <li>elemento (Lezione 2) - es: <code className="bg-black/30 px-1 rounded">p</code></li>
+              <li>.classe (Lezione 3) - es: <code className="bg-black/30 px-1 rounded">.card</code></li>
+              <li>#id (Lezione 4) - es: <code className="bg-black/30 px-1 rounded">#header</code></li>
             </ul>
           </div>
 
@@ -1516,7 +1516,7 @@ h1 {
           </div>
         </div>
 
-        <div className="bg-green-400 bg-opacity-30 p-4 rounded border-2 border-green-300">
+        <div className="bg-green-400/30 p-4 rounded border-2 border-green-300">
           <p className="font-bold mb-2">🚀 Prossima Lezione</p>
           <p className="text-lg">
             Imparerai tutto su <strong>Bordi e Sfondi</strong>! border-radius per angoli arrotondati,

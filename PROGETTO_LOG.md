@@ -1,7 +1,7 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 4 Dicembre 2025 - Sessione 24 Lezione 3 JavaScript DOM
+**Ultimo aggiornamento:** 20 Ottobre 2026 - Sessione 26 Fix opacità Tailwind 4
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
 
@@ -7681,5 +7681,26 @@ Eliminare `onclick` dalle lezioni JavaScript e usare un unico schema per collega
 
 ---
 
-**Fine del Progetto Log - Ultimo aggiornamento: 19 Ottobre 2026 - Sessione 25**
 
+## 📅 CHANGELOG SESSIONE 26 (20 Ottobre 2026) - FIX TESTO BIANCO SU BIANCO (TAILWIND 4)
+
+### 1. 🐛 Problema Segnalato
+- Nel Modulo 4 alcune scritte non si vedevano: testo bianco su sfondo bianco.
+
+### 2. 🔍 Causa
+- Il progetto usa **Tailwind CSS 4**, dove le classi `bg-opacity-*`, `text-opacity-*` e `border-opacity-*` sono state **rimosse** e vengono ignorate.
+- `bg-white bg-opacity-20` (pensato come sfondo bianco semi-trasparente) diventava `bg-white` pieno → testo `text-white` invisibile.
+- Il problema non era solo nel Modulo 4: riguardava anche Modulo 2 e Modulo 3 (stessa causa dei fix "caso per caso" delle Sessioni 11 e successive).
+
+### 3. ✅ Soluzione
+- Conversione automatica alla sintassi Tailwind 4 con lo slash: `bg-white bg-opacity-20` → `bg-white/20`, `bg-black bg-opacity-30` → `bg-black/30`, `border-white border-opacity-30` → `border-white/30`, `text-white text-opacity-80` → `text-white/80`.
+- **224 classi corrette in 22 pagine** (Modulo 2, 3 e 4). Nessuna modifica ai contenuti delle lezioni.
+- Nel progetto non resta più nessuna classe `*-opacity-N` del vecchio tipo.
+- Annotata la regola in `DIPENDENZE.md` (Note Tailwind CSS 4.x).
+
+### 4. 📌 Regola per le Prossime Lezioni
+- **Mai usare** `bg-opacity-*` / `text-opacity-*` / `border-opacity-*`: usare sempre `colore/opacità` (es. `bg-white/20`).
+
+---
+
+**Fine del Progetto Log - Ultimo aggiornamento: 20 Ottobre 2026 - Sessione 26**

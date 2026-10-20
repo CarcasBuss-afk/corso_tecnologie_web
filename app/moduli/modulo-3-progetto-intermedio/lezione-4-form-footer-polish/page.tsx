@@ -1249,11 +1249,11 @@ html {
         <div className="bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white p-12 rounded-xl text-center">
           <div className="text-8xl mb-6">🎉</div>
           <h2 className="text-4xl font-bold mb-4">HAI COMPLETATO IL PROGETTO INTERMEDIO!</h2>
-          <p className="text-2xl mb-8 text-white text-opacity-90">
+          <p className="text-2xl mb-8 text-white/90">
             Hai creato la tua prima <strong>landing page professionale</strong> completa!
           </p>
 
-          <div className="bg-white bg-opacity-20 rounded-lg p-8 max-w-3xl mx-auto backdrop-blur-sm border-2 border-white border-opacity-30">
+          <div className="bg-white/20 rounded-lg p-8 max-w-3xl mx-auto backdrop-blur-sm border-2 border-white/30">
             <h3 className="text-2xl font-bold mb-6 text-white">Cosa Hai Imparato in Questo Progetto</h3>
             <div className="grid md:grid-cols-2 gap-6 text-left">
               <div>
@@ -1306,20 +1306,20 @@ html {
             <p className="text-xl">
               Questo progetto rappresenta il <strong>25% del corso totale</strong>.
             </p>
-            <p className="text-lg text-white text-opacity-90">
+            <p className="text-lg text-white/90">
               Hai le competenze per creare landing page vere. Ora manca solo{' '}
               <strong>JavaScript</strong> per renderle <strong>interattive</strong>!
             </p>
           </div>
 
-          <div className="mt-10 p-6 bg-white bg-opacity-10 rounded-lg border-2 border-white border-opacity-40">
+          <div className="mt-10 p-6 bg-white/10 rounded-lg border-2 border-white/40">
             <h3 className="text-2xl font-bold mb-4 text-white">🚀 Cosa Fare Adesso</h3>
             <div className="space-y-3 text-left max-w-2xl mx-auto">
               <div className="flex gap-3 items-start">
                 <span className="text-2xl">📸</span>
                 <div>
                   <div className="font-bold text-white">Fai Screenshot</div>
-                  <p className="text-sm text-white text-opacity-80">
+                  <p className="text-sm text-white/80">
                     Cattura il tuo progetto finito per il portfolio
                   </p>
                 </div>
@@ -1329,7 +1329,7 @@ html {
                 <span className="text-2xl">💾</span>
                 <div>
                   <div className="font-bold text-white">Salva su GitHub</div>
-                  <p className="text-sm text-white text-opacity-80">
+                  <p className="text-sm text-white/80">
                     Crea un repository per mostrarlo nei colloqui
                   </p>
                 </div>
@@ -1339,7 +1339,7 @@ html {
                 <span className="text-2xl">🌐</span>
                 <div>
                   <div className="font-bold text-white">Pubblica Online (opzionale)</div>
-                  <p className="text-sm text-white text-opacity-80">
+                  <p className="text-sm text-white/80">
                     Usa Netlify o GitHub Pages per un URL pubblico
                   </p>
                 </div>
@@ -1349,7 +1349,7 @@ html {
                 <span className="text-2xl">🎯</span>
                 <div>
                   <div className="font-bold text-white">Personalizza Ulteriormente</div>
-                  <p className="text-sm text-white text-opacity-80">
+                  <p className="text-sm text-white/80">
                     Cambia colori, immagini, testi per renderlo unico
                   </p>
                 </div>
@@ -1359,7 +1359,7 @@ html {
                 <span className="text-2xl">⚡</span>
                 <div>
                   <div className="font-bold text-white">Passa a JavaScript (Modulo 4)</div>
-                  <p className="text-sm text-white text-opacity-80">
+                  <p className="text-sm text-white/80">
                     Impara a rendere il sito interattivo e dinamico
                   </p>
                 </div>

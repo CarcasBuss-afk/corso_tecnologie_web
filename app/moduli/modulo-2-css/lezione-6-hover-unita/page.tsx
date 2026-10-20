@@ -1076,7 +1076,7 @@ h1 {
           I tuoi siti ora sono interattivi e si adattano a ogni schermo! 📱💻🖥️
         </p>
 
-        <div className="bg-black bg-opacity-20 p-6 rounded border-2 border-white border-opacity-30 mb-6">
+        <div className="bg-black/20 p-6 rounded border-2 border-white/30 mb-6">
           <p className="font-bold mb-3 text-yellow-200 text-xl">📊 Riepilogo Completo</p>
 
           <div className="mb-4">
@@ -1124,7 +1124,7 @@ h1 {
           </div>
         </div>
 
-        <div className="bg-green-400 bg-opacity-30 p-4 rounded border-2 border-green-300">
+        <div className="bg-green-400/30 p-4 rounded border-2 border-green-300">
           <p className="font-bold mb-2">🚀 Prossima Lezione</p>
           <p className="text-lg">
             Imparerai il <strong>Box Model</strong> - il concetto più importante del CSS!

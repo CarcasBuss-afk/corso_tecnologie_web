@@ -42,7 +42,7 @@ export default function Lezione1PlanningSetup() {
             Una landing page è una pagina web progettata per <strong>convincere</strong> i visitatori a fare un&apos;azione
             (iscriversi, scaricare, acquistare). Le trovi ovunque: app, prodotti, servizi.
           </p>
-          <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30 mt-4">
+          <div className="bg-black/20 p-4 rounded border-2 border-white/30 mt-4">
             <p className="font-bold mb-2 text-yellow-200">📊 Cosa costruirai:</p>
             <ul className="list-disc list-inside space-y-1">
               <li>Navbar con logo e menu</li>
@@ -1046,7 +1046,7 @@ p {
             </li>
           </ul>
 
-          <div className="mt-6 bg-white bg-opacity-20 p-4 rounded">
+          <div className="mt-6 bg-white/20 p-4 rounded">
             <p className="font-bold text-yellow-200 mb-2">🚀 Prossima Lezione:</p>
             <p className="text-lg">
               Costruiremo la <strong>Navbar</strong> e il <strong>Hero Section</strong> - le due sezioni più importanti!

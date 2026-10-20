@@ -47,7 +47,7 @@ export default function Lezione4IDSpaziatura() {
           <p className="text-lg mb-3">
             Un <strong>ID</strong> è come un <strong>nome proprio</strong> che dai a un elemento speciale e unico.
           </p>
-          <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+          <div className="bg-black/20 p-4 rounded border-2 border-white/30">
             <p className="font-mono text-lg mb-2 text-yellow-200">#nome-id {'{ proprietà: valore; }'}</p>
             <p className="text-sm">Il cancelletto (#) dice a CSS: &quot;questo è un selettore di ID&quot;</p>
           </div>
@@ -194,7 +194,7 @@ export default function Lezione4IDSpaziatura() {
             <li>🎁 Più padding = più &quot;aria&quot; intorno al contenuto</li>
             <li>✨ Il background-color riempie anche il padding!</li>
           </ul>
-          <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30 mt-4">
+          <div className="bg-black/20 p-4 rounded border-2 border-white/30 mt-4">
             <p className="font-mono text-yellow-200">padding: 20px;</p>
             <p className="text-sm mt-1">20px di spazio interno su tutti i lati</p>
           </div>
@@ -294,7 +294,7 @@ export default function Lezione4IDSpaziatura() {
             <li>🚀 Più margin = più spazio tra elementi</li>
             <li>⚠️ Il background-color NON riempie il margin (è trasparente)</li>
           </ul>
-          <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30 mt-4">
+          <div className="bg-black/20 p-4 rounded border-2 border-white/30 mt-4">
             <p className="font-mono text-yellow-200">margin: 30px;</p>
             <p className="text-sm mt-1">30px di spazio esterno su tutti i lati</p>
           </div>
@@ -397,7 +397,7 @@ export default function Lezione4IDSpaziatura() {
         <div className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3">✨ Come Funziona</h3>
           <p className="mb-3">
-            <code className="bg-black bg-opacity-30 px-2 py-1 rounded">margin: auto</code> dice al browser:
+            <code className="bg-black/30 px-2 py-1 rounded">margin: auto</code> dice al browser:
             &quot;Distribuisci lo spazio ai lati in modo AUTOMATICO&quot;
           </p>
           <p className="text-sm">⚠️ <strong>Importante:</strong> Funziona solo se l&apos;elemento ha una larghezza fissa (width)!</p>
@@ -749,7 +749,7 @@ export default function Lezione4IDSpaziatura() {
           Ora sai come dare &quot;aria&quot; ai tuoi elementi e creare spazio tra di loro.
         </p>
 
-        <div className="bg-black bg-opacity-20 p-6 rounded border-2 border-white border-opacity-30 mb-6">
+        <div className="bg-black/20 p-6 rounded border-2 border-white/30 mb-6">
           <p className="font-bold mb-3 text-yellow-200 text-xl">📊 Selettori e Proprietà Totali Imparate</p>
 
           <div className="mb-4">
@@ -777,7 +777,7 @@ export default function Lezione4IDSpaziatura() {
           </div>
         </div>
 
-        <div className="bg-green-400 bg-opacity-30 p-4 rounded border-2 border-green-300">
+        <div className="bg-green-400/30 p-4 rounded border-2 border-green-300">
           <p className="font-bold mb-2">🚀 Prossima Lezione</p>
           <p className="text-lg">
             Imparerai proprietà avanzate per lo stile del testo: <strong>font-family</strong>, <strong>text-decoration</strong>, <strong>letter-spacing</strong> e altro!

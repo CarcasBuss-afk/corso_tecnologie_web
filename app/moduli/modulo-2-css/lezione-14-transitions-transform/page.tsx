@@ -38,7 +38,7 @@ export default function Lezione14TransitionsTransform() {
               ✨ Dai Vita ai Tuoi Elementi con Movimento!
             </h2>
             <p className="text-xl mb-4">
-              Nella Lezione 6 hai visto <code className="bg-white bg-opacity-20 px-2 py-1 rounded text-gray-900 font-bold">transition</code> brevemente.
+              Nella Lezione 6 hai visto <code className="bg-white/20 px-2 py-1 rounded text-gray-900 font-bold">transition</code> brevemente.
               Oggi la approfondiamo e aggiungi <strong>transform</strong>!
             </p>
             <p className="text-xl mb-4">
@@ -101,19 +101,19 @@ export default function Lezione14TransitionsTransform() {
           <div className="bg-gradient-to-r from-indigo-600 to-blue-600 text-white p-6 rounded-lg mb-6">
             <h3 className="font-bold text-xl mb-3">🔑 Parametri di transition</h3>
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">transition-property</p>
                 <p className="text-sm text-gray-800">Quale proprietà animare (all, color, background...)</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">transition-duration</p>
                 <p className="text-sm text-gray-800">Durata (0.3s, 1s, 500ms...)</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">transition-timing-function</p>
                 <p className="text-sm text-gray-800">Velocità (ease, linear, ease-in-out...)</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">transition-delay</p>
                 <p className="text-sm text-gray-800">Ritardo prima di iniziare (0s, 0.5s...)</p>
               </div>
@@ -630,23 +630,23 @@ transition: all 0.3s;`}
           <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-6 rounded-lg mb-6">
             <h3 className="font-bold text-xl mb-3">🎯 Timing Functions Principali</h3>
             <div className="grid md:grid-cols-2 gap-4 text-sm">
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">ease (default)</p>
                 <p className="text-gray-800">Inizia piano, accelera, rallenta alla fine</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">linear</p>
                 <p className="text-gray-800">Velocità costante dall&apos;inizio alla fine</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">ease-in</p>
                 <p className="text-gray-800">Inizia piano, poi accelera</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">ease-out</p>
                 <p className="text-gray-800">Inizia veloce, rallenta alla fine</p>
               </div>
-              <div className="bg-white bg-opacity-20 p-4 rounded">
+              <div className="bg-white/20 p-4 rounded">
                 <p className="font-bold mb-2 text-gray-900">ease-in-out</p>
                 <p className="text-gray-800">Piano all&apos;inizio e alla fine, veloce al centro</p>
               </div>
@@ -1124,7 +1124,7 @@ h1 {
           transition e transform rendono i siti web moderni e professionali! 🚀
         </p>
 
-        <div className="bg-black bg-opacity-20 p-6 rounded border-2 border-white border-opacity-30 mb-6">
+        <div className="bg-black/20 p-6 rounded border-2 border-white/30 mb-6">
           <p className="font-bold mb-3 text-yellow-200 text-xl">📊 Riepilogo Completo CSS Finora</p>
 
           <div className="mb-4">
@@ -1168,7 +1168,7 @@ h1 {
           </div>
         </div>
 
-        <div className="bg-green-400 bg-opacity-30 p-4 rounded border-2 border-green-300">
+        <div className="bg-green-400/30 p-4 rounded border-2 border-green-300">
           <p className="font-bold mb-2">🚀 Prossima Lezione</p>
           <p className="text-lg">
             Imparerai i <strong>Pseudo-elementi ::before e ::after</strong> per aggiungere contenuto decorativo con il CSS! 🎨

@@ -1132,7 +1132,7 @@ export default function Lezione3FeaturesHowItWorks() {
             </div>
           </div>
 
-          <div className="mt-6 p-5 bg-yellow-500 bg-opacity-20 border-2 border-yellow-300 rounded-lg">
+          <div className="mt-6 p-5 bg-yellow-500/20 border-2 border-yellow-300 rounded-lg">
             <p className="text-lg text-white">
               <strong>💡 Pro Tip:</strong> Puoi anche <strong>combinarli</strong>! Ad esempio, una
               griglia Grid dove ogni cella usa Flexbox internamente per centrare il contenuto. È
@@ -1319,7 +1319,7 @@ export default function Lezione3FeaturesHowItWorks() {
           </p>
 
           <div className="grid md:grid-cols-3 gap-6 mb-6">
-            <div className="bg-white bg-opacity-20 rounded-lg p-4 border-2 border-white border-opacity-30">
+            <div className="bg-white/20 rounded-lg p-4 border-2 border-white/30">
               <div className="text-2xl mb-2">✅</div>
               <div className="font-bold mb-1 text-white">Lezione 1: Planning</div>
               <div className="text-sm text-green-100">
@@ -1327,7 +1327,7 @@ export default function Lezione3FeaturesHowItWorks() {
               </div>
             </div>
 
-            <div className="bg-white bg-opacity-20 rounded-lg p-4 border-2 border-white border-opacity-30">
+            <div className="bg-white/20 rounded-lg p-4 border-2 border-white/30">
               <div className="text-2xl mb-2">✅</div>
               <div className="font-bold mb-1 text-white">Lezione 2: Navbar + Hero</div>
               <div className="text-sm text-green-100">
@@ -1335,14 +1335,14 @@ export default function Lezione3FeaturesHowItWorks() {
               </div>
             </div>
 
-            <div className="bg-white bg-opacity-20 rounded-lg p-4 border-2 border-white border-opacity-30">
+            <div className="bg-white/20 rounded-lg p-4 border-2 border-white/30">
               <div className="text-2xl mb-2">✅</div>
               <div className="font-bold mb-1 text-white">Lezione 3: Features + How</div>
               <div className="text-sm text-green-100">CSS Grid, Flexbox, hover effects</div>
             </div>
           </div>
 
-          <div className="bg-yellow-400 bg-opacity-30 border-2 border-yellow-300 rounded-lg p-5">
+          <div className="bg-yellow-400/30 border-2 border-yellow-300 rounded-lg p-5">
             <div className="flex items-start gap-3">
               <span className="text-3xl">🚀</span>
               <div>

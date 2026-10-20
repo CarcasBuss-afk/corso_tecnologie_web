@@ -279,7 +279,7 @@ function fai-qualcosa() { } // trattino`}
 
         <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3 text-white">📘 La Riga Magica</h3>
-          <div className="bg-black bg-opacity-30 p-4 rounded border-2 border-white border-opacity-30 mb-4">
+          <div className="bg-black/30 p-4 rounded border-2 border-white/30 mb-4">
             <p className="font-mono text-yellow-200 break-all">
               document.getElementById(&quot;btnSaluta&quot;).addEventListener(&quot;click&quot;, saluta);
             </p>
@@ -321,7 +321,7 @@ function fai-qualcosa() { } // trattino`}
 
         <div className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3 text-white">📘 Lo Schema da Ricordare (sempre uguale!)</h3>
-          <div className="bg-black bg-opacity-30 p-4 rounded border-2 border-white border-opacity-30 space-y-2">
+          <div className="bg-black/30 p-4 rounded border-2 border-white/30 space-y-2">
             <p className="font-mono text-yellow-200">1. HTML: dai un id al pulsante</p>
             <p className="font-mono text-yellow-200">2. JavaScript: scrivi la funzione</p>
             <p className="font-mono text-yellow-200">3. JavaScript: collega id e funzione con addEventListener</p>
@@ -751,7 +751,7 @@ function fai-qualcosa() { } // trattino`}
         <p className="text-xl mb-4">
           Hai imparato a rendere i pulsanti <strong>interattivi</strong> con le funzioni! 🖱️
         </p>
-        <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+        <div className="bg-black/20 p-4 rounded border-2 border-white/30">
           <p className="font-bold mb-2 text-yellow-200">🚀 Comandi JavaScript Imparati: 4</p>
           <ul className="list-disc list-inside space-y-1">
             <li>console.log() - Stampa messaggi nella console (Lezione 1)</li>

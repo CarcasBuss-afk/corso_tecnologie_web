@@ -70,7 +70,7 @@ export default function Lezione3ClassiDimensioniTesto() {
           <p className="text-lg mb-3">
             Una <strong>classe</strong> è come un&apos;<strong>etichetta</strong> che puoi attaccare agli elementi HTML per dire: &quot;questo elemento appartiene a questo gruppo&quot;.
           </p>
-          <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+          <div className="bg-black/20 p-4 rounded border-2 border-white/30">
             <p className="font-mono text-lg mb-2 text-yellow-200">.nome-classe {'{ proprietà: valore; }'}</p>
             <p className="text-sm">Il punto (.) dice a CSS: &quot;questo è un selettore di classe&quot;</p>
           </div>
@@ -294,7 +294,7 @@ export default function Lezione3ClassiDimensioniTesto() {
         <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3">📐 Unità di Misura: px (pixel)</h3>
           <p className="mb-3">Per ora usiamo solo i <strong>pixel (px)</strong> - sono facili e precisi!</p>
-          <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+          <div className="bg-black/20 p-4 rounded border-2 border-white/30">
             <p className="font-mono text-yellow-200">font-size: 20px;</p>
           </div>
           <ul className="mt-3 space-y-1 text-sm">
@@ -367,12 +367,12 @@ export default function Lezione3ClassiDimensioniTesto() {
         <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3">⚖️ Valori Disponibili</h3>
           <div className="grid md:grid-cols-2 gap-4 mt-3">
-            <div className="bg-black bg-opacity-20 p-3 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-3 rounded border-2 border-white/30">
               <p className="font-bold text-yellow-200 mb-1">Parole Chiave:</p>
               <code className="text-sm">normal</code> - testo normale<br/>
               <code className="text-sm">bold</code> - grassetto
             </div>
-            <div className="bg-black bg-opacity-20 p-3 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-3 rounded border-2 border-white/30">
               <p className="font-bold text-yellow-200 mb-1">Numeri (100-900):</p>
               <code className="text-sm">100-300</code> - leggero<br/>
               <code className="text-sm">400</code> - normal<br/>
@@ -453,15 +453,15 @@ export default function Lezione3ClassiDimensioniTesto() {
         <div className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3">📍 Valori Disponibili</h3>
           <div className="grid md:grid-cols-3 gap-3 mt-3">
-            <div className="bg-black bg-opacity-20 p-3 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-3 rounded border-2 border-white/30">
               <code className="text-yellow-200 font-bold">left</code>
               <p className="text-sm mt-1">Allinea a sinistra (default)</p>
             </div>
-            <div className="bg-black bg-opacity-20 p-3 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-3 rounded border-2 border-white/30">
               <code className="text-yellow-200 font-bold">center</code>
               <p className="text-sm mt-1">Centra il testo</p>
             </div>
-            <div className="bg-black bg-opacity-20 p-3 rounded border-2 border-white border-opacity-30">
+            <div className="bg-black/20 p-3 rounded border-2 border-white/30">
               <code className="text-yellow-200 font-bold">right</code>
               <p className="text-sm mt-1">Allinea a destra</p>
             </div>
@@ -933,7 +933,7 @@ export default function Lezione3ClassiDimensioniTesto() {
         <p className="text-xl mb-4">
           Hai appena imparato il <strong>concetto più importante del CSS</strong>: le CLASSI!
         </p>
-        <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+        <div className="bg-black/20 p-4 rounded border-2 border-white/30">
           <p className="font-bold mb-2 text-yellow-200">📊 Proprietà Totali Imparate: 6</p>
           <ul className="list-disc list-inside space-y-1">
             <li>color (Lezione 1 + 2)</li>

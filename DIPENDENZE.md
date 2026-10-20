@@ -282,6 +282,7 @@ npm install
 - **Breaking change:** La v4 usa `@tailwindcss/postcss` invece di `tailwindcss` come plugin
 - **Configurazione:** Non usa più `tailwind.config.js`, ma configurazione CSS-based
 - **Import:** Usa `@import "tailwindcss"` invece di `@tailwind base/components/utilities`
+- **Opacità dei colori:** le classi `bg-opacity-*`, `text-opacity-*` e `border-opacity-*` non esistono più e vengono ignorate. Si usa la sintassi con lo slash: `bg-white/20`, `text-white/80`, `border-white/30`. Con le vecchie classi lo sfondo diventa pieno (es. testo bianco su bianco, invisibile).
 
 ### React 19
 - **Versione:** React 19 è una release recente

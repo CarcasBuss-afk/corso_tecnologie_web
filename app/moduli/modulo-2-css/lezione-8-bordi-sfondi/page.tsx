@@ -214,18 +214,18 @@ border-width: 3px;
 border-style: solid;
 border-color: #3498DB;`}
           />
-          <div className="mt-4 bg-white bg-opacity-20 p-4 rounded">
+          <div className="mt-4 bg-white/20 p-4 rounded">
             <p className="text-sm mb-3 font-bold">Anatomia della shorthand:</p>
             <div className="grid grid-cols-3 gap-3 text-center text-sm">
-              <div className="bg-blue-400 bg-opacity-70 p-3 rounded">
+              <div className="bg-blue-400/70 p-3 rounded">
                 <div className="font-bold mb-1">3px</div>
                 <div className="text-xs">↑ larghezza</div>
               </div>
-              <div className="bg-green-400 bg-opacity-70 p-3 rounded">
+              <div className="bg-green-400/70 p-3 rounded">
                 <div className="font-bold mb-1">solid</div>
                 <div className="text-xs">↑ stile</div>
               </div>
-              <div className="bg-purple-400 bg-opacity-70 p-3 rounded">
+              <div className="bg-purple-400/70 p-3 rounded">
                 <div className="font-bold mb-1">#3498DB</div>
                 <div className="text-xs">↑ colore</div>
               </div>
@@ -242,7 +242,7 @@ border-color: #3498DB;`}
             <li>✅ <strong>Meno errori:</strong> impossibile dimenticare una proprietà</li>
           </ul>
           <p className="mt-4 font-bold text-yellow-200">
-            💡 D&apos;ora in poi useremo sempre la shorthand <code className="bg-black bg-opacity-20 px-2 py-1 rounded">border</code>!
+            💡 D&apos;ora in poi useremo sempre la shorthand <code className="bg-black/20 px-2 py-1 rounded">border</code>!
           </p>
         </div>
 
@@ -610,7 +610,7 @@ background-image: url('https://esempio.com/immagine.png');
 background-image: url('../images/sfondo.jpg');`}
           />
           <p className="mt-3 text-sm">
-            💡 Il percorso dell&apos;immagine va tra <strong>virgolette</strong> dentro <code className="bg-black bg-opacity-20 px-1 rounded">url()</code>
+            💡 Il percorso dell&apos;immagine va tra <strong>virgolette</strong> dentro <code className="bg-black/20 px-1 rounded">url()</code>
           </p>
         </div>
 
@@ -1004,7 +1004,7 @@ background-position: 20px 40px;  /* pixel precisi */`}
         <div className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white p-8 rounded-lg mb-6">
           <h3 className="text-2xl font-bold mb-4">🔁 Ripassiamo: Cosa Sono le Shorthand?</h3>
           <p className="text-lg mb-4">
-            Hai già visto le <strong>shorthand</strong> con <code className="bg-black bg-opacity-20 px-2 py-1 rounded">border</code>!
+            Hai già visto le <strong>shorthand</strong> con <code className="bg-black/20 px-2 py-1 rounded">border</code>!
           </p>
           <p className="text-lg mb-4">
             Le <strong>shorthand properties</strong> sono un modo per scrivere <strong>più proprietà CSS in una sola riga</strong>.
@@ -1117,7 +1117,7 @@ background: #3498DB;`}
             <li>✅ <strong>margin</strong> → combina margin-top, right, bottom, left (Lezione 4)</li>
             <li>✅ <strong>font</strong> → combina font-size, font-family, font-weight (prossime lezioni)</li>
           </ul>
-          <div className="bg-white bg-opacity-20 p-4 rounded mt-4">
+          <div className="bg-white/20 p-4 rounded mt-4">
             <p className="font-bold text-xl mb-2 text-gray-900">💡 Regola d&apos;Oro:</p>
             <p className="text-lg text-gray-800">
               Impara prima le <strong>proprietà separate</strong> per capire cosa fa ogni pezzo, poi usa le <strong>shorthand</strong> per scrivere più veloce!
@@ -2722,7 +2722,7 @@ footer {
           Queste tecniche sono usate in TUTTI i siti web moderni! 🌐
         </p>
 
-        <div className="bg-black bg-opacity-20 p-6 rounded border-2 border-white border-opacity-30 mb-6">
+        <div className="bg-black/20 p-6 rounded border-2 border-white/30 mb-6">
           <p className="font-bold mb-3 text-yellow-200 text-xl">📊 Riepilogo Completo CSS Finora</p>
 
           <div className="mb-4">
@@ -2760,7 +2760,7 @@ footer {
           </div>
         </div>
 
-        <div className="bg-green-400 bg-opacity-30 p-4 rounded border-2 border-green-300">
+        <div className="bg-green-400/30 p-4 rounded border-2 border-green-300">
           <p className="font-bold mb-2">🚀 Prossima Lezione</p>
           <p className="text-lg">
             Imparerai <strong>Display e Posizionamento</strong>! block vs inline, position absolute/relative, z-index e molto altro! 📐

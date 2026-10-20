@@ -36,7 +36,7 @@ export default function Lezione4CambiarePagina() {
 
         <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white p-8 rounded-lg mb-6">
           <p className="text-xl mb-4">
-            Finora hai usato <code className="bg-white bg-opacity-20 px-2 py-1 rounded">alert()</code> e <code className="bg-white bg-opacity-20 px-2 py-1 rounded">prompt()</code> per comunicare...
+            Finora hai usato <code className="bg-white/20 px-2 py-1 rounded">alert()</code> e <code className="bg-white/20 px-2 py-1 rounded">prompt()</code> per comunicare...
           </p>
           <p className="text-2xl font-bold">
             Ora imparerai a <strong>cambiare la pagina HTML</strong> in tempo reale! 🎨
@@ -150,9 +150,9 @@ export default function Lezione4CambiarePagina() {
         <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3 text-white">📘 Come Funziona</h3>
           <p className="text-lg mb-3">
-            <code className="bg-white bg-opacity-20 px-2 py-1 rounded">getElementById()</code> cerca un elemento HTML usando il suo <strong>id</strong>.
+            <code className="bg-white/20 px-2 py-1 rounded">getElementById()</code> cerca un elemento HTML usando il suo <strong>id</strong>.
           </p>
-          <div className="bg-black bg-opacity-30 p-4 rounded border-2 border-white border-opacity-30">
+          <div className="bg-black/30 p-4 rounded border-2 border-white/30">
             <p className="font-mono text-yellow-200">document.getElementById("nome-id");</p>
           </div>
         </div>
@@ -214,9 +214,9 @@ console.log(elemento);  // Stampa: <h1 id="titolo">Ciao Mondo!</h1>`}
         <div className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3 text-white">📘 Come Funziona</h3>
           <p className="text-lg mb-3">
-            <code className="bg-white bg-opacity-20 px-2 py-1 rounded">innerHTML</code> legge o modifica il contenuto HTML di un elemento.
+            <code className="bg-white/20 px-2 py-1 rounded">innerHTML</code> legge o modifica il contenuto HTML di un elemento.
           </p>
-          <div className="bg-black bg-opacity-30 p-4 rounded border-2 border-white border-opacity-30">
+          <div className="bg-black/30 p-4 rounded border-2 border-white/30">
             <p className="font-mono text-yellow-200">elemento.innerHTML = "Nuovo contenuto";</p>
           </div>
         </div>
@@ -368,12 +368,12 @@ button:hover {
         <div className="bg-gradient-to-r from-green-500 to-teal-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3 text-white">📘 Differenza innerHTML vs textContent</h3>
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-black bg-opacity-20 p-4 rounded">
+            <div className="bg-black/20 p-4 rounded">
               <p className="font-bold text-yellow-200 mb-2">innerHTML</p>
               <p className="text-sm">Interpreta i tag HTML</p>
               <code className="text-xs text-white block mt-2">"&lt;strong&gt;Ciao&lt;/strong&gt;" → <strong>Ciao</strong></code>
             </div>
-            <div className="bg-black bg-opacity-20 p-4 rounded">
+            <div className="bg-black/20 p-4 rounded">
               <p className="font-bold text-yellow-200 mb-2">textContent</p>
               <p className="text-sm">Mostra tutto come testo</p>
               <code className="text-xs text-white block mt-2">"&lt;strong&gt;Ciao&lt;/strong&gt;" → &lt;strong&gt;Ciao&lt;/strong&gt;</code>
@@ -1078,7 +1078,7 @@ button:hover {
         <p className="text-xl mb-4">
           Ora sai <strong>modificare la pagina HTML</strong> con JavaScript! Questo è il vero superpotere! 💪
         </p>
-        <div className="bg-black bg-opacity-20 p-4 rounded border-2 border-white border-opacity-30">
+        <div className="bg-black/20 p-4 rounded border-2 border-white/30">
           <p className="font-bold mb-2 text-yellow-200">🚀 Comandi JavaScript Totali Imparati: 11</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li>console.log() - Stampa nella console (Lezione 1)</li>

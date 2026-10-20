@@ -228,7 +228,7 @@ export default function Lezione12Grid() {
           <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-6 rounded-lg mb-6">
             <h3 className="font-bold text-xl mb-3">🌟 Nuova Unità: fr (fraction)</h3>
             <p className="mb-2">
-              <code className="bg-white bg-opacity-20 px-2 py-1 rounded text-gray-900 font-bold">fr</code> = frazione dello spazio <strong>disponibile</strong>
+              <code className="bg-white/20 px-2 py-1 rounded text-gray-900 font-bold">fr</code> = frazione dello spazio <strong>disponibile</strong>
             </p>
             <p className="text-sm">
               📊 <code>1fr 1fr 1fr</code> = divide lo spazio in 3 parti uguali<br/>
@@ -1182,7 +1182,7 @@ h1 {
               </div>
             </div>
 
-            <div className="mt-6 bg-white bg-opacity-20 p-6 rounded-lg">
+            <div className="mt-6 bg-white/20 p-6 rounded-lg">
               <h3 className="text-xl font-bold mb-3 text-gray-900">🔥 Ora Sai Usare i 2 Sistemi di Layout Moderni!</h3>
               <p className="text-lg mb-2 text-gray-900">
                 <strong>Flexbox</strong> → Layout unidimensionali (navbar, card in riga, centratura)
@@ -1204,7 +1204,7 @@ h1 {
             Combinando Flexbox (1D) e Grid (2D), puoi creare QUALSIASI layout moderno! 🚀
           </p>
 
-          <div className="bg-black bg-opacity-20 p-6 rounded border-2 border-white border-opacity-30 mb-6">
+          <div className="bg-black/20 p-6 rounded border-2 border-white/30 mb-6">
             <p className="font-bold mb-3 text-yellow-200 text-xl">📊 Riepilogo Completo CSS Finora</p>
 
             <div className="mb-4">
@@ -1246,7 +1246,7 @@ h1 {
             </div>
           </div>
 
-          <div className="bg-green-400 bg-opacity-30 p-4 rounded border-2 border-green-300">
+          <div className="bg-green-400/30 p-4 rounded border-2 border-green-300">
             <p className="font-bold mb-2">🚀 Prossima Lezione</p>
             <p className="text-lg">
               Esploreremo concetti avanzati come la <strong>relazione tra contenitori padre e figli</strong>, overflow, e inheritance delle proprietà CSS! 🔗
