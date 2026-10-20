@@ -546,7 +546,18 @@ titolo.style.fontSize = dimensione + "px";   // "50" + "px" = "50px"`}
           </div>
         </div>
 
-        <h3 className="text-xl font-bold mb-3">Vedi in Azione!</h3>
+        <CodeExample
+          title="Nascondere e mostrare un paragrafo"
+          code={`// Il paragrafo sparisce
+document.getElementById("soluzione").style.display = "none";
+
+// Il paragrafo riappare
+document.getElementById("soluzione").style.display = "block";`}
+          language="javascript"
+          showLineNumbers
+        />
+
+        <h3 className="text-xl font-bold mb-3 mt-6">Vedi in Azione!</h3>
         <JavaScriptDemo
           title="L'Indovinello"
           description="Prova a indovinare, poi mostra la soluzione!"
