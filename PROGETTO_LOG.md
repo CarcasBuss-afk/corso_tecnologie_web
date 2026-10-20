@@ -1,7 +1,7 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 20 Ottobre 2026 - Sessione 26 Fix Tailwind 4 + Piano Modulo 4 + Lezione 5
+**Ultimo aggiornamento:** 20 Ottobre 2026 - Sessione 26 Fix Tailwind 4 + Piano Modulo 4 + Lezione 5 + Mobile
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
 
@@ -7684,7 +7684,7 @@ Eliminare `onclick` dalle lezioni JavaScript e usare un unico schema per collega
 ---
 
 
-## 📅 CHANGELOG SESSIONE 26 (20 Ottobre 2026) - FIX TAILWIND 4 + PIANO MODULO 4 + LEZIONE 5
+## 📅 CHANGELOG SESSIONE 26 (20 Ottobre 2026) - FIX TAILWIND 4 + PIANO MODULO 4 + LEZIONE 5 + MOBILE
 
 ### 1. 🐛 Problema Segnalato
 - Nel Modulo 4 alcune scritte non si vedevano: testo bianco su sfondo bianco.
@@ -7779,6 +7779,26 @@ Eliminare `onclick` dalle lezioni JavaScript e usare un unico schema per collega
 - Aggiornato in L4 il nome della lezione successiva ("Cambiare Stili e Colori").
 
 **Comandi totali dopo L5:** 12 (nuovo: `.style`).
+
+### 7. 📱 Sito Ottimizzato per Mobile
+
+**Problema segnalato:** su mobile i testi non entravano nello schermo.
+
+**Cause:**
+- La sidebar delle lezioni (256px, fissa) restava sempre visibile e il contenuto aveva `ml-64`: su un telefono restava una colonna strettissima.
+- Il `main` (elemento flex) e le colonne `grid`/`flex` non avevano `min-width: 0`: i blocchi di codice lunghi allargavano la pagina oltre lo schermo.
+
+**Soluzione (desktop invariato, cambia tutto solo sotto i 1024px = breakpoint `lg`):**
+- `Header.tsx`: diventato client component con **menu hamburger** su mobile (link Home/Moduli + elenco lezioni del modulo con quella attiva evidenziata). Si chiude cambiando pagina o toccando fuori; blocca lo scroll sotto il menu aperto. Su desktop i link restano come prima.
+- `LessonLayout.tsx`: passa le lezioni all'Header; `main` con `min-w-0 p-4 lg:p-8 lg:ml-64`; pulsante "Salva PDF" allineato a destra sopra il titolo su mobile, in alto a destra su desktop.
+- `Sidebar.tsx`: `hidden lg:flex` (su mobile è sostituita dal menu hamburger).
+- `LessonHeader.tsx`: badge che vanno a capo (`flex-wrap`), titolo `text-3xl lg:text-4xl`.
+- `app/page.tsx` (home): padding e titolo ridotti su mobile, pulsanti "Inizia Ora"/"Scopri di Più" uno sotto l'altro.
+- `globals.css` (solo `max-width: 1023px`): parole e codice in linea vanno a capo; figli di `.grid`/`.flex` con `min-width: 0` (il codice scorre dentro il suo riquadro); tabelle e anteprime `LessonPreview` con misure fisse scorrono in orizzontale.
+
+**Verifica:** script Puppeteer a 390px di larghezza su tutte le 42 pagine: nessuna pagina più larga dello schermo. Screenshot desktop (1440px) uguale a prima.
+
+**Nota:** il link "Moduli" dell'header punta a `/moduli`, che non esiste (404). Era già così prima: da decidere se creare la pagina o puntare a `/#moduli`.
 
 ---
 

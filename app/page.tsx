@@ -73,16 +73,16 @@ export default function Home() {
     <>
       <Header />
       <main className="min-h-screen">
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20 px-8">
+        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-12 md:py-20 px-4 md:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6">
+            <h1 className="text-3xl md:text-5xl font-bold mb-6">
               Impara a Creare Siti Web!
             </h1>
-            <p className="text-xl mb-8 opacity-90">
+            <p className="text-lg md:text-xl mb-8 opacity-90">
               Un corso pratico per imparare HTML, CSS e JavaScript.
               Scrivi codice vero, vedi i risultati subito, diventa un web developer!
             </p>
-            <div className="flex gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="#moduli"
                 className="px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition"
@@ -99,7 +99,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div id="about" className="py-16 px-8 bg-gray-50">
+        <div id="about" className="py-12 md:py-16 px-4 md:px-8 bg-gray-50">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
               Come Funziona
@@ -130,7 +130,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div id="moduli" className="py-16 px-8">
+        <div id="moduli" className="py-12 md:py-16 px-4 md:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">
               I Moduli del Corso
@@ -179,10 +179,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="py-16 px-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <div className="py-12 md:py-16 px-4 md:px-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Pronto a Iniziare?</h2>
-            <p className="text-xl mb-8 opacity-90">
+            <p className="text-lg md:text-xl mb-8 opacity-90">
               Inizia subito con il Modulo 1 e crea la tua prima pagina web!
             </p>
             <Link

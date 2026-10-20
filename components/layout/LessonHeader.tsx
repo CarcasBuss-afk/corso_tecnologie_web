@@ -27,7 +27,7 @@ export default function LessonHeader({
 
   return (
     <div className="mb-8 pb-6 border-b-2 border-gray-200">
-      <div className="flex items-center gap-3 mb-3">
+      <div className="flex flex-wrap items-center gap-3 mb-3">
         <span className="text-sm text-gray-500 font-semibold">LEZIONE {numero}</span>
         <span className={`px-3 py-1 rounded-full text-xs font-semibold ${difficoltaColors[difficolta]}`}>
           {difficoltaLabels[difficolta]}
@@ -35,7 +35,7 @@ export default function LessonHeader({
         <span className="text-sm text-gray-500">⏱️ {durata}</span>
       </div>
 
-      <h1 className="text-4xl font-bold text-gray-900 mb-4">{titolo}</h1>
+      <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">{titolo}</h1>
 
       <div className="bg-blue-50 p-4 rounded-lg">
         <h3 className="font-semibold text-blue-900 mb-2">🎯 Cosa imparerai:</h3>

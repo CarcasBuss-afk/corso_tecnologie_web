@@ -17,3 +17,33 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Mobile e tablet (sotto i 1024px): il desktop resta invariato */
+@media (max-width: 1023px) {
+  /* Le parole e il codice in linea troppo lunghi vanno a capo invece di uscire dallo schermo */
+  main {
+    overflow-wrap: break-word;
+  }
+
+  main :not(pre) > code {
+    overflow-wrap: anywhere;
+  }
+
+  /* Colonne e righe flessibili non si allargano oltre lo schermo:
+     i blocchi di codice al loro interno scorrono in orizzontale */
+  main .grid > *,
+  main .flex > * {
+    min-width: 0;
+  }
+
+  /* Le tabelle larghe scorrono in orizzontale dentro il loro spazio */
+  main table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  /* Le anteprime con misure fisse (es. colonne da 200px) scorrono invece di uscire */
+  main .preview-html-content {
+    overflow-x: auto;
+  }
+}
