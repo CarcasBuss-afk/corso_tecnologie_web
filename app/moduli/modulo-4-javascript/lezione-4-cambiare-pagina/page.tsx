@@ -1100,7 +1100,7 @@ button:hover {
           </ul>
         </div>
         <p className="text-lg font-semibold mt-4">
-          Prossima lezione: <strong>Cambiare gli Stili CSS</strong>! Modificherai colori, dimensioni e posizioni! 🎨
+          Prossima lezione: <strong>Cambiare Stili e Colori</strong>! Modificherai colori, dimensioni e visibilità! 🎨
         </p>
       </section>
 

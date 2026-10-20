@@ -346,6 +346,13 @@ export const moduli: Modulo[] = [
         durata: "1.5 ore",
         difficolta: "facile",
       },
+      {
+        id: "5",
+        titolo: "Cambiare Stili e Colori",
+        slug: "lezione-5-cambiare-stili",
+        durata: "1.5 ore",
+        difficolta: "facile",
+      },
     ],
   },
   {

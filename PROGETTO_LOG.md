@@ -1,7 +1,7 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 20 Ottobre 2026 - Sessione 26 Fix opacità Tailwind 4
+**Ultimo aggiornamento:** 20 Ottobre 2026 - Sessione 26 Fix Tailwind 4 + Piano Modulo 4 + Lezione 5
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
 
@@ -7101,6 +7101,8 @@ L7: Dialoghi (AZIONE!)    👍 Finalmente popup!
 
 ### 11. 🎯 IPOTESI B - PROGRESSIONE DEFINITIVA
 
+> ⚠️ **SUPERATA**: dopo le Sessioni 24-25 l'ordine è cambiato (nuova L2 "Pulsanti e Funzioni", addEventListener al posto di onclick). Il piano valido è nella **Sessione 26 → "Piano Modulo 4 Aggiornato"**. Questa sezione resta come storico.
+
 **Pattern adottato:** 🎓 Mini-Teoria (10-20 min) + 🎉 Pratica Immediata (40-50 min)
 
 **Filosofia:**
@@ -7682,7 +7684,7 @@ Eliminare `onclick` dalle lezioni JavaScript e usare un unico schema per collega
 ---
 
 
-## 📅 CHANGELOG SESSIONE 26 (20 Ottobre 2026) - FIX TESTO BIANCO SU BIANCO (TAILWIND 4)
+## 📅 CHANGELOG SESSIONE 26 (20 Ottobre 2026) - FIX TAILWIND 4 + PIANO MODULO 4 + LEZIONE 5
 
 ### 1. 🐛 Problema Segnalato
 - Nel Modulo 4 alcune scritte non si vedevano: testo bianco su sfondo bianco.
@@ -7700,6 +7702,83 @@ Eliminare `onclick` dalle lezioni JavaScript e usare un unico schema per collega
 
 ### 4. 📌 Regola per le Prossime Lezioni
 - **Mai usare** `bg-opacity-*` / `text-opacity-*` / `border-opacity-*`: usare sempre `colore/opacità` (es. `bg-white/20`).
+
+### 5. 🗺️ Piano Modulo 4 Aggiornato (sostituisce "Ipotesi B" della Sessione 23)
+
+**Perché cambia:** la nuova L2 "Pulsanti e Funzioni" ha anticipato `function` e `addEventListener`. Le vecchie lezioni "Funzioni Riutilizzabili" ed "Eventi e Click" non servono più così, mentre le condizioni (`if`) non sono ancora state introdotte e servono quasi ovunque.
+
+**Regole che valgono per tutte le lezioni:**
+- Schema in 3 passi: id nel pulsante → funzione → `addEventListener`.
+- Solo funzioni con nome (niente funzioni anonime).
+- Mai `onclick` né altro JavaScript dentro i tag HTML.
+- Id dei pulsanti con prefisso `btn`, script in fondo al `<body>`.
+- L'id non va collegato al CSS.
+
+#### PARTE 1: FONDAMENTI INTERATTIVI
+
+| # | Lezione | Comandi/concetti nuovi | Stato |
+|---|---------|------------------------|-------|
+| L1 | Il Primo JavaScript | `console.log`, commenti | ✅ Pubblicata |
+| L2 | Pulsanti e Funzioni | `function`, `getElementById`, `addEventListener` | ✅ Pubblicata |
+| L3 | Dialoghi e Variabili | `alert`, `prompt`, `confirm`, `let`, `const` | ✅ Pubblicata |
+| L4 | Cambiare la Pagina | `innerHTML`, `textContent` | ✅ Pubblicata |
+| L5 | Cambiare Stili e Colori | `element.style.proprietà` | ✅ Pubblicata |
+| L6 | Decisioni e Quiz | `if`/`else`, `else if`, confronti `===` `!==` `>` `<` `>=` `<=` | ⏭️ Prossima |
+
+#### PARTE 2: INTERATTIVITÀ AVANZATA
+
+| # | Lezione | Comandi/concetti nuovi | Stato |
+|---|---------|------------------------|-------|
+| L7 | Operatori e Calcolatrice | `+ - * / %`, `++ --`, `Number()`, `input.value` | 📋 Da fare |
+| L8 | Operatori Logici e Validazione | `&&`, `\|\|`, `!` | 📋 Da fare |
+| L9 | Funzioni con Parametri e Return | parametri, `return`, funzioni che chiamano funzioni | 📋 Da fare |
+| L10 | Altri Eventi | `input`, `change`, `keydown`, `submit`, `event.preventDefault()` | 📋 Da fare |
+| L11 | Manipolare Classi CSS | `classList.add/remove/toggle/contains` | 📋 Da fare |
+| L12 | Array - Le Liste | `[]`, `push()`, `length`, `[indice]` | 📋 Da fare |
+
+#### PARTE 3: PROGETTI COMPLETI
+
+| # | Lezione | Comandi/concetti nuovi | Stato |
+|---|---------|------------------------|-------|
+| L13 | Loop For | `for`, iterare un array | 📋 Da fare |
+| L14 | Loop While | `while`, `do...while` | 📋 Da fare |
+| L15 | Creare Elementi DOM | `createElement`, `appendChild`, `remove` | 📋 Da fare |
+| L16 | MINI-PROGETTO Todo List (Parte 1) | struttura, aggiungere e mostrare | 📋 Da fare |
+| L17 | MINI-PROGETTO Todo List (Parte 2) | completati, elimina, filtri | 📋 Da fare |
+| L18 | Oggetti - Dati Organizzati | `{}`, proprietà, metodi | 📋 Da fare |
+| L19 | Array di Oggetti | liste di oggetti, card dinamiche | 📋 Da fare |
+| L20 | LocalStorage - Persistenza | `localStorage`, `JSON.stringify/parse` | 📋 Da fare |
+
+**Note sulle scelte:**
+- **L6 Decisioni** arriva subito dopo gli stili: con `if` + `style`/`innerHTML` gli allievi vedono il risultato della decisione in pagina. Può riprendere il quiz della L3 aggiungendo il controllo delle risposte.
+- **L7** introduce `input.value` (caselle di testo) e `Number()`: da qui in poi si può usare `<input>` al posto di `prompt()`.
+- **L9** è l'approfondimento delle funzioni già note dalla L2: le funzioni collegate ai pulsanti restano senza parametri, i parametri servono alle funzioni "di calcolo" chiamate da quelle.
+- **L10** viene dopo L9 perché `event.preventDefault()` richiede di capire il parametro `event`.
+- **L14 Loop While**: verificare che non sia ridondante dopo L13; si può fondere con L13 se il tempo è poco.
+
+### 6. 📝 Nuova Lezione 5: Cambiare Stili e Colori
+
+**File:** `app/moduli/modulo-4-javascript/lezione-5-cambiare-stili/page.tsx` (registrata in `lib/moduli.ts`, slug `lezione-5-cambiare-stili`).
+
+**Struttura:**
+1. Intro "Dal contenuto all'aspetto" (L4 cambia cosa c'è scritto, L5 come appare)
+2. `.style` come "pennello": sintassi `elemento.style.proprietà = "valore"` smontata pezzo per pezzo
+3. Regola del cammello (camelCase) + tabella CSS → JavaScript (color, backgroundColor, fontSize, fontFamily, textAlign, borderRadius, width/height, display)
+4. Valori sempre tra virgolette, misure con l'unità (`"40px"`)
+5. Esempio "Scatola dei Colori" (btnRosso/btnVerde/btnBlu → coloraRosso/coloraVerde/coloraBlu) con demo
+6. Più proprietà con una variabile: "Quadrato o Cerchio?" (trasforma/ripristina) con demo
+7. Valori da `prompt()`: "Titolo su Misura" (colore e `dimensione + "px"`) con demo
+8. Nascondere e mostrare con `style.display` `"none"`/`"block"`: "L'Indovinello" con demo
+9. Errori tipici: trattino CSS (`font-size` → SyntaxError), manca `px` (nessun errore, non succede nulla), valore senza virgolette (ReferenceError), manca `.style` (nessun effetto)
+10. Esercizio guidato "Personalizza la Card" (temaScuro/temaChiaro/testoGrande/testoNormale) + esperimenti
+11. Checklist, sfida "Il Semaforo", riepilogo (12 comandi), prossimi passi verso L6 Decisioni
+
+**Scelte:**
+- Il CSS degli esempi usa solo selettori di tag (`div`, `h1`, `button`): nessun selettore `#id`, coerente con la regola "l'id non va collegato al CSS".
+- Schema in 3 passi e funzioni con nome in tutti gli esempi.
+- Aggiornato in L4 il nome della lezione successiva ("Cambiare Stili e Colori").
+
+**Comandi totali dopo L5:** 12 (nuovo: `.style`).
 
 ---
 
