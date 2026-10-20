@@ -7654,6 +7654,7 @@ Eliminare `onclick` dalle lezioni JavaScript e usare un unico schema per collega
   `document.getElementById("btnSaluta").addEventListener("click", saluta);`
 - **Solo funzioni con nome**: nessuna funzione anonima dentro addEventListener.
 - **Convenzione id**: gli id dei pulsanti iniziano con `btn` (es. `btnSaluta`), per non confonderli con il nome della funzione.
+- **L'id NON va collegato al CSS**: in L2 l'id si introduce da zero come "nome del pulsante per JavaScript", senza citare il selettore `#` né esempi CSS (richiesta del docente).
 
 ### 2. 📝 Schema in 3 Passi (usato in tutte le lezioni)
 1. HTML: dai un id al pulsante
@@ -7662,7 +7663,7 @@ Eliminare `onclick` dalle lezioni JavaScript e usare un unico schema per collega
 
 ### 3. 🔧 Modifiche alle Lezioni
 - **L1**: aggiornato "Prossimi Passi" (non cita più onclick).
-- **L2 Pulsanti e Funzioni**: riscritta. Ordine: funzioni → id del pulsante → collegamento. Nuova sezione "Errori Tipici" (`#` dentro getElementById, id scritto diverso, `saluta()` con le parentesi, `"Click"` maiuscolo, script nell'head). Esercizio Tastiera e sfida Telecomando (ridotta da 8 a 5 pulsanti) con il nuovo schema. Corretto il titolo della lezione successiva ("Dialoghi e Variabili").
+- **L2 Pulsanti e Funzioni**: riscritta. Ordine: funzioni → id del pulsante → collegamento. Nuova sezione "Errori Tipici" (id scritto diverso, `saluta()` con le parentesi, `"Click"` maiuscolo, script nell'head). Esercizio Tastiera e sfida Telecomando (ridotta da 8 a 5 pulsanti) con il nuovo schema. Corretto il titolo della lezione successiva ("Dialoghi e Variabili").
 - **L3 Dialoghi e Variabili**: sostituiti tutti gli onclick (alert, prompt, confirm, quiz). Corretta nota obsoleta "le funzioni le studieremo nella Lezione 4".
 - **L4 Cambiare la Pagina**: la sezione getElementById diventa "Non Solo Pulsanti" (già noto da L2, ora per qualsiasi elemento + salvataggio in variabile). Sostituiti tutti gli onclick, compreso l'esercizio Contatore.
 

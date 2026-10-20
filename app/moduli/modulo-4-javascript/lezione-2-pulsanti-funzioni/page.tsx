@@ -236,35 +236,30 @@ function fai-qualcosa() { } // trattino`}
       <section className="mb-12">
         <h2 className="text-3xl font-bold mb-4">🏷️ Ingrediente 2: Un id per il Pulsante</h2>
 
+        <p className="text-lg mb-4">
+          Una pagina può avere tanti pulsanti. Per dire a JavaScript <strong>quale</strong> pulsante usare,
+          gli diamo un <strong>nome</strong> con l&apos;attributo <code className="bg-gray-100 px-2 py-1 rounded">id</code>.
+        </p>
+
         <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mb-6">
-          <p className="font-bold text-blue-800 mb-2">🔙 Dal Modulo HTML e CSS...</p>
+          <p className="font-bold text-blue-800 mb-2">🏷️ L&apos;attributo id</p>
           <p className="text-gray-700 mb-4">
-            Conosci già il tag <code className="bg-blue-100 px-2 py-1 rounded">&lt;button&gt;</code> e
-            l&apos;attributo <code className="bg-blue-100 px-2 py-1 rounded">id</code>, che hai usato nel CSS
-            con il selettore <code className="bg-blue-100 px-2 py-1 rounded">#</code>.
+            Si scrive dentro il tag di apertura, come gli altri attributi che conosci (ad esempio <code className="bg-blue-100 px-1 rounded">href</code> o <code className="bg-blue-100 px-1 rounded">src</code>):
           </p>
           <CodeExample
-            code={`<!-- Un pulsante con un id -->
-<button id="btnSaluta">Saluta</button>
-
-<!-- Nel CSS lo trovavi così: -->
-<style>
-  #btnSaluta {
-    background: purple;
-  }
-</style>`}
+            code={`<!-- Un pulsante con un id: il suo nome è "btnSaluta" -->
+<button id="btnSaluta">Saluta</button>`}
             language="html"
           />
         </div>
 
         <p className="text-lg mb-4">
           Da solo, questo pulsante <strong>non fa nulla</strong> quando lo clicchi.
-          L&apos;id è il suo <strong>nome</strong>: serve a JavaScript per trovarlo nella pagina,
-          proprio come serviva al CSS per colorarlo.
+          L&apos;id è come un <strong>cartellino con il nome</strong>: serve a JavaScript per trovarlo nella pagina.
         </p>
 
         <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded">
-          <p className="font-bold text-yellow-800 mb-2">📌 Regole dell&apos;id (le stesse che conosci)</p>
+          <p className="font-bold text-yellow-800 mb-2">📌 Regole dell&apos;id</p>
           <ul className="text-gray-700 space-y-1">
             <li>• Ogni id deve essere <strong>unico</strong> nella pagina</li>
             <li>• Niente spazi: <code className="bg-yellow-100 px-1 rounded">btnSaluta</code> va bene, <code className="bg-yellow-100 px-1 rounded">btn saluta</code> no</li>
@@ -303,7 +298,7 @@ function fai-qualcosa() { } // trattino`}
           </div>
           <div className="bg-white p-4 rounded-lg border-2 border-gray-200">
             <p className="font-mono text-blue-700 font-bold mb-1">.getElementById(&quot;btnSaluta&quot;)</p>
-            <p className="text-gray-700 text-sm">Trova l&apos;elemento con quell&apos;id (senza <code>#</code>!)</p>
+            <p className="text-gray-700 text-sm">Trova l&apos;elemento con quell&apos;id</p>
           </div>
           <div className="bg-white p-4 rounded-lg border-2 border-gray-200">
             <p className="font-mono text-blue-700 font-bold mb-1">.addEventListener(&quot;click&quot;, ...)</p>
@@ -490,29 +485,7 @@ function fai-qualcosa() { } // trattino`}
 
         <div className="space-y-4">
           <div className="bg-red-50 p-6 rounded-lg border-2 border-red-200">
-            <h3 className="font-bold text-red-800 mb-3">❌ 1. Il # dentro getElementById</h3>
-            <div className="grid md:grid-cols-2 gap-4">
-              <CodeExample
-                title="Sbagliato"
-                code={`document.getElementById("#btnSaluta")`}
-                language="javascript"
-              />
-              <CodeExample
-                title="Giusto"
-                code={`document.getElementById("btnSaluta")`}
-                language="javascript"
-              />
-            </div>
-            <p className="text-gray-700 mt-3">
-              Il <code className="bg-red-100 px-1 rounded">#</code> serve <strong>solo nel CSS</strong>.
-              getElementById sa già che cerchi un id. In console vedrai:{' '}
-              <code className="bg-red-100 px-1 rounded text-red-700">Cannot read properties of null</code>
-              {' '}= &quot;non ho trovato nessun elemento con quell&apos;id&quot;.
-            </p>
-          </div>
-
-          <div className="bg-red-50 p-6 rounded-lg border-2 border-red-200">
-            <h3 className="font-bold text-red-800 mb-3">❌ 2. L&apos;id scritto in modo diverso</h3>
+            <h3 className="font-bold text-red-800 mb-3">❌ 1. L&apos;id scritto in modo diverso</h3>
             <CodeExample
               code={`<button id="btnSaluta">Saluta</button>
 
@@ -524,12 +497,13 @@ function fai-qualcosa() { } // trattino`}
             />
             <p className="text-gray-700 mt-3">
               L&apos;id nell&apos;HTML e quello nel JavaScript devono essere <strong>identici</strong>, lettera per lettera.
-              Anche qui la console dice <code className="bg-red-100 px-1 rounded text-red-700">Cannot read properties of null</code>.
+              In console vedrai <code className="bg-red-100 px-1 rounded text-red-700">Cannot read properties of null</code>
+              {' '}= &quot;non ho trovato nessun elemento con quell&apos;id&quot;.
             </p>
           </div>
 
           <div className="bg-red-50 p-6 rounded-lg border-2 border-red-200">
-            <h3 className="font-bold text-red-800 mb-3">❌ 3. Le parentesi dopo il nome della funzione</h3>
+            <h3 className="font-bold text-red-800 mb-3">❌ 2. Le parentesi dopo il nome della funzione</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <CodeExample
                 title="Sbagliato"
@@ -549,7 +523,7 @@ function fai-qualcosa() { } // trattino`}
           </div>
 
           <div className="bg-red-50 p-6 rounded-lg border-2 border-red-200">
-            <h3 className="font-bold text-red-800 mb-3">❌ 4. &quot;Click&quot; con la maiuscola</h3>
+            <h3 className="font-bold text-red-800 mb-3">❌ 3. &quot;Click&quot; con la maiuscola</h3>
             <p className="text-gray-700">
               Si scrive <code className="bg-red-100 px-1 rounded">&quot;click&quot;</code>, tutto minuscolo.
               Con <code className="bg-red-100 px-1 rounded">&quot;Click&quot;</code> il browser non riconosce l&apos;evento
@@ -558,7 +532,7 @@ function fai-qualcosa() { } // trattino`}
           </div>
 
           <div className="bg-red-50 p-6 rounded-lg border-2 border-red-200">
-            <h3 className="font-bold text-red-800 mb-3">❌ 5. Lo &lt;script&gt; nel posto sbagliato</h3>
+            <h3 className="font-bold text-red-800 mb-3">❌ 4. Lo &lt;script&gt; nel posto sbagliato</h3>
             <p className="text-gray-700">
               Ricorda la Lezione 1: lo <code className="bg-red-100 px-1 rounded">&lt;script&gt;</code> va
               <strong> alla fine del body</strong>. Se lo metti nell&apos;<code className="bg-red-100 px-1 rounded">&lt;head&gt;</code>,
@@ -730,7 +704,7 @@ function fai-qualcosa() { } // trattino`}
         experiments={[
           'Aggiungi le note mancanti (Sol, La, Si) seguendo lo schema in 3 passi',
           'Crea un pulsante "Pulisci" che chiama una funzione con console.clear()',
-          'Prova a mettere apposta un # dentro getElementById: che errore compare in console?',
+          'Prova a sbagliare apposta una lettera dell\'id in getElementById: che errore compare in console?',
           'Prova a scrivere suonaDo() con le parentesi nel collegamento: cosa succede quando ricarichi?'
         ]}
       />
