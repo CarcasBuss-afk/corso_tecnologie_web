@@ -81,10 +81,11 @@
 **Valutazione**: Griglia di valutazione completa
 
 ### MODULO 4: JavaScript (28 ore)
-- **Settimane 15-16 (6h)**: Base (variabili, tipi, operatori, I/O)
-- **Settimane 17-18 (6h)**: Logica (condizioni, operatori logici, switch)
-- **Settimane 19-20 (6h)**: Cicli, array, funzioni
-- **Settimane 21-23 (10h)**: DOM manipulation, eventi, interattività
+> Piano aggiornato a ottobre 2026 (dettaglio in `PROGETTO_LOG.md`, Sessione 26 → "Piano Modulo 4 Aggiornato"). Approccio: azione visibile in pagina fin dalle prime lezioni, eventi con `addEventListener` (mai `onclick`).
+
+- **Parte 1 - Fondamenti interattivi (L1-L6)**: primo script, pulsanti e funzioni, dialoghi e variabili, cambiare la pagina (DOM), cambiare stili, decisioni (if/else)
+- **Parte 2 - Interattività avanzata (L7-L12)**: operatori e calcolatrice, operatori logici, funzioni con parametri e return, altri eventi, classi CSS, array
+- **Parte 3 - Progetti completi (L13-L20)**: cicli for e while, creare elementi, To-Do List (2 parti), oggetti, array di oggetti, LocalStorage
 
 **Valutazione**: Test teorico + esercizi pratici
 

@@ -7,6 +7,49 @@
 
 ---
 
+## 📌 STATO ATTUALE DEL PROGETTO (aggiornato al 20 Ottobre 2026)
+
+> Sezione di riepilogo da leggere per prima. I changelog delle sessioni sotto sono lo storico (in ordine non cronologico: la Sessione più recente è la 26, in fondo al file).
+
+### 🌐 Sito
+- **Online:** https://corso-tecnologie-web.vercel.app (deploy automatico da `main`)
+- **Repository:** https://github.com/CarcasBuss-afk/corso_tecnologie_web
+- **Stack:** Next.js 15.5.28 (App Router) + React 19 + Tailwind CSS 4 + TypeScript
+
+| Indirizzo | Pagina |
+|-----------|--------|
+| `/` | **Frontespizio**: loghi istituzionali (Coesione Italia 21-27 Piemonte, UE, Repubblica Italiana, Regione Piemonte), logo CIAC, titolo "Tecnologie Web", "A cura di Fabio Regnaud", pulsante "Entra nel Manuale" |
+| `/manuale` | Home del manuale con l'elenco dei moduli |
+| `/moduli/<modulo>/<lezione>` | Lezioni |
+
+- **Mobile:** sotto i 1024px la sidebar è sostituita da un menu hamburger nell'header; il desktop è invariato.
+
+### 📚 Moduli
+| Modulo | Lezioni | Stato |
+|--------|---------|-------|
+| 1. HTML | 18 | ✅ Completo |
+| 2. CSS | 14 | ✅ Completo |
+| 3. Progetto Intermedio | 4 | ✅ Completo |
+| 4. JavaScript | 5 di 20 | 🔄 In corso (prossima: **L6 Decisioni e Quiz**) |
+| 5. Progetto Finale | 0 | 📋 Da fare |
+| 6. Strumenti Moderni | 0 | 📋 Da fare |
+
+**Piano completo del Modulo 4:** Sessione 26 → "🗺️ Piano Modulo 4 Aggiornato".
+
+### 📐 Regole da rispettare nelle nuove lezioni
+- **JavaScript:** schema in 3 passi (id nel pulsante → funzione con nome → `addEventListener`), mai `onclick` o JS dentro i tag HTML, id dei pulsanti con prefisso `btn`, script in fondo al `<body>`.
+- **L'id non va collegato al CSS:** negli esempi il CSS usa selettori di tag o classi, mai `#id`.
+- **Tailwind 4:** trasparenze con `bg-white/20`, mai `bg-opacity-*` (vedi `DIPENDENZE.md`).
+- **Coerenza didattica:** nessun concetto usato prima di essere insegnato; riepilogo "Comandi JavaScript Totali Imparati" aggiornato in ogni lezione (dopo L5: 12 comandi).
+
+### ⚠️ Questioni aperte
+- Il link "Moduli" dell'header punta a `/moduli`, che non esiste (404): da far puntare a `/manuale#moduli` o creare la pagina.
+- Vulnerabilità npm residue che richiedono aggiornamenti major (Next 16, eslint-config-next 16, react-syntax-highlighter 16, puppeteer-core 25).
+- Ramo remoto creato dal bot di Vercel per il fix di sicurezza ancora presente su GitHub.
+- La cartella `verifiche_per_obiettivi_C1-33/` (verifiche v1-v6) è volutamente fuori da git.
+
+---
+
 ## 📅 CHANGELOG SESSIONE 20 (6 Novembre 2025) - IMPLEMENTAZIONE LEZIONI 1-2 MODULO 3
 
 ### 🎯 Obiettivo Sessione
@@ -3355,7 +3398,10 @@ corso_tecnologie_web/
 ├── app/
 │   ├── globals.css
 │   ├── layout.tsx
-│   ├── page.tsx (homepage)
+│   ├── print.css (stampa / Salva PDF)
+│   ├── page.tsx (frontespizio, indirizzo /)
+│   ├── manuale/
+│   │   └── page.tsx (home del manuale con i moduli, indirizzo /manuale)
 │   └── moduli/
 │       ├── modulo-1-html/
 │       │   └── lezione-1-primo-giorno/
@@ -3371,14 +3417,20 @@ corso_tecnologie_web/
 │   │   ├── Exercise.tsx
 │   │   ├── Challenge.tsx
 │   │   ├── Checklist.tsx
-│   │   └── LessonPreview.tsx
+│   │   ├── LessonPreview.tsx
+│   │   ├── JavaScriptDemo.tsx (demo JS eseguibili in iframe)
+│   │   ├── ClickableImageDemo.tsx
+│   │   └── ProjectMilestone.tsx
+│   ├── DownloadPDFButton.tsx
 │   └── layout/
 │       ├── Header.tsx
 │       ├── Sidebar.tsx
 │       ├── LessonLayout.tsx
 │       └── LessonHeader.tsx
-└── lib/
-    └── moduli.ts
+├── lib/
+│   └── moduli.ts (elenco moduli e lezioni: ogni nuova lezione va registrata qui)
+└── public/
+    └── loghi/ (loghi-istituzionali.png, ciac.jpg per il frontespizio)
 ```
 
 ---
@@ -3483,21 +3535,26 @@ corso_tecnologie_web/
 
 **Header:**
 - Logo "🌐 Corso Web"
-- Link: Home, Moduli
+- Link: Home (→ `/manuale`), Moduli
 - Gradiente blu-viola
+- Su mobile (sotto 1024px): menu hamburger con Home, Moduli e lezioni del modulo (Sessione 26)
 
 **Sidebar:**
 - Navigazione tra lezioni del modulo
 - Highlight lezione corrente
-- Link "← Tutti i moduli"
+- Link "← Tutti i moduli" (→ `/manuale`)
+- Nascosta su mobile (sostituita dal menu hamburger)
 
 **LessonLayout:**
 - Wrapper completo: Header + Sidebar + Contenuto
-- Responsive
+- Passa le lezioni all'Header per il menu mobile
+- Responsive (Sessione 26)
 
 ---
 
 ## HOMEPAGE
+
+> **Aggiornamento Sessione 26:** questa pagina ora si trova su `/manuale`. All'indirizzo `/` c'è il frontespizio con i loghi istituzionali.
 
 ### Sezioni Create
 
@@ -4608,7 +4665,7 @@ corso_tecnologie_web/
 
 **Repository:** https://github.com/CarcasBuss-afk/corso_tecnologie_web
 **Dev Server:** http://localhost:3000
-**Deploy URL:** (da configurare su Vercel)
+**Deploy URL:** https://corso-tecnologie-web.vercel.app
 
 ---
 
