@@ -1,15 +1,15 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 20 Ottobre 2026 - Sessione 26 Fix Tailwind 4 + Piano Modulo 4 + Lezione 5 + Mobile + Frontespizio
+**Ultimo aggiornamento:** 21 Ottobre 2026 - Sessione 27 Lezione 6 Decisioni e Quiz
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
 
 ---
 
-## 📌 STATO ATTUALE DEL PROGETTO (aggiornato al 20 Ottobre 2026)
+## 📌 STATO ATTUALE DEL PROGETTO (aggiornato al 21 Ottobre 2026)
 
-> Sezione di riepilogo da leggere per prima. I changelog delle sessioni sotto sono lo storico (in ordine non cronologico: la Sessione più recente è la 26, in fondo al file).
+> Sezione di riepilogo da leggere per prima. I changelog delle sessioni sotto sono lo storico (in ordine non cronologico: la Sessione più recente è la 27, in fondo al file).
 
 ### 🌐 Sito
 - **Online:** https://corso-tecnologie-web.vercel.app (deploy automatico da `main`)
@@ -30,7 +30,7 @@
 | 1. HTML | 18 | ✅ Completo |
 | 2. CSS | 14 | ✅ Completo |
 | 3. Progetto Intermedio | 4 | ✅ Completo |
-| 4. JavaScript | 5 di 20 | 🔄 In corso (prossima: **L6 Decisioni e Quiz**) |
+| 4. JavaScript | 6 di 20 | 🔄 In corso (prossima: **L7 Operatori e Calcolatrice**) |
 | 5. Progetto Finale | 0 | 📋 Da fare |
 | 6. Strumenti Moderni | 0 | 📋 Da fare |
 
@@ -40,7 +40,7 @@
 - **JavaScript:** schema in 3 passi (id nel pulsante → funzione con nome → `addEventListener`), mai `onclick` o JS dentro i tag HTML, id dei pulsanti con prefisso `btn`, script in fondo al `<body>`.
 - **L'id non va collegato al CSS:** negli esempi il CSS usa selettori di tag o classi, mai `#id`.
 - **Tailwind 4:** trasparenze con `bg-white/20`, mai `bg-opacity-*` (vedi `DIPENDENZE.md`).
-- **Coerenza didattica:** nessun concetto usato prima di essere insegnato; riepilogo "Comandi JavaScript Totali Imparati" aggiornato in ogni lezione (dopo L5: 12 comandi).
+- **Coerenza didattica:** nessun concetto usato prima di essere insegnato; riepilogo "Comandi JavaScript Totali Imparati" aggiornato in ogni lezione (dopo L6: 14 comandi).
 
 ### ⚠️ Questioni aperte
 - Il link "Moduli" dell'header punta a `/moduli`, che non esiste (404): da far puntare a `/manuale#moduli` o creare la pagina.
@@ -7780,13 +7780,13 @@ Eliminare `onclick` dalle lezioni JavaScript e usare un unico schema per collega
 | L3 | Dialoghi e Variabili | `alert`, `prompt`, `confirm`, `let`, `const` | ✅ Pubblicata |
 | L4 | Cambiare la Pagina | `innerHTML`, `textContent` | ✅ Pubblicata |
 | L5 | Cambiare Stili e Colori | `element.style.proprietà` | ✅ Pubblicata |
-| L6 | Decisioni e Quiz | `if`/`else`, `else if`, confronti `===` `!==` `>` `<` `>=` `<=` | ⏭️ Prossima |
+| L6 | Decisioni e Quiz | `if`/`else`, `else if`, confronti `===` `!==` `>` `<` `>=` `<=`, `Number()` | ✅ Pubblicata |
 
 #### PARTE 2: INTERATTIVITÀ AVANZATA
 
 | # | Lezione | Comandi/concetti nuovi | Stato |
 |---|---------|------------------------|-------|
-| L7 | Operatori e Calcolatrice | `+ - * / %`, `++ --`, `Number()`, `input.value` | 📋 Da fare |
+| L7 | Operatori e Calcolatrice | `+ - * / %`, `++ --`, `input.value` (ripasso di `Number()`) | ⏭️ Prossima |
 | L8 | Operatori Logici e Validazione | `&&`, `\|\|`, `!` | 📋 Da fare |
 | L9 | Funzioni con Parametri e Return | parametri, `return`, funzioni che chiamano funzioni | 📋 Da fare |
 | L10 | Altri Eventi | `input`, `change`, `keydown`, `submit`, `event.preventDefault()` | 📋 Da fare |
@@ -7869,4 +7869,37 @@ Eliminare `onclick` dalle lezioni JavaScript e usare un unico schema per collega
 
 ---
 
-**Fine del Progetto Log - Ultimo aggiornamento: 20 Ottobre 2026 - Sessione 26**
+## 📅 CHANGELOG SESSIONE 27 (21 Ottobre 2026) - LEZIONE 6 DECISIONI E QUIZ
+
+### 1. 🔧 Fix Lezione 5
+Nella sezione "👻 Nascondere e Mostrare" mancava il consueto blocco `CodeExample` prima della demo: aggiunto ("Nascondere e mostrare un paragrafo", `style.display = "none"` / `"block"`).
+
+### 2. 📝 Nuova Lezione 6: Decisioni e Quiz
+
+**File:** `app/moduli/modulo-4-javascript/lezione-6-decisioni-quiz/page.tsx` (registrata in `lib/moduli.ts`, slug `lezione-6-decisioni-quiz`, 2 ore, difficoltà media).
+
+**Struttura:**
+1. Intro "JavaScript impara a scegliere" (confrontare → scegliere → reagire) con esempi reali (login, game over, registro elettronico)
+2. Confronti `===` `!==` `>` `<` `>=` `<=`: tabella con esempio e risultato `true`/`false`, prova in console, box `=` (metti) vs `===` (chiedi)
+3. `if` smontato pezzo per pezzo (parola chiave, condizione tra tonde, istruzioni tra graffe); primo esempio con `=== "8"` + box "perché `"8"` tra virgolette" (prompt restituisce testo)
+4. `Number()`: `"8"` e `8` sono diversi per `===`, `Number("8") → 8`, `NaN`; schema fisso in due righe `let testo = prompt(...)` → `let risposta = Number(testo)`; regola d'oro: numeri → Number() e confronto senza virgolette, testi → confronto tra virgolette
+5. `if / else`: riprende il quiz "Quanto fa 5 + 3?" della L3, ora con `Number()` e controllo della risposta; esito in pagina con `innerHTML` + `style.color`. Demo "Il Quiz che Controlla" (btnRispondi → controllaRisposta)
+6. Esempio "La Porta Segreta" (HTML + CSS affiancati + demo; btnEntra → controllaPassword, password `apriti`, confronto tra testi) e la stessa logica riscritta con `!==`
+7. Esempio "Le Montagne Russe" con `Number()` e `>=` (btnMisura → controllaAltezza)
+8. `else if`: "La Pagella" con `Number()` (btnVoto → valutaVoto, ≥9 Ottimo / ≥6 Sufficiente / else Insufficiente) + box "l'ordine conta"
+9. Errori tipici: un solo `=` (nessun errore, ogni risposta diventa giusta), dimenticare `Number()` (`=== 8` sempre falso), maiuscole/minuscole, parentesi tonde mancanti (`SyntaxError: Unexpected identifier 'risposta'`)
+10. Esercizio guidato "Il Quiz delle Capitali" (btnDomanda1-3 → domanda1-3, paragrafi esito1-3, risposte di testo) + esperimenti (quarta domanda, else if per la minuscola, `=` al posto di `===`, `!==`, domanda di matematica con `Number()`)
+11. Checklist, sfida "Indovina il Numero" (Number() + if / else if / else con `>` e `<`), riepilogo (14 comandi), prossimi passi verso L7 Operatori e Calcolatrice
+
+**Scelte:**
+- `Number()` anticipato dalla L7 alla L6 (richiesta del docente): serve subito per confrontare i numeri del prompt in modo corretto. In L7 viene ripreso per le caselle di testo (`input.value`).
+- Il CSS degli esempi usa solo selettori di tag; schema in 3 passi e funzioni con nome ovunque.
+- I confronti tra testi sono esatti: il problema delle maiuscole è affrontato negli errori tipici e negli esperimenti (la soluzione con `||` arriverà in L8).
+
+**Verifica:** Puppeteer sulle 4 demo con risposte simulate (giusta/sbagliata, 120/140/175 cm, voti 10/7/4): risultati e colori corretti, nessun errore JavaScript. Pagina senza scroll orizzontale a 390px.
+
+**Comandi totali dopo L6:** 14 (nuovi: `if / else / else if`, `Number()`).
+
+---
+
+**Fine del Progetto Log - Ultimo aggiornamento: 21 Ottobre 2026 - Sessione 27**

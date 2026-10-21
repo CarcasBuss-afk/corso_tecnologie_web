@@ -353,6 +353,13 @@ export const moduli: Modulo[] = [
         durata: "1.5 ore",
         difficolta: "facile",
       },
+      {
+        id: "6",
+        titolo: "Decisioni e Quiz",
+        slug: "lezione-6-decisioni-quiz",
+        durata: "2 ore",
+        difficolta: "media",
+      },
     ],
   },
   {
