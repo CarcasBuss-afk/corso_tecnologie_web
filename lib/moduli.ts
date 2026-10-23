@@ -360,6 +360,13 @@ export const moduli: Modulo[] = [
         durata: "2 ore",
         difficolta: "media",
       },
+      {
+        id: "7",
+        titolo: "Operatori e Calcolatrice",
+        slug: "lezione-7-operatori-calcolatrice",
+        durata: "2 ore",
+        difficolta: "media",
+      },
     ],
   },
   {

@@ -1,15 +1,15 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 21 Ottobre 2026 - Sessione 27 Lezione 6 Decisioni e Quiz
+**Ultimo aggiornamento:** 22 Ottobre 2026 - Sessione 28 Lezione 7 Operatori e Calcolatrice
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
 
 ---
 
-## 📌 STATO ATTUALE DEL PROGETTO (aggiornato al 21 Ottobre 2026)
+## 📌 STATO ATTUALE DEL PROGETTO (aggiornato al 22 Ottobre 2026)
 
-> Sezione di riepilogo da leggere per prima. I changelog delle sessioni sotto sono lo storico (in ordine non cronologico: la Sessione più recente è la 27, in fondo al file).
+> Sezione di riepilogo da leggere per prima. I changelog delle sessioni sotto sono lo storico (in ordine non cronologico: la Sessione più recente è la 28, in fondo al file).
 
 ### 🌐 Sito
 - **Online:** https://corso-tecnologie-web.vercel.app (deploy automatico da `main`)
@@ -30,7 +30,7 @@
 | 1. HTML | 18 | ✅ Completo |
 | 2. CSS | 14 | ✅ Completo |
 | 3. Progetto Intermedio | 4 | ✅ Completo |
-| 4. JavaScript | 6 di 20 | 🔄 In corso (prossima: **L7 Operatori e Calcolatrice**) |
+| 4. JavaScript | 7 di 20 | 🔄 In corso (prossima: **L8 Operatori Logici e Validazione**) |
 | 5. Progetto Finale | 0 | 📋 Da fare |
 | 6. Strumenti Moderni | 0 | 📋 Da fare |
 
@@ -40,7 +40,7 @@
 - **JavaScript:** schema in 3 passi (id nel pulsante → funzione con nome → `addEventListener`), mai `onclick` o JS dentro i tag HTML, id dei pulsanti con prefisso `btn`, script in fondo al `<body>`.
 - **L'id non va collegato al CSS:** negli esempi il CSS usa selettori di tag o classi, mai `#id`.
 - **Tailwind 4:** trasparenze con `bg-white/20`, mai `bg-opacity-*` (vedi `DIPENDENZE.md`).
-- **Coerenza didattica:** nessun concetto usato prima di essere insegnato; riepilogo "Comandi JavaScript Totali Imparati" aggiornato in ogni lezione (dopo L6: 14 comandi).
+- **Coerenza didattica:** nessun concetto usato prima di essere insegnato; riepilogo "Comandi JavaScript Totali Imparati" aggiornato in ogni lezione (dopo L7: 17 comandi).
 
 ### ⚠️ Questioni aperte
 - Il link "Moduli" dell'header punta a `/moduli`, che non esiste (404): da far puntare a `/manuale#moduli` o creare la pagina.
@@ -7786,8 +7786,8 @@ Eliminare `onclick` dalle lezioni JavaScript e usare un unico schema per collega
 
 | # | Lezione | Comandi/concetti nuovi | Stato |
 |---|---------|------------------------|-------|
-| L7 | Operatori e Calcolatrice | `+ - * / %`, `++ --`, `input.value` (ripasso di `Number()`) | ⏭️ Prossima |
-| L8 | Operatori Logici e Validazione | `&&`, `\|\|`, `!` | 📋 Da fare |
+| L7 | Operatori e Calcolatrice | `+ - * / %`, `++ --`, `input.value` (ripasso di `Number()`) | ✅ Pubblicata |
+| L8 | Operatori Logici e Validazione | `&&`, `\|\|`, `!` | ⏭️ Prossima |
 | L9 | Funzioni con Parametri e Return | parametri, `return`, funzioni che chiamano funzioni | 📋 Da fare |
 | L10 | Altri Eventi | `input`, `change`, `keydown`, `submit`, `event.preventDefault()` | 📋 Da fare |
 | L11 | Manipolare Classi CSS | `classList.add/remove/toggle/contains` | 📋 Da fare |
@@ -7902,4 +7902,34 @@ Nella sezione "👻 Nascondere e Mostrare" mancava il consueto blocco `CodeExamp
 
 ---
 
-**Fine del Progetto Log - Ultimo aggiornamento: 21 Ottobre 2026 - Sessione 27**
+
+## 📅 CHANGELOG SESSIONE 28 (22 Ottobre 2026) - LEZIONE 7 OPERATORI E CALCOLATRICE
+
+### 1. 📝 Nuova Lezione 7: Operatori e Calcolatrice
+
+**File:** `app/moduli/modulo-4-javascript/lezione-7-operatori-calcolatrice/page.tsx` (registrata in `lib/moduli.ts`, slug `lezione-7-operatori-calcolatrice`, 2 ore, difficoltà media).
+
+**Struttura:**
+1. Intro "JavaScript fa i conti" (operatori, caselle di testo, contatori) con esempi reali (carrello, punteggio, like)
+2. Operatori `+ - * / %`: tabella, prova in console, variabili con i risultati; box precedenza (`2 + 3 * 4` vs `(2 + 3) * 4`) e box sul resto `%` (caramelle, trucco pari/dispari)
+3. La trappola del `+`: `"5" + "3"` → `"53"`, ripasso di `Number()` dalla L6
+4. Caselle di testo con `.value`: versione lunga (`testo` → `Number(testo)`) e versione corta `Number(document.getElementById("casella").value)`, usata da qui in avanti; box: `type="number"` dà comunque testo, casella vuota → 0, decimali con il punto (`"2,5"` → NaN). Demo "Il Raddoppiatore" (btnRaddoppia → raddoppia)
+5. Esempio "La Calcolatrice" (HTML + CSS affiancati + demo; btnSomma/btnSottrai/btnMoltiplica/btnDividi → somma/sottrai/moltiplica/dividi, divisione per zero gestita con `if`) + box "quanta ripetizione" che anticipa la L9
+6. Esempio "Pari o Dispari?" con `%` e `if` (btnControlla → pariDispari)
+7. `++` e `--`: "Il Contatore" (btnPiu/btnMeno/btnAzzera → aumenta/diminuisci/azzera, non scende sotto zero) + box sulla variabile fuori dalla funzione come "memoria" (collegamento alla L5)
+8. Errori tipici: dimenticare `Number()` con il `+` (53), dimenticare `.value` (NaN), leggere la casella fuori dalla funzione (sempre 0), contatore dentro la funzione (sempre 1) + regola "dentro o fuori"
+9. Esercizio guidato "Il Conto della Pizzeria" (caselle pizze/bibite, btnCalcola → calcolaConto, totale `pizze * 7 + bibite * 3`, poi sconto di 5 € da 30 € in su con `if`) + esperimenti (prezzi decimali, dolci, conto diviso per persone, togliere `Number()`, `%` per pizze dispari)
+10. Checklist, sfida "Il Tabellone della Partita" (puntiCasa/puntiOspiti fuori dalle funzioni, if / else if / else per il vantaggio), riepilogo (17 comandi), prossimi passi verso L8 Operatori Logici e Validazione
+
+**Scelte:**
+- Niente `+=`: non è nel piano e `++`/`--` bastano per i contatori.
+- Nelle funzioni della calcolatrice il risultato va prima in una variabile (`let risultato = a + b`) e poi si concatena: evita la trappola `"Risultato: " + a + b`.
+- La validazione delle caselle vuote è solo anticipata (box): si fa in L8 con gli operatori logici.
+
+**Verifica:** Puppeteer su tutte le demo (raddoppio di 12 e di casella vuota, le 4 operazioni, divisione per zero, pari/dispari, contatore con più/meno/azzera sotto zero): risultati corretti, nessun errore JavaScript. Pagina senza scroll orizzontale a 390px.
+
+**Comandi totali dopo L7:** 17 (nuovi: `+ - * / %`, `++ / --`, `.value`).
+
+---
+
+**Fine del Progetto Log - Ultimo aggiornamento: 22 Ottobre 2026 - Sessione 28**
