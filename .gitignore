@@ -38,3 +38,5 @@ next-env.d.ts
 # log degli emulatori Firebase
 firebase-debug.log
 firestore-debug.log
+
+.vercel
