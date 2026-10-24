@@ -18,7 +18,9 @@ export async function verificaAllievo(request: Request): Promise<Utente> {
   let decoded;
   try {
     decoded = await getAuth(getAdminApp()).verifyIdToken(token);
-  } catch {
+  } catch (e) {
+    // Il motivo vero (token scaduto, progetto sbagliato, credenziali del server rotte) va nei log.
+    console.warn('[auth allievo] verifica del token non riuscita', (e as { code?: string })?.code, (e as Error)?.message);
     throw new ApiError(401, 'INVALID_TOKEN', 'Sessione scaduta: accedi di nuovo');
   }
 
