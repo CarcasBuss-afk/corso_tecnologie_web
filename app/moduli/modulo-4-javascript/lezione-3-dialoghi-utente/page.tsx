@@ -5,6 +5,7 @@ import CodeExample from '@/components/didattica/CodeExample';
 import Exercise from '@/components/didattica/Exercise';
 import JavaScriptDemo from '@/components/didattica/JavaScriptDemo';
 import Challenge from '@/components/didattica/Challenge';
+import AllenatiOfficina from '@/components/didattica/AllenatiOfficina';
 
 export default function Lezione3DialoghiUtente() {
   const lezioni = getLezioniByModuloSlug('modulo-4-javascript');
@@ -1337,6 +1338,9 @@ button:hover {
           Prossima lezione: <strong>Cambiare la Pagina HTML</strong>! Modificherai contenuti in tempo reale! 💪
         </p>
       </section>
+
+      {/* Allenati nell'Officina */}
+      <AllenatiOfficina lezioneSlug="lezione-3-dialoghi-utente" />
 
       {/* Prossimi Passi */}
       <section className="mb-12 mt-12">

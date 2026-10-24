@@ -5,6 +5,7 @@ import CodeExample from '@/components/didattica/CodeExample';
 import Exercise from '@/components/didattica/Exercise';
 import JavaScriptDemo from '@/components/didattica/JavaScriptDemo';
 import Challenge from '@/components/didattica/Challenge';
+import AllenatiOfficina from '@/components/didattica/AllenatiOfficina';
 
 export default function Lezione7OperatoriCalcolatrice() {
   const lezioni = getLezioniByModuloSlug('modulo-4-javascript');
@@ -1216,6 +1217,9 @@ function aumenta() {
           Prossima lezione: <strong>Operatori Logici e Validazione</strong>! Più condizioni insieme con &amp;&amp;, || e ! 🔍
         </p>
       </section>
+
+      {/* Allenati nell'Officina */}
+      <AllenatiOfficina lezioneSlug="lezione-7-operatori-calcolatrice" />
 
       {/* Prossimi Passi */}
       <section className="mb-12 mt-12">

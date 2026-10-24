@@ -1,15 +1,15 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 22 Ottobre 2026 - Sessione 28 Lezione 7 Operatori e Calcolatrice
+**Ultimo aggiornamento:** 23 Ottobre 2026 - Sessione 29 Lezione 8 Operatori Logici e Validazione
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
 
 ---
 
-## 📌 STATO ATTUALE DEL PROGETTO (aggiornato al 22 Ottobre 2026)
+## 📌 STATO ATTUALE DEL PROGETTO (aggiornato al 23 Ottobre 2026)
 
-> Sezione di riepilogo da leggere per prima. I changelog delle sessioni sotto sono lo storico (in ordine non cronologico: la Sessione più recente è la 28, in fondo al file).
+> Sezione di riepilogo da leggere per prima. I changelog delle sessioni sotto sono lo storico (in ordine non cronologico: la Sessione più recente è la 29, in fondo al file).
 
 ### 🌐 Sito
 - **Online:** https://corso-tecnologie-web.vercel.app (deploy automatico da `main`)
@@ -30,7 +30,7 @@
 | 1. HTML | 18 | ✅ Completo |
 | 2. CSS | 14 | ✅ Completo |
 | 3. Progetto Intermedio | 4 | ✅ Completo |
-| 4. JavaScript | 7 di 20 | 🔄 In corso (prossima: **L8 Operatori Logici e Validazione**) |
+| 4. JavaScript | 8 di 20 | 🔄 In corso (prossima: **L9 Funzioni con Parametri e Return**) |
 | 5. Progetto Finale | 0 | 📋 Da fare |
 | 6. Strumenti Moderni | 0 | 📋 Da fare |
 
@@ -40,7 +40,7 @@
 - **JavaScript:** schema in 3 passi (id nel pulsante → funzione con nome → `addEventListener`), mai `onclick` o JS dentro i tag HTML, id dei pulsanti con prefisso `btn`, script in fondo al `<body>`.
 - **L'id non va collegato al CSS:** negli esempi il CSS usa selettori di tag o classi, mai `#id`.
 - **Tailwind 4:** trasparenze con `bg-white/20`, mai `bg-opacity-*` (vedi `DIPENDENZE.md`).
-- **Coerenza didattica:** nessun concetto usato prima di essere insegnato; riepilogo "Comandi JavaScript Totali Imparati" aggiornato in ogni lezione (dopo L7: 17 comandi).
+- **Coerenza didattica:** nessun concetto usato prima di essere insegnato; riepilogo "Comandi JavaScript Totali Imparati" aggiornato in ogni lezione (dopo L8: 18 comandi).
 
 ### ⚠️ Questioni aperte
 - Il link "Moduli" dell'header punta a `/moduli`, che non esiste (404): da far puntare a `/manuale#moduli` o creare la pagina.
@@ -7787,8 +7787,8 @@ Eliminare `onclick` dalle lezioni JavaScript e usare un unico schema per collega
 | # | Lezione | Comandi/concetti nuovi | Stato |
 |---|---------|------------------------|-------|
 | L7 | Operatori e Calcolatrice | `+ - * / %`, `++ --`, `input.value` (ripasso di `Number()`) | ✅ Pubblicata |
-| L8 | Operatori Logici e Validazione | `&&`, `\|\|`, `!` | ⏭️ Prossima |
-| L9 | Funzioni con Parametri e Return | parametri, `return`, funzioni che chiamano funzioni | 📋 Da fare |
+| L8 | Operatori Logici e Validazione | `&&`, `\|\|`, `!` | ✅ Pubblicata |
+| L9 | Funzioni con Parametri e Return | parametri, `return`, funzioni che chiamano funzioni | ⏭️ Prossima |
 | L10 | Altri Eventi | `input`, `change`, `keydown`, `submit`, `event.preventDefault()` | 📋 Da fare |
 | L11 | Manipolare Classi CSS | `classList.add/remove/toggle/contains` | 📋 Da fare |
 | L12 | Array - Le Liste | `[]`, `push()`, `length`, `[indice]` | 📋 Da fare |
@@ -7932,4 +7932,52 @@ Nella sezione "👻 Nascondere e Mostrare" mancava il consueto blocco `CodeExamp
 
 ---
 
-**Fine del Progetto Log - Ultimo aggiornamento: 22 Ottobre 2026 - Sessione 28**
+
+## 📅 CHANGELOG SESSIONE 29 (23 Ottobre 2026) - LEZIONE 8 OPERATORI LOGICI E VALIDAZIONE
+
+### 1. 📝 Nuova Lezione 8: Operatori Logici e Validazione
+
+**File:** `app/moduli/modulo-4-javascript/lezione-8-operatori-logici/page.tsx` (registrata in `lib/moduli.ts`, slug `lezione-8-operatori-logici`, 2 ore, difficoltà media).
+
+**Struttura:**
+1. Intro "Una domanda non basta" (&&, ||, !) con esempi reali (campo obbligatorio, password non coincidono, biglietto ridotto)
+2. `&&` con tabella "compiti finiti E non piove", box sugli intervalli (`voto >= 1 && voto <= 10`). Demo "Il Parco Avventura" (btnVerifica → verificaAccesso, età ≥ 8 && altezza ≥ 120)
+3. `||` con tabella del gelato, box su come digitare `|` sulla tastiera italiana, soluzione del problema maiuscole della L6 (`"Roma" || "roma"`). Demo "Che Giorno È?" (btnGiorno → controllaGiorno)
+4. `!` collegato a `!==` e a `confirm()` della L3 (true/false). Demo "Il Regolamento" (btnEntra → entra)
+5. Validazione "controlla prima di usare" (il buttafuori): schema casella vuota → valore non valido → lavoro vero. Demo "La Pagella Controllata" (btnValuta → valuta) con box "perché la versione lunga" (la casella vuota si riconosce sul testo, prima di Number) e "perché || e non &&"
+6. Errori tipici: variabile non ripetuta (`voto >= 1 && <= 10` → `SyntaxError: Unexpected token '<='`), confronto a metà (`=== "sabato" || "domenica"` sempre vero), `&&` al posto di `||` (controllo che non scatta mai), casella vuota cercata dopo Number()
+7. Esercizio guidato "L'Iscrizione al Torneo" (nome, età 14-19, password e conferma; btnIscriviti → iscriviti) costruito un controllo alla volta + esperimenti (intervallo diverso, campo squadra, confirm con !, && sbagliato apposta, nome "admin")
+8. Checklist, sfida "La Cassaforte a 3 Tentativi" (riusa il contatore fuori dalla funzione della L7), riepilogo (18 comandi), prossimi passi verso L9 Funzioni con Parametri e Return
+
+**Scelte:**
+- `.length` e `isNaN()` non usati (non ancora introdotti): la validazione si basa su casella vuota (`testo === ""`) e intervalli.
+- Le caselle `type="number"` limitano già l'inserimento di lettere, quindi il caso NaN non viene trattato.
+
+**Verifica:** Puppeteer su tutte le demo (parco con 3 combinazioni, giorni, confirm OK/Annulla, pagella vuota/15/0/8/4) e sul codice finale dell'esercizio caricato in una pagina (7 casi: ogni campo sbagliato e tutto corretto): messaggi giusti, nessun errore JavaScript. Pagina senza scroll orizzontale a 390px.
+
+**Comandi totali dopo L8:** 18 (nuovo: `&& / || / !`).
+
+---
+
+## 📅 CHANGELOG SESSIONE 30 (23 Ottobre 2026) - L'OFFICINA: GLI ESERCIZI CON L'ACCOUNT DELLA SCUOLA
+
+**Richiesta:** un sistema per far esercitare gli allievi come l'Officina del Giro dei Cicli (`C:\Users\Regnaud\Cicli-game`), innestato nel sito del corso, con l'account Google della scuola. Decisioni: solo Officina (niente gara), dentro questo repository, correzione anche sul server, tutor IA con il costo in punti, si parte da JavaScript. Progetto e decisioni in `OFFICINA.md`.
+
+**Che cosa c'è:**
+- `/officina`: login Google (dominio `OFFICINA_DOMINIO`), scelta della classe, percorso di 6 compiti sbloccati uno alla volta, media dei voti.
+- `/officina/[classe]/[compito]`: scheda del compito, consegna della fase, editor Monaco (JavaScript scrivibile, HTML e CSS dati in sola lettura), anteprima vera in iframe, checklist che si accende mentre si scrive (correzione nel browser), consegna verificata dal server, hint, tutor.
+- `/officina/docente`: classi, interruttore apri/chiudi; `/officina/docente/[classe]`: tabella allievi × compiti in tempo reale, codice e conversazioni, CSV.
+- Motore (`lib/officina/motore`): la pagina si corregge guardandola. Prove dichiarative (clic, prompt, caselle; controlli su testo, stile calcolato, visibilità, alert, console); stesso script in-page nell'iframe sandbox e in jsdom sul server con timeout (un `while (true)` non ferma il server). Errori JavaScript tradotti in hint. Prove nascoste con altri valori contro i risultati scritti a mano. Giudice (Haiku) con i fatti misurati sul codice per le regole del corso (funzione con nome + addEventListener, niente funzioni anonime/onclick). Tutor Sonnet con thinking, mai codice.
+- Catalogo (`lib/officina/compiti`): campanello (L2-L3), bacheca (L4), lampada (L5), porta del club (L6), cassa della pizzeria (L7), modulo d'iscrizione (L8); 5 fasi ciascuno, parametri dal seme dell'allievo.
+- Collegamenti: voce «Officina» nell'header, riquadro nella home del manuale, box «Allenati nell'Officina» in fondo alle lezioni 2-7 del Modulo 4 (`AllenatiOfficina`).
+- Firebase: stesso progetto del Giro, collezioni `webOfficinaClassi` / `webOfficinaAllievi`; `firestore.rules` con tutti i blocchi (il blocco nuovo aggiunto anche al file di Cicli-game); script `set-teacher` e `deploy-rules`; `.env.example`.
+
+**Dipendenze nuove:** firebase, firebase-admin, @anthropic-ai/sdk, jsdom, @monaco-editor/react, server-only; dev: vitest, @types/jsdom. `next.config.ts`: `serverExternalPackages` per jsdom e firebase-admin.
+
+**Verifica:** 44 test Vitest (motore in jsdom, catalogo: le soluzioni di riferimento passano ogni fase su 6 semi, la soluzione della fase prima non basta per quella dopo, regole del percorso); `tsc` e `next build` puliti; prova di fumo con gli emulatori Firebase (API: docente, classe, dominio rifiutato, percorso, consegna bocciata/promossa/bocciata dal giudice finto, fase sbagliata, tutor finto, risposta con codice scartata, classe chiusa) e in Chrome (login, percorso, compito con Monaco, checklist che diventa verde, consegna → fase 2, dashboard del docente in tempo reale).
+
+**Da fare:** variabili d'ambiente su Vercel e `npm run deploy-rules`; dominio Vercel fra quelli autorizzati in Firebase; prova in classe; sezioni HTML/CSS e patentino; test API automatici con gli emulatori (per ora lo script di fumo è stato eseguito a mano).
+
+---
+
+**Fine del Progetto Log - Ultimo aggiornamento: 23 Ottobre 2026 - Sessione 30**

@@ -5,6 +5,7 @@ import CodeExample from '@/components/didattica/CodeExample';
 import Exercise from '@/components/didattica/Exercise';
 import JavaScriptDemo from '@/components/didattica/JavaScriptDemo';
 import Challenge from '@/components/didattica/Challenge';
+import AllenatiOfficina from '@/components/didattica/AllenatiOfficina';
 
 export default function Lezione5CambiareStili() {
   const lezioni = getLezioniByModuloSlug('modulo-4-javascript');
@@ -1067,6 +1068,9 @@ document.getElementById("soluzione").style.display = "block";`}
           Prossima lezione: <strong>Decisioni e Quiz</strong>! JavaScript imparerà a scegliere cosa fare con if/else! 🤔
         </p>
       </section>
+
+      {/* Allenati nell'Officina */}
+      <AllenatiOfficina lezioneSlug="lezione-5-cambiare-stili" />
 
       {/* Prossimi Passi */}
       <section className="mb-12 mt-12">

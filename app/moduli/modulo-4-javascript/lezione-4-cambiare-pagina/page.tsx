@@ -5,6 +5,7 @@ import CodeExample from '@/components/didattica/CodeExample';
 import Exercise from '@/components/didattica/Exercise';
 import JavaScriptDemo from '@/components/didattica/JavaScriptDemo';
 import Challenge from '@/components/didattica/Challenge';
+import AllenatiOfficina from '@/components/didattica/AllenatiOfficina';
 
 export default function Lezione4CambiarePagina() {
   const lezioni = getLezioniByModuloSlug('modulo-4-javascript');
@@ -1103,6 +1104,9 @@ button:hover {
           Prossima lezione: <strong>Cambiare Stili e Colori</strong>! Modificherai colori, dimensioni e visibilità! 🎨
         </p>
       </section>
+
+      {/* Allenati nell'Officina */}
+      <AllenatiOfficina lezioneSlug="lezione-4-cambiare-pagina" />
 
       {/* Prossimi Passi */}
       <section className="mb-12 mt-12">

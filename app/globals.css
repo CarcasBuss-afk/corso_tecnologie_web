@@ -47,3 +47,41 @@ body {
     overflow-x: auto;
   }
 }
+
+/* ------------------------------------------------------------------ L'Officina
+   Tema scuro da laboratorio con accento giallo, come l'Officina del Giro dei Cicli.
+   Vive solo dentro la classe .officina (app/officina): il manuale resta chiaro. */
+.officina {
+  --color-fondo: rgb(17 20 28);
+  --color-fondo-card: rgb(26 30 42);
+  --color-bordo: rgb(44 50 66);
+  --color-rosa: rgb(236 72 153);
+  --color-verde: rgb(52 211 153);
+  --color-giallo: rgb(250 204 21);
+  --color-testo: rgb(226 232 240);
+  --color-testo-tenue: rgb(148 163 184);
+  background-color: var(--color-fondo);
+  color: var(--color-testo);
+  color-scheme: dark;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Risposta sbagliata: la card trema, senza togliere niente. */
+@keyframes scuoti {
+  10%, 90% { transform: translateX(-3px); }
+  20%, 80% { transform: translateX(5px); }
+  30%, 50%, 70% { transform: translateX(-8px); }
+  40%, 60% { transform: translateX(8px); }
+}
+
+@keyframes entra-dall-alto {
+  from { transform: translateY(-12px); opacity: 0; }
+}
+
+.officina .scuoti { animation: scuoti 0.5s ease-in-out; }
+.officina .entra { animation: entra-dall-alto 0.35s ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  .officina .scuoti,
+  .officina .entra { animation: none; }
+}

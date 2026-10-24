@@ -130,6 +130,22 @@ export default function Home() {
           </div>
         </div>
 
+        <div className="px-4 md:px-8 py-10">
+          <Link
+            href="/officina"
+            className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-6 rounded-2xl p-6 md:p-8 bg-[rgb(17,20,28)] text-slate-200 border-2 border-slate-700 hover:border-yellow-400 transition"
+          >
+            <span className="text-5xl" aria-hidden>🔧</span>
+            <span className="flex-1 text-center md:text-left">
+              <span className="block text-2xl font-black text-yellow-400">L&apos;Officina: allenati sul serio</span>
+              <span className="block mt-1 text-slate-300">
+                Compiti di realtà corretti al volo mentre scrivi, con un tutor che ti aiuta a parole. Entra con l&apos;account della scuola e procedi al tuo ritmo.
+              </span>
+            </span>
+            <span className="px-5 py-3 rounded-lg bg-yellow-400 text-black font-bold whitespace-nowrap">Entra nell&apos;Officina →</span>
+          </Link>
+        </div>
+
         <div id="moduli" className="py-12 md:py-16 px-4 md:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">

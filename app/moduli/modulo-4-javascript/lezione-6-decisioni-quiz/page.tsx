@@ -5,6 +5,7 @@ import CodeExample from '@/components/didattica/CodeExample';
 import Exercise from '@/components/didattica/Exercise';
 import JavaScriptDemo from '@/components/didattica/JavaScriptDemo';
 import Challenge from '@/components/didattica/Challenge';
+import AllenatiOfficina from '@/components/didattica/AllenatiOfficina';
 
 export default function Lezione6DecisioniQuiz() {
   const lezioni = getLezioniByModuloSlug('modulo-4-javascript');
@@ -1172,6 +1173,9 @@ if (risposta === 8) {`}</code>
           Prossima lezione: <strong>Operatori e Calcolatrice</strong>! JavaScript imparerà a fare i conti! 🧮
         </p>
       </section>
+
+      {/* Allenati nell'Officina */}
+      <AllenatiOfficina lezioneSlug="lezione-6-decisioni-quiz" />
 
       {/* Prossimi Passi */}
       <section className="mb-12 mt-12">

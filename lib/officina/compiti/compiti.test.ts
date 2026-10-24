@@ -1,0 +1,95 @@
+import { describe, expect, it } from 'vitest';
+import { eseguiProveServer } from '../motore/esecutoreServer';
+import { fattiJs } from '../motore/fatti';
+import { eControllo } from '../motore/tipi';
+import { valuta } from '../motore/valuta';
+import { COMPITO_PER_LEZIONE, eCompito, ESAMI, TITOLI } from './elenco';
+import { ELENCO_COMPITI, generaCompito, SEZIONI, type CompitoId } from './index';
+
+const SEMI = [1, 7, 42, 1234, 98765, 2026];
+
+/** La soluzione di una fase, provata su una fase (anche diversa). */
+function prova(id: CompitoId, seme: number, faseSoluzione: number, faseProve: number) {
+  const c = generaCompito(id, seme);
+  const sorgente = { ...c.pagina, js: c.soluzioni[faseSoluzione] };
+  const esiti = eseguiProveServer(sorgente, c.fasi[faseProve].prove);
+  return valuta(c.fasi[faseProve].prove, esiti);
+}
+
+describe('il catalogo', () => {
+  it('ha cinque fasi, cinque soluzioni e almeno un controllo per prova in ogni compito', () => {
+    for (const id of ELENCO_COMPITI) {
+      const c = generaCompito(id, 1);
+      expect(c.fasi, id).toHaveLength(5);
+      expect(c.soluzioni, id).toHaveLength(5);
+      expect(c.fasi[0].codiceIniziale, id).toBeTruthy();
+      for (const f of c.fasi) {
+        expect(f.regola, `${id}: regola`).toBeTruthy();
+        expect(f.prove.length, `${id}: prove`).toBeGreaterThan(0);
+        for (const p of f.prove) expect(p.passi.some(eControllo), `${id}: controlli`).toBe(true);
+      }
+    }
+    expect(SEZIONI.flatMap((s) => s.compiti)).toEqual(ELENCO_COMPITI);
+  });
+
+  it("l'elenco per il browser combacia con i generatori", () => {
+    for (const id of ELENCO_COMPITI) {
+      const scheda = generaCompito(id, 7).scheda;
+      expect(scheda.id).toBe(id);
+      expect(TITOLI[id].titolo, id).toBe(scheda.titolo);
+      expect(TITOLI[id].lezione, id).toBe(scheda.lezione);
+      expect(ESAMI.has(id), id).toBe(Boolean(scheda.esame));
+    }
+    for (const id of Object.values(COMPITO_PER_LEZIONE)) expect(eCompito(id)).toBe(true);
+  });
+
+  for (const id of ELENCO_COMPITI) {
+    describe(id, () => {
+      it('la soluzione di riferimento passa ogni fase, per semi diversi', () => {
+        for (const seme of SEMI) {
+          for (let f = 0; f < 5; f++) {
+            const v = prova(id, seme, f, f);
+            expect(v.promosso, `${id} seme ${seme} fase ${f + 1}: ${v.hint}`).toBe(true);
+          }
+        }
+      });
+
+      it('la soluzione della fase prima non basta per la fase dopo', () => {
+        for (const seme of SEMI.slice(0, 2)) {
+          for (let f = 1; f < 5; f++) {
+            const v = prova(id, seme, f - 1, f);
+            expect(v.promosso, `${id} seme ${seme}: la soluzione ${f} passa la fase ${f + 1}`).toBe(false);
+            expect(v.hint, `${id} fase ${f + 1}`).toBeTruthy();
+          }
+        }
+      });
+
+      it('l\'editor vuoto non passa e produce un hint', () => {
+        const c = generaCompito(id, 42);
+        const esiti = eseguiProveServer({ ...c.pagina, js: c.fasi[0].codiceIniziale ?? '' }, c.fasi[0].prove);
+        const v = valuta(c.fasi[0].prove, esiti);
+        expect(v.promosso).toBe(false);
+        expect(v.hint).toBeTruthy();
+      });
+
+      it('le soluzioni rispettano le regole del corso', () => {
+        const c = generaCompito(id, 42);
+        for (const s of c.soluzioni) {
+          const f = fattiJs(s);
+          expect(f.funzioniAnonime).toBe(0);
+          expect(f.onclick).toBe(0);
+          expect(f.funzioniConNome).toBeGreaterThan(0);
+          expect(f.addEventListener).toBe(f.funzioniConNome);
+        }
+      });
+    });
+  }
+
+  it('due allievi hanno parametri diversi, lo stesso allievo sempre gli stessi', () => {
+    const a = generaCompito('pizzeria', 1).scheda.dati.join();
+    const b = generaCompito('pizzeria', 2).scheda.dati.join();
+    const c = generaCompito('pizzeria', 3).scheda.dati.join();
+    expect(generaCompito('pizzeria', 1).scheda.dati.join()).toBe(a);
+    expect(new Set([a, b, c]).size).toBeGreaterThan(1);
+  });
+});

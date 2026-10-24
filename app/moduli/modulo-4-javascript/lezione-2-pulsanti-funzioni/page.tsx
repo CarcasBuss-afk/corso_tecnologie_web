@@ -5,6 +5,7 @@ import CodeExample from '@/components/didattica/CodeExample';
 import Exercise from '@/components/didattica/Exercise';
 import JavaScriptDemo from '@/components/didattica/JavaScriptDemo';
 import Challenge from '@/components/didattica/Challenge';
+import AllenatiOfficina from '@/components/didattica/AllenatiOfficina';
 
 export default function Lezione2PulsantiFunzioni() {
   const lezioni = getLezioniByModuloSlug('modulo-4-javascript');
@@ -770,6 +771,9 @@ function fai-qualcosa() { } // trattino`}
           Prossima lezione: <strong>Dialoghi e Variabili</strong>! Imparerai alert(), prompt() e confirm()! 💬
         </p>
       </section>
+
+      {/* Allenati nell'Officina */}
+      <AllenatiOfficina lezioneSlug="lezione-2-pulsanti-funzioni" />
 
       {/* Prossimi Passi */}
       <section className="mb-12 mt-12">

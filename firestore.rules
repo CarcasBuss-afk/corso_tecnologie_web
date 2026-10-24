@@ -1,0 +1,76 @@
+rules_version = '2';
+
+// Regole Firestore del progetto "html-css-attivita".
+//
+// ATTENZIONE: il progetto Firebase ha UN SOLO file di regole, condiviso fra TRE repository:
+// html-escape-room (escapeSessions), Cicli-game (giroSessions, officina*) e questo
+// (webOfficina*). Questo file le contiene TUTTE, da tenere allineato con gli altri due:
+// pubblicare da qui sovrascrive anche le regole delle altre attività.
+//
+// In tutte le attività i client non toccano mai Firestore: tutto passa dalle API del server,
+// che usano l'Admin SDK e ignorano queste regole. Dai client è ammessa una sola cosa: la
+// lettura in tempo reale da parte del docente autenticato con il claim teacher.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isTeacher() {
+      return request.auth != null && request.auth.token.teacher == true;
+    }
+
+    // Fuga dal Server (repository html-escape-room)
+    match /escapeSessions/{sessionId} {
+      allow read: if isTeacher();
+      allow write: if false;
+
+      match /{document=**} {
+        allow read: if isTeacher();
+        allow write: if false;
+      }
+    }
+
+    // Il Giro dei Cicli (repository Cicli-game)
+    match /giroSessions/{sessionId} {
+      allow read: if isTeacher();
+      allow write: if false;
+
+      match /{document=**} {
+        allow read: if isTeacher();
+        allow write: if false;
+      }
+    }
+
+    // L'Officina dei cicli Python (repository Cicli-game)
+    match /officinaClassi/{classeId} {
+      allow read: if isTeacher();
+      allow write: if false;
+
+      match /{document=**} {
+        allow read: if isTeacher();
+        allow write: if false;
+      }
+    }
+    match /officinaAllievi/{uid} {
+      allow read: if isTeacher();
+      allow write: if false;
+    }
+
+    // L'Officina del corso di Tecnologie Web (questo repository). Stesse regole.
+    match /webOfficinaClassi/{classeId} {
+      allow read: if isTeacher();
+      allow write: if false;
+
+      match /{document=**} {
+        allow read: if isTeacher();
+        allow write: if false;
+      }
+    }
+    match /webOfficinaAllievi/{uid} {
+      allow read: if isTeacher();
+      allow write: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
