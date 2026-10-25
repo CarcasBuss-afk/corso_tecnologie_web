@@ -4,7 +4,7 @@
  * primo accesso. Stesso impianto del Giro e dell'escape room. */
 import 'server-only';
 import { getAuth } from 'firebase-admin/auth';
-import { getAdminApp, teacherEmails } from '@/lib/firebaseAdmin';
+import { descriviChiave, getAdminApp, teacherEmails } from '@/lib/firebaseAdmin';
 import { ApiError, json, leggiBody, rispostaErrore } from './http';
 
 export type Docente = { uid: string; email: string; teacher: boolean };
@@ -19,7 +19,7 @@ export async function verificaDocente(request: Request): Promise<Docente> {
     decoded = await getAuth(getAdminApp()).verifyIdToken(token);
   } catch (e) {
     // Il motivo vero (token scaduto, progetto sbagliato, credenziali del server rotte) va nei log.
-    console.warn('[auth docente] verifica del token non riuscita', (e as { code?: string })?.code, (e as Error)?.message);
+    console.warn('[auth docente] verifica del token non riuscita', (e as { code?: string })?.code, (e as Error)?.message, '| chiave:', descriviChiave(process.env.FIREBASE_PRIVATE_KEY));
     throw new ApiError(401, 'INVALID_TOKEN', 'Sessione scaduta: accedi di nuovo');
   }
 

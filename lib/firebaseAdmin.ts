@@ -18,6 +18,21 @@ export function normalizzaChiave(grezza: string | undefined): string | undefined
   return k.replace(/\\\\n/g, '\n').replace(/\\n/g, '\n').replace(/\r/g, '').trim() + '\n';
 }
 
+/** Com'è fatta la chiave, senza rivelarla: per capire dai log se è arrivata intera. */
+export function descriviChiave(grezza: string | undefined): string {
+  if (!grezza) return 'chiave assente';
+  const n = normalizzaChiave(grezza) ?? '';
+  return [
+    `lunghezza grezza ${grezza.length}`,
+    `a capo veri ${(grezza.match(/\n/g) ?? []).length}`,
+    `\\n letterali ${(grezza.match(/\\n/g) ?? []).length}`,
+    `virgolette attorno ${/^\s*["']/.test(grezza)}`,
+    `inizio ok ${n.startsWith('-----BEGIN PRIVATE KEY-----\n')}`,
+    `fine ok ${n.endsWith('-----END PRIVATE KEY-----\n')}`,
+    `righe dopo la pulizia ${n.split('\n').length}`,
+  ].join(', ');
+}
+
 function credenziali() {
   const projectId = process.env.FIREBASE_PROJECT_ID;
   const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
