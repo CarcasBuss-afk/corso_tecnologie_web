@@ -18,6 +18,17 @@ export function normalizzaChiave(grezza: string | undefined): string | undefined
   return k.replace(/\\\\n/g, '\n').replace(/\\n/g, '\n').replace(/\r/g, '').trim() + '\n';
 }
 
+/**
+ * La chiave privata: da FIREBASE_PRIVATE_KEY_BASE64 se c'è (una stringa di sole lettere e
+ * cifre, che nessuna shell o pannello può spezzare: è il modo sicuro di caricarla su Vercel),
+ * altrimenti da FIREBASE_PRIVATE_KEY.
+ */
+export function chiavePrivata(): string | undefined {
+  const b64 = process.env.FIREBASE_PRIVATE_KEY_BASE64?.trim();
+  if (b64) return normalizzaChiave(Buffer.from(b64, 'base64').toString('utf8'));
+  return normalizzaChiave(process.env.FIREBASE_PRIVATE_KEY);
+}
+
 /** Com'è fatta la chiave, senza rivelarla: per capire dai log se è arrivata intera. */
 export function descriviChiave(grezza: string | undefined): string {
   if (!grezza) return 'chiave assente';
@@ -36,7 +47,7 @@ export function descriviChiave(grezza: string | undefined): string {
 function credenziali() {
   const projectId = process.env.FIREBASE_PROJECT_ID;
   const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
-  const privateKey = normalizzaChiave(process.env.FIREBASE_PRIVATE_KEY);
+  const privateKey = chiavePrivata();
   if (!projectId || !clientEmail || !privateKey) {
     throw new Error('Configurazione Firebase mancante: servono FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL e FIREBASE_PRIVATE_KEY (vedi .env.example)');
   }
