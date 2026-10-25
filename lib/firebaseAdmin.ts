@@ -7,11 +7,21 @@ import 'server-only';
 import { cert, getApps, initializeApp, type App } from 'firebase-admin/app';
 import { getFirestore, type Firestore } from 'firebase-admin/firestore';
 
+/**
+ * La chiave privata come la vuole l'Admin SDK. Su Vercel arriva nei modi più vari: con i "\n"
+ * letterali (anche doppi), con le virgolette rimaste attorno, con gli a capo di Windows.
+ */
+export function normalizzaChiave(grezza: string | undefined): string | undefined {
+  if (!grezza) return grezza;
+  let k = grezza.trim();
+  if ((k.startsWith('"') && k.endsWith('"')) || (k.startsWith("'") && k.endsWith("'"))) k = k.slice(1, -1);
+  return k.replace(/\\\\n/g, '\n').replace(/\\n/g, '\n').replace(/\r/g, '').trim() + '\n';
+}
+
 function credenziali() {
   const projectId = process.env.FIREBASE_PROJECT_ID;
   const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
-  // Su Vercel la chiave viene incollata con "\n" letterali: li ripristiniamo.
-  const privateKey = process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n');
+  const privateKey = normalizzaChiave(process.env.FIREBASE_PRIVATE_KEY);
   if (!projectId || !clientEmail || !privateKey) {
     throw new Error('Configurazione Firebase mancante: servono FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL e FIREBASE_PRIVATE_KEY (vedi .env.example)');
   }
