@@ -80,6 +80,8 @@ export interface Fase {
   prove: Prova[];
   /** La regola didattica a parole che il giudice controlla sul codice promosso. */
   regola?: string;
+  /** Ogni id si cerca con getElementById una volta sola, in alto fuori dalle funzioni: la fase in cui si riordina il codice con le variabili. */
+  elementiInAlto?: boolean;
   /** Il JavaScript con cui parte l'editor alla fase 1 (le altre ripartono dal codice della fase prima). */
   codiceIniziale?: string;
 }

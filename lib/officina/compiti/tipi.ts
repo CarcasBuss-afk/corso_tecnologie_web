@@ -1,5 +1,5 @@
 /* Un compito dell'Officina web: una pagina (HTML e CSS dati) che l'allievo fa funzionare con
- * il JavaScript, in cinque fasi, ognuna delle quali aggiunge un pezzo. La scheda racconta
+ * il JavaScript, in cinque fasi (sei dove si riordina il codice), ognuna delle quali aggiunge un pezzo. La scheda racconta
  * chi lo chiede e che cosa deve fare la pagina finita: nel compito di realtà il bersaglio si
  * vede. I parametri escono dal seme (dell'allievo), così i testi del vicino sono diversi. */
 import type { Fase, Pannello, Sorgente } from '../motore/tipi';
@@ -77,6 +77,9 @@ export const REGOLE = {
     'I numeri arrivano dalle caselle con .value, convertiti con Number(): non valgono i risultati scritti a mano nel codice.',
   decisioneConIf:
     'La scelta fra i due esiti la fa un if con un confronto sulla risposta: non valgono i due testi scritti insieme, né un esito solo.',
+  elementiInVariabili:
+    'Ogni elemento che serve, pulsanti compresi, sta in una variabile creata una volta sola in alto, fuori dalle funzioni; ' +
+    'le funzioni e i collegamenti con addEventListener usano quelle variabili. I nomi delle variabili li sceglie l\'allievo.',
   contatoreFuori:
     'Il contatore è una variabile dichiarata fuori dalla funzione, che la funzione aumenta con ++ (o +=): non vale un numero scritto a mano.',
 } as const;

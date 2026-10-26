@@ -5,13 +5,14 @@
 
 export type CompitoId = 'campanello' | 'bacheca' | 'lampada' | 'porta' | 'pizzeria' | 'iscrizione';
 
-export const TITOLI: Record<CompitoId, { titolo: string; lezione: string }> = {
-  campanello: { titolo: 'Il campanello del negozio', lezione: 'Modulo 4 · Lezioni 2 e 3' },
-  bacheca: { titolo: 'La bacheca della classe', lezione: 'Modulo 4 · Lezione 4' },
-  lampada: { titolo: 'La lampada da comodino', lezione: 'Modulo 4 · Lezione 5' },
-  porta: { titolo: 'La porta del club', lezione: 'Modulo 4 · Lezione 6' },
-  pizzeria: { titolo: 'La cassa della pizzeria', lezione: 'Modulo 4 · Lezione 7' },
-  iscrizione: { titolo: "Il modulo d'iscrizione", lezione: 'Modulo 4 · Lezione 8' },
+/** Titolo, lezione e numero di fasi di ogni compito (le fasi: di solito 5, una in più dove si riordina il codice). */
+export const TITOLI: Record<CompitoId, { titolo: string; lezione: string; fasi: number }> = {
+  campanello: { titolo: 'Il campanello del negozio', lezione: 'Modulo 4 · Lezioni 2 e 3', fasi: 5 },
+  bacheca: { titolo: 'La bacheca della classe', lezione: 'Modulo 4 · Lezione 4', fasi: 5 },
+  lampada: { titolo: 'La lampada da comodino', lezione: 'Modulo 4 · Lezione 5', fasi: 6 },
+  porta: { titolo: 'La porta del club', lezione: 'Modulo 4 · Lezione 6', fasi: 6 },
+  pizzeria: { titolo: 'La cassa della pizzeria', lezione: 'Modulo 4 · Lezione 7', fasi: 5 },
+  iscrizione: { titolo: "Il modulo d'iscrizione", lezione: 'Modulo 4 · Lezione 8', fasi: 5 },
 };
 
 /** I compiti che sono esami (tutor spento). Per ora nessuno. */
@@ -37,6 +38,9 @@ export const eCompito = (id: string): id is CompitoId => id in TITOLI;
 export const titoloCompito = (id: CompitoId) => TITOLI[id].titolo;
 
 export const lezioneCompito = (id: CompitoId) => TITOLI[id].lezione;
+
+/** Quante fasi ha il compito. */
+export const fasiDi = (id: CompitoId) => TITOLI[id].fasi;
 
 export const eEsame = (id: CompitoId) => ESAMI.has(id);
 

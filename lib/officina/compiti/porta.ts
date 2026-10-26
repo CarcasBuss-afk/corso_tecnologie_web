@@ -1,6 +1,7 @@
 /* Compito 4 · La porta del club (Modulo 4, lezione 6).
  * Idea nuova: decidere. if/else su un testo (la parola d'ordine), poi su un numero con
- * Number() e >=, con il numero dentro il messaggio, e infine else if a tre vie. */
+ * Number() e >=, con il numero dentro il messaggio, e infine else if a tre vie. Nella sesta
+ * fase il codice si riordina: ogni elemento in una variabile, cercato una volta sola. */
 import { clic, CSS_BASE, domandaFatta, risposte, ROSSI, stile, testo, VERDI } from './aiuti';
 import { generatore, intero, REGOLE, scegli, type Compito } from './tipi';
 
@@ -41,6 +42,7 @@ export function generaPorta(seme: number): Compito {
         `«Entra» chiede la parola d'ordine: «${BENVENUTO}» in verde se è giusta, «${SBAGLIATA}» in rosso se no.`,
         `«Controlla l'età» chiede gli anni e dice se si può entrare (da ${etaMinima} anni in su), con l'età nel messaggio.`,
         '«Il voto del socio» chiede un voto e risponde Ottimo, Sufficiente o Insufficiente.',
+        'Il codice è in ordine: ogni elemento sta in una variabile, cercato una volta sola.',
       ],
     },
     pagina: { html, css: CSS_BASE },
@@ -133,6 +135,44 @@ export function generaPorta(seme: number): Compito {
           { nome: 'rispondendo «7»', passi: [risposte('7'), clic('btnVoto', 'Il voto del socio'), testo('giudizio', 'Sufficiente', 'Con 7 dice «Sufficiente»', 'L\'else if controlla da 6 in su: viene dopo il 9, l\'ordine conta.')] },
           { nome: 'rispondendo «4»', passi: [risposte('4'), clic('btnVoto', 'Il voto del socio'), testo('giudizio', 'Insufficiente', 'Con 4 dice «Insufficiente»', 'L\'else finale prende tutto il resto.')] },
           { nome: 'rispondendo «9»', passi: [risposte('9'), clic('btnVoto', 'Il voto del socio'), testo('giudizio', 'Ottimo', 'Con 9 esatto dice «Ottimo»', 'Da 9 in su: maggiore o uguale.')] },
+        ],
+      },
+      {
+        consegna:
+          'La porta funziona: ora **riordina il codice**, come nella Lezione 4. In alto, fuori dalle funzioni, salva in una variabile ogni elemento che usi: i tre paragrafi (`esito`, `eta`, `giudizio`) e i tre pulsanti. I nomi delle variabili li scegli tu. Poi le funzioni e i collegamenti usano le variabili: ogni id si cerca con `getElementById` **una volta sola**. La porta deve fare esattamente le stesse cose di prima.',
+        regola: `${REGOLE.treGesti} ${REGOLE.decisioneConIf} ${REGOLE.elementiInVariabili}`,
+        elementiInAlto: true,
+        prove: [
+          {
+            nome: 'tutti i pulsanti, uno dopo l\'altro',
+            passi: [
+              risposte(parola),
+              clic('btnEntra', 'Entra'),
+              testo('esito', BENVENUTO, `Con la parola giusta l'esito dice «${BENVENUTO}»`, 'Entra deve fare come prima, con la variabile dell\'esito.'),
+              stile('esito', 'color', VERDI, 'L\'esito è verde', 'Il colore si cambia dalla variabile dell\'esito.'),
+              risposte(String(etaOk)),
+              clic('btnEta', "Controlla l'età"),
+              testo('eta', puoi(etaOk), `Con ${etaOk} anni dice «${puoi(etaOk)}»`, 'Controlla l\'età deve fare come prima.'),
+              risposte('7'),
+              clic('btnVoto', 'Il voto del socio'),
+              testo('giudizio', 'Sufficiente', 'Con 7 dice «Sufficiente»', 'Il voto del socio deve fare come prima.'),
+            ],
+          },
+          {
+            nome: 'con le risposte che non vanno',
+            passi: [
+              risposte(sbagliata),
+              clic('btnEntra', 'Entra'),
+              testo('esito', SBAGLIATA, `Con una parola sbagliata dice «${SBAGLIATA}»`, 'Il ramo else resta.'),
+              stile('esito', 'color', ROSSI, 'L\'esito è rosso', 'Il rosso resta nel ramo else.'),
+              risposte(String(etaNo)),
+              clic('btnEta', "Controlla l'età"),
+              testo('eta', giovane(etaNo), `Con ${etaNo} anni dice «${giovane(etaNo)}»`, 'Il ramo else dell\'età resta.'),
+              risposte('4'),
+              clic('btnVoto', 'Il voto del socio'),
+              testo('giudizio', 'Insufficiente', 'Con 4 dice «Insufficiente»', 'L\'else finale resta.'),
+            ],
+          },
         ],
       },
     ],
@@ -250,6 +290,49 @@ function valutaVoto() {
 document.getElementById("btnEntra").addEventListener("click", entra);
 document.getElementById("btnEta").addEventListener("click", controllaEta);
 document.getElementById("btnVoto").addEventListener("click", valutaVoto);`,
+      `let esito = document.getElementById("esito");
+let eta = document.getElementById("eta");
+let giudizio = document.getElementById("giudizio");
+let tastoEntra = document.getElementById("btnEntra");
+let tastoEta = document.getElementById("btnEta");
+let tastoVoto = document.getElementById("btnVoto");
+
+function entra() {
+  let risposta = prompt("Parola d'ordine?");
+  if (risposta === "${parola}") {
+    esito.innerHTML = "${BENVENUTO}";
+    esito.style.color = "green";
+  } else {
+    esito.innerHTML = "${SBAGLIATA}";
+    esito.style.color = "red";
+  }
+}
+
+function controllaEta() {
+  let testo = prompt("Quanti anni hai?");
+  let anni = Number(testo);
+  if (anni >= ${etaMinima}) {
+    eta.innerHTML = "Hai " + anni + " anni: puoi entrare";
+  } else {
+    eta.innerHTML = "Hai " + anni + " anni: troppo giovane, servono ${etaMinima}";
+  }
+}
+
+function valutaVoto() {
+  let testo = prompt("Che voto hai preso?");
+  let voto = Number(testo);
+  if (voto >= 9) {
+    giudizio.innerHTML = "Ottimo";
+  } else if (voto >= 6) {
+    giudizio.innerHTML = "Sufficiente";
+  } else {
+    giudizio.innerHTML = "Insufficiente";
+  }
+}
+
+tastoEntra.addEventListener("click", entra);
+tastoEta.addEventListener("click", controllaEta);
+tastoVoto.addEventListener("click", valutaVoto);`,
     ],
   };
 }

@@ -7,14 +7,14 @@ import 'server-only';
 import { FieldValue, Timestamp } from 'firebase-admin/firestore';
 import { getDb } from '@/lib/firebaseAdmin';
 import type { Utente } from './auth';
-import { eCompito, eEsame, generaCompito, lezioneCompito, SEZIONI, sezioneDi, titoloCompito, type Compito, type CompitoId } from './compiti';
+import { eCompito, eEsame, fasiDi, generaCompito, lezioneCompito, SEZIONI, sezioneDi, titoloCompito, type Compito, type CompitoId } from './compiti';
 import { ApiError, testo } from './http';
 import { eseguiProveServer } from './motore/esecutoreServer';
 import type { Fase, Sorgente } from './motore/tipi';
 import { valuta } from './motore/valuta';
 import { verificaConsegna } from './motore/verifica';
 import { richiestaAmmessa } from './rateLimit';
-import { FASI_PER_COMPITO, mediaVoti, percorsoDi, semeDa, votoSeFinisce } from './regole';
+import { mediaVoti, percorsoDi, semeDa, votoSeFinisce } from './regole';
 import { allieviRef, appartenenzeRef, classiRef, lavoroVuoto, type AllievoDoc, type AppartenenzaDoc, type ClasseDoc, type LavoroDoc } from './store';
 import { chiediTutor } from './tutor';
 import { MAX_DOMANDA_TUTOR, MAX_DOMANDE_TUTOR } from './tutorPrompt';
@@ -122,7 +122,7 @@ export async function compiti(body: Record<string, unknown>, utente: Utente) {
     classe: { id: ctx.classeId, nome: ctx.classe.nome, chiusa: ctx.classe.chiusa },
     compiti: voci.map((v) => ({
       ...v,
-      fasiTotali: FASI_PER_COMPITO,
+      fasiTotali: fasiDi(v.id),
       titolo: titoloCompito(v.id),
       lezione: lezioneCompito(v.id),
       votoSeFinisci: votoSeFinisce(v.consigli),
@@ -154,7 +154,7 @@ export async function compito(body: Record<string, unknown>, utente: Utente) {
     classeChiusa: ctx.classe.chiusa,
     esame: Boolean(c.scheda.esame),
     fasi: lavoro.fasi,
-    fasiTotali: FASI_PER_COMPITO,
+    fasiTotali: c.fasi.length,
     consigli: lavoro.consigli,
     domandeRimaste: domandeRimaste(lavoro.consigli),
     finito,
@@ -164,7 +164,7 @@ export async function compito(body: Record<string, unknown>, utente: Utente) {
     pagina: c.pagina,
     pannelli: c.pannelli,
     fase: fase ? fasePubblica(fase, lavoro.fasi) : null,
-    codice: finito ? (lavoro.codice?.[String(FASI_PER_COMPITO - 1)] ?? '') : codiceDaCui(lavoro, c),
+    codice: finito ? (lavoro.codice?.[String(c.fasi.length - 1)] ?? '') : codiceDaCui(lavoro, c),
     codicePromosso: lavoro.codice ?? {},
     tutor: (lavoro.tutor ?? []).map((s) => ({ fase: s.fase + 1, domanda: s.domanda, risposta: s.risposta })),
     errori: lavoro.errori,
@@ -223,7 +223,7 @@ export async function consegna(body: Record<string, unknown>, utente: Utente) {
     }
 
     const nuoveFasi = f + 1;
-    const finito = nuoveFasi >= FASI_PER_COMPITO;
+    const finito = nuoveFasi >= c.fasi.length;
     const ora = Timestamp.now();
     salva({
       fasi: nuoveFasi,
@@ -272,7 +272,7 @@ export async function tutor(body: Record<string, unknown>, utente: Utente) {
     {
       scheda: c.scheda,
       fase: lavoro.fasi + 1,
-      fasiTotali: FASI_PER_COMPITO,
+      fasiTotali: c.fasi.length,
       consegna: fase.consegna,
       regola: fase.regola,
       html: c.pagina.html,

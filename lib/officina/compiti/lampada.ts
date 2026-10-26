@@ -1,6 +1,7 @@
 /* Compito 3 · La lampada da comodino (Modulo 4, lezione 5).
  * Idea nuova: .style cambia l'aspetto: colore di sfondo, misure con "px", display per
- * nascondere e mostrare. I valori arrivano anche dal prompt. */
+ * nascondere e mostrare. I valori arrivano anche dal prompt. Nella sesta fase il codice si
+ * riordina: ogni elemento in una variabile, cercato una volta sola (Lezione 4). */
 import { clic, CSS_BASE, domandaFatta, GIALLI, GRIGI, risposte, stile, testo, visibile } from './aiuti';
 import { generatore, REGOLE, scegli, type Compito } from './tipi';
 
@@ -56,6 +57,7 @@ div {
         '«Accendi» colora la lampada di giallo e aggiorna il paragrafo di stato; «Spegni» la rimette grigia.',
         '«Cambia colore» chiede un colore e lo applica; «Cambia misura» chiede i pixel e li applica a larghezza e altezza.',
         'Quando la lampada si spegne compare la scritta della buonanotte; quando si accende sparisce.',
+        'Il codice è in ordine: ogni elemento sta in una variabile, cercato una volta sola.',
       ],
     },
     pagina: { html, css },
@@ -141,6 +143,44 @@ div {
               clic('btnAccendi', 'Accendi'),
               visibile('buonanotte', false, 'Dopo Accendi sparisce', 'Nella funzione di Accendi metti style.display = "none".'),
               stile('lampada', 'backgroundColor', GIALLI, 'La lampada è gialla', 'Accendi deve continuare a colorare di giallo.'),
+            ],
+          },
+        ],
+      },
+      {
+        consegna:
+          'La pagina funziona: ora **riordina il codice**, come nella Lezione 4. In alto, fuori dalle funzioni, salva in una variabile ogni elemento che usi: la lampada, lo stato, la buonanotte e i quattro pulsanti. I nomi delle variabili li scegli tu. Poi le funzioni e i collegamenti usano le variabili: ogni id si cerca con `getElementById` **una volta sola**. La pagina deve fare esattamente le stesse cose di prima.',
+        regola: `${REGOLE.treGesti} ${REGOLE.elementiInVariabili}`,
+        elementiInAlto: true,
+        prove: [
+          {
+            nome: 'tutti i pulsanti, uno dopo l\'altro',
+            passi: [
+              clic('btnAccendi', 'Accendi'),
+              stile('lampada', 'backgroundColor', GIALLI, 'Accendi: la lampada è gialla', 'Accendi deve fare come prima, con la variabile della lampada.'),
+              testo('stato', ACCESA, `Lo stato dice «${ACCESA}»`, 'Lo stato si cambia dalla sua variabile.'),
+              clic('btnSpegni', 'Spegni'),
+              stile('lampada', 'backgroundColor', GRIGI, 'Spegni: la lampada è grigia', 'Spegni deve fare come prima.'),
+              visibile('buonanotte', true, 'Spegni: la buonanotte si vede', 'La buonanotte si mostra dalla sua variabile.'),
+              risposte('purple'),
+              clic('btnColore', 'Cambia colore'),
+              stile('lampada', 'backgroundColor', 'purple', 'Rispondendo «purple» la lampada diventa viola', 'Cambia colore deve fare come prima.'),
+              risposte('180'),
+              clic('btnGrande', 'Cambia misura'),
+              stile('lampada', 'width', '180px', 'Rispondendo «180» la larghezza è 180px', 'Cambia misura deve fare come prima.'),
+            ],
+          },
+          {
+            nome: 'con altri valori',
+            passi: [
+              risposte('orange'),
+              clic('btnColore', 'Cambia colore'),
+              stile('lampada', 'backgroundColor', 'orange', 'La lampada diventa arancione', 'Il colore è quello risposto.'),
+              risposte('90'),
+              clic('btnGrande', 'Cambia misura'),
+              stile('lampada', 'height', '90px', "L'altezza è 90px", 'La misura è quella risposta.'),
+              clic('btnAccendi', 'Accendi'),
+              visibile('buonanotte', false, 'Accendi: la buonanotte sparisce', 'Accendi nasconde la buonanotte, come prima.'),
             ],
           },
         ],
@@ -237,6 +277,41 @@ document.getElementById("btnAccendi").addEventListener("click", accendi);
 document.getElementById("btnSpegni").addEventListener("click", spegni);
 document.getElementById("btnColore").addEventListener("click", cambiaColore);
 document.getElementById("btnGrande").addEventListener("click", cambiaMisura);`,
+      `let lampada = document.getElementById("lampada");
+let stato = document.getElementById("stato");
+let buonanotte = document.getElementById("buonanotte");
+let tastoAccendi = document.getElementById("btnAccendi");
+let tastoSpegni = document.getElementById("btnSpegni");
+let tastoColore = document.getElementById("btnColore");
+let tastoMisura = document.getElementById("btnGrande");
+
+function accendi() {
+  lampada.style.backgroundColor = "yellow";
+  stato.innerHTML = "${ACCESA}";
+  buonanotte.style.display = "none";
+}
+
+function spegni() {
+  lampada.style.backgroundColor = "gray";
+  stato.innerHTML = "${SPENTA}";
+  buonanotte.style.display = "block";
+}
+
+function cambiaColore() {
+  let colore = prompt("Che colore vuoi?");
+  lampada.style.backgroundColor = colore;
+}
+
+function cambiaMisura() {
+  let misura = prompt("Quanti pixel?");
+  lampada.style.width = misura + "px";
+  lampada.style.height = misura + "px";
+}
+
+tastoAccendi.addEventListener("click", accendi);
+tastoSpegni.addEventListener("click", spegni);
+tastoColore.addEventListener("click", cambiaColore);
+tastoMisura.addEventListener("click", cambiaMisura);`,
     ],
   };
 }

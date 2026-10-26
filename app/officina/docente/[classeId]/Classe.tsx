@@ -11,7 +11,8 @@ import { useDocente } from '@/components/officina/useDocente';
 import { getClientDb } from '@/lib/firebaseClient';
 import { chiamaDocente, messaggioErrore } from '@/lib/officina/client';
 import { ALLIEVI, CLASSI } from '@/lib/officina/nomiCollezioni';
-import { FASI_PER_COMPITO, type VoceCompito } from '@/lib/officina/regole';
+import { fasiDi } from '@/lib/officina/compiti/elenco';
+import type { VoceCompito } from '@/lib/officina/regole';
 import { csvClasse, SEZIONI_PERCORSO, tabellaClasse, TITOLI_PERCORSO, type AllievoVisto, type LavoroVisto } from '@/lib/officina/tabella';
 
 type ClasseDati = { nome: string; chiusa: boolean };
@@ -208,7 +209,7 @@ export function Classe({ classeId }: { classeId: string }) {
         </table>
       </section>
 
-      {dettaglio && compitoAperto && <Lavoro allievo={dettaglio} titolo={compitoAperto.titolo} lavoro={dettaglio.lavori[compitoAperto.id] ?? null} onChiudi={() => setAperta(null)} />}
+      {dettaglio && compitoAperto && <Lavoro allievo={dettaglio} titolo={compitoAperto.titolo} fasiTotali={fasiDi(compitoAperto.id)} lavoro={dettaglio.lavori[compitoAperto.id] ?? null} onChiudi={() => setAperta(null)} />}
     </main>
   );
 }
@@ -219,7 +220,7 @@ function Cella({ v }: { v: VoceCompito }) {
   return (
     <span className="flex items-baseline gap-2">
       <span className="font-mono text-sm text-(--color-testo-tenue)">
-        {v.fasi}/{FASI_PER_COMPITO}
+        {v.fasi}/{fasiDi(v.id)}
       </span>
       {v.consigli > 0 && <span className="text-sm text-(--color-giallo)">🧑‍🏫 {v.consigli}</span>}
       {v.voto !== null && <span className="font-mono text-lg font-black text-(--color-giallo)">{v.voto}</span>}
@@ -228,7 +229,7 @@ function Cella({ v }: { v: VoceCompito }) {
 }
 
 /** Il lavoro di un allievo su un compito: codice fase per fase, bozza, conversazione. */
-function Lavoro({ allievo, titolo, lavoro, onChiudi }: { allievo: AllievoVisto; titolo: string; lavoro: LavoroVisto | null; onChiudi: () => void }) {
+function Lavoro({ allievo, titolo, fasiTotali, lavoro, onChiudi }: { allievo: AllievoVisto; titolo: string; fasiTotali: number; lavoro: LavoroVisto | null; onChiudi: () => void }) {
   const fasi = lavoro ? Object.entries(lavoro.codice).sort((a, b) => Number(a[0]) - Number(b[0])) : [];
   return (
     <section aria-label="lavoro dell'allievo" className="flex flex-col gap-3 rounded-xl border border-(--color-giallo)/40 bg-(--color-giallo)/5 p-4">
@@ -246,7 +247,7 @@ function Lavoro({ allievo, titolo, lavoro, onChiudi }: { allievo: AllievoVisto; 
         <div className="grid gap-4 lg:grid-cols-2">
           <div>
             <p className="mb-1 text-sm font-bold text-(--color-testo-tenue)">
-              {lavoro.fasi}/{FASI_PER_COMPITO} fasi · {lavoro.errori} {lavoro.errori === 1 ? 'errore' : 'errori'}
+              {lavoro.fasi}/{fasiTotali} fasi · {lavoro.errori} {lavoro.errori === 1 ? 'errore' : 'errori'}
               {lavoro.ultimoAt && ` · ultima consegna ${lavoro.ultimoAt.toLocaleString('it-IT')}`}
             </p>
             {fasi.map(([k, codice]) => (

@@ -87,15 +87,21 @@ risponde, la consegna passa (fail-open) e resta nei log.
 ## 4. Il percorso JavaScript
 
 Una sezione, «JavaScript: le basi», un compito per lezione del Modulo 4, **una sola idea
-nuova per compito**, cinque fasi che fanno crescere la stessa pagina. L'HTML e il CSS sono
-dati e in sola lettura: l'allievo li legge (per gli `id`) ma scrive solo il JavaScript.
+nuova per compito**, cinque fasi che fanno crescere la stessa pagina. La lampada e la porta
+ne hanno una sesta: la pagina funziona già e si **riordina il codice** (Lezione 4, «anche i
+pulsanti in una variabile»): ogni elemento in una variabile, cercato una volta sola in alto,
+fuori dalle funzioni. Il correttore non vede la differenza, perché la pagina fa le stesse cose;
+la controlla un conto esatto sul testo del codice (`motore/struttura.ts`, flag
+`elementiInAlto` della fase), senza IA. Il numero di fasi sta in `compiti/elenco.ts`.
+L'HTML e il CSS sono dati e in sola lettura: l'allievo li legge (per gli `id`) ma scrive solo
+il JavaScript.
 
 | # | Compito | Lezione | Idea nuova |
 |---|---|---|---|
 | 1 | Il campanello del negozio | L2-L3 | funzione con nome + `addEventListener`; `alert`, `prompt`, `let` |
 | 2 | La bacheca della classe | L4 | `innerHTML` / `textContent`: il risultato va in pagina |
-| 3 | La lampada da comodino | L5 | `.style`: colori, dimensioni, `display` |
-| 4 | La porta del club | L6 | `if` / `else` / `else if`, `Number()`, confronti |
+| 3 | La lampada da comodino | L5 | `.style`: colori, dimensioni, `display`; poi il codice in ordine con le variabili |
+| 4 | La porta del club | L6 | `if` / `else` / `else if`, `Number()`, confronti; poi il codice in ordine |
 | 5 | La cassa della pizzeria | L7 | `.value`, operatori, `%`, il contatore fuori dalla funzione |
 | 6 | Il modulo d'iscrizione | L8 | `&&`, `\|\|`, `!`: la validazione |
 
@@ -109,7 +115,7 @@ lib/officina/
   motore/        tipi (Fase, Prova, Passo), correttore (script in-page), pagina (compone
                  l'HTML), colori, erroriJs (traduzione), fatti (per il giudice),
                  esecutoreServer (jsdom + timeout), verifica (correttore + giudice)
-  compiti/       il catalogo: una scheda e cinque fasi per compito, parametri dal seme
+  compiti/       il catalogo: una scheda e cinque fasi per compito (sei per lampada e porta), parametri dal seme
   regole.ts      percorso, sblocco, voto, seme (puro)
   store.ts       Firestore: webOfficinaClassi/{classe}/allievi/{uid}, webOfficinaAllievi/{uid}
   service.ts     le API dell'allievo (io, classi, entra, compiti, compito, consegna, tutor)

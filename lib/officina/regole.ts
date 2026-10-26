@@ -2,10 +2,7 @@
  * non è una gara, ogni allievo percorre da solo lo stesso elenco di compiti, uno sbloccato
  * alla volta; il voto c'è solo a compito finito: 10 meno un punto a domanda al tutor, mai
  * sotto 5. Modulo puro: niente Firestore, niente Next. */
-import { ELENCO_COMPITI, type CompitoId } from './compiti/elenco';
-
-/** Le fasi di un compito. */
-export const FASI_PER_COMPITO = 5;
+import { ELENCO_COMPITI, fasiDi, type CompitoId } from './compiti/elenco';
 
 /** Il voto parte da qui e scende di uno a domanda al tutor. */
 export const VOTO_MASSIMO = 10;
@@ -44,11 +41,11 @@ export type VoceCompito = {
 };
 
 /** Il percorso di un allievo: il primo compito è sempre aperto; ogni altro si sblocca quando il precedente è finito. */
-export function percorsoDi(lavori: Record<string, ProgressoCompito | undefined>, fasiTotali = FASI_PER_COMPITO): VoceCompito[] {
+export function percorsoDi(lavori: Record<string, ProgressoCompito | undefined>): VoceCompito[] {
   let precedenteFinito = true;
   return PERCORSO.map((id) => {
     const l = lavori[id] ?? { fasi: 0, consigli: 0 };
-    const finito = l.fasi >= fasiTotali;
+    const finito = l.fasi >= fasiDi(id);
     const stato: StatoCompito = finito ? 'finito' : !precedenteFinito ? 'bloccato' : l.fasi > 0 ? 'in-corso' : 'da-cominciare';
     precedenteFinito = finito;
     return { id, stato, fasi: l.fasi, consigli: l.consigli, voto: finito ? votoSeFinisce(l.consigli) : null };

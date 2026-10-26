@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { eseguiProveServer } from '../motore/esecutoreServer';
 import { fattiJs } from '../motore/fatti';
+import { controlloStruttura } from '../motore/struttura';
 import { eControllo } from '../motore/tipi';
 import { valuta } from '../motore/valuta';
-import { COMPITO_PER_LEZIONE, eCompito, ESAMI, TITOLI } from './elenco';
+import { COMPITO_PER_LEZIONE, eCompito, ESAMI, fasiDi, TITOLI } from './elenco';
 import { ELENCO_COMPITI, generaCompito, SEZIONI, type CompitoId } from './index';
 
 const SEMI = [1, 7, 42, 1234, 98765, 2026];
@@ -13,15 +14,18 @@ function prova(id: CompitoId, seme: number, faseSoluzione: number, faseProve: nu
   const c = generaCompito(id, seme);
   const sorgente = { ...c.pagina, js: c.soluzioni[faseSoluzione] };
   const esiti = eseguiProveServer(sorgente, c.fasi[faseProve].prove);
-  return valuta(c.fasi[faseProve].prove, esiti);
+  const v = valuta(c.fasi[faseProve].prove, esiti);
+  // Come sul server (verifica.ts), senza il giudice: anche i conti sul testo del codice.
+  const struttura = v.promosso ? controlloStruttura(c.fasi[faseProve], sorgente.js) : null;
+  return struttura ? { ...v, promosso: false, hint: struttura } : v;
 }
 
 describe('il catalogo', () => {
-  it('ha cinque fasi, cinque soluzioni e almeno un controllo per prova in ogni compito', () => {
+  it("ha le fasi dichiarate nell'elenco, una soluzione per fase e almeno un controllo per prova", () => {
     for (const id of ELENCO_COMPITI) {
       const c = generaCompito(id, 1);
-      expect(c.fasi, id).toHaveLength(5);
-      expect(c.soluzioni, id).toHaveLength(5);
+      expect(c.fasi, id).toHaveLength(fasiDi(id));
+      expect(c.soluzioni, id).toHaveLength(fasiDi(id));
       expect(c.fasi[0].codiceIniziale, id).toBeTruthy();
       for (const f of c.fasi) {
         expect(f.regola, `${id}: regola`).toBeTruthy();
@@ -47,7 +51,7 @@ describe('il catalogo', () => {
     describe(id, () => {
       it('la soluzione di riferimento passa ogni fase, per semi diversi', () => {
         for (const seme of SEMI) {
-          for (let f = 0; f < 5; f++) {
+          for (let f = 0; f < fasiDi(id); f++) {
             const v = prova(id, seme, f, f);
             expect(v.promosso, `${id} seme ${seme} fase ${f + 1}: ${v.hint}`).toBe(true);
           }
@@ -56,7 +60,7 @@ describe('il catalogo', () => {
 
       it('la soluzione della fase prima non basta per la fase dopo', () => {
         for (const seme of SEMI.slice(0, 2)) {
-          for (let f = 1; f < 5; f++) {
+          for (let f = 1; f < fasiDi(id); f++) {
             const v = prova(id, seme, f - 1, f);
             expect(v.promosso, `${id} seme ${seme}: la soluzione ${f} passa la fase ${f + 1}`).toBe(false);
             expect(v.hint, `${id} fase ${f + 1}`).toBeTruthy();

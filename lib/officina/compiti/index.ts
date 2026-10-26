@@ -12,7 +12,7 @@ import { generaPorta } from './porta';
 import type { Compito, GeneratoreCompito, SchedaCompito } from './tipi';
 
 export type { Compito, SchedaCompito } from './tipi';
-export { COMPITO_PER_LEZIONE, eCompito, eEsame, ELENCO_COMPITI, lezioneCompito, SEZIONI, sezioneDi, titoloCompito, type CompitoId, type Sezione } from './elenco';
+export { COMPITO_PER_LEZIONE, eCompito, eEsame, ELENCO_COMPITI, fasiDi, lezioneCompito, SEZIONI, sezioneDi, titoloCompito, type CompitoId, type Sezione } from './elenco';
 
 const GENERATORI: Record<CompitoId, GeneratoreCompito> = {
   campanello: generaCampanello,
