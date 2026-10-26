@@ -446,6 +446,36 @@ button {
             che rimette <strong>a mano</strong> i valori originali.
           </p>
         </div>
+
+        <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mt-6">
+          <p className="font-bold text-blue-800 mb-2">🔁 Riconosci lo schema della Lezione 4?</p>
+          <p className="text-gray-700 mb-3">
+            La scatola sta in una variabile perché la usiamo <strong>quattro volte</strong>. La cerchiamo in tutte e due le
+            funzioni perché una variabile creata dentro una funzione vive solo lì. In alternativa puoi crearla
+            <strong> una volta sola in alto</strong>, fuori dalle funzioni, e usarla dappertutto. Lo stesso vale per i pulsanti:
+          </p>
+          <CodeExample
+            code={`// In alto: ogni elemento cercato una volta sola (i nomi li scegli tu)
+let scatola = document.getElementById("scatola");
+let tastoTrasforma = document.getElementById("btnTrasforma");
+let tastoRipristina = document.getElementById("btnRipristina");
+
+function trasforma() {
+  scatola.style.backgroundColor = "gold";
+  scatola.style.borderRadius = "50%";
+}
+
+function ripristina() {
+  scatola.style.backgroundColor = "royalblue";
+  scatola.style.borderRadius = "0";
+}
+
+tastoTrasforma.addEventListener("click", trasforma);
+tastoRipristina.addEventListener("click", ripristina);`}
+            language="javascript"
+            showLineNumbers
+          />
+        </div>
       </section>
 
       {/* Esempio 3: Con prompt e variabili */}

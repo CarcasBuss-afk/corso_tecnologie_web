@@ -26,6 +26,7 @@ export default function Lezione4CambiarePagina() {
         obiettivi={[
           'Capire cos\'è il DOM (Document Object Model)',
           'Usare getElementById() per trovare qualsiasi elemento, non solo i pulsanti',
+          'Salvare un elemento (anche un pulsante) in una variabile e usarlo più volte',
           'Cambiare il testo con innerHTML e textContent',
           'Modificare la pagina senza ricaricarla'
         ]}
@@ -754,6 +755,265 @@ button:hover {
   </script>
 </body>
 </html>`}
+        />
+      </section>
+
+      {/* Anche i pulsanti in una variabile */}
+      <section className="mb-12">
+        <h2 className="text-3xl font-bold mb-4">🔁 Anche i Pulsanti in una Variabile!</h2>
+
+        <p className="text-lg mb-4">
+          Nella Lezione 2 abbiamo collegato i pulsanti con la <strong>riga magica</strong>, tutta d&apos;un fiato.
+          Ora che sai salvare un elemento in una variabile, puoi spezzarla in <strong>due righe</strong>.
+          Fanno <strong>esattamente la stessa cosa</strong>.
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+          <div className="bg-white p-6 rounded-lg border-2 border-gray-200">
+            <h3 className="font-bold text-gray-800 mb-3">1️⃣ Tutto in una riga (Lezione 2)</h3>
+            <CodeExample
+              code={`document.getElementById("btnSaluta").addEventListener("click", saluta);`}
+              language="javascript"
+            />
+            <p className="text-gray-600 text-sm mt-3">
+              Trova il pulsante e lo usa <strong>subito</strong>. Poi se ne dimentica: se ti serve ancora, deve cercarlo di nuovo.
+            </p>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg border-2 border-blue-300">
+            <h3 className="font-bold text-blue-800 mb-3">2️⃣ In due righe, con una variabile</h3>
+            <CodeExample
+              code={`// 1. Trova il pulsante e salvalo
+let pulsante = document.getElementById("btnSaluta");
+
+// 2. Usa la variabile
+pulsante.addEventListener("click", saluta);`}
+              language="javascript"
+              showLineNumbers
+            />
+            <p className="text-gray-600 text-sm mt-3">
+              Trova il pulsante <strong>una volta sola</strong> e lo tiene nella variabile: da lì in poi basta il suo nome.
+            </p>
+          </div>
+        </div>
+
+        <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded mb-6">
+          <h3 className="text-xl font-bold text-yellow-900 mb-3">📱 Analogia: La Rubrica del Telefono</h3>
+          <p className="text-gray-700 mb-2">
+            <code className="bg-yellow-100 px-1 rounded">getElementById</code> è come cercare il numero di un amico
+            sull&apos;elenco telefonico. Se devi chiamarlo una volta, lo cerchi e chiami.
+          </p>
+          <p className="text-gray-700">
+            Ma se devi chiamarlo, mandargli un messaggio e poi una foto, conviene <strong>salvarlo in rubrica</strong>:
+            lo cerchi una volta e poi usi il contatto. La variabile è il contatto salvato.
+          </p>
+        </div>
+
+        <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-6 rounded-lg mb-6">
+          <h3 className="text-xl font-bold mb-3 text-white">📘 Cosa C&apos;è Dentro la Variabile?</h3>
+          <p className="text-lg mb-4">
+            Non c&apos;è un testo: c&apos;è <strong>l&apos;elemento intero</strong>. Scrivi il nome della variabile, poi il
+            <strong> punto</strong>, e hai a disposizione tutto quello che l&apos;elemento sa fare:
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="bg-black/30 p-3 rounded border-2 border-white/30">
+              <p className="font-mono text-yellow-200">pulsante.addEventListener(...)</p>
+              <p className="text-sm">ascolta i clic (Lezione 2)</p>
+            </div>
+            <div className="bg-black/30 p-3 rounded border-2 border-white/30">
+              <p className="font-mono text-yellow-200">pulsante.textContent</p>
+              <p className="text-sm">il testo dentro (questa lezione)</p>
+            </div>
+            <div className="bg-black/30 p-3 rounded border-2 border-white/30">
+              <p className="font-mono text-yellow-200">pulsante.innerHTML</p>
+              <p className="text-sm">il contenuto con i tag (questa lezione)</p>
+            </div>
+            <div className="bg-black/30 p-3 rounded border-2 border-white/30">
+              <p className="font-mono text-yellow-200">pulsante.style...</p>
+              <p className="text-sm">l&apos;aspetto: colori, misure (Lezione 5)</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 className="text-xl font-bold mb-3">Un Elemento, Tante Cose</h3>
+        <p className="text-lg mb-4">
+          Qui il pulsante serve <strong>due volte</strong>: per ascoltare il clic e per cambiare la sua scritta.
+          Lo cerchiamo una volta sola, in alto, e poi usiamo la variabile dappertutto.
+        </p>
+        <CodeExample
+          title="Il pulsante e il paragrafo salvati in due variabili"
+          code={`// In alto, fuori dalle funzioni: trova gli elementi una volta sola
+let tasto = document.getElementById("btnAvvisa");
+let avviso = document.getElementById("avviso");
+
+function avvisa() {
+  avviso.textContent = "Domani c'è la verifica!";
+  tasto.textContent = "✔ Avvisato";   // lo stesso pulsante cambia scritta
+}
+
+tasto.addEventListener("click", avvisa);`}
+          language="javascript"
+          showLineNumbers
+        />
+
+        <JavaScriptDemo
+          title="Il Pulsante che Cambia Scritta"
+          description="Clicca: il paragrafo e il pulsante cambiano, e tutti e due arrivano da una variabile."
+          height="300px"
+          code={`<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      text-align: center;
+    }
+    p {
+      font-size: 22px;
+    }
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background-color: #4f46e5;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <p id="avviso">Nessun avviso per ora.</p>
+  <button id="btnAvvisa">Avvisa la classe</button>
+
+  <script>
+    let tasto = document.getElementById("btnAvvisa");
+    let avviso = document.getElementById("avviso");
+
+    function avvisa() {
+      avviso.textContent = "Domani c'è la verifica!";
+      tasto.textContent = "✔ Avvisato";
+    }
+
+    tasto.addEventListener("click", avvisa);
+  </script>
+</body>
+</html>`}
+        />
+
+        <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mb-6">
+          <h3 className="font-bold text-blue-800 mb-2">✍️ Il Nome lo Scegli Tu</h3>
+          <p className="text-gray-700 mb-3">
+            Il nome dopo <code className="bg-blue-100 px-1 rounded">let</code> è <strong>tuo</strong>: <code className="bg-blue-100 px-1 rounded">pulsante</code>,
+            {' '}<code className="bg-blue-100 px-1 rounded">tasto</code>, <code className="bg-blue-100 px-1 rounded">bottoneSaluta</code>... Valgono le stesse
+            regole dei nomi delle funzioni: minuscola all&apos;inizio, camelCase, niente spazi, trattini o numeri all&apos;inizio.
+            Quello fra virgolette invece <strong>non lo scegli</strong>: è l&apos;id scritto nell&apos;HTML.
+          </p>
+          <CodeExample
+            code={`let pulsante = document.getElementById("btnSaluta");
+//  ↑ lo scegli tu                       ↑ è l'id dell'HTML: deve essere identico`}
+            language="javascript"
+          />
+          <p className="text-gray-700 mt-3">
+            Puoi anche chiamare la variabile come l&apos;id (<code className="bg-blue-100 px-1 rounded">let btnSaluta = ...</code>): funziona,
+            ma all&apos;inizio è facile confondere le due cose. Scegli un nome che ti dica <strong>che cosa c&apos;è dentro</strong>.
+          </p>
+        </div>
+
+        <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded mb-6">
+          <h3 className="font-bold text-green-800 mb-2">🤔 Quale Forma Uso?</h3>
+          <ul className="text-gray-700 space-y-2">
+            <li>• L&apos;elemento ti serve <strong>una volta sola</strong> (di solito: collegare un pulsante)? Va benissimo la riga intera.</li>
+            <li>• Ti serve <strong>più volte</strong>? Salvalo in una variabile: lo cerchi una volta e il codice si legge meglio.</li>
+            <li>• Sono <strong>giuste tutte e due</strong>: è come dire &quot;chiamo Luca&quot; o &quot;cerco Luca in rubrica e lo chiamo&quot;.</li>
+          </ul>
+        </div>
+
+        <h3 className="text-xl font-bold mb-3">🐞 Errori Tipici con le Variabili</h3>
+        <div className="space-y-4 mb-6">
+          <div className="bg-red-50 p-6 rounded-lg border-2 border-red-200">
+            <h4 className="font-bold text-red-800 mb-3">❌ 1. Le virgolette al posto sbagliato</h4>
+            <CodeExample
+              code={`let pulsante = document.getElementById(btnSaluta);  // l'id va fra virgolette!
+"pulsante".addEventListener("click", saluta);         // la variabile NO`}
+              language="javascript"
+            />
+            <p className="text-gray-700 mt-3">
+              Fra virgolette va l&apos;<strong>id</strong> (è un testo da cercare). Il nome della <strong>variabile</strong> invece
+              si scrive senza virgolette. In console, nel primo caso: <code className="bg-red-100 px-1 rounded text-red-700">Cannot read properties of null</code>
+              {' '}(non ha trovato il pulsante); nel secondo: <code className="bg-red-100 px-1 rounded text-red-700">&quot;pulsante&quot;.addEventListener is not a function</code>.
+            </p>
+          </div>
+
+          <div className="bg-red-50 p-6 rounded-lg border-2 border-red-200">
+            <h4 className="font-bold text-red-800 mb-3">❌ 2. Usare la variabile prima di crearla</h4>
+            <CodeExample
+              code={`pulsante.addEventListener("click", saluta);  // pulsante non esiste ancora!
+let pulsante = document.getElementById("btnSaluta");`}
+              language="javascript"
+            />
+            <p className="text-gray-700 mt-3">
+              JavaScript legge dall&apos;alto in basso: prima crei la variabile, poi la usi. In console:
+              {' '}<code className="bg-red-100 px-1 rounded text-red-700">Cannot access &apos;pulsante&apos; before initialization</code>.
+            </p>
+          </div>
+
+          <div className="bg-red-50 p-6 rounded-lg border-2 border-red-200">
+            <h4 className="font-bold text-red-800 mb-3">❌ 3. La variabile creata dentro una funzione</h4>
+            <CodeExample
+              code={`function prepara() {
+  let pulsante = document.getElementById("btnSaluta");
+}
+
+pulsante.addEventListener("click", saluta);  // qui pulsante non c'è!`}
+              language="javascript"
+            />
+            <p className="text-gray-700 mt-3">
+              Una variabile creata <strong>dentro</strong> una funzione vive solo lì dentro. Se ti serve anche fuori,
+              creala <strong>in alto, fuori dalle funzioni</strong>. In console: <code className="bg-red-100 px-1 rounded text-red-700">pulsante is not defined</code>.
+            </p>
+          </div>
+        </div>
+
+        <Exercise
+          title="🎯 Esercizio: Riscrivi con le Variabili"
+          steps={[
+            {
+              text: 'Copia questa pagina in un file "variabili.html" e provala: i tre pulsanti cambiano il titolo',
+              code: `<h1 id="titolo">Che giorno è?</h1>
+<button id="btnLunedi">Lunedì</button>
+<button id="btnSabato">Sabato</button>
+<button id="btnDomenica">Domenica</button>
+
+<script>
+  function lunedi() {
+    document.getElementById("titolo").textContent = "Si torna a scuola 📚";
+  }
+  function sabato() {
+    document.getElementById("titolo").textContent = "Partita a calcetto ⚽";
+  }
+  function domenica() {
+    document.getElementById("titolo").textContent = "Pranzo dalla nonna 🍝";
+  }
+
+  document.getElementById("btnLunedi").addEventListener("click", lunedi);
+  document.getElementById("btnSabato").addEventListener("click", sabato);
+  document.getElementById("btnDomenica").addEventListener("click", domenica);
+</script>`,
+              language: 'html',
+            },
+            'In alto nello script, salva il titolo in una variabile: il nome lo scegli tu',
+            'Nelle tre funzioni usa la variabile al posto di document.getElementById("titolo")',
+            'Salva anche i tre pulsanti in tre variabili e collega le funzioni partendo dalle variabili',
+            'Riprova la pagina: deve funzionare esattamente come prima',
+          ]}
+          experiments={[
+            'Conta: quante volte la pagina cercava un elemento con getElementById prima, e quante adesso?',
+            'Sposta una riga con addEventListener sopra la riga che crea la sua variabile: che errore compare in console?',
+            'Togli le virgolette intorno a un id: che cosa dice la console?',
+          ]}
         />
       </section>
 
