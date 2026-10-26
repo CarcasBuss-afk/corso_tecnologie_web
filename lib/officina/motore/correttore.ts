@@ -61,7 +61,9 @@ export const CORRETTORE_JS = `(function () {
   };
   window.addEventListener('error', function (e) {
     var msg = e && e.message ? e.message : (e && e.error ? String(e.error) : 'Errore sconosciuto');
-    if (e && e.lineno && !/line/i.test(msg)) msg += ' (line ' + e.lineno + ')';
+    // Nell'iframe le righe si contano dall'inizio del documento: lo scarto (pagina.ts) le riporta a quelle dell'editor.
+    var riga = e && e.lineno ? e.lineno - (window.__officinaScarto || 0) : 0;
+    if (riga > 0 && !/line/i.test(msg)) msg += ' (line ' + riga + ')';
     O.errori.push(msg);
   });
 
@@ -183,9 +185,13 @@ export const CORRETTORE_JS = `(function () {
         return esito;
       }
       case 'console': {
-        var cerca = normalizzaTesto(p.contiene);
         esito.attuale = O.console.length ? O.console.join(' | ') : '(console vuota)';
-        for (var j = 0; j < O.console.length; j++) if (normalizzaTesto(O.console[j]).indexOf(cerca) !== -1) esito.ok = true;
+        esito.righe = [];
+        for (var j = 0; j < O.console.length; j++) {
+          var riga = normalizzaTesto(O.console[j]);
+          esito.righe.push(riga);
+          if (p.uguale !== undefined ? riga === normalizzaTesto(p.uguale) : riga.indexOf(normalizzaTesto(p.contiene)) !== -1) esito.ok = true;
+        }
         return esito;
       }
       default:
