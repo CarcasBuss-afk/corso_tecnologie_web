@@ -5,7 +5,7 @@ import 'server-only';
 import vm from 'node:vm';
 import { JSDOM, VirtualConsole } from 'jsdom';
 import { CORRETTORE_JS } from './correttore';
-import { componiPagina } from './pagina';
+import { componiPagina, RIGOROSO } from './pagina';
 import type { EsitoProva, Passo, Prova, Sorgente } from './tipi';
 
 /** Quanto può durare, in tutto, l'esecuzione del codice dell'allievo in una prova. */
@@ -42,7 +42,8 @@ export function eseguiProvaServer(sorgente: Sorgente, prova: Prova, timeoutMs = 
 
     let compilato: vm.Script | null = null;
     try {
-      compilato = new vm.Script(sorgente.js, { filename: 'script.js' });
+      // Modalità rigorosa come nel browser (pagina.ts), sulla stessa riga: i numeri di riga non cambiano.
+      compilato = new vm.Script(`${RIGOROSO} ${sorgente.js}`, { filename: 'script.js' });
     } catch (e) {
       aggiungiErrore(ctx, e);
     }

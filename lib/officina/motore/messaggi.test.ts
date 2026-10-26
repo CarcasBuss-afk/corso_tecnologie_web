@@ -38,6 +38,15 @@ describe('i messaggi costruiti da quello che fa la pagina', () => {
     expect(hint('function suona() { alert("Arrivo subito!"); }\ndocument.getElementById("#btnSuona").addEventListener("click", suona);')).toMatch(/^getElementById cerca «#btnSuona», ma l'id nella pagina è «btnSuona», senza il #/);
   });
 
+  it('una variabile senza let è un errore (modalità rigorosa), anche se nel browser normale funzionerebbe', () => {
+    const fase2 = c.fasi[1].prove;
+    const js = `function suona() {\n  nome = prompt("Come ti chiami?");\n  alert("Arrivo subito, " + nome + "!");\n}\n${collega}`;
+    const v = valuta(fase2, eseguiProveServer({ ...c.pagina, js }, fase2));
+    expect(v.promosso).toBe(false);
+    expect(v.hint).toMatch(/^«nome» non esiste/);
+    expect(valuta(fase2, eseguiProveServer({ ...c.pagina, js: js.replace('  nome =', '  let nome =') }, fase2)).promosso).toBe(true);
+  });
+
   it('la soluzione passa', () => {
     expect(hint(c.soluzioni[0])).toBeNull();
   });

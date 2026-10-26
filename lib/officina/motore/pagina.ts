@@ -5,6 +5,13 @@
 import { CORRETTORE_JS } from './correttore';
 import type { Sorgente } from './tipi';
 
+/**
+ * Il codice dell'allievo gira in modalità rigorosa: una variabile usata senza let (nome = ...)
+ * è un errore, non una variabile globale creata di nascosto. Sta sulla stessa riga del tag,
+ * così i numeri di riga degli errori restano quelli dell'editor.
+ */
+export const RIGOROSO = '"use strict";';
+
 /** `</script>` dentro uno script chiuderebbe il tag: si spezza. Idem per `</style>`. */
 const senzaChiusura = (testo: string, tag: string) => testo.replace(new RegExp(`</${tag}`, 'gi'), `<\\/${tag}`);
 
@@ -27,7 +34,8 @@ export function componiPagina(s: Sorgente, { correttore = false, conJs = true }:
     '</head>',
     '<body>',
     s.html,
-    conJs ? `<script>\n${senzaChiusura(s.js, 'script')}\n</script>` : '',
+    // Il codice comincia sulla riga del tag: Chrome conta le righe da lì, così coincidono con l'editor.
+    conJs ? `<script>${RIGOROSO} ${senzaChiusura(s.js, 'script')}\n</script>` : '',
     '</body>',
     '</html>',
   ]

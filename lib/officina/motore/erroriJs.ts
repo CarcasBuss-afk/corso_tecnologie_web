@@ -21,14 +21,16 @@ export function traduciErroreJs(messaggio: string): string {
   const originale = `(${m})`;
 
   let n: string | null;
-  if ((n = nome(m, /ReferenceError:\s+(\S+) is not defined/))) {
+  // Il tipo davanti è facoltativo: gli errori dentro le funzioni dei clic arrivano a volte senza
+  // (jsdom scrive solo «nome is not defined»).
+  if ((n = nome(m, /(?:ReferenceError:\s+)?(\S+) is not defined/))) {
     return `«${n}» non esiste: controlla come l'hai scritto (maiuscole e minuscole contano) e se l'hai dichiarato con let prima di usarlo. ${originale}`;
   }
   if (/Cannot (?:read|set) propert(?:y|ies) of null/.test(m) || /null is not an object/.test(m)) {
     const prop = nome(m, /reading '([^']+)'/) ?? nome(m, /setting '([^']+)'/) ?? nome(m, /evaluating '[^.]+\.([^'.]+)'/);
     return `getElementById non ha trovato l'elemento: l'id che hai scritto fra virgolette deve essere uguale a quello nell'HTML, lettera per lettera${prop ? ` (poi gli chiedi «${prop}», ma lui è null)` : ''}. ${originale}`;
   }
-  if ((n = nome(m, /TypeError:\s+(\S+) is not a function/))) {
+  if ((n = nome(m, /(?:TypeError:\s+)?(\S+) is not a function/))) {
     return `«${n}» non è una funzione: controlla il nome (è quello che hai dato con function?) e che ci siano le parentesi tonde solo dove servono. ${originale}`;
   }
   if (/SyntaxError/.test(m)) {
