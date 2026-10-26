@@ -3,6 +3,9 @@
 
 const RIGA = /(?:line|riga)\s+(\d+)/i;
 
+/** I nomi che il corso usa: scritti con le maiuscole sbagliate («Console», «Alert») non esistono. */
+const NOMI_DEL_CORSO = ['console', 'document', 'alert', 'prompt', 'confirm', 'Number', 'window'];
+
 /** Il nome fra apici del simbolo che manca, se il messaggio lo contiene. */
 function nome(messaggio: string, re: RegExp): string | null {
   const m = messaggio.match(re);
@@ -24,6 +27,8 @@ export function traduciErroreJs(messaggio: string): string {
   // Il tipo davanti è facoltativo: gli errori dentro le funzioni dei clic arrivano a volte senza
   // (jsdom scrive solo «nome is not defined»).
   if ((n = nome(m, /(?:ReferenceError:\s+)?(\S+) is not defined/))) {
+    const giusto = NOMI_DEL_CORSO.find((g) => g.toLowerCase() === n!.toLowerCase() && g !== n);
+    if (giusto) return `«${n}» non esiste: JavaScript distingue maiuscole e minuscole, si scrive «${giusto}». ${originale}`;
     return `«${n}» non esiste: controlla come l'hai scritto (maiuscole e minuscole contano) e se l'hai dichiarato con let prima di usarlo. ${originale}`;
   }
   if (/Cannot (?:read|set) propert(?:y|ies) of null/.test(m) || /null is not an object/.test(m)) {

@@ -61,8 +61,8 @@ export type Controllo =
   | ({ controlla: 'alerts'; quanti: number } & ControlloBase)
   /** Almeno N prompt sono stati fatti finora nella prova (la domanda è stata posta davvero). */
   | ({ controlla: 'prompt'; almeno: number } & ControlloBase)
-  /** Qualcosa scritto con console.log contiene questo testo. */
-  | ({ controlla: 'console'; contiene: string } & ControlloBase);
+  /** Una riga scritta con console.log è uguale a questa (spazi normalizzati), oppure ne contiene il testo. */
+  | ({ controlla: 'console'; uguale?: string; contiene?: string } & ControlloBase);
 
 export type Passo = Azione | Controllo;
 
@@ -82,6 +82,8 @@ export interface Fase {
   regola?: string;
   /** Ogni id si cerca con getElementById una volta sola, in alto fuori dalle funzioni: la fase in cui si riordina il codice con le variabili. */
   elementiInAlto?: boolean;
+  /** Quanti commenti (di una riga o su più righe) devono esserci almeno nel codice. */
+  almenoCommenti?: number;
   /** Il JavaScript con cui parte l'editor alla fase 1 (le altre ripartono dal codice della fase prima). */
   codiceIniziale?: string;
 }
@@ -98,6 +100,8 @@ export interface EsitoControllo {
   elemento?: string;
   /** L'elemento da controllare non c'è nella pagina. */
   mancante?: boolean;
+  /** Le righe della console, una per console.log (solo nei controlli sulla console). */
+  righe?: string[];
   /** L'ultimo clic della prova prima di questo controllo: su che cosa e se c'era una funzione collegata. */
   dopoClic?: Clic;
 }

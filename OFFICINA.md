@@ -92,12 +92,17 @@ ne hanno una sesta: la pagina funziona già e si **riordina il codice** (Lezione
 pulsanti in una variabile»): ogni elemento in una variabile, cercato una volta sola in alto,
 fuori dalle funzioni. Il correttore non vede la differenza, perché la pagina fa le stesse cose;
 la controlla un conto esatto sul testo del codice (`motore/struttura.ts`, flag
-`elementiInAlto` della fase), senza IA. Il numero di fasi sta in `compiti/elenco.ts`.
+`elementiInAlto` della fase), senza IA. Il numero di fasi sta in `compiti/elenco.ts`. Lo scontrino (Lezione 1) non ha pulsanti: si
+controllano le righe esatte della console (controllo `console` con `uguale`) e, nell'ultima
+fase, che ci siano almeno due commenti (flag `almenoCommenti`). L'anteprima mostra sotto la pagina
+una console con le righe di `console.log` e gli errori, utile anche negli altri compiti. Un compito
+già aperto non si blocca mai, anche se nel percorso ne entra uno nuovo prima.
 L'HTML e il CSS sono dati e in sola lettura: l'allievo li legge (per gli `id`) ma scrive solo
 il JavaScript.
 
 | # | Compito | Lezione | Idea nuova |
 |---|---|---|---|
+| 0 | Lo scontrino del bar | L1 | `console.log` con testi e numeri, calcoli con `+ * /` e parentesi, commenti: lo scontrino in console |
 | 1 | Il campanello del negozio | L2-L3 | funzione con nome + `addEventListener`; `alert`, `prompt`, `let` |
 | 2 | La bacheca della classe | L4 | `innerHTML` / `textContent`: il risultato va in pagina |
 | 3 | La lampada da comodino | L5 | `.style`: colori, dimensioni, `display`; poi il codice in ordine con le variabili |

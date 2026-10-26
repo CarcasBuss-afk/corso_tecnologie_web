@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { generaCompito } from '../compiti/index';
 import { eseguiProveServer } from './esecutoreServer';
 import { nomeColore } from './messaggi';
+import { controlloStruttura } from './struttura';
 import { valuta } from './valuta';
 
 /* I messaggi della consegna sul campanello, fase 1: una frase sola, l'errore fatto. */
@@ -49,6 +50,21 @@ describe('i messaggi costruiti da quello che fa la pagina', () => {
 
   it('la soluzione passa', () => {
     expect(hint(c.soluzioni[0])).toBeNull();
+  });
+
+  it('lo scontrino in console: righe esatte, punteggiatura, conti e commenti', () => {
+    const s = generaCompito('scontrino', 7);
+    const h = (f: number, js: string) => {
+      const v = valuta(s.fasi[f].prove, eseguiProveServer({ ...s.pagina, js }, s.fasi[f].prove));
+      return v.promosso ? controlloStruttura(s.fasi[f], js) : v.hint;
+    };
+    for (let f = 0; f < 5; f++) expect(h(f, s.soluzioni[f]), `fase ${f + 1}`).toBeNull();
+    expect(h(0, '')).toBe('Nella console non compare niente, invece ci deve essere la riga «Bar Sport».');
+    expect(h(0, 'Console.log("Bar Sport");')).toMatch(/^«Console» non esiste: JavaScript distingue maiuscole e minuscole, si scrive «console»/);
+    expect(h(2, s.soluzioni[2].replace('"Totale"', '"Totale:"'))).toBe("Controlla la punteggiatura: nella console c'è «Totale: 9 €», invece ci vuole «Totale 9 €».");
+    expect(h(3, s.soluzioni[3].replace('(3 * 1 + 2 + 4) / 2', '3 * 1 + 2 + 4 / 2'))).toBe("Nella console c'è «A testa 7 €», invece ci vuole «A testa 4.5 €».");
+    const unCommento = s.soluzioni[4].replace(/\/\/ Il listino.*\n/, '').replace(/\/\/ I conti.*\n/, '');
+    expect(h(4, unCommento)).toBe("Il programma funziona, ma nel codice c'è un commento solo: in questa fase ne servono almeno 2.");
   });
 
   it('i colori con il loro nome', () => {

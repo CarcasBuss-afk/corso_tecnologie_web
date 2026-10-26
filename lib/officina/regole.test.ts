@@ -13,6 +13,14 @@ describe('il percorso', () => {
     expect(percorsoDi({ [PERCORSO[0]]: { fasi: 2, consigli: 0 } })[0].stato).toBe('in-corso');
   });
 
+  it('un compito già aperto non si blocca, anche se prima ne arriva uno nuovo', () => {
+    // Chi lavorava al secondo compito prima che il primo esistesse: il secondo resta aperto, il terzo no.
+    const voci = percorsoDi({ [PERCORSO[1]]: { fasi: 2, consigli: 0 } });
+    expect(voci[0].stato).toBe('da-cominciare');
+    expect(voci[1].stato).toBe('in-corso');
+    expect(voci[2].stato).toBe('bloccato');
+  });
+
   it('il voto non scende sotto 5 e la media ha un decimale', () => {
     expect(votoSeFinisce(0)).toBe(10);
     expect(votoSeFinisce(7)).toBe(5);

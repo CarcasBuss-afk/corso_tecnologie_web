@@ -78,6 +78,8 @@ describe('il catalogo', () => {
 
       it('le soluzioni rispettano le regole del corso', () => {
         const c = generaCompito(id, 42);
+        // Lo scontrino (Lezione 1) non ha pulsanti: niente funzioni da collegare.
+        if (!c.pagina.html.includes('<button')) return;
         for (const s of c.soluzioni) {
           const f = fattiJs(s);
           expect(f.funzioniAnonime).toBe(0);

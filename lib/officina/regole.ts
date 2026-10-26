@@ -40,13 +40,18 @@ export type VoceCompito = {
   voto: number | null;
 };
 
-/** Il percorso di un allievo: il primo compito è sempre aperto; ogni altro si sblocca quando il precedente è finito. */
+/**
+ * Il percorso di un allievo: il primo compito è sempre aperto; ogni altro si sblocca quando il
+ * precedente è finito. Un compito già aperto non si blocca più: se nel percorso entra un compito
+ * nuovo prima (lo scontrino della Lezione 1), chi era già al lavoro non perde niente.
+ */
 export function percorsoDi(lavori: Record<string, ProgressoCompito | undefined>): VoceCompito[] {
   let precedenteFinito = true;
   return PERCORSO.map((id) => {
+    const aperto = lavori[id] !== undefined;
     const l = lavori[id] ?? { fasi: 0, consigli: 0 };
     const finito = l.fasi >= fasiDi(id);
-    const stato: StatoCompito = finito ? 'finito' : !precedenteFinito ? 'bloccato' : l.fasi > 0 ? 'in-corso' : 'da-cominciare';
+    const stato: StatoCompito = finito ? 'finito' : !precedenteFinito && !aperto ? 'bloccato' : l.fasi > 0 ? 'in-corso' : 'da-cominciare';
     precedenteFinito = finito;
     return { id, stato, fasi: l.fasi, consigli: l.consigli, voto: finito ? votoSeFinisce(l.consigli) : null };
   });

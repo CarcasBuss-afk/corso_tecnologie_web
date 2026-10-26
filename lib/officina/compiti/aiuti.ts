@@ -74,6 +74,9 @@ export const visibile = (id: string, siVede: boolean, descrizione: string, hint:
 
 export const alertUguale = (uguale: string, descrizione: string, hint: string): Controllo => ({ controlla: 'alert', uguale, descrizione, hint });
 
+/** In console c'è una riga esattamente così (spazi normalizzati). */
+export const rigaConsole = (uguale: string, descrizione: string, hint: string): Controllo => ({ controlla: 'console', uguale, descrizione, hint });
+
 export const alertsQuanti = (quanti: number, descrizione: string, hint: string): Controllo => ({ controlla: 'alerts', quanti, descrizione, hint });
 
 export const domandaFatta = (almeno: number, descrizione: string, hint: string): Controllo => ({ controlla: 'prompt', almeno, descrizione, hint });

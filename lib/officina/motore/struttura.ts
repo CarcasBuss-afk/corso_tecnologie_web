@@ -18,15 +18,27 @@ const RICERCA = /^getElementById\(\s*(["'`])([^"'`]*)\1\s*\)/;
  * funzione (o un if), una a zero sta in alto.
  */
 export function ricercheGetElementById(js: string): Ricerca[] {
+  return analizza(js).ricerche;
+}
+
+/** Quanti commenti ci sono nel codice (di una riga con // o su più righe), fuori dalle stringhe. */
+export function contaCommenti(js: string): number {
+  return analizza(js).commenti;
+}
+
+function analizza(js: string): { ricerche: Ricerca[]; commenti: number } {
   const ricerche: Ricerca[] = [];
+  let commenti = 0;
   let profondita = 0;
   let i = 0;
   while (i < js.length) {
     const c = js[i];
     if (c === '/' && js[i + 1] === '/') {
+      commenti += 1;
       const fine = js.indexOf('\n', i);
       i = fine === -1 ? js.length : fine;
     } else if (c === '/' && js[i + 1] === '*') {
+      commenti += 1;
       const fine = js.indexOf('*/', i + 2);
       i = fine === -1 ? js.length : fine + 2;
     } else if (c === '"' || c === "'" || c === '`') {
@@ -51,13 +63,20 @@ export function ricercheGetElementById(js: string): Ricerca[] {
       i += 1;
     }
   }
-  return ricerche;
+  return { ricerche, commenti };
 }
 
 const elenca = (voci: string[]) => (voci.length === 1 ? voci[0] : `${voci.slice(0, -1).join(', ')} e ${voci[voci.length - 1]}`);
 
 /** Il messaggio per l'allievo se il codice non rispetta i controlli sul testo della fase; null se va bene. */
-export function controlloStruttura(fase: Pick<Fase, 'elementiInAlto'>, js: string): string | null {
+export function controlloStruttura(fase: Pick<Fase, 'elementiInAlto' | 'almenoCommenti'>, js: string): string | null {
+  if (fase.almenoCommenti) {
+    const n = contaCommenti(js);
+    if (n < fase.almenoCommenti) {
+      const quanti = n === 0 ? "non c'è nessun commento" : n === 1 ? "c'è un commento solo" : `ci sono ${n} commenti`;
+      return `Il programma funziona, ma nel codice ${quanti}: in questa fase ne servono almeno ${fase.almenoCommenti}.`;
+    }
+  }
   if (!fase.elementiInAlto) return null;
   const ricerche = ricercheGetElementById(js);
 

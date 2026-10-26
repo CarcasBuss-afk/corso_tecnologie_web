@@ -93,6 +93,25 @@ function messaggioStile(c: Extract<Controllo, { controlla: 'stile' }>, e: EsitoC
   return `${soggetto} è ${v(attuale)}, invece deve essere ${atteso}.`;
 }
 
+/* ------------------------------------------------------------------ console */
+
+const primaParola = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').trim().split(/\s+/)[0] ?? '';
+
+/** La console: se c'è una riga quasi uguale si dice che cosa la distingue, altrimenti che riga manca. */
+function messaggioConsole(c: Extract<Controllo, { controlla: 'console' }>, righe: string[]): string {
+  const atteso = c.uguale ?? c.contiene ?? '';
+  const riga = c.uguale !== undefined ? 'la riga ' : '';
+  if (righe.length === 0) return `Nella console non compare niente, invece ci deve essere ${riga}${v(atteso)}.`;
+  if (c.uguale === undefined) return `Nella console non c'è ${v(atteso)}.`;
+  for (const r of righe) {
+    const d = differenza(r, atteso);
+    if (d) return `${d}nella console c'è ${v(r)}, invece ci vuole ${v(atteso)}.`;
+  }
+  const simile = righe.find((r) => primaParola(r) !== '' && primaParola(r) === primaParola(atteso));
+  if (simile) return `Nella console c'è ${v(simile)}, invece ci vuole ${v(atteso)}.`;
+  return `Nella console manca la riga ${v(atteso)}.`;
+}
+
 /* ----------------------------------------------------------------- i clic */
 
 /** Il clic non arriva a nessuna funzione: è l'errore, qualunque cosa controllasse il passo dopo. */
@@ -155,7 +174,7 @@ export function messaggioControllo(c: Controllo, e: EsitoControllo): string {
       return `${n === 1 ? 'Compare 1 domanda' : `Compaiono ${n} domande`}, invece ne servono almeno ${c.almeno}.`;
     }
     case 'console':
-      return attuale === '(console vuota)' ? `Nella console non compare niente, invece ci deve essere ${v(c.contiene)}.` : `Nella console c'è ${v(attuale)}, ma non ${v(c.contiene)}.`;
+      return messaggioConsole(c, e.righe ?? []);
   }
 }
 

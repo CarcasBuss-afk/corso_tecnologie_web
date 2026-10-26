@@ -9,12 +9,14 @@ import { generaIscrizione } from './iscrizione';
 import { generaLampada } from './lampada';
 import { generaPizzeria } from './pizzeria';
 import { generaPorta } from './porta';
+import { generaScontrino } from './scontrino';
 import type { Compito, GeneratoreCompito, SchedaCompito } from './tipi';
 
 export type { Compito, SchedaCompito } from './tipi';
 export { COMPITO_PER_LEZIONE, eCompito, eEsame, ELENCO_COMPITI, fasiDi, lezioneCompito, SEZIONI, sezioneDi, titoloCompito, type CompitoId, type Sezione } from './elenco';
 
 const GENERATORI: Record<CompitoId, GeneratoreCompito> = {
+  scontrino: generaScontrino,
   campanello: generaCampanello,
   bacheca: generaBacheca,
   lampada: generaLampada,
