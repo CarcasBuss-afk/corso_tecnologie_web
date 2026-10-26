@@ -268,8 +268,9 @@ function Lavoro({ allievo, titolo, fasiTotali, lavoro, onChiudi }: { allievo: Al
               {lavoro.tutor.length} {lavoro.tutor.length === 1 ? 'domanda' : 'domande'} al tutor
             </p>
             <ol aria-label="conversazione" className="flex flex-col gap-2">
-              {lavoro.tutor.map((s, i) => (
-                <li key={i} className="rounded bg-black/30 p-2 text-sm">
+              {/* Dalla domanda più recente alla più vecchia. */}
+              {[...lavoro.tutor].reverse().map((s, i) => (
+                <li key={lavoro.tutor.length - i} className="rounded bg-black/30 p-2 text-sm">
                   <p className="text-(--color-testo-tenue)">
                     fase {s.fase}
                     {s.at && ` · ${s.at.toLocaleString('it-IT')}`}

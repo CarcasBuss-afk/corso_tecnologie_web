@@ -1,6 +1,7 @@
 'use client';
 /* Il tutor dell'Officina: una conversazione sul compito. Ogni domanda costa un punto e
- * l'allievo lo vede prima di mandarla; la domanda può essere lunga quanto vuole. */
+ * l'allievo lo vede prima di mandarla; la domanda può essere lunga quanto vuole. Sotto la
+ * casella, le domande già fatte, dalla più recente. */
 import { useState } from 'react';
 import { messaggioErrore, type Scambio } from '@/lib/officina/client';
 import Testo from './Testo';
@@ -60,22 +61,6 @@ export default function TutorChat({ scambi, votoSeFinisci, domandeRimaste, onChi
         </p>
       </div>
 
-      {scambi.length > 0 && (
-        <ol aria-label="conversazione con il tutor" className="flex flex-col gap-2">
-          {scambi.map((s, i) => (
-            <li key={i} className="flex flex-col gap-1">
-              <p className="self-end rounded-xl rounded-br-sm bg-black/40 px-3 py-2 text-[1.05rem]">
-                <span className="mr-2 text-xs text-(--color-testo-tenue)">fase {s.fase}</span>
-                {s.domanda || <i className="text-(--color-testo-tenue)">non so andare avanti</i>}
-              </p>
-              <p className="self-start rounded-xl rounded-bl-sm border border-(--color-giallo)/40 bg-(--color-giallo)/10 px-3 py-2 text-[1.05rem] whitespace-pre-line">
-                <Testo>{s.risposta}</Testo>
-              </p>
-            </li>
-          ))}
-        </ol>
-      )}
-
       {attivo && domandeRimaste === 0 && (
         <p className="rounded-xl border border-(--color-bordo) bg-black/30 p-3 text-(--color-testo-tenue)">
           Le domande per questo compito sono finite: da qui in poi vai avanti da solo, o chiedi al prof.
@@ -115,6 +100,23 @@ export default function TutorChat({ scambi, votoSeFinisci, domandeRimaste, onChi
             </p>
           )}
         </div>
+      )}
+
+      {scambi.length > 0 && (
+        <ol aria-label="conversazione con il tutor" className="flex flex-col gap-2">
+          {/* Dal più recente al più vecchio: la risposta appena arrivata è subito sotto la domanda. */}
+          {[...scambi].reverse().map((s, i) => (
+            <li key={scambi.length - i} className="flex flex-col gap-1">
+              <p className="self-end rounded-xl rounded-br-sm bg-black/40 px-3 py-2 text-[1.05rem]">
+                <span className="mr-2 text-xs text-(--color-testo-tenue)">fase {s.fase}</span>
+                {s.domanda || <i className="text-(--color-testo-tenue)">non so andare avanti</i>}
+              </p>
+              <p className="self-start rounded-xl rounded-bl-sm border border-(--color-giallo)/40 bg-(--color-giallo)/10 px-3 py-2 text-[1.05rem] whitespace-pre-line">
+                <Testo>{s.risposta}</Testo>
+              </p>
+            </li>
+          ))}
+        </ol>
       )}
     </section>
   );
