@@ -20,7 +20,7 @@ I FATTI MISURATI SUL CODICE sono esatti, contati da un analizzatore: non contrad
 
 Formato della risposta, senza altro testo:
 - prima riga: OK oppure NO
-- se NO, seconda riga: una frase sola in italiano, al massimo 40 parole, rivolta all'allievo (dai del tu), che dice che cosa non va e che cosa deve fare invece, senza scrivere codice (niente righe di programma, niente "scrivi così"). Puoi nominare function, addEventListener, prompt, Number, if e i nomi delle sue variabili.`;
+- se NO, seconda riga: una frase sola in italiano, al massimo 25 parole, rivolta all'allievo (dai del tu), che dice SOLO che cosa non rispetta la regola, come un messaggio di errore (per esempio: «il pulsante è collegato con una funzione freccia, la regola chiede una funzione con nome»). Non dire come si corregge, non dare consigli né esempi, non scrivere codice: a spiegare ci pensa il tutor. Puoi nominare function, addEventListener, onclick, prompt, Number, if e i nomi delle sue variabili.`;
 
 export interface ContestoGiudizio {
   consegna: string;
@@ -65,7 +65,7 @@ export function interpretaVerdetto(testo: string): Verdetto | null {
 export function hintGiudice(motivo: string, codiceAllievo = ''): string {
   const pulito = motivo.replace(/\s+/g, ' ').trim();
   const buono = pulito !== '' && !contieneCodice(pulito, codiceAllievo);
-  const spiegazione = buono ? pulito : 'rileggi la consegna: la pagina funziona, ma il codice non segue lo schema del corso';
+  const spiegazione = buono ? pulito : 'il codice non segue la regola della fase';
   return `La pagina fa la cosa giusta, ma il codice non è fatto come chiede la fase: ${spiegazione}`;
 }
 

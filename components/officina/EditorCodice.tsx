@@ -94,7 +94,7 @@ export default function EditorCodice({ linguaggio, valore, onChange, soloLettura
           fixedOverflowWidgets: true,
           quickSuggestions: { other: true, comments: false, strings: false },
           suggestOnTriggerCharacters: true,
-          acceptSuggestionOnEnter: 'off',
+          acceptSuggestionOnEnter: 'on',
           tabCompletion: 'on',
           autoClosingBrackets: 'always',
           autoClosingQuotes: 'always',

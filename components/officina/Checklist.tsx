@@ -2,7 +2,7 @@
 /* La prova mostrata, passo per passo: le azioni in grigio (che cosa fa il correttore), i
  * controlli con il segno di spunta che si accende mentre l'allievo scrive. Sotto, gli
  * errori JavaScript tradotti. */
-import { traduciErroreJs } from '@/lib/officina/motore/erroriJs';
+import { messaggioErrore } from '@/lib/officina/motore/messaggi';
 import { eControllo, type Azione, type EsitoProva, type Prova } from '@/lib/officina/motore/tipi';
 import Testo from './Testo';
 
@@ -65,7 +65,7 @@ export default function Checklist({ prova, esito, inCorso }: { prova: Prova; esi
           {errori.slice(0, 2).map((e, i) => (
             <li key={i} className="rounded-lg border border-red-500/40 bg-red-500/10 p-2 text-sm text-red-200">
               <span aria-hidden>⚠️ </span>
-              <Testo>{traduciErroreJs(e)}</Testo>
+              <Testo>{messaggioErrore(e, esito ?? {})}</Testo>
             </li>
           ))}
         </ul>

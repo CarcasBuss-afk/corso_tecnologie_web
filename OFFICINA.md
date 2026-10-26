@@ -55,9 +55,15 @@ sequenza di **passi**:
   scriva `red`, `#ff0000` o `rgb(255,0,0)`), se è `visibile`, che cosa ha detto l'ultimo
   `alert`, se un `prompt` è stato fatto, che cosa è finito in `console.log`.
 
-Ogni controllo porta il suo **hint**: dice dove guardare, non che cosa scrivere. Gli errori
-JavaScript (nome sbagliato, `getElementById` che non trova l'elemento, parentesi mancante)
-diventano hint in italiano. La prima prova è mostrata; le altre sono nascoste e hanno
+Quando un controllo non passa, l'allievo legge **l'errore fatto, in una frase**, come nel Giro
+(`lib/officina/motore/messaggi.ts`): «Il pulsante «Suona il campanello» non è collegato a
+nessuna funzione», «Compare l'alert «Arrivo subito», invece deve dire «Arrivo subito!»». Il
+messaggio nasce da quello che la pagina ha fatto davvero: il correttore annota gli
+`addEventListener` (collegato o no, a quale evento) e gli id che `getElementById` non trova.
+Niente consigli su come correggere: quello è il lavoro del tutor, che riceve anche la nota
+scritta a mano su ogni controllo (il campo `hint`, che l'allievo non vede). Anche il giudice
+dice solo che cosa non rispetta la regola. Gli errori JavaScript (nome sbagliato, parentesi
+mancante) diventano messaggi in italiano. La prima prova è mostrata; le altre sono nascoste e hanno
 risposte diverse: chi scrive il risultato a mano passa la prima e cade sulla seconda.
 
 Lo stesso script di correzione (`lib/officina/motore/correttore.ts`) gira:

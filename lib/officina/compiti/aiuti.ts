@@ -58,6 +58,8 @@ export const stile = (id: string, proprieta: string, valore: string | string[], 
   di: sel(id),
   proprieta,
   valore,
+  // Una famiglia di colori si dice a parole («un giallo»): elencarla non direbbe niente.
+  ...(Array.isArray(valore) && FAMIGLIE.has(valore) ? { atteso: FAMIGLIE.get(valore) } : {}),
   descrizione,
   hint,
 });
@@ -83,6 +85,13 @@ export const GIALLI = ['yellow', 'gold', '#ffff00', '#ffd700', '#ffeb3b', '#ffe1
 export const GRIGI = ['gray', 'grey', '#808080', 'darkgray', 'darkgrey', 'lightgray', 'lightgrey', 'silver', 'dimgray', 'dimgrey', '#999999', '#cccccc', '#aaaaaa', '#bbbbbb', '#888888'];
 export const VERDI = ['green', 'lime', 'limegreen', 'mediumseagreen', 'seagreen', 'forestgreen', 'darkgreen', '#008000', '#00ff00', '#2ecc71', '#27ae60', '#4caf50'];
 export const ROSSI = ['red', 'tomato', 'crimson', 'firebrick', 'darkred', 'orangered', '#ff0000', '#e74c3c', '#c0392b', '#f44336'];
+
+const FAMIGLIE = new Map<string[], string>([
+  [GIALLI, 'un giallo'],
+  [GRIGI, 'un grigio'],
+  [VERDI, 'un verde'],
+  [ROSSI, 'un rosso'],
+]);
 
 /** Il CSS di base di tutte le pagine dei compiti: pulito, con soli selettori di tag (come nel corso). */
 export const CSS_BASE = `body {

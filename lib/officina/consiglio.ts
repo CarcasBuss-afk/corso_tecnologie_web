@@ -37,7 +37,7 @@ function righeProva(p: EsitoProva, indice: number, nomeProva: string | undefined
   const righe = [`${titolo}: ${p.ok ? 'passa' : 'NON passa'}`];
   if (p.tempoScaduto) righe.push('- la pagina non ha risposto: un ciclo infinito');
   for (const e of p.errori) righe.push(`- ERRORE JAVASCRIPT: ${e} → ${traduciErroreJs(e)}`);
-  for (const c of p.controlli) righe.push(`- ${c.ok ? 'OK' : 'NO'} ${c.descrizione}${c.ok ? '' : ` (adesso: «${c.attuale ?? ''}»; hint automatico: ${hintControllo(c)})`}`);
+  for (const c of p.controlli) righe.push(`- ${c.ok ? 'OK' : 'NO'} ${c.descrizione}${c.ok ? '' : ` (adesso: «${c.attuale ?? ''}»; nota del compito, che l'allievo non vede: ${hintControllo(c)})`}`);
   if (p.alerts.length) righe.push(`- alert mostrati: ${p.alerts.map((a) => `«${a}»`).join(', ')}`);
   return righe;
 }

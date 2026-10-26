@@ -18,9 +18,30 @@ export const CORRETTORE_JS = `(function () {
 
   var O = {
     alerts: [], confirms: [], prompts: [], console: [], errori: [],
-    codaPrompt: [], codaConfirm: []
+    codaPrompt: [], codaConfirm: [], idMancanti: [], ultimoClic: null
   };
   window.__officina = O;
+
+  // Chi ascolta che cosa: serve a dire «il pulsante non è collegato» invece di «non compare
+  // niente». Si annota su ogni elemento gli eventi registrati con addEventListener.
+  var ET = window.EventTarget && window.EventTarget.prototype;
+  if (ET && ET.addEventListener) {
+    var aggiungiOriginale = ET.addEventListener;
+    ET.addEventListener = function (tipo, f, opzioni) {
+      try {
+        if (!this.__officinaEventi) Object.defineProperty(this, '__officinaEventi', { value: {}, enumerable: false });
+        var t = String(tipo);
+        this.__officinaEventi[t] = (this.__officinaEventi[t] || 0) + 1;
+      } catch (err) { /* un oggetto che non si lascia annotare: pazienza */ }
+      return aggiungiOriginale.call(this, tipo, f, opzioni);
+    };
+  }
+  var cercaId = document.getElementById;
+  document.getElementById = function (id) {
+    var r = cercaId.call(document, id);
+    if (!r && O.idMancanti.indexOf(String(id)) === -1) O.idMancanti.push(String(id));
+    return r;
+  };
 
   window.alert = function (m) { O.alerts.push(normalizzaTesto(m)); };
   window.prompt = function (m, predefinito) {
@@ -68,12 +89,28 @@ export const CORRETTORE_JS = `(function () {
   }
   function eColore(p) { return /color/i.test(p); }
 
+  /** Il clic arriva a una funzione? Sull'elemento, su un antenato (delega), sul documento o con onclick. */
+  function collegatoAlClic(el) {
+    var e = el;
+    while (e) {
+      if ((e.__officinaEventi && e.__officinaEventi.click) || typeof e.onclick === 'function') return true;
+      e = e.parentNode;
+    }
+    return Boolean(window.__officinaEventi && window.__officinaEventi.click) || typeof window.onclick === 'function';
+  }
+
   function azione(p) {
     if (p.fai === 'prompt') { O.codaPrompt = p.risposte.slice(); return null; }
     if (p.fai === 'confirm') { O.codaConfirm = p.risposte.slice(); return null; }
     if (p.fai === 'clic') {
       var el = trova(p.su);
       if (!el) return 'Non trovo l\\'elemento ' + nomeSelettore(p.su) + ' nella pagina';
+      var scritta = normalizzaTesto(el.textContent || el.value || '');
+      O.ultimoClic = {
+        pulsante: scritta || (el.id ? el.id : p.su),
+        collegato: collegatoAlClic(el),
+        eventi: el.__officinaEventi ? Object.keys(el.__officinaEventi) : []
+      };
       el.click();
       return null;
     }
@@ -90,11 +127,15 @@ export const CORRETTORE_JS = `(function () {
 
   function controllo(p) {
     var esito = { ok: false, descrizione: p.descrizione, hint: p.hint };
+    if (O.ultimoClic) esito.dopoClic = O.ultimoClic;
     var el;
+    if (p.di) {
+      el = trova(p.di);
+      if (!el) { esito.mancante = true; esito.attuale = 'elemento ' + nomeSelettore(p.di) + ' non trovato'; return esito; }
+      esito.elemento = el.tagName.toLowerCase();
+    }
     switch (p.controlla) {
       case 'testo': {
-        el = trova(p.di);
-        if (!el) { esito.attuale = 'elemento ' + nomeSelettore(p.di) + ' non trovato'; return esito; }
         var t = normalizzaTesto(el.textContent);
         esito.attuale = t;
         if (p.uguale !== undefined) esito.ok = t === normalizzaTesto(p.uguale);
@@ -102,16 +143,12 @@ export const CORRETTORE_JS = `(function () {
         return esito;
       }
       case 'html': {
-        el = trova(p.di);
-        if (!el) { esito.attuale = 'elemento ' + nomeSelettore(p.di) + ' non trovato'; return esito; }
         var h = el.innerHTML.replace(/\\s+/g, ' ').trim();
         esito.attuale = h;
         esito.ok = h.toLowerCase().indexOf(p.contiene.replace(/\\s+/g, ' ').trim().toLowerCase()) !== -1;
         return esito;
       }
       case 'stile': {
-        el = trova(p.di);
-        if (!el) { esito.attuale = 'elemento ' + nomeSelettore(p.di) + ' non trovato'; return esito; }
         var valore = stile(el, p.proprieta);
         var attesi = Array.isArray(p.valore) ? p.valore : [p.valore];
         var norm = eColore(p.proprieta) ? normalizzaColore : function (v) { return normalizzaTesto(v).toLowerCase(); };
@@ -121,8 +158,6 @@ export const CORRETTORE_JS = `(function () {
         return esito;
       }
       case 'visibile': {
-        el = trova(p.di);
-        if (!el) { esito.attuale = 'elemento ' + nomeSelettore(p.di) + ' non trovato'; return esito; }
         var v = visibile(el);
         esito.attuale = v ? 'visibile' : 'nascosto';
         esito.ok = v === p.visibile;
@@ -177,7 +212,10 @@ export const CORRETTORE_JS = `(function () {
     }
     var ok = O.errori.length === 0;
     for (var k = 0; k < controlli.length; k++) if (!controlli[k].ok) ok = false;
-    return { ok: ok, controlli: controlli, errori: O.errori.slice(), alerts: O.alerts.slice(), console: O.console.slice() };
+    var idPagina = [];
+    var conId = document.querySelectorAll('[id]');
+    for (var q = 0; q < conId.length; q++) idPagina.push(conId[q].id);
+    return { ok: ok, controlli: controlli, errori: O.errori.slice(), alerts: O.alerts.slice(), console: O.console.slice(), idMancanti: O.idMancanti.slice(), idPagina: idPagina };
   };
 
   window.addEventListener('message', function (e) {

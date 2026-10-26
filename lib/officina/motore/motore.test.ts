@@ -91,7 +91,7 @@ document.getElementById("btnRispondi").addEventListener("click", controlla);`;
     const v = valuta([QUIZ, nascosta], esiti);
     expect(v.promosso).toBe(false);
     expect(v.hint).toContain('rispondendo «3»');
-    expect(v.hint).toContain('Adesso: «Giusto!»');
+    expect(v.hint).toContain('Il paragrafo «esito» dice «Giusto!», invece deve dire «Sbagliato!».');
   });
 
   it('traduce un id sbagliato in un hint comprensibile', () => {
@@ -99,7 +99,7 @@ document.getElementById("btnRispondi").addEventListener("click", controlla);`;
     const esito = eseguiProvaServer({ ...PAGINA, js }, QUIZ);
     expect(esito.ok).toBe(false);
     const v = valuta([QUIZ], [esito]);
-    expect(v.hint).toMatch(/getElementById non ha trovato/);
+    expect(v.hint).toMatch(/^getElementById non trova nessun elemento con id «btnrispondi»: nella pagina gli id sono .*«btnRispondi»/);
   });
 
   it('traduce un errore di sintassi e un nome sbagliato', () => {

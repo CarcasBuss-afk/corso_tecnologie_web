@@ -34,11 +34,15 @@ export type Azione =
   /** Le risposte pronte per i prossimi confirm(). */
   | ({ fai: 'confirm'; risposte: boolean[] } & AzioneBase);
 
-/** Un controllo ha sempre la descrizione che l'allievo legge nella checklist e un hint per quando fallisce. */
+/**
+ * Un controllo ha sempre la descrizione che l'allievo legge nella checklist e una nota per il
+ * tutor. Il messaggio che l'allievo vede quando il controllo fallisce non si scrive a mano:
+ * lo costruisce messaggi.ts da quello che la pagina ha fatto davvero, come nel Giro.
+ */
 interface ControlloBase {
   /** Che cosa deve succedere, a parole: «Dopo il clic, il paragrafo dice "Ciao, Luca!"». */
   descrizione: string;
-  /** Dove guardare se non succede. Mai la riga da scrivere. */
+  /** Dove guardare se non succede: la legge il tutor, non l'allievo. Mai la riga da scrivere. */
   hint: string;
 }
 
@@ -48,7 +52,7 @@ export type Controllo =
   /** L'HTML interno di un elemento contiene un frammento (per i tag messi con innerHTML). */
   | ({ controlla: 'html'; di: string; contiene: string } & ControlloBase)
   /** Una proprietà dello stile calcolato; i colori valgono in qualunque notazione. Più valori = uno qualsiasi. */
-  | ({ controlla: 'stile'; di: string; proprieta: string; valore: string | string[] } & ControlloBase)
+  | ({ controlla: 'stile'; di: string; proprieta: string; valore: string | string[]; atteso?: string } & ControlloBase)
   /** L'elemento si vede (display e visibility suoi e dei suoi antenati). */
   | ({ controlla: 'visibile'; di: string; visibile: boolean } & ControlloBase)
   /** L'ultimo alert fatto dalla pagina. */
@@ -88,6 +92,21 @@ export interface EsitoControllo {
   hint: string;
   /** Che cosa c'è davvero (testo, valore, ultimo alert), per far vedere la differenza. */
   attuale?: string;
+  /** Il tag dell'elemento controllato («p», «div»), per chiamarlo per nome. */
+  elemento?: string;
+  /** L'elemento da controllare non c'è nella pagina. */
+  mancante?: boolean;
+  /** L'ultimo clic della prova prima di questo controllo: su che cosa e se c'era una funzione collegata. */
+  dopoClic?: Clic;
+}
+
+export interface Clic {
+  /** La scritta del pulsante («Suona il campanello»), o il suo id. */
+  pulsante: string;
+  /** C'era una funzione collegata al clic (addEventListener, anche su un antenato, oppure onclick). */
+  collegato: boolean;
+  /** Gli eventi che l'elemento ascolta davvero: «clik» dice più di «niente». */
+  eventi: string[];
 }
 
 export interface EsitoProva {
@@ -100,6 +119,10 @@ export interface EsitoProva {
   console: string[];
   /** La pagina non ha risposto in tempo: un ciclo infinito, di solito. */
   tempoScaduto?: boolean;
+  /** Gli id chiesti a getElementById che nella pagina non ci sono. */
+  idMancanti?: string[];
+  /** Gli id che la pagina ha davvero. */
+  idPagina?: string[];
 }
 
 export interface Valutazione {
