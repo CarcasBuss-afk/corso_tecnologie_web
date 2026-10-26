@@ -12,6 +12,7 @@ import EditorCodice from '@/components/officina/EditorCodice';
 import FestaFase, { fraseFesta, type Festa } from '@/components/officina/FestaFase';
 import SchedaCompito from '@/components/officina/SchedaCompito';
 import Testo from '@/components/officina/Testo';
+import TracciaIniziale from '@/components/officina/TracciaIniziale';
 import TutorChat from '@/components/officina/TutorChat';
 import { useAllievo } from '@/components/officina/useAllievo';
 import { useCorrezione } from '@/components/officina/useCorrezione';
@@ -32,6 +33,8 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
   /** Consegne sbagliate nella fase in corso, per la festa («al primo colpo»). */
   const [sbagliateFase, setSbagliateFase] = useState(0);
   const ultimaFrase = useRef<string | undefined>(undefined);
+  /** All'apertura si legge solo la traccia; il resto compare dopo «Ho letto». */
+  const [iniziato, setIniziato] = useState(false);
   const [scossa, setScossa] = useState(false);
 
   const carica = useCallback(async () => {
@@ -175,63 +178,69 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
         </section>
       )}
 
-      {festa && <FestaFase festa={festa} onAvanti={() => setFesta(null)} />}
+      {!iniziato && !c.finito ? (
+        <TracciaIniziale scheda={c.scheda} fase={Math.min(numeroFase, c.fasiTotali)} fasi={c.fasiTotali} onInizia={() => setIniziato(true)} />
+      ) : (
+        <>
+          {festa && <FestaFase festa={festa} onAvanti={() => setFesta(null)} />}
 
-      <SchedaCompito key={compitoId} scheda={c.scheda} fase={Math.min(numeroFase, c.fasiTotali)} fasi={c.fasiTotali} />
+          <SchedaCompito key={compitoId} scheda={c.scheda} fase={Math.min(numeroFase, c.fasiTotali)} fasi={c.fasiTotali} />
 
-      {c.fase && (
-        <section className={`rounded-2xl border border-(--color-bordo) bg-(--color-fondo-card) p-4 sm:p-5 ${scossa ? 'scuoti' : ''}`}>
-          <p className="mb-1 text-sm font-bold uppercase tracking-wide text-(--color-giallo)">Fase {numeroFase}: la consegna</p>
-          <h2 className="text-lg leading-snug">
-            <Testo>{c.fase.consegna}</Testo>
-          </h2>
-        </section>
-      )}
+          {c.fase && (
+            <section className={`rounded-2xl border border-(--color-bordo) bg-(--color-fondo-card) p-4 sm:p-5 ${scossa ? 'scuoti' : ''}`}>
+              <p className="mb-1 text-sm font-bold uppercase tracking-wide text-(--color-giallo)">Fase {numeroFase}: la consegna</p>
+              <h2 className="text-lg leading-snug">
+                <Testo>{c.fase.consegna}</Testo>
+              </h2>
+            </section>
+          )}
 
-      {/* La pagina e i controlli affiancati, sotto la consegna: l'editor sotto prende tutta la larghezza. */}
-      <div className={`grid items-start gap-4 ${prova && !c.finito ? 'lg:grid-cols-2' : ''}`}>
-        <Anteprima sorgente={sorgente} altezza="300px" />
-        {prova && !c.finito && <Checklist prova={prova} esito={esito} inCorso={inCorso} />}
-      </div>
-
-      <section aria-label="editor" className="flex flex-col gap-3">
-        <div className="flex flex-wrap items-center gap-1" role="tablist" aria-label="pannelli">
-          {(['js', 'html', 'css'] as Pannello[]).map((p) => (
-            <button
-              key={p}
-              role="tab"
-              aria-selected={pannello === p}
-              onClick={() => setPannello(p)}
-              className={`rounded-t-lg px-4 py-2 text-sm font-bold ${pannello === p ? 'bg-(--color-fondo-card) text-(--color-giallo)' : 'text-(--color-testo-tenue) hover:text-(--color-testo)'}`}
-            >
-              {p === 'js' ? '⚡ JavaScript' : p === 'html' ? '📄 HTML' : '🎨 CSS'}
-              {p !== 'js' && <span className="ml-1 text-xs font-normal">(dato)</span>}
-            </button>
-          ))}
-          <span className="ml-auto text-xs text-(--color-testo-tenue)">{pannello === 'js' ? 'il tuo codice va in fondo alla pagina, dentro <script>' : 'in sola lettura: leggi gli id che ti servono'}</span>
-        </div>
-        {pannello === 'js' && <EditorCodice linguaggio="javascript" valore={codice} onChange={setCodice} onConsegna={() => void consegna()} attivo={attivo} altezza="460px" />}
-        {pannello === 'html' && <EditorCodice linguaggio="html" valore={c.pagina.html} soloLettura altezza="460px" />}
-        {pannello === 'css' && <EditorCodice linguaggio="css" valore={c.pagina.css} soloLettura altezza="460px" />}
-        {!c.finito && (
-          <div className="flex flex-wrap items-center gap-3">
-            <button onClick={() => void consegna()} disabled={!attivo} className="rounded-lg bg-(--color-rosa) px-5 py-2.5 text-lg font-bold text-white hover:brightness-110 disabled:opacity-40">
-              {invio ? 'Controllo…' : 'Consegna la fase ▶'}
-            </button>
-            <span className="text-sm text-(--color-testo-tenue)">
-              oppure <kbd className="rounded bg-black/40 px-1.5 py-0.5 font-mono">Ctrl</kbd>+<kbd className="rounded bg-black/40 px-1.5 py-0.5 font-mono">Invio</kbd> nell&apos;editor
-            </span>
+          {/* La pagina e i controlli affiancati, sotto la consegna: l'editor sotto prende tutta la larghezza. */}
+          <div className={`grid items-start gap-4 ${prova && !c.finito ? 'lg:grid-cols-2' : ''}`}>
+            <Anteprima sorgente={sorgente} altezza="300px" />
+            {prova && !c.finito && <Checklist prova={prova} esito={esito} inCorso={inCorso} />}
           </div>
-        )}
-        {hint && (
-          <section role="status" className="rounded-xl border border-(--color-giallo)/40 bg-(--color-giallo)/10 p-4 text-[1.05rem]">
-            <span aria-hidden>💡 </span>
-            <Testo>{hint}</Testo>
-          </section>
-        )}
-      </section>
 
-      {!c.esame && <TutorChat scambi={c.tutor} votoSeFinisci={c.votoSeFinisci} domandeRimaste={c.domandeRimaste} onChiedi={chiedi} attivo={!c.finito && !c.classeChiusa} />}
+          <section aria-label="editor" className="flex flex-col gap-3">
+            <div className="flex flex-wrap items-center gap-1" role="tablist" aria-label="pannelli">
+              {(['js', 'html', 'css'] as Pannello[]).map((p) => (
+                <button
+                  key={p}
+                  role="tab"
+                  aria-selected={pannello === p}
+                  onClick={() => setPannello(p)}
+                  className={`rounded-t-lg px-4 py-2 text-sm font-bold ${pannello === p ? 'bg-(--color-fondo-card) text-(--color-giallo)' : 'text-(--color-testo-tenue) hover:text-(--color-testo)'}`}
+                >
+                  {p === 'js' ? '⚡ JavaScript' : p === 'html' ? '📄 HTML' : '🎨 CSS'}
+                  {p !== 'js' && <span className="ml-1 text-xs font-normal">(dato)</span>}
+                </button>
+              ))}
+              <span className="ml-auto text-xs text-(--color-testo-tenue)">{pannello === 'js' ? 'il tuo codice va in fondo alla pagina, dentro <script>' : 'in sola lettura: leggi gli id che ti servono'}</span>
+            </div>
+            {pannello === 'js' && <EditorCodice linguaggio="javascript" valore={codice} onChange={setCodice} onConsegna={() => void consegna()} attivo={attivo} altezza="460px" />}
+            {pannello === 'html' && <EditorCodice linguaggio="html" valore={c.pagina.html} soloLettura altezza="460px" />}
+            {pannello === 'css' && <EditorCodice linguaggio="css" valore={c.pagina.css} soloLettura altezza="460px" />}
+            {!c.finito && (
+              <div className="flex flex-wrap items-center gap-3">
+                <button onClick={() => void consegna()} disabled={!attivo} className="rounded-lg bg-(--color-rosa) px-5 py-2.5 text-lg font-bold text-white hover:brightness-110 disabled:opacity-40">
+                  {invio ? 'Controllo…' : 'Consegna la fase ▶'}
+                </button>
+                <span className="text-sm text-(--color-testo-tenue)">
+                  oppure <kbd className="rounded bg-black/40 px-1.5 py-0.5 font-mono">Ctrl</kbd>+<kbd className="rounded bg-black/40 px-1.5 py-0.5 font-mono">Invio</kbd> nell&apos;editor
+                </span>
+              </div>
+            )}
+            {hint && (
+              <section role="status" className="rounded-xl border border-(--color-giallo)/40 bg-(--color-giallo)/10 p-4 text-[1.05rem]">
+                <span aria-hidden>💡 </span>
+                <Testo>{hint}</Testo>
+              </section>
+            )}
+          </section>
+
+          {!c.esame && <TutorChat scambi={c.tutor} votoSeFinisci={c.votoSeFinisci} domandeRimaste={c.domandeRimaste} onChiedi={chiedi} attivo={!c.finito && !c.classeChiusa} />}
+        </>
+      )}
 
       {errore && (
         <section role="alert" className="rounded-xl border border-red-500/40 bg-red-500/10 p-4 text-red-200">

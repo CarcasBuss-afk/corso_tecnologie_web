@@ -1,22 +1,23 @@
 'use client';
 /* La scheda del compito di realtà: chi lo chiede, che cosa deve fare la pagina, i dati, e il
- * risultato finale punto per punto. Resta sopra l'editor per tutto il compito: è il
- * bersaglio, e nel compito di realtà il bersaglio si vede. */
+ * risultato finale punto per punto. Si legge all'apertura e resta sopra l'editor per tutto il
+ * compito: è il bersaglio, e nel compito di realtà il bersaglio si vede. */
 import { useState } from 'react';
 import type { SchedaCompito as Scheda } from '@/lib/officina/compiti/tipi';
 
-export default function SchedaCompito({ scheda, fase, fasi }: { scheda: Scheda; fase: number; fasi: number }) {
-  // Dalla seconda fase la scheda si richiude da sola: lo spazio serve al codice.
-  const [aperta, setAperta] = useState(fase === 1);
+export default function SchedaCompito({ scheda, fase, fasi, sempreAperta = false }: { scheda: Scheda; fase: number; fasi: number; sempreAperta?: boolean }) {
+  // Aperta e fissa sulla traccia iniziale (TracciaIniziale), che si legge prima di cominciare;
+  // nella pagina di lavoro parte chiusa, perché l'allievo l'ha appena letta: lo spazio serve al codice.
+  const [aperta, setAperta] = useState(sempreAperta);
   return (
     <section className="rounded-2xl border border-(--color-giallo)/40 bg-(--color-giallo)/5 p-4 sm:p-5">
-      <button type="button" onClick={() => setAperta((a) => !a)} aria-expanded={aperta} className="flex w-full items-center justify-between gap-3 text-left">
+      <button type="button" onClick={() => !sempreAperta && setAperta((a) => !a)} aria-expanded={aperta} disabled={sempreAperta} className="flex w-full items-center justify-between gap-3 text-left">
         <span>
           <span className="text-sm font-bold uppercase tracking-wide text-(--color-giallo)">Compito di realtà · {scheda.lezione}</span>
           <span className="block text-xl font-black">{scheda.titolo}</span>
         </span>
         <span className="text-sm text-(--color-testo-tenue)">
-          fase {fase} di {fasi} {aperta ? '▲' : '▼'}
+          fase {fase} di {fasi} {sempreAperta ? '' : aperta ? '▲' : '▼'}
         </span>
       </button>
 
