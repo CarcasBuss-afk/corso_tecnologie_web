@@ -367,6 +367,13 @@ export const moduli: Modulo[] = [
         durata: "2 ore",
         difficolta: "media",
       },
+      {
+        id: "8",
+        titolo: "Operatori Logici e Validazione",
+        slug: "lezione-8-operatori-logici",
+        durata: "2 ore",
+        difficolta: "media",
+      },
     ],
   },
   {
