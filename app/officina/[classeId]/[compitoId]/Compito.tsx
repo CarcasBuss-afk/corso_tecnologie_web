@@ -1,13 +1,15 @@
 'use client';
-/* Il compito di realtà, fase per fase: la scheda, la consegna della fase, l'editor con i
- * tre pannelli (HTML e CSS dati, JavaScript da scrivere), l'anteprima vera, la checklist che
- * si accende mentre si scrive, la consegna al server, il tutor. Da soli e senza fretta. */
-import { useCallback, useEffect, useMemo, useState } from 'react';
+/* Il compito di realtà, fase per fase: la scheda, la consegna della fase, l'anteprima vera e
+ * la checklist che si accende mentre si scrive (affiancate, sotto la consegna), l'editor a
+ * tutta larghezza con i tre pannelli (HTML e CSS dati, JavaScript da scrivere), la consegna
+ * al server con la festa a fase superata, il tutor. Da soli e senza fretta. */
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Accesso } from '@/components/officina/Accesso';
 import Anteprima from '@/components/officina/Anteprima';
 import Checklist from '@/components/officina/Checklist';
 import EditorCodice from '@/components/officina/EditorCodice';
+import FestaFase, { fraseFesta, type Festa } from '@/components/officina/FestaFase';
 import SchedaCompito from '@/components/officina/SchedaCompito';
 import Testo from '@/components/officina/Testo';
 import TutorChat from '@/components/officina/TutorChat';
@@ -26,7 +28,10 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
   const [errore, setErrore] = useState('');
   const [hint, setHint] = useState<string | null>(null);
   const [invio, setInvio] = useState(false);
-  const [promossa, setPromossa] = useState(false);
+  const [festa, setFesta] = useState<Festa | null>(null);
+  /** Consegne sbagliate nella fase in corso, per la festa («al primo colpo»). */
+  const [sbagliateFase, setSbagliateFase] = useState(0);
+  const ultimaFrase = useRef<string | undefined>(undefined);
   const [scossa, setScossa] = useState(false);
 
   const carica = useCallback(async () => {
@@ -57,13 +62,24 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
       if (!r.promosso) {
         setHint(r.hint);
         setC((p) => (p ? { ...p, errori: r.errori } : p));
+        setSbagliateFase((n) => n + 1);
         setScossa(true);
         setTimeout(() => setScossa(false), 520);
         return;
       }
       setHint(null);
-      setPromossa(true);
-      setTimeout(() => setPromossa(false), 1800);
+      const frase = fraseFesta(ultimaFrase.current);
+      ultimaFrase.current = frase;
+      setFesta({
+        fase: c.fasi + 1,
+        fasiTotali: c.fasiTotali,
+        finito: r.finito,
+        voto: r.voto,
+        tentativiSbagliati: sbagliateFase,
+        frase,
+        prossima: r.fase?.consegna ?? null,
+      });
+      setSbagliateFase(0);
       setC((p) =>
         p
           ? {
@@ -84,7 +100,7 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
     } finally {
       setInvio(false);
     }
-  }, [c, invio, classeId, compitoId, codice, carica]);
+  }, [c, invio, classeId, compitoId, codice, carica, sbagliateFase]);
 
   const chiedi = useCallback(
     async (domanda: string) => {
@@ -159,11 +175,7 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
         </section>
       )}
 
-      {promossa && (
-        <p role="status" className="entra rounded-2xl border border-(--color-verde)/50 bg-(--color-verde)/10 p-3 text-center text-lg font-bold text-(--color-verde)">
-          ✓ Fase superata! {c.finito ? 'Hai finito la pagina.' : `Avanti con la fase ${numeroFase}.`}
-        </p>
-      )}
+      {festa && <FestaFase festa={festa} onAvanti={() => setFesta(null)} />}
 
       <SchedaCompito key={compitoId} scheda={c.scheda} fase={Math.min(numeroFase, c.fasiTotali)} fasi={c.fasiTotali} />
 
@@ -176,49 +188,48 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
         </section>
       )}
 
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
-        <section aria-label="editor" className="flex flex-col gap-3">
-          <div className="flex flex-wrap items-center gap-1" role="tablist" aria-label="pannelli">
-            {(['js', 'html', 'css'] as Pannello[]).map((p) => (
-              <button
-                key={p}
-                role="tab"
-                aria-selected={pannello === p}
-                onClick={() => setPannello(p)}
-                className={`rounded-t-lg px-4 py-2 text-sm font-bold ${pannello === p ? 'bg-(--color-fondo-card) text-(--color-giallo)' : 'text-(--color-testo-tenue) hover:text-(--color-testo)'}`}
-              >
-                {p === 'js' ? '⚡ JavaScript' : p === 'html' ? '📄 HTML' : '🎨 CSS'}
-                {p !== 'js' && <span className="ml-1 text-xs font-normal">(dato)</span>}
-              </button>
-            ))}
-            <span className="ml-auto text-xs text-(--color-testo-tenue)">{pannello === 'js' ? 'il tuo codice va in fondo alla pagina, dentro <script>' : 'in sola lettura: leggi gli id che ti servono'}</span>
-          </div>
-          {pannello === 'js' && <EditorCodice linguaggio="javascript" valore={codice} onChange={setCodice} onConsegna={() => void consegna()} attivo={attivo} altezza="420px" />}
-          {pannello === 'html' && <EditorCodice linguaggio="html" valore={c.pagina.html} soloLettura altezza="420px" />}
-          {pannello === 'css' && <EditorCodice linguaggio="css" valore={c.pagina.css} soloLettura altezza="420px" />}
-          {!c.finito && (
-            <div className="flex flex-wrap items-center gap-3">
-              <button onClick={() => void consegna()} disabled={!attivo} className="rounded-lg bg-(--color-rosa) px-5 py-2.5 text-lg font-bold text-white hover:brightness-110 disabled:opacity-40">
-                {invio ? 'Controllo…' : 'Consegna la fase ▶'}
-              </button>
-              <span className="text-sm text-(--color-testo-tenue)">
-                oppure <kbd className="rounded bg-black/40 px-1.5 py-0.5 font-mono">Ctrl</kbd>+<kbd className="rounded bg-black/40 px-1.5 py-0.5 font-mono">Invio</kbd> nell&apos;editor
-              </span>
-            </div>
-          )}
-          {hint && (
-            <section role="status" className="rounded-xl border border-(--color-giallo)/40 bg-(--color-giallo)/10 p-4 text-[1.05rem]">
-              <span aria-hidden>💡 </span>
-              <Testo>{hint}</Testo>
-            </section>
-          )}
-        </section>
-
-        <aside className="flex flex-col gap-4">
-          <Anteprima sorgente={sorgente} altezza="300px" />
-          {prova && !c.finito && <Checklist prova={prova} esito={esito} inCorso={inCorso} />}
-        </aside>
+      {/* La pagina e i controlli affiancati, sotto la consegna: l'editor sotto prende tutta la larghezza. */}
+      <div className={`grid items-start gap-4 ${prova && !c.finito ? 'lg:grid-cols-2' : ''}`}>
+        <Anteprima sorgente={sorgente} altezza="300px" />
+        {prova && !c.finito && <Checklist prova={prova} esito={esito} inCorso={inCorso} />}
       </div>
+
+      <section aria-label="editor" className="flex flex-col gap-3">
+        <div className="flex flex-wrap items-center gap-1" role="tablist" aria-label="pannelli">
+          {(['js', 'html', 'css'] as Pannello[]).map((p) => (
+            <button
+              key={p}
+              role="tab"
+              aria-selected={pannello === p}
+              onClick={() => setPannello(p)}
+              className={`rounded-t-lg px-4 py-2 text-sm font-bold ${pannello === p ? 'bg-(--color-fondo-card) text-(--color-giallo)' : 'text-(--color-testo-tenue) hover:text-(--color-testo)'}`}
+            >
+              {p === 'js' ? '⚡ JavaScript' : p === 'html' ? '📄 HTML' : '🎨 CSS'}
+              {p !== 'js' && <span className="ml-1 text-xs font-normal">(dato)</span>}
+            </button>
+          ))}
+          <span className="ml-auto text-xs text-(--color-testo-tenue)">{pannello === 'js' ? 'il tuo codice va in fondo alla pagina, dentro <script>' : 'in sola lettura: leggi gli id che ti servono'}</span>
+        </div>
+        {pannello === 'js' && <EditorCodice linguaggio="javascript" valore={codice} onChange={setCodice} onConsegna={() => void consegna()} attivo={attivo} altezza="460px" />}
+        {pannello === 'html' && <EditorCodice linguaggio="html" valore={c.pagina.html} soloLettura altezza="460px" />}
+        {pannello === 'css' && <EditorCodice linguaggio="css" valore={c.pagina.css} soloLettura altezza="460px" />}
+        {!c.finito && (
+          <div className="flex flex-wrap items-center gap-3">
+            <button onClick={() => void consegna()} disabled={!attivo} className="rounded-lg bg-(--color-rosa) px-5 py-2.5 text-lg font-bold text-white hover:brightness-110 disabled:opacity-40">
+              {invio ? 'Controllo…' : 'Consegna la fase ▶'}
+            </button>
+            <span className="text-sm text-(--color-testo-tenue)">
+              oppure <kbd className="rounded bg-black/40 px-1.5 py-0.5 font-mono">Ctrl</kbd>+<kbd className="rounded bg-black/40 px-1.5 py-0.5 font-mono">Invio</kbd> nell&apos;editor
+            </span>
+          </div>
+        )}
+        {hint && (
+          <section role="status" className="rounded-xl border border-(--color-giallo)/40 bg-(--color-giallo)/10 p-4 text-[1.05rem]">
+            <span aria-hidden>💡 </span>
+            <Testo>{hint}</Testo>
+          </section>
+        )}
+      </section>
 
       {!c.esame && <TutorChat scambi={c.tutor} votoSeFinisci={c.votoSeFinisci} domandeRimaste={c.domandeRimaste} onChiedi={chiedi} attivo={!c.finito && !c.classeChiusa} />}
 
