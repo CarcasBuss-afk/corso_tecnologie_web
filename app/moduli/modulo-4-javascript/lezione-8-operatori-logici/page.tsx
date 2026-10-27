@@ -171,9 +171,9 @@ if (eta >= 8 && altezza >= 120) {
 <body>
   <h1>🌲 Parco Avventura</h1>
 
-  <label>Età</label>
+  <label for="eta">Età</label>
   <input type="number" id="eta">
-  <label>Altezza (cm)</label>
+  <label for="altezza">Altezza (cm)</label>
   <input type="number" id="altezza">
   <br>
   <button id="btnVerifica">Posso entrare?</button>
@@ -640,16 +640,16 @@ if (testo === "") {
   <div>
     <h1>🏆 Iscrizione al Torneo</h1>
 
-    <label>Nome</label>
+    <label for="nome">Nome</label>
     <input type="text" id="nome">
 
-    <label>Età (da 14 a 19 anni)</label>
+    <label for="eta">Età (da 14 a 19 anni)</label>
     <input type="number" id="eta">
 
-    <label>Password</label>
+    <label for="password">Password</label>
     <input type="password" id="password">
 
-    <label>Ripeti la password</label>
+    <label for="conferma">Ripeti la password</label>
     <input type="password" id="conferma">
 
     <button id="btnIscriviti">Iscriviti</button>
@@ -727,16 +727,16 @@ if (testo === "") {
   <div>
     <h1>🏆 Iscrizione al Torneo</h1>
 
-    <label>Nome</label>
+    <label for="nome">Nome</label>
     <input type="text" id="nome">
 
-    <label>Età (da 14 a 19 anni)</label>
+    <label for="eta">Età (da 14 a 19 anni)</label>
     <input type="number" id="eta">
 
-    <label>Password</label>
+    <label for="password">Password</label>
     <input type="password" id="password">
 
-    <label>Ripeti la password</label>
+    <label for="conferma">Ripeti la password</label>
     <input type="password" id="conferma">
 
     <button id="btnIscriviti">Iscriviti</button>
@@ -814,16 +814,16 @@ if (testo === "") {
   <div>
     <h1>🏆 Iscrizione al Torneo</h1>
 
-    <label>Nome</label>
+    <label for="nome">Nome</label>
     <input type="text" id="nome">
 
-    <label>Età (da 14 a 19 anni)</label>
+    <label for="eta">Età (da 14 a 19 anni)</label>
     <input type="number" id="eta">
 
-    <label>Password</label>
+    <label for="password">Password</label>
     <input type="password" id="password">
 
-    <label>Ripeti la password</label>
+    <label for="conferma">Ripeti la password</label>
     <input type="password" id="conferma">
 
     <button id="btnIscriviti">Iscriviti</button>
@@ -919,16 +919,16 @@ if (testo === "") {
   <div>
     <h1>🏆 Iscrizione al Torneo</h1>
 
-    <label>Nome</label>
+    <label for="nome">Nome</label>
     <input type="text" id="nome">
 
-    <label>Età (da 14 a 19 anni)</label>
+    <label for="eta">Età (da 14 a 19 anni)</label>
     <input type="number" id="eta">
 
-    <label>Password</label>
+    <label for="password">Password</label>
     <input type="password" id="password">
 
-    <label>Ripeti la password</label>
+    <label for="conferma">Ripeti la password</label>
     <input type="password" id="conferma">
 
     <button id="btnIscriviti">Iscriviti</button>
@@ -1028,16 +1028,16 @@ if (testo === "") {
   <div>
     <h1>🏆 Iscrizione al Torneo</h1>
 
-    <label>Nome</label>
+    <label for="nome">Nome</label>
     <input type="text" id="nome">
 
-    <label>Età (da 14 a 19 anni)</label>
+    <label for="eta">Età (da 14 a 19 anni)</label>
     <input type="number" id="eta">
 
-    <label>Password</label>
+    <label for="password">Password</label>
     <input type="password" id="password">
 
-    <label>Ripeti la password</label>
+    <label for="conferma">Ripeti la password</label>
     <input type="password" id="conferma">
 
     <button id="btnIscriviti">Iscriviti</button>

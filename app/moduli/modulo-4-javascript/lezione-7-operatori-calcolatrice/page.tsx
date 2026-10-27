@@ -198,9 +198,42 @@ console.log(Number(testo1) + Number(testo2));  // 8   ✅ sommati`}
           Per leggere cosa c&apos;è scritto dentro si usa <code className="bg-gray-100 px-2 py-1 rounded text-blue-600">.value</code>.
         </p>
 
+        <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mb-6">
+          <h3 className="font-bold text-blue-800 mb-2">🔁 Ripasso dal Modulo HTML</h3>
+          <p className="text-gray-700 mb-3">
+            Prima di andare avanti, prova a ricordare: <strong>come si scrive una casella per un numero, con la sua etichetta collegata?</strong>
+            {' '}Scrivila su un foglio o nell&apos;editor, poi controlla.
+          </p>
+          <details className="mb-4 bg-white rounded border border-blue-200 p-3">
+            <summary className="cursor-pointer font-semibold text-blue-800">Mostra la soluzione</summary>
+            <div className="mt-3 bg-gray-900 p-4 rounded font-mono text-sm space-y-1">
+              <p className="text-gray-100">&lt;label for=&quot;<span className="bg-yellow-300 text-gray-900 px-1 rounded">casella</span>&quot;&gt;Numero&lt;/label&gt;</p>
+              <p className="text-gray-100">&lt;input type=&quot;number&quot; id=&quot;<span className="bg-yellow-300 text-gray-900 px-1 rounded">casella</span>&quot;&gt;</p>
+            </div>
+            <p className="text-gray-700 text-sm mt-3">
+              Il <code className="bg-blue-100 px-1 rounded">for</code> del label e l&apos;<code className="bg-blue-100 px-1 rounded">id</code> della
+              casella sono <strong>la stessa parola</strong>: così, cliccando sulla scritta, il cursore va nella casella. E l&apos;id è anche il
+              nome con cui JavaScript la trova, come per i pulsanti.
+            </p>
+          </details>
+          <p className="text-gray-700 mb-3">
+            ⚠️ <strong>Niente <code className="bg-blue-100 px-1 rounded">&lt;form&gt;</code>, per ora.</strong> Se metti casella e pulsante dentro un
+            form, il clic sul pulsante <strong>invia il modulo e la pagina si ricarica</strong>: il risultato compare per un attimo e sparisce.
+            Basta lasciarli fuori, uno accanto all&apos;altro. Anche l&apos;attributo <code className="bg-blue-100 px-1 rounded">name</code> non serve:
+            JavaScript usa l&apos;id. Il form tornerà quando impareremo l&apos;evento di invio.
+          </p>
+          <p className="text-gray-700 text-sm">
+            Non ti ricordi i tipi di casella o il placeholder?{' '}
+            <a href="/moduli/modulo-1-html/lezione-9-form-input-base" className="text-blue-700 font-semibold underline hover:text-blue-900">
+              Ripassa la Lezione 9 HTML &quot;Form - Input Base&quot; →
+            </a>
+          </p>
+        </div>
+
         <div className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3 text-white">📘 Come Funziona</h3>
           <div className="bg-black/30 p-4 rounded border-2 border-white/30 space-y-1">
+            <p className="font-mono text-yellow-200">&lt;label for=&quot;casella&quot;&gt;Numero&lt;/label&gt;</p>
             <p className="font-mono text-yellow-200">&lt;input type=&quot;number&quot; id=&quot;casella&quot;&gt;</p>
             <p className="font-mono text-yellow-200">let testo = document.getElementById(&quot;casella&quot;).value;</p>
           </div>
@@ -278,6 +311,7 @@ let numero = Number(testo);`}
 <body>
   <h1>✖️2 Il Raddoppiatore</h1>
 
+  <label for="casella">Numero</label>
   <input type="number" id="casella" placeholder="Numero">
   <button id="btnRaddoppia">Raddoppia</button>
 
@@ -587,6 +621,7 @@ if (numero % 2 === 0) {
 <body>
   <h1>🎲 Pari o Dispari?</h1>
 
+  <label for="casella">Numero</label>
   <input type="number" id="casella" placeholder="Numero">
   <button id="btnControlla">Controlla</button>
 
@@ -825,6 +860,31 @@ function aumenta() {
               da 0 a ogni click e mostrerebbe <strong>sempre 1</strong>.
             </p>
           </div>
+
+          <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6">
+            <h3 className="font-bold text-red-800 mb-3">❌ Errore 5: Il risultato compare e sparisce</h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <p className="text-sm font-bold text-red-700 mb-1">Sbagliato</p>
+                <code className="block bg-white p-3 rounded border border-red-200 text-sm whitespace-pre-wrap">{`<form>
+  <label for="casella">Numero</label>
+  <input type="number" id="casella">
+  <button id="btnRaddoppia">Raddoppia</button>
+</form>`}</code>
+              </div>
+              <div>
+                <p className="text-sm font-bold text-green-700 mb-1">Giusto</p>
+                <code className="block bg-white p-3 rounded border border-green-200 text-sm whitespace-pre-wrap">{`<label for="casella">Numero</label>
+<input type="number" id="casella">
+<button id="btnRaddoppia">Raddoppia</button>`}</code>
+              </div>
+            </div>
+            <p className="text-gray-700 mt-3 text-sm">
+              Un pulsante dentro un <strong>&lt;form&gt;</strong> serve a inviare il modulo: al clic la funzione parte, ma subito dopo la pagina
+              <strong> si ricarica</strong> e torna come all&apos;inizio. Il risultato si vede per un attimo, poi sparisce. Togli il form: casella e
+              pulsante funzionano benissimo da soli.
+            </p>
+          </div>
         </div>
 
         <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded mt-6">
@@ -855,10 +915,10 @@ function aumenta() {
   <div>
     <h1>🍕 Pizzeria da Mario</h1>
 
-    <label>Pizze (7 € l'una)</label>
+    <label for="pizze">Pizze (7 € l'una)</label>
     <input type="number" id="pizze" value="0" min="0">
 
-    <label>Bibite (3 € l'una)</label>
+    <label for="bibite">Bibite (3 € l'una)</label>
     <input type="number" id="bibite" value="0" min="0">
 
     <button id="btnCalcola">Calcola il conto</button>
@@ -931,10 +991,10 @@ function aumenta() {
   <div>
     <h1>🍕 Pizzeria da Mario</h1>
 
-    <label>Pizze (7 € l'una)</label>
+    <label for="pizze">Pizze (7 € l'una)</label>
     <input type="number" id="pizze" value="0" min="0">
 
-    <label>Bibite (3 € l'una)</label>
+    <label for="bibite">Bibite (3 € l'una)</label>
     <input type="number" id="bibite" value="0" min="0">
 
     <button id="btnCalcola">Calcola il conto</button>
@@ -1007,10 +1067,10 @@ function aumenta() {
   <div>
     <h1>🍕 Pizzeria da Mario</h1>
 
-    <label>Pizze (7 € l'una)</label>
+    <label for="pizze">Pizze (7 € l'una)</label>
     <input type="number" id="pizze" value="0" min="0">
 
-    <label>Bibite (3 € l'una)</label>
+    <label for="bibite">Bibite (3 € l'una)</label>
     <input type="number" id="bibite" value="0" min="0">
 
     <button id="btnCalcola">Calcola il conto</button>
@@ -1097,10 +1157,10 @@ function aumenta() {
   <div>
     <h1>🍕 Pizzeria da Mario</h1>
 
-    <label>Pizze (7 € l'una)</label>
+    <label for="pizze">Pizze (7 € l'una)</label>
     <input type="number" id="pizze" value="0" min="0">
 
-    <label>Bibite (3 € l'una)</label>
+    <label for="bibite">Bibite (3 € l'una)</label>
     <input type="number" id="bibite" value="0" min="0">
 
     <button id="btnCalcola">Calcola il conto</button>
