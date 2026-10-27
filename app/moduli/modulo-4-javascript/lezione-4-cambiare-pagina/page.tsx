@@ -439,6 +439,37 @@ messaggio.innerHTML = "Benvenuto " + nomeUtente + "!";`}
           showLineNumbers
         />
 
+        <h3 className="text-xl font-bold mb-3 mt-8">🏷️ Tag e Variabili Insieme</h3>
+
+        <p className="text-lg mb-4">
+          Con <code className="bg-gray-100 px-1 rounded">innerHTML</code> puoi anche mettere un tag <strong>intorno a una variabile</strong>:
+          il tag di apertura e quello di chiusura sono due testi tra virgolette, e la variabile sta in mezzo, unita con il <code className="bg-gray-100 px-1 rounded">+</code>.
+        </p>
+
+        <CodeExample
+          title="Il nome in grassetto"
+          code={`let nome = prompt("Come ti chiami?");
+let messaggio = document.getElementById("messaggio");
+
+// testo + tag di apertura + variabile + tag di chiusura + testo
+messaggio.innerHTML = "Ciao " + "<strong>" + nome + "</strong>" + "!";
+
+// Di solito si scrive più corto, con il tag attaccato al testo:
+messaggio.innerHTML = "Ciao <strong>" + nome + "</strong>!";
+// Se nome è "Luca", nella pagina vedi: Ciao Luca! (con Luca in grassetto)`}
+          language="javascript"
+          showLineNumbers
+        />
+
+        <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded mt-6 mb-6">
+          <p className="font-bold text-yellow-800 mb-2">⚠️ Attenzione alle virgolette!</p>
+          <p className="text-gray-700">
+            I tag stanno <strong>dentro</strong> le virgolette, la variabile <strong>fuori</strong>.
+            Se scrivi <code className="bg-yellow-100 px-1 rounded">{'"Ciao <strong>nome</strong>!"'}</code> nella pagina compare la parola «nome», non il nome dell&apos;utente.
+            Funziona con tutti i tag di formattazione che conosci, per esempio <code className="bg-yellow-100 px-1 rounded">{'"<em>" + nome + "</em>"'}</code> per il corsivo.
+          </p>
+        </div>
+
         <h3 className="text-xl font-bold mb-3 mt-8">📄 Esempio con Prompt - Copia e Prova!</h3>
 
         <div className="grid md:grid-cols-2 gap-4 mb-6">

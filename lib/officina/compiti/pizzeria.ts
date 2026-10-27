@@ -76,7 +76,7 @@ export function generaPizzeria(seme: number): Compito {
     pannelli: ['js'],
     fasi: [
       {
-        consegna: `**Calcola il conto** legge le caselle delle pizze e delle bibite (id \`pizze\` e \`bibite\`) con \`.value\` e \`Number()\`, e scrive nel paragrafo del totale (id \`totale\`) \`Totale: N €\`, dove N è pizze × ${prezzoPizza} + bibite × ${prezzoBibita}.`,
+        consegna: `**Calcola il conto** legge le caselle delle pizze e delle bibite (id \`pizze\` e \`bibite\`) con \`.value\` e \`Number()\`, e scrive nel paragrafo del totale (id \`totale\`) \`Totale: N €\`, dove N è \`pizze * ${prezzoPizza} + bibite * ${prezzoBibita}\`.`,
         regola: `${REGOLE.treGesti} ${REGOLE.datiDalleCaselle}`,
         prove: [
           {
@@ -109,7 +109,7 @@ export function generaPizzeria(seme: number): Compito {
         ],
       },
       {
-        consegna: `**Dividi il conto** legge la casella delle persone (id \`persone\`) e scrive nel paragrafo della quota (id \`quota\`) \`A testa: N €\`, dove N è il totale (già scontato) diviso le persone. Il totale va ricordato in una variabile dichiarata **fuori** dalle funzioni, aggiornata da Calcola.`,
+        consegna: `**Dividi il conto** legge la casella delle persone (id \`persone\`) e scrive nel paragrafo della quota (id \`quota\`) \`A testa: N €\`, N è il totale (già scontato) diviso le persone. Il totale serve a due funzioni, quindi va in una variabile dichiarata **fuori**, in alto (\`let totale = 0;\`). Dentro Calcola la aggiorni **senza** \`let\`: \`totale = …\`. Con \`let\` ne creeresti una nuova, che vale solo dentro la funzione, e Dividi vedrebbe ancora 0. Per provare: prima Calcola, poi Dividi.`,
         regola: `${REGOLE.treGesti} ${REGOLE.datiDalleCaselle} Il totale si ricorda in una variabile fuori dalle funzioni (o si ricalcola dalle caselle): non vale un numero scritto a mano.`,
         prove: [
           {
@@ -128,7 +128,7 @@ export function generaPizzeria(seme: number): Compito {
         ],
       },
       {
-        consegna: `Il conto non sempre si divide alla pari. Con il resto \`%\`: se \`totale % persone\` non è 0, la quota dice \`Il conto non si divide alla pari\`; altrimenti come prima.`,
+        consegna: `Il conto non sempre si divide alla pari. Con il resto \`%\`: se il resto \`totale % persone\` è **diverso da** 0 (\`!==\`, Lezione 6), la quota dice \`Il conto non si divide alla pari\`; altrimenti come prima.`,
         regola: `${REGOLE.treGesti} La decisione la fa un if sul resto della divisione (%).`,
         prove: [
           ...(divideEsatto

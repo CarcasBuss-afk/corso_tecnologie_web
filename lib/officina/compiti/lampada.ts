@@ -56,7 +56,7 @@ div {
       risultatoFinale: [
         '«Accendi» colora la lampada di giallo e aggiorna il paragrafo di stato; «Spegni» la rimette grigia.',
         '«Cambia colore» chiede un colore e lo applica; «Cambia misura» chiede i pixel e li applica a larghezza e altezza.',
-        'Quando la lampada si spegne compare la scritta della buonanotte; quando si accende sparisce.',
+        'Con «Spegni» compare la scritta della buonanotte; con «Accendi» sparisce.',
         'Il codice è in ordine: ogni elemento sta in una variabile, cercato una volta sola.',
       ],
     },
@@ -64,7 +64,7 @@ div {
     pannelli: ['js'],
     fasi: [
       {
-        consegna: `Quando si clicca **Accendi**, la lampada (id \`lampada\`) diventa gialla (\`style.backgroundColor\`) e il paragrafo di stato (id \`stato\`) dice \`${ACCESA}\`.`,
+        consegna: `Quando si clicca **Accendi**, la lampada (id \`lampada\`) diventa gialla, con \`style.backgroundColor\`. In CSS i colori si scrivono **in inglese**: \`yellow\`, non \`giallo\`. Il paragrafo di stato (id \`stato\`) dice \`${ACCESA}\`, punto compreso.`,
         regola: REGOLE.treGesti,
         prove: [
           {
@@ -78,7 +78,7 @@ div {
         codiceIniziale: '// 1. Scrivi la funzione\n\n// 2. Collega il pulsante alla funzione\n',
       },
       {
-        consegna: `**Spegni** rimette la lampada grigia e lo stato a \`${SPENTA}\`. Seconda funzione, secondo collegamento. Accendi continua a funzionare.`,
+        consegna: `**Spegni** rimette la lampada grigia (\`gray\`) e lo stato a \`${SPENTA}\`. Seconda funzione, secondo collegamento. Accendi continua a funzionare.`,
         regola: `${REGOLE.treGesti} Ogni pulsante ha la sua funzione con nome.`,
         prove: [
           {
@@ -132,7 +132,7 @@ div {
         ],
       },
       {
-        consegna: `Quando la lampada si spegne compare la scritta della buonanotte (id \`buonanotte\`, nascosta all'inizio dal CSS): mettile \`style.display\` a \`block\`. Quando si accende, sparisce di nuovo (\`none\`).`,
+        consegna: `Quando si clicca **Spegni** compare la scritta della buonanotte (id \`buonanotte\`): impostale \`style.display\` a \`block\`. Quando si clicca **Accendi** sparisce di nuovo (\`none\`). All'apertura della pagina resta nascosta, come adesso.`,
         regola: `${REGOLE.treGesti} Nascondere e mostrare si fa con style.display.`,
         prove: [
           {

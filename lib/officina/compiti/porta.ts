@@ -110,7 +110,7 @@ export function generaPorta(seme: number): Compito {
         ],
       },
       {
-        consegna: `Il messaggio dell'età contiene gli anni: \`${puoi(etaOk)}\` oppure \`${giovane(etaNo)}\`. Il numero nel testo è la variabile, unita con il +.`,
+        consegna: `Ora il messaggio dell'età dice anche gli anni, esattamente così: \`${puoi(etaOk)}\` oppure \`${giovane(etaNo)}\`. Dopo i due punti si scrive minuscolo. Gli anni nel testo sono la variabile, unita con il \`+\`; il ${etaMinima} puoi scriverlo fisso.`,
         regola: `${REGOLE.treGesti} ${REGOLE.decisioneConIf} ${REGOLE.datiDalPrompt}`,
         prove: [
           {

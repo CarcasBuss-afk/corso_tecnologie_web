@@ -1,6 +1,6 @@
 /* Compito 6 · Il modulo d'iscrizione (Modulo 4, lezione 8).
- * Idea nuova: gli operatori logici. || per i campi vuoti, && per un intervallo, || fra due
- * valori accettati, la negazione di un confirm, e infine il riepilogo con i colori. */
+ * Idea nuova: gli operatori logici. || per i campi vuoti e per l'età fuori intervallo, && fra
+ * due classi escluse (!== e !==), la negazione di un confirm, e infine il riepilogo con i colori. */
 import { clic, conferme, CSS_BASE, ROSSI, scrivi, stile, testo, VERDI } from './aiuti';
 import { generatore, REGOLE, scegli, scegliDue, type Compito } from './tipi';
 
@@ -69,26 +69,26 @@ export function generaIscrizione(seme: number): Compito {
         codiceIniziale: '// 1. Scrivi la funzione\n\n// 2. Collega il pulsante alla funzione\n',
       },
       {
-        consegna: `Se i campi ci sono, l'età (con \`Number()\`) deve stare fra ${etaMin} e ${etaMax} compresi: \`>= ${etaMin}\` **e** \`<= ${etaMax}\`, con \`&&\`. Se no, l'esito dice \`${ETA}\`. Usa \`else if\`: prima i campi vuoti, poi l'età, poi l'iscrizione.`,
-        regola: `${REGOLE.treGesti} L'intervallo dell'età si controlla con due confronti uniti da && (o il contrario con ||).`,
+        consegna: `Se i campi ci sono, si controlla l'età, trasformata con \`Number()\`: va bene da ${etaMin} a ${etaMax} compresi. Il messaggio di errore serve quando l'età è **fuori**, cioè minore di ${etaMin} **oppure** maggiore di ${etaMax} (\`< ${etaMin}\` con \`||\` e \`> ${etaMax}\`). In quel caso l'esito dice \`${ETA}\`. L'ordine è: \`if\` per i campi vuoti, \`else if\` per l'età sbagliata, \`else\` per l'iscrizione.`,
+        regola: `${REGOLE.treGesti} L'età fuori intervallo si controlla con due confronti uniti da || (< min || > max), oppure l'intervallo giusto con && (>= min && <= max).`,
         prove: [
           { nome: 'con Luca, 16 anni', passi: [...compila('Luca', etaOk, classe1), clic('btnIscrivi', 'Iscriviti'), testo('esito', ricevuta('Luca'), `Con 16 anni dice «${ricevuta('Luca')}»`, 'Con l\'età giusta si arriva al ramo dell\'iscrizione.')] },
           { nome: 'con Anna, 11 anni', passi: [...compila('Anna', '11', classe1), clic('btnIscrivi', 'Iscriviti'), testo('esito', ETA, `Con 11 anni dice «${ETA}»`, `Chi ha meno di ${etaMin} anni non passa il controllo >= ${etaMin}.`)] },
-          { nome: `con Marco, ${etaMax + 3} anni`, passi: [...compila('Marco', String(etaMax + 3), classe1), clic('btnIscrivi', 'Iscriviti'), testo('esito', ETA, `Con ${etaMax + 3} anni dice «${ETA}»`, `Serve anche il controllo <= ${etaMax}: due confronti uniti da &&.`)] },
+          { nome: `con Marco, ${etaMax + 3} anni`, passi: [...compila('Marco', String(etaMax + 3), classe1), clic('btnIscrivi', 'Iscriviti'), testo('esito', ETA, `Con ${etaMax + 3} anni dice «${ETA}»`, `Serve anche il controllo sull'età troppo alta: eta < ${etaMin} || eta > ${etaMax}.`)] },
           { nome: 'senza il nome', passi: [...compila('', etaOk, classe1), clic('btnIscrivi', 'Iscriviti'), testo('esito', COMPILA, `Senza nome dice ancora «${COMPILA}»`, 'Il controllo dei campi vuoti resta il primo.')] },
         ],
       },
       {
-        consegna: `La classe (id \`classe\`) deve essere \`${classe1}\` **oppure** \`${classe2}\` (due confronti con \`===\` uniti da \`||\`). Se no, l'esito dice \`${CLASSE}\`. Un altro \`else if\`, dopo quello dell'età.`,
-        regola: `${REGOLE.treGesti} Le due classi ammesse si controllano con due confronti completi uniti da ||: non vale «classe === "${classe1}" || "${classe2}"».`,
+        consegna: `La classe (id \`classe\`) deve essere \`${classe1}\` o \`${classe2}\`. Il messaggio di errore serve quando non è **nessuna** delle due, cioè quando è diversa da \`${classe1}\` **e** diversa da \`${classe2}\`: due confronti con \`!==\` uniti da \`&&\`. In quel caso l'esito dice \`${CLASSE}\`. È un altro \`else if\`, dopo quello dell'età. L'iscrizione resta nell'\`else\` finale.`,
+        regola: `${REGOLE.treGesti} Le due classi ammesse si controllano con due confronti completi: classe !== "${classe1}" && classe !== "${classe2}" per l'errore, oppure classe === "${classe1}" || classe === "${classe2}" per l'iscrizione. Non vale un confronto a metà come «classe === "${classe1}" || "${classe2}"».`,
         prove: [
           { nome: `con Luca, 16 anni, ${classe1}`, passi: [...compila('Luca', etaOk, classe1), clic('btnIscrivi', 'Iscriviti'), testo('esito', ricevuta('Luca'), `Con la ${classe1} dice «${ricevuta('Luca')}»`, 'Con una classe ammessa si arriva all\'iscrizione.')] },
-          { nome: `con Sara, 16 anni, ${classe2}`, passi: [...compila('Sara', etaOk, classe2), clic('btnIscrivi', 'Iscriviti'), testo('esito', ricevuta('Sara'), `Anche con la ${classe2} dice «${ricevuta('Sara')}»`, 'Entrambe le classi vanno accettate: || fra i due confronti.')] },
-          { nome: `con Omar, 16 anni, ${classeNo}`, passi: [...compila('Omar', etaOk, classeNo), clic('btnIscrivi', 'Iscriviti'), testo('esito', CLASSE, `Con la ${classeNo} dice «${CLASSE}»`, 'Una classe diversa dalle due ammesse deve finire nel messaggio di errore: ogni confronto va scritto per intero, con classe === da entrambe le parti.')] },
+          { nome: `con Sara, 16 anni, ${classe2}`, passi: [...compila('Sara', etaOk, classe2), clic('btnIscrivi', 'Iscriviti'), testo('esito', ricevuta('Sara'), `Anche con la ${classe2} dice «${ricevuta('Sara')}»`, 'Entrambe le classi vanno accettate: l\'errore scatta solo se la classe è diversa da tutte e due (!== ... && !== ...).')] },
+          { nome: `con Omar, 16 anni, ${classeNo}`, passi: [...compila('Omar', etaOk, classeNo), clic('btnIscrivi', 'Iscriviti'), testo('esito', CLASSE, `Con la ${classeNo} dice «${CLASSE}»`, 'Una classe diversa dalle due ammesse deve finire nel messaggio di errore: ogni confronto va scritto per intero, con classe da entrambe le parti (classe !== ... && classe !== ...).')] },
         ],
       },
       {
-        consegna: `Prima di iscrivere, la pagina chiede con \`confirm\` «Hai letto il regolamento?». Se la risposta **non** è vera (\`!\`, oppure \`=== false\`), l'esito dice \`${REGOLAMENTO}\`. Il controllo va dopo quello della classe.`,
+        consegna: `Se tutto il resto va bene, **prima** di iscrivere la pagina chiede con \`confirm\` \`Hai letto il regolamento?\` e salva la risposta in una variabile. Quindi la domanda va dentro l'\`else\` finale. Lì dentro scrivi un altro \`if\`: se la risposta **non** è vera (\`!risposta\`, oppure \`risposta === false\`), l'esito dice \`${REGOLAMENTO}\`. Altrimenti l'iscrizione, come prima.`,
         regola: `${REGOLE.treGesti} La risposta del confirm sta in una variabile e si controlla negata (! o === false).`,
         prove: [
           { nome: 'con Luca che preme OK', passi: [...compila('Luca', etaOk, classe1), conferme(true), clic('btnIscrivi', 'Iscriviti'), testo('esito', ricevuta('Luca'), `Con OK dice «${ricevuta('Luca')}»`, 'Con il regolamento letto si arriva all\'iscrizione.')] },
@@ -153,10 +153,10 @@ document.getElementById("btnIscrivi").addEventListener("click", iscrivi);`,
     esito.innerHTML = "${COMPILA}";
   } else if (eta < ${etaMin} || eta > ${etaMax}) {
     esito.innerHTML = "${ETA}";
-  } else if (classe === "${classe1}" || classe === "${classe2}") {
-    esito.innerHTML = "Iscrizione ricevuta, " + nome + "!";
-  } else {
+  } else if (classe !== "${classe1}" && classe !== "${classe2}") {
     esito.innerHTML = "${CLASSE}";
+  } else {
+    esito.innerHTML = "Iscrizione ricevuta, " + nome + "!";
   }
 }
 

@@ -26,7 +26,7 @@ export function generaScontrino(seme: number): Compito {
   const prodotti = [riga('Caffè', caffe), riga('Cornetto', cornetto), riga('Spremuta', spremuta)];
 
   const html = `<h1>🧾 Cassa del ${bar}</h1>
-<p>Lo scontrino lo stampa JavaScript nella <strong>console</strong>: la vedi sotto la pagina (nel browser, con F12).</p>`;
+<p>Lo scontrino lo stampa JavaScript nella <strong>console</strong>: qui la vedi sotto l'anteprima (nel browser vero si apre con F12).</p>`;
 
   const intestazione = rigaConsole(bar, `In console c'è la riga «${bar}»`, 'Il testo va fra virgolette dentro console.log, scritto esattamente così.');
   const listino = prodotti.map((p) => rigaConsole(p, `In console c'è la riga «${p}»`, 'console.log con tre valori separati da virgole: il nome fra virgolette, il prezzo come numero senza virgolette, poi "€" fra virgolette.'));
@@ -59,17 +59,17 @@ export function generaScontrino(seme: number): Compito {
         codiceIniziale: '\n',
       },
       {
-        consegna: `Sotto il nome, il listino: tre righe, una per prodotto, \`${prodotti.join('`, `')}\`. Ogni riga è un \`console.log\` con **tre valori separati da virgole**: il nome fra virgolette, il prezzo come **numero senza virgolette**, poi \`"€"\`. JavaScript mette da solo uno spazio fra i valori.`,
+        consegna: `Sotto il nome, il listino: tre righe, una per prodotto, \`${prodotti.join('`, `')}\`. Ogni riga è un \`console.log\` con **tre valori separati da virgole**: il nome fra virgolette, il prezzo come **numero senza virgolette**, poi \`"€"\`. JavaScript mette da solo uno spazio fra i valori. Scrivi i nomi come qui, con la maiuscola e l'accento di «Caffè». Il simbolo € si fa con **AltGr + E**.`,
         regola: 'Ogni riga del listino è un console.log con più valori separati da virgole: il nome del prodotto fra virgolette e il prezzo come numero senza virgolette. Non vale il prezzo scritto dentro il testo fra virgolette.',
         prove: [{ passi: [intestazione, ...listino] }],
       },
       {
-        consegna: `Il tavolo ha ordinato ${caffeOrdinati} caffè, un cornetto e una spremuta. Stampa la riga \`Totale N €\`, dove N lo **calcola JavaScript** dentro il \`console.log\`: il prezzo del caffè per quanti caffè, più il cornetto, più la spremuta (i prezzi sono nei dati della scheda). I numeri non vanno fra virgolette; JavaScript scrive i decimali con il punto.`,
+        consegna: `Il tavolo ha ordinato ${caffeOrdinati} caffè, un cornetto e una spremuta. Stampa la riga \`Totale N €\` come quelle del listino, con tre valori separati da virgole: \`"Totale"\`, poi **il calcolo**, poi \`"€"\`. Il calcolo lo fa JavaScript: il prezzo del caffè per ${caffeOrdinati}, più il cornetto, più la spremuta (i prezzi sono nei dati della scheda). Attento: i decimali si scrivono con il punto, \`1.5\`. Con la virgola, \`1,5\`, JavaScript vede due numeri diversi.`,
         regola: 'Il totale lo calcola JavaScript: dentro il console.log c\'è l\'operazione con i prezzi (con * e +), non il risultato scritto a mano.',
         prove: [{ passi: [intestazione, ...listino, rigaTotale] }],
       },
       {
-        consegna: `I due amici dividono il conto: stampa \`A testa N €\`, dove N è il totale diviso 2, calcolato da JavaScript. Attento: la somma va fra **parentesi tonde** prima di dividere, come in matematica.`,
+        consegna: `I due amici dividono il conto: stampa \`A testa N €\`. Riscrivi **tutto il calcolo del totale** fra parentesi tonde e dividilo per 2: \`(… + … + …) / 2\`. Non vale scrivere a mano il totale già calcolato.`,
         regola: 'Anche la quota a testa la calcola JavaScript: l\'operazione del totale fra parentesi, divisa per 2. Non vale il numero scritto a mano.',
         prove: [{ passi: [intestazione, ...listino, rigaTotale, rigaQuota] }],
       },

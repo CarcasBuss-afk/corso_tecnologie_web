@@ -3,13 +3,15 @@
  * del docente): i generatori, con le prove nascoste e le soluzioni di riferimento, restano
  * nel bundle del server (index.ts). Un test controlla che titoli e lezioni combacino. */
 
-export type CompitoId = 'scontrino' | 'campanello' | 'bacheca' | 'lampada' | 'porta' | 'pizzeria' | 'iscrizione';
+export type CompitoId = 'scontrino' | 'campanello' | 'citofono' | 'tabellone' | 'bacheca' | 'lampada' | 'porta' | 'pizzeria' | 'iscrizione';
 
 /** Titolo, lezione e numero di fasi di ogni compito (le fasi: di solito 5, una in più dove si riordina il codice). */
 export const TITOLI: Record<CompitoId, { titolo: string; lezione: string; fasi: number }> = {
   scontrino: { titolo: 'Lo scontrino del bar', lezione: 'Modulo 4 · Lezione 1', fasi: 5 },
   campanello: { titolo: 'Il campanello del negozio', lezione: 'Modulo 4 · Lezioni 2 e 3', fasi: 5 },
+  citofono: { titolo: 'Il citofono del condominio', lezione: 'Modulo 4 · Lezioni 2 e 3 (ripasso)', fasi: 5 },
   bacheca: { titolo: 'La bacheca della classe', lezione: 'Modulo 4 · Lezione 4', fasi: 5 },
+  tabellone: { titolo: 'Il tabellone del torneo', lezione: 'Modulo 4 · Lezioni 2, 3 e 4 (ripasso)', fasi: 5 },
   lampada: { titolo: 'La lampada da comodino', lezione: 'Modulo 4 · Lezione 5', fasi: 6 },
   porta: { titolo: 'La porta del club', lezione: 'Modulo 4 · Lezione 6', fasi: 6 },
   pizzeria: { titolo: 'La cassa della pizzeria', lezione: 'Modulo 4 · Lezione 7', fasi: 5 },
@@ -27,7 +29,7 @@ export interface Sezione {
 
 /** Le sezioni del percorso, nell'ordine. Una sezione vuota si vede: dice che dopo c'è altro. */
 export const SEZIONI: Sezione[] = [
-  { id: 'js-basi', titolo: 'JavaScript: le basi', compiti: ['scontrino', 'campanello', 'bacheca', 'lampada', 'porta', 'pizzeria', 'iscrizione'] },
+  { id: 'js-basi', titolo: 'JavaScript: le basi', compiti: ['scontrino', 'campanello', 'citofono', 'bacheca', 'tabellone', 'lampada', 'porta', 'pizzeria', 'iscrizione'] },
   { id: 'js-funzioni', titolo: 'JavaScript: funzioni e dati', compiti: [] },
 ];
 
@@ -49,14 +51,17 @@ export function sezioneDi(id: CompitoId): Sezione {
   return SEZIONI.find((s) => s.compiti.includes(id)) ?? SEZIONI[0];
 }
 
-/** Il compito che allena una lezione del Modulo 4 (per il collegamento «Allenati» in fondo alla lezione). */
-export const COMPITO_PER_LEZIONE: Record<string, CompitoId> = {
-  'lezione-1-primo-javascript': 'scontrino',
-  'lezione-2-pulsanti-funzioni': 'campanello',
-  'lezione-3-dialoghi-utente': 'campanello',
-  'lezione-4-cambiare-pagina': 'bacheca',
-  'lezione-5-cambiare-stili': 'lampada',
-  'lezione-6-decisioni-quiz': 'porta',
-  'lezione-7-operatori-calcolatrice': 'pizzeria',
-  'lezione-8-operatori-logici': 'iscrizione',
+/**
+ * I compiti che allenano una lezione del Modulo 4 (per il collegamento «Allenati» in fondo alla
+ * lezione), nell'ordine: il compito base e, dove c'è, quello di rinforzo con qualcosa in più.
+ */
+export const COMPITI_PER_LEZIONE: Record<string, CompitoId[]> = {
+  'lezione-1-primo-javascript': ['scontrino'],
+  'lezione-2-pulsanti-funzioni': ['campanello'],
+  'lezione-3-dialoghi-utente': ['campanello', 'citofono'],
+  'lezione-4-cambiare-pagina': ['bacheca', 'tabellone'],
+  'lezione-5-cambiare-stili': ['lampada'],
+  'lezione-6-decisioni-quiz': ['porta'],
+  'lezione-7-operatori-calcolatrice': ['pizzeria'],
+  'lezione-8-operatori-logici': ['iscrizione'],
 };

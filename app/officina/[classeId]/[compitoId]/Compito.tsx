@@ -21,6 +21,12 @@ import type { Sorgente } from '@/lib/officina/motore/tipi';
 
 type Pannello = 'js' | 'html' | 'css';
 
+/** Sotto ogni consegna: come si leggono i segnaposto, le domande libere e i testi da copiare. */
+const COME_LEGGERE =
+  'ℹ️ Le parole in MAIUSCOLO (NOME, N, ETÀ…) non vanno scritte: al loro posto va il valore vero, come nell\'esempio. ' +
+  'Le domande di `prompt` e `confirm` le scegli tu, se la consegna non le dà. ' +
+  'Il testo nei riquadri come `questo` va scritto identico: maiuscole, spazi e punteggiatura compresi.';
+
 export function Compito({ classeId, compitoId }: { classeId: string; compitoId: string }) {
   const { stato, messaggio, accediGoogle, accediProva, esci } = useAllievo();
   const [c, setC] = useState<CompitoAperto | null>(null);
@@ -192,6 +198,9 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
               <h2 className="text-lg leading-snug">
                 <Testo>{c.fase.consegna}</Testo>
               </h2>
+              <p className="mt-3 border-t border-(--color-bordo) pt-2 text-sm text-(--color-testo-tenue)">
+                <Testo>{COME_LEGGERE}</Testo>
+              </p>
             </section>
           )}
 

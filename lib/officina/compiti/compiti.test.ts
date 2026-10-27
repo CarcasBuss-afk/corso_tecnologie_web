@@ -4,7 +4,7 @@ import { fattiJs } from '../motore/fatti';
 import { controlloStruttura } from '../motore/struttura';
 import { eControllo } from '../motore/tipi';
 import { valuta } from '../motore/valuta';
-import { COMPITO_PER_LEZIONE, eCompito, ESAMI, fasiDi, TITOLI } from './elenco';
+import { COMPITI_PER_LEZIONE, eCompito, ESAMI, fasiDi, TITOLI } from './elenco';
 import { ELENCO_COMPITI, generaCompito, SEZIONI, type CompitoId } from './index';
 
 const SEMI = [1, 7, 42, 1234, 98765, 2026];
@@ -44,7 +44,7 @@ describe('il catalogo', () => {
       expect(TITOLI[id].lezione, id).toBe(scheda.lezione);
       expect(ESAMI.has(id), id).toBe(Boolean(scheda.esame));
     }
-    for (const id of Object.values(COMPITO_PER_LEZIONE)) expect(eCompito(id)).toBe(true);
+    for (const id of Object.values(COMPITI_PER_LEZIONE).flat()) expect(eCompito(id)).toBe(true);
   });
 
   for (const id of ELENCO_COMPITI) {

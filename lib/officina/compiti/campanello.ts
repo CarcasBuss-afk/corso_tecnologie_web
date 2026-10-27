@@ -40,7 +40,7 @@ export function generaCampanello(seme: number): Compito {
     pannelli: ['js'],
     fasi: [
       {
-        consegna: 'Quando si clicca **Suona il campanello**, la pagina mostra un `alert` con `Arrivo subito!`. Scrivi una funzione con nome e collegala al pulsante con `addEventListener`.',
+        consegna: 'Quando si clicca **Suona il campanello**, la pagina mostra un `alert` con `Arrivo subito!`. Scrivi una funzione, dandole un nome scelto da te (per esempio `suona`), e collegala al pulsante con `addEventListener`.',
         regola: REGOLE.treGesti,
         prove: [
           {
@@ -54,7 +54,7 @@ export function generaCampanello(seme: number): Compito {
         codiceIniziale: '// 1. Scrivi la funzione\n\n// 2. Collega il pulsante alla funzione\n',
       },
       {
-        consegna: 'Prima di rispondere, il campanello chiede il nome con `prompt` e lo mette in una variabile. Poi l\'alert dice `Arrivo subito, NOME!` (se il cliente scrive Luca: `Arrivo subito, Luca!`).',
+        consegna: 'Ora, al clic, il campanello **prima** chiede il nome con `prompt` e lo mette in una variabile. **Poi** l\'alert di prima cambia: invece di `Arrivo subito!` dice `Arrivo subito, NOME!` (se il cliente scrive Luca: `Arrivo subito, Luca!`). L\'alert resta uno solo.',
         regola: `${REGOLE.treGesti} ${REGOLE.datiDalPrompt}`,
         prove: [
           {
@@ -78,7 +78,7 @@ export function generaCampanello(seme: number): Compito {
         ],
       },
       {
-        consegna: `Il nome del negozio sta in una \`const\` chiamata come vuoi, con il valore \`${negozio}\`. L'alert ora dice \`${saluto('NOME')}\` usando la costante (per Luca: \`${saluto('Luca')}\`).`,
+        consegna: `Il nome del negozio va in una \`const\`, con il nome che vuoi, scritta **in alto, fuori dalla funzione**, con il valore \`${negozio}\`. L'alert ora dice \`${saluto('NOME')}\` e usa la costante unita con il \`+\` (per Luca: \`${saluto('Luca')}\`).`,
         regola: `${REGOLE.treGesti} ${REGOLE.datiDalPrompt} Il nome del negozio sta in una costante (const) e nel messaggio entra la costante, non il testo ripetuto.`,
         prove: [
           {
@@ -114,7 +114,7 @@ export function generaCampanello(seme: number): Compito {
         ],
       },
       {
-        consegna: 'Dopo il saluto, il campanello chiede con `confirm` se il cliente vuole ricevere le offerte, salva la risposta in una variabile e mostra un secondo alert: `Offerte: true` se ha premuto OK, `Offerte: false` se ha premuto Annulla.',
+        consegna: 'Dopo l\'alert del saluto, il campanello chiede con `confirm` se il cliente vuole ricevere le offerte e salva la risposta in una variabile. Poi mostra un secondo alert: il testo `Offerte: ` unito alla variabile. `confirm` dà `true` se si preme OK e `false` se si preme Annulla, quindi l\'alert dirà da solo `Offerte: true` o `Offerte: false`. Non serve un `if`.',
         regola: `${REGOLE.treGesti} La risposta del confirm sta in una variabile e finisce nell'alert: non valgono due alert scritti a mano.`,
         prove: [
           {

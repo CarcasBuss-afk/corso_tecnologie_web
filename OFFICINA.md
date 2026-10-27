@@ -86,7 +86,9 @@ risponde, la consegna passa (fail-open) e resta nei log.
 
 ## 4. Il percorso JavaScript
 
-Una sezione, «JavaScript: le basi», un compito per lezione del Modulo 4, **una sola idea
+Una sezione, «JavaScript: le basi», un compito per lezione del Modulo 4 e, subito dopo, un
+**compito di rinforzo** sugli stessi concetti con qualcosa in più o un po' più lungo (per ora il
+citofono dopo il campanello; la mappa è `COMPITI_PER_LEZIONE` in `compiti/elenco.ts`), **una sola idea
 nuova per compito**, cinque fasi che fanno crescere la stessa pagina. La lampada e la porta
 ne hanno una sesta: la pagina funziona già e si **riordina il codice** (Lezione 4, «anche i
 pulsanti in una variabile»): ogni elemento in una variabile, cercato una volta sola in alto,
@@ -104,7 +106,9 @@ il JavaScript.
 |---|---|---|---|
 | 0 | Lo scontrino del bar | L1 | `console.log` con testi e numeri, calcoli con `+ * /` e parentesi, commenti: lo scontrino in console |
 | 1 | Il campanello del negozio | L2-L3 | funzione con nome + `addEventListener`; `alert`, `prompt`, `let` |
+| 1 bis | Il citofono del condominio | L2-L3 (rinforzo) | le stesse idee del campanello con qualcosa in più: tre pulsanti, due alert con un prompt in mezzo, `console.log`, `const` in un altro pulsante |
 | 2 | La bacheca della classe | L4 | `innerHTML` / `textContent`: il risultato va in pagina |
+| 2 bis | Il tabellone del torneo | L2-L4 (rinforzo) | un clic che cambia due elementi, due `prompt` nella stessa riga, `<em>` intorno a una variabile, `const` e `confirm` nella pagina, il codice riordinato con le variabili |
 | 3 | La lampada da comodino | L5 | `.style`: colori, dimensioni, `display`; poi il codice in ordine con le variabili |
 | 4 | La porta del club | L6 | `if` / `else` / `else if`, `Number()`, confronti; poi il codice in ordine |
 | 5 | La cassa della pizzeria | L7 | `.value`, operatori, `%`, il contatore fuori dalla funzione |

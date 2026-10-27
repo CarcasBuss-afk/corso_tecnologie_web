@@ -319,6 +319,25 @@ console.log("Sono circa", 15 * 365, "giorni!");`}
             se scrivi <code className="bg-yellow-100 px-1 rounded">15</code> è un numero che puoi usare nei calcoli!
           </p>
         </div>
+
+        <h3 className="text-xl font-bold mb-3 mt-8">🔢 Le Parentesi, come in Matematica</h3>
+
+        <p className="text-lg mb-4">
+          JavaScript segue le stesse regole della matematica: <strong>prima moltiplicazioni e divisioni, poi addizioni e sottrazioni</strong>.
+          Se vuoi fare prima un&apos;addizione, mettila tra <strong>parentesi tonde</strong>.
+        </p>
+
+        <CodeExample
+          title="Prima le parentesi"
+          code={`console.log(2 + 3 * 4);    // 14: prima 3 * 4, poi + 2
+console.log((2 + 3) * 4);  // 20: prima 2 + 3, poi * 4
+
+// Due pizze da 6 € e una bibita da 2 €, divise fra 2 amici
+console.log(2 * 6 + 2 / 2);    // 13: sbagliato! Divide solo la bibita
+console.log((2 * 6 + 2) / 2);  // 7: giusto, ognuno paga 7 €`}
+          language="javascript"
+          showLineNumbers
+        />
       </section>
 
       {/* Esercizio Guidato */}

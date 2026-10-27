@@ -97,7 +97,7 @@ export function generaBacheca(seme: number): Compito {
         ],
       },
       {
-        consegna: `**Cancella** rimette nell'avviso il testo iniziale \`${VUOTO}\` e cambia il titolo (id \`titolo\`) in \`Bacheca della ${classe} (vuota)\`.`,
+        consegna: `**Cancella** rimette nell'avviso il testo iniziale \`${VUOTO}\` e cambia il titolo (id \`titolo\`) in \`Bacheca della ${classe} (vuota)\`. Il nuovo titolo va scritto **senza** la 📌.`,
         regola: `${REGOLE.treGesti}`,
         prove: [
           {
@@ -111,7 +111,7 @@ export function generaBacheca(seme: number): Compito {
         ],
       },
       {
-        consegna: '**Nuovo avviso** fa una seconda domanda, «Chi lo scrive?», e mette nel paragrafo della firma (id `firma`) il testo `Scritto da NOME`. **Cancella** svuota anche la firma (testo vuoto) e rimette il titolo a `Bacheca della ' + classe + '`.',
+        consegna: '**Nuovo avviso** fa una seconda domanda, «Chi lo scrive?», e mette nel paragrafo della firma (id `firma`) il testo `Scritto da NOME`. **Cancella** svuota anche la firma, dandole un testo vuoto (`""`), e rimette il titolo a `Bacheca della ' + classe + '`, sempre senza 📌.',
         regola: `${REGOLE.treGesti} ${REGOLE.datiDalPrompt} Due prompt, due variabili.`,
         prove: [
           {
