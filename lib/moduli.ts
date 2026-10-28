@@ -374,6 +374,13 @@ export const moduli: Modulo[] = [
         durata: "2 ore",
         difficolta: "media",
       },
+      {
+        id: "9",
+        titolo: "Funzioni con Parametri e Return",
+        slug: "lezione-9-funzioni-parametri-return",
+        durata: "2 ore",
+        difficolta: "media",
+      },
     ],
   },
   {

@@ -1,13 +1,13 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 23 Ottobre 2026 - Sessione 29 Lezione 8 Operatori Logici e Validazione
+**Ultimo aggiornamento:** 28 Ottobre 2026 - Lezione 9 Funzioni con Parametri e Return
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
 
 ---
 
-## 📌 STATO ATTUALE DEL PROGETTO (aggiornato al 23 Ottobre 2026)
+## 📌 STATO ATTUALE DEL PROGETTO (aggiornato al 28 Ottobre 2026)
 
 > Sezione di riepilogo da leggere per prima. I changelog delle sessioni sotto sono lo storico (in ordine non cronologico: la Sessione più recente è la 29, in fondo al file).
 
@@ -30,7 +30,7 @@
 | 1. HTML | 18 | ✅ Completo |
 | 2. CSS | 14 | ✅ Completo |
 | 3. Progetto Intermedio | 4 | ✅ Completo |
-| 4. JavaScript | 8 di 20 | 🔄 In corso (prossima: **L9 Funzioni con Parametri e Return**) |
+| 4. JavaScript | 9 di 20 | 🔄 In corso (prossima: **L10 Altri Eventi**) |
 | 5. Progetto Finale | 0 | 📋 Da fare |
 | 6. Strumenti Moderni | 0 | 📋 Da fare |
 
@@ -40,7 +40,7 @@
 - **JavaScript:** schema in 3 passi (id nel pulsante → funzione con nome → `addEventListener`), mai `onclick` o JS dentro i tag HTML, id dei pulsanti con prefisso `btn`, script in fondo al `<body>`.
 - **L'id non va collegato al CSS:** negli esempi il CSS usa selettori di tag o classi, mai `#id`.
 - **Tailwind 4:** trasparenze con `bg-white/20`, mai `bg-opacity-*` (vedi `DIPENDENZE.md`).
-- **Coerenza didattica:** nessun concetto usato prima di essere insegnato; riepilogo "Comandi JavaScript Totali Imparati" aggiornato in ogni lezione (dopo L8: 18 comandi).
+- **Coerenza didattica:** nessun concetto usato prima di essere insegnato; riepilogo "Comandi JavaScript Totali Imparati" aggiornato in ogni lezione (dopo L9: 19 comandi).
 
 ### ⚠️ Questioni aperte
 - Il link "Moduli" dell'header punta a `/moduli`, che non esiste (404): da far puntare a `/manuale#moduli` o creare la pagina.
@@ -7788,8 +7788,8 @@ Eliminare `onclick` dalle lezioni JavaScript e usare un unico schema per collega
 |---|---------|------------------------|-------|
 | L7 | Operatori e Calcolatrice | `+ - * / %`, `++ --`, `input.value` (ripasso di `Number()`) | ✅ Pubblicata |
 | L8 | Operatori Logici e Validazione | `&&`, `\|\|`, `!` | ✅ Pubblicata |
-| L9 | Funzioni con Parametri e Return | parametri, `return`, funzioni che chiamano funzioni | ⏭️ Prossima |
-| L10 | Altri Eventi | `input`, `change`, `keydown`, `submit`, `event.preventDefault()` | 📋 Da fare |
+| L9 | Funzioni con Parametri e Return | parametri, `return`, funzioni che chiamano funzioni | ✅ Pubblicata |
+| L10 | Altri Eventi | `input`, `change`, `keydown`, `submit`, `event.preventDefault()` | ⏭️ Prossima |
 | L11 | Manipolare Classi CSS | `classList.add/remove/toggle/contains` | 📋 Da fare |
 | L12 | Array - Le Liste | `[]`, `push()`, `length`, `[indice]` | 📋 Da fare |
 
