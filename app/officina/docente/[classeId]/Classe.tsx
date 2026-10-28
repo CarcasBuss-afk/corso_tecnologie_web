@@ -34,7 +34,39 @@ function lavoroDa(grezzo: Record<string, unknown>): LavoroVisto {
       risposta: (s.risposta as string) ?? '',
       at: data(s.at),
     })),
+    giudice: ((grezzo.giudice ?? []) as Array<Record<string, unknown>>).map((s) => ({
+      fase: ((s.fase as number) ?? 0) + 1,
+      esito: (s.esito as string) ?? '',
+      motivo: (s.motivo as string) ?? '',
+      at: data(s.at),
+    })),
   };
+}
+
+const ESITI_GIUDICE: Record<string, { etichetta: string; colore: string }> = {
+  OK: { etichetta: '✅ giudice: OK', colore: 'text-green-300' },
+  NO: { etichetta: '⛔ giudice: NO', colore: 'text-red-300' },
+  CONTROLLO: { etichetta: '⛔ controllo sul codice', colore: 'text-red-300' },
+  GUASTO: { etichetta: '⚠️ giudice non disponibile, promossa senza giudizio', colore: 'text-orange-300' },
+};
+
+/** I giudizi di una fase, dal più vecchio: un NO seguito da un OK racconta la correzione. */
+function GiudiziFase({ giudizi }: { giudizi: LavoroVisto['giudice'] }) {
+  if (giudizi.length === 0) return null;
+  return (
+    <ul aria-label="giudizi sul codice" className="mt-1 flex flex-col gap-0.5 text-xs">
+      {giudizi.map((g, i) => {
+        const e = ESITI_GIUDICE[g.esito] ?? { etichetta: g.esito, colore: '' };
+        return (
+          <li key={i} className={e.colore}>
+            {e.etichetta}
+            {g.at && <span className="text-(--color-testo-tenue)"> · {g.at.toLocaleString('it-IT')}</span>}
+            {g.motivo && <span className="block text-(--color-testo)">{g.motivo}</span>}
+          </li>
+        );
+      })}
+    </ul>
+  );
 }
 
 function scarica(nome: string, contenuto: string) {
@@ -228,7 +260,7 @@ function Cella({ v }: { v: VoceCompito }) {
   );
 }
 
-/** Il lavoro di un allievo su un compito: codice fase per fase, bozza, conversazione. */
+/** Il lavoro di un allievo su un compito: codice fase per fase con i giudizi, bozza, conversazione. */
 function Lavoro({ allievo, titolo, fasiTotali, lavoro, onChiudi }: { allievo: AllievoVisto; titolo: string; fasiTotali: number; lavoro: LavoroVisto | null; onChiudi: () => void }) {
   const fasi = lavoro ? Object.entries(lavoro.codice).sort((a, b) => Number(a[0]) - Number(b[0])) : [];
   return (
@@ -254,6 +286,7 @@ function Lavoro({ allievo, titolo, fasiTotali, lavoro, onChiudi }: { allievo: Al
               <details key={k} open={Number(k) === fasi.length - 1} className="mb-1">
                 <summary className="cursor-pointer text-sm">Fase {Number(k) + 1}</summary>
                 <pre className="overflow-x-auto rounded bg-black/40 p-2 font-mono text-sm text-(--color-giallo)">{codice}</pre>
+                <GiudiziFase giudizi={lavoro.giudice.filter((g) => g.fase === Number(k) + 1)} />
               </details>
             ))}
             {lavoro.bozza && (
@@ -262,6 +295,8 @@ function Lavoro({ allievo, titolo, fasiTotali, lavoro, onChiudi }: { allievo: Al
                 <pre className="overflow-x-auto rounded bg-black/40 p-2 font-mono text-sm">{lavoro.bozza}</pre>
               </details>
             )}
+            {/* I giudizi della fase in corso, che non ha ancora un codice promosso. */}
+            {lavoro.fasi < fasiTotali && <GiudiziFase giudizi={lavoro.giudice.filter((g) => g.fase === lavoro.fasi + 1)} />}
           </div>
           <div>
             <p className="mb-1 text-sm font-bold text-(--color-testo-tenue)">

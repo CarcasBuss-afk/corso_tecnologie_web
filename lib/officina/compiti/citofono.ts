@@ -94,8 +94,9 @@ export function generaCitofono(seme: number): Compito {
         ],
       },
       {
-        consegna: `Due novità. **1 · Portineria** (id \`btnPortineria\`): il nome del condominio, \`${condominio}\`, va in una \`const\` in alto, fuori dalle funzioni. Il pulsante mostra un alert con \`${portineria}\`, con la costante unita al testo. **2 · Il registro:** nella funzione dell'interno 1, **dopo** l'alert «arrivo subito», aggiungi un \`console.log\` con \`${chiamata('NOME')}\`.`,
+        consegna: `Due novità. **1 · Portineria** (id \`btnPortineria\`): **come prima riga del codice**, sopra le funzioni, scrivi una \`const\` che contiene **solo** il nome del condominio, **senza** la parola «Condominio» (il nome della costante lo scegli tu), per esempio \`const CONDOMINIO = "${condominio}";\`. Il pulsante mostra un alert con \`${portineria}\`, fatto di pezzi uniti con il \`+\`: il testo \`Condominio \`, la costante e il resto \`${portineria.slice(`Condominio ${condominio}`.length)}\`. **2 · Il registro:** nella funzione dell'interno 1, **dopo** l'alert «arrivo subito», aggiungi un \`console.log\` con \`${chiamata('NOME')}\`.`,
         regola: `${REGOLE.treGesti} ${REGOLE.datiDalPrompt} Il nome del condominio sta in una costante (const) e nel messaggio entra la costante, non il testo ripetuto.`,
+        scrittoUnaVolta: { testo: condominio, cosa: 'il nome del condominio' },
         prove: [
           {
             nome: 'rispondendo «Luca»',
@@ -117,6 +118,7 @@ export function generaCitofono(seme: number): Compito {
       {
         consegna: `Il portone: in fondo alla funzione dell'interno 1, dopo il \`console.log\`, chiedi con \`confirm\` \`Apro il portone?\` e salva la risposta in una variabile. Poi mostra un **terzo alert**: \`Portone aperto: \` unito alla variabile. Con OK dice \`${portone(true)}\`, con Annulla \`${portone(false)}\`.`,
         regola: `${REGOLE.treGesti} La risposta del confirm sta in una variabile e finisce nell'alert: non valgono due alert scritti a mano.`,
+        scrittoUnaVolta: { testo: condominio, cosa: 'il nome del condominio' },
         prove: [
           {
             nome: 'rispondendo «Luca» e premendo OK',

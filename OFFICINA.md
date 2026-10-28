@@ -37,7 +37,7 @@ girare anche sul server.
 | Che cosa si corregge | l'output di `print` | **la pagina che ne risulta**: testi, stili, finestre `alert`/`prompt`, dopo clic simulati |
 | Interprete | micro-interprete TypeScript | il **browser** (iframe nel client, **jsdom** sul server) |
 | Prove nascoste | altre risposte alle `input()` | altre risposte ai `prompt()` e altri valori nelle caselle |
-| Giudice anti-furbo | Haiku con i fatti misurati sul codice | uguale, con i fatti misurati sul JavaScript |
+| Giudice anti-furbo | Haiku con i fatti misurati sul codice | Sonnet, con i fatti misurati sul JavaScript |
 
 Tutto il resto è identico: login Google del dominio della scuola, classi scelte da un elenco,
 percorso con i compiti sbloccati uno alla volta, fasi che fanno crescere lo stesso programma,
@@ -77,12 +77,32 @@ Lo stesso script di correzione (`lib/officina/motore/correttore.ts`) gira:
 I **parametri** di ogni compito (nomi, prezzi, colori, soglie) escono da un seme fatto con
 l'uid dell'allievo e l'id del compito: il vicino non può copiare i testi.
 
-Il **giudice** (Haiku) legge il codice promosso, la regola a parole della fase e i fatti
+Il **giudice** (Sonnet 5.5) legge il codice promosso, la regola a parole della fase e i fatti
 misurati (quante funzioni con nome, quanti `addEventListener`, `prompt`, `if`, `Number()`,
 funzioni anonime, `onclick`) e dice OK o NO. Le regole del corso che fa rispettare: schema
 in tre passi (id → funzione con nome → `addEventListener`), niente funzioni anonime, i dati
-arrivano dal `prompt` o dalle caselle, non sono scritti nel programma. Se il modello non
-risponde, la consegna passa (fail-open) e resta nei log.
+arrivano dal `prompt` o dalle caselle, non sono scritti nel programma, e la forma che la
+regola chiede esplicitamente (una costante usata nel messaggio, non riscritta a mano). Se il
+modello non risponde, la consegna passa (fail-open) e resta nei log.
+
+Fino al 28 ottobre 2026 il giudice era Haiku, con un prompt che bocciava solo le frodi di un
+elenco. Un allievo ha passato la fase della `const` del campanello con la costante dichiarata e
+il nome del negozio riscritto a mano nell'alert. Alla prova (3 ripetizioni per caso) Haiku
+lasciava passare la costante non usata 3 volte su 3, Sonnet la fermava sempre; con il prompt
+attuale nessuno dei due ha bocciato una delle 94 soluzioni di riferimento (47 fasi, due semi).
+Costo: circa un terzo di centesimo a consegna promossa, uno o due secondi di attesa.
+
+Le forme che si possono contare non dipendono dal modello: i **controlli sul testo del
+codice** (`motore/struttura.ts`), esatti e senza IA, vengono prima del giudice. Ogni id
+cercato una volta sola in alto (`elementiInAlto`, le fasi di riordino), un minimo di commenti
+(`almenoCommenti`), il valore della costante scritto una volta sola nel codice
+(`scrittoUnaVolta`: il negozio del campanello, il condominio del citofono, il torneo del
+tabellone, dalla fase della `const` in poi).
+
+Ogni consegna con la pagina giusta lascia una riga nel **registro del giudice** del lavoro
+(`giudice` in `LavoroDoc`, le ultime 60): OK, NO con il motivo, CONTROLLO (fermata dai conti
+sul testo) o GUASTO (il modello non ha risposto e la consegna è passata senza giudizio). Il
+docente le vede sotto il codice di ogni fase, nel lavoro dell'allievo.
 
 ## 4. Il percorso JavaScript
 

@@ -15,7 +15,7 @@ import { valuta } from './motore/valuta';
 import { verificaConsegna } from './motore/verifica';
 import { richiestaAmmessa } from './rateLimit';
 import { mediaVoti, percorsoDi, semeDa, votoSeFinisce } from './regole';
-import { allieviRef, appartenenzeRef, classiRef, lavoroVuoto, type AllievoDoc, type AppartenenzaDoc, type ClasseDoc, type LavoroDoc } from './store';
+import { allieviRef, appartenenzeRef, classiRef, lavoroVuoto, MAX_GIUDIZI, type AllievoDoc, type AppartenenzaDoc, type ClasseDoc, type GiudizioDoc, type LavoroDoc } from './store';
 import { chiediTutor } from './tutor';
 import { MAX_DOMANDA_TUTOR, MAX_DOMANDE_TUTOR } from './tutorPrompt';
 
@@ -215,7 +215,12 @@ export async function consegna(body: Record<string, unknown>, utente: Utente) {
   return getDb().runTransaction(async (tx) => {
     const ctx = await contesto(body, utente, tx);
     const { id, lavoro, compito: c, f } = faseInConsegna(ctx, body, utente.uid);
-    const salva = (dati: Partial<LavoroDoc>) => tx.set(ctx.allievoRef, { lavori: { [id]: { ...lavoro, ...dati, ultimoAt: Timestamp.now() } } }, { merge: true });
+    // Il registro del giudice cresce solo quando i controlli sul codice ci sono stati (pagina giusta).
+    const g = valutazione.giudizio;
+    const giudice = g
+      ? [...(lavoro.giudice ?? []), { fase: f, esito: g.esito, ...(g.motivo ? { motivo: g.motivo } : {}), at: Timestamp.now() } satisfies GiudizioDoc].slice(-MAX_GIUDIZI)
+      : (lavoro.giudice ?? []);
+    const salva = (dati: Partial<LavoroDoc>) => tx.set(ctx.allievoRef, { lavori: { [id]: { ...lavoro, ...dati, giudice, ultimoAt: Timestamp.now() } } }, { merge: true });
 
     if (!valutazione.promosso) {
       salva({ bozza: codice, errori: lavoro.errori + 1, erroriFase: { ...lavoro.erroriFase, [String(f)]: (lavoro.erroriFase?.[String(f)] ?? 0) + 1 } });

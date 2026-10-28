@@ -11,7 +11,9 @@ export function generaCampanello(seme: number): Compito {
   const negozio = scegli(rnd, NEGOZI);
   const apertura = intero(rnd, 8, 10);
   const chiusura = intero(rnd, 18, 20);
-  const orari = `Aperti dalle ${apertura} alle ${chiusura}`;
+  // Il messaggio degli orari riusa il nome del negozio: è il secondo uso che dà senso alla costante.
+  const dopoNegozio = `: aperti dalle ${apertura} alle ${chiusura}`;
+  const orari = `${negozio}${dopoNegozio}`;
 
   const html = `<h1>🔔 ${negozio}</h1>
 <p>Benvenuto! Suona il campanello per chiamare il commesso.</p>
@@ -78,8 +80,9 @@ export function generaCampanello(seme: number): Compito {
         ],
       },
       {
-        consegna: `Il nome del negozio va in una \`const\`, con il nome che vuoi, scritta **in alto, fuori dalla funzione**, con il valore \`${negozio}\`. L'alert ora dice \`${saluto('NOME')}\` e usa la costante unita con il \`+\` (per Luca: \`${saluto('Luca')}\`).`,
+        consegna: `Il nome del negozio servirà in più messaggi: conviene scriverlo **una volta sola**, in una costante. **Come prima riga del codice**, sopra la funzione, scrivi una \`const\` che contiene **solo** il nome del negozio (il nome della costante lo scegli tu), per esempio \`const NEGOZIO = "${negozio}";\`. Poi l'alert dice \`${saluto('NOME')}\` (per Luca: \`${saluto('Luca')}\`) ed è fatto di pezzi uniti con il \`+\`: il testo \`Benvenuto da \`, la costante, poi la virgola, il nome e il punto esclamativo.`,
         regola: `${REGOLE.treGesti} ${REGOLE.datiDalPrompt} Il nome del negozio sta in una costante (const) e nel messaggio entra la costante, non il testo ripetuto.`,
+        scrittoUnaVolta: { testo: negozio, cosa: 'il nome del negozio' },
         prove: [
           {
             nome: 'rispondendo «Luca»',
@@ -97,14 +100,15 @@ export function generaCampanello(seme: number): Compito {
         ],
       },
       {
-        consegna: `Il secondo pulsante, **Orari di apertura**, mostra un alert con \`${orari}\`. Serve una seconda funzione con nome e un secondo \`addEventListener\`. Il campanello continua a funzionare come prima.`,
-        regola: `${REGOLE.treGesti} Ogni pulsante ha la sua funzione con nome.`,
+        consegna: `Il secondo pulsante, **Orari di apertura**, mostra un alert con \`${orari}\`. Il nome del negozio **non si riscrive**: usa la stessa costante, unita con il \`+\` al testo \`${dopoNegozio}\`. Serve una seconda funzione con nome e un secondo \`addEventListener\`. Il campanello continua a funzionare come prima.`,
+        regola: `${REGOLE.treGesti} Ogni pulsante ha la sua funzione con nome. Anche negli orari il nome del negozio entra con la costante, non riscritto a mano.`,
+        scrittoUnaVolta: { testo: negozio, cosa: 'il nome del negozio' },
         prove: [
           {
             nome: 'con Luca',
             passi: [
               clic('btnOrari', 'Orari di apertura'),
-              alertUguale(orari, `Clic su «Orari di apertura»: alert con «${orari}»`, 'Il secondo pulsante ha il suo id: collegalo alla seconda funzione con un altro addEventListener.'),
+              alertUguale(orari, `Clic su «Orari di apertura»: alert con «${orari}»`, 'Se non compare: il secondo pulsante ha il suo id, collegalo alla seconda funzione con un altro addEventListener. Se dice un\'altra cosa: la costante del negozio unita con il + al resto del testo, che comincia con i due punti.'),
               risposte('Luca'),
               clic('btnSuona', 'Suona il campanello'),
               alertUguale(saluto('Luca'), `Il campanello saluta ancora: «${saluto('Luca')}»`, 'Il campanello deve continuare a funzionare come nella fase prima.'),
@@ -116,6 +120,7 @@ export function generaCampanello(seme: number): Compito {
       {
         consegna: 'Dopo l\'alert del saluto, il campanello chiede con `confirm` se il cliente vuole ricevere le offerte e salva la risposta in una variabile. Poi mostra un secondo alert: il testo `Offerte: ` unito alla variabile. `confirm` dà `true` se si preme OK e `false` se si preme Annulla, quindi l\'alert dirà da solo `Offerte: true` o `Offerte: false`. Non serve un `if`.',
         regola: `${REGOLE.treGesti} La risposta del confirm sta in una variabile e finisce nell'alert: non valgono due alert scritti a mano.`,
+        scrittoUnaVolta: { testo: negozio, cosa: 'il nome del negozio' },
         prove: [
           {
             nome: 'rispondendo «Luca» e premendo OK',
@@ -162,7 +167,7 @@ function suona() {
 }
 
 function mostraOrari() {
-  alert("${orari}");
+  alert(NEGOZIO + "${dopoNegozio}");
 }
 
 document.getElementById("btnSuona").addEventListener("click", suona);
@@ -177,7 +182,7 @@ function suona() {
 }
 
 function mostraOrari() {
-  alert("${orari}");
+  alert(NEGOZIO + "${dopoNegozio}");
 }
 
 document.getElementById("btnSuona").addEventListener("click", suona);

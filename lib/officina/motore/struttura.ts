@@ -1,7 +1,7 @@
 /* I controlli sul testo del codice, per le fasi in cui la pagina funziona già e si chiede di
- * riordinare il codice (Lezione 4: «anche i pulsanti in una variabile»). Il correttore non
- * li vede, perché la pagina fa le stesse cose di prima; un conto sul codice sì, esatto e senza
- * IA. Il messaggio dice l'errore fatto, come gli altri. Modulo puro. */
+ * riordinare il codice (Lezione 4: «anche i pulsanti in una variabile») o di mettere un valore
+ * in una costante. Il correttore non li vede, perché la pagina fa le stesse cose; un conto sul
+ * codice sì, esatto e senza IA. Il messaggio dice l'errore fatto, come gli altri. Modulo puro. */
 import type { Fase } from './tipi';
 
 /** Una ricerca con getElementById: l'id e se sta dentro un blocco { } (una funzione, di solito). */
@@ -66,10 +66,58 @@ function analizza(js: string): { ricerche: Ricerca[]; commenti: number } {
   return { ricerche, commenti };
 }
 
+/** Il codice senza i commenti, con le stringhe intatte (un «//» dentro le virgolette resta). */
+export function senzaCommenti(js: string): string {
+  let fuori = '';
+  let i = 0;
+  while (i < js.length) {
+    const c = js[i];
+    if (c === '/' && js[i + 1] === '/') {
+      const fine = js.indexOf('\n', i);
+      i = fine === -1 ? js.length : fine;
+    } else if (c === '/' && js[i + 1] === '*') {
+      const fine = js.indexOf('*/', i + 2);
+      i = fine === -1 ? js.length : fine + 2;
+      fuori += ' ';
+    } else if (c === '"' || c === "'" || c === '`') {
+      let j = i + 1;
+      while (j < js.length && js[j] !== c && !(c !== '`' && js[j] === '\n')) j += js[j] === '\\' ? 2 : 1;
+      fuori += js.slice(i, j + 1);
+      i = j + 1;
+    } else {
+      fuori += c;
+      i += 1;
+    }
+  }
+  return fuori;
+}
+
+/** Se il testo compare da solo fra virgolette (doppie, singole o apici inversi), commenti esclusi. */
+export function traVirgolette(js: string, testo: string): boolean {
+  const codice = senzaCommenti(js);
+  return ['"', "'", '`'].some((q) => codice.includes(q + testo + q));
+}
+
+/** Quante volte il testo compare nel codice, commenti esclusi. */
+export function volteNelCodice(js: string, testo: string): number {
+  return testo === '' ? 0 : senzaCommenti(js).split(testo).length - 1;
+}
+
 const elenca = (voci: string[]) => (voci.length === 1 ? voci[0] : `${voci.slice(0, -1).join(', ')} e ${voci[voci.length - 1]}`);
 
 /** Il messaggio per l'allievo se il codice non rispetta i controlli sul testo della fase; null se va bene. */
-export function controlloStruttura(fase: Pick<Fase, 'elementiInAlto' | 'almenoCommenti'>, js: string): string | null {
+export function controlloStruttura(fase: Pick<Fase, 'elementiInAlto' | 'almenoCommenti' | 'scrittoUnaVolta'>, js: string): string | null {
+  if (fase.scrittoUnaVolta) {
+    const { testo, cosa } = fase.scrittoUnaVolta;
+    const volte = volteNelCodice(js, testo);
+    if (volte > 1) {
+      return `La pagina funziona, ma nel codice ${cosa} «${testo}» è scritto ${volte} volte: va scritto una volta sola, nella const, e nei messaggi si usa la costante.`;
+    }
+    // Nella costante va il solo valore, non la frase intera: «"Benvenuto da Pane e Fantasia, "» non vale.
+    if (!traVirgolette(js, testo)) {
+      return `La pagina funziona, ma nel codice non c'è ${cosa}, «${testo}», da solo fra virgolette: la costante contiene solo il nome, e il resto del messaggio si scrive fuori, unito con il +.`;
+    }
+  }
   if (fase.almenoCommenti) {
     const n = contaCommenti(js);
     if (n < fase.almenoCommenti) {

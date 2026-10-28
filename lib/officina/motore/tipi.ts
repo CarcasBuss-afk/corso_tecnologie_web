@@ -84,6 +84,8 @@ export interface Fase {
   elementiInAlto?: boolean;
   /** Quanti commenti (di una riga o su più righe) devono esserci almeno nel codice. */
   almenoCommenti?: number;
+  /** Un valore che sta in una costante: nel codice (commenti esclusi) il testo compare una volta sola, da solo fra virgolette. */
+  scrittoUnaVolta?: { testo: string; cosa: string };
   /** Il JavaScript con cui parte l'editor alla fase 1 (le altre ripartono dal codice della fase prima). */
   codiceIniziale?: string;
 }
@@ -136,4 +138,9 @@ export interface Valutazione {
   /** L'hint da mostrare all'allievo se non è promosso. */
   hint: string | null;
   prove: EsitoProva[];
+  /** Con la pagina giusta, che cosa hanno detto i controlli sul codice: per il registro del docente. */
+  giudizio?: Giudizio;
 }
+
+/** CONTROLLO: fermato dai conti sul testo (struttura.ts); OK/NO: il giudice; GUASTO: il giudice non ha risposto e la consegna passa. */
+export type Giudizio = { esito: 'OK' | 'NO' | 'GUASTO' | 'CONTROLLO'; motivo?: string };

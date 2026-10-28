@@ -16,10 +16,10 @@ export async function verificaConsegna(fase: Fase, sorgente: Sorgente): Promise<
   const valutazione = valuta(fase.prove, esiti);
   if (!valutazione.promosso) return valutazione;
   const struttura = controlloStruttura(fase, sorgente.js);
-  if (struttura) return { ...valutazione, promosso: false, hint: struttura };
+  if (struttura) return { ...valutazione, promosso: false, hint: struttura, giudizio: { esito: 'CONTROLLO', motivo: struttura } };
   if (!fase.regola) return valutazione;
 
   const verdetto = await giudica({ consegna: fase.consegna, regola: fase.regola, codice: sorgente.js, fatti: fattiJs(sorgente.js) });
-  if (verdetto.genuino) return valutazione;
-  return { ...valutazione, promosso: false, hint: hintGiudice(verdetto.motivo, sorgente.js) };
+  if (verdetto.genuino) return { ...valutazione, giudizio: { esito: verdetto.guasto ? 'GUASTO' : 'OK' } };
+  return { ...valutazione, promosso: false, hint: hintGiudice(verdetto.motivo, sorgente.js), giudizio: { esito: 'NO', motivo: verdetto.motivo } };
 }

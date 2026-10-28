@@ -35,4 +35,43 @@ function f() {
     expect(controlloStruttura(FASE, 'let a = document.getElementById("a");\nfunction f() { a.innerHTML = "x"; }')).toBeNull();
     expect(controlloStruttura({}, 'document.getElementById("a"); document.getElementById("a");')).toBeNull();
   });
+
+  describe('il valore scritto una volta sola, nella const', () => {
+    const NEGOZIO = { scrittoUnaVolta: { testo: 'Il Gelato di Nonna Rosa', cosa: 'il nome del negozio' } };
+
+    it('ferma la costante dichiarata e poi riscritta a mano nel messaggio', () => {
+      // Il codice consegnato davvero da un allievo, promosso prima di questo controllo.
+      const js = `// 1. Scrivi la funzione
+const nomeNegozio = "Benvenuto da Il Gelato di Nonna Rosa"
+function suona() {
+  let nome = prompt("il tuo nome?")
+  alert("Benvenuto da Il Gelato di Nonna Rosa, " + nome + "!")
+}`;
+      expect(controlloStruttura(NEGOZIO, js)).toBe(
+        'La pagina funziona, ma nel codice il nome del negozio «Il Gelato di Nonna Rosa» è scritto 2 volte: va scritto una volta sola, nella const, e nei messaggi si usa la costante.',
+      );
+    });
+
+    it('ferma la costante con dentro tutta la frase invece del solo nome', () => {
+      // Anche questo è un codice consegnato davvero: la costante è usata, ma contiene il saluto intero.
+      const js = `const negozio = "Benvenuto da Il Gelato di Nonna Rosa, "
+function Suona() {
+  let nome = prompt("Come ti chiami?")
+  alert(negozio + nome + "!")
+}`;
+      expect(controlloStruttura(NEGOZIO, js)).toBe(
+        'La pagina funziona, ma nel codice non c\'è il nome del negozio, «Il Gelato di Nonna Rosa», da solo fra virgolette: la costante contiene solo il nome, e il resto del messaggio si scrive fuori, unito con il +.',
+      );
+    });
+
+    it('va bene con la costante usata, con qualunque nome e anche con il valore citato in un commento', () => {
+      const js = `// il negozio è Il Gelato di Nonna Rosa
+const negozio = "Il Gelato di Nonna Rosa";
+function suona() {
+  let messaggio = "Benvenuto da " + negozio + ", " + prompt("Nome?") + "!";
+  alert(messaggio);
+}`;
+      expect(controlloStruttura(NEGOZIO, js)).toBeNull();
+    });
+  });
 });

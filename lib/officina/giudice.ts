@@ -1,7 +1,7 @@
 /* Il Giudice: il controllo anti-furbo sul codice promosso (OFFICINA.md §3).
  *
  * Il correttore controlla la pagina; se fa la cosa giusta, prima di passare alla fase dopo
- * il giudice (Haiku) guarda il codice e la regola della fase a parole: «funzione con nome e
+ * il giudice (Sonnet) guarda il codice e la regola della fase a parole: «funzione con nome e
  * addEventListener», «i dati arrivano dal prompt». Decide un lettore, con davanti i fatti
  * misurati sul codice. Qui le parti pure: prompt, messaggio, lettura del verdetto, giudice
  * finto. La chiamata al modello sta in giudiceClient.ts (server-only). */
@@ -14,7 +14,8 @@ Le regole del corso: il pulsante si collega con lo schema in tre passi (id nel p
 
 Rispondi OK oppure NO.
 - OK se il programma rispetta la regola. Variabili d'appoggio, nomi diversi, righe in più, un modo diverso ma onesto di scrivere la stessa cosa (per esempio else if al posto di if annidati, o un confronto equivalente): tutto OK. In dubbio: OK.
-- NO solo se c'è una frode evidente rispetto alla regola: funzioni anonime o freccia dove la regola chiede funzioni con nome; onclick al posto di addEventListener; i risultati scritti a mano dove la regola chiede che arrivino dal prompt o dalle caselle; un if finto che dà sempre lo stesso esito.
+- NO anche quando la REGOLA chiede esplicitamente una forma e il codice non la rispetta: per esempio la REGOLA chiede che un valore stia in una costante usata nel messaggio, e invece la costante è dichiarata ma il messaggio riscrive il valore a mano.
+- Per il resto, NO solo se c'è una frode evidente rispetto alla regola: funzioni anonime o freccia dove la regola chiede funzioni con nome; onclick al posto di addEventListener; i risultati scritti a mano dove la regola chiede che arrivino dal prompt o dalle caselle; un if finto che dà sempre lo stesso esito.
 
 I FATTI MISURATI SUL CODICE sono esatti, contati da un analizzatore: non contraddirli.
 
@@ -29,7 +30,8 @@ export interface ContestoGiudizio {
   fatti: FattiJs;
 }
 
-export type Verdetto = { genuino: true } | { genuino: false; motivo: string };
+/** `guasto`: il modello non ha risposto o non si è capito, e la consegna passa senza giudizio. */
+export type Verdetto = { genuino: true; guasto?: boolean } | { genuino: false; motivo: string };
 
 /** Il messaggio con la regola, il codice e i fatti. */
 export function messaggioGiudizio(c: ContestoGiudizio): string {

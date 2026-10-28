@@ -105,8 +105,9 @@ export function generaTabellone(seme: number): Compito {
         ],
       },
       {
-        consegna: `Il nome del torneo va in una \`const\` in alto, fuori dalle funzioni${torneo.includes("'") ? `. Scrivilo fra virgolette **doppie**: \`"${torneo}"\`. L'apostrofo romperebbe le virgolette singole` : ''}. **Finale** cambia il titolo (id \`titolo\`) in \`${finale}\`, senza 🏆, usando la costante. Poi chiede con \`confirm\` \`La partita è finita?\` e scrive nell'annuncio \`Partita finita: \` unito alla risposta: \`${finita(true)}\` con OK, \`${finita(false)}\` con Annulla. Niente alert: tutto va nella pagina.`,
+        consegna: `**Come prima riga del codice**, sopra le funzioni, scrivi una \`const\` che contiene **solo** il nome del torneo (il nome della costante lo scegli tu), per esempio \`const TORNEO = "${torneo}";\`${torneo.includes("'") ? '. Fra virgolette **doppie**, come nell\'esempio: l\'apostrofo romperebbe le virgolette singole' : ''}. **Finale** cambia il titolo (id \`titolo\`) in \`${finale}\`, senza 🏆: la costante unita con il \`+\` al testo \`${finale.slice(torneo.length)}\`. Poi chiede con \`confirm\` \`La partita è finita?\` e scrive nell'annuncio \`Partita finita: \` unito alla risposta: \`${finita(true)}\` con OK, \`${finita(false)}\` con Annulla. Niente alert: tutto va nella pagina.`,
         regola: `${REGOLE.treGesti} Il nome del torneo sta in una costante (const) che entra nel titolo; la risposta del confirm sta in una variabile che entra nell'annuncio: non valgono due testi scritti a mano.`,
+        scrittoUnaVolta: { testo: torneo, cosa: 'il nome del torneo' },
         prove: [
           { nome: 'premendo OK', passi: chiudi(true) },
           { nome: 'premendo Annulla', passi: chiudi(false) },
@@ -115,6 +116,7 @@ export function generaTabellone(seme: number): Compito {
       {
         consegna: 'Il tabellone funziona: ora **riordina il codice**, come nella Lezione 4. In alto, fuori dalle funzioni, salva in una variabile ogni elemento che usi: il titolo, i quattro paragrafi e i quattro pulsanti, con i nomi che vuoi. Poi le funzioni e i collegamenti usano le variabili: ogni id si cerca con `getElementById` **una volta sola**. Il tabellone deve fare esattamente le stesse cose di prima.',
         regola: `${REGOLE.treGesti} ${REGOLE.elementiInVariabili}`,
+        scrittoUnaVolta: { testo: torneo, cosa: 'il nome del torneo' },
         elementiInAlto: true,
         prove: [
           { nome: 'tutti i pulsanti, uno dopo l\'altro', passi: [inizia(), ...controlliInizio, ...segnaRisultato('2', '1'), ...segnaGol('Luca'), ...chiudi(true)] },

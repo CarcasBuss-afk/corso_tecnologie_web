@@ -13,6 +13,8 @@ export type LavoroVisto = {
   codice: Record<string, string>;
   bozza: string;
   tutor: Array<{ fase: number; domanda: string; risposta: string; at: Date | null }>;
+  /** I giudizi sul codice alle consegne con la pagina giusta (fase da 1). */
+  giudice: Array<{ fase: number; esito: string; motivo: string; at: Date | null }>;
 };
 
 export type AllievoVisto = { uid: string; nome: string; email: string; lavori: Record<string, LavoroVisto> };

@@ -9,6 +9,7 @@
 import 'server-only';
 import type { Timestamp } from 'firebase-admin/firestore';
 import { getDb } from '@/lib/firebaseAdmin';
+import type { Giudizio } from './motore/tipi';
 import { ALLIEVI, APPARTENENZE, CLASSI } from './nomiCollezioni';
 
 export type ClasseDoc = {
@@ -41,9 +42,23 @@ export type LavoroDoc = {
   erroriFase: Record<string, number>;
   consigli: number;
   tutor: ScambioDoc[];
+  /** Che cosa hanno detto il giudice e i controlli sul codice alle consegne con la pagina giusta (le ultime). Manca nei lavori di prima del 28 ottobre 2026. */
+  giudice?: GiudizioDoc[];
   finitoAt: Timestamp | null;
   ultimoAt: Timestamp | null;
 };
+
+/** Un giudizio sul codice di una consegna con la pagina giusta. */
+export type GiudizioDoc = {
+  /** Fase (0-based). */
+  fase: number;
+  esito: Giudizio['esito'];
+  motivo?: string;
+  at: Timestamp;
+};
+
+/** Quanti giudizi si tengono per compito: i più vecchi escono. */
+export const MAX_GIUDIZI = 60;
 
 export type AllievoDoc = {
   uid: string;
@@ -75,6 +90,7 @@ export function lavoroVuoto(): LavoroDoc {
     erroriFase: {},
     consigli: 0,
     tutor: [],
+    giudice: [],
     finitoAt: null,
     ultimoAt: null,
   };

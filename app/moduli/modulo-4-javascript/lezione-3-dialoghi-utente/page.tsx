@@ -223,6 +223,27 @@ console.log(saluto);  // Ciao Mario! 👋`}
           showLineNumbers
         />
 
+        <h3 className="text-2xl font-bold mb-4 mt-8">A Cosa Serve una Costante</h3>
+
+        <CodeExample
+          title="Un nome scritto una volta, usato in tanti messaggi"
+          code={`const SCUOLA = "CIAC";
+
+console.log("Benvenuto al " + SCUOLA + "!");     // Benvenuto al CIAC!
+console.log("Iscritti al " + SCUOLA + ": 120");  // Iscritti al CIAC: 120`}
+          language="javascript"
+          showLineNumbers
+        />
+
+        <div className="bg-purple-50 border-l-4 border-purple-500 p-6 rounded mt-4">
+          <p className="text-gray-700">
+            Il nome della scuola è scritto <strong>una volta sola</strong>, e poi si usa in tutti i messaggi unendolo con il{' '}
+            <code className="bg-purple-100 px-1 rounded">+</code>. Nella costante va <strong>solo il valore che si ripete</strong>{' '}
+            (&quot;CIAC&quot;), non la frase intera: le parole intorno (&quot;Benvenuto al&quot;, &quot;Iscritti al&quot;) cambiano da un
+            messaggio all&apos;altro e restano fuori. Se un giorno il nome cambia, lo correggi in un punto solo.
+          </p>
+        </div>
+
         <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded mt-6">
           <p className="font-bold text-green-800 mb-2">✅ Ora sei pronto!</p>
           <p className="text-gray-700">
