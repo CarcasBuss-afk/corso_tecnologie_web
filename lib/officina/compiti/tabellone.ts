@@ -69,7 +69,7 @@ export function generaTabellone(seme: number): Compito {
     scheda: {
       id: 'tabellone',
       titolo: 'Il tabellone del torneo',
-      lezione: 'Modulo 4 · Lezioni 2, 3 e 4 (ripasso)',
+      lezione: 'Modulo 4 · Lezione 4',
       committente: `La scuola organizza il torneo di calcetto «${torneo}» e vuole un tabellone sullo schermo della palestra: l'arbitro preme i pulsanti e il pubblico legge tutto, grande, nella pagina.`,
       prodotto: 'Una pagina in cui ogni pulsante cambia uno o più elementi: le squadre, il risultato, chi ha segnato, il titolo della finale.',
       dati: [`torneo: ${torneo}`, `squadre: ${a} e ${b}`],

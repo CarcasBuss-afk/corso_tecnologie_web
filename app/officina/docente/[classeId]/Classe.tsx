@@ -190,6 +190,11 @@ export function Classe({ classeId }: { classeId: string }) {
               {TITOLI_PERCORSO.map((c, i) => (
                 <th key={c.id} className="px-3 py-2">
                   {i + 1}. {c.titolo}
+                  {c.sfida && (
+                    <span className="ml-1 text-xs font-normal text-(--color-giallo)" title="Sfida facoltativa: fuori dalla media, se finita aggiunge mezzo punto di bonus">
+                      ⭐ sfida
+                    </span>
+                  )}
                 </th>
               ))}
               <th className="px-3 py-2">Media</th>
@@ -224,7 +229,10 @@ export function Classe({ classeId }: { classeId: string }) {
                     </button>
                   </td>
                 ))}
-                <td className="px-3 py-2 font-mono text-lg font-black text-(--color-giallo)">{r.media ?? '–'}</td>
+                <td className="px-3 py-2 font-mono text-lg font-black text-(--color-giallo)">
+                  {r.media ?? '–'}
+                  {r.bonus > 0 && <span className="ml-1 text-xs font-normal text-(--color-verde)" title="bonus delle sfide finite, già nella media">+{r.bonus}</span>}
+                </td>
                 <td className="px-3 py-2 text-right">
                   <button
                     onClick={() => {

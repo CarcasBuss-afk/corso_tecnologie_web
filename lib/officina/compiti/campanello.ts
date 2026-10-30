@@ -28,7 +28,7 @@ export function generaCampanello(seme: number): Compito {
     scheda: {
       id: 'campanello',
       titolo: 'Il campanello del negozio',
-      lezione: 'Modulo 4 · Lezioni 2 e 3',
+      lezione: 'Modulo 4 · Lezione 3',
       committente: `Il negozio «${negozio}» vuole una pagina con un campanello: il cliente la apre dal telefono, suona, e il commesso arriva.`,
       prodotto: 'Una pagina con due pulsanti che parlano con il cliente attraverso le finestre alert, prompt e confirm.',
       dati: [`negozio: ${negozio}`, `orari: dalle ${apertura} alle ${chiusura}`],

@@ -7,14 +7,14 @@ import 'server-only';
 import { FieldValue, Timestamp } from 'firebase-admin/firestore';
 import { getDb } from '@/lib/firebaseAdmin';
 import type { Utente } from './auth';
-import { eCompito, eEsame, fasiDi, generaCompito, lezioneCompito, SEZIONI, sezioneDi, titoloCompito, type Compito, type CompitoId } from './compiti';
+import { eCompito, eEsame, fasiDi, generaCompito, lezioneCompito, livelloDi, SEZIONI, sezioneDi, titoloCompito, type Compito, type CompitoId } from './compiti';
 import { ApiError, testo } from './http';
 import { eseguiProveServer } from './motore/esecutoreServer';
 import type { Fase, Sorgente } from './motore/tipi';
 import { valuta } from './motore/valuta';
 import { verificaConsegna } from './motore/verifica';
 import { richiestaAmmessa } from './rateLimit';
-import { mediaVoti, percorsoDi, semeDa, votoSeFinisce } from './regole';
+import { bonusSfide, mediaConBonus, percorsoDi, semeDa, votoSeFinisce } from './regole';
 import { allieviRef, appartenenzeRef, classiRef, lavoroVuoto, MAX_GIUDIZI, type AllievoDoc, type AppartenenzaDoc, type ClasseDoc, type GiudizioDoc, type LavoroDoc } from './store';
 import { chiediTutor } from './tutor';
 import { MAX_DOMANDA_TUTOR, MAX_DOMANDE_TUTOR } from './tutorPrompt';
@@ -114,7 +114,7 @@ function fasePubblica(fase: Fase, indice: number) {
 
 /* ------------------------------------------------------------------ compiti */
 
-/** Il percorso dell'allievo: tutti i compiti con lo stato, le sezioni in cui stanno, e la media. */
+/** Il percorso dell'allievo: tutti i compiti con lo stato, le sezioni in cui stanno, e la media con il bonus delle sfide. */
 export async function compiti(body: Record<string, unknown>, utente: Utente) {
   const ctx = await contesto(body, utente);
   const voci = percorsoDi(ctx.allievo.lavori ?? {});
@@ -128,9 +128,11 @@ export async function compiti(body: Record<string, unknown>, utente: Utente) {
       votoSeFinisci: votoSeFinisce(v.consigli),
       sezione: sezioneDi(v.id).id,
       esame: eEsame(v.id),
+      livello: livelloDi(v.id),
     })),
     sezioni: SEZIONI.map((s) => ({ id: s.id, titolo: s.titolo, compiti: s.compiti })),
-    media: mediaVoti(voci),
+    media: mediaConBonus(voci),
+    bonus: bonusSfide(voci),
   };
 }
 

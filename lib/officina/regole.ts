@@ -2,7 +2,7 @@
  * non è una gara, ogni allievo percorre da solo lo stesso elenco di compiti, uno sbloccato
  * alla volta; il voto c'è solo a compito finito: 10 meno un punto a domanda al tutor, mai
  * sotto 5. Modulo puro: niente Firestore, niente Next. */
-import { ELENCO_COMPITI, fasiDi, type CompitoId } from './compiti/elenco';
+import { eFacoltativo, ELENCO_COMPITI, fasiDi, type CompitoId } from './compiti/elenco';
 
 /** Il voto parte da qui e scende di uno a domanda al tutor. */
 export const VOTO_MASSIMO = 10;
@@ -41,27 +41,48 @@ export type VoceCompito = {
 };
 
 /**
- * Il percorso di un allievo: il primo compito è sempre aperto; ogni altro si sblocca quando il
- * precedente è finito. Un compito già aperto non si blocca più: se nel percorso entra un compito
- * nuovo prima (lo scontrino della Lezione 1), chi era già al lavoro non perde niente.
+ * Il percorso di un allievo: il primo compito è sempre aperto; ogni altro si sblocca quando è
+ * finito l'ultimo compito obbligatorio prima di lui. La sfida è facoltativa: si apre insieme al
+ * compito dopo e non blocca niente. Un compito già aperto non si blocca più, e nemmeno quelli
+ * prima di lui: se nel percorso entra un compito nuovo prima (i facili delle lezioni), chi era
+ * già più avanti non perde niente e non deve tornare indietro.
  */
 export function percorsoDi(lavori: Record<string, ProgressoCompito | undefined>): VoceCompito[] {
-  let precedenteFinito = true;
-  return PERCORSO.map((id) => {
-    const aperto = lavori[id] !== undefined;
+  const ultimoAperto = PERCORSO.findLastIndex((id) => lavori[id] !== undefined);
+  let obbligatorioFinito = true;
+  return PERCORSO.map((id, i) => {
     const l = lavori[id] ?? { fasi: 0, consigli: 0 };
     const finito = l.fasi >= fasiDi(id);
-    const stato: StatoCompito = finito ? 'finito' : !precedenteFinito && !aperto ? 'bloccato' : l.fasi > 0 ? 'in-corso' : 'da-cominciare';
-    precedenteFinito = finito;
+    const aperto = obbligatorioFinito || i <= ultimoAperto;
+    const stato: StatoCompito = finito ? 'finito' : !aperto ? 'bloccato' : l.fasi > 0 ? 'in-corso' : 'da-cominciare';
+    if (!eFacoltativo(id)) obbligatorioFinito = finito;
     return { id, stato, fasi: l.fasi, consigli: l.consigli, voto: finito ? votoSeFinisce(l.consigli) : null };
   });
 }
 
-/** La media dei voti dei compiti finiti, con un decimale; null se nessuno è finito. */
-export function mediaVoti(voci: Array<{ voto: number | null }>): number | null {
-  const voti = voci.map((v) => v.voto).filter((v): v is number => v !== null);
+/** La media dei voti dei compiti obbligatori finiti, con un decimale; null se nessuno è finito. Le sfide qui non contano: danno il bonus. */
+export function mediaVoti(voci: Array<{ id?: CompitoId; voto: number | null }>): number | null {
+  const voti = voci
+    .filter((v) => !v.id || !eFacoltativo(v.id))
+    .map((v) => v.voto)
+    .filter((v): v is number => v !== null);
   if (voti.length === 0) return null;
   return Math.round((voti.reduce((s, v) => s + v, 0) / voti.length) * 10) / 10;
+}
+
+/** Quanto vale ogni sfida finita: si somma alla media, con qualunque voto. */
+export const BONUS_SFIDA = 0.5;
+
+/** Il bonus delle sfide finite. */
+export function bonusSfide(voci: Array<{ id?: CompitoId; voto: number | null }>): number {
+  return voci.filter((v) => v.id && eFacoltativo(v.id) && v.voto !== null).length * BONUS_SFIDA;
+}
+
+/** La media che conta: quella dei compiti obbligatori più il bonus delle sfide, mai sopra 10; null finché non c'è un obbligatorio finito. */
+export function mediaConBonus(voci: Array<{ id?: CompitoId; voto: number | null }>): number | null {
+  const media = mediaVoti(voci);
+  if (media === null) return null;
+  return Math.min(VOTO_MASSIMO, Math.round((media + bonusSfide(voci)) * 10) / 10);
 }
 
 /** Dominio ammesso per gli account degli allievi (OFFICINA_DOMINIO, anche più d'uno separati da virgola). */

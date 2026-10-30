@@ -80,6 +80,10 @@ export const REGOLE = {
   elementiInVariabili:
     'Ogni elemento che serve, pulsanti compresi, sta in una variabile creata una volta sola in alto, fuori dalle funzioni; ' +
     'le funzioni e i collegamenti con addEventListener usano quelle variabili. I nomi delle variabili li sceglie l\'allievo.',
+  funzioneConReturn:
+    'Il calcolo sta in una funzione con nome e con i parametri fra le parentesi, che restituisce il risultato con return ' +
+    '(non lo scrive con alert o innerHTML). Queste funzioni di aiuto non si collegano ai pulsanti: le chiamano le funzioni ' +
+    'dei pulsanti, passando i valori. I nomi dei parametri li sceglie l\'allievo.',
   contatoreFuori:
     'Il contatore è una variabile dichiarata fuori dalla funzione, che la funzione aumenta con ++ (o +=): non vale un numero scritto a mano.',
 } as const;

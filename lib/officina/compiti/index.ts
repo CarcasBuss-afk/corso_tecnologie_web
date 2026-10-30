@@ -8,14 +8,17 @@ import { generaCitofono } from './citofono';
 import type { CompitoId } from './elenco';
 import { generaIscrizione } from './iscrizione';
 import { generaLampada } from './lampada';
+import { generaMagliette } from './magliette';
+import { generaPagella } from './pagella';
 import { generaPizzeria } from './pizzeria';
 import { generaPorta } from './porta';
+import { generaRaddoppiatore } from './raddoppiatore';
 import { generaScontrino } from './scontrino';
 import { generaTabellone } from './tabellone';
 import type { Compito, GeneratoreCompito, SchedaCompito } from './tipi';
 
 export type { Compito, SchedaCompito } from './tipi';
-export { COMPITI_PER_LEZIONE, eCompito, eEsame, ELENCO_COMPITI, fasiDi, lezioneCompito, SEZIONI, sezioneDi, titoloCompito, type CompitoId, type Sezione } from './elenco';
+export { COMPITI_PER_LEZIONE, eCompito, eEsame, eFacoltativo, ELENCO_COMPITI, fasiDi, lezioneCompito, livelloDi, SEZIONI, sezioneDi, titoloCompito, type CompitoId, type Livello, type Sezione } from './elenco';
 
 const GENERATORI: Record<CompitoId, GeneratoreCompito> = {
   scontrino: generaScontrino,
@@ -27,6 +30,9 @@ const GENERATORI: Record<CompitoId, GeneratoreCompito> = {
   porta: generaPorta,
   pizzeria: generaPizzeria,
   iscrizione: generaIscrizione,
+  raddoppiatore: generaRaddoppiatore,
+  magliette: generaMagliette,
+  pagella: generaPagella,
 };
 
 export function generaCompito(id: CompitoId, seme: number): Compito {

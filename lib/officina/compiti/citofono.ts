@@ -37,7 +37,7 @@ export function generaCitofono(seme: number): Compito {
     scheda: {
       id: 'citofono',
       titolo: 'Il citofono del condominio',
-      lezione: 'Modulo 4 · Lezioni 2 e 3 (ripasso)',
+      lezione: 'Modulo 4 · Lezione 3',
       committente: `Il condominio «${condominio}» cambia il citofono: al posto dei tasti, una pagina sul tablet dell'ingresso. Chi arriva sceglie l'interno, la famiglia risponde e, se vuole, apre il portone.`,
       prodotto: 'Una pagina con quattro pulsanti che parlano con chi suona attraverso alert, prompt e confirm, e tengono nota delle chiamate in console.',
       dati: [`condominio: ${condominio}`, `interni: 1 ${f1}, 2 ${f2}, 3 ${f3}`, `portineria: dalle ${apre} alle ${chiude}`],

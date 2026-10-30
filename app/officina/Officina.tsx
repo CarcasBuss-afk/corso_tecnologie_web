@@ -1,6 +1,6 @@
 'use client';
 /* L'Officina vista dall'allievo: il percorso dei compiti, uno sotto l'altro, sbloccati uno
- * alla volta, con la media dei voti. La prima volta si sceglie la classe. */
+ * alla volta (la sfida di ogni lezione si può saltare), con la media dei voti. La prima volta si sceglie la classe. */
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Accesso } from '@/components/officina/Accesso';
@@ -64,6 +64,7 @@ export function Officina() {
                 <span className="font-mono text-2xl font-black text-(--color-giallo)" aria-label="media">
                   {p.media ?? '–'}
                 </span>
+                {p.bonus > 0 && <span className="ml-2 text-sm text-(--color-verde)">con +{p.bonus} di bonus sfide ⭐</span>}
               </p>
             </div>
             {p.classe.chiusa && (
@@ -75,7 +76,7 @@ export function Officina() {
               <SezioneDelPercorso key={s.id} sezione={s} compiti={p.compiti} classe={p.classe} />
             ))}
             <p className="text-sm text-(--color-testo-tenue)">
-              I compiti si sbloccano uno alla volta. Il voto è 10 meno le domande al tutor, mai sotto 5: puoi chiedere aiuto quanto vuoi. Gli errori non costano niente.
+              I compiti si sbloccano uno alla volta. Il voto è 10 meno le domande al tutor, mai sotto 5: puoi chiedere aiuto quanto vuoi. Gli errori non costano niente. Le sfide ⭐ si possono saltare: ognuna finita aggiunge mezzo punto alla media.
             </p>
           </section>
         ))
@@ -128,6 +129,7 @@ function VoceCompito({ k, numero, classeId }: { k: CompitoInElenco; numero: numb
           <span className="font-bold">{k.titolo}</span>
           <span className="ml-2 text-xs text-(--color-testo-tenue)">{k.lezione}</span>
         </span>
+        <EtichettaLivello livello={k.livello} />
         {k.esame && <span className="rounded bg-(--color-giallo)/20 px-1.5 py-0.5 text-xs text-(--color-giallo)">esame</span>}
       </span>
       <Stato k={k} />
@@ -142,6 +144,18 @@ function VoceCompito({ k, numero, classeId }: { k: CompitoInElenco; numero: numb
       {dentro}
     </Link>
   );
+}
+
+/** Il livello del compito: il facile per partire, il normale, la sfida che si può saltare. */
+function EtichettaLivello({ livello }: { livello: CompitoInElenco['livello'] }) {
+  if (livello === 'facile') return <span className="rounded bg-(--color-verde)/15 px-1.5 py-0.5 text-xs text-(--color-verde)">facile</span>;
+  if (livello === 'sfida')
+    return (
+      <span className="rounded bg-(--color-giallo)/20 px-1.5 py-0.5 text-xs text-(--color-giallo)" title="Facoltativa: non blocca il compito dopo; se la finisci, la media sale di mezzo punto">
+        ⭐ sfida facoltativa
+      </span>
+    );
+  return null;
 }
 
 function Stato({ k }: { k: CompitoInElenco }) {
@@ -161,7 +175,7 @@ function Stato({ k }: { k: CompitoInElenco }) {
     case 'da-cominciare':
       return <span className="text-(--color-giallo)">Comincia →</span>;
     default:
-      return <span>🔒 si sblocca quando finisci il precedente</span>;
+      return <span>🔒 si sblocca quando finisci il compito prima</span>;
   }
 }
 

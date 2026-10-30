@@ -2,6 +2,7 @@
 /* Chiamate alle API dell'Officina dal browser (allievo e docente), con l'ID token Firebase
  * dell'account Google, e le forme delle risposte. */
 import { getClientAuth } from '@/lib/firebaseClient';
+import type { Livello } from './compiti/elenco';
 import type { SchedaCompito } from './compiti/tipi';
 import type { EsitoProva, Pannello, Prova, Sorgente } from './motore/tipi';
 import type { StatoCompito } from './regole';
@@ -64,11 +65,12 @@ export type CompitoInElenco = {
   votoSeFinisci: number;
   sezione: string;
   esame: boolean;
+  livello: Livello;
 };
 
 export type SezionePercorso = { id: string; titolo: string; compiti: string[] };
 
-export type Percorso = { classe: { id: string; nome: string; chiusa: boolean }; compiti: CompitoInElenco[]; sezioni: SezionePercorso[]; media: number | null };
+export type Percorso = { classe: { id: string; nome: string; chiusa: boolean }; compiti: CompitoInElenco[]; sezioni: SezionePercorso[]; media: number | null; bonus: number };
 
 export type Scambio = { fase: number; domanda: string; risposta: string };
 

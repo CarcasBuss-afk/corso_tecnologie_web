@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { PERCORSO } from './regole';
-import { dominiAmmessi, emailAmmessa, mediaVoti, percorsoDi, semeDa, votoSeFinisce } from './regole';
+import { eFacoltativo, fasiDi } from './compiti/elenco';
+import { dominiAmmessi, emailAmmessa, mediaConBonus, mediaVoti, percorsoDi, semeDa, votoSeFinisce } from './regole';
 
 describe('il percorso', () => {
   it('sblocca un compito alla volta', () => {
@@ -19,6 +20,31 @@ describe('il percorso', () => {
     expect(voci[0].stato).toBe('da-cominciare');
     expect(voci[1].stato).toBe('in-corso');
     expect(voci[2].stato).toBe('bloccato');
+  });
+
+  it('la sfida si apre con il normale finito, ma non blocca il compito dopo', () => {
+    const iSfida = PERCORSO.findIndex((id) => eFacoltativo(id));
+    const normale = PERCORSO[iSfida - 1];
+    const prima = percorsoDi({ [PERCORSO[0]]: { fasi: 5, consigli: 0 }, [normale]: { fasi: 2, consigli: 0 } });
+    expect(prima[iSfida].stato).toBe('bloccato');
+    const finiti = Object.fromEntries(PERCORSO.slice(0, iSfida).map((id) => [id, { fasi: fasiDi(id), consigli: 0 }]));
+    const dopo = percorsoDi(finiti);
+    expect(dopo[iSfida].stato).toBe('da-cominciare');
+    expect(dopo[iSfida + 1].stato).toBe('da-cominciare');
+  });
+
+  it('chi è già più avanti trova aperti anche i compiti nuovi entrati prima', () => {
+    const voci = percorsoDi({ [PERCORSO[5]]: { fasi: 1, consigli: 0 } });
+    expect(voci.slice(0, 6).every((v) => v.stato !== 'bloccato')).toBe(true);
+  });
+
+  it('le sfide non entrano nella media: ognuna finita dà mezzo punto di bonus, fino a 10', () => {
+    const [s1, s2] = PERCORSO.filter((id) => eFacoltativo(id));
+    expect(mediaVoti([{ id: PERCORSO[0], voto: 10 }, { id: s1, voto: 5 }])).toBe(10);
+    expect(mediaConBonus([{ id: PERCORSO[0], voto: 7 }, { id: s1, voto: 5 }, { id: s2, voto: null }])).toBe(7.5);
+    expect(mediaConBonus([{ id: PERCORSO[0], voto: 7 }, { id: s1, voto: 6 }, { id: s2, voto: 9 }])).toBe(8);
+    expect(mediaConBonus([{ id: PERCORSO[0], voto: 10 }, { id: s1, voto: 10 }])).toBe(10);
+    expect(mediaConBonus([{ id: s1, voto: 10 }])).toBeNull();
   });
 
   it('il voto non scende sotto 5 e la media ha un decimale', () => {

@@ -85,7 +85,9 @@ describe('il catalogo', () => {
           expect(f.funzioniAnonime).toBe(0);
           expect(f.onclick).toBe(0);
           expect(f.funzioniConNome).toBeGreaterThan(0);
-          expect(f.addEventListener).toBe(f.funzioniConNome);
+          // Dalla Lezione 9 ci sono anche le funzioni di aiuto con return, che non si collegano.
+          if (/\breturn\b/.test(s)) expect(f.addEventListener).toBeLessThanOrEqual(f.funzioniConNome);
+          else expect(f.addEventListener).toBe(f.funzioniConNome);
         }
       });
     });
