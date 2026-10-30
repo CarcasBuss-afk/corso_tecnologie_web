@@ -52,7 +52,7 @@ div {
       lezione: 'Modulo 4 · Lezione 5',
       committente: `${nome} vuole comandare la lampada della camera da una pagina sul telefono: accenderla, spegnerla, cambiarle colore e grandezza.`,
       prodotto: 'Una pagina in cui i pulsanti cambiano lo stile di un elemento: colore, misure, visibilità.',
-      dati: [`proprietario: ${nome}`, 'colore accesa: giallo', 'colore spenta: grigio'],
+      dati: [`proprietario: ${nome}`, 'colore accesa: giallo (yellow)', 'colore spenta: grigio (gray)'],
       risultatoFinale: [
         '«Accendi» colora la lampada di giallo e aggiorna il paragrafo di stato; «Spegni» la rimette grigia.',
         '«Cambia colore» chiede un colore e lo applica; «Cambia misura» chiede i pixel e li applica a larghezza e altezza.',
@@ -64,7 +64,7 @@ div {
     pannelli: ['js'],
     fasi: [
       {
-        consegna: `Quando si clicca **Accendi**, la lampada (id \`lampada\`) diventa gialla, con \`style.backgroundColor\`. In CSS i colori si scrivono **in inglese**: \`yellow\`, non \`giallo\`. Il paragrafo di stato (id \`stato\`) dice \`${ACCESA}\`, punto compreso.`,
+        consegna: `Quando si clicca **Accendi**, la lampada (id \`lampada\`) diventa gialla, con \`style.backgroundColor\`. In CSS i colori si scrivono **in inglese**: \`yellow\`, non \`giallo\`. Nella stessa funzione cambia con \`innerHTML\` il paragrafo di stato (id \`stato\`): deve diventare \`${ACCESA}\`, punto compreso.`,
         regola: REGOLE.treGesti,
         prove: [
           {
@@ -78,7 +78,7 @@ div {
         codiceIniziale: '// 1. Scrivi la funzione\n\n// 2. Collega il pulsante alla funzione\n',
       },
       {
-        consegna: `**Spegni** rimette la lampada grigia (\`gray\`) e lo stato a \`${SPENTA}\`. Seconda funzione, secondo collegamento. Accendi continua a funzionare.`,
+        consegna: `Scrivi una seconda funzione e collegala al pulsante **Spegni** (id \`btnSpegni\`).\n1. La funzione rimette la lampada grigia (\`gray\`).\n2. Nel paragrafo di stato scrive di nuovo questo testo: \`${SPENTA}\`\nNon cancellare la funzione di Accendi: deve continuare a funzionare.`,
         regola: `${REGOLE.treGesti} Ogni pulsante ha la sua funzione con nome.`,
         prove: [
           {
@@ -94,7 +94,8 @@ div {
         ],
       },
       {
-        consegna: '**Cambia colore** chiede con `prompt` un colore (in inglese, per esempio `red`) e lo usa come sfondo della lampada.',
+        consegna:
+          'Collega una nuova funzione al pulsante **Cambia colore** (id `btnColore`).\n1. La funzione chiede un colore con `prompt` e salva la risposta in una variabile.\n2. Poi usa la variabile come sfondo della lampada, con `style.backgroundColor`. Intorno al nome della variabile **non** vanno le virgolette.\nIl colore non lo scrivi nel codice: lo scrive chi risponde alla domanda, in inglese. Quando provi, rispondi per esempio `red`.',
         regola: `${REGOLE.treGesti} ${REGOLE.datiDalPrompt}`,
         prove: [
           {
@@ -113,7 +114,8 @@ div {
         ],
       },
       {
-        consegna: '**Cambia misura** chiede con `prompt` un numero di pixel (per esempio `200`) e lo applica a larghezza e altezza della lampada (`style.width` e `style.height`). Ricorda: alla misura va attaccato `px`.',
+        consegna:
+          'Collega una nuova funzione al pulsante **Cambia misura** (id `btnGrande`).\n1. La funzione chiede con `prompt` un numero di pixel e salva la risposta in una variabile. Quando provi, rispondi per esempio `200`.\n2. Poi usa la risposta per la larghezza e per l\'altezza della lampada: `style.width` e `style.height`.\nRicorda: alla risposta va aggiunto `"px"` con il `+`, come nella Lezione 5.',
         regola: `${REGOLE.treGesti} ${REGOLE.datiDalPrompt} La misura arriva dal prompt e si aggiunge "px".`,
         prove: [
           {
@@ -132,7 +134,7 @@ div {
         ],
       },
       {
-        consegna: `Quando si clicca **Spegni** compare la scritta della buonanotte (id \`buonanotte\`): impostale \`style.display\` a \`block\`. Quando si clicca **Accendi** sparisce di nuovo (\`none\`). All'apertura della pagina resta nascosta, come adesso.`,
+        consegna: `Ora la scritta della buonanotte (id \`buonanotte\`) compare quando la lampada si spegne. Non servono funzioni nuove: aggiungi una riga alle due funzioni che hai già.\n1. Nella funzione di **Spegni** la scritta si mostra: \`style.display = "block"\`.\n2. Nella funzione di **Accendi** la scritta si nasconde: \`style.display = "none"\`.\nAll'inizio non devi fare niente: la scritta è già nascosta dal CSS.`,
         regola: `${REGOLE.treGesti} Nascondere e mostrare si fa con style.display.`,
         prove: [
           {
@@ -149,7 +151,7 @@ div {
       },
       {
         consegna:
-          'La pagina funziona: ora **riordina il codice**, come nella Lezione 4. In alto, fuori dalle funzioni, salva in una variabile ogni elemento che usi: la lampada, lo stato, la buonanotte e i quattro pulsanti. I nomi delle variabili li scegli tu. Poi le funzioni e i collegamenti usano le variabili: ogni id si cerca con `getElementById` **una volta sola**. La pagina deve fare esattamente le stesse cose di prima.',
+          'La pagina funziona: ora **riordina il codice**, come nella Lezione 4.\n1. In alto, fuori dalle funzioni, salva in una variabile ogni elemento che usi: la lampada, lo stato, la buonanotte e i quattro pulsanti. I nomi delle variabili li scegli tu.\n2. Togli dalle funzioni tutti i `document.getElementById`, anche quelli che avevi salvato in una variabile dentro una funzione. Al loro posto usa le variabili in alto.\n3. Anche i collegamenti con `addEventListener` usano le variabili dei pulsanti.\nAlla fine ogni id si cerca con `getElementById` **una volta sola**. La pagina deve fare esattamente le stesse cose di prima.',
         regola: `${REGOLE.treGesti} ${REGOLE.elementiInVariabili}`,
         elementiInAlto: true,
         prove: [

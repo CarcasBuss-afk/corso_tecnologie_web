@@ -43,7 +43,7 @@ export function generaCitofono(seme: number): Compito {
       dati: [`condominio: ${condominio}`, `interni: 1 ${f1}, 2 ${f2}, 3 ${f3}`, `portineria: dalle ${apre} alle ${chiude}`],
       risultatoFinale: [
         `Ogni interno suona: «${suonato(f1)}» (e così per ${f2} e ${f3}).`,
-        `L'interno 1 chiede «Chi è?», risponde «${risposta('NOME')}», annota la chiamata in console e chiede se aprire il portone.`,
+        `L'interno 1 chiede «Chi è?», risponde «${risposta('NOME')}», annota la chiamata in console e chiede se aprire il portone: «${portone(true)}» o «${portone(false)}».`,
         `«Portineria» dice gli orari, con il nome del condominio preso da una costante.`,
       ],
     },
@@ -51,7 +51,7 @@ export function generaCitofono(seme: number): Compito {
     pannelli: ['js'],
     fasi: [
       {
-        consegna: `Quando si clicca **Interno 1 · ${f1}**, compare un \`alert\` con \`${suonato(f1)}\`. Funzione con nome, collegata al pulsante (id \`btnInterno1\`) con \`addEventListener\`.`,
+        consegna: `Quando si clicca **Interno 1 · ${f1}**, compare un \`alert\` con \`${suonato(f1)}\`. Serve una funzione con nome, collegata al pulsante (id \`btnInterno1\`) con \`addEventListener\`.`,
         regola: REGOLE.treGesti,
         prove: [{ passi: [interno(1, f1), alertUguale(suonato(f1), `Compare un alert con «${suonato(f1)}»`, hintCollegamento), alertsQuanti(1, 'Un alert solo', 'Un clic, un alert.')] }],
         codiceIniziale: '// 1. Le funzioni\n\n// 2. I collegamenti ai pulsanti\n',
@@ -74,7 +74,7 @@ export function generaCitofono(seme: number): Compito {
         ],
       },
       {
-        consegna: `La famiglia ${f1} risponde. Dopo l'alert del «Driiin», l'interno 1 chiede \`Chi è?\` con \`prompt\`, mette il nome in una variabile e mostra un **secondo alert**: \`${risposta('NOME')}\` (se scrivono Luca: \`${risposta('Luca')}\`).`,
+        consegna: `La famiglia ${f1} risponde. Lavora nella **funzione dell'interno 1**: dopo l'alert del «Driiin», chiedi \`Chi è?\` con \`prompt\` e metti il nome in una variabile. Poi mostra un **secondo alert**: \`${risposta('NOME')}\` (se scrivono Luca: \`${risposta('Luca')}\`).`,
         regola: `${REGOLE.treGesti} ${REGOLE.datiDalPrompt}`,
         prove: [
           {
@@ -94,8 +94,8 @@ export function generaCitofono(seme: number): Compito {
         ],
       },
       {
-        consegna: `Due novità. **1 · Portineria** (id \`btnPortineria\`): **come prima riga del codice**, sopra le funzioni, scrivi una \`const\` che contiene **solo** il nome del condominio, **senza** la parola «Condominio» (il nome della costante lo scegli tu), per esempio \`const CONDOMINIO = "${condominio}";\`. Il pulsante mostra un alert con \`${portineria}\`, fatto di pezzi uniti con il \`+\`: il testo \`Condominio \`, la costante e il resto \`${portineria.slice(`Condominio ${condominio}`.length)}\`. **2 · Il registro:** nella funzione dell'interno 1, **dopo** l'alert «arrivo subito», aggiungi un \`console.log\` con \`${chiamata('NOME')}\`.`,
-        regola: `${REGOLE.treGesti} ${REGOLE.datiDalPrompt} Il nome del condominio sta in una costante (const) e nel messaggio entra la costante, non il testo ripetuto.`,
+        consegna: `Due novità.\n1. **Portineria.** **In cima al codice, sopra le funzioni**, scrivi una \`const\` che contiene **solo** il nome del condominio, **senza** la parola «Condominio». Per esempio: \`const CONDOMINIO = "${condominio}";\`. CONDOMINIO è il nome della costante, non il suo contenuto: il nome della costante lo scegli tu. Poi scrivi una **nuova funzione** con nome e collegala al pulsante **Portineria** (id \`btnPortineria\`) con \`addEventListener\`. La funzione mostra un alert con \`${portineria}\`. L'alert è fatto di tre pezzi uniti con il \`+\`: il testo \`Condominio \`, la costante e il resto \`${portineria.slice(`Condominio ${condominio}`.length)}\`.\n2. **Il registro.** Nella funzione dell'interno 1, **dopo** l'alert «arrivo subito», aggiungi un \`console.log\` con \`${chiamata('NOME')}\` (se scrivono Luca: \`${chiamata('Luca')}\`).`,
+        regola: `${REGOLE.treGesti} ${REGOLE.datiDalPrompt} Anche il pulsante Portineria ha la sua funzione con nome. Il nome del condominio sta in una costante (const) e nel messaggio entra la costante, non il testo ripetuto.`,
         scrittoUnaVolta: { testo: condominio, cosa: 'il nome del condominio' },
         prove: [
           {
@@ -106,7 +106,7 @@ export function generaCitofono(seme: number): Compito {
               risposte('Luca'),
               interno(1, f1),
               alertUguale(risposta('Luca'), `L'interno 1 risponde ancora «${risposta('Luca')}»`, 'L\'interno 1 deve continuare a rispondere.'),
-              rigaConsole(chiamata('Luca'), `In console c'è la riga «${chiamata('Luca')}»`, 'Un console.log nella funzione dell\'interno 1, dopo il prompt, con la variabile del nome.'),
+              rigaConsole(chiamata('Luca'), `In console c'è la riga «${chiamata('Luca')}»`, 'Un console.log nella funzione dell\'interno 1, dopo l\'alert «arrivo subito», con la variabile del nome.'),
             ],
           },
           {
@@ -116,7 +116,7 @@ export function generaCitofono(seme: number): Compito {
         ],
       },
       {
-        consegna: `Il portone: in fondo alla funzione dell'interno 1, dopo il \`console.log\`, chiedi con \`confirm\` \`Apro il portone?\` e salva la risposta in una variabile. Poi mostra un **terzo alert**: \`Portone aperto: \` unito alla variabile. Con OK dice \`${portone(true)}\`, con Annulla \`${portone(false)}\`.`,
+        consegna: `Il portone: in fondo alla funzione dell'interno 1, dopo il \`console.log\`, chiedi con \`confirm\` \`Apro il portone?\` e salva la risposta in una variabile. Poi mostra un **terzo alert**: \`Portone aperto: \` unito alla variabile. Con OK dice \`${portone(true)}\`, con Annulla \`${portone(false)}\`. Non serve un \`if\`: \`confirm\` dà già \`true\` o \`false\`.`,
         regola: `${REGOLE.treGesti} La risposta del confirm sta in una variabile e finisce nell'alert: non valgono due alert scritti a mano.`,
         scrittoUnaVolta: { testo: condominio, cosa: 'il nome del condominio' },
         prove: [

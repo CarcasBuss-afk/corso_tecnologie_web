@@ -70,7 +70,7 @@ export function generaTabellone(seme: number): Compito {
       id: 'tabellone',
       titolo: 'Il tabellone del torneo',
       lezione: 'Modulo 4 · Lezioni 2, 3 e 4 (ripasso)',
-      committente: `La scuola organizza la «${torneo}» di calcetto e vuole un tabellone sullo schermo della palestra: l'arbitro preme i pulsanti e il pubblico legge tutto, grande, nella pagina.`,
+      committente: `La scuola organizza il torneo di calcetto «${torneo}» e vuole un tabellone sullo schermo della palestra: l'arbitro preme i pulsanti e il pubblico legge tutto, grande, nella pagina.`,
       prodotto: 'Una pagina in cui ogni pulsante cambia uno o più elementi: le squadre, il risultato, chi ha segnato, il titolo della finale.',
       dati: [`torneo: ${torneo}`, `squadre: ${a} e ${b}`],
       risultatoFinale: [
@@ -84,7 +84,7 @@ export function generaTabellone(seme: number): Compito {
     fasi: [
       {
         consegna: `Quando si clicca **Inizia la partita**, cambiano **due** elementi: il paragrafo della partita (id \`partita\`) dice \`${partita}\` con i nomi delle squadre in **grassetto** (\`<strong>\`), e il paragrafo dell'annuncio (id \`annuncio\`) dice \`${SI_GIOCA}\`.`,
-        regola: `${REGOLE.treGesti} Il testo entra nella pagina con innerHTML o textContent, non con alert.`,
+        regola: `${REGOLE.treGesti} Il testo entra nella pagina con innerHTML (serve per il grassetto), non con alert.`,
         prove: [{ passi: [inizia(), ...controlliInizio] }],
         codiceIniziale: '// 1. Le funzioni\n\n// 2. I collegamenti ai pulsanti\n',
       },
@@ -97,7 +97,7 @@ export function generaTabellone(seme: number): Compito {
         ],
       },
       {
-        consegna: `**Marcatore** chiede con \`prompt\` chi ha segnato e scrive nel paragrafo dei marcatori (id \`marcatori\`) \`${gol('NOME')}\`, con il nome in **corsivo** (\`<em>\`). Attento: il tag va intorno a una **variabile**, non a un testo fisso. Ogni clic **sostituisce** il marcatore di prima. Il pallone ⚽ puoi copiarlo da qui, oppure premere **Win + .** per le emoji.`,
+        consegna: `**Marcatore** chiede con \`prompt\` chi ha segnato e scrive nel paragrafo dei marcatori (id \`marcatori\`) \`${gol('NOME')}\` (se rispondono Luca: \`${gol('Luca')}\`), con il nome in **corsivo** (\`<em>\`). Attento: il tag va intorno a una **variabile**, non a un testo fisso. Ogni clic **sostituisce** il marcatore di prima. Il pallone ⚽ puoi copiarlo da qui, oppure premere **Win + .** per le emoji.`,
         regola: `${REGOLE.treGesti} ${REGOLE.datiDalPrompt} Il tag <em> sta intorno alla variabile con il nome.`,
         prove: [
           { nome: 'rispondendo «Luca»', passi: segnaGol('Luca') },
@@ -105,7 +105,7 @@ export function generaTabellone(seme: number): Compito {
         ],
       },
       {
-        consegna: `**Come prima riga del codice**, sopra le funzioni, scrivi una \`const\` che contiene **solo** il nome del torneo (il nome della costante lo scegli tu), per esempio \`const TORNEO = "${torneo}";\`${torneo.includes("'") ? '. Fra virgolette **doppie**, come nell\'esempio: l\'apostrofo romperebbe le virgolette singole' : ''}. **Finale** cambia il titolo (id \`titolo\`) in \`${finale}\`, senza 🏆: la costante unita con il \`+\` al testo \`${finale.slice(torneo.length)}\`. Poi chiede con \`confirm\` \`La partita è finita?\` e scrive nell'annuncio \`Partita finita: \` unito alla risposta: \`${finita(true)}\` con OK, \`${finita(false)}\` con Annulla. Niente alert: tutto va nella pagina.`,
+        consegna: `Questa fase ha tre passi.\n1. **In cima al codice, sopra le funzioni**, scrivi una \`const\` che contiene **solo** il nome del torneo (il nome della costante lo scegli tu), per esempio \`const TORNEO = "${torneo}";\`${torneo.includes("'") ? ' Usa le virgolette **doppie**, come qui: con quelle singole l\'apostrofo chiuderebbe il testo a metà.' : ''}\n2. **Finale** cambia il titolo (id \`titolo\`) in \`${finale}\`, senza 🏆: la costante unita con il \`+\` al testo \`${finale.slice(torneo.length)}\`.\n3. Poi **Finale** chiede con \`confirm\` \`La partita è finita?\` e scrive nel paragrafo dell'annuncio (id \`annuncio\`) \`Partita finita: \` unito alla risposta: \`${finita(true)}\` con OK, \`${finita(false)}\` con Annulla. Niente alert: tutto va nella pagina.`,
         regola: `${REGOLE.treGesti} Il nome del torneo sta in una costante (const) che entra nel titolo; la risposta del confirm sta in una variabile che entra nell'annuncio: non valgono due testi scritti a mano.`,
         scrittoUnaVolta: { testo: torneo, cosa: 'il nome del torneo' },
         prove: [
@@ -114,7 +114,7 @@ export function generaTabellone(seme: number): Compito {
         ],
       },
       {
-        consegna: 'Il tabellone funziona: ora **riordina il codice**, come nella Lezione 4. In alto, fuori dalle funzioni, salva in una variabile ogni elemento che usi: il titolo, i quattro paragrafi e i quattro pulsanti, con i nomi che vuoi. Poi le funzioni e i collegamenti usano le variabili: ogni id si cerca con `getElementById` **una volta sola**. Il tabellone deve fare esattamente le stesse cose di prima.',
+        consegna: 'Il tabellone funziona: ora **riordina il codice**, come nella Lezione 4.\n1. In alto, sotto la `const` e fuori dalle funzioni, crea **una variabile per ogni elemento**: il titolo, i quattro paragrafi e i quattro pulsanti. Sono **nove** variabili, con i nomi che vuoi.\n2. Attento: una variabile non può avere lo stesso nome di una funzione. Se hai `function finale()`, chiama la variabile per esempio `tastoFinale`.\n3. Nelle funzioni e nei collegamenti togli le `getElementById` e usa le variabili: ogni id si cerca con `getElementById` **una volta sola**.\nIl tabellone deve fare esattamente le stesse cose di prima.',
         regola: `${REGOLE.treGesti} ${REGOLE.elementiInVariabili}`,
         scrittoUnaVolta: { testo: torneo, cosa: 'il nome del torneo' },
         elementiInAlto: true,

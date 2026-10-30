@@ -53,28 +53,28 @@ export function generaScontrino(seme: number): Compito {
     pannelli: ['js'],
     fasi: [
       {
-        consegna: `Lo scontrino comincia con il nome del bar: con \`console.log\` stampa in console la riga \`${bar}\`. Il testo va fra virgolette. Guarda il risultato nella **console**, sotto la pagina.`,
+        consegna: `Lo scontrino comincia con il nome del bar: con \`console.log\` stampa in console la riga \`${bar}\`. Il testo va fra virgolette. Scrivi il codice nel riquadro JavaScript, **senza il tag \`<script>\`**: qui non serve. Guarda il risultato nella **console**, sotto la pagina.`,
         regola: 'Il testo si stampa con console.log, fra virgolette.',
         prove: [{ passi: [intestazione] }],
         codiceIniziale: '\n',
       },
       {
-        consegna: `Sotto il nome, il listino: tre righe, una per prodotto, \`${prodotti.join('`, `')}\`. Ogni riga è un \`console.log\` con **tre valori separati da virgole**: il nome fra virgolette, il prezzo come **numero senza virgolette**, poi \`"€"\`. JavaScript mette da solo uno spazio fra i valori. Scrivi i nomi come qui, con la maiuscola e l'accento di «Caffè». Il simbolo € si fa con **AltGr + E**.`,
+        consegna: `Sotto il nome, il listino: tre righe, una per prodotto, \`${prodotti.join('`, `')}\`. Ogni riga è un \`console.log\` con **tre valori separati da virgole**: il nome fra virgolette, il prezzo come **numero senza virgolette**, poi \`"€"\`. JavaScript mette da solo uno spazio fra i valori. Scrivi i nomi come qui, con la maiuscola e l'accento di «Caffè». Il simbolo € si fa con **AltGr + E**.\nAttento: i prezzi con i centesimi si scrivono con il **punto**, \`1.5\`. Con la virgola, \`1,5\`, JavaScript vede due numeri diversi.`,
         regola: 'Ogni riga del listino è un console.log con più valori separati da virgole: il nome del prodotto fra virgolette e il prezzo come numero senza virgolette. Non vale il prezzo scritto dentro il testo fra virgolette.',
         prove: [{ passi: [intestazione, ...listino] }],
       },
       {
-        consegna: `Il tavolo ha ordinato ${caffeOrdinati} caffè, un cornetto e una spremuta. Stampa la riga \`Totale N €\` come quelle del listino, con tre valori separati da virgole: \`"Totale"\`, poi **il calcolo**, poi \`"€"\`. Il calcolo lo fa JavaScript: il prezzo del caffè per ${caffeOrdinati}, più il cornetto, più la spremuta (i prezzi sono nei dati della scheda). Attento: i decimali si scrivono con il punto, \`1.5\`. Con la virgola, \`1,5\`, JavaScript vede due numeri diversi.`,
+        consegna: `Il tavolo ha ordinato ${caffeOrdinati} caffè, un cornetto e una spremuta. Stampa la riga \`Totale N €\`: al posto di N comparirà il numero calcolato da JavaScript. La riga è come quelle del listino, con tre valori separati da virgole: \`"Totale"\`, poi **il calcolo**, poi \`"€"\`. Il calcolo è il prezzo del caffè per ${caffeOrdinati} (con \`*\`), più il cornetto, più la spremuta. I prezzi sono nei dati della scheda, sempre con il punto per i decimali.`,
         regola: 'Il totale lo calcola JavaScript: dentro il console.log c\'è l\'operazione con i prezzi (con * e +), non il risultato scritto a mano.',
         prove: [{ passi: [intestazione, ...listino, rigaTotale] }],
       },
       {
-        consegna: `I due amici dividono il conto: stampa \`A testa N €\`. Riscrivi **tutto il calcolo del totale** fra parentesi tonde e dividilo per 2: \`(… + … + …) / 2\`. Non vale scrivere a mano il totale già calcolato.`,
+        consegna: `I due amici dividono il conto.\n1. **Sotto** la riga del Totale, che resta com'è, aggiungi un nuovo \`console.log\` che stampa \`A testa N €\`.\n2. Come prima, i valori sono tre: \`"A testa"\`, poi il calcolo, poi \`"€"\`.\n3. Il calcolo è **lo stesso del totale**, copiato fra parentesi tonde e diviso per 2: \`(… * ${caffeOrdinati} + … + …) / 2\`.\nNon vale scrivere a mano il totale già calcolato. Se il risultato ha il punto, per esempio \`4.5\`, va bene così.`,
         regola: 'Anche la quota a testa la calcola JavaScript: l\'operazione del totale fra parentesi, divisa per 2. Non vale il numero scritto a mano.',
         prove: [{ passi: [intestazione, ...listino, rigaTotale, rigaQuota] }],
       },
       {
-        consegna: `Lo scontrino si chiude con la riga \`${SALUTO}\`. E il programma si spiega da solo: aggiungi **almeno due commenti** (con \`//\`) che dicono che cosa fanno le parti del codice, per esempio sopra il listino e sopra i conti.`,
+        consegna: `Lo scontrino si chiude con la riga \`${SALUTO}\`. Poi aggiungi **almeno due commenti** (con \`//\`) che dicono che cosa fanno le parti del codice, per esempio sopra il listino e sopra i conti.`,
         regola: 'Ci sono almeno due commenti che spiegano il codice; i conti restano calcolati da JavaScript.',
         almenoCommenti: 2,
         prove: [{ passi: [intestazione, ...listino, rigaTotale, rigaQuota, rigaConsole(SALUTO, `In console c'è la riga «${SALUTO}»`, 'L\'ultima riga è un console.log con il saluto fra virgolette.')] }],

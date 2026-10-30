@@ -25,7 +25,9 @@ type Pannello = 'js' | 'html' | 'css';
 const COME_LEGGERE =
   'ℹ️ Le parole in MAIUSCOLO (NOME, N, ETÀ…) non vanno scritte: al loro posto va il valore vero, come nell\'esempio. ' +
   'Le domande di `prompt` e `confirm` le scegli tu, se la consegna non le dà. ' +
-  'Il testo nei riquadri come `questo` va scritto identico: maiuscole, spazi e punteggiatura compresi.';
+  'Il testo da mostrare, nei riquadri come `questo`, va scritto identico: maiuscole, spazi e punteggiatura compresi. ' +
+  'Nei pezzi di codice d\'esempio i puntini `...` sono la parte che completi tu. ' +
+  'Uno spazio all\'inizio o alla fine di un riquadro è evidenziato, come in `Ciao `: va scritto anche lui.';
 
 export function Compito({ classeId, compitoId }: { classeId: string; compitoId: string }) {
   const { stato, messaggio, accediGoogle, accediProva, esci } = useAllievo();
@@ -195,7 +197,8 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
           {c.fase && (
             <section className={`rounded-2xl border border-(--color-bordo) bg-(--color-fondo-card) p-4 sm:p-5 ${scossa ? 'scuoti' : ''}`}>
               <p className="mb-1 text-sm font-bold uppercase tracking-wide text-(--color-giallo)">Fase {numeroFase}: la consegna</p>
-              <h2 className="text-lg leading-snug">
+              {/* pre-line: una consegna lunga può andare a capo in punti numerati («\n1. …»). */}
+              <h2 className="whitespace-pre-line text-lg leading-snug">
                 <Testo>{c.fase.consegna}</Testo>
               </h2>
               <p className="mt-3 border-t border-(--color-bordo) pt-2 text-sm text-(--color-testo-tenue)">

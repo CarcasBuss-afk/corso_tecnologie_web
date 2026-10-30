@@ -35,9 +35,9 @@ export function generaPorta(seme: number): Compito {
       id: 'porta',
       titolo: 'La porta del club',
       lezione: 'Modulo 4 · Lezione 6',
-      committente: `Il «${club}» vuole una porta digitale: chi sa la parola d'ordine entra, chi non la sa no. E all'ingresso si controlla l'età.`,
+      committente: `Il «${club}» vuole una porta digitale: chi sa la parola d'ordine entra, chi non la sa no. All'ingresso si controlla l'età, e un pulsante dà un giudizio al voto di un socio.`,
       prodotto: 'Una pagina che prende decisioni con if, else ed else if, e le mostra con il testo e il colore giusto.',
-      dati: [`parola d'ordine: ${parola}`, `età minima: ${etaMinima} anni`],
+      dati: [`parola d'ordine: ${parola}`, `età minima: ${etaMinima} anni`, 'voto: da 9 Ottimo, da 6 Sufficiente, sotto il 6 Insufficiente'],
       risultatoFinale: [
         `«Entra» chiede la parola d'ordine: «${BENVENUTO}» in verde se è giusta, «${SBAGLIATA}» in rosso se no.`,
         `«Controlla l'età» chiede gli anni e dice se si può entrare (da ${etaMinima} anni in su), con l'età nel messaggio.`,
@@ -49,7 +49,7 @@ export function generaPorta(seme: number): Compito {
     pannelli: ['js'],
     fasi: [
       {
-        consegna: `**Entra** chiede la parola d'ordine con \`prompt\`. Se è \`${parola}\` il paragrafo dell'esito (id \`esito\`) dice \`${BENVENUTO}\`, altrimenti \`${SBAGLIATA}\`. Confronto con \`===\`, decisione con \`if\` ed \`else\`.`,
+        consegna: `**Entra** chiede la parola d'ordine con \`prompt\`.\n1. Se la risposta è \`${parola}\`, il paragrafo dell'esito (id \`esito\`) dice esattamente \`${BENVENUTO}\`, senza emoji.\n2. Altrimenti dice esattamente \`${SBAGLIATA}\`.\nLa parola si confronta con \`===\`. È un testo: nel codice va fra virgolette. La scelta la fanno \`if\` ed \`else\`.`,
         regola: `${REGOLE.treGesti} ${REGOLE.decisioneConIf} La parola si confronta con ===.`,
         prove: [
           {
@@ -63,13 +63,13 @@ export function generaPorta(seme: number): Compito {
           },
           {
             nome: `rispondendo «${sbagliata}»`,
-            passi: [risposte(sbagliata), clic('btnEntra', 'Entra'), testo('esito', SBAGLIATA, `Con una parola sbagliata l'esito dice «${SBAGLIATA}»`, 'Il ramo else serve a questo: quando il confronto è falso.')],
+            passi: [risposte(sbagliata), clic('btnEntra', 'Entra'), testo('esito', SBAGLIATA, `Con una parola sbagliata l'esito dice «${SBAGLIATA}»`, 'Le graffe dell\'else servono a questo: quando il confronto è falso.')],
           },
         ],
         codiceIniziale: '// 1. Scrivi la funzione\n\n// 2. Collega il pulsante alla funzione\n',
       },
       {
-        consegna: 'Il colore dice tutto a colpo d\'occhio: con la parola giusta l\'esito diventa **verde** (`style.color`), con quella sbagliata **rosso**. Il colore va cambiato dentro i due rami dell\'if.',
+        consegna: 'Il colore dice tutto a colpo d\'occhio: con la parola giusta l\'esito diventa **verde**, con quella sbagliata **rosso**. Si usa `style.color`: è il colore del testo, non lo sfondo. Il verde va nelle graffe dell\'`if`, il rosso nelle graffe dell\'`else`.',
         regola: `${REGOLE.treGesti} ${REGOLE.decisioneConIf}`,
         prove: [
           {
@@ -78,17 +78,17 @@ export function generaPorta(seme: number): Compito {
               risposte(parola),
               clic('btnEntra', 'Entra'),
               testo('esito', BENVENUTO, `L'esito dice «${BENVENUTO}»`, 'Il testo della fase prima deve restare.'),
-              stile('esito', 'color', VERDI, 'L\'esito è verde', 'Nel ramo dell\'if metti style.color a un verde (green).'),
+              stile('esito', 'color', VERDI, 'L\'esito è verde', 'Nelle graffe dell\'if metti style.color a un verde (green).'),
             ],
           },
           {
             nome: `rispondendo «${sbagliata}»`,
-            passi: [risposte(sbagliata), clic('btnEntra', 'Entra'), testo('esito', SBAGLIATA, `L'esito dice «${SBAGLIATA}»`, 'Il ramo else deve restare.'), stile('esito', 'color', ROSSI, 'L\'esito è rosso', 'Nel ramo else metti style.color a un rosso (red).')],
+            passi: [risposte(sbagliata), clic('btnEntra', 'Entra'), testo('esito', SBAGLIATA, `L'esito dice «${SBAGLIATA}»`, 'L\'else deve restare.'), stile('esito', 'color', ROSSI, 'L\'esito è rosso', 'Nelle graffe dell\'else metti style.color a un rosso (red).')],
           },
         ],
       },
       {
-        consegna: `**Controlla l'età** chiede gli anni con \`prompt\` e li trasforma in numero con \`Number()\`. Da ${etaMinima} anni in su (\`>=\`) il paragrafo (id \`eta\`) dice \`Puoi entrare\`, altrimenti \`Troppo giovane\`.`,
+        consegna: `**Controlla l'età** chiede gli anni con \`prompt\` e li trasforma in numero con \`Number()\`. Da ${etaMinima} anni in su (\`>=\`) il paragrafo (id \`eta\`, senza accento) dice \`Puoi entrare\`, altrimenti \`Troppo giovane\`.`,
         regola: `${REGOLE.treGesti} ${REGOLE.decisioneConIf} La risposta si converte con Number() e si confronta con >= (o equivalente).`,
         prove: [
           {
@@ -101,7 +101,7 @@ export function generaPorta(seme: number): Compito {
           },
           {
             nome: `rispondendo «${etaNo}»`,
-            passi: [risposte(String(etaNo)), clic('btnEta', "Controlla l'età"), testo('eta', 'Troppo giovane', `Con ${etaNo} anni dice «Troppo giovane»`, 'Il ramo else per chi non ha l\'età.')],
+            passi: [risposte(String(etaNo)), clic('btnEta', "Controlla l'età"), testo('eta', 'Troppo giovane', `Con ${etaNo} anni dice «Troppo giovane»`, 'L\'else serve per chi non ha l\'età.')],
           },
           {
             nome: `rispondendo proprio «${etaMinima}»`,
@@ -110,7 +110,7 @@ export function generaPorta(seme: number): Compito {
         ],
       },
       {
-        consegna: `Ora il messaggio dell'età dice anche gli anni, esattamente così: \`${puoi(etaOk)}\` oppure \`${giovane(etaNo)}\`. Dopo i due punti si scrive minuscolo. Gli anni nel testo sono la variabile, unita con il \`+\`; il ${etaMinima} puoi scriverlo fisso.`,
+        consegna: `Ora il messaggio dell'età dice anche gli anni risposti. Per esempio:\n1. Con ${etaOk} anni dice \`${puoi(etaOk)}\`.\n2. Con ${etaNo} anni dice \`${giovane(etaNo)}\`.\nIl numero degli anni cambia a ogni risposta: è la variabile. Il resto va scritto identico, e dopo i due punti si scrive minuscolo. Il messaggio si costruisce con tre pezzi uniti dal \`+\`: \`"Hai "\`, poi la variabile, poi \`" anni: puoi entrare"\`. Gli spazi stanno dentro le virgolette. Nell'\`else\` l'ultimo pezzo è \`" anni: troppo giovane, servono ${etaMinima}"\`: il ${etaMinima} lo scrivi direttamente nel testo.`,
         regola: `${REGOLE.treGesti} ${REGOLE.decisioneConIf} ${REGOLE.datiDalPrompt}`,
         prove: [
           {
@@ -119,7 +119,7 @@ export function generaPorta(seme: number): Compito {
           },
           {
             nome: `rispondendo «${etaNo}»`,
-            passi: [risposte(String(etaNo)), clic('btnEta', "Controlla l'età"), testo('eta', giovane(etaNo), `Dice «${giovane(etaNo)}»`, `Nel ramo else il testo finisce con «servono ${etaMinima}».`)],
+            passi: [risposte(String(etaNo)), clic('btnEta', "Controlla l'età"), testo('eta', giovane(etaNo), `Dice «${giovane(etaNo)}»`, `Nell'else il testo finisce con «servono ${etaMinima}».`)],
           },
           {
             nome: `rispondendo «${etaOk + 10}»`,
@@ -128,7 +128,7 @@ export function generaPorta(seme: number): Compito {
         ],
       },
       {
-        consegna: '**Il voto del socio** chiede un voto con `prompt` e `Number()`. Nel paragrafo (id `giudizio`): da 9 in su `Ottimo`, da 6 in su `Sufficiente`, altrimenti `Insufficiente`. Tre vie: `if`, `else if`, `else`, nell\'ordine giusto.',
+        consegna: '**Il voto del socio** chiede un voto con `prompt` e lo trasforma in numero con `Number()`. Scrivi una nuova funzione e collegala al pulsante, come per gli altri due. Nel paragrafo (id `giudizio`) va solo la parola, senza emoji né punto esclamativo:\n1. Da 9 in su dice `Ottimo`.\n2. Da 6 in su dice `Sufficiente`.\n3. Sotto il 6 dice `Insufficiente`.\nLe tre vie sono `if`, `else if` ed `else`: prima si controlla il 9, poi il 6.',
         regola: `${REGOLE.treGesti} La scelta a tre vie la fa un if / else if / else sul voto convertito con Number(): non valgono testi fissi.`,
         prove: [
           { nome: 'rispondendo «10»', passi: [risposte('10'), clic('btnVoto', 'Il voto del socio'), testo('giudizio', 'Ottimo', 'Con 10 dice «Ottimo»', 'Il primo if controlla il voto da 9 in su.')] },
@@ -139,7 +139,7 @@ export function generaPorta(seme: number): Compito {
       },
       {
         consegna:
-          'La porta funziona: ora **riordina il codice**, come nella Lezione 4. In alto, fuori dalle funzioni, salva in una variabile ogni elemento che usi: i tre paragrafi (`esito`, `eta`, `giudizio`) e i tre pulsanti. I nomi delle variabili li scegli tu. Poi le funzioni e i collegamenti usano le variabili: ogni id si cerca con `getElementById` **una volta sola**. La porta deve fare esattamente le stesse cose di prima.',
+          'La porta funziona: ora **riordina il codice**, come nella Lezione 4.\n1. In alto, fuori dalle funzioni, salva in una variabile ogni elemento che usi: i tre paragrafi (`esito`, `eta`, `giudizio`) e i tre pulsanti. I nomi delle variabili li scegli tu.\n2. Dentro le funzioni cancella le righe con `getElementById`: ora le funzioni usano le variabili di sopra.\n3. Anche i collegamenti con `addEventListener` partono dalle variabili dei pulsanti.\nAlla fine ogni id si cerca con `getElementById` **una volta sola**. Attento ai nomi: se il paragrafo si chiama `eta`, il numero degli anni dentro la funzione deve avere un altro nome (per esempio `anni`). La porta deve fare esattamente le stesse cose di prima.',
         regola: `${REGOLE.treGesti} ${REGOLE.decisioneConIf} ${REGOLE.elementiInVariabili}`,
         elementiInAlto: true,
         prove: [
@@ -163,11 +163,11 @@ export function generaPorta(seme: number): Compito {
             passi: [
               risposte(sbagliata),
               clic('btnEntra', 'Entra'),
-              testo('esito', SBAGLIATA, `Con una parola sbagliata dice «${SBAGLIATA}»`, 'Il ramo else resta.'),
-              stile('esito', 'color', ROSSI, 'L\'esito è rosso', 'Il rosso resta nel ramo else.'),
+              testo('esito', SBAGLIATA, `Con una parola sbagliata dice «${SBAGLIATA}»`, 'L\'else resta.'),
+              stile('esito', 'color', ROSSI, 'L\'esito è rosso', 'Il rosso resta nelle graffe dell\'else.'),
               risposte(String(etaNo)),
               clic('btnEta', "Controlla l'età"),
-              testo('eta', giovane(etaNo), `Con ${etaNo} anni dice «${giovane(etaNo)}»`, 'Il ramo else dell\'età resta.'),
+              testo('eta', giovane(etaNo), `Con ${etaNo} anni dice «${giovane(etaNo)}»`, 'L\'else dell\'età resta.'),
               risposte('4'),
               clic('btnVoto', 'Il voto del socio'),
               testo('giudizio', 'Insufficiente', 'Con 4 dice «Insufficiente»', 'L\'else finale resta.'),

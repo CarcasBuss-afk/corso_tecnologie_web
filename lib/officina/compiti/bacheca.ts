@@ -41,12 +41,12 @@ export function generaBacheca(seme: number): Compito {
       titolo: 'La bacheca della classe',
       lezione: 'Modulo 4 · Lezione 4',
       committente: `La ${classe} vuole una bacheca sullo schermo in fondo all'aula: il rappresentante preme un pulsante e l'avviso compare, grande, nella pagina.`,
-      prodotto: 'Una pagina in cui i pulsanti cambiano il testo del paragrafo dell\'avviso, senza finestre.',
+      prodotto: 'Una pagina in cui i pulsanti cambiano il testo del paragrafo dell\'avviso, senza alert: il risultato si legge nella pagina.',
       dati: [`classe: ${classe}`, `gita: ${gita}`, `verifica: ${verifica}`],
       risultatoFinale: [
         `«Gita» scrive «${gita}»; «Verifica» scrive «${verifica}» con la materia in grassetto.`,
-        '«Nuovo avviso» chiede il testo e chi lo firma, e li mette nella pagina.',
-        `«Cancella» rimette «${VUOTO}» e svuota la firma.`,
+        '«Nuovo avviso» chiede il testo e chi lo scrive, e li mette nella pagina.',
+        `«Cancella» rimette «${VUOTO}», svuota la firma e scrive nel titolo «Bacheca della ${classe}», senza la 📌.`,
       ],
     },
     pagina: { html, css: CSS_BASE },
@@ -63,7 +63,7 @@ export function generaBacheca(seme: number): Compito {
         codiceIniziale: '// 1. Scrivi la funzione\n\n// 2. Collega il pulsante alla funzione\n',
       },
       {
-        consegna: `**Verifica** scrive \`${verifica}\`, con la materia in **grassetto**: dentro il testo metti il tag \`<strong>\` intorno a «${materia}». È il motivo per cui si usa innerHTML e non textContent. «Gita» continua a funzionare.`,
+        consegna: `Scrivi una nuova funzione per **Verifica** e collegala. **Verifica** scrive \`${verifica}\`, con la materia in **grassetto**: dentro il testo metti il tag \`<strong>\` intorno a «${materia}». È il motivo per cui si usa innerHTML e non textContent. «Gita» continua a funzionare.`,
         regola: `${REGOLE.treGesti} Ogni pulsante ha la sua funzione con nome.`,
         prove: [
           {
@@ -97,7 +97,7 @@ export function generaBacheca(seme: number): Compito {
         ],
       },
       {
-        consegna: `**Cancella** rimette nell'avviso il testo iniziale \`${VUOTO}\` e cambia il titolo (id \`titolo\`) in \`Bacheca della ${classe} (vuota)\`. Il nuovo titolo va scritto **senza** la 📌.`,
+        consegna: `**Cancella** rimette nell'avviso il testo iniziale \`${VUOTO}\` e cambia il titolo (id \`titolo\`) in \`Bacheca della ${classe} (vuota)\`. Il nuovo titolo va scritto **senza** la 📌. Nell'ultima fase toglierai anche « (vuota)».`,
         regola: `${REGOLE.treGesti}`,
         prove: [
           {
@@ -111,7 +111,12 @@ export function generaBacheca(seme: number): Compito {
         ],
       },
       {
-        consegna: '**Nuovo avviso** fa una seconda domanda, «Chi lo scrive?», e mette nel paragrafo della firma (id `firma`) il testo `Scritto da NOME`. **Cancella** svuota anche la firma, dandole un testo vuoto (`""`), e rimette il titolo a `Bacheca della ' + classe + '`, sempre senza 📌.',
+        consegna:
+          'Cambia le due funzioni:\n' +
+          '1. **Nuovo avviso** fa una seconda domanda, «Chi lo scrive?», e salva la risposta in un\'altra variabile.\n' +
+          '2. Sempre in **Nuovo avviso**, nel paragrafo della firma (id `firma`) scrivi `Scritto da ` unito con `+` alla variabile. Se si risponde «Luca», la firma dice «Scritto da Luca».\n' +
+          '3. **Cancella** svuota la firma, dandole un testo vuoto (`""`).\n' +
+          '4. Sempre in **Cancella**, il titolo diventa `Bacheca della ' + classe + '`: senza « (vuota)» e senza 📌.',
         regola: `${REGOLE.treGesti} ${REGOLE.datiDalPrompt} Due prompt, due variabili.`,
         prove: [
           {
@@ -124,7 +129,7 @@ export function generaBacheca(seme: number): Compito {
               testo('firma', 'Scritto da Luca', 'La firma dice «Scritto da Luca»', 'La seconda risposta va nella firma, dopo «Scritto da ».'),
               clic('btnCancella', 'Cancella'),
               testo('firma', '', 'Dopo Cancella la firma è vuota', 'Metti nella firma un testo vuoto: due virgolette senza niente in mezzo.'),
-              testo('titolo', `Bacheca della ${classe}`, `Il titolo torna «Bacheca della ${classe}»`, 'Cancella deve rimettere il titolo di partenza.'),
+              testo('titolo', `Bacheca della ${classe}`, `Il titolo torna «Bacheca della ${classe}»`, `Il titolo deve essere esattamente «Bacheca della ${classe}»: senza « (vuota)» e senza 📌.`),
             ],
           },
           {

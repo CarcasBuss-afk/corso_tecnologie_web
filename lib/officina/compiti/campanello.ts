@@ -80,7 +80,7 @@ export function generaCampanello(seme: number): Compito {
         ],
       },
       {
-        consegna: `Il nome del negozio servirà in più messaggi: conviene scriverlo **una volta sola**, in una costante. **Come prima riga del codice**, sopra la funzione, scrivi una \`const\` che contiene **solo** il nome del negozio (il nome della costante lo scegli tu), per esempio \`const NEGOZIO = "${negozio}";\`. Poi l'alert dice \`${saluto('NOME')}\` (per Luca: \`${saluto('Luca')}\`) ed è fatto di pezzi uniti con il \`+\`: il testo \`Benvenuto da \`, la costante, poi la virgola, il nome e il punto esclamativo.`,
+        consegna: `Il nome del negozio servirà in più messaggi: conviene scriverlo **una volta sola**, in una costante.\n1. **In cima al codice, sopra la funzione**, scrivi una \`const\` che contiene **solo** il nome del negozio, per esempio \`const NEGOZIO = "${negozio}";\`. Il nome della costante lo scegli tu.\n2. Cambia l'alert: al posto di \`Arrivo subito, NOME!\` ora dice \`${saluto('NOME')}\` (per Luca: \`${saluto('Luca')}\`). L'alert resta uno solo.\n3. L'alert è fatto di pezzi uniti con il \`+\`: il testo \`Benvenuto da \`, la costante, il testo \`, \`, la variabile con il nome del cliente e il testo \`!\`.`,
         regola: `${REGOLE.treGesti} ${REGOLE.datiDalPrompt} Il nome del negozio sta in una costante (const) e nel messaggio entra la costante, non il testo ripetuto.`,
         scrittoUnaVolta: { testo: negozio, cosa: 'il nome del negozio' },
         prove: [
@@ -90,7 +90,7 @@ export function generaCampanello(seme: number): Compito {
               risposte('Luca'),
               clic('btnSuona', 'Suona il campanello'),
               domandaFatta(1, 'La pagina chiede il nome con prompt', 'La domanda del nome deve restare.'),
-              alertUguale(saluto('Luca'), `L'alert dice «${saluto('Luca')}»`, 'Il messaggio ha tre pezzi: il testo, la costante del negozio, il nome. Uniscili con il +, con virgola e spazi al posto giusto.'),
+              alertUguale(saluto('Luca'), `L'alert dice «${saluto('Luca')}»`, 'Il messaggio è fatto di pezzi: il testo «Benvenuto da » (con lo spazio), la costante del negozio, «, » (virgola e spazio), la variabile con il nome del cliente e «!». Uniscili con il +.'),
             ],
           },
           {
@@ -100,7 +100,7 @@ export function generaCampanello(seme: number): Compito {
         ],
       },
       {
-        consegna: `Il secondo pulsante, **Orari di apertura**, mostra un alert con \`${orari}\`. Il nome del negozio **non si riscrive**: usa la stessa costante, unita con il \`+\` al testo \`${dopoNegozio}\`. Serve una seconda funzione con nome e un secondo \`addEventListener\`. Il campanello continua a funzionare come prima.`,
+        consegna: `Il secondo pulsante, **Orari di apertura**, mostra un alert con \`${orari}\`. Il nome del negozio **non si riscrive**: usa la stessa costante, unita con il \`+\` al testo \`${dopoNegozio}\`. Serve una seconda funzione con nome e un secondo \`addEventListener\` (l'id del pulsante è nel pannello HTML). Il campanello continua a funzionare come prima.`,
         regola: `${REGOLE.treGesti} Ogni pulsante ha la sua funzione con nome. Anche negli orari il nome del negozio entra con la costante, non riscritto a mano.`,
         scrittoUnaVolta: { testo: negozio, cosa: 'il nome del negozio' },
         prove: [

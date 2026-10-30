@@ -64,11 +64,11 @@ export function generaPizzeria(seme: number): Compito {
       titolo: 'La cassa della pizzeria',
       lezione: 'Modulo 4 · Lezione 7',
       committente: `La pizzeria «${nome}» vuole una cassa sul tablet: il cameriere scrive quante pizze e quante bibite, e la pagina fa il conto.`,
-      prodotto: 'Una pagina che legge i numeri dalle caselle, fa i calcoli e tiene il conto dei clienti serviti.',
+      prodotto: 'Una pagina che legge i numeri dalle caselle, fa i calcoli e conta i clienti serviti.',
       dati: [`pizza: ${prezzoPizza} €`, `bibita: ${prezzoBibita} €`, `sconto di ${sconto} € da ${soglia} € in su`],
       risultatoFinale: [
         `«Calcola il conto» legge pizze e bibite e scrive il totale; da ${soglia} € in su toglie ${sconto} € e lo dice.`,
-        '«Dividi il conto» divide il totale fra le persone, se si divide alla pari; altrimenti lo dice.',
+        '«Dividi il conto» divide il totale fra le persone, se si divide alla pari: senza resto, cioè ognuno paga un numero intero di euro. Altrimenti lo dice.',
         '«Cliente servito» aumenta di uno il contatore dei clienti.',
       ],
     },
@@ -76,7 +76,7 @@ export function generaPizzeria(seme: number): Compito {
     pannelli: ['js'],
     fasi: [
       {
-        consegna: `**Calcola il conto** legge le caselle delle pizze e delle bibite (id \`pizze\` e \`bibite\`) con \`.value\` e \`Number()\`, e scrive nel paragrafo del totale (id \`totale\`) \`Totale: N €\`, dove N è \`pizze * ${prezzoPizza} + bibite * ${prezzoBibita}\`.`,
+        consegna: `Il pulsante **Calcola il conto** (id \`btnCalcola\`) legge le caselle delle pizze e delle bibite (id \`pizze\` e \`bibite\`) con \`.value\` e \`Number()\`. Poi scrive nel paragrafo del totale (id \`totale\`) \`Totale: N €\`, dove N è \`pizze * ${prezzoPizza} + bibite * ${prezzoBibita}\`.\nAttenzione: qui il paragrafo ha id \`totale\`, non \`conto\` come nel manuale.`,
         regola: `${REGOLE.treGesti} ${REGOLE.datiDalleCaselle}`,
         prove: [
           {
@@ -95,12 +95,12 @@ export function generaPizzeria(seme: number): Compito {
         codiceIniziale: '// 1. Scrivi la funzione\n\n// 2. Collega il pulsante alla funzione\n',
       },
       {
-        consegna: `Lo sconto: se il totale è da ${soglia} € in su, si tolgono ${sconto} € e il paragrafo dice \`Totale: N € (sconto di ${sconto} €)\` con N già scontato. Sotto la soglia resta come prima.`,
+        consegna: `Ora lo sconto. Se il totale è ${soglia} € o più (\`>=\`), si tolgono ${sconto} € e il paragrafo dice \`Totale: N € (sconto di ${sconto} €)\`, con N già scontato. Scrivi solo queste parole, non quelle del manuale. Sotto i ${soglia} € il testo resta come prima.`,
         regola: `${REGOLE.treGesti} ${REGOLE.datiDalleCaselle} Lo sconto lo decide un if sul totale calcolato.`,
         prove: [
           {
             nome: `con ${grande.pizze} pizze e ${grande.bibite} bibite`,
-            passi: [...prove(grande.pizze, grande.bibite), testo('totale', testoTotale(grande.pizze, grande.bibite), `Dice «${testoTotale(grande.pizze, grande.bibite)}»`, `Nell'if (totale >= ${soglia}) togli ${sconto} al totale e scrivi il testo con lo sconto.`)],
+            passi: [...prove(grande.pizze, grande.bibite), testo('totale', testoTotale(grande.pizze, grande.bibite), `Dice «${testoTotale(grande.pizze, grande.bibite)}»`, `Nell'if (totale >= ${soglia}) togli ${sconto} al totale e scrivi il testo con lo sconto, identico alla consegna: senza altre parole.`)],
           },
           {
             nome: `con ${piccolo.pizze} pizza e ${piccolo.bibite} bibita`,
@@ -109,7 +109,7 @@ export function generaPizzeria(seme: number): Compito {
         ],
       },
       {
-        consegna: `**Dividi il conto** legge la casella delle persone (id \`persone\`) e scrive nel paragrafo della quota (id \`quota\`) \`A testa: N €\`, N è il totale (già scontato) diviso le persone. Il totale serve a due funzioni, quindi va in una variabile dichiarata **fuori**, in alto (\`let totale = 0;\`). Dentro Calcola la aggiorni **senza** \`let\`: \`totale = …\`. Con \`let\` ne creeresti una nuova, che vale solo dentro la funzione, e Dividi vedrebbe ancora 0. Per provare: prima Calcola, poi Dividi.`,
+        consegna: `Il totale ora serve a due funzioni: a quella di Calcola e a quella di Dividi.\n1. In alto, **fuori** dalle funzioni, scrivi \`let totale = 0;\`.\n2. Nella funzione del pulsante Calcola togli \`let\` davanti a \`totale = …\`. Con \`let\` creeresti una seconda variabile, che vale solo dentro la funzione, e Dividi vedrebbe ancora 0.\n3. Scrivi la funzione del pulsante **Dividi il conto** (id \`btnDividi\`). Legge la casella delle persone (id \`persone\`) e scrive nel paragrafo della quota (id \`quota\`) \`A testa: N €\`. N è il totale (già scontato) diviso il numero di persone.\nPer provare: prima Calcola, poi Dividi.`,
         regola: `${REGOLE.treGesti} ${REGOLE.datiDalleCaselle} Il totale si ricorda in una variabile fuori dalle funzioni (o si ricalcola dalle caselle): non vale un numero scritto a mano.`,
         prove: [
           {
@@ -128,7 +128,7 @@ export function generaPizzeria(seme: number): Compito {
         ],
       },
       {
-        consegna: `Il conto non sempre si divide alla pari. Con il resto \`%\`: se il resto \`totale % persone\` è **diverso da** 0 (\`!==\`, Lezione 6), la quota dice \`Il conto non si divide alla pari\`; altrimenti come prima.`,
+        consegna: `Il conto non sempre si divide alla pari, cioè senza resto. Nella funzione di Dividi aggiungi un if con il resto \`%\`. Se \`totale % persone\` è **diverso da** 0 (\`!==\`, Lezione 6), la quota dice \`Il conto non si divide alla pari\`. Altrimenti (else) la quota si scrive come nella fase 3.`,
         regola: `${REGOLE.treGesti} La decisione la fa un if sul resto della divisione (%).`,
         prove: [
           ...(divideEsatto
@@ -146,7 +146,7 @@ export function generaPizzeria(seme: number): Compito {
         ],
       },
       {
-        consegna: '**Cliente servito** aumenta di uno il contatore dei clienti e scrive nel paragrafo (id `clienti`) `Clienti serviti: N`. Il contatore è una variabile dichiarata fuori dalla funzione, che parte da 0 e cresce con `++`.',
+        consegna: 'Il pulsante **Cliente servito** (id `btnCliente`) aumenta di uno il contatore dei clienti e scrive nel paragrafo (id `clienti`) `Clienti serviti: N`. Il contatore è una variabile dichiarata fuori dalla funzione, che parte da 0 e cresce con `++`.',
         regola: `${REGOLE.treGesti} ${REGOLE.contatoreFuori}`,
         prove: [
           {
