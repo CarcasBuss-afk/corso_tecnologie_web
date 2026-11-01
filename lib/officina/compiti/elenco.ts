@@ -4,6 +4,14 @@
  * nel bundle del server (index.ts). Un test controlla che titoli e lezioni combacino. */
 
 export type CompitoId =
+  | 'biglietto'
+  | 'saluto'
+  | 'biglietteria'
+  | 'cartellino'
+  | 'semaforo'
+  | 'termometro'
+  | 'convertitore'
+  | 'giostra'
   | 'scontrino'
   | 'campanello'
   | 'citofono'
@@ -26,6 +34,14 @@ export type Livello = 'facile' | 'normale' | 'sfida';
 
 /** Titolo, lezione, livello e numero di fasi di ogni compito (le fasi: di solito 5, 3 nei facili, una in più dove si riordina il codice). */
 export const TITOLI: Record<CompitoId, { titolo: string; lezione: string; livello: Livello; fasi: number }> = {
+  biglietto: { titolo: 'Il biglietto da visita', lezione: 'Modulo 4 · Lezione 1', livello: 'facile', fasi: 3 },
+  saluto: { titolo: 'Il pulsante che saluta', lezione: 'Modulo 4 · Lezione 2', livello: 'facile', fasi: 3 },
+  biglietteria: { titolo: 'La biglietteria del cinema', lezione: 'Modulo 4 · Lezione 3', livello: 'facile', fasi: 3 },
+  cartellino: { titolo: 'Il cartellino del nome', lezione: 'Modulo 4 · Lezione 4', livello: 'facile', fasi: 3 },
+  semaforo: { titolo: 'Il semaforo', lezione: 'Modulo 4 · Lezione 5', livello: 'facile', fasi: 3 },
+  termometro: { titolo: 'Il termometro', lezione: 'Modulo 4 · Lezione 6', livello: 'facile', fasi: 3 },
+  convertitore: { titolo: 'Il convertitore dei tempi', lezione: 'Modulo 4 · Lezione 7', livello: 'facile', fasi: 3 },
+  giostra: { titolo: 'La giostra del luna park', lezione: 'Modulo 4 · Lezione 8', livello: 'facile', fasi: 3 },
   scontrino: { titolo: 'Lo scontrino del bar', lezione: 'Modulo 4 · Lezione 1', livello: 'normale', fasi: 5 },
   campanello: { titolo: 'Il campanello del negozio', lezione: 'Modulo 4 · Lezione 3', livello: 'normale', fasi: 5 },
   citofono: { titolo: 'Il citofono del condominio', lezione: 'Modulo 4 · Lezione 3', livello: 'sfida', fasi: 5 },
@@ -51,7 +67,20 @@ export interface Sezione {
 
 /** Le sezioni del percorso, nell'ordine: in ogni lezione il facile, il normale, la sfida. Una sezione vuota si vede: dice che dopo c'è altro. */
 export const SEZIONI: Sezione[] = [
-  { id: 'js-basi', titolo: 'JavaScript: le basi', compiti: ['scontrino', 'campanello', 'citofono', 'bacheca', 'tabellone', 'lampada', 'porta', 'pizzeria', 'iscrizione'] },
+  {
+    id: 'js-basi',
+    titolo: 'JavaScript: le basi',
+    compiti: [
+      'biglietto', 'scontrino',
+      'saluto',
+      'biglietteria', 'campanello', 'citofono',
+      'cartellino', 'bacheca', 'tabellone',
+      'semaforo', 'lampada',
+      'termometro', 'porta',
+      'convertitore', 'pizzeria',
+      'giostra', 'iscrizione',
+    ],
+  },
   { id: 'js-funzioni', titolo: 'JavaScript: funzioni e dati', compiti: ['raddoppiatore', 'magliette', 'pagella'] },
 ];
 
@@ -83,13 +112,13 @@ export function sezioneDi(id: CompitoId): Sezione {
  * lezione), nell'ordine del percorso: il facile, il normale, la sfida.
  */
 export const COMPITI_PER_LEZIONE: Record<string, CompitoId[]> = {
-  'lezione-1-primo-javascript': ['scontrino'],
-  'lezione-2-pulsanti-funzioni': ['campanello'],
-  'lezione-3-dialoghi-utente': ['campanello', 'citofono'],
-  'lezione-4-cambiare-pagina': ['bacheca', 'tabellone'],
-  'lezione-5-cambiare-stili': ['lampada'],
-  'lezione-6-decisioni-quiz': ['porta'],
-  'lezione-7-operatori-calcolatrice': ['pizzeria'],
-  'lezione-8-operatori-logici': ['iscrizione'],
+  'lezione-1-primo-javascript': ['biglietto', 'scontrino'],
+  'lezione-2-pulsanti-funzioni': ['saluto'],
+  'lezione-3-dialoghi-utente': ['biglietteria', 'campanello', 'citofono'],
+  'lezione-4-cambiare-pagina': ['cartellino', 'bacheca', 'tabellone'],
+  'lezione-5-cambiare-stili': ['semaforo', 'lampada'],
+  'lezione-6-decisioni-quiz': ['termometro', 'porta'],
+  'lezione-7-operatori-calcolatrice': ['convertitore', 'pizzeria'],
+  'lezione-8-operatori-logici': ['giostra', 'iscrizione'],
   'lezione-9-funzioni-parametri-return': ['raddoppiatore', 'magliette', 'pagella'],
 };
