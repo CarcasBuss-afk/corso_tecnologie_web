@@ -12,17 +12,24 @@ import { generaSaluto } from './saluto';
 import { generaSemaforo } from './semaforo';
 import { generaTermometro } from './termometro';
 import { generaCampanello } from './campanello';
+import { generaCampo } from './campo';
 import { generaCitofono } from './citofono';
 import type { CompitoId } from './elenco';
+import { generaGita } from './gita';
 import { generaIscrizione } from './iscrizione';
 import { generaLampada } from './lampada';
 import { generaMagliette } from './magliette';
 import { generaPagella } from './pagella';
+import { generaPaghetta } from './paghetta';
 import { generaPizzeria } from './pizzeria';
 import { generaPorta } from './porta';
+import { generaPulsantiera } from './pulsantiera';
+import { generaQuiz } from './quiz';
 import { generaRaddoppiatore } from './raddoppiatore';
 import { generaScontrino } from './scontrino';
 import { generaTabellone } from './tabellone';
+import { generaTelecomando } from './telecomando';
+import { generaTema } from './tema';
 import type { Compito, GeneratoreCompito, SchedaCompito } from './tipi';
 
 export type { Compito, SchedaCompito } from './tipi';
@@ -37,6 +44,13 @@ const GENERATORI: Record<CompitoId, GeneratoreCompito> = {
   termometro: generaTermometro,
   convertitore: generaConvertitore,
   giostra: generaGiostra,
+  telecomando: generaTelecomando,
+  paghetta: generaPaghetta,
+  pulsantiera: generaPulsantiera,
+  tema: generaTema,
+  quiz: generaQuiz,
+  gita: generaGita,
+  campo: generaCampo,
   scontrino: generaScontrino,
   campanello: generaCampanello,
   citofono: generaCitofono,
