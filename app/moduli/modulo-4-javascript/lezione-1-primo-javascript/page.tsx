@@ -6,6 +6,7 @@ import Exercise from '@/components/didattica/Exercise';
 import LessonPreview from '@/components/didattica/LessonPreview';
 import Challenge from '@/components/didattica/Challenge';
 import AllenatiOfficina from '@/components/didattica/AllenatiOfficina';
+import VideoLezione from '@/components/didattica/VideoLezione';
 
 export default function Lezione1PrimoJavaScript() {
   const lezioni = getLezioniByModuloSlug('modulo-4-javascript');
@@ -30,6 +31,8 @@ export default function Lezione1PrimoJavaScript() {
           'Scrivere commenti nel codice JavaScript'
         ]}
       />
+
+      <VideoLezione lezioneSlug="lezione-1-primo-javascript" />
 
       {/* Introduzione */}
       <section className="mb-12">
