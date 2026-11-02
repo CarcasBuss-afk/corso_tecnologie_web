@@ -28,10 +28,15 @@ const CHIARI = [
   'white', '#fff', '#ffffff', '#eee', '#eeeeee', '#f0f0f0', '#fafafa', '#f5f5f5', '#f8f8f8', '#ddd', '#dddddd', '#ccc', '#cccccc',
   'whitesmoke', 'snow', 'ivory', 'lightgray', 'lightgrey', 'gainsboro', 'silver', 'lightyellow', 'beige', 'floralwhite', 'ghostwhite',
   'aliceblue', 'honeydew', 'linen', 'seashell', 'mintcream', 'azure', 'lavender', 'oldlace', 'lemonchiffon', 'cornsilk', 'antiquewhite', 'wheat',
+  // I colori chiari che un allievo scrive davvero: giallo, azzurro, rosa, verde chiaro...
+  'yellow', 'lightblue', 'lightskyblue', 'skyblue', 'powderblue', 'lightcyan', 'cyan', 'aqua', 'aquamarine', 'paleturquoise',
+  'lightgreen', 'palegreen', 'lightpink', 'pink', 'mistyrose', 'peachpuff', 'bisque', 'moccasin', 'khaki', 'palegoldenrod', 'papayawhip', 'thistle', 'plum',
 ];
 const SCURI = [
-  'black', '#000', '#000000', '#111', '#111111', '#121212', '#1a1a1a', '#1e1e2f', '#212121', '#222', '#222222', '#2c3e50', '#333', '#333333',
+  'black', '#000', '#000000', '#111', '#111111', '#121212', '#1a1a1a', '#1e1e1e', '#1e1e2f', '#212121', '#222', '#222222', '#2b2b2b', '#2c3e50', '#333', '#333333',
   '#444', '#444444', '#555', '#555555', 'navy', 'midnightblue', 'darkslategray', 'darkslategrey', 'dimgray', 'dimgrey', 'darkblue', 'indigo', 'maroon', 'darkgreen', 'darkred',
+  // I colori scuri che un allievo scrive davvero.
+  'darkslateblue', 'purple', 'darkmagenta', 'darkviolet', 'brown', 'saddlebrown', 'firebrick', 'darkolivegreen', 'darkcyan', 'teal', 'darkgray', 'darkgrey', 'gray', 'grey', 'slategray', 'slategrey',
 ];
 const BIANCHI = ['white', '#fff', '#ffffff', '#fafafa', '#f8f8f8', '#f5f5f5', '#fefefe', 'whitesmoke', 'snow', 'ivory', 'ghostwhite', 'floralwhite'];
 
@@ -43,7 +48,8 @@ const stileFamiglia = (id: string, proprieta: string, famiglia: string[], atteso
   valore: famiglia,
   atteso,
   descrizione,
-  hint,
+  // Chi ha scelto un colore fuori famiglia deve capire che è il colore, non il codice: l'esempio lo dice.
+  hint: `${hint} Il colore deve essere ${atteso}: per esempio ${famiglia[0]}.`,
 });
 
 const INIZIO = 'Scegli un tema.';

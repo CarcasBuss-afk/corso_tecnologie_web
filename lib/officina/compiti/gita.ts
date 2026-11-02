@@ -226,7 +226,7 @@ let paragrafoCassa = document.getElementById("cassa");`;
         ],
       },
       {
-        consegna: `La classe ha già raccolto dei soldi: la casella dei soldi raccolti (id \`raccolti\`). Calcola la legge e scrive nel paragrafo della cassa (id \`cassa\`) uno di tre testi:\n- \`Mancano N €\`, se i soldi raccolti sono **meno** del totale;\n- \`Ci sono N € in più\`, se sono **più** del totale;\n- \`Bastano giusti\`, se sono uguali.\nN è la differenza fra i due, sempre positiva: attento all'ordine della sottrazione nei due casi. Servono if, else if ed else (Lezione 6). Il resto della pagina non cambia.`,
+        consegna: `La classe ha già raccolto dei soldi: la casella dei soldi raccolti (id \`raccolti\`). Il pulsante **Calcola** legge anche questa casella e scrive nel paragrafo della cassa (id \`cassa\`) uno di tre testi:\n- \`Mancano N €\`, se i soldi raccolti sono **meno** del totale;\n- \`Ci sono N € in più\`, se sono **più** del totale;\n- \`Bastano giusti\`, se sono uguali.\nN è la differenza fra i due, sempre positiva: attento all'ordine della sottrazione nei due casi. Servono if, else if ed else (Lezione 6). Il resto della pagina non cambia.`,
         regola: `${REGOLE.treGesti} ${REGOLE.elementiInVariabili} ${REGOLE.datiDalleCaselle} I tre testi li sceglie un if con else if ed else, confrontando i soldi raccolti letti dalla casella con il totale calcolato; la differenza è un calcolo, non un numero scritto a mano.`,
         elementiInAlto: true,
         prove: [

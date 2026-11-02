@@ -103,7 +103,7 @@ export function generaConvertitore(seme: number): Compito {
         consegna: `Ora il secondo pulsante, **${conv.etichetta}** (id \`${conv.id}\`). Funziona come il primo.\n1. **Aggiungi** una nuova funzione, collegata con \`addEventListener\` al pulsante \`${conv.id}\`.\n2. Dentro, leggi la stessa casella (id \`numero\`) come nella fase 1.\n3. Calcola il risultato in una variabile, con il numero letto \`* ${conv.per}\` (${conv.uno}).\n4. Scrivi nello stesso paragrafo (id \`risultato\`) \`N ${conv.da} sono R ${conv.a}\`. Per esempio, con 3 scrive \`${fraseConv(3)}\`.\nIl pulsante Minuti in secondi deve continuare a funzionare.`,
         regola: `${REGOLE.treGesti} ${REGOLE.datiDalleCaselle} Il risultato lo calcola una moltiplicazione per ${conv.per} sul numero letto.`,
         prove: [
-          provaConv(numeri[0], `Copia la funzione della fase 1 e cambia tre cose: il nome della funzione, il numero (${conv.per} invece di 60) e le parole (" ${conv.da} sono " e " ${conv.a}"). Poi collegala al pulsante ${conv.id}.`),
+          provaConv(numeri[0], `Copia la funzione della fase 1 e cambia il nome della funzione, ${conv.per === 60 ? 'tieni il numero 60' : `il numero (${conv.per} invece di 60)`} e cambia le parole (" ${conv.da} sono " e " ${conv.a}"). Poi collegala al pulsante ${conv.id}.`),
           provaConv(numeri[1], 'Il numero deve venire dalla casella, letto con Number(...value) dentro la nuova funzione.'),
           provaMinuti(numeri[1], 'Minuti in secondi deve continuare a funzionare come nella fase 1: non cancellare la sua funzione né il suo addEventListener.'),
         ],

@@ -126,7 +126,7 @@ ${COLLEGA}`;
       id: 'campo',
       titolo: 'La prenotazione del campo',
       lezione: 'Modulo 4 · Lezione 8',
-      committente: `Il ${centro} affitta il campo da ${sport.nome} e vuole una pagina per le prenotazioni: controlla l'ora e i giocatori, chiede la tessera e calcola il prezzo, con lo sconto e il supplemento dell'orario di punta.`,
+      committente: `Il centro sportivo ${centro} affitta il campo da ${sport.nome} e vuole una pagina per le prenotazioni: controlla l'ora e i giocatori, chiede la tessera e calcola il prezzo, con lo sconto e il supplemento dell'orario di punta.`,
       prodotto: 'Una pagina che decide con &&, || e !, anche messi insieme con le parentesi, se si può prenotare e quanto si paga.',
       dati: [
         `orario: si prenota un'ora da ${apertura} a ${ultima} compresi`,

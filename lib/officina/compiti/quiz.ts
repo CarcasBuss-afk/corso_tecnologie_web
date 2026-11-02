@@ -76,7 +76,7 @@ export function generaQuiz(seme: number): Compito {
   const gioca = (e: Esiti) => [risposte(...risposteA(e)), clic('btnGioca', 'Gioca')];
   const nomeProva = (e: Esiti) => `rispondendo ${risposteA(e).map((r) => `«${r}»`).join(', ')}`;
   const dicePunti = (e: Esiti, hint: string) => testo('punteggio', punteggio(e), `Il punteggio dice «${punteggio(e)}»`, hint);
-  const diceGiudizio = (e: Esiti, hint: string) => testo('giudizio', giudizio(e), `Con ${puntiDi(e)} punti il giudizio dice «${giudizio(e)}»`, hint);
+  const diceGiudizio = (e: Esiti, hint: string) => testo('giudizio', giudizio(e), `Con ${puntiDi(e)} ${puntiDi(e) === 1 ? 'punto' : 'punti'} il giudizio dice «${giudizio(e)}»`, hint);
   const dicePartite = (n: number, hint: string) => testo('partite', partite(n), `Il paragrafo delle partite dice «${partite(n)}»`, hint);
 
   const TUTTE: Esiti = [true, true, true];

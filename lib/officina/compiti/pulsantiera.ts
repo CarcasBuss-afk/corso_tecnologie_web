@@ -217,7 +217,7 @@ export function generaPulsantiera(seme: number): Compito {
       },
       {
         consegna: `**Scaletta** (id \`btnScaletta\`): il set ha tre brani, **${b1.titolo}** (${tempo(b1)}), **${b2.titolo}** (${tempo(b2)}) e **${b3.titolo}** (${tempo(b3)}).\nUna nuova funzione, collegata con \`addEventListener\`, scrive **quattro righe**:\n1. \`${b1.titolo} dura S secondi\`, con S i secondi del brano, calcolati come nella fase 2;\n2. la stessa riga per il secondo brano, \`${b2.titolo} dura S secondi\`;\n3. la stessa per il terzo, \`${b3.titolo} dura S secondi\`;\n4. \`Il set dura M minuti\`, con M i secondi dei tre brani **sommati** e poi **divisi per 60**: tutta la somma fra parentesi. Se M ha il punto, per esempio 10.5, va bene così.\nGli altri pulsanti continuano a funzionare.`,
-        regola: `${REGOLE.treGesti} Ogni pulsante ha la sua funzione con nome e il suo addEventListener. Le quattro righe le scrivono quattro console.log nella stessa funzione. ${contiNonAMano} I minuti del set sono la somma dei tre conti fra parentesi, divisa per 60.`,
+        regola: `${REGOLE.treGesti} Ogni pulsante ha la sua funzione con nome e il suo addEventListener. Le quattro righe le scrivono quattro console.log nella stessa funzione. ${contiNonAMano} I minuti del set li calcola JavaScript sommando le durate dei tre brani e dividendo per 60 (la somma fra parentesi); va bene anche un conto scomposto in modo diverso ma equivalente, purché il risultato non sia scritto a mano.`,
         prove: [
           {
             passi: [

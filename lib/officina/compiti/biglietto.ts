@@ -38,7 +38,7 @@ export function generaBiglietto(seme: number): Compito {
       id: 'biglietto',
       titolo: 'Il biglietto da visita',
       lezione: 'Modulo 4 · Lezione 1',
-      committente: `Il club di programmazione della scuola presenta i nuovi iscritti con un biglietto da visita stampato nella console. Questa volta tocca a ${nome}: il programma lo scrivi tu.`,
+      committente: `Il club di programmazione della scuola presenta i nuovi iscritti con un biglietto da visita stampato nella console. Questa volta tocca ${/^[AEIOU]/.test(nome) ? 'ad' : 'a'} ${nome}: il programma lo scrivi tu.`,
       prodotto: 'Un programma che scrive il biglietto riga per riga con console.log e calcola da solo età e giorni vissuti.',
       dati: [`nome: ${nome}`, `città: ${citta}`, `anno di nascita: ${nascita}`, `anno dei conti: ${ANNO}`],
       risultatoFinale: [
