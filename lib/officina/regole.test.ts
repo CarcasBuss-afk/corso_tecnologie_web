@@ -38,6 +38,20 @@ describe('il percorso', () => {
     expect(voci.slice(0, 6).every((v) => v.stato !== 'bloccato')).toBe(true);
   });
 
+  it('chi è già più avanti non va oltre finché non finisce gli obbligatori entrati prima', () => {
+    const iCampanello = PERCORSO.indexOf('campanello');
+    const finito = (id: (typeof PERCORSO)[number]) => [id, { fasi: fasiDi(id), consigli: 0 }];
+    const soloCampanello = percorsoDi(Object.fromEntries([finito('campanello')]));
+    expect(soloCampanello[iCampanello].stato).toBe('finito');
+    expect(soloCampanello.slice(iCampanello + 1).every((v) => v.stato === 'bloccato')).toBe(true);
+    // Finiti tutti gli obbligatori prima, le sfide saltate non fermano: si apre quello dopo.
+    const obbligatori = PERCORSO.slice(0, iCampanello + 1).filter((id) => !eFacoltativo(id));
+    const dopo = percorsoDi(Object.fromEntries(obbligatori.map(finito)));
+    expect(dopo[iCampanello + 1].stato).toBe('da-cominciare');
+    expect(dopo[iCampanello + 2].stato).toBe('da-cominciare');
+    expect(dopo[iCampanello + 3].stato).toBe('bloccato');
+  });
+
   it('le sfide non entrano nella media: ognuna finita dà mezzo punto di bonus, fino a 10', () => {
     const [s1, s2] = PERCORSO.filter((id) => eFacoltativo(id));
     expect(mediaVoti([{ id: PERCORSO[0], voto: 10 }, { id: s1, voto: 5 }])).toBe(10);

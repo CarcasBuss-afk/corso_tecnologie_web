@@ -41,11 +41,11 @@ export type VoceCompito = {
 };
 
 /**
- * Il percorso di un allievo: il primo compito è sempre aperto; ogni altro si sblocca quando è
- * finito l'ultimo compito obbligatorio prima di lui. La sfida è facoltativa: si apre insieme al
+ * Il percorso di un allievo: il primo compito è sempre aperto; ogni altro si sblocca quando sono
+ * finiti tutti i compiti obbligatori prima di lui. La sfida è facoltativa: si apre insieme al
  * compito dopo e non blocca niente. Un compito già aperto non si blocca più, e nemmeno quelli
  * prima di lui: se nel percorso entra un compito nuovo prima (i facili delle lezioni), chi era
- * già più avanti non perde niente e non deve tornare indietro.
+ * già più avanti non perde il lavoro, ma per andare oltre deve finire anche quelli.
  */
 export function percorsoDi(lavori: Record<string, ProgressoCompito | undefined>): VoceCompito[] {
   const ultimoAperto = PERCORSO.findLastIndex((id) => lavori[id] !== undefined);
@@ -55,7 +55,7 @@ export function percorsoDi(lavori: Record<string, ProgressoCompito | undefined>)
     const finito = l.fasi >= fasiDi(id);
     const aperto = obbligatorioFinito || i <= ultimoAperto;
     const stato: StatoCompito = finito ? 'finito' : !aperto ? 'bloccato' : l.fasi > 0 ? 'in-corso' : 'da-cominciare';
-    if (!eFacoltativo(id)) obbligatorioFinito = finito;
+    if (!eFacoltativo(id)) obbligatorioFinito &&= finito;
     return { id, stato, fasi: l.fasi, consigli: l.consigli, voto: finito ? votoSeFinisce(l.consigli) : null };
   });
 }

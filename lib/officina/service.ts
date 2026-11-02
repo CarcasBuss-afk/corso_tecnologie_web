@@ -103,7 +103,7 @@ function compitoAperto(allievo: AllievoDoc, compitoId: string) {
   if (!eCompito(compitoId)) throw new ApiError(404, 'COMPITO_NON_TROVATO', 'Compito inesistente');
   const voce = percorsoDi(allievo.lavori ?? {}).find((v) => v.id === compitoId);
   if (!voce) throw new ApiError(404, 'COMPITO_NON_TROVATO', 'Compito inesistente');
-  if (voce.stato === 'bloccato') throw new ApiError(403, 'BLOCCATO', 'Questo compito si sblocca quando finisci il precedente');
+  if (voce.stato === 'bloccato') throw new ApiError(403, 'BLOCCATO', 'Questo compito si sblocca quando finisci i compiti prima');
   return { id: compitoId, voce, lavoro: allievo.lavori?.[compitoId] ?? lavoroVuoto() };
 }
 

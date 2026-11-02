@@ -175,7 +175,7 @@ function Stato({ k }: { k: CompitoInElenco }) {
     case 'da-cominciare':
       return <span className="text-(--color-giallo)">Comincia →</span>;
     default:
-      return <span>🔒 si sblocca quando finisci il compito prima</span>;
+      return <span>🔒 si sblocca quando finisci i compiti prima</span>;
   }
 }
 
