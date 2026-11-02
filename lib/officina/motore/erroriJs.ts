@@ -51,7 +51,7 @@ export function traduciErroreJs(messaggio: string): string {
     return `Stai cambiando una variabile dichiarata con const: se deve cambiare, dichiarala con let. ${originale}`;
   }
   if (/is not iterable|Cannot access .* before initialization/.test(m)) {
-    return `Usi una variabile prima di averla dichiarata: sposta il let più in alto. ${originale}`;
+    return `Usi una variabile prima di averla dichiarata: sposta il let più in alto. Se la variabile si chiama come la funzione che stai chiamando (let media = media(...)), cambia il nome alla variabile. ${originale}`;
   }
   const riga = m.match(RIGA);
   return `La pagina ha dato un errore${riga ? ` alla riga ${riga[1]}` : ''}: ${m}`;

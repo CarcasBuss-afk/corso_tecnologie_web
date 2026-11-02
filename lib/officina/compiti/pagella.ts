@@ -3,8 +3,8 @@
  * Funzioni con tre parametri; una funzione che restituisce un testo con else if (e il return
  * che ferma la funzione); una che restituisce true o false con && (Lezione 8), usata più volte
  * nello stesso if; una che restituisce il colore da mettere nello stile (Lezione 5); alla fine
- * un calcolo «al contrario» con tre esiti. I voti di prova hanno la somma divisibile per 3:
- * le medie sono intere. */
+ * un calcolo «al contrario» con tre esiti. I voti di prova hanno la somma divisibile per 3,
+ * così le medie sono intere; solo le tre medie con la virgola controllano le soglie del giudizio. */
 import { clic, CSS_BASE, scrivi, stile, testo, ROSSI, VERDI } from './aiuti';
 import { generatore, REGOLE, scegli, type Compito } from './tipi';
 
@@ -161,6 +161,9 @@ ${LEGGI}
           provaGiudizio(sufficiente, 'Fra 6 e 7 il giudizio è Sufficiente.'),
           provaGiudizio(ottoPieno, 'Un 8 tondo è Ottimo: Buono vale solo sotto l\'8.'),
           provaGiudizio(ottimo, 'Da 8 in su il giudizio è Ottimo.'),
+          provaGiudizio([5, 6, 6], 'Una media come 5.67 è ancora Insufficiente: è sotto il 6.'),
+          provaGiudizio([6, 7, 7], 'Una media come 6.67 è ancora Sufficiente: la media può avere la virgola, confronta con «minore di 7», non con «uguale a 6».'),
+          provaGiudizio([7, 8, 8], 'Una media come 7.67 è ancora Buono: la media può avere la virgola, confronta con «minore di 8», non con «uguale a 7».'),
         ],
       },
       {
@@ -181,7 +184,10 @@ ${LEGGI}
           provaColore(insufficiente, ROSSI, 'rosso', 'coloreMedia restituisce "red" sotto il 6: il valore restituito va dopo .style.color =.'),
           provaColore(buono, VERDI, 'verde', 'Dal 6 in su coloreMedia restituisce "green".'),
           provaColore(seiPieno, VERDI, 'verde', 'Un 6 tondo è già verde.'),
-          provaColore(insufficiente, ROSSI, 'rosso', 'Il colore deve cambiare a ogni calcolo, secondo la media.'),
+          {
+            nome: `${nomeVoti(buono)}, poi ${nomeVoti(insufficiente)}`,
+            passi: [...scriviVoti(buono), calcola, ...scriviVoti(insufficiente), calcola, stile('media', 'color', ROSSI, 'La media è scritta in rosso', 'Il colore deve cambiare a ogni calcolo, secondo la media.')],
+          },
         ],
       },
       {

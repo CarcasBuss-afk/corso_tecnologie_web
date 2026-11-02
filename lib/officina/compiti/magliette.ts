@@ -42,6 +42,19 @@ export function generaMagliette(seme: number): Compito {
   const grande = { m: 10, s: 10, giocatori: 10 };
   const piccolo = { m: 2, s: 2, giocatori: 2 };
   const soloMagliette = { m: 3, s: 0 };
+  /* Un ordine sulla soglia o appena sopra. Con certi prezzi la soglia esatta non si può fare:
+   * senza quell'ordine, la prova del confronto con >= resta fuori. */
+  const sullaSoglia = (margine: number) => {
+    for (let m = 1; m <= 15; m++) {
+      for (let s = 0; s <= m; s++) {
+        const scarto = merce(m, s) - soglia;
+        if (scarto >= 0 && scarto <= margine) return { m, s };
+      }
+    }
+    return null;
+  };
+  const bordo = sullaSoglia(0);
+  const appenaSopra = sullaSoglia(SCONTO - 1) ?? grande;
 
   const ordine = (m: number, s: number, codiceScritto?: string) => [
     scrivi('magliette', String(m), 'Magliette'),
@@ -85,6 +98,7 @@ ${SCRIVI_SPEDIZIONE}
 }`;
   const COLLEGA_DUE = `document.getElementById("btnCalcola").addEventListener("click", calcolaPreventivo);
 document.getElementById("btnDividi").addEventListener("click", dividiSpesa);`;
+  const TOTALE_SENZA_PARAMETRI = 'totaleOrdine è l\'eccezione chiesta dalla consegna: non ha parametri e legge da sola le caselle.';
 
   return {
     scheda: {
@@ -167,11 +181,19 @@ document.getElementById("btnDividi").addEventListener("click", dividiSpesa);`;
               dice('spedizione', testoSpedizione(grande.m, grande.s), 'Quando spedizione(merce) vale 0, il paragrafo dice «Spedizione gratis».'),
             ],
           },
+          ...(bordo
+            ? [
+                {
+                  nome: `con ${bordo.m} magliette e ${bordo.s} nomi: la merce è esattamente ${soglia} €`,
+                  passi: [...ordine(bordo.m, bordo.s), calcola, dice('spedizione', 'Spedizione gratis', `Con esattamente ${soglia} € di merce la spedizione è già gratis: il confronto è >=, non >.`)],
+                },
+              ]
+            : []),
         ],
       },
       {
-        consegna: `I giocatori dividono la spesa. Il totale ora serve a due pulsanti: lo scrivi una volta sola, in una funzione.\n1. Scrivi la funzione \`totaleOrdine()\`, **senza parametri**. Legge le caselle delle magliette e dei nomi, e restituisce con \`return\` la merce più la spedizione, usando le funzioni che hai già.\n2. In Calcola, per il totale usa \`totaleOrdine()\`, al posto del calcolo che c'è ora.\n3. Scrivi la funzione del pulsante **Dividi fra i giocatori** (id \`btnDividi\`) e collegala. Legge la casella dei giocatori (id \`persone\`) e scrive nel paragrafo (id \`quota\`) \`A testa: N €\`, dove N è \`totaleOrdine()\` diviso i giocatori.\nDividi deve funzionare anche senza premere prima Calcola.`,
-        regola: `${REGOLE.treGesti} ${REGOLE.funzioneConReturn} ${REGOLE.datiDalleCaselle} Il totale lo calcola una funzione totaleOrdine con return, usata da tutti e due i pulsanti.`,
+        consegna: `I giocatori dividono la spesa. Il totale ora serve a due pulsanti: lo scrivi una volta sola, in una funzione.\n1. Scrivi la funzione \`totaleOrdine()\`, **senza parametri**. Legge le caselle delle magliette e dei nomi, e restituisce con \`return\` la merce più la spedizione, usando le funzioni che hai già.\n2. In Calcola, per il totale usa \`totaleOrdine()\`, al posto del calcolo che c'è ora. La variabile con la merce resta: serve ancora per il paragrafo della spedizione.\n3. Scrivi la funzione del pulsante **Dividi fra i giocatori** (id \`btnDividi\`) e collegala. Legge la casella dei giocatori (id \`persone\`) e scrive nel paragrafo (id \`quota\`) \`A testa: N €\`, dove N è \`totaleOrdine()\` diviso i giocatori.\nDividi deve funzionare anche senza premere prima Calcola.`,
+        regola: `${REGOLE.treGesti} ${REGOLE.funzioneConReturn} ${REGOLE.datiDalleCaselle} Il totale lo calcola una funzione totaleOrdine con return, usata da tutti e due i pulsanti. ${TOTALE_SENZA_PARAMETRI}`,
         prove: [
           {
             nome: `con ${grande.m} magliette, ${grande.s} nomi e ${grande.giocatori} giocatori, senza premere Calcola`,
@@ -189,7 +211,7 @@ document.getElementById("btnDividi").addEventListener("click", dividiSpesa);`;
       },
       {
         consegna: `Il negozio ha dato alla squadra il codice sconto \`${codice}\`, che toglie ${SCONTO} € dal totale.\n1. Scrivi la funzione \`codiceValido(codice)\`, che restituisce \`true\` se il codice è esattamente \`${codice}\` e \`false\` se no. Basta una riga: \`return codice === "${codice}";\`, come scontoValido nel manuale.\n2. In \`totaleOrdine()\` leggi anche la casella del codice (id \`codice\`). È un testo: qui **niente** \`Number()\`.\n3. Sempre in \`totaleOrdine()\`, prima del return: se \`codiceValido(...)\` è vero, togli ${SCONTO} € dal totale.\nLa spedizione si calcola sempre sulla merce senza sconto. Con il codice giusto scendono sia il totale sia la quota a testa.`,
-        regola: `${REGOLE.treGesti} ${REGOLE.funzioneConReturn} ${REGOLE.datiDalleCaselle} Il codice lo controlla la funzione codiceValido, che restituisce true o false ed è usata in un if.`,
+        regola: `${REGOLE.treGesti} ${REGOLE.funzioneConReturn} ${REGOLE.datiDalleCaselle} Il codice lo controlla la funzione codiceValido, che restituisce true o false ed è usata in un if. ${TOTALE_SENZA_PARAMETRI}`,
         prove: [
           {
             nome: `con ${grande.m} magliette, ${grande.s} nomi e il codice ${codice}`,
@@ -206,6 +228,10 @@ document.getElementById("btnDividi").addEventListener("click", dividiSpesa);`;
           {
             nome: `con ${piccolo.m} magliette, ${piccolo.s} nomi e senza codice`,
             passi: [...ordine(piccolo.m, piccolo.s, ''), calcola, dice('totale', `Totale: ${totale(piccolo.m, piccolo.s)} €`, 'Senza codice il totale resta quello della fase 4.'), dice('spedizione', testoSpedizione(piccolo.m, piccolo.s), 'La spedizione non cambia con il codice.')],
+          },
+          {
+            nome: `con ${appenaSopra.m} magliette, ${appenaSopra.s} nomi e il codice ${codice}: la merce arriva alla soglia solo senza sconto`,
+            passi: [...ordine(appenaSopra.m, appenaSopra.s, codice), calcola, dice('totale', `Totale: ${totale(appenaSopra.m, appenaSopra.s, true)} €`, 'La spedizione si decide sulla merce senza sconto: prima calcola merce più spedizione, poi togli lo sconto.')],
           },
         ],
       },
