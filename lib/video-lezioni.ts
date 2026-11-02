@@ -9,6 +9,10 @@ export const VIDEO_LEZIONI: Record<string, { titolo: string; driveId: string }> 
     titolo: 'La prima pagina web',
     driveId: '1HbHD5a-wb1lPCqOwhg383Li0DVMlgb20',
   },
+  'lezione-2-titoli-gerarchia': {
+    titolo: 'I titoli da h1 a h6',
+    driveId: '1Ax_VNKNVEtPmcYtpVciAEZUgW75AJQ9K',
+  },
   'lezione-2-pulsanti-funzioni': {
     titolo: 'Pulsanti e funzioni',
     driveId: '1igUQXJjiPW32r0Ptx7C9V3sMO9j6LKjz',

@@ -7,6 +7,7 @@ import Checklist from '@/components/didattica/Checklist';
 import LessonPreview from '@/components/didattica/LessonPreview';
 import Link from 'next/link';
 import { getLezioniByModuloSlug } from '@/lib/moduli';
+import VideoLezione from '@/components/didattica/VideoLezione';
 
 export default function Lezione2() {
   const lezioni = getLezioniByModuloSlug('modulo-1-html');
@@ -31,6 +32,7 @@ export default function Lezione2() {
           'Strutturare un documento in modo logico',
         ]}
       />
+      <VideoLezione lezioneSlug="lezione-2-titoli-gerarchia" />
 
       <section className="prose max-w-none">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">I Titoli in HTML</h2>
