@@ -9,6 +9,14 @@ export const VIDEO_LEZIONI: Record<string, { titolo: string; driveId: string }> 
     titolo: 'La prima pagina web',
     driveId: '1HbHD5a-wb1lPCqOwhg383Li0DVMlgb20',
   },
+  'lezione-2-pulsanti-funzioni': {
+    titolo: 'Pulsanti e funzioni',
+    driveId: '1igUQXJjiPW32r0Ptx7C9V3sMO9j6LKjz',
+  },
+  'lezione-3-dialoghi-utente': {
+    titolo: 'Dialoghi e variabili',
+    driveId: '10GUj4NXwY5-2iMccREGKUP5eTJ3-tx1U',
+  },
   'lezione-1-primo-javascript': {
     titolo: 'Il primo JavaScript',
     driveId: '1ZlPhS0HPe6qJ4WNtS6hQf6jv0Jty6j7j',

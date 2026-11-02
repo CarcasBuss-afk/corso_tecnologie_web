@@ -6,6 +6,7 @@ import Exercise from '@/components/didattica/Exercise';
 import JavaScriptDemo from '@/components/didattica/JavaScriptDemo';
 import Challenge from '@/components/didattica/Challenge';
 import AllenatiOfficina from '@/components/didattica/AllenatiOfficina';
+import VideoLezione from '@/components/didattica/VideoLezione';
 
 export default function Lezione2PulsantiFunzioni() {
   const lezioni = getLezioniByModuloSlug('modulo-4-javascript');
@@ -30,6 +31,8 @@ export default function Lezione2PulsantiFunzioni() {
           'Tenere separati HTML e JavaScript, come già fai con HTML e CSS'
         ]}
       />
+
+      <VideoLezione lezioneSlug="lezione-2-pulsanti-funzioni" />
 
       {/* Introduzione */}
       <section className="mb-12">
