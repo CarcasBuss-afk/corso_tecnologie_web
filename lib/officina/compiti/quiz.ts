@@ -15,6 +15,7 @@ interface Domanda {
   numero: boolean;
 }
 
+/* Il seme sceglie per posizione: una domanda si sostituisce, non si toglie, o cambiano quelle di chi ha già iniziato. */
 const NUMERI: readonly Domanda[] = [
   { domanda: 'Quante zampe ha un ragno?', giusta: '8', sbagliata: '6', numero: true },
   { domanda: 'Quanti giorni ha una settimana?', giusta: '7', sbagliata: '5', numero: true },
@@ -27,7 +28,7 @@ const NUMERI: readonly Domanda[] = [
   { domanda: 'Quante zampe ha un insetto?', giusta: '6', sbagliata: '8', numero: true },
   { domanda: 'Quanti anelli ha la bandiera olimpica?', giusta: '5', sbagliata: '6', numero: true },
   { domanda: 'Quanti bit ci sono in un byte?', giusta: '8', sbagliata: '10', numero: true },
-  { domanda: "Quante lettere ha l'alfabeto italiano?", giusta: '21', sbagliata: '26', numero: true },
+  { domanda: 'Quanti mesi ha un anno?', giusta: '12', sbagliata: '10', numero: true },
 ];
 
 const PAROLE: readonly Domanda[] = [
