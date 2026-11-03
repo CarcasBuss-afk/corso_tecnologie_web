@@ -2,7 +2,7 @@
  * al tutor, voto e media; e il CSV per il registro. Funzioni pure, girano nel browser del
  * docente sui dati che arrivano da Firestore in tempo reale. */
 import { eFacoltativo, SEZIONI, titoloCompito } from './compiti/elenco';
-import { bonusSfide, mediaConBonus, PERCORSO, percorsoDi, type VoceCompito } from './regole';
+import { aiutiFiniti, bonusSfide, mediaConBonus, PERCORSO, percorsoDi, type VoceCompito } from './regole';
 
 export type LavoroVisto = {
   fasi: number;
@@ -35,6 +35,14 @@ export function tabellaClasse(allievi: AllievoVisto[]): RigaTabella[] {
       const voci = percorsoDi(a.lavori ?? {});
       return { uid: a.uid, nome: a.nome, email: a.email, voci, media: mediaConBonus(voci), bonus: bonusSfide(voci) };
     });
+}
+
+/** Vero se l'allievo è su questo compito senza averlo finito e non ha più aiuti del tutor: tocca al prof. */
+export const chiamaIlProf = (v: VoceCompito) => v.stato !== 'finito' && v.stato !== 'bloccato' && aiutiFiniti(v.consigli);
+
+/** Gli allievi che devono chiamare il prof, con il compito su cui sono fermi. */
+export function daAiutare(righe: RigaTabella[]): Array<{ uid: string; nome: string; compito: string }> {
+  return righe.flatMap((r) => r.voci.filter(chiamaIlProf).map((v) => ({ uid: r.uid, nome: r.nome, compito: titoloCompito(v.id) })));
 }
 
 /** Il CSV della classe: tre colonne per compito, il bonus delle sfide e la media con il bonus. Punto e virgola per Excel in italiano. */

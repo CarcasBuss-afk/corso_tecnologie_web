@@ -11,6 +11,11 @@ export const VOTO_MINIMO_FINITO = 5;
 
 export const votoSeFinisce = (domande: number) => Math.max(VOTO_MINIMO_FINITO, VOTO_MASSIMO - domande);
 
+/** Gli aiuti del tutor su un compito: arrivato al voto minimo, l'allievo chiama il prof. */
+export const AIUTI_MASSIMI = VOTO_MASSIMO - VOTO_MINIMO_FINITO;
+
+export const aiutiFiniti = (domande: number) => domande >= AIUTI_MASSIMI;
+
 /** I compiti del percorso, nell'ordine in cui si sbloccano. */
 export const PERCORSO: CompitoId[] = ELENCO_COMPITI;
 

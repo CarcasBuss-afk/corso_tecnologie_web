@@ -1,9 +1,9 @@
 /* La chiamata al modello per il tutor: Sonnet 5.5 con il thinking adattivo (ragiona prima
- * di rispondere) e la conversazione del compito come storia. Stesso filtro anti-codice del
- * giudice, consiglio finto nei test e senza chiave (OFFICINA_IA_FINTA). */
+ * di rispondere) e la conversazione del compito come storia. Un filtro controlla gli esempi di
+ * codice, consiglio finto nei test e senza chiave (OFFICINA_IA_FINTA). */
 import 'server-only';
 import Anthropic from '@anthropic-ai/sdk';
-import { consiglioFinto, contieneCodice, messaggioConsiglio, pulisciConsiglio, type ContestoConsiglio, type Scambio } from './consiglio';
+import { consiglioFinto, esempioNonAmmesso, messaggioConsiglio, pulisciConsiglio, type ContestoConsiglio, type Scambio } from './consiglio';
 import { iaFinta } from './giudiceClient';
 import { ApiError } from './http';
 import type { Fase } from './motore/tipi';
@@ -11,7 +11,7 @@ import { MAX_RISPOSTA_TUTOR, PROMPT_TUTOR } from './tutorPrompt';
 
 export const MODELLO_TUTOR = process.env.TUTOR_MODEL || 'claude-sonnet-5-5';
 
-const TENTATIVI = 2;
+const TENTATIVI = 3;
 
 let client: Anthropic | null = null;
 function anthropic(): Anthropic {
@@ -28,9 +28,10 @@ function nonDisponibile(): ApiError {
  * "non ho capito" ha un senso; il contesto (consegna, codice, esito) va nell'ultimo messaggio.
  */
 export async function chiediTutor(contesto: ContestoConsiglio, fase: Pick<Fase, 'prove'>, storia: Scambio[]): Promise<string> {
+  const nonAmmessa = (r: string) => esempioNonAmmesso(r, { codiceAllievo: contesto.codice, consegna: contesto.consegna, soluzione: contesto.soluzione, html: contesto.html });
   if (iaFinta()) {
     const r = pulisciConsiglio(consiglioFinto(contesto), MAX_RISPOSTA_TUTOR);
-    if (!r || contieneCodice(r, contesto.codice)) throw nonDisponibile();
+    if (!r || nonAmmessa(r)) throw nonDisponibile();
     return r;
   }
 
@@ -61,10 +62,10 @@ export async function chiediTutor(contesto: ContestoConsiglio, fase: Pick<Fase, 
       throw new ApiError(503, 'TUTOR_NON_DISPONIBILE', 'Il tutor non risponde: riprova fra poco');
     }
     const risposta = pulisciConsiglio(testo, MAX_RISPOSTA_TUTOR);
-    if (risposta && !contieneCodice(risposta, contesto.codice)) return risposta;
+    if (risposta && !nonAmmessa(risposta)) return risposta;
     console.warn('[tutor] risposta scartata', { tentativo, vuota: !risposta, testo });
     messaggi.push({ role: 'assistant', content: testo });
-    messaggi.push({ role: 'user', content: 'La risposta contiene del codice: rifalla a parole, senza nessuna riga di programma, nessun tag e nessuna regola CSS.' });
+    messaggi.push({ role: 'user', content: 'La risposta mostra codice che non può mostrare: rifalla. Al massimo due righe di esempio fra apici inversi, con nomi, id e testi inventati. Mai la riga che deve scrivere, mai gli id e i testi della sua pagina, niente blocchi con tre apici.' });
   }
   throw nonDisponibile();
 }

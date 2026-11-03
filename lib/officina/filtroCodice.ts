@@ -39,6 +39,56 @@ export function contieneCodice(testo: string, codiceAllievo = ''): boolean {
   return false;
 }
 
+/** Quello che il tutor può dire e che cosa deve restare suo: il codice dell'allievo, la consegna, la soluzione, la pagina. */
+export interface LimitiEsempio {
+  codiceAllievo?: string;
+  consegna?: string;
+  soluzione?: string;
+  html?: string;
+}
+
+/** Sotto questa lunghezza una riga della soluzione è una graffa o poco più: non è la riga da scrivere. */
+const RIGA_SOSTANZIOSA = 12;
+/** Le righe di esempio che il tutor può mostrare in una risposta. */
+const MAX_RIGHE_ESEMPIO = 2;
+
+/**
+ * Vero se la risposta del tutor mostra codice che non può mostrare: un blocco con i tre apici,
+ * più di due righe di esempio, un pezzo della soluzione della fase, oppure un esempio con gli id
+ * della pagina. Quello che sta già nel codice dell'allievo o nella consegna si può citare; i nomi
+ * da soli (`getElementById`, `"click"`, `btnSuona`) si possono sempre dire.
+ */
+export function esempioNonAmmesso(testo: string, limiti: LimitiEsempio = {}): boolean {
+  if (testo.includes('```')) return true;
+  const citabile = compatta(`${limiti.codiceAllievo ?? ''}\n${limiti.consegna ?? ''}`);
+  const soluzione = (limiti.soluzione ?? '')
+    .replace(/\r\n?/g, '\n')
+    .split('\n')
+    .map((r) => compatta(r.replace(/^\s*\/\/.*$/, '')))
+    .filter((r) => r.length >= RIGA_SOSTANZIOSA);
+  const ids = [...(limiti.html ?? '').matchAll(/\bid\s*=\s*["']([^"']+)["']/gi)].map((m) => m[1]);
+
+  const inApici = [...testo.matchAll(/`([^`\n]+)`/g)].map((m) => m[1]);
+  const righeNude = testo
+    .replace(/\r\n?/g, '\n')
+    .split('\n')
+    .filter((r) => !r.includes('`'))
+    .map((r) => r.replace(/^[-•*\d.)\s]+/, ''))
+    .filter((r) => ISTRUZIONE.test(r));
+
+  let esempi = 0;
+  for (const pezzo of [...inApici, ...righeNude]) {
+    const c = compatta(pezzo);
+    if (c === '' || citabile.includes(c)) continue;
+    const eCodice = /[(=*+/-]/.test(c) && /["'\d=]/.test(c);
+    if (eCodice && soluzione.some((r) => r.includes(c) || c.includes(r))) return true;
+    if (!ISTRUZIONE.test(pezzo)) continue;
+    if (ids.some((id) => pezzo.includes(`"${id}"`) || pezzo.includes(`'${id}'`))) return true;
+    esempi += 1;
+  }
+  return esempi > MAX_RIGHE_ESEMPIO;
+}
+
 /** Via spazi di troppo e apici di blocco residui; taglia i consigli lunghi. */
 export function pulisciConsiglio(testo: string, massimo = MAX_CONSIGLIO): string {
   const pulito = testo.replace(/\r\n?/g, '\n').trim();

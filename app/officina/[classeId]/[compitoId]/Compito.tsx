@@ -125,7 +125,7 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
       }
       setC((p) =>
         p
-          ? { ...p, consigli: r.consigli, domandeRimaste: r.domandeRimaste, votoSeFinisci: r.votoSeFinisci, tutor: [...p.tutor, { fase: r.fase, domanda: domanda.trim(), risposta: r.risposta }] }
+          ? { ...p, consigli: r.consigli, domandeRimaste: r.domandeRimaste, votoSeFinisci: r.votoSeFinisci, tutor: [...p.tutor, { fase: r.fase, domanda: domanda.trim(), risposta: r.risposta, gratis: r.gratis }] }
           : p,
       );
     },
@@ -250,7 +250,7 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
             )}
           </section>
 
-          {!c.esame && <TutorChat scambi={c.tutor} votoSeFinisci={c.votoSeFinisci} domandeRimaste={c.domandeRimaste} onChiedi={chiedi} attivo={!c.finito && !c.classeChiusa} />}
+          {!c.esame && <TutorChat scambi={c.tutor} fase={numeroFase} votoSeFinisci={c.votoSeFinisci} domandeRimaste={c.domandeRimaste} onChiedi={chiedi} attivo={!c.finito && !c.classeChiusa} />}
         </>
       )}
 

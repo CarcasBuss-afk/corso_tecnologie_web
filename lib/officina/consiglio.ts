@@ -1,8 +1,8 @@
-/* Il consiglio a parole: il contesto che si dà al tutor (tutor.ts) e il consiglio finto dei
- * test. Il tutor dice dove guardare e che cosa cambiare, mai la riga da scrivere. Il filtro
- * anti-codice sta in filtroCodice.ts, perché lo usa anche il giudice. Modulo puro. */
+/* Il consiglio a parole: il contesto che si dà al tutor (tutor.ts), quali messaggi non costano
+ * un punto e il consiglio finto dei test. Il tutor dice dove guardare e che cosa fare adesso, mai
+ * la riga da scrivere. I filtri sul codice stanno in filtroCodice.ts, perché li usa anche il giudice. Modulo puro. */
 import type { SchedaCompito } from './compiti/tipi';
-import { contieneCodice, pulisciConsiglio } from './filtroCodice';
+import { esempioNonAmmesso, pulisciConsiglio } from './filtroCodice';
 import type { EsitoProva, Fase, Valutazione } from './motore/tipi';
 import { hintControllo } from './motore/valuta';
 import { traduciErroreJs } from './motore/erroriJs';
@@ -24,10 +24,44 @@ export interface ContestoConsiglio {
   hintVisto: string | null;
   /** Il motivo dell'ultima bocciatura sul codice in questa fase, se l'ultima consegna è stata bocciata. */
   bocciatura?: string | null;
+  /** La soluzione della fase: la legge solo il filtro, il modello non la vede mai. */
+  soluzione?: string;
   domanda: string;
 }
 
 export type Scambio = { fase: number; domanda: string; risposta: string };
+
+/** Perché un messaggio al tutor non costa un punto. */
+export type MotivoGratis = 'chiarimento' | 'fuori-tema';
+
+/** Il marcatore con cui il modello segnala un messaggio che non c'entra con il compito. */
+export const MARCATORE_FUORI_TEMA = '[FUORI TEMA]';
+
+/** Il testo del pulsante «Non ho capito» e delle domande che dicono solo quello. */
+export const NON_HO_CAPITO = 'Non ho capito';
+const SOLO_NON_HO_CAPITO = /^\s*non\s+(ho\s+capito|capisco)(\s+(niente|nulla))?[\s.!?]*$/i;
+
+/**
+ * Vero se è un «non ho capito» gratis: uno solo dopo ogni risposta vera, nella stessa fase. Non
+ * vale dopo un altro messaggio gratis, così non si ottiene una spiegazione dopo l'altra senza costo.
+ */
+export function eChiarimento(domanda: string, scambi: Array<{ fase: number; gratis?: MotivoGratis }>, fase: number): boolean {
+  const ultimo = scambi.at(-1);
+  return SOLO_NON_HO_CAPITO.test(domanda) && !!ultimo && ultimo.fase === fase && !ultimo.gratis;
+}
+
+/**
+ * Toglie il marcatore del fuori tema e tiene una riga sola: così, se qualcuno convincesse il
+ * modello a segnarlo apposta, non avrebbe comunque un aiuto gratis. Un messaggio vuoto vuol dire
+ * «non so andare avanti»: non è mai fuori tema.
+ */
+export function separaFuoriTema(testo: string, domanda: string): { fuoriTema: boolean; risposta: string } {
+  const pulito = testo.trim();
+  if (!pulito.startsWith(MARCATORE_FUORI_TEMA)) return { fuoriTema: false, risposta: pulito };
+  const resto = pulito.slice(MARCATORE_FUORI_TEMA.length).trim();
+  if (!domanda.trim()) return { fuoriTema: false, risposta: resto };
+  return { fuoriTema: true, risposta: resto.split('\n')[0].slice(0, 200) };
+}
 
 function blocco(titolo: string, righe: string[]): string {
   return `${titolo}\n${righe.length ? righe.join('\n') : '(niente)'}`;
@@ -52,7 +86,7 @@ export function messaggioConsiglio(c: ContestoConsiglio, fase: Pick<Fase, 'prove
   parti.push(`FASE ${c.fase} di ${c.fasiTotali}. Consegna: ${c.consegna.replace(/\*\*/g, '')}`);
   if (c.regola) parti.push(`REGOLA DEL COMPITO (la controlla un giudice sul codice che funziona; se non è rispettata la consegna è bocciata anche se la pagina fa la cosa giusta): ${c.regola}`);
   parti.push(blocco('HTML DELLA PAGINA (dato, l\'allievo non lo cambia):', c.html.split('\n')));
-  parti.push(blocco("JAVASCRIPT DELL'ALLIEVO ADESSO:", c.codice.trim() ? c.codice.replace(/\r\n?/g, '\n').split('\n') : []));
+  parti.push(blocco("JAVASCRIPT DELL'ALLIEVO ADESSO (con il numero di riga davanti, come nel suo editor):", c.codice.trim() ? c.codice.replace(/\r\n?/g, '\n').split('\n').map((r, i) => `${i + 1}: ${r}`) : []));
   if (c.valutazione) {
     const righe = c.valutazione.prove.flatMap((p, i) => righeProva(p, i, fase.prove[i]?.nome));
     parti.push(blocco(`COME VA IL SUO CODICE ADESSO (${c.valutazione.promosso ? 'tutte le prove passano' : 'non passa'}):`, righe));
@@ -63,7 +97,7 @@ export function messaggioConsiglio(c: ContestoConsiglio, fase: Pick<Fase, 'prove
   return parti.join('\n\n');
 }
 
-export { contieneCodice, pulisciConsiglio };
+export { esempioNonAmmesso, pulisciConsiglio };
 
 /**
  * Il consiglio finto dei test e dello sviluppo senza chiave: risponde con un consiglio

@@ -13,7 +13,7 @@ import { chiamaDocente, messaggioErrore } from '@/lib/officina/client';
 import { ALLIEVI, CLASSI } from '@/lib/officina/nomiCollezioni';
 import { fasiDi } from '@/lib/officina/compiti/elenco';
 import type { VoceCompito } from '@/lib/officina/regole';
-import { csvClasse, SEZIONI_PERCORSO, tabellaClasse, TITOLI_PERCORSO, type AllievoVisto, type LavoroVisto } from '@/lib/officina/tabella';
+import { chiamaIlProf, csvClasse, daAiutare, SEZIONI_PERCORSO, tabellaClasse, TITOLI_PERCORSO, type AllievoVisto, type LavoroVisto } from '@/lib/officina/tabella';
 
 type ClasseDati = { nome: string; chiusa: boolean };
 
@@ -134,6 +134,7 @@ export function Classe({ classeId }: { classeId: string }) {
   );
 
   const righe = useMemo(() => tabellaClasse(allievi), [allievi]);
+  const fermi = useMemo(() => daAiutare(righe), [righe]);
 
   if (stato !== 'ok') return <Accesso ruolo="docente" stato={stato} messaggio={messaggio} accediGoogle={accediGoogle} accediProva={accediProva} esci={esci} />;
   if (!classe) return <main className="p-8 text-(--color-testo-tenue)">{errore || 'Un attimo…'}</main>;
@@ -171,6 +172,19 @@ export function Classe({ classeId }: { classeId: string }) {
         <p role="alert" className="rounded-lg border border-red-500/40 bg-red-500/10 p-3 text-red-200">
           {errore}
         </p>
+      )}
+
+      {fermi.length > 0 && (
+        <section aria-label="allievi senza più aiuti" className="rounded-xl border border-(--color-giallo)/40 bg-(--color-giallo)/10 p-3">
+          <p className="font-bold">🙋 Senza più aiuti del tutor: ti stanno cercando</p>
+          <ul className="mt-1 text-sm">
+            {fermi.map((f) => (
+              <li key={`${f.uid}-${f.compito}`}>
+                {f.nome} · {f.compito}
+              </li>
+            ))}
+          </ul>
+        </section>
       )}
 
       <section className="overflow-x-auto rounded-xl border border-(--color-bordo) bg-(--color-fondo-card)">
@@ -256,13 +270,15 @@ export function Classe({ classeId }: { classeId: string }) {
 
 function Cella({ v }: { v: VoceCompito }) {
   if (v.stato === 'bloccato') return <span className="text-(--color-testo-tenue)">🔒</span>;
-  if (v.stato === 'da-cominciare') return <span className="text-(--color-testo-tenue)">—</span>;
+  // Fermo sulla prima fase con il tutor già usato: si vede anche se nessuna fase è finita.
+  if (v.stato === 'da-cominciare' && v.consigli === 0) return <span className="text-(--color-testo-tenue)">—</span>;
   return (
     <span className="flex items-baseline gap-2">
       <span className="font-mono text-sm text-(--color-testo-tenue)">
         {v.fasi}/{fasiDi(v.id)}
       </span>
       {v.consigli > 0 && <span className="text-sm text-(--color-giallo)">🧑‍🏫 {v.consigli}</span>}
+      {chiamaIlProf(v) && <span title="Ha finito gli aiuti del tutor su questo compito">🙋</span>}
       {v.voto !== null && <span className="font-mono text-lg font-black text-(--color-giallo)">{v.voto}</span>}
     </span>
   );

@@ -1,13 +1,18 @@
 'use client';
 /* Il tutor dell'Officina: una conversazione sul compito. Ogni domanda costa un punto e
- * l'allievo lo vede prima di mandarla; la domanda può essere lunga quanto vuole. Sotto la
+ * l'allievo lo vede prima di mandarla; la domanda può essere lunga quanto vuole. Dopo l'ultima
+ * risposta c'è un «Non ho capito» gratis. Finiti gli aiuti, l'allievo chiama il prof. Sotto la
  * casella, le domande già fatte, dalla più recente. */
 import { useState } from 'react';
 import { messaggioErrore, type Scambio } from '@/lib/officina/client';
+import { NON_HO_CAPITO } from '@/lib/officina/consiglio';
+import { AIUTI_MASSIMI } from '@/lib/officina/regole';
 import Testo from './Testo';
 
 interface Props {
   scambi: Scambio[];
+  /** La fase a cui è l'allievo, da 1: il «Non ho capito» vale solo nella stessa fase della risposta. */
+  fase: number;
   votoSeFinisci: number;
   /** Domande ancora possibili su questo compito: a zero il tutor non risponde più. */
   domandeRimaste: number;
@@ -15,21 +20,21 @@ interface Props {
   attivo: boolean;
 }
 
-/** Sotto questa soglia si vede quante domande restano: prima non serve ricordarlo. */
-const AVVISO_RIMASTE = 10;
-
-export default function TutorChat({ scambi, votoSeFinisci, domandeRimaste, onChiedi, attivo }: Props) {
+export default function TutorChat({ scambi, fase, votoSeFinisci, domandeRimaste, onChiedi, attivo }: Props) {
   const [domanda, setDomanda] = useState('');
   const [conferma, setConferma] = useState(false);
   const [attesa, setAttesa] = useState(false);
   const [errore, setErrore] = useState<string | null>(null);
 
-  async function manda() {
+  const ultimo = scambi.at(-1);
+  const puoChiarire = attivo && domandeRimaste > 0 && !!ultimo && ultimo.fase === fase && !ultimo.gratis;
+
+  async function manda(testo = domanda) {
     if (attesa) return;
     setAttesa(true);
     setErrore(null);
     try {
-      await onChiedi(domanda);
+      await onChiedi(testo);
       setDomanda('');
       setConferma(false);
     } catch (e) {
@@ -45,8 +50,8 @@ export default function TutorChat({ scambi, votoSeFinisci, domandeRimaste, onChi
         <div>
           <p className="font-bold">🧑‍🏫 Il tutor</p>
           <p className="text-sm text-(--color-testo-tenue)">
-            Spiega e ti dice dove guardare, mai il codice. Ogni domanda costa 1 punto.
-            {domandeRimaste > 0 && domandeRimaste <= AVVISO_RIMASTE && (
+            Ti dice dove guardare e che cosa fare adesso, con un piccolo esempio se serve: il codice del compito lo scrivi tu. Ogni domanda costa 1 punto.
+            {domandeRimaste > 0 && (
               <span className="ml-1 text-(--color-giallo)" aria-label="domande rimaste">
                 Te ne {domandeRimaste === 1 ? 'resta una' : `restano ${domandeRimaste}`} su questo compito.
               </span>
@@ -62,8 +67,8 @@ export default function TutorChat({ scambi, votoSeFinisci, domandeRimaste, onChi
       </div>
 
       {attivo && domandeRimaste === 0 && (
-        <p className="rounded-xl border border-(--color-bordo) bg-black/30 p-3 text-(--color-testo-tenue)">
-          Le domande per questo compito sono finite: da qui in poi vai avanti da solo, o chiedi al prof.
+        <p role="status" className="rounded-xl border border-(--color-giallo)/40 bg-(--color-giallo)/10 p-3 font-bold">
+          🙋 Hai usato tutti i {AIUTI_MASSIMI} aiuti del tutor su questo compito. Chiama il prof. Il voto non scende più.
         </p>
       )}
 
@@ -78,9 +83,16 @@ export default function TutorChat({ scambi, votoSeFinisci, domandeRimaste, onChi
             className="w-full rounded-xl border border-(--color-bordo) bg-black/40 p-3 outline-none focus:border-(--color-giallo)"
           />
           {!conferma ? (
-            <button type="button" onClick={() => setConferma(true)} className="self-start rounded-lg border-2 border-(--color-giallo) px-4 py-2 font-bold text-(--color-giallo) hover:bg-(--color-giallo)/10">
-              Chiedi al tutor
-            </button>
+            <div className="flex flex-wrap items-center gap-3">
+              <button type="button" onClick={() => setConferma(true)} className="rounded-lg border-2 border-(--color-giallo) px-4 py-2 font-bold text-(--color-giallo) hover:bg-(--color-giallo)/10">
+                Chiedi al tutor
+              </button>
+              {puoChiarire && (
+                <button type="button" onClick={() => void manda(NON_HO_CAPITO)} disabled={attesa} className="rounded-lg border border-(--color-bordo) px-4 py-2 hover:border-(--color-giallo) disabled:opacity-50">
+                  {attesa ? 'Il tutor ci pensa…' : '🤔 Non ho capito (gratis)'}
+                </button>
+              )}
+            </div>
           ) : (
             <div className="flex flex-wrap items-center gap-3 rounded-xl border border-(--color-giallo)/40 bg-(--color-giallo)/5 p-3">
               <p className="font-bold">

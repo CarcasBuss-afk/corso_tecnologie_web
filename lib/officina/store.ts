@@ -9,6 +9,7 @@
 import 'server-only';
 import type { Timestamp } from 'firebase-admin/firestore';
 import { getDb } from '@/lib/firebaseAdmin';
+import type { MotivoGratis } from './consiglio';
 import type { Giudizio } from './motore/tipi';
 import { ALLIEVI, APPARTENENZE, CLASSI } from './nomiCollezioni';
 
@@ -26,6 +27,8 @@ export type ScambioDoc = {
   fase: number;
   domanda: string;
   risposta: string;
+  /** Il motivo per cui questo messaggio non è costato un punto; manca se è costato. */
+  gratis?: MotivoGratis;
   at: Timestamp;
 };
 

@@ -6,6 +6,7 @@ import type { Livello } from './compiti/elenco';
 import type { SchedaCompito } from './compiti/tipi';
 import type { EsitoProva, Pannello, Prova, Sorgente } from './motore/tipi';
 import type { StatoCompito } from './regole';
+import type { MotivoGratis } from './consiglio';
 
 export class ErroreOfficina extends Error {
   constructor(
@@ -72,7 +73,7 @@ export type SezionePercorso = { id: string; titolo: string; compiti: string[] };
 
 export type Percorso = { classe: { id: string; nome: string; chiusa: boolean }; compiti: CompitoInElenco[]; sezioni: SezionePercorso[]; media: number | null; bonus: number };
 
-export type Scambio = { fase: number; domanda: string; risposta: string };
+export type Scambio = { fase: number; domanda: string; risposta: string; gratis?: MotivoGratis | null };
 
 /** La fase come la vede l'allievo: la consegna e la sola prova mostrata. */
 export type FasePubblica = { indice: number; consegna: string; prova: Prova; regola: string | null };
@@ -103,4 +104,4 @@ export type RispostaConsegna =
   | { promosso: true; fasi: number; finito: boolean; voto: number | null; votoSeFinisci: number; fase: FasePubblica | null }
   | { promosso: false; hint: string | null; esitoMostrata: EsitoProva | null; errori: number };
 
-export type RispostaTutor = { risposta: string; consigli: number; domandeRimaste: number; votoSeFinisci: number; fase: number };
+export type RispostaTutor = { risposta: string; gratis: MotivoGratis | null; consigli: number; domandeRimaste: number; votoSeFinisci: number; fase: number };

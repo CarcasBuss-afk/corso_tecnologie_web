@@ -21,7 +21,7 @@ variabili d'ambiente, §6).
 3. **Correzione anche sul server**: il browser dell'allievo corregge in tempo reale mentre
    scrive (gratis, nessuna chiamata), ma la fase si promuove solo quando **il server rifà la
    verifica** sul codice consegnato.
-4. **Tutor IA con il costo in punti**: voto = 10 − domande, mai sotto 5, come nell'Officina.
+4. **Tutor IA con il costo in punti**: voto = 10 − domande, mai sotto 5; arrivato a 5 il tutor si ferma e l'allievo chiama il prof, che lo vede nella dashboard. Gratis i messaggi fuori tema e un «non ho capito» per risposta.
 5. **Si parte da JavaScript**, perché la classe è lì (lezione 7-8 del Modulo 4). HTML e CSS
    arrivano dopo, come sezioni del percorso.
 
@@ -41,7 +41,7 @@ girare anche sul server.
 
 Tutto il resto è identico: login Google del dominio della scuola, classi scelte da un elenco,
 percorso con i compiti sbloccati uno alla volta, fasi che fanno crescere lo stesso programma,
-bozza salvata, tutor Sonnet che non scrive mai codice, dashboard di solo monitoraggio, CSV.
+bozza salvata, tutor Sonnet che mostra al massimo un piccolo esempio con altri nomi, mai la riga da scrivere, dashboard di solo monitoraggio, CSV.
 
 ## 3. Il motore: la pagina si corregge guardandola
 

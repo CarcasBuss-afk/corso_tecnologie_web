@@ -14,7 +14,8 @@ import type { Fase, Sorgente } from './motore/tipi';
 import { valuta } from './motore/valuta';
 import { verificaConsegna } from './motore/verifica';
 import { richiestaAmmessa } from './rateLimit';
-import { bonusSfide, mediaConBonus, percorsoDi, semeDa, votoSeFinisce } from './regole';
+import { eChiarimento, separaFuoriTema, type MotivoGratis } from './consiglio';
+import { AIUTI_MASSIMI, aiutiFiniti, bonusSfide, mediaConBonus, percorsoDi, semeDa, votoSeFinisce } from './regole';
 import { allieviRef, appartenenzeRef, classiRef, lavoroVuoto, MAX_GIUDIZI, type AllievoDoc, type AppartenenzaDoc, type ClasseDoc, type GiudizioDoc, type LavoroDoc } from './store';
 import { chiediTutor } from './tutor';
 import { MAX_DOMANDA_TUTOR, MAX_DOMANDE_TUTOR } from './tutorPrompt';
@@ -168,7 +169,7 @@ export async function compito(body: Record<string, unknown>, utente: Utente) {
     fase: fase ? fasePubblica(fase, lavoro.fasi) : null,
     codice: finito ? (lavoro.codice?.[String(c.fasi.length - 1)] ?? '') : codiceDaCui(lavoro, c),
     codicePromosso: lavoro.codice ?? {},
-    tutor: (lavoro.tutor ?? []).map((s) => ({ fase: s.fase + 1, domanda: s.domanda, risposta: s.risposta })),
+    tutor: (lavoro.tutor ?? []).map((s) => ({ fase: s.fase + 1, domanda: s.domanda, risposta: s.risposta, gratis: s.gratis ?? null })),
     errori: lavoro.errori,
   };
 }
@@ -253,9 +254,9 @@ export async function consegna(body: Record<string, unknown>, utente: Utente) {
 
 /* -------------------------------------------------------------------- tutor */
 
-const domandeRimaste = (consigli: number) => Math.max(0, MAX_DOMANDE_TUTOR - consigli);
+const domandeRimaste = (consigli: number) => Math.max(0, AIUTI_MASSIMI - consigli);
 
-/** Una domanda al tutor: costa un punto (fino al pavimento, poi è gratis ma si conta), fino al tetto per compito. */
+/** Una domanda al tutor: costa un punto, tranne un «non ho capito» dopo una risposta e i messaggi fuori tema. Al voto minimo il tutor si ferma e l'allievo chiama il prof. */
 export async function tutor(body: Record<string, unknown>, utente: Utente) {
   limita(utente);
   const domanda = typeof body.domanda === 'string' ? body.domanda.replace(/\r\n?/g, '\n').trim().slice(0, MAX_DOMANDA_TUTOR) : '';
@@ -267,8 +268,11 @@ export async function tutor(body: Record<string, unknown>, utente: Utente) {
   if (c.scheda.esame) {
     throw new ApiError(403, 'TUTOR_SPENTO', "Nell'esame il tutor è spento: ce la fai da solo. Gli hint automatici restano");
   }
-  if (lavoro.consigli >= MAX_DOMANDE_TUTOR) {
-    throw new ApiError(403, 'DOMANDE_FINITE', `Hai fatto ${MAX_DOMANDE_TUTOR} domande su questo compito: da qui in poi vai avanti da solo, o chiedi al prof`);
+  if (aiutiFiniti(lavoro.consigli)) {
+    throw new ApiError(403, 'AIUTI_FINITI', `Hai usato tutti i ${AIUTI_MASSIMI} aiuti del tutor su questo compito: chiama il prof`);
+  }
+  if ((lavoro.tutor ?? []).length >= MAX_DOMANDE_TUTOR) {
+    throw new ApiError(403, 'DOMANDE_FINITE', 'Hai scritto troppi messaggi al tutor su questo compito: chiama il prof');
   }
 
   // Com'è adesso il suo codice: solo il correttore, niente giudice (il tutor deve vedere i fatti).
@@ -277,7 +281,9 @@ export async function tutor(body: Record<string, unknown>, utente: Utente) {
   // Il registro cresce a ogni consegna con le prove passate: l'ultima voce dice com'è finita.
   const ultimo = (lavoro.giudice ?? []).filter((g) => g.fase === lavoro.fasi).at(-1);
 
-  const risposta = await chiediTutor(
+  const chiarimento = eChiarimento(domanda, lavoro.tutor ?? [], lavoro.fasi);
+
+  const grezza = await chiediTutor(
     {
       scheda: c.scheda,
       fase: lavoro.fasi + 1,
@@ -289,24 +295,28 @@ export async function tutor(body: Record<string, unknown>, utente: Utente) {
       valutazione,
       hintVisto,
       bocciatura: ultimo?.esito === 'NO' || ultimo?.esito === 'CONTROLLO' ? (ultimo.motivo ?? null) : null,
+      soluzione: c.soluzioni[lavoro.fasi],
       domanda,
     },
     fase,
     (lavoro.tutor ?? []).map((s) => ({ fase: s.fase + 1, domanda: s.domanda, risposta: s.risposta })),
   );
+  const { fuoriTema, risposta } = separaFuoriTema(grezza, domanda);
+  const gratis: MotivoGratis | null = chiarimento ? 'chiarimento' : fuoriTema ? 'fuori-tema' : null;
 
   const consigli = await getDb().runTransaction(async (tx) => {
     const snap = await tx.get(ctx.allievoRef);
     const fresco = snap.data() as AllievoDoc | undefined;
     const attuale = fresco?.lavori?.[id] ?? lavoroVuoto();
-    const scambio = { fase: lavoro.fasi, domanda, risposta, at: Timestamp.now() };
+    const costo = gratis ? 0 : 1;
+    const scambio = { fase: lavoro.fasi, domanda, risposta, ...(gratis ? { gratis } : {}), at: Timestamp.now() };
     tx.set(
       ctx.allievoRef,
-      { lavori: { [id]: { ...attuale, bozza: codice || attuale.bozza, consigli: attuale.consigli + 1, tutor: [...(attuale.tutor ?? []), scambio] } } },
+      { lavori: { [id]: { ...attuale, bozza: codice || attuale.bozza, consigli: attuale.consigli + costo, tutor: [...(attuale.tutor ?? []), scambio] } } },
       { merge: true },
     );
-    return attuale.consigli + 1;
+    return attuale.consigli + costo;
   });
 
-  return { risposta, consigli, domandeRimaste: domandeRimaste(consigli), votoSeFinisci: votoSeFinisce(consigli), fase: lavoro.fasi + 1 };
+  return { risposta, gratis, consigli, domandeRimaste: domandeRimaste(consigli), votoSeFinisci: votoSeFinisce(consigli), fase: lavoro.fasi + 1 };
 }

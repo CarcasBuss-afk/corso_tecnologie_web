@@ -76,7 +76,7 @@ export function Officina() {
               <SezioneDelPercorso key={s.id} sezione={s} compiti={p.compiti} classe={p.classe} />
             ))}
             <p className="text-sm text-(--color-testo-tenue)">
-              I compiti si sbloccano uno alla volta. Il voto è 10 meno le domande al tutor, mai sotto 5: puoi chiedere aiuto quanto vuoi. Gli errori non costano niente. Le sfide ⭐ si possono saltare: ognuna finita aggiunge mezzo punto alla media.
+              I compiti si sbloccano uno alla volta. Il voto è 10 meno le domande al tutor, mai sotto 5: dopo 5 domande su un compito il tutor si ferma e chiami il prof. Gli errori non costano niente. Le sfide ⭐ si possono saltare: ognuna finita aggiunge mezzo punto alla media.
             </p>
           </section>
         ))
