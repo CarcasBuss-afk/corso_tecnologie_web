@@ -63,7 +63,7 @@ export function generaPaghetta(seme: number): Compito {
 
   const rigaSettimana = riga(R_SETTIMANA, 'Un console.log con tre valori separati da virgole: il testo fra virgolette, la paghetta come numero senza virgolette, poi "€". Controlla i due punti dentro il testo.');
   const rigaMese = riga(R_MESE, `Il mese è la paghetta per ${SETTIMANE_MESE}, scritta come operazione dentro console.log senza virgolette: non il numero già calcolato.`);
-  const rigaAnno = riga(R_ANNO, `L'anno è la paghetta per ${SETTIMANE_ANNO}, come operazione dentro console.log.`);
+  const rigaAnno = riga(R_ANNO, `L'anno è la paghetta per ${SETTIMANE_ANNO}, come operazione dentro console.log: non il mese per 12, che farebbe solo ${SETTIMANE_MESE * 12} settimane.`);
   const rigaOggetto = riga(R_OGGETTO, `Il testo "Voglio ${oggetto}: costa" fra virgolette, poi il prezzo ${prezzo} come numero, poi "€". Attento ai due punti e agli spazi dentro il testo.`);
   const rigaSalvadanaio = riga(R_SALVADANAIO, `Il testo fra virgolette, poi il numero ${salvadanaio} senza virgolette, poi "€".`);
   const rigaMancano = riga(R_MANCANO, `Quanto manca è il prezzo meno il salvadanaio: ${prezzo} - ${salvadanaio} scritto dentro console.log, non il risultato.`);
@@ -124,6 +124,7 @@ console.log("A fine anno nel salvadanaio ho", ${salvadanaio} + (${paghetta} - ${
         `nel salvadanaio: ${salvadanaio} €`,
         `spesa a settimana: ${spesa} €`,
         `un mese: ${SETTIMANE_MESE} settimane, un anno: ${SETTIMANE_ANNO} settimane`,
+        `il mese da ${SETTIMANE_MESE} settimane è un arrotondamento: 12 mesi così farebbero solo ${SETTIMANE_MESE * 12} settimane, quindi l'anno si calcola dalla paghetta per ${SETTIMANE_ANNO}, non dal mese per 12`,
       ],
       risultatoFinale: [
         `Quanto mette via ${nome} in una settimana, in un mese e in un anno.`,
@@ -136,7 +137,7 @@ console.log("A fine anno nel salvadanaio ho", ${salvadanaio} + (${paghetta} - ${
     pannelli: ['js'],
     fasi: [
       {
-        consegna: `Questa è una sfida: la consegna dice che cosa deve comparire in console, i conti li scrivi tu dentro \`console.log\`, come nello scontrino. I dati sono nella scheda; ogni altro numero lo calcola JavaScript.\n1. Stampa tre righe: \`${R_SETTIMANA}\`, \`${R_MESE}\` e \`${R_ANNO}\`.\n2. Un mese sono ${SETTIMANE_MESE} settimane, un anno ${SETTIMANE_ANNO}: mese e anno sono moltiplicazioni sulla paghetta, scritte dentro \`console.log\` senza virgolette.\nI valori si separano con le virgole: i testi fra virgolette, i numeri e i conti senza. I testi vanno scritti esatti, due punti compresi.`,
+        consegna: `Questa è una sfida: la consegna dice che cosa deve comparire in console, i conti li scrivi tu dentro \`console.log\`, come nello scontrino. I dati sono nella scheda; ogni altro numero lo calcola JavaScript.\n1. Stampa tre righe: \`${R_SETTIMANA}\`, \`${R_MESE}\` e \`${R_ANNO}\`.\n2. Un mese sono ${SETTIMANE_MESE} settimane, un anno ${SETTIMANE_ANNO}: mese e anno sono moltiplicazioni sulla paghetta, scritte dentro \`console.log\` senza virgolette. Il mese da ${SETTIMANE_MESE} settimane è un arrotondamento: 12 mesi così farebbero solo ${SETTIMANE_MESE * 12} settimane. Per questo l'anno non è il mese per 12: si calcola dalla paghetta per ${SETTIMANE_ANNO}.\nI valori si separano con le virgole: i testi fra virgolette, i numeri e i conti senza. I testi vanno scritti esatti, due punti compresi.`,
         regola: CONTI_NON_RISULTATI,
         prove: [{ passi: fase1 }],
         codiceIniziale: '// La paghetta\n',
