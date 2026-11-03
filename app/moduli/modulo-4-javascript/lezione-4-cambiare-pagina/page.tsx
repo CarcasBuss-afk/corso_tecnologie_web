@@ -6,6 +6,7 @@ import Exercise from '@/components/didattica/Exercise';
 import JavaScriptDemo from '@/components/didattica/JavaScriptDemo';
 import Challenge from '@/components/didattica/Challenge';
 import AllenatiOfficina from '@/components/didattica/AllenatiOfficina';
+import VideoLezione from '@/components/didattica/VideoLezione';
 
 export default function Lezione4CambiarePagina() {
   const lezioni = getLezioniByModuloSlug('modulo-4-javascript');
@@ -31,6 +32,7 @@ export default function Lezione4CambiarePagina() {
           'Modificare la pagina senza ricaricarla'
         ]}
       />
+      <VideoLezione lezioneSlug="lezione-4-cambiare-pagina" />
 
       {/* Introduzione */}
       <section className="mb-12">

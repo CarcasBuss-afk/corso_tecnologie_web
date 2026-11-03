@@ -21,6 +21,10 @@ export const VIDEO_LEZIONI: Record<string, { titolo: string; driveId: string }> 
     titolo: 'Dialoghi e variabili',
     driveId: '10GUj4NXwY5-2iMccREGKUP5eTJ3-tx1U',
   },
+  'lezione-4-cambiare-pagina': {
+    titolo: 'Cambiare la pagina',
+    driveId: '1eIyfJjhxZIFtsLlUvwrtQp3Ijpjvu-ZV',
+  },
   'lezione-1-primo-javascript': {
     titolo: 'Il primo JavaScript',
     driveId: '1ZlPhS0HPe6qJ4WNtS6hQf6jv0Jty6j7j',
