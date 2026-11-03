@@ -274,6 +274,8 @@ export async function tutor(body: Record<string, unknown>, utente: Utente) {
   // Com'è adesso il suo codice: solo il correttore, niente giudice (il tutor deve vedere i fatti).
   const sorgente: Sorgente = { ...c.pagina, js: codice };
   const valutazione = codice.trim() ? valuta(fase.prove, eseguiProveServer(sorgente, fase.prove)) : null;
+  // Il registro cresce a ogni consegna con le prove passate: l'ultima voce dice com'è finita.
+  const ultimo = (lavoro.giudice ?? []).filter((g) => g.fase === lavoro.fasi).at(-1);
 
   const risposta = await chiediTutor(
     {
@@ -286,6 +288,7 @@ export async function tutor(body: Record<string, unknown>, utente: Utente) {
       codice,
       valutazione,
       hintVisto,
+      bocciatura: ultimo?.esito === 'NO' || ultimo?.esito === 'CONTROLLO' ? (ultimo.motivo ?? null) : null,
       domanda,
     },
     fase,

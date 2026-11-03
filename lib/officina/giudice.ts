@@ -20,8 +20,8 @@ Rispondi OK oppure NO.
 I FATTI MISURATI SUL CODICE sono esatti, contati da un analizzatore: non contraddirli.
 
 Formato della risposta, senza altro testo:
-- prima riga: OK oppure NO
-- se NO, seconda riga: una frase sola in italiano, al massimo 25 parole, rivolta all'allievo (dai del tu), che dice SOLO che cosa non rispetta la regola, come un messaggio di errore (per esempio: «il pulsante è collegato con una funzione freccia, la regola chiede una funzione con nome»). Non dire come si corregge, non dare consigli né esempi, non scrivere codice: a spiegare ci pensa il tutor. Puoi nominare function, addEventListener, onclick, prompt, Number, if e i nomi delle sue variabili.`;
+- prima controlla la regola riga per riga, in poche righe di appunti: l'allievo non li legge;
+- ultima riga: VERDETTO: OK oppure VERDETTO: NO: seguito da una frase sola in italiano, al massimo 25 parole, rivolta all'allievo (dai del tu), che dice SOLO che cosa non rispetta la regola, come un messaggio di errore (per esempio: «il pulsante è collegato con una funzione freccia, la regola chiede una funzione con nome»). Non dire come si corregge, non dare consigli né esempi, non scrivere codice: a spiegare ci pensa il tutor. Puoi nominare function, addEventListener, onclick, prompt, Number, if e i nomi delle sue variabili.`;
 
 export interface ContestoGiudizio {
   consegna: string;
@@ -45,22 +45,19 @@ export function messaggioGiudizio(c: ContestoGiudizio): string {
   ].join('\n\n');
 }
 
-/** Legge il verdetto del modello. `null` se non si capisce: in quel caso il server promuove. */
+/** La riga del verdetto, anche con il grassetto intorno. */
+const VERDETTO = /^[\s*_`#>-]*VERDETTO[\s*_`]*:[\s*_`]*(OK|NO)\b(.*)$/gim;
+
+/**
+ * Legge il verdetto del modello: l'ultimo, perché arriva dopo gli appunti. Il motivo resta com'è
+ * scritto: i - e i * dei conti ci servono. `null` se non si capisce: in quel caso il server promuove.
+ */
 export function interpretaVerdetto(testo: string): Verdetto | null {
-  const righe = testo
-    .replace(/\r\n?/g, '\n')
-    .split('\n')
-    .map((r) => r.replace(/[`*#\-]/g, '').trim())
-    .filter((r) => r !== '');
-  if (righe.length === 0) return null;
-  const prima = righe[0].toUpperCase();
-  if (/^OK\b/.test(prima)) return { genuino: true };
-  if (/^NO\b/.test(prima)) {
-    const dopo = righe[0].slice(2).replace(/^[\s:.,-]+/, '').trim();
-    const motivo = (dopo || righe.slice(1).join(' ')).trim();
-    return { genuino: false, motivo };
-  }
-  return null;
+  const ultimo = [...testo.replace(/\r\n?/g, '\n').matchAll(VERDETTO)].at(-1);
+  if (!ultimo) return null;
+  if (ultimo[1].toUpperCase() === 'OK') return { genuino: true };
+  const motivo = ultimo[2].replace(/^[\s:.,*_—–-]+/, '').replace(/[\s*_]+$/, '');
+  return { genuino: false, motivo };
 }
 
 /** L'hint per l'allievo bocciato dal giudice: mai codice, anche se il modello ce l'ha messo. */

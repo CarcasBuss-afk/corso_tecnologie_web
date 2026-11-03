@@ -22,6 +22,8 @@ export interface ContestoConsiglio {
   valutazione: Valutazione | null;
   /** L'hint che l'allievo ha già visto all'ultima consegna, se c'è (anche quello del giudice). */
   hintVisto: string | null;
+  /** Il motivo dell'ultima bocciatura sul codice in questa fase, se l'ultima consegna è stata bocciata. */
+  bocciatura?: string | null;
   domanda: string;
 }
 
@@ -56,6 +58,7 @@ export function messaggioConsiglio(c: ContestoConsiglio, fase: Pick<Fase, 'prove
     parti.push(blocco(`COME VA IL SUO CODICE ADESSO (${c.valutazione.promosso ? 'tutte le prove passano' : 'non passa'}):`, righe));
   }
   if (c.hintVisto) parti.push(`Hint che ha già visto all'ultima consegna: ${c.hintVisto}`);
+  if (c.bocciatura) parti.push(`ULTIMO VERDETTO SUL CODICE IN QUESTA FASE: bocciato all'ultima consegna, anche se le prove passavano (da allora il codice può essere cambiato). Motivo: ${c.bocciatura}`);
   parti.push(c.domanda.trim() ? `DOMANDA DELL'ALLIEVO: ${c.domanda.trim()}` : "L'allievo non ha scritto una domanda: non sa come andare avanti.");
   return parti.join('\n\n');
 }

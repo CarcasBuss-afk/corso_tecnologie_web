@@ -149,7 +149,7 @@ console.log("A fine anno nel salvadanaio ho", ${salvadanaio} + (${paghetta} - ${
       },
       {
         consegna: `Quante settimane servono? Quanto manca diviso la paghetta: con questi numeri viene intero.\n1. Aggiungi la riga \`${R_SETTIMANE}\`. Non vale scrivere ${mancano} già calcolato: ricopia il conto di quanto manca e dividilo.\n2. Aggiungi la riga \`${R_DOPO_UN_MESE}\`: il prezzo meno quello che c'è dopo un mese, cioè il salvadanaio più ${SETTIMANE_MESE} paghette.\nLe parentesi contano: una somma o una sottrazione che va fatta prima si mette fra parentesi tonde, se no JavaScript fa prima la divisione o la moltiplicazione.`,
-        regola: `${CONTI_NON_RISULTATI} Le settimane sono la sottrazione prezzo meno salvadanaio fra parentesi, divisa per la paghetta; i soldi che mancano dopo un mese sono il prezzo meno, fra parentesi, il salvadanaio più la paghetta per ${SETTIMANE_MESE}.`,
+        regola: `${CONTI_NON_RISULTATI} Le settimane sono la sottrazione prezzo meno salvadanaio fra parentesi, divisa per la paghetta. I soldi che mancano dopo un mese si calcolano su prezzo, salvadanaio, paghetta e ${SETTIMANE_MESE}: va bene qualunque conto equivalente, per esempio il prezzo meno, fra parentesi, il salvadanaio più la paghetta per ${SETTIMANE_MESE}, oppure il prezzo meno il salvadanaio meno la paghetta per ${SETTIMANE_MESE}. Non vale un risultato già calcolato a mano.`,
         prove: [{ passi: fase3 }],
       },
       {
