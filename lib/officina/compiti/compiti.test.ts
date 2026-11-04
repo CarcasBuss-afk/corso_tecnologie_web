@@ -93,6 +93,32 @@ describe('il catalogo', () => {
     });
   }
 
+  describe('citofono, fase 4: il console.log sta nella funzione giusta', () => {
+    const c = generaCompito('citofono', 1);
+    const prove = c.fasi[3].prove;
+    const corretta = c.soluzioni[3];
+    const riga = corretta.match(/console\.log\(.*\);/)?.[0] ?? '';
+    const esito = (js: string) => valuta(prove, eseguiProveServer({ ...c.pagina, js }, prove));
+
+    it('nella funzione della Portineria non passa già con «Luca»', () => {
+      const sbagliata = corretta
+        .replace(`  ${riga}\n`, '')
+        .replace('function orariPortineria() {\n', `function orariPortineria() {\n  ${riga.replace('" + nome', ' Luca"')}\n`);
+      const v = esito(sbagliata);
+      expect(v.promosso).toBe(false);
+      expect(v.prove[0].ok).toBe(false);
+      expect(v.hint).toContain('Interno 1');
+      expect(v.hint).toContain('nella console non compare niente');
+    });
+
+    it('con il nome scritto a mano spiega da dove viene «Omar»', () => {
+      const v = esito(corretta.replace(riga, riga.replace('" + nome', ' Luca"')));
+      expect(v.promosso).toBe(false);
+      expect(v.prove[0].ok).toBe(true);
+      expect(v.hint).toContain('se a «Chi è?» si risponde «Omar»');
+    });
+  });
+
   it('due allievi hanno parametri diversi, lo stesso allievo sempre gli stessi', () => {
     const a = generaCompito('pizzeria', 1).scheda.dati.join();
     const b = generaCompito('pizzeria', 2).scheda.dati.join();

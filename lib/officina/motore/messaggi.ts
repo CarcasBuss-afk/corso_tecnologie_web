@@ -98,10 +98,13 @@ function messaggioStile(c: Extract<Controllo, { controlla: 'stile' }>, e: EsitoC
 const primaParola = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').trim().split(/\s+/)[0] ?? '';
 
 /** La console: se c'è una riga quasi uguale si dice che cosa la distingue, altrimenti che riga manca. */
-function messaggioConsole(c: Extract<Controllo, { controlla: 'console' }>, righe: string[]): string {
+function messaggioConsole(c: Extract<Controllo, { controlla: 'console' }>, righe: string[], pulsante?: string): string {
   const atteso = c.uguale ?? c.contiene ?? '';
   const riga = c.uguale !== undefined ? 'la riga ' : '';
-  if (righe.length === 0) return `Nella console non compare niente, invece ci deve essere ${riga}${v(atteso)}.`;
+  if (righe.length === 0) {
+    const inizio = pulsante ? `Clic su ${v(pulsante)}: nella console` : 'Nella console';
+    return `${inizio} non compare niente, invece ci deve essere ${riga}${v(atteso)}.`;
+  }
   if (c.uguale === undefined) return `Nella console non c'è ${v(atteso)}.`;
   for (const r of righe) {
     const d = differenza(r, atteso);
@@ -174,7 +177,7 @@ export function messaggioControllo(c: Controllo, e: EsitoControllo): string {
       return `${n === 1 ? 'Compare 1 domanda' : `Compaiono ${n} domande`}, invece ne servono almeno ${c.almeno}.`;
     }
     case 'console':
-      return messaggioConsole(c, e.righe ?? []);
+      return messaggioConsole(c, e.righe ?? [], e.dopoClic?.pulsante);
   }
 }
 

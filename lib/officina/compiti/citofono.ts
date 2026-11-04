@@ -94,23 +94,25 @@ export function generaCitofono(seme: number): Compito {
         ],
       },
       {
-        consegna: `Due novità.\n1. **Portineria.** **In cima al codice, sopra le funzioni**, scrivi una \`const\` che contiene **solo** il nome del condominio, **senza** la parola «Condominio». Per esempio: \`const CONDOMINIO = "${condominio}";\`. CONDOMINIO è il nome della costante, non il suo contenuto: il nome della costante lo scegli tu. Poi scrivi una **nuova funzione** con nome e collegala al pulsante **Portineria** (id \`btnPortineria\`) con \`addEventListener\`. La funzione mostra un alert con \`${portineria}\`. L'alert è fatto di tre pezzi uniti con il \`+\`: il testo \`Condominio \`, la costante e il resto \`${portineria.slice(`Condominio ${condominio}`.length)}\`.\n2. **Il registro.** Nella funzione dell'interno 1, **dopo** l'alert «arrivo subito», aggiungi un \`console.log\` con \`${chiamata('NOME')}\` (se scrivono Luca: \`${chiamata('Luca')}\`).`,
+        consegna: `Due novità.\n1. **Portineria.** **In cima al codice, sopra le funzioni**, scrivi una \`const\` che contiene **solo** il nome del condominio, **senza** la parola «Condominio». Per esempio: \`const CONDOMINIO = "${condominio}";\`. CONDOMINIO è il nome della costante, non il suo contenuto: il nome della costante lo scegli tu. Poi scrivi una **nuova funzione** con nome e collegala al pulsante **Portineria** (id \`btnPortineria\`) con \`addEventListener\`. La funzione mostra un alert con \`${portineria}\`. L'alert è fatto di tre pezzi uniti con il \`+\`: il testo \`Condominio \`, la costante e il resto \`${portineria.slice(`Condominio ${condominio}`.length)}\`.\n2. **Il registro.** Nella funzione dell'interno 1, **dopo** l'alert «arrivo subito», aggiungi un \`console.log\` con \`${chiamata('NOME')}\` (se scrivono Luca: \`${chiamata('Luca')}\`). Il nome lo prendi dalla **variabile** del prompt, non lo scrivi a mano: la correzione prova anche con altri nomi.`,
         regola: `${REGOLE.treGesti} ${REGOLE.datiDalPrompt} Anche il pulsante Portineria ha la sua funzione con nome. Il nome del condominio sta in una costante (const) e nel messaggio entra la costante, non il testo ripetuto.`,
         scrittoUnaVolta: { testo: condominio, cosa: 'il nome del condominio' },
         prove: [
           {
             nome: 'rispondendo «Luca»',
+            // Prima l'interno 1, poi la Portineria: un console.log finito nella funzione della
+            // Portineria non deve far passare il controllo della console.
             passi: [
-              clic('btnPortineria', 'Portineria'),
-              alertUguale(portineria, `Portineria: alert con «${portineria}»`, 'Il messaggio unisce la costante del condominio con il resto del testo.'),
               risposte('Luca'),
               interno(1, f1),
               alertUguale(risposta('Luca'), `L'interno 1 risponde ancora «${risposta('Luca')}»`, 'L\'interno 1 deve continuare a rispondere.'),
-              rigaConsole(chiamata('Luca'), `In console c'è la riga «${chiamata('Luca')}»`, 'Un console.log nella funzione dell\'interno 1, dopo l\'alert «arrivo subito», con la variabile del nome.'),
+              rigaConsole(chiamata('Luca'), `L'interno 1 scrive in console la riga «${chiamata('Luca')}»`, 'Un console.log nella funzione dell\'interno 1, dopo l\'alert «arrivo subito», con la variabile del nome.'),
+              clic('btnPortineria', 'Portineria'),
+              alertUguale(portineria, `Portineria: alert con «${portineria}»`, 'Il messaggio unisce la costante del condominio con il resto del testo.'),
             ],
           },
           {
-            nome: 'rispondendo «Omar»',
+            nome: 'se a «Chi è?» si risponde «Omar»',
             passi: [risposte('Omar'), interno(1, f1), rigaConsole(chiamata('Omar'), `In console c'è la riga «${chiamata('Omar')}»`, 'Il nome nella riga della console è quello risposto al prompt.')],
           },
         ],
