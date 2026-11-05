@@ -52,6 +52,35 @@ describe('i messaggi costruiti da quello che fa la pagina', () => {
     expect(hint(c.soluzioni[0])).toBeNull();
   });
 
+  describe('una prova nascosta dice che il valore lo sceglie la correzione', () => {
+    const citofono = generaCompito('citofono', 1);
+    const prove = citofono.fasi[3].prove;
+    const corretta = citofono.soluzioni[3];
+    const riga = corretta.match(/console\.log\(.*\);/)?.[0] ?? '';
+    const hintCitofono = (js: string) => valuta(prove, eseguiProveServer({ ...citofono.pagina, js }, prove)).hint;
+
+    it('il nome scritto a mano: non va scritto, viene dal prompt', () => {
+      const h = hintCitofono(corretta.replace(riga, riga.replace('" + nome', ' Luca"')));
+      expect(h).toMatch(/^Con i valori che vedi funziona, ma la correzione prova la pagina anche da sola e non va: se a «Chi è\?» si risponde «Omar»\. Nella console c'è /);
+      expect(h).toMatch(/ «Omar» non va scritto nel codice: deve arrivare dalla risposta al prompt\.$/);
+    });
+
+    it('se l\'errore è un altro non parla del nome', () => {
+      const senzaVariabile = corretta.replace('let nome = prompt("Chi è?");', 'let nome = "Luca"; if (prompt("Chi è?") === "Omar") nome = pippo;');
+      const h = hintCitofono(senzaVariabile);
+      expect(h).toMatch(/^Con i valori che vedi funziona, ma la correzione/);
+      expect(h).not.toContain('non va scritto nel codice');
+    });
+
+    it('un numero nel risultato non è un valore scritto a mano', () => {
+      const domanda = { fai: 'prompt' as const, risposte: ['5'] };
+      const controllo = { controlla: 'alert' as const, uguale: 'Hai 5 anni', descrizione: 'x', hint: 'x' };
+      const esito = (ok: boolean) => ({ ok, errori: [], alerts: [], console: [], controlli: ok ? [] : [{ ok: false, descrizione: 'x', hint: 'x', attuale: 'Hai 3 anni' }] });
+      const h = valuta([{ passi: [] }, { nome: 'rispondendo «5»', passi: [domanda, controllo] }], [esito(true), esito(false)]).hint;
+      expect(h).not.toContain('non va scritto nel codice');
+    });
+  });
+
   it('lo scontrino in console: righe esatte, punteggiatura, conti e commenti', () => {
     const s = generaCompito('scontrino', 7);
     const h = (f: number, js: string) => {

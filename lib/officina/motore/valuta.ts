@@ -1,7 +1,8 @@
 /* Dagli esiti delle prove al verdetto per l'allievo: promosso o no, e l'hint da mostrare.
  * L'hint è l'errore fatto, in una frase (messaggi.ts): non i consigli. La prima prova è
  * quella che vede; se passa quella e cade su una nascosta, l'hint dice con quali valori:
- * il programma deve funzionare per chiunque, non per i valori che ha davanti.
+ * il programma deve funzionare per chiunque, non per i valori che ha davanti. Quei valori li
+ * sceglie la correzione: il messaggio lo dice, altrimenti l'allievo li scrive nel codice.
  * Modulo puro: lo usano il browser e il server. */
 import { traduciErroreJs } from './erroriJs';
 import { messaggioControllo, messaggioErrore } from './messaggi';
@@ -30,6 +31,35 @@ export function hintProva(p: EsitoProva, prova: Prova): string | null {
 }
 
 /**
+ * La frase per chi potrebbe scrivere a mano un valore di una prova nascosta: c'è se il controllo
+ * fallito si aspetta di rivedere un testo dato dalla correzione (al prompt o in una casella).
+ * I numeri no: un numero nel risultato può essere un caso. Se il problema è un altro (un errore,
+ * un pulsante scollegato, un elemento che non c'è) non si dice niente.
+ */
+function fraseValori(esito: EsitoProva, prova: Prova): string {
+  if (esito.tempoScaduto || esito.errori.length > 0) return '';
+  const i = esito.controlli.findIndex((c) => !c.ok);
+  const fallito = esito.controlli[i];
+  const controllo = controlliDi(prova)[i];
+  if (!fallito || !controllo || fallito.mancante || (fallito.dopoClic && !fallito.dopoClic.collegato)) return '';
+  const atteso = ('uguale' in controllo ? controllo.uguale : undefined) ?? ('contiene' in controllo ? controllo.contiene : undefined);
+  if (!atteso) return '';
+
+  const dati = prova.passi.flatMap((p) => {
+    if (eControllo(p)) return [];
+    if (p.fai === 'prompt') return p.risposte.map((valore) => ({ valore, daPrompt: true }));
+    return p.fai === 'scrivi' ? [{ valore: p.valore, daPrompt: false }] : [];
+  });
+  const attesi = dati.filter((d) => /\p{L}/u.test(d.valore) && atteso.includes(d.valore));
+  if (attesi.length === 0) return '';
+
+  const nomi = attesi.map((d) => `«${d.valore}»`);
+  const daPrompt = attesi.every((d) => d.daPrompt);
+  if (nomi.length === 1) return ` ${nomi[0]} non va scritto nel codice: deve arrivare ${daPrompt ? 'dalla risposta al prompt' : 'dalla casella'}.`;
+  return ` ${nomi.slice(0, -1).join(', ')} e ${nomi[nomi.length - 1]} non vanno scritti nel codice: devono arrivare ${daPrompt ? 'dalle risposte al prompt' : 'dalle caselle'}.`;
+}
+
+/**
  * Il verdetto. Gli esiti arrivano nell'ordine delle prove; se mancano (l'esecutore si è
  * fermato prima) la fase non è promossa.
  */
@@ -47,8 +77,8 @@ export function valuta(prove: Prova[], esiti: EsitoProva[]): Valutazione {
 
   // Prova nascosta: la mostrata passa, questa no. Si dicono i valori, perché è il punto.
   const nome = prove[indice].nome ?? esito.nome;
-  const introduzione = nome ? `Con i valori che vedi funziona, ma ${nome} no.` : 'Con i valori che vedi funziona, ma con altri valori no.';
-  return { promosso: false, hint: `${introduzione} ${hint}`, prove: esiti };
+  const introduzione = `Con i valori che vedi funziona, ma la correzione prova la pagina anche da sola${nome ? ` e non va: ${nome}.` : ', con altri valori, e non va.'}`;
+  return { promosso: false, hint: `${introduzione} ${hint}${fraseValori(esito, prove[indice])}`, prove: esiti };
 }
 
 /** Gli errori di un esito, tradotti: per la checklist e per il tutor. */
