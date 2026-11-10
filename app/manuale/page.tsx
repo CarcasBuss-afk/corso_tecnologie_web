@@ -144,6 +144,19 @@ export default function Home() {
             </span>
             <span className="px-5 py-3 rounded-lg bg-yellow-400 text-black font-bold whitespace-nowrap">Entra nell&apos;Officina →</span>
           </Link>
+          <Link
+            href="/video"
+            className="max-w-4xl mx-auto mt-6 flex flex-col md:flex-row items-center gap-6 rounded-2xl p-6 md:p-8 bg-white border-2 border-gray-200 hover:border-blue-500 transition"
+          >
+            <span className="text-5xl" aria-hidden>🎬</span>
+            <span className="flex-1 text-center md:text-left">
+              <span className="block text-2xl font-black text-gray-900">I video del corso</span>
+              <span className="block mt-1 text-gray-600">
+                Tutti i video delle lezioni in un posto solo, divisi per modulo e lezione. Per guardarli entra con l&apos;account della scuola.
+              </span>
+            </span>
+            <span className="px-5 py-3 rounded-lg bg-blue-600 text-white font-bold whitespace-nowrap">Guarda i video →</span>
+          </Link>
         </div>
 
         <div id="moduli" className="py-12 md:py-16 px-4 md:px-8">

@@ -9,9 +9,16 @@ import { onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 import { ChevronDown } from 'lucide-react';
 import { getClientAuth, providerGoogle } from '@/lib/firebaseClient';
 import { spiegaErroreLogin } from '@/components/officina/useAllievo';
-import { DOMINIO_VIDEO, VIDEO_LEZIONI } from '@/lib/video-lezioni';
+import { DOMINIO_VIDEO, VIDEO_LEZIONI, ancoraVideo } from '@/lib/video-lezioni';
 
-export default function VideoLezione({ lezioneSlug }: { lezioneSlug: string }) {
+export default function VideoLezione({
+  lezioneSlug,
+  margine = 'mb-12',
+}: {
+  lezioneSlug: string;
+  /** Lo spazio sotto il riquadro: nelle lezioni è largo, nella pagina dei video più stretto. */
+  margine?: string;
+}) {
   const video = VIDEO_LEZIONI[lezioneSlug];
   // undefined = si sta ancora controllando, null = nessuno ha fatto l'accesso
   const [email, setEmail] = useState<string | null | undefined>(undefined);
@@ -40,7 +47,8 @@ export default function VideoLezione({ lezioneSlug }: { lezioneSlug: string }) {
   const account = ammesso ? `?authuser=${encodeURIComponent(email)}` : '';
 
   return (
-    <section className="mb-12 print:hidden">
+    // scroll-mt lascia spazio all'intestazione fissa quando si arriva qui con un link dalla pagina dei video
+    <section id={ancoraVideo(lezioneSlug)} className={`${margine} scroll-mt-24 print:hidden`}>
       <button
         type="button"
         onClick={() => setAperto(!aperto)}

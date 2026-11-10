@@ -50,6 +50,9 @@ export default function Header({ moduloSlug, moduloTitolo, lezioni }: HeaderProp
             <Link href="/moduli" className="hover:underline">
               Moduli
             </Link>
+            <Link href="/video" className="hover:underline">
+              🎬 Video
+            </Link>
             <Link href="/officina" className="hover:underline">
               🔧 Officina
             </Link>
@@ -89,6 +92,9 @@ export default function Header({ moduloSlug, moduloTitolo, lezioni }: HeaderProp
               </Link>
               <Link href="/moduli" className="px-3 py-3 rounded font-semibold hover:bg-gray-100">
                 📚 Moduli
+              </Link>
+              <Link href="/video" className="px-3 py-3 rounded font-semibold hover:bg-gray-100">
+                🎬 Video
               </Link>
               <Link href="/officina" className="px-3 py-3 rounded font-semibold hover:bg-gray-100">
                 🔧 Officina
