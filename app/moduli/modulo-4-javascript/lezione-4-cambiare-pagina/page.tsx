@@ -801,6 +801,8 @@ button:hover {
           Fanno <strong>esattamente la stessa cosa</strong>.
         </p>
 
+        <VideoLezione lezioneSlug="lezione-4-cambiare-pagina-elementi-variabili" />
+
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <div className="bg-white p-6 rounded-lg border-2 border-gray-200">
             <h3 className="font-bold text-gray-800 mb-3">1️⃣ Tutto in una riga (Lezione 2)</h3>
@@ -1051,6 +1053,7 @@ pulsante.addEventListener("click", saluta);  // qui pulsante non c'è!`}
       </section>
 
       {/* Esercizio Guidato */}
+      <VideoLezione lezioneSlug="lezione-4-cambiare-pagina-contatore" />
       <Exercise
         title="🎯 Esercizio Guidato: Contatore di Click"
         steps={[
