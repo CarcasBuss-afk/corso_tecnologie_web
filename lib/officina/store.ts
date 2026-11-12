@@ -33,7 +33,24 @@ export type ScambioDoc = {
 };
 
 /** Il lavoro di un allievo su un compito (chiave = id del compito). */
-export type LavoroDoc = {
+export type LavoroDoc = LavoroBase & {
+  /** Il compito rifatto per esercizio dopo averlo finito: l'ultimo giro, finito o in corso. Manca finché l'allievo non preme «Rifallo». */
+  ripasso?: RipassoDoc;
+};
+
+/**
+ * Un giro di ripasso: il compito rifatto con dati nuovi (semeRipasso in compiti/index.ts). Non dà
+ * voto e le domande al tutor non tolgono punti; i `consigli` qui contano solo per il tetto
+ * degli aiuti. Ogni «Rifallo» lo ricomincia da capo con il giro dopo.
+ */
+export type RipassoDoc = LavoroBase & {
+  /** 1 al primo ripasso, poi 2, 3… */
+  giro: number;
+  /** Il seme dei suoi dati, scelto a «Rifallo» diverso da quello del primo giro e del ripasso prima. */
+  seme: number;
+};
+
+type LavoroBase = {
   /** Fasi completate. */
   fasi: number;
   fasiAt: Record<string, Timestamp>;

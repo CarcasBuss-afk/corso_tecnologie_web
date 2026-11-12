@@ -40,6 +40,19 @@ function lavoroDa(grezzo: Record<string, unknown>): LavoroVisto {
       motivo: (s.motivo as string) ?? '',
       at: data(s.at),
     })),
+    ripasso: ripassoDa(grezzo.ripasso),
+  };
+}
+
+function ripassoDa(grezzo: unknown): LavoroVisto['ripasso'] {
+  if (!grezzo || typeof grezzo !== 'object') return null;
+  const r = grezzo as Record<string, unknown>;
+  return {
+    giro: (r.giro as number) ?? 1,
+    fasi: (r.fasi as number) ?? 0,
+    errori: (r.errori as number) ?? 0,
+    consigli: (r.consigli as number) ?? 0,
+    ultimoAt: data(r.ultimoAt),
   };
 }
 
@@ -321,6 +334,14 @@ function Lavoro({ allievo, titolo, fasiTotali, lavoro, onChiudi }: { allievo: Al
             )}
             {/* I giudizi della fase in corso, che non ha ancora un codice promosso. */}
             {lavoro.fasi < fasiTotali && <GiudiziFase giudizi={lavoro.giudice.filter((g) => g.fase === lavoro.fasi + 1)} />}
+            {lavoro.ripasso && (
+              <p className="mt-2 rounded bg-(--color-verde)/10 p-2 text-sm">
+                🔁 Rifatto per esercizio{lavoro.ripasso.giro > 1 && ` ${lavoro.ripasso.giro} volte`} (non cambia il voto): {lavoro.ripasso.fasi < fasiTotali ? 'giro in corso' : 'ultimo giro finito'},{' '}
+                {lavoro.ripasso.fasi}/{fasiTotali} fasi · {lavoro.ripasso.errori} {lavoro.ripasso.errori === 1 ? 'errore' : 'errori'} · {lavoro.ripasso.consigli}{' '}
+                {lavoro.ripasso.consigli === 1 ? 'domanda' : 'domande'} al tutor
+                {lavoro.ripasso.ultimoAt && ` · ultima consegna ${lavoro.ripasso.ultimoAt.toLocaleString('it-IT')}`}
+              </p>
+            )}
           </div>
           <div>
             <p className="mb-1 text-sm font-bold text-(--color-testo-tenue)">

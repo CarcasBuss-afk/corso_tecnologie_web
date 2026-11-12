@@ -122,6 +122,17 @@ già aperto non si blocca mai, anche se nel percorso ne entra uno nuovo prima.
 L'HTML e il CSS sono dati e in sola lettura: l'allievo li legge (per gli `id`) ma scrive solo
 il JavaScript.
 
+**Rifare un compito per esercizio** (12 novembre 2026, richiesta del docente). A compito finito
+l'allievo trova il pulsante «Rifallo per esercitarti» e ricomincia dalla traccia con **dati
+nuovi**: un seme suo per ogni giro (`semeRipasso` in `compiti/index.ts`), scelto in modo che
+la scheda sia diversa dalla prima volta e dal giro prima, così non basta ricopiare il codice.
+Il **voto resta quello della prima volta**, e conta solo quello per la media; nel ripasso errori
+e domande al tutor non costano punti, ma resta il tetto dei 5 aiuti, poi si chiama il prof. Un
+giro nuovo si comincia solo a ripasso finito e con l'Officina aperta. Su Firestore il ripasso
+sta dentro il lavoro (`lavori.<compito>.ripasso`, con `giro` e `seme`): ogni «Rifallo» lo
+sostituisce. Il docente lo vede nel dettaglio del lavoro dell'allievo; nell'elenco l'allievo
+vede «lo stai rifacendo».
+
 | # | Compito | Lezione | Idea nuova |
 |---|---|---|---|
 | 0 | Lo scontrino del bar | L1 | `console.log` con testi e numeri, calcoli con `+ * /` e parentesi, commenti: lo scontrino in console |

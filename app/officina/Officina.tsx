@@ -164,6 +164,7 @@ function Stato({ k }: { k: CompitoInElenco }) {
       return (
         <span className="text-(--color-verde)">
           {k.esame ? 'Patentino preso' : 'Finito'} · voto <b className="font-mono text-lg">{k.voto}</b>
+          {k.ripassoInCorso && <span className="ml-2 text-(--color-giallo)">· 🔁 lo stai rifacendo →</span>}
         </span>
       );
     case 'in-corso':

@@ -5,7 +5,8 @@ import { controlloStruttura } from '../motore/struttura';
 import { eControllo } from '../motore/tipi';
 import { valuta } from '../motore/valuta';
 import { COMPITI_PER_LEZIONE, eCompito, ESAMI, fasiDi, TITOLI } from './elenco';
-import { ELENCO_COMPITI, generaCompito, SEZIONI, type CompitoId } from './index';
+import { semeDelGiro } from '../regole';
+import { ELENCO_COMPITI, generaCompito, semeRipasso, SEZIONI, type CompitoId } from './index';
 
 const SEMI = [1, 7, 42, 1234, 98765, 2026];
 
@@ -125,5 +126,22 @@ describe('il catalogo', () => {
     const c = generaCompito('pizzeria', 3).scheda.dati.join();
     expect(generaCompito('pizzeria', 1).scheda.dati.join()).toBe(a);
     expect(new Set([a, b, c]).size).toBeGreaterThan(1);
+  });
+
+  it('rifatto per esercizio, il compito ha dati diversi dalla prima volta e dal ripasso prima', () => {
+    for (const id of ELENCO_COMPITI) {
+      for (let u = 0; u < 40; u++) {
+        const uid = `allievo${u}`;
+        const scheda = (seme: number) => JSON.stringify(generaCompito(id, seme).scheda);
+        const primo = semeDelGiro(uid, id, 0);
+        const uno = semeRipasso(uid, id, 1, [primo]);
+        const due = semeRipasso(uid, id, 2, [primo, uno]);
+        expect(scheda(uno), `${id} ${uid}: il ripasso 1 è uguale alla prima volta`).not.toBe(scheda(primo));
+        expect(scheda(due), `${id} ${uid}: il ripasso 2 è uguale a un giro prima`).not.toBe(scheda(primo));
+        expect(scheda(due), `${id} ${uid}: il ripasso 2 è uguale al ripasso 1`).not.toBe(scheda(uno));
+        // Sempre lo stesso seme per lo stesso giro: la pagina riaperta non cambia.
+        expect(semeRipasso(uid, id, 1, [primo])).toBe(uno);
+      }
+    }
   });
 });

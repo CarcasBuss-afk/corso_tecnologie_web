@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { PERCORSO } from './regole';
 import { eFacoltativo, fasiDi } from './compiti/elenco';
-import { dominiAmmessi, emailAmmessa, mediaConBonus, mediaVoti, percorsoDi, semeDa, votoSeFinisce } from './regole';
+import { dominiAmmessi, emailAmmessa, mediaConBonus, mediaVoti, percorsoDi, semeDa, semeDelGiro, votoSeFinisce } from './regole';
 
 describe('il percorso', () => {
   it('sblocca un compito alla volta', () => {
@@ -79,5 +79,14 @@ describe('il percorso', () => {
     expect(emailAmmessa('luca@scuola.it', d)).toBe(true);
     expect(emailAmmessa('luca@gmail.com', d)).toBe(false);
     expect(emailAmmessa('luca@gmail.com', [])).toBe(true);
+  });
+});
+
+describe('i giri del compito', () => {
+  it('il primo giro ha il seme di sempre, i ripassi semi loro', () => {
+    expect(semeDelGiro('u1', 'pizzeria', 0)).toBe(semeDa('u1|pizzeria'));
+    const semi = [0, 1, 2, 3].map((g) => semeDelGiro('u1', 'pizzeria', g));
+    expect(new Set(semi).size).toBe(4);
+    expect(semeDelGiro('u1', 'pizzeria', 1, 1)).not.toBe(semeDelGiro('u1', 'pizzeria', 1));
   });
 });

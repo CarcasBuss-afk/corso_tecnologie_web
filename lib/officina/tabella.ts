@@ -15,6 +15,8 @@ export type LavoroVisto = {
   tutor: Array<{ fase: number; domanda: string; risposta: string; at: Date | null }>;
   /** I giudizi sul codice alle consegne con la pagina giusta (fase da 1). */
   giudice: Array<{ fase: number; esito: string; motivo: string; at: Date | null }>;
+  /** L'ultimo giro in cui l'allievo ha rifatto il compito per esercizio (senza voto); null se non l'ha mai rifatto. */
+  ripasso: { giro: number; fasi: number; errori: number; consigli: number; ultimoAt: Date | null } | null;
 };
 
 export type AllievoVisto = { uid: string; nome: string; email: string; lavori: Record<string, LavoroVisto> };

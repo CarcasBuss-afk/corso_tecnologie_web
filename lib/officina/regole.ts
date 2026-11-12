@@ -32,6 +32,17 @@ export function semeDa(testo: string): number {
   return h >>> 0 || 1;
 }
 
+/**
+ * Il seme di un giro del compito. Il giro 0 è il primo, quello che dà il voto; a compito
+ * finito l'allievo può rifarlo per esercizio (giro 1, 2, …) e ogni giro ha dati suoi, così
+ * non basta ricopiare la soluzione di prima. La variante serve a scartare un seme che
+ * ridarebbe gli stessi dati (compiti/index.ts, semeRipasso).
+ */
+export function semeDelGiro(uid: string, compito: string, giro: number, variante = 0): number {
+  if (giro === 0) return semeDa(`${uid}|${compito}`);
+  return semeDa(`${uid}|${compito}|ripasso${giro}${variante ? `.${variante}` : ''}`);
+}
+
 export type ProgressoCompito = { fasi: number; consigli: number };
 
 export type StatoCompito = 'finito' | 'in-corso' | 'da-cominciare' | 'bloccato';

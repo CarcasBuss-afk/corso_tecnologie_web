@@ -2,6 +2,7 @@
  * per ottenere un compito dal seme dell'allievo. Da importare solo sul server e nei test:
  * contiene le prove nascoste e le soluzioni di riferimento. L'elenco (id, titoli, sezioni)
  * sta in elenco.ts, che il browser può importare. */
+import { semeDelGiro } from '../regole';
 import { generaBacheca } from './bacheca';
 import { generaBiglietteria } from './biglietteria';
 import { generaBiglietto } from './biglietto';
@@ -67,6 +68,24 @@ const GENERATORI: Record<CompitoId, GeneratoreCompito> = {
 
 export function generaCompito(id: CompitoId, seme: number): Compito {
   return GENERATORI[id](seme);
+}
+
+/** Quanti semi provare per un ripasso con dati diversi: i compiti con pochi dati possibili ne scartano qualcuno. */
+const VARIANTI_RIPASSO = 20;
+
+/**
+ * Il seme del ripasso numero `giro`: il primo che dà una scheda (dati, testi) diversa da
+ * quelle dei semi da evitare, cioè il primo giro e il ripasso prima. Se il compito non ne
+ * ha di diverse, il primo seme provato.
+ */
+export function semeRipasso(uid: string, id: CompitoId, giro: number, evita: number[]): number {
+  const scheda = (seme: number) => JSON.stringify(generaCompito(id, seme).scheda);
+  const viste = new Set(evita.map(scheda));
+  for (let v = 0; v < VARIANTI_RIPASSO; v++) {
+    const seme = semeDelGiro(uid, id, giro, v);
+    if (!viste.has(scheda(seme))) return seme;
+  }
+  return semeDelGiro(uid, id, giro);
 }
 
 export function schedaCompito(id: CompitoId, seme: number): SchedaCompito {

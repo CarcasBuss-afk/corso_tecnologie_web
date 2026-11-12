@@ -2,7 +2,8 @@
 /* Il tutor dell'Officina: una conversazione sul compito. Ogni domanda costa un punto e
  * l'allievo lo vede prima di mandarla; la domanda può essere lunga quanto vuole. Dopo l'ultima
  * risposta c'è un «Non ho capito» gratis. Finiti gli aiuti, l'allievo chiama il prof. Sotto la
- * casella, le domande già fatte, dalla più recente. */
+ * casella, le domande già fatte, dalla più recente. Nel ripasso (il compito rifatto per
+ * esercizio) il voto non c'è: le domande non costano punti, ma il tetto degli aiuti resta. */
 import { useState } from 'react';
 import { messaggioErrore, type Scambio } from '@/lib/officina/client';
 import { NON_HO_CAPITO } from '@/lib/officina/consiglio';
@@ -13,7 +14,8 @@ interface Props {
   scambi: Scambio[];
   /** La fase a cui è l'allievo, da 1: il «Non ho capito» vale solo nella stessa fase della risposta. */
   fase: number;
-  votoSeFinisci: number;
+  /** Null nel ripasso: niente voto in gioco, le domande non costano. */
+  votoSeFinisci: number | null;
   /** Domande ancora possibili su questo compito: a zero il tutor non risponde più. */
   domandeRimaste: number;
   onChiedi(domanda: string): Promise<void>;
@@ -27,6 +29,7 @@ export default function TutorChat({ scambi, fase, votoSeFinisci, domandeRimaste,
   const [errore, setErrore] = useState<string | null>(null);
 
   const ultimo = scambi.at(-1);
+  const ripasso = votoSeFinisci === null;
   const puoChiarire = attivo && domandeRimaste > 0 && !!ultimo && ultimo.fase === fase && !ultimo.gratis;
 
   async function manda(testo = domanda) {
@@ -50,7 +53,8 @@ export default function TutorChat({ scambi, fase, votoSeFinisci, domandeRimaste,
         <div>
           <p className="font-bold">🧑‍🏫 Il tutor</p>
           <p className="text-sm text-(--color-testo-tenue)">
-            Ti dice dove guardare e che cosa fare adesso, con un piccolo esempio se serve: il codice del compito lo scrivi tu. Ogni domanda costa 1 punto.
+            Ti dice dove guardare e che cosa fare adesso, con un piccolo esempio se serve: il codice del compito lo scrivi tu.{' '}
+            {ripasso ? 'Stai rifacendo il compito per esercizio: le domande non tolgono punti.' : 'Ogni domanda costa 1 punto.'}
             {domandeRimaste > 0 && (
               <span className="ml-1 text-(--color-giallo)" aria-label="domande rimaste">
                 Te ne {domandeRimaste === 1 ? 'resta una' : `restano ${domandeRimaste}`} su questo compito.
@@ -58,17 +62,19 @@ export default function TutorChat({ scambi, fase, votoSeFinisci, domandeRimaste,
             )}
           </p>
         </div>
-        <p className="text-right">
-          <span className="block text-sm text-(--color-testo-tenue)">Voto se arrivi in fondo</span>
-          <span className="font-mono text-3xl font-black text-(--color-giallo)" aria-label="voto">
-            {votoSeFinisci}
-          </span>
-        </p>
+        {!ripasso && (
+          <p className="text-right">
+            <span className="block text-sm text-(--color-testo-tenue)">Voto se arrivi in fondo</span>
+            <span className="font-mono text-3xl font-black text-(--color-giallo)" aria-label="voto">
+              {votoSeFinisci}
+            </span>
+          </p>
+        )}
       </div>
 
       {attivo && domandeRimaste === 0 && (
         <p role="status" className="rounded-xl border border-(--color-giallo)/40 bg-(--color-giallo)/10 p-3 font-bold">
-          🙋 Hai usato tutti i {AIUTI_MASSIMI} aiuti del tutor su questo compito. Chiama il prof. Il voto non scende più.
+          🙋 Hai usato tutti i {AIUTI_MASSIMI} aiuti del tutor su questo compito. Chiama il prof.{!ripasso && ' Il voto non scende più.'}
         </p>
       )}
 
@@ -84,8 +90,8 @@ export default function TutorChat({ scambi, fase, votoSeFinisci, domandeRimaste,
           />
           {!conferma ? (
             <div className="flex flex-wrap items-center gap-3">
-              <button type="button" onClick={() => setConferma(true)} className="rounded-lg border-2 border-(--color-giallo) px-4 py-2 font-bold text-(--color-giallo) hover:bg-(--color-giallo)/10">
-                Chiedi al tutor
+              <button type="button" onClick={() => (ripasso ? void manda() : setConferma(true))} disabled={attesa} className="rounded-lg border-2 border-(--color-giallo) px-4 py-2 font-bold text-(--color-giallo) hover:bg-(--color-giallo)/10 disabled:opacity-50">
+                {ripasso && attesa ? 'Il tutor ci pensa…' : 'Chiedi al tutor'}
               </button>
               {puoChiarire && (
                 <button type="button" onClick={() => void manda(NON_HO_CAPITO)} disabled={attesa} className="rounded-lg border border-(--color-bordo) px-4 py-2 hover:border-(--color-giallo) disabled:opacity-50">
@@ -96,7 +102,7 @@ export default function TutorChat({ scambi, fase, votoSeFinisci, domandeRimaste,
           ) : (
             <div className="flex flex-wrap items-center gap-3 rounded-xl border border-(--color-giallo)/40 bg-(--color-giallo)/5 p-3">
               <p className="font-bold">
-                Costa 1 punto: il voto passa da {votoSeFinisci} a {Math.max(5, votoSeFinisci - 1)}.
+                Costa 1 punto: il voto passa da {votoSeFinisci} a {Math.max(5, (votoSeFinisci ?? 0) - 1)}.
               </p>
               <button type="button" onClick={() => void manda()} disabled={attesa} className="rounded-lg bg-(--color-giallo) px-4 py-2 font-bold text-black hover:brightness-110 disabled:opacity-50">
                 {attesa ? 'Il tutor ci pensa…' : 'Sì, manda (−1 punto)'}

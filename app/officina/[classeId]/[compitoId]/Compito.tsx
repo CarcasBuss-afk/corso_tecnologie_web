@@ -2,7 +2,8 @@
 /* Il compito di realtà, fase per fase: la scheda, la consegna della fase, l'anteprima vera e
  * la checklist che si accende mentre si scrive (affiancate, sotto la consegna), l'editor a
  * tutta larghezza con i tre pannelli (HTML e CSS dati, JavaScript da scrivere), la consegna
- * al server con la festa a fase superata, il tutor. Da soli e senza fretta. */
+ * al server con la festa a fase superata, il tutor. Da soli e senza fretta. A compito finito
+ * si può rifarlo per esercizio («Rifallo»): dati nuovi, il voto resta quello della prima volta. */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Accesso } from '@/components/officina/Accesso';
@@ -44,6 +45,7 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
   /** All'apertura si legge solo la traccia; il resto compare dopo «Ho letto». */
   const [iniziato, setIniziato] = useState(false);
   const [scossa, setScossa] = useState(false);
+  const [rifacendo, setRifacendo] = useState(false);
 
   const carica = useCallback(async () => {
     try {
@@ -68,7 +70,7 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
     if (!c || !c.fase || invio || c.classeChiusa) return;
     setInvio(true);
     try {
-      const r = await chiamaOfficina<RispostaConsegna>('consegna', { classeId, compitoId, fase: c.fasi, codice });
+      const r = await chiamaOfficina<RispostaConsegna>('consegna', { classeId, compitoId, ripasso: c.ripasso, fase: c.fasi, codice });
       setErrore('');
       if (!r.promosso) {
         setHint(r.hint);
@@ -118,7 +120,7 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
       if (!c) return;
       let r: RispostaTutor;
       try {
-        r = await chiamaOfficina<RispostaTutor>('tutor', { classeId, compitoId, domanda, codice, hintVisto: hint ?? '' });
+        r = await chiamaOfficina<RispostaTutor>('tutor', { classeId, compitoId, ripasso: c.ripasso, domanda, codice, hintVisto: hint ?? '' });
       } catch (e) {
         if (e instanceof ErroreOfficina && e.code === 'CLASSE_CHIUSA') setC((p) => (p ? { ...p, classeChiusa: true } : p));
         throw e;
@@ -131,6 +133,25 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
     },
     [c, classeId, compitoId, codice, hint],
   );
+
+  /** Rifare il compito finito, per esercizio: il server prepara un giro con dati nuovi e si riparte dalla traccia. */
+  const rifai = useCallback(async () => {
+    if (rifacendo) return;
+    setRifacendo(true);
+    try {
+      await chiamaOfficina('rifai', { classeId, compitoId });
+      setHint(null);
+      setFesta(null);
+      setSbagliateFase(0);
+      setIniziato(false);
+      await carica();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (e) {
+      setErrore(messaggioErrore(e));
+    } finally {
+      setRifacendo(false);
+    }
+  }, [rifacendo, classeId, compitoId, carica]);
 
   if (stato !== 'ok') {
     return <Accesso ruolo="allievo" stato={stato} messaggio={messaggio} accediGoogle={accediGoogle} accediProva={accediProva ? (email) => accediProva(email, email.split('@')[0]) : null} esci={esci} />;
@@ -158,7 +179,10 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
           <Link href="/officina" className="text-sm text-(--color-testo-tenue) underline">
             ← i miei compiti
           </Link>
-          <h1 className="text-2xl font-black">{c.scheda.titolo}</h1>
+          <h1 className="text-2xl font-black">
+            {c.scheda.titolo}
+            {c.ripasso !== null && <span className="ml-3 rounded bg-(--color-verde)/15 px-2 py-0.5 align-middle text-sm font-bold text-(--color-verde)">🔁 per esercizio</span>}
+          </h1>
         </div>
         <p className="text-2xl font-black">
           {c.finito ? 'Finito' : `Fase ${numeroFase}`}
@@ -175,13 +199,37 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
         </section>
       )}
 
+      {c.ripasso !== null && !c.finito && (
+        <section role="status" aria-label="ripasso" className="rounded-2xl border border-(--color-verde)/50 bg-(--color-verde)/10 p-4 text-center">
+          <p className="text-lg font-bold">🔁 Stai rifacendo il compito per esercizio, con dati nuovi</p>
+          <p className="text-(--color-testo-tenue)">
+            Il tuo voto resta <b className="font-mono text-(--color-giallo)">{c.voto}</b>: qui errori e domande al tutor non costano niente.
+          </p>
+        </section>
+      )}
+
       {c.finito && (
-        <section className="rounded-2xl border border-(--color-giallo)/50 bg-(--color-giallo)/10 p-5 text-center">
-          <p className="text-sm text-(--color-testo-tenue)">{c.esame ? '🪪 Patentino preso! Il tuo voto' : 'Pagina finita! Il tuo voto'}</p>
+        <section className="flex flex-col items-center gap-1 rounded-2xl border border-(--color-giallo)/50 bg-(--color-giallo)/10 p-5 text-center">
+          <p className="text-sm text-(--color-testo-tenue)">
+            {c.ripasso !== null ? 'Esercizio finito! Il tuo voto resta' : c.esame ? '🪪 Patentino preso! Il tuo voto' : 'Pagina finita! Il tuo voto'}
+          </p>
           <p className="font-mono text-6xl font-black text-(--color-giallo)">{c.voto}</p>
           <p className="text-(--color-testo-tenue)">
             {c.fasi} fasi su {c.fasiTotali}
             {!c.esame && ` · ${c.consigli} ${c.consigli === 1 ? 'domanda' : 'domande'} al tutor`}
+            {c.ripasso !== null && ' in questo giro'}
+          </p>
+          <button
+            onClick={() => void rifai()}
+            disabled={rifacendo || c.classeChiusa}
+            className="mt-3 rounded-lg border-2 border-(--color-verde) px-5 py-2 text-lg font-bold text-(--color-verde) hover:bg-(--color-verde)/10 disabled:opacity-40"
+          >
+            {rifacendo ? 'Preparo il compito…' : c.ripasso !== null ? '🔁 Rifallo ancora' : '🔁 Rifallo per esercitarti'}
+          </button>
+          <p className="max-w-md text-sm text-(--color-testo-tenue)">
+            {c.classeChiusa
+              ? 'Potrai rifarlo quando il prof riapre l’Officina.'
+              : 'Stessi passi, dati nuovi. Il voto resta questo e le domande al tutor non tolgono punti.'}
           </p>
         </section>
       )}
@@ -262,7 +310,7 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
 
       <footer className="mt-auto pt-4 text-center text-sm text-(--color-testo-tenue)">
         Gli errori non costano niente e il lavoro resta salvato a ogni consegna: puoi chiudere e riprendere quando vuoi.
-        {!c.esame && ' Solo le domande al tutor costano un punto.'}
+        {!c.esame && c.ripasso === null && ' Solo le domande al tutor costano un punto.'}
       </footer>
     </main>
   );

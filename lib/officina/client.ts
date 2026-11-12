@@ -67,6 +67,8 @@ export type CompitoInElenco = {
   sezione: string;
   esame: boolean;
   livello: Livello;
+  /** Finito e rifatto per esercizio, con il ripasso non ancora in fondo. */
+  ripassoInCorso: boolean;
 };
 
 export type SezionePercorso = { id: string; titolo: string; compiti: string[] };
@@ -82,13 +84,18 @@ export type CompitoAperto = {
   id: string;
   classeChiusa: boolean;
   esame: boolean;
+  /** Il giro di ripasso (il compito rifatto per esercizio, con dati nuovi); null nel primo giro, quello del voto. */
+  ripasso: number | null;
   fasi: number;
   fasiTotali: number;
   consigli: number;
   domandeRimaste: number;
+  /** Il giro in corso (primo o ripasso) è arrivato in fondo. */
   finito: boolean;
+  /** Il voto del primo giro: il ripasso non lo cambia. */
   voto: number | null;
-  votoSeFinisci: number;
+  /** Null nel ripasso: lì il voto non si guadagna. */
+  votoSeFinisci: number | null;
   scheda: SchedaCompito;
   pagina: Omit<Sorgente, 'js'>;
   pannelli: Pannello[];
@@ -101,7 +108,7 @@ export type CompitoAperto = {
 };
 
 export type RispostaConsegna =
-  | { promosso: true; fasi: number; finito: boolean; voto: number | null; votoSeFinisci: number; fase: FasePubblica | null }
+  | { promosso: true; fasi: number; finito: boolean; voto: number | null; votoSeFinisci: number | null; fase: FasePubblica | null }
   | { promosso: false; hint: string | null; esitoMostrata: EsitoProva | null; errori: number };
 
-export type RispostaTutor = { risposta: string; gratis: MotivoGratis | null; consigli: number; domandeRimaste: number; votoSeFinisci: number; fase: number };
+export type RispostaTutor = { risposta: string; gratis: MotivoGratis | null; consigli: number; domandeRimaste: number; votoSeFinisci: number | null; fase: number };
