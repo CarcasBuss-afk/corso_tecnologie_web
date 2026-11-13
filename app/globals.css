@@ -48,6 +48,27 @@ body {
   }
 }
 
+/* ------------------------------------------------------------ Lo sfondo festivo
+   components/SfondoFestivo.tsx: mentre c'è un'immagine, il body ha la classe con-sfondo.
+   Le pagine che lo mostrano tolgono i loro fondi pieni e mettono il testo su un pannello. */
+.con-sfondo .sfondo-trasparente,
+.con-sfondo .officina {
+  background-color: transparent;
+}
+
+.con-sfondo .pannello-sfondo {
+  background-color: rgb(255 255 255 / 0.88);
+  backdrop-filter: blur(8px);
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 50px rgb(0 0 0 / 0.3);
+}
+
+.con-sfondo .pannello-sfondo-scuro {
+  background-color: rgb(17 20 28 / 0.88);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 20px 50px rgb(0 0 0 / 0.4);
+}
+
 /* ------------------------------------------------------------------ L'Officina
    Tema scuro da laboratorio con accento giallo, come l'Officina del Giro dei Cicli.
    Vive solo dentro la classe .officina (app/officina): il manuale resta chiaro. */

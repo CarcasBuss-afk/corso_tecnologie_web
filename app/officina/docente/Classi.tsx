@@ -66,6 +66,9 @@ export function Classi() {
           </p>
         </div>
         <div className="flex items-center gap-3 text-sm text-(--color-testo-tenue)">
+          <Link href="/officina/docente/sfondi" className="underline">
+            🎄 sfondi del sito
+          </Link>
           <Link href="/manuale" className="underline">
             il manuale
           </Link>

@@ -185,6 +185,16 @@ così pubblicare da uno dei due repository non toglie niente all'altro.
 5. Gli allievi aprono `/officina`, accedono con l'account della scuola, scelgono la classe.
 6. A fine lezione: «Chiudi l'Officina». La volta dopo: «Apri l'Officina».
 
+**Gli sfondi delle feste** (13 novembre 2026). Da `/officina/docente/sfondi` (link «🎄 sfondi
+del sito» nelle classi) il docente carica immagini e le accende o spegne quando vuole. Quelle
+accese compaiono dietro il frontespizio e l'elenco dei compiti dell'Officina (non nei compiti,
+non nelle lezioni), una a caso per visita, la stessa per tutta la visita. Il browser del docente
+riduce l'immagine (lato lungo 1920 px, WebP, max 900 kB) e il server la salva intera in un
+documento di `webSfondi`, letto e scritto solo dal server: nessuna regola Firestore nuova.
+Le API pubbliche sono `/api/sfondi` (gli accesi, un minuto di cache) e `/api/sfondi/<id>`
+(l'immagine, cache lunga: non cambia mai). Da terminale: `npm run carica-sfondo -- file.webp "Nome"`.
+Codice: `lib/sfondi/`, `components/SfondoFestivo.tsx`, classi `con-sfondo` e `pannello-sfondo` in `globals.css`.
+
 ## 7. Idee per dopo
 
 - Le sezioni HTML e CSS, con i pannelli HTML/CSS scrivibili e i controlli sul DOM e sugli
