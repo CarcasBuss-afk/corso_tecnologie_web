@@ -52,7 +52,7 @@ export default function JavaScriptDemo({
             borderRadius: '4px',
             backgroundColor: 'white'
           }}
-          sandbox="allow-scripts allow-modals"
+          sandbox="allow-scripts allow-modals allow-forms"
           title={title}
         />
       </div>

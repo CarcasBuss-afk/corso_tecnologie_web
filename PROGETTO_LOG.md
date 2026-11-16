@@ -1,15 +1,15 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 28 Ottobre 2026 - Lezione 9 Funzioni con Parametri e Return
+**Ultimo aggiornamento:** 16 Novembre 2026 - Lezione 10 Altri Eventi
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
 
 ---
 
-## 📌 STATO ATTUALE DEL PROGETTO (aggiornato al 28 Ottobre 2026)
+## 📌 STATO ATTUALE DEL PROGETTO (aggiornato al 16 Novembre 2026)
 
-> Sezione di riepilogo da leggere per prima. I changelog delle sessioni sotto sono lo storico (in ordine non cronologico: la Sessione più recente è la 29, in fondo al file).
+> Sezione di riepilogo da leggere per prima. I changelog delle sessioni sotto sono lo storico (in ordine non cronologico: la Sessione più recente è la 31, in fondo al file).
 
 ### 🌐 Sito
 - **Online:** https://corso-tecnologie-web.vercel.app (deploy automatico da `main`)
@@ -30,7 +30,7 @@
 | 1. HTML | 18 | ✅ Completo |
 | 2. CSS | 14 | ✅ Completo |
 | 3. Progetto Intermedio | 4 | ✅ Completo |
-| 4. JavaScript | 9 di 20 | 🔄 In corso (prossima: **L10 Altri Eventi**) |
+| 4. JavaScript | 10 di 20 | 🔄 In corso (prossima: **L11 Manipolare Classi CSS**) |
 | 5. Progetto Finale | 0 | 📋 Da fare |
 | 6. Strumenti Moderni | 0 | 📋 Da fare |
 
@@ -40,7 +40,7 @@
 - **JavaScript:** schema in 3 passi (id nel pulsante → funzione con nome → `addEventListener`), mai `onclick` o JS dentro i tag HTML, id dei pulsanti con prefisso `btn`, script in fondo al `<body>`.
 - **L'id non va collegato al CSS:** negli esempi il CSS usa selettori di tag o classi, mai `#id`.
 - **Tailwind 4:** trasparenze con `bg-white/20`, mai `bg-opacity-*` (vedi `DIPENDENZE.md`).
-- **Coerenza didattica:** nessun concetto usato prima di essere insegnato; riepilogo "Comandi JavaScript Totali Imparati" aggiornato in ogni lezione (dopo L9: 19 comandi).
+- **Coerenza didattica:** nessun concetto usato prima di essere insegnato; riepilogo "Comandi JavaScript Totali Imparati" aggiornato in ogni lezione (dopo L10: 21 comandi).
 
 ### ⚠️ Questioni aperte
 - Il link "Moduli" dell'header punta a `/moduli`, che non esiste (404): da far puntare a `/manuale#moduli` o creare la pagina.
@@ -7789,8 +7789,8 @@ Eliminare `onclick` dalle lezioni JavaScript e usare un unico schema per collega
 | L7 | Operatori e Calcolatrice | `+ - * / %`, `++ --`, `input.value` (ripasso di `Number()`) | ✅ Pubblicata |
 | L8 | Operatori Logici e Validazione | `&&`, `\|\|`, `!` | ✅ Pubblicata |
 | L9 | Funzioni con Parametri e Return | parametri, `return`, funzioni che chiamano funzioni | ✅ Pubblicata |
-| L10 | Altri Eventi | `input`, `change`, `keydown`, `submit`, `event.preventDefault()` | ⏭️ Prossima |
-| L11 | Manipolare Classi CSS | `classList.add/remove/toggle/contains` | 📋 Da fare |
+| L10 | Altri Eventi | `input`, `change`, `keydown`, `submit`, `event.preventDefault()` | ✅ Pubblicata |
+| L11 | Manipolare Classi CSS | `classList.add/remove/toggle/contains` | ⏭️ Prossima |
 | L12 | Array - Le Liste | `[]`, `push()`, `length`, `[indice]` | 📋 Da fare |
 
 #### PARTE 3: PROGETTI COMPLETI
@@ -7980,4 +7980,36 @@ Nella sezione "👻 Nascondere e Mostrare" mancava il consueto blocco `CodeExamp
 
 ---
 
-**Fine del Progetto Log - Ultimo aggiornamento: 23 Ottobre 2026 - Sessione 30**
+## 📅 CHANGELOG SESSIONE 31 (16 Novembre 2026) - LEZIONE 10 ALTRI EVENTI
+
+### 1. 📝 Nuova Lezione 10: Altri Eventi
+
+**File:** `app/moduli/modulo-4-javascript/lezione-10-altri-eventi/page.tsx` (registrata in `lib/moduli.ts`, slug `lezione-10-altri-eventi`, 2 ore, difficoltà media).
+
+**Struttura:**
+1. Intro "Non solo click" (input, change, keydown, submit) con l'esempio dei suggerimenti di ricerca
+2. "Lo schema non cambia": in `addEventListener` cambia solo il nome dell'evento; tabella evento → quando parte → su quale elemento; box sugli id (prefisso `btn` solo per i pulsanti)
+3. `input`: demo "Il Biglietto d'Auguri" (anteprima dal vivo, casella vuota come nella L8) e "Il Volume" (cursore range, `icona(volume)` con return come nella L9, larghezza della barra con `.style`)
+4. `change`: il menu `<select>`/`<option>` introdotto qui (testo visto dall'utente e `value` letto da JavaScript); demo "Il Tema della Scheda"; tabella input/change su una casella di testo
+5. Il parametro `event`: lo passa il browser; eccezione alla regola della L9 (le funzioni degli eventi possono avere un solo parametro, `event`)
+6. `keydown` ed `event.key`, ascoltatore su `document`: demo "Il Tasto Misterioso" e "Il Razzo" (posizione fuori dalla funzione come il contatore della L7, limiti con `&&`); tabella dei nomi dei tasti, box maiuscole/minuscole
+7. `submit`: il ritorno del form (la L7 lo vietava); `event.preventDefault()`; Invio e `required` come regali del form; scrivere in `.value` per svuotare una casella; demo "Il Libro degli Ospiti"
+8. Errori tipici: click sul pulsante invece di submit sul form, `preventDefault` senza parentesi, `"oninput"`, nome del tasto sbagliato (`"enter"`), change al posto di input
+9. Esercizio guidato "La Cartolina dalle Vacanze" (input su due caselle con la stessa funzione, change sul menu con `coloreDi(luogo)` e return, submit con preventDefault) + esperimenti (nuova voce, change al posto di input, togliere preventDefault, svuotare le caselle, Esc con keydown)
+10. Checklist, sfida "Il Convertitore Istantaneo" (senza pulsante: input + change, `converti(euro, valuta)` con return), riepilogo (21 comandi), prossimi passi verso L11 classList
+
+**Modifica collegata:** `components/didattica/JavaScriptDemo.tsx`: sandbox dell'iframe con `allow-forms`. Senza, il browser blocca l'invio del form prima ancora di generare l'evento submit, e la demo del Libro degli Ospiti non funzionerebbe. Nessuna demo delle lezioni precedenti contiene un form.
+
+**Scelte:**
+- Le funzioni degli eventi ricevono il parametro chiamato sempre `event` (mai `e`).
+- I tasti si ascoltano su `document` per i giochi, su una casella solo negli esperimenti.
+- `.value` in scrittura introdotto con un box, perché finora era solo letto.
+- Nessun compito dell'Officina per la L10, per ora: il box «Allenati nell'Officina» compare da solo quando ci saranno.
+
+**Verifica:** Puppeteer su tutte le demo (biglietto con nome e vuoto, volume con la tastiera fino a 80 e a 0, tema scuro/chiaro, tasti a/Enter/ArrowDown, razzo con i limiti 0 e 300, libro degli ospiti con caselle vuote bloccate da required, Invio e pulsante, caselle svuotate, nessun ricaricamento) e sul codice dei passi dell'esercizio (cartolina: saluto, messaggio, colori, spedizione con Invio senza ricaricamento); nessun errore JavaScript; pagina senza scroll orizzontale a 390px; `tsc` pulito.
+
+**Comandi totali dopo L10:** 21 (nuovi: `input / change / keydown / submit`, `event.key / event.preventDefault()`).
+
+---
+
+**Fine del Progetto Log - Ultimo aggiornamento: 16 Novembre 2026 - Sessione 31**
