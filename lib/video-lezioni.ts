@@ -56,6 +56,11 @@ export const VIDEO_LEZIONI: Record<string, VideoDellaLezione> = {
     lezione: 'lezione-4-cambiare-pagina',
     driveId: '1cnuQAvBwf9aKs3zHjC8cV-e1vwgSuTmN',
   },
+  'lezione-5-cambiare-stili': {
+    titolo: 'Il pennello style',
+    lezione: 'lezione-5-cambiare-stili',
+    driveId: '1M1A73UK8FOTQjovn2ZPZh4of3Aym6ReW',
+  },
 };
 
 /** L'id HTML del riquadro di un video, per arrivarci con un link (…/lezione#video-<chiave>). */

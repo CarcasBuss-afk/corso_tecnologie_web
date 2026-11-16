@@ -6,6 +6,7 @@ import Exercise from '@/components/didattica/Exercise';
 import JavaScriptDemo from '@/components/didattica/JavaScriptDemo';
 import Challenge from '@/components/didattica/Challenge';
 import AllenatiOfficina from '@/components/didattica/AllenatiOfficina';
+import VideoLezione from '@/components/didattica/VideoLezione';
 
 export default function Lezione5CambiareStili() {
   const lezioni = getLezioniByModuloSlug('modulo-4-javascript');
@@ -88,6 +89,8 @@ export default function Lezione5CambiareStili() {
           Ogni elemento trovato con <code className="bg-gray-100 px-2 py-1 rounded text-blue-600">getElementById()</code> ha
           un &quot;pennello&quot; chiamato <strong>style</strong>. Con lui puoi cambiare qualsiasi proprietà CSS!
         </p>
+
+        <VideoLezione lezioneSlug="lezione-5-cambiare-stili" />
 
         <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3 text-white">📘 Come Funziona</h3>
