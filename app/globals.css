@@ -1,15 +1,14 @@
 @import "tailwindcss";
 
+/* Il sito resta sempre chiaro, anche se il browser o il sistema usano il tema scuro.
+   Le classi dark: di Tailwind scatterebbero con il tema scuro del sistema: le leghiamo a una
+   classe .dark che nessuna pagina usa, così non scattano mai. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
+  color-scheme: only light;
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
