@@ -1,7 +1,7 @@
 /* La tabella della classe per la dashboard: allievi × compiti del percorso, con fasi, domande
  * al tutor, voto e media; e il CSV per il registro. Funzioni pure, girano nel browser del
  * docente sui dati che arrivano da Firestore in tempo reale. */
-import { eFacoltativo, SEZIONI, titoloCompito } from './compiti/elenco';
+import { eFacoltativo, SEZIONI, titoloCompito, type CompitoId } from './compiti/elenco';
 import { aiutiFiniti, bonusSfide, mediaConBonus, PERCORSO, percorsoDi, type VoceCompito } from './regole';
 
 export type LavoroVisto = {
@@ -37,6 +37,52 @@ export function tabellaClasse(allievi: AllievoVisto[]): RigaTabella[] {
       const voci = percorsoDi(a.lavori ?? {});
       return { uid: a.uid, nome: a.nome, email: a.email, voci, media: mediaConBonus(voci), bonus: bonusSfide(voci) };
     });
+}
+
+/** I compiti obbligatori del percorso e le sfide: i totali del riepilogo. */
+export const OBBLIGATORI_TOTALI = PERCORSO.filter((id) => !eFacoltativo(id)).length;
+export const SFIDE_TOTALI = PERCORSO.length - OBBLIGATORI_TOTALI;
+
+export type RigaRiepilogo = {
+  uid: string;
+  nome: string;
+  email: string;
+  /** Compiti obbligatori (facili e normali) finiti. */
+  obbligatoriFiniti: number;
+  /** Sfide finite. */
+  sfideFinite: number;
+  /** Compiti finiti e poi rifatti per esercizio almeno una volta. */
+  rifatti: number;
+  /** I compiti cominciati e non finiti, nell'ordine del percorso. */
+  inCorso: Array<{ id: CompitoId; titolo: string }>;
+  /** Domande al tutor in tutto il percorso (senza quelle dei ripassi, che non costano). */
+  domande: number;
+  /** L'ultima consegna su qualunque compito, ripassi compresi. */
+  ultimaConsegna: Date | null;
+  media: number | null;
+};
+
+/** Il riepilogo della classe: per ogni allievo quanti compiti ha finito, dove sta lavorando, quanto ha chiesto al tutor. In ordine alfabetico. */
+export function riepilogoClasse(allievi: AllievoVisto[]): RigaRiepilogo[] {
+  return tabellaClasse(allievi).map((r) => {
+    const lavori = allievi.find((a) => a.uid === r.uid)?.lavori ?? {};
+    const finiti = r.voci.filter((v) => v.stato === 'finito');
+    const date = Object.values(lavori)
+      .flatMap((l) => [l.ultimoAt, l.ripasso?.ultimoAt ?? null])
+      .filter((d): d is Date => d !== null);
+    return {
+      uid: r.uid,
+      nome: r.nome,
+      email: r.email,
+      obbligatoriFiniti: finiti.filter((v) => !eFacoltativo(v.id)).length,
+      sfideFinite: finiti.filter((v) => eFacoltativo(v.id)).length,
+      rifatti: finiti.filter((v) => lavori[v.id]?.ripasso).length,
+      inCorso: r.voci.filter((v) => v.stato !== 'finito' && v.stato !== 'bloccato' && v.fasi > 0).map((v) => ({ id: v.id, titolo: titoloCompito(v.id) })),
+      domande: r.voci.reduce((s, v) => s + v.consigli, 0),
+      ultimaConsegna: date.length ? new Date(Math.max(...date.map((d) => d.getTime()))) : null,
+      media: r.media,
+    };
+  });
 }
 
 /** Vero se l'allievo è su questo compito senza averlo finito e non ha più aiuti del tutor: tocca al prof. */

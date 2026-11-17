@@ -13,9 +13,29 @@ import { chiamaDocente, messaggioErrore } from '@/lib/officina/client';
 import { ALLIEVI, CLASSI } from '@/lib/officina/nomiCollezioni';
 import { fasiDi } from '@/lib/officina/compiti/elenco';
 import type { VoceCompito } from '@/lib/officina/regole';
-import { chiamaIlProf, csvClasse, daAiutare, SEZIONI_PERCORSO, tabellaClasse, TITOLI_PERCORSO, type AllievoVisto, type LavoroVisto } from '@/lib/officina/tabella';
+import {
+  chiamaIlProf,
+  csvClasse,
+  daAiutare,
+  OBBLIGATORI_TOTALI,
+  riepilogoClasse,
+  SEZIONI_PERCORSO,
+  SFIDE_TOTALI,
+  tabellaClasse,
+  TITOLI_PERCORSO,
+  type AllievoVisto,
+  type LavoroVisto,
+  type RigaRiepilogo,
+} from '@/lib/officina/tabella';
 
 type ClasseDati = { nome: string; chiusa: boolean };
+
+/** Le due viste della classe: il riepilogo per allievo o la tabella con tutti i compiti. */
+type Vista = 'riepilogo' | 'compiti';
+const CHIAVE_VISTA = 'officina-docente-vista';
+
+/** La colonna del nome resta ferma quando la tabella scorre in orizzontale: fondo pieno e una riga a destra. */
+const COLONNA_FISSA = 'sticky left-0 z-10 bg-(--color-fondo-card) shadow-[inset_-1px_0_0_var(--color-bordo)]';
 
 const data = (t: unknown): Date | null => (t && typeof (t as Timestamp).toDate === 'function' ? (t as Timestamp).toDate() : null);
 
@@ -97,6 +117,20 @@ export function Classe({ classeId }: { classeId: string }) {
   const [allievi, setAllievi] = useState<AllievoVisto[]>([]);
   const [errore, setErrore] = useState('');
   const [aperta, setAperta] = useState<{ uid: string; compitoId: string } | null>(null);
+  const [vista, setVista] = useState<Vista>('compiti');
+
+  // La vista scelta resta per la prossima volta, su questo browser.
+  useEffect(() => {
+    try {
+      if (localStorage.getItem(CHIAVE_VISTA) === 'riepilogo') setVista('riepilogo');
+    } catch {}
+  }, []);
+  const scegliVista = (v: Vista) => {
+    setVista(v);
+    try {
+      localStorage.setItem(CHIAVE_VISTA, v);
+    } catch {}
+  };
 
   useEffect(() => {
     if (stato !== 'ok') return;
@@ -147,6 +181,7 @@ export function Classe({ classeId }: { classeId: string }) {
   );
 
   const righe = useMemo(() => tabellaClasse(allievi), [allievi]);
+  const riepilogo = useMemo(() => riepilogoClasse(allievi), [allievi]);
   const fermi = useMemo(() => daAiutare(righe), [righe]);
 
   if (stato !== 'ok') return <Accesso ruolo="docente" stato={stato} messaggio={messaggio} accediGoogle={accediGoogle} accediProva={accediProva} esci={esci} />;
@@ -200,84 +235,222 @@ export function Classe({ classeId }: { classeId: string }) {
         </section>
       )}
 
-      <section className="overflow-x-auto rounded-xl border border-(--color-bordo) bg-(--color-fondo-card)">
-        <table className="w-full text-left" aria-label="tabella della classe">
+      <div role="tablist" aria-label="vista della classe" className="flex gap-2">
+        {(
+          [
+            ['riepilogo', '📊 Riepilogo per allievo'],
+            ['compiti', '🗂️ Tutti i compiti'],
+          ] as const
+        ).map(([v, etichetta]) => (
+          <button
+            key={v}
+            role="tab"
+            aria-selected={vista === v}
+            onClick={() => scegliVista(v)}
+            className={`rounded-lg border px-3 py-1.5 text-sm ${vista === v ? 'border-(--color-giallo) font-bold text-(--color-giallo)' : 'border-(--color-bordo) text-(--color-testo-tenue) hover:border-(--color-giallo)'}`}
+          >
+            {etichetta}
+          </button>
+        ))}
+      </div>
+
+      {vista === 'riepilogo' ? (
+        <Riepilogo righe={riepilogo} nomeClasse={classe.nome} aperta={aperta} onApri={(uid, compitoId) => setAperta(aperta?.uid === uid && aperta.compitoId === compitoId ? null : { uid, compitoId })} />
+      ) : (
+        <section className="overflow-x-auto rounded-xl border border-(--color-bordo) bg-(--color-fondo-card)">
+          <table className="w-full text-left" aria-label="tabella della classe">
+            <thead className="text-sm text-(--color-testo-tenue)">
+              <tr className="text-xs uppercase tracking-wide">
+                <th className={COLONNA_FISSA} />
+                {SEZIONI_PERCORSO.map((s) => (
+                  <th key={s.id} colSpan={s.compiti} className="border-b border-(--color-bordo) px-3 py-1 text-center font-normal">
+                    {s.titolo}
+                  </th>
+                ))}
+                <th colSpan={2} />
+              </tr>
+              <tr>
+                <th className={`${COLONNA_FISSA} px-3 py-2`}>Allievo</th>
+                {TITOLI_PERCORSO.map((c, i) => (
+                  <th key={c.id} className="px-3 py-2">
+                    {i + 1}. {c.titolo}
+                    {c.sfida && (
+                      <span className="ml-1 text-xs font-normal text-(--color-giallo)" title="Sfida facoltativa: fuori dalla media, se finita aggiunge mezzo punto di bonus">
+                        ⭐ sfida
+                      </span>
+                    )}
+                  </th>
+                ))}
+                <th className="px-3 py-2">Media</th>
+                <th className="px-3 py-2" />
+              </tr>
+            </thead>
+            <tbody>
+              {righe.length === 0 && (
+                <tr>
+                  <td colSpan={TITOLI_PERCORSO.length + 3} className="px-3 py-4 text-(--color-testo-tenue)">
+                    Nessun allievo è ancora entrato: quando accedono scelgono la classe «{classe.nome}».
+                  </td>
+                </tr>
+              )}
+              {righe.map((r) => (
+                <tr key={r.uid} className="border-t border-(--color-bordo)">
+                  <td className={`${COLONNA_FISSA} max-w-36 px-3 py-2 sm:max-w-56`}>
+                    <p className="font-bold">{r.nome}</p>
+                    <p className="truncate text-xs text-(--color-testo-tenue)" title={r.email}>
+                      {r.email}
+                    </p>
+                  </td>
+                  {r.voci.map((v) => (
+                    <td key={v.id} className="px-3 py-2">
+                      <button
+                        onClick={() => setAperta(aperta?.uid === r.uid && aperta.compitoId === v.id ? null : { uid: r.uid, compitoId: v.id })}
+                        disabled={v.stato === 'bloccato'}
+                        className={`rounded-lg border px-2 py-1 text-left hover:border-(--color-giallo) disabled:cursor-default disabled:hover:border-transparent ${
+                          aperta?.uid === r.uid && aperta.compitoId === v.id ? 'border-(--color-giallo)' : 'border-transparent'
+                        }`}
+                        aria-label={`${r.nome}: ${v.id}`}
+                      >
+                        <Cella v={v} />
+                      </button>
+                    </td>
+                  ))}
+                  <td className="px-3 py-2 font-mono text-lg font-black text-(--color-giallo)">
+                    {r.media ?? '–'}
+                    {r.bonus > 0 && <span className="ml-1 text-xs font-normal text-(--color-verde)" title="bonus delle sfide finite, già nella media">+{r.bonus}</span>}
+                  </td>
+                  <td className="px-3 py-2 text-right">
+                    <button
+                      onClick={() => {
+                        if (confirm(`Togliere ${r.nome} dalla classe? I suoi lavori vanno persi.`)) void azione('rimuoviAllievo', { uid: r.uid });
+                      }}
+                      className="text-xs text-(--color-testo-tenue) hover:text-red-300"
+                    >
+                      togli
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      )}
+
+      {dettaglio && compitoAperto && <Lavoro allievo={dettaglio} titolo={compitoAperto.titolo} fasiTotali={fasiDi(compitoAperto.id)} lavoro={dettaglio.lavori[compitoAperto.id] ?? null} onChiudi={() => setAperta(null)} />}
+    </main>
+  );
+}
+
+/** Il riepilogo per allievo: quanti compiti ha finito, le sfide, i ripassi, dove sta lavorando. Un clic su un compito in corso apre il suo lavoro. */
+function Riepilogo({
+  righe,
+  nomeClasse,
+  aperta,
+  onApri,
+}: {
+  righe: RigaRiepilogo[];
+  nomeClasse: string;
+  aperta: { uid: string; compitoId: string } | null;
+  onApri: (uid: string, compitoId: string) => void;
+}) {
+  const [ordine, setOrdine] = useState<'nome' | 'finiti'>('nome');
+  const ordinate = ordine === 'nome' ? righe : [...righe].sort((a, b) => b.obbligatoriFiniti - a.obbligatoriFiniti || b.sfideFinite - a.sfideFinite || a.nome.localeCompare(b.nome, 'it'));
+  const mediaFiniti = righe.length ? Math.round((righe.reduce((s, r) => s + r.obbligatoriFiniti, 0) / righe.length) * 10) / 10 : 0;
+
+  return (
+    <section aria-label="riepilogo della classe" className="flex flex-col gap-2">
+      <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-(--color-testo-tenue)">
+        <p>
+          {righe.length} {righe.length === 1 ? 'allievo' : 'allievi'} · in media <strong className="text-(--color-testo)">{String(mediaFiniti).replace('.', ',')}</strong> compiti finiti su{' '}
+          {OBBLIGATORI_TOTALI}
+        </p>
+        <label className="flex items-center gap-2">
+          Ordina per
+          <select value={ordine} onChange={(e) => setOrdine(e.target.value as 'nome' | 'finiti')} className="rounded border border-(--color-bordo) bg-(--color-fondo) px-2 py-1 text-(--color-testo)">
+            <option value="nome">nome</option>
+            <option value="finiti">compiti finiti</option>
+          </select>
+        </label>
+      </div>
+
+      <div className="overflow-x-auto rounded-xl border border-(--color-bordo) bg-(--color-fondo-card)">
+        <table className="w-full text-left" aria-label="riepilogo per allievo">
           <thead className="text-sm text-(--color-testo-tenue)">
-            <tr className="text-xs uppercase tracking-wide">
-              <th />
-              {SEZIONI_PERCORSO.map((s) => (
-                <th key={s.id} colSpan={s.compiti} className="border-b border-(--color-bordo) px-3 py-1 text-center font-normal">
-                  {s.titolo}
-                </th>
-              ))}
-              <th colSpan={2} />
-            </tr>
             <tr>
-              <th className="px-3 py-2">Allievo</th>
-              {TITOLI_PERCORSO.map((c, i) => (
-                <th key={c.id} className="px-3 py-2">
-                  {i + 1}. {c.titolo}
-                  {c.sfida && (
-                    <span className="ml-1 text-xs font-normal text-(--color-giallo)" title="Sfida facoltativa: fuori dalla media, se finita aggiunge mezzo punto di bonus">
-                      ⭐ sfida
-                    </span>
-                  )}
-                </th>
-              ))}
+              <th className={`${COLONNA_FISSA} px-3 py-2`}>Allievo</th>
+              <th className="px-3 py-2" title="Compiti facili e normali finiti: sono quelli che contano per la media">
+                Compiti finiti
+              </th>
+              <th className="px-3 py-2" title="Sfide facoltative finite: mezzo punto di bonus ciascuna">
+                ⭐ Sfide
+              </th>
+              <th className="px-3 py-2" title="Compiti finiti e poi rifatti per esercizio">
+                🔁 Rifatti
+              </th>
+              <th className="px-3 py-2">In corso</th>
+              <th className="px-3 py-2" title="Domande al tutor in tutti i compiti, senza quelle dei ripassi">
+                🧑‍🏫 Domande
+              </th>
+              <th className="px-3 py-2">Ultima consegna</th>
               <th className="px-3 py-2">Media</th>
-              <th className="px-3 py-2" />
             </tr>
           </thead>
           <tbody>
-            {righe.length === 0 && (
+            {ordinate.length === 0 && (
               <tr>
-                <td colSpan={TITOLI_PERCORSO.length + 3} className="px-3 py-4 text-(--color-testo-tenue)">
-                  Nessun allievo è ancora entrato: quando accedono scelgono la classe «{classe.nome}».
+                <td colSpan={8} className="px-3 py-4 text-(--color-testo-tenue)">
+                  Nessun allievo è ancora entrato: quando accedono scelgono la classe «{nomeClasse}».
                 </td>
               </tr>
             )}
-            {righe.map((r) => (
+            {ordinate.map((r) => (
               <tr key={r.uid} className="border-t border-(--color-bordo)">
-                <td className="px-3 py-2">
+                <td className={`${COLONNA_FISSA} max-w-36 px-3 py-2 sm:max-w-56`}>
                   <p className="font-bold">{r.nome}</p>
-                  <p className="text-xs text-(--color-testo-tenue)">{r.email}</p>
+                  <p className="truncate text-xs text-(--color-testo-tenue)" title={r.email}>
+                    {r.email}
+                  </p>
                 </td>
-                {r.voci.map((v) => (
-                  <td key={v.id} className="px-3 py-2">
-                    <button
-                      onClick={() => setAperta(aperta?.uid === r.uid && aperta.compitoId === v.id ? null : { uid: r.uid, compitoId: v.id })}
-                      disabled={v.stato === 'bloccato'}
-                      className={`rounded-lg border px-2 py-1 text-left hover:border-(--color-giallo) disabled:cursor-default disabled:hover:border-transparent ${
-                        aperta?.uid === r.uid && aperta.compitoId === v.id ? 'border-(--color-giallo)' : 'border-transparent'
-                      }`}
-                      aria-label={`${r.nome}: ${v.id}`}
-                    >
-                      <Cella v={v} />
-                    </button>
-                  </td>
-                ))}
-                <td className="px-3 py-2 font-mono text-lg font-black text-(--color-giallo)">
-                  {r.media ?? '–'}
-                  {r.bonus > 0 && <span className="ml-1 text-xs font-normal text-(--color-verde)" title="bonus delle sfide finite, già nella media">+{r.bonus}</span>}
+                <td className="px-3 py-2">
+                  <span className="font-mono text-lg font-black">{r.obbligatoriFiniti}</span>
+                  <span className="font-mono text-sm text-(--color-testo-tenue)">/{OBBLIGATORI_TOTALI}</span>
+                  <span className="mt-1 block h-1.5 w-28 overflow-hidden rounded-full bg-(--color-bordo)" aria-hidden>
+                    <span className="block h-full rounded-full bg-(--color-verde)" style={{ width: `${(r.obbligatoriFiniti / OBBLIGATORI_TOTALI) * 100}%` }} />
+                  </span>
                 </td>
-                <td className="px-3 py-2 text-right">
-                  <button
-                    onClick={() => {
-                      if (confirm(`Togliere ${r.nome} dalla classe? I suoi lavori vanno persi.`)) void azione('rimuoviAllievo', { uid: r.uid });
-                    }}
-                    className="text-xs text-(--color-testo-tenue) hover:text-red-300"
-                  >
-                    togli
-                  </button>
+                <td className="px-3 py-2 font-mono">
+                  {r.sfideFinite}
+                  <span className="text-sm text-(--color-testo-tenue)">/{SFIDE_TOTALI}</span>
                 </td>
+                <td className="px-3 py-2 font-mono">{r.rifatti || <span className="text-(--color-testo-tenue)">–</span>}</td>
+                <td className="px-3 py-2 text-sm">
+                  {r.inCorso.length === 0 ? (
+                    <span className="text-(--color-testo-tenue)">–</span>
+                  ) : (
+                    <span className="flex flex-wrap gap-1">
+                      {r.inCorso.map((c) => (
+                        <button
+                          key={c.id}
+                          onClick={() => onApri(r.uid, c.id)}
+                          className={`rounded border px-1.5 py-0.5 text-left hover:border-(--color-giallo) ${aperta?.uid === r.uid && aperta.compitoId === c.id ? 'border-(--color-giallo)' : 'border-(--color-bordo)'}`}
+                        >
+                          {c.titolo}
+                        </button>
+                      ))}
+                    </span>
+                  )}
+                </td>
+                <td className="px-3 py-2 font-mono">{r.domande}</td>
+                <td className="px-3 py-2 text-sm whitespace-nowrap text-(--color-testo-tenue)">
+                  {r.ultimaConsegna ? r.ultimaConsegna.toLocaleString('it-IT', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : '–'}
+                </td>
+                <td className="px-3 py-2 font-mono text-lg font-black text-(--color-giallo)">{r.media ?? '–'}</td>
               </tr>
             ))}
           </tbody>
         </table>
-      </section>
-
-      {dettaglio && compitoAperto && <Lavoro allievo={dettaglio} titolo={compitoAperto.titolo} fasiTotali={fasiDi(compitoAperto.id)} lavoro={dettaglio.lavori[compitoAperto.id] ?? null} onChiudi={() => setAperta(null)} />}
-    </main>
+      </div>
+    </section>
   );
 }
 

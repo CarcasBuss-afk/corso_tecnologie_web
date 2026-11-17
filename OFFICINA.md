@@ -195,6 +195,13 @@ così pubblicare da uno dei due repository non toglie niente all'altro.
 5. Gli allievi aprono `/officina`, accedono con l'account della scuola, scelgono la classe.
 6. A fine lezione: «Chiudi l'Officina». La volta dopo: «Apri l'Officina».
 
+**La pagina della classe** ha due viste (17 novembre 2026), e il browser ricorda l'ultima scelta:
+«📊 Riepilogo per allievo» (compiti obbligatori finiti su 18 con la barra, sfide finite, compiti
+rifatti, compiti in corso cliccabili per aprire il lavoro, domande al tutor, ultima consegna,
+media; ordinabile per nome o per compiti finiti; `riepilogoClasse` in `tabella.ts`) e «🗂️ Tutti
+i compiti» (la tabella allievi × compiti). In tutte e due la colonna del nome resta ferma quando
+la tabella scorre in orizzontale.
+
 **Gli sfondi delle feste** (13 novembre 2026). Da `/officina/docente/sfondi` (link «🎄 sfondi
 del sito» nelle classi) il docente carica immagini e le accende o spegne quando vuole. Quelle
 accese compaiono dietro il frontespizio e l'elenco dei compiti dell'Officina (non nei compiti,
