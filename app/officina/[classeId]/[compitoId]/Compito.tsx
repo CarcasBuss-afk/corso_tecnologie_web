@@ -46,6 +46,9 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
   const [iniziato, setIniziato] = useState(false);
   const [scossa, setScossa] = useState(false);
   const [rifacendo, setRifacendo] = useState(false);
+  /** L'avviso prima di tornare alla fase prima, e la richiesta in corso. */
+  const [confermaIndietro, setConfermaIndietro] = useState(false);
+  const [tornando, setTornando] = useState(false);
 
   const carica = useCallback(async () => {
     try {
@@ -153,6 +156,28 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
     }
   }, [rifacendo, classeId, compitoId, carica]);
 
+  /** Tornare alla fase prima, dopo l'avviso: il codice della fase in corso si perde, l'editor riparte da quello che aveva superato la fase prima. */
+  const tornaIndietro = useCallback(async () => {
+    if (!c || tornando || invio) return;
+    setTornando(true);
+    try {
+      await chiamaOfficina('indietro', { classeId, compitoId, ripasso: c.ripasso, fase: c.fasi });
+      setConfermaIndietro(false);
+      setHint(null);
+      setFesta(null);
+      setSbagliateFase(0);
+      await carica();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (e) {
+      // Si ricarica il compito com'è adesso, poi si dice perché: carica() pulirebbe il messaggio.
+      setConfermaIndietro(false);
+      await carica();
+      setErrore(messaggioErrore(e));
+    } finally {
+      setTornando(false);
+    }
+  }, [c, tornando, invio, classeId, compitoId, carica]);
+
   if (stato !== 'ok') {
     return <Accesso ruolo="allievo" stato={stato} messaggio={messaggio} accediGoogle={accediGoogle} accediProva={accediProva ? (email) => accediProva(email, email.split('@')[0]) : null} esci={esci} />;
   }
@@ -170,7 +195,8 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
   }
 
   const numeroFase = c.fasi + 1;
-  const attivo = !invio && !c.classeChiusa && !c.finito;
+  const attivo = !invio && !tornando && !c.classeChiusa && !c.finito;
+  const puoTornare = attivo && c.fasi > 0;
 
   return (
     <main className="mx-auto flex min-h-screen max-w-6xl flex-col gap-4 p-4 sm:p-6">
@@ -288,7 +314,19 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
                 <span className="text-sm text-(--color-testo-tenue)">
                   oppure <kbd className="rounded bg-black/40 px-1.5 py-0.5 font-mono">Ctrl</kbd>+<kbd className="rounded bg-black/40 px-1.5 py-0.5 font-mono">Invio</kbd> nell&apos;editor
                 </span>
+                {c.fasi > 0 && (
+                  <button
+                    onClick={() => setConfermaIndietro(true)}
+                    disabled={!puoTornare || confermaIndietro}
+                    className="ml-auto rounded-lg border border-(--color-bordo) px-4 py-2 text-sm font-bold text-(--color-testo-tenue) hover:border-(--color-testo-tenue) hover:text-(--color-testo) disabled:opacity-40"
+                  >
+                    ↩ Torna alla fase {numeroFase - 1}
+                  </button>
+                )}
               </div>
+            )}
+            {confermaIndietro && !c.finito && (
+              <AvvisoIndietro fase={numeroFase} tornando={tornando} onConferma={() => void tornaIndietro()} onAnnulla={() => setConfermaIndietro(false)} />
             )}
             {hint && (
               <section role="status" className="rounded-xl border border-(--color-giallo)/40 bg-(--color-giallo)/10 p-4 text-[1.05rem]">
@@ -313,6 +351,45 @@ export function Compito({ classeId, compitoId }: { classeId: string; compitoId: 
         {!c.esame && c.ripasso === null && ' Solo le domande al tutor costano un punto.'}
       </footer>
     </main>
+  );
+}
+
+/** L'avviso prima di tornare indietro: il lavoro della fase in corso si cancella. */
+function AvvisoIndietro({ fase, tornando, onConferma, onAnnulla }: { fase: number; tornando: boolean; onConferma: () => void; onAnnulla: () => void }) {
+  const no = useRef<HTMLButtonElement>(null);
+  // Il fuoco va su «No»: un Invio di troppo non cancella niente. Esc chiude l'avviso.
+  useEffect(() => {
+    no.current?.focus();
+  }, []);
+  useEffect(() => {
+    const esc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onAnnulla();
+    };
+    window.addEventListener('keydown', esc);
+    return () => window.removeEventListener('keydown', esc);
+  }, [onAnnulla]);
+
+  return (
+    <section role="alertdialog" aria-labelledby="avviso-indietro-titolo" aria-describedby="avviso-indietro-testo" className="rounded-xl border-2 border-red-500/60 bg-red-500/10 p-4 sm:p-5">
+      <p id="avviso-indietro-titolo" className="text-lg font-bold">
+        ⚠️ Vuoi tornare alla fase {fase - 1}?
+      </p>
+      <div id="avviso-indietro-testo" className="mt-2 flex flex-col gap-1 text-(--color-testo-tenue)">
+        <p>
+          <b className="text-(--color-testo)">Il codice che hai scritto per la fase {fase} verrà cancellato</b> e non potrai più recuperarlo.
+        </p>
+        <p>Nell&apos;editor ritroverai il codice con cui avevi superato la fase {fase - 1}: lo modifichi e lo consegni di nuovo.</p>
+        <p>Gli errori e le domande al tutor fatti finora restano come sono.</p>
+      </div>
+      <div className="mt-4 flex flex-wrap gap-3">
+        <button ref={no} onClick={onAnnulla} disabled={tornando} className="rounded-lg bg-(--color-giallo) px-4 py-2 font-bold text-black hover:brightness-110 disabled:opacity-40">
+          No, resto alla fase {fase}
+        </button>
+        <button onClick={onConferma} disabled={tornando} className="rounded-lg border-2 border-red-500 px-4 py-2 font-bold text-red-300 hover:bg-red-500/20 disabled:opacity-40">
+          {tornando ? 'Torno indietro…' : `Sì, cancella e torna alla fase ${fase - 1}`}
+        </button>
+      </div>
+    </section>
   );
 }
 

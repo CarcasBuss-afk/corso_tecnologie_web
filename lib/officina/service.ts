@@ -231,6 +231,41 @@ export async function rifai(body: Record<string, unknown>, utente: Utente) {
   });
 }
 
+/* ------------------------------------------------------------------ indietro */
+
+/**
+ * Tornare alla fase prima: l'allievo rifà la fase che aveva già superato, ripartendo dal
+ * codice con cui l'aveva superata. Quello che aveva scritto per la fase in corso si perde
+ * (la pagina glielo dice prima). Errori e domande al tutor restano: sono già successi.
+ * Il client dice da quale fase torna indietro: un secondo clic o una pagina vecchia non
+ * fanno tornare indietro di due fasi.
+ */
+export async function indietro(body: Record<string, unknown>, utente: Utente) {
+  limita(utente);
+  return getDb().runTransaction(async (tx) => {
+    const ctx = await contesto(body, utente, tx);
+    const { id, giro, t } = lavoroInCorso(ctx, body, utente.uid);
+    const f = intero(body.fase);
+    if (f !== t.fasi) {
+      throw new ApiError(409, 'FASE_SBAGLIATA', `Il compito è cambiato in un’altra finestra: ora sei alla fase ${t.fasi + 1}`);
+    }
+    if (f < 1) throw new ApiError(403, 'PRIMA_FASE', 'Sei già alla prima fase: non c’è una fase prima');
+    const prima = String(f - 1);
+    const base = giro.ripasso === null ? ['lavori', id] : ['lavori', id, 'ripasso'];
+    const campo = (...nomi: string[]) => new FieldPath(...base, ...nomi);
+    // update con i percorsi dei campi: il codice e la data della fase prima vanno tolti, non mescolati.
+    tx.update(
+      ctx.allievoRef,
+      campo('fasi'), f - 1,
+      campo('bozza'), t.codice?.[prima] ?? '',
+      campo('codice', prima), FieldValue.delete(),
+      campo('fasiAt', prima), FieldValue.delete(),
+      campo('ultimoAt'), Timestamp.now(),
+    );
+    return { fasi: f - 1 };
+  });
+}
+
 /* ----------------------------------------------------------------- consegna */
 
 function intero(v: unknown): number {

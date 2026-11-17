@@ -141,6 +141,19 @@ sta dentro il lavoro (`lavori.<compito>.ripasso`, con `giro` e `seme`): ogni «R
 sostituisce. Il docente lo vede nel dettaglio del lavoro dell'allievo; nell'elenco l'allievo
 vede «lo stai rifacendo».
 
+**Tornare alla fase prima** (17 novembre 2026, richiesta del docente). Dalla fase 2 in poi, accanto
+a «Consegna la fase», c'è il pulsante «↩ Torna alla fase N». Prima di fare qualunque cosa compare
+un avviso rosso: il codice scritto per la fase in corso **verrà cancellato**, e il fuoco è sul pulsante
+«No, resto alla fase N», così un Invio di troppo non cancella niente; anche Esc chiude l'avviso.
+Se l'allievo conferma, l'azione `indietro` di `service.ts` porta il contatore delle fasi indietro di
+uno. Nell'editor torna il codice con cui l'allievo aveva superato quella fase, che diventa la bozza;
+il codice promosso e la data di quella fase si tolgono. Errori, domande al tutor e voto restano
+come sono. Funziona anche nel ripasso: torna indietro solo il giro di ripasso, mentre il primo
+giro, quello del voto, non cambia. Il client manda la fase da cui torna indietro: un doppio clic
+o una seconda finestra rimasta indietro ricevono «Il compito è cambiato in un'altra finestra:
+ora sei alla fase N» e non tornano indietro di due fasi. A compito finito il pulsante non c'è:
+lì c'è «Rifallo».
+
 | Lezione | Facile | Normale | Sfida |
 |---|---|---|---|
 | L1 Il primo JavaScript | Il biglietto da visita | Lo scontrino del bar | La paghetta |
