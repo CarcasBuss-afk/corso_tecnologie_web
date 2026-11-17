@@ -163,6 +163,8 @@ titolo.style.backgroundColor = "yellow"; // sfondo giallo`}
           <code className="bg-gray-100 px-2 py-1 rounded">font-size</code>... Ma in JavaScript il trattino è il <strong>meno</strong> della sottrazione!
         </p>
 
+        <VideoLezione lezioneSlug="lezione-5-cambiare-stili-nomi-cappello" />
+
         <div className="bg-gradient-to-r from-green-500 to-teal-500 text-white p-6 rounded-lg mb-6">
           <h3 className="text-xl font-bold mb-3 text-white">📘 La Regola del Cammello (camelCase)</h3>
           <ol className="list-decimal list-inside space-y-2 text-lg">

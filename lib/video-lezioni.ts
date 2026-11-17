@@ -61,6 +61,11 @@ export const VIDEO_LEZIONI: Record<string, VideoDellaLezione> = {
     lezione: 'lezione-5-cambiare-stili',
     driveId: '1M1A73UK8FOTQjovn2ZPZh4of3Aym6ReW',
   },
+  'lezione-5-cambiare-stili-nomi-cappello': {
+    titolo: 'I nomi col cappello',
+    lezione: 'lezione-5-cambiare-stili',
+    driveId: '13BZl4XGy_Te0O85uxWY5k_WhQtOhvv0H',
+  },
 };
 
 /** L'id HTML del riquadro di un video, per arrivarci con un link (…/lezione#video-<chiave>). */
