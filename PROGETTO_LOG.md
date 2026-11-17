@@ -1,28 +1,32 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 16 Novembre 2026 - Lezione 11 Manipolare le Classi CSS
+**Ultimo aggiornamento:** 17 Novembre 2026 - Documentazione e stato del Modulo 4
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
 
 ---
 
-## 📌 STATO ATTUALE DEL PROGETTO (aggiornato al 16 Novembre 2026)
+## 📌 STATO ATTUALE DEL PROGETTO (aggiornato al 17 Novembre 2026)
 
-> Sezione di riepilogo da leggere per prima. I changelog delle sessioni sotto sono lo storico (in ordine non cronologico: la Sessione più recente è la 32, in fondo al file).
+> Sezione di riepilogo da leggere per prima. I changelog delle sessioni sotto sono lo storico (in ordine non cronologico: la Sessione più recente è la 32, in fondo al file). L'Officina ha un documento suo: `OFFICINA.md`.
 
 ### 🌐 Sito
 - **Online:** https://corso-tecnologie-web.vercel.app (deploy automatico da `main`)
 - **Repository:** https://github.com/CarcasBuss-afk/corso_tecnologie_web
-- **Stack:** Next.js 15.5.28 (App Router) + React 19 + Tailwind CSS 4 + TypeScript
+- **Stack:** Next.js 15.5.28 (App Router) + React 19 + Tailwind CSS 4 + TypeScript; per l'Officina Firebase (progetto `html-css-attivita`), jsdom, Monaco, Anthropic SDK
 
 | Indirizzo | Pagina |
 |-----------|--------|
 | `/` | **Frontespizio**: loghi istituzionali (Coesione Italia 21-27 Piemonte, UE, Repubblica Italiana, Regione Piemonte), logo CIAC, titolo "Tecnologie Web", "A cura di Fabio Regnaud", pulsante "Entra nel Manuale" |
 | `/manuale` | Home del manuale con l'elenco dei moduli |
 | `/moduli/<modulo>/<lezione>` | Lezioni |
+| `/video` | Tutti i video delle lezioni, per modulo e lezione (visibili con l'account della scuola) |
+| `/officina` | **Officina**: gli esercizi JavaScript con il login della scuola, la correzione automatica e il tutor IA |
+| `/officina/docente` | Il docente: classi, interruttore apri/chiudi, tabella allievi × compiti, sfondi delle feste (`/officina/docente/sfondi`) |
 
 - **Mobile:** sotto i 1024px la sidebar è sostituita da un menu hamburger nell'header; il desktop è invariato.
+- **Tema:** il sito è **sempre chiaro**, anche se il sistema dell'allievo usa il tema scuro (`color-scheme: only light`, classi `dark:` di Tailwind disattivate: Sessione 32).
 
 ### 📚 Moduli
 | Modulo | Lezioni | Stato |
@@ -36,17 +40,45 @@
 
 **Piano completo del Modulo 4:** Sessione 26 → "🗺️ Piano Modulo 4 Aggiornato".
 
+### 🟨 Modulo 4 JavaScript: a che punto siamo
+
+| # | Lezione | Pagina | Video | Compiti Officina (facile / normale / sfida) |
+|---|---------|--------|-------|---------------------------------------------|
+| L1 | Il Primo JavaScript | ✅ | ✅ 1 | biglietto da visita / scontrino del bar / paghetta |
+| L2 | Pulsanti e Funzioni | ✅ | ✅ 1 | pulsante che saluta / telecomando / pulsantiera del DJ |
+| L3 | Dialoghi e Variabili | ✅ | ✅ 1 | biglietteria del cinema / campanello / citofono |
+| L4 | Cambiare la Pagina | ✅ | ✅ 3 | cartellino del nome / bacheca / tabellone del torneo |
+| L5 | Cambiare Stili e Colori | ✅ | ✅ 1 | semaforo / lampada / tema chiaro e scuro |
+| L6 | Decisioni e Quiz | ✅ | — | termometro / porta del club / quiz |
+| L7 | Operatori e Calcolatrice | ✅ | — | convertitore dei tempi / pizzeria / spesa della gita |
+| L8 | Operatori Logici e Validazione | ✅ | — | giostra / modulo d'iscrizione / prenotazione del campo |
+| L9 | Funzioni con Parametri e Return | ✅ | — | macchinetta dei numeri / negozio di magliette / pagella |
+| L10 | Altri Eventi | ✅ | — | — (il motore va esteso: tasti, select, submit) |
+| L11 | Manipolare le Classi CSS | ✅ | — | — |
+| L12 | Array - Le Liste | ⏭️ prossima | | |
+| L13-L20 | for, while, createElement, To-Do List (2), oggetti, array di oggetti, localStorage | 📋 | | |
+
+- **Video:** ci sono anche quelli delle lezioni 1 e 2 del Modulo 1. Sono su Google Drive, condivisi solo con il dominio della scuola; il docente manda il link e la voce va in `lib/video-lezioni.ts` (la chiave del primo video di una lezione è lo slug, i successivi slug + argomento). Il componente è `VideoLezione` nella pagina della lezione; `/video` li elenca da solo.
+- **Comandi JavaScript Totali Imparati** dopo L11: 23.
+
 ### 📐 Regole da rispettare nelle nuove lezioni
-- **JavaScript:** schema in 3 passi (id nel pulsante → funzione con nome → `addEventListener`), mai `onclick` o JS dentro i tag HTML, id dei pulsanti con prefisso `btn`, script in fondo al `<body>`.
-- **L'id non va collegato al CSS:** negli esempi il CSS usa selettori di tag o classi, mai `#id`.
-- **Tailwind 4:** trasparenze con `bg-white/20`, mai `bg-opacity-*` (vedi `DIPENDENZE.md`).
-- **Coerenza didattica:** nessun concetto usato prima di essere insegnato; riepilogo "Comandi JavaScript Totali Imparati" aggiornato in ogni lezione (dopo L11: 23 comandi).
+- **JavaScript:** schema in 3 passi (id nel pulsante → funzione con nome → `addEventListener`), mai `onclick` o JS dentro i tag HTML, id dei pulsanti con prefisso `btn` (caselle, menu e form con un id che dice cosa contengono), script in fondo al `<body>`.
+- **Funzioni:** solo funzioni con nome; quelle collegate agli eventi non hanno parametri, tranne `event` (L10); i parametri servono alle funzioni di calcolo chiamate da quelle (L9).
+- **L'id non va collegato al CSS:** negli esempi il CSS usa selettori di tag o classi, mai `#id`. Dalla L11 l'aspetto che cambia sta in una classe del CSS, accesa e spenta con `classList`.
+- **Tailwind 4:** trasparenze con `bg-white/20`, mai `bg-opacity-*` (vedi `DIPENDENZE.md`). Niente classi `dark:`: non hanno effetto.
+- **Coerenza didattica:** nessun concetto usato prima di essere insegnato; riepilogo "Comandi JavaScript Totali Imparati" aggiornato in ogni lezione.
+- **Struttura di una lezione JS:** LessonHeader → intro → sezioni con CodeExample e demo `JavaScriptDemo` → 5 errori tipici → esercizio guidato (`Exercise`, codice completo a ogni passo, `highlightLines` sulle righe nuove) con 5 esperimenti → checklist → `Challenge` → riepilogo comandi → `AllenatiOfficina` → prossimi passi. Lezione registrata in `lib/moduli.ts`.
+- **Verifica prima del commit:** `npx tsc --noEmit`, `npx vitest run`, prova delle demo nel browser (Puppeteer) e nessuno scroll orizzontale a 390px.
 
 ### ⚠️ Questioni aperte
-- Il link "Moduli" dell'header punta a `/moduli`, che non esiste (404): da far puntare a `/manuale#moduli` o creare la pagina.
+- Il link "Moduli" dell'header punta a `/moduli`, che non esiste (404): da far puntare a `/manuale#moduli` o creare la pagina. Lo stesso link è in fondo alla L18 HTML.
+- `/favicon.ico` risponde 404 in tutte le pagine.
+- Nessun compito dell'Officina per L10 e L11 (vedi `OFFICINA.md` §7).
+- Demo "Il Razzo" (L10): la pista larga 360px può uscire dall'anteprima sui telefoni stretti.
+- Lo sfondo di Natale non è ancora caricato in produzione: dalla pagina «🎄 sfondi del sito» o con `npm run carica-sfondo`.
 - Vulnerabilità npm residue che richiedono aggiornamenti major (Next 16, eslint-config-next 16, react-syntax-highlighter 16, puppeteer-core 25).
 - Ramo remoto creato dal bot di Vercel per il fix di sicurezza ancora presente su GitHub.
-- La cartella `verifiche_per_obiettivi_C1-33/` (verifiche v1-v6) è volutamente fuori da git.
+- Le cartelle `verifiche_per_obiettivi_C1-33/` e `verifiche_js_terzo_anno/` sono volutamente fuori da git.
 
 ---
 
@@ -7980,6 +8012,50 @@ Nella sezione "👻 Nascondere e Mostrare" mancava il consueto blocco `CodeExamp
 
 ---
 
+## 📅 CHANGELOG 24 OTTOBRE - 13 NOVEMBRE 2026 (RIEPILOGO) - LEZIONE 9, OFFICINA IN CLASSE, VIDEO, SFONDI
+
+> Riepilogo scritto il 17 novembre 2026: in queste settimane i changelog non sono stati scritti. I dettagli dell'Officina sono in `OFFICINA.md`; qui le cose principali, con i commit.
+
+### 1. 📝 Lezione 9: Funzioni con Parametri e Return (28 ottobre, `628e4c1`)
+
+**File:** `app/moduli/modulo-4-javascript/lezione-9-funzioni-parametri-return/page.tsx` (slug `lezione-9-funzioni-parametri-return`, 2 ore, difficoltà media).
+
+**Struttura:**
+1. Intro "Basta copiare e incollare!": le stesse righe ripetute nella L7
+2. "Sorpresa: le usi già!": `alert(...)`, `getElementById(...)`, `Number(...)` sono funzioni che ricevono valori
+3. I parametri: uno, due separati dalla virgola; demo "I Messaggi Colorati"
+4. Il `return`: la funzione risponde, "un risultato, tanti usi"; demo "Il Termometro Americano"
+5. Funzioni che lavorano insieme: prima (L7, le stesse righe quattro volte) e dopo (ogni cosa scritta una volta sola); demo "La Calcolatrice di Squadra". Regola: le funzioni collegate ai pulsanti restano senza parametri, quelle di calcolo hanno parametri e return
+6. Esempio "I Saldi del Negozio" con due funzioni di calcolo
+7. Errori tipici: dimenticare il return, alert al posto di return, valori passati dentro addEventListener, valori nell'ordine sbagliato, righe scritte dopo il return
+8. Esercizio guidato "Il Parco Acquatico" + 5 esperimenti (tariffa senior, `mostra(testo, colore)`, casella vuota, `scontoFamiglia(totale)`, return sostituito da console.log)
+9. Checklist, sfida "La Cassa con il Resto", riepilogo (19 comandi)
+
+Con la lezione: ripasso delle caselle HTML, `label` con `for` ed errore del form (`fa86108`).
+
+### 2. 🔧 L'Officina in classe (dal 25 ottobre)
+
+- **Pubblicazione su Vercel** (25 ottobre, `78fb8ac` e i fix successivi): Node 24, jsdom 26, firebase-admin 13, chiave privata Firebase letta in ogni formato (anche base64).
+- **Esperienza dell'allievo** (26-27 ottobre): l'errore fatto in una frase alla consegna, anteprima ingrandibile, console sotto l'anteprima, coriandoli a fase superata, prima la traccia poi il resto, codice in modalità rigorosa; sesta fase di riordino del codice per lampada e porta.
+- **Giudice** (28 ottobre, `837496a`): Sonnet al posto di Haiku, controllo sulla costante, registro dei giudizi visibile al docente; poi scrive il verdetto dopo aver controllato il codice (`b615858`).
+- **Tre livelli per lezione** (30 ottobre - 1 novembre, `11fc39f`, `9081ad9`, `db871f6`): facile / normale / sfida per le Lezioni 1-9, 27 compiti in tutto; la sfida è facoltativa e fuori dalla media; per andare avanti servono i compiti obbligatori prima (`e288c94`).
+- **Tutor** (3 novembre, `61def92`): risponde chiaro, a 5 domande manda dal prof.
+- **Ritocchi dalle consegne vere** (2-5 novembre): consegne riviste, prove nascoste che dicono che il valore lo sceglie la correzione, il quiz con i mesi al posto delle lettere, la paghetta, il citofono.
+- **«Rifallo»** (12 novembre, `f4a28d7`): a compito finito si rifà con dati nuovi; il voto resta quello della prima volta.
+- **Box «Allenati nell'Officina»** in fondo alle lezioni 1-9 del Modulo 4 (`AllenatiOfficina`).
+
+### 3. 🎬 I video delle lezioni (2-16 novembre)
+
+- Componente `VideoLezione` (`d0e4876`, `36bf8a0`): video da Google Drive, visibile con l'account della scuola, parte chiuso e si apre con un clic. Elenco in `lib/video-lezioni.ts`.
+- Video pubblicati: Modulo 1 L1 e L2; Modulo 4 L1, L2, L3, L4 (tre video: cambiare la pagina, elementi nelle variabili, il contatore) e L5 (il pennello style, 16 novembre, `5bd8dd1`).
+- Pagina `/video` (10 novembre, `3a86d53`): tutti i video del corso, per modulo e lezione, con il link «🎬 Video» nell'header.
+
+### 4. 🎄 Gli sfondi delle feste (13 novembre, `7065715`)
+
+Il docente carica immagini da `/officina/docente/sfondi` e le accende o spegne; quelle accese compaiono dietro il frontespizio e l'elenco dei compiti dell'Officina. Collezione `webSfondi`, script `npm run carica-sfondo`. Dettagli in `OFFICINA.md` §6.
+
+---
+
 ## 📅 CHANGELOG SESSIONE 31 (16 Novembre 2026) - LEZIONE 10 ALTRI EVENTI
 
 ### 1. 📝 Nuova Lezione 10: Altri Eventi
@@ -8054,4 +8130,4 @@ Nella sezione "👻 Nascondere e Mostrare" mancava il consueto blocco `CodeExamp
 
 ---
 
-**Fine del Progetto Log - Ultimo aggiornamento: 16 Novembre 2026 - Sessione 32**
+**Fine del Progetto Log - Ultimo aggiornamento: 17 Novembre 2026 - Sessione 32**

@@ -5,11 +5,12 @@ corso**, con l'account Google della scuola. È la stessa idea dell'Officina del 
 (`C:\Users\Regnaud\Cicli-game`, `PERCORSO.md` §12 e seguenti), portata sul web: cambia il
 motore di correzione, resta tutto il resto.
 
-**Stato (23 ottobre 2026)**: prima versione costruita, con il percorso JavaScript (sei compiti,
-trenta fasi). Provata in locale con gli emulatori Firebase: percorso dell'allievo, consegna
-(bocciata, promossa, bocciata dal giudice), tutor, interruttore, dashboard del docente in
-tempo reale. **Non ancora provata in classe** e non ancora pubblicata su Vercel (servono le
-variabili d'ambiente, §6).
+**Stato (17 novembre 2026)**: pubblicata su Vercel dal 25 ottobre e **in uso in classe**. Il
+percorso JavaScript ha **27 compiti** per le Lezioni 1-9 del Modulo 4, tre per lezione (facile,
+normale, sfida: §4), con il ripasso «Rifallo» a compito finito (12 novembre) e gli sfondi delle
+feste (13 novembre, §6). Le Lezioni 10 (altri eventi) e 11 (classi CSS) del manuale non hanno
+ancora compiti: vedi §7. Prima versione costruita il 23 ottobre con sei compiti, provata con gli
+emulatori Firebase.
 
 ## 1. Le decisioni prese con il docente (23 ottobre 2026)
 
@@ -106,10 +107,17 @@ docente le vede sotto il codice di ogni fase, nel lavoro dell'allievo.
 
 ## 4. Il percorso JavaScript
 
-Una sezione, «JavaScript: le basi», un compito per lezione del Modulo 4 e, subito dopo, un
-**compito di rinforzo** sugli stessi concetti con qualcosa in più o un po' più lungo (per ora il
-citofono dopo il campanello; la mappa è `COMPITI_PER_LEZIONE` in `compiti/elenco.ts`), **una sola idea
-nuova per compito**, cinque fasi che fanno crescere la stessa pagina. La lampada e la porta
+Due sezioni: «JavaScript: le basi» (Lezioni 1-8) e «JavaScript: funzioni e dati» (Lezione 9).
+**Tre compiti per lezione** del Modulo 4 (dal 30 ottobre 2026; la mappa è `COMPITI_PER_LEZIONE`
+in `compiti/elenco.ts`, i livelli in `TITOLI`):
+
+- **facile**: tre fasi molto guidate, il codice d'esempio quasi tutto nella consegna;
+- **normale**: cinque fasi (sei dove si riordina il codice), **una sola idea nuova per compito**;
+- **sfida**: le consegne dicono che cosa deve fare la pagina, non come si scrive; è
+  **facoltativa**: si apre come il normale, ma non blocca la lezione dopo e **non entra nella media**.
+
+Facile e normale si fanno in fila: per andare avanti servono tutti i compiti obbligatori prima.
+Le fasi fanno crescere la stessa pagina. La lampada e la porta
 ne hanno una sesta: la pagina funziona già e si **riordina il codice** (Lezione 4, «anche i
 pulsanti in una variabile»): ogni elemento in una variabile, cercato una volta sola in alto,
 fuori dalle funzioni. Il correttore non vede la differenza, perché la pagina fa le stesse cose;
@@ -133,20 +141,21 @@ sta dentro il lavoro (`lavori.<compito>.ripasso`, con `giro` e `seme`): ogni «R
 sostituisce. Il docente lo vede nel dettaglio del lavoro dell'allievo; nell'elenco l'allievo
 vede «lo stai rifacendo».
 
-| # | Compito | Lezione | Idea nuova |
+| Lezione | Facile | Normale | Sfida |
 |---|---|---|---|
-| 0 | Lo scontrino del bar | L1 | `console.log` con testi e numeri, calcoli con `+ * /` e parentesi, commenti: lo scontrino in console |
-| 1 | Il campanello del negozio | L2-L3 | funzione con nome + `addEventListener`; `alert`, `prompt`, `let` |
-| 1 bis | Il citofono del condominio | L2-L3 (rinforzo) | le stesse idee del campanello con qualcosa in più: tre pulsanti, due alert con un prompt in mezzo, `console.log`, `const` in un altro pulsante |
-| 2 | La bacheca della classe | L4 | `innerHTML` / `textContent`: il risultato va in pagina |
-| 2 bis | Il tabellone del torneo | L2-L4 (rinforzo) | un clic che cambia due elementi, due `prompt` nella stessa riga, `<em>` intorno a una variabile, `const` e `confirm` nella pagina, il codice riordinato con le variabili |
-| 3 | La lampada da comodino | L5 | `.style`: colori, dimensioni, `display`; poi il codice in ordine con le variabili |
-| 4 | La porta del club | L6 | `if` / `else` / `else if`, `Number()`, confronti; poi il codice in ordine |
-| 5 | La cassa della pizzeria | L7 | `.value`, operatori, `%`, il contatore fuori dalla funzione |
-| 6 | Il modulo d'iscrizione | L8 | `&&`, `\|\|`, `!`: la validazione |
+| L1 Il primo JavaScript | Il biglietto da visita | Lo scontrino del bar | La paghetta |
+| L2 Pulsanti e funzioni | Il pulsante che saluta | Il telecomando | La pulsantiera del DJ |
+| L3 Dialoghi e variabili | La biglietteria del cinema | Il campanello del negozio | Il citofono del condominio |
+| L4 Cambiare la pagina | Il cartellino del nome | La bacheca della classe | Il tabellone del torneo |
+| L5 Cambiare stili | Il semaforo | La lampada da comodino (6 fasi) | Il tema chiaro e scuro |
+| L6 Decisioni | Il termometro | La porta del club (6 fasi) | Il quiz a tre domande |
+| L7 Operatori | Il convertitore dei tempi | La cassa della pizzeria | La spesa della gita |
+| L8 Operatori logici | La giostra del luna park | Il modulo d'iscrizione | La prenotazione del campo |
+| L9 Parametri e return | La macchinetta dei numeri | Il negozio di magliette | La pagella |
 
-Le sezioni successive («JavaScript: funzioni e dati», «HTML», «CSS») sono previste e
-arrivano quando la classe ci arriva.
+Le idee di ogni compito sono scritte nel commento in cima al suo file in `lib/officina/compiti/`.
+In fondo a ogni lezione del manuale il box «Allenati nell'Officina» (`AllenatiOfficina`) porta ai
+tre compiti della lezione; nelle lezioni senza compiti non compare.
 
 ## 5. Dove sta il codice
 
@@ -155,7 +164,8 @@ lib/officina/
   motore/        tipi (Fase, Prova, Passo), correttore (script in-page), pagina (compone
                  l'HTML), colori, erroriJs (traduzione), fatti (per il giudice),
                  esecutoreServer (jsdom + timeout), verifica (correttore + giudice)
-  compiti/       il catalogo: una scheda e cinque fasi per compito (sei per lampada e porta), parametri dal seme
+  compiti/       il catalogo: una scheda e tre o cinque fasi per compito (sei per lampada e porta),
+                 parametri dal seme; elenco.ts (titoli, livelli, sezioni) per il browser
   regole.ts      percorso, sblocco, voto, seme (puro)
   store.ts       Firestore: webOfficinaClassi/{classe}/allievi/{uid}, webOfficinaAllievi/{uid}
   service.ts     le API dell'allievo (io, classi, entra, compiti, compito, consegna, tutor)
@@ -200,4 +210,9 @@ Codice: `lib/sfondi/`, `components/SfondoFestivo.tsx`, classi `con-sfondo` e `pa
 - Le sezioni HTML e CSS, con i pannelli HTML/CSS scrivibili e i controlli sul DOM e sugli
   stili calcolati (già previsti dal motore: cambia solo quale pannello è aperto).
 - Il «patentino di JavaScript» a fine sezione, con il tutor spento, come nel Giro.
-- Un collegamento «Allenati» in fondo a ogni lezione del Modulo 4 verso il compito relativo.
+- I compiti delle **Lezioni 10 e 11**. Per la L11 (classList) bastano i clic e i controlli
+  `stile` e `visibile` di oggi; forse un controllo nuovo sulle classi di un elemento. Per la L10
+  il motore oggi sa solo `clic` e `scrivi` (che manda input e change): servono azioni nuove per
+  un tasto premuto (keydown con `event.key`), la scelta da un `<select>` e l'invio di un form
+  (submit, con il controllo che la pagina non si ricarichi).
+- I test automatici delle API con gli emulatori (oggi la prova di fumo si fa a mano).
