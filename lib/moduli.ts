@@ -388,6 +388,13 @@ export const moduli: Modulo[] = [
         durata: "2 ore",
         difficolta: "media",
       },
+      {
+        id: "11",
+        titolo: "Manipolare le Classi CSS",
+        slug: "lezione-11-classi-css",
+        durata: "2 ore",
+        difficolta: "media",
+      },
     ],
   },
   {

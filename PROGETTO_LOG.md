@@ -1,7 +1,7 @@
 # LOG PROGETTO CORSO WEB - Manuale Didattico
 
 **Data inizio:** 20 Ottobre 2025
-**Ultimo aggiornamento:** 16 Novembre 2026 - Lezione 10 Altri Eventi
+**Ultimo aggiornamento:** 16 Novembre 2026 - Lezione 11 Manipolare le Classi CSS
 **Piattaforma:** Next.js 15 + Tailwind CSS 4 + Vercel
 **Target:** Studenti 14 anni - 80 ore annuali
 
@@ -9,7 +9,7 @@
 
 ## 📌 STATO ATTUALE DEL PROGETTO (aggiornato al 16 Novembre 2026)
 
-> Sezione di riepilogo da leggere per prima. I changelog delle sessioni sotto sono lo storico (in ordine non cronologico: la Sessione più recente è la 31, in fondo al file).
+> Sezione di riepilogo da leggere per prima. I changelog delle sessioni sotto sono lo storico (in ordine non cronologico: la Sessione più recente è la 32, in fondo al file).
 
 ### 🌐 Sito
 - **Online:** https://corso-tecnologie-web.vercel.app (deploy automatico da `main`)
@@ -30,7 +30,7 @@
 | 1. HTML | 18 | ✅ Completo |
 | 2. CSS | 14 | ✅ Completo |
 | 3. Progetto Intermedio | 4 | ✅ Completo |
-| 4. JavaScript | 10 di 20 | 🔄 In corso (prossima: **L11 Manipolare Classi CSS**) |
+| 4. JavaScript | 11 di 20 | 🔄 In corso (prossima: **L12 Array - Le Liste**) |
 | 5. Progetto Finale | 0 | 📋 Da fare |
 | 6. Strumenti Moderni | 0 | 📋 Da fare |
 
@@ -40,7 +40,7 @@
 - **JavaScript:** schema in 3 passi (id nel pulsante → funzione con nome → `addEventListener`), mai `onclick` o JS dentro i tag HTML, id dei pulsanti con prefisso `btn`, script in fondo al `<body>`.
 - **L'id non va collegato al CSS:** negli esempi il CSS usa selettori di tag o classi, mai `#id`.
 - **Tailwind 4:** trasparenze con `bg-white/20`, mai `bg-opacity-*` (vedi `DIPENDENZE.md`).
-- **Coerenza didattica:** nessun concetto usato prima di essere insegnato; riepilogo "Comandi JavaScript Totali Imparati" aggiornato in ogni lezione (dopo L10: 21 comandi).
+- **Coerenza didattica:** nessun concetto usato prima di essere insegnato; riepilogo "Comandi JavaScript Totali Imparati" aggiornato in ogni lezione (dopo L11: 23 comandi).
 
 ### ⚠️ Questioni aperte
 - Il link "Moduli" dell'header punta a `/moduli`, che non esiste (404): da far puntare a `/manuale#moduli` o creare la pagina.
@@ -7790,8 +7790,8 @@ Eliminare `onclick` dalle lezioni JavaScript e usare un unico schema per collega
 | L8 | Operatori Logici e Validazione | `&&`, `\|\|`, `!` | ✅ Pubblicata |
 | L9 | Funzioni con Parametri e Return | parametri, `return`, funzioni che chiamano funzioni | ✅ Pubblicata |
 | L10 | Altri Eventi | `input`, `change`, `keydown`, `submit`, `event.preventDefault()` | ✅ Pubblicata |
-| L11 | Manipolare Classi CSS | `classList.add/remove/toggle/contains` | ⏭️ Prossima |
-| L12 | Array - Le Liste | `[]`, `push()`, `length`, `[indice]` | 📋 Da fare |
+| L11 | Manipolare Classi CSS | `classList.add/remove/toggle/contains`, `document.body` | ✅ Pubblicata |
+| L12 | Array - Le Liste | `[]`, `push()`, `length`, `[indice]` | ⏭️ Prossima |
 
 #### PARTE 3: PROGETTI COMPLETI
 
@@ -8012,4 +8012,46 @@ Nella sezione "👻 Nascondere e Mostrare" mancava il consueto blocco `CodeExamp
 
 ---
 
-**Fine del Progetto Log - Ultimo aggiornamento: 16 Novembre 2026 - Sessione 31**
+## 📅 CHANGELOG SESSIONE 32 (16 Novembre 2026) - SITO SEMPRE CHIARO E LEZIONE 11 CLASSI CSS
+
+### 1. ☀️ Il sito resta sempre chiaro
+
+**Perché:** gli allievi usano quasi tutti il tema scuro del sistema e alcune scritte non si leggevano (sfondo della pagina scuro, riquadri `dark:` delle lezioni CSS 9-14 e 3.1).
+
+**Modifiche (commit e0cbf58):**
+- `app/globals.css`: tolto il blocco `@media (prefers-color-scheme: dark)`; `color-scheme: only light` su `:root`; `@custom-variant dark (&:where(.dark, .dark *));`, così le classi `dark:` di Tailwind scattano solo con una classe `.dark` che nessuna pagina usa (non serve toccare le lezioni).
+- `app/layout.tsx`: `export const viewport = { colorScheme: "only light" }` → `<meta name="color-scheme" content="only light">` in tutte le pagine.
+
+**Verifica:** Chrome con `prefers-color-scheme: dark` emulato: home e lezioni CSS 9 e 12 con sfondo bianco e nessun riquadro scuro.
+
+**Limite:** le funzioni dei browser che scuriscono a forza tutti i siti (flag Auto Dark Mode di Chrome, estensioni) potrebbero ignorare la dichiarazione.
+
+### 2. 📝 Nuova Lezione 11: Manipolare le Classi CSS
+
+**File:** `app/moduli/modulo-4-javascript/lezione-11-classi-css/page.tsx` (registrata in `lib/moduli.ts`, slug `lezione-11-classi-css`, 2 ore, difficoltà media, gradiente `from-emerald-500 to-teal-600`).
+
+**Struttura:**
+1. Intro "Il Guardaroba di JavaScript": `.style` è il sarto che cuce punto per punto, la classe è il vestito pronto nell'armadio (il CSS); le quattro schede add/remove/toggle/contains
+2. "Il CSS prepara, JavaScript sceglie": il Tema della Scheda della L10 rifatto con una classe (prima/dopo); box "Come funziona" con i quattro metodi; il nome della classe senza punto; le altre classi restano (classi multiple, L3 CSS); la regola id per JavaScript / classe per il CSS resta valida
+3. `add` e `remove`: demo "La Lampadina" (classe `.accesa` con box-shadow); box: add doppio e remove di una classe assente non fanno danni
+4. `toggle`: `document.body` introdotto con un box; demo "Il Tema Scuro" con `transition` nel body (L14 CSS: l'animazione la fa il CSS); box sulla specificità (la classe vince sul tag)
+5. `contains`: risponde true/false, si usa in un `if`; demo "Il Menu Hamburger" (toggle + contains per la scritta ☰ Menu / ✖ Chiudi); box sull'ordine nel CSS (`.aperto` dopo `.menu`)
+6. "Tutto insieme: le schede": demo "Le Schede della Ricetta" con `chiudiTutto()` e `apri(idScheda, idPulsante)` con parametri (L9), funzioni dei pulsanti senza parametri; stato iniziale scritto nell'HTML (`class="scheda visibile"`)
+7. ".style o classList?": tabella (classi per gli aspetti preparabili prima, `.style` per i valori calcolati come la barra del Volume e il Razzo)
+8. Errori tipici: punto nel nome (`add(".aperto")`), `classlist` minuscolo / `classList("aperto")` (TypeError), classe nuova senza togliere la vecchia, classe scritta prima nel CSS, `.style` e classe sulla stessa proprietà (lo style in linea vince)
+9. Esercizio guidato "La Pagina della Band" (I Fulmini): HTML, CSS con le classi `.menu/.aperto/.scuro` e la transition, `cambiaTema` (toggle + contains sul body), `apriChiudi` (menu), `chiudiConEsc(event)` con keydown ed `remove` (L10); esperimenti (colori di .scuro senza toccare JS, toggle → add, .aperto prima di .menu, pulsante Segui con .seguito, classe .grande)
+10. Checklist, sfida "Il Quiz a Colori" (classi .giusta/.sbagliata, ricomincia che toglie tutto, bonus aiuto con toggle + contains), riepilogo (23 comandi), prossimi passi verso L12 Array (chiudiTutto ripete una riga per pannello)
+
+**Scelte:**
+- Nessun `.style` negli esempi della lezione: tutti i colori stanno nel CSS.
+- `document.body` per il tema scuro, invece di un id sul body.
+- Le classi che JavaScript accende stanno sempre dopo le regole che devono battere, e la lezione lo dice esplicitamente.
+- Nessun compito dell'Officina per la L11, per ora (il box «Allenati nell'Officina» compare da solo quando ci saranno).
+
+**Verifica:** Puppeteer su tutte le demo (lampadina con add doppio e remove doppio, tema scuro e ritorno, menu aperto/chiuso con la scritta, schede con un pannello alla volta e la linguetta attiva) e sul codice dei passi dell'esercizio (tema, scritta del pulsante, menu, Esc che chiude e non riapre; nessun errore in nessun passo); pagina senza scroll orizzontale a 390px; nessun errore JavaScript (solo il 404 di `/favicon.ico`, già presente in tutto il sito); `tsc` pulito.
+
+**Comandi totali dopo L11:** 23 (nuovi: `classList.add / remove / toggle / contains`, `document.body`).
+
+---
+
+**Fine del Progetto Log - Ultimo aggiornamento: 16 Novembre 2026 - Sessione 32**
